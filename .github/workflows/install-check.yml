@@ -43,6 +43,7 @@ jobs:
             dependencies: [.package(url: "https://github.com/arj-89/worldref.git", exact: "${TAG#v}")],
             targets: [.executableTarget(name: "T", dependencies: [.product(name: "WorldRef", package: "worldref")])])
           SWIFT
+          rm -f Sources/T/*.swift
           echo 'import WorldRef; print(WorldRef.country(iso2: "SA")!.nameAr)' > Sources/T/main.swift
           swift run T | grep -q "السعودية"
   kotlin:
