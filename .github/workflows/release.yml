@@ -1,0 +1,18 @@
+# Attaches ready-to-use archives to every GitHub release.
+name: Release assets
+on:
+  release: { types: [published] }
+permissions: { contents: write }
+jobs:
+  assets:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+      - run: |
+          zip -qr worldref-json.zip data/*.json data/modules schema LICENSE LICENSES
+          zip -qr worldref-csv.zip data/csv LICENSE LICENSES
+          zip -qr worldref-sql.zip data/sql LICENSE LICENSES
+          zip -qr worldref-flags.zip flags LICENSE
+          zip -qr worldref-csharp.zip csharp/WorldRef LICENSE LICENSES
+          gh release upload "${{ github.event.release.tag_name }}" worldref-*.zip --clobber
+        env: { GH_TOKEN: "${{ github.token }}" }

@@ -1,0 +1,122 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://arj-89.github.io/worldref/schema/core.schema.json",
+  "title": "worldref core",
+  "type": "array",
+  "items": {
+    "type": "object",
+    "additionalProperties": false,
+    "required": [
+      "iso2",
+      "iso3",
+      "iso_numeric",
+      "kind",
+      "name_ar",
+      "name_en",
+      "official_name_ar",
+      "official_name_en",
+      "aliases_ar",
+      "aliases_en",
+      "flag",
+      "flag_svg",
+      "continent",
+      "groups",
+      "un_member",
+      "tld",
+      "sort_ar",
+      "sort_en"
+    ],
+    "properties": {
+      "iso2": {
+        "description": "ISO 3166-1 alpha-2 code (XK for Kosovo). The key that joins every module.",
+        "type": "string"
+      },
+      "iso3": {
+        "description": "ISO 3166-1 alpha-3 code (XKK for Kosovo, as in CLDR).",
+        "type": "string"
+      },
+      "iso_numeric": {
+        "description": "ISO 3166-1 numeric code, as text to keep leading zeros.",
+        "type": "string"
+      },
+      "kind": {
+        "description": "country (sovereign state, including Palestine, Vatican and Kosovo) or territory.",
+        "type": "string"
+      },
+      "name_ar": {
+        "description": "Short common name in Arabic.",
+        "type": "string"
+      },
+      "name_en": {
+        "description": "Short common name in English.",
+        "type": "string"
+      },
+      "official_name_ar": {
+        "description": "Official long name in Arabic, when a source states one.",
+        "type": [
+          "string",
+          "null"
+        ]
+      },
+      "official_name_en": {
+        "description": "Official long name in English, when a source states one.",
+        "type": [
+          "string",
+          "null"
+        ]
+      },
+      "aliases_ar": {
+        "description": "Other Arabic names people search with. For search only, not display.",
+        "type": "array",
+        "items": {
+          "type": "string"
+        }
+      },
+      "aliases_en": {
+        "description": "Other English names people search with. For search only, not display.",
+        "type": "array",
+        "items": {
+          "type": "string"
+        }
+      },
+      "flag": {
+        "description": "Flag emoji (regional indicator pair). Windows does not draw these; use flag_svg on the web.",
+        "type": "string"
+      },
+      "flag_svg": {
+        "description": "Path of the 4:3 SVG flag in this package.",
+        "type": "string"
+      },
+      "continent": {
+        "description": "africa, americas, asia, europe or oceania (UN M49 via CLDR).",
+        "type": "string"
+      },
+      "groups": {
+        "description": "Memberships: gcc, arab_league.",
+        "type": "array",
+        "items": {
+          "type": "string"
+        }
+      },
+      "un_member": {
+        "description": "true for the 193 UN member states.",
+        "type": "boolean"
+      },
+      "tld": {
+        "description": "Country-code top-level domain, when one is delegated.",
+        "type": [
+          "string",
+          "null"
+        ]
+      },
+      "sort_ar": {
+        "description": "Arabic sort key: compare these with plain string comparison for correct Arabic order (ignores «ال», hamza forms, tashkeel).",
+        "type": "string"
+      },
+      "sort_en": {
+        "description": "English sort key: compare with plain string comparison.",
+        "type": "string"
+      }
+    }
+  }
+}

@@ -1,0 +1,17 @@
+node_modules/
+upstream/.tz/
+.build/
+.swiftpm/
+.DS_Store
+*.log
+site/_out/
+kotlin/build/
+kotlin/.gradle/
+kotlin/.kotlin/
+dart/.dart_tool/
+dart/pubspec.lock
+python/build/
+python/*.egg-info/
+**/__pycache__/
+csharp/**/bin/
+csharp/**/obj/

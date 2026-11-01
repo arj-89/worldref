@@ -1,0 +1,1568 @@
+{
+ "AG": {
+  "name": "Algeria",
+  "long_name": "People's Democratic Republic of Algeria",
+  "nationality_adjective": "Algerian",
+  "nationality_noun": "Algerian(s)"
+ },
+ "AO": {
+  "name": "Angola",
+  "long_name": "Republic of Angola",
+  "nationality_adjective": "Angolan",
+  "nationality_noun": "Angolan(s)"
+ },
+ "BC": {
+  "name": "Botswana",
+  "long_name": "Republic of Botswana",
+  "nationality_adjective": "Motswana (singular), Batswana (plural)",
+  "nationality_noun": "Motswana (singular), Batswana (plural)"
+ },
+ "BN": {
+  "name": "Benin",
+  "long_name": "Republic of Benin",
+  "nationality_adjective": "Beninese",
+  "nationality_noun": "Beninese (singular and plural)"
+ },
+ "BY": {
+  "name": "Burundi",
+  "long_name": "Republic of Burundi",
+  "nationality_adjective": "Burundian",
+  "nationality_noun": "Burundian(s)"
+ },
+ "CD": {
+  "name": "Chad",
+  "long_name": "Republic of Chad",
+  "nationality_adjective": "Chadian",
+  "nationality_noun": "Chadian(s)"
+ },
+ "CF": {
+  "name": "Congo (Brazzaville)",
+  "long_name": "Republic of the Congo",
+  "nationality_adjective": "Congolese or Congo",
+  "nationality_noun": "Congolese (singular and plural)"
+ },
+ "CG": {
+  "name": "DRC",
+  "long_name": "Democratic Republic of the Congo",
+  "nationality_adjective": "Congolese or Congo",
+  "nationality_noun": "Congolese (singular and plural)"
+ },
+ "CM": {
+  "name": "Cameroon",
+  "long_name": "Republic of Cameroon",
+  "nationality_adjective": "Cameroonian",
+  "nationality_noun": "Cameroonian(s)"
+ },
+ "CN": {
+  "name": "Comoros",
+  "long_name": "Union of the Comoros",
+  "nationality_adjective": "Comoran",
+  "nationality_noun": "Comoran(s)"
+ },
+ "CT": {
+  "name": "none",
+  "long_name": "Central African Republic",
+  "nationality_adjective": "Central African",
+  "nationality_noun": "Central African(s)"
+ },
+ "CV": {
+  "name": "Cabo Verde",
+  "long_name": "Republic of Cabo Verde",
+  "nationality_adjective": "Cabo Verdean",
+  "nationality_noun": "Cabo Verdean(s)"
+ },
+ "DJ": {
+  "name": "Djibouti",
+  "long_name": "Republic of Djibouti",
+  "nationality_adjective": "Djiboutian",
+  "nationality_noun": "Djiboutian(s)"
+ },
+ "EG": {
+  "name": "Egypt",
+  "long_name": "Arab Republic of Egypt",
+  "nationality_adjective": "Egyptian",
+  "nationality_noun": "Egyptian(s)"
+ },
+ "EK": {
+  "name": "Equatorial Guinea",
+  "long_name": "Republic of Equatorial Guinea",
+  "nationality_adjective": "Equatorial Guinean or Equatoguinean",
+  "nationality_noun": "Equatorial Guinean(s) or Equatoguinean(s)"
+ },
+ "ER": {
+  "name": "Eritrea",
+  "long_name": "State of Eritrea",
+  "nationality_adjective": "Eritrean",
+  "nationality_noun": "Eritrean(s)"
+ },
+ "ET": {
+  "name": "Ethiopia",
+  "long_name": "Federal Democratic Republic of Ethiopia",
+  "nationality_adjective": "Ethiopian",
+  "nationality_noun": "Ethiopian(s)"
+ },
+ "GA": {
+  "name": "The Gambia",
+  "long_name": "Republic of The Gambia",
+  "nationality_adjective": "Gambian",
+  "nationality_noun": "Gambian(s)"
+ },
+ "GB": {
+  "name": "Gabon",
+  "long_name": "Gabonese Republic",
+  "nationality_adjective": "Gabonese",
+  "nationality_noun": "Gabonese (singular and plural)"
+ },
+ "GH": {
+  "name": "Ghana",
+  "long_name": "Republic of Ghana",
+  "nationality_adjective": "Ghanaian",
+  "nationality_noun": "Ghanaian(s)"
+ },
+ "GV": {
+  "name": "Guinea",
+  "long_name": "Republic of Guinea",
+  "nationality_adjective": "Guinean",
+  "nationality_noun": "Guinean(s)"
+ },
+ "IV": {
+  "name": "C&ocirc;te d'Ivoire",
+  "long_name": "Republic of C&ocirc;te d'Ivoire",
+  "nationality_adjective": "Ivoirian",
+  "nationality_noun": "Ivoirian(s)"
+ },
+ "KE": {
+  "name": "Kenya",
+  "long_name": "Republic of Kenya",
+  "nationality_adjective": "Kenyan",
+  "nationality_noun": "Kenyan(s)"
+ },
+ "LI": {
+  "name": "Liberia",
+  "long_name": "Republic of Liberia",
+  "nationality_adjective": "Liberian",
+  "nationality_noun": "Liberian(s)"
+ },
+ "LT": {
+  "name": "Lesotho",
+  "long_name": "Kingdom of Lesotho",
+  "nationality_adjective": "Basotho",
+  "nationality_noun": "Mosotho (singular), Basotho (plural)"
+ },
+ "LY": {
+  "name": "Libya",
+  "long_name": "State of Libya",
+  "nationality_adjective": "Libyan",
+  "nationality_noun": "Libyan(s)"
+ },
+ "MA": {
+  "name": "Madagascar",
+  "long_name": "Republic of Madagascar",
+  "nationality_adjective": "Malagasy",
+  "nationality_noun": "Malagasy (singular and plural)"
+ },
+ "MI": {
+  "name": "Malawi",
+  "long_name": "Republic of Malawi",
+  "nationality_adjective": "Malawian",
+  "nationality_noun": "Malawian(s)"
+ },
+ "ML": {
+  "name": "Mali",
+  "long_name": "Republic of Mali",
+  "nationality_adjective": "Malian",
+  "nationality_noun": "Malian(s)"
+ },
+ "MO": {
+  "name": "Morocco",
+  "long_name": "Kingdom of Morocco",
+  "nationality_adjective": "Moroccan",
+  "nationality_noun": "Moroccan(s)"
+ },
+ "MP": {
+  "name": "Mauritius",
+  "long_name": "Republic of Mauritius",
+  "nationality_adjective": "Mauritian",
+  "nationality_noun": "Mauritian(s)"
+ },
+ "MR": {
+  "name": "Mauritania",
+  "long_name": "Islamic Republic of Mauritania",
+  "nationality_adjective": "Mauritanian",
+  "nationality_noun": "Mauritanian(s)"
+ },
+ "MZ": {
+  "name": "Mozambique",
+  "long_name": "Republic of Mozambique",
+  "nationality_adjective": "Mozambican",
+  "nationality_noun": "Mozambican(s)"
+ },
+ "NG": {
+  "name": "Niger",
+  "long_name": "Republic of Niger",
+  "nationality_adjective": "Nigerien",
+  "nationality_noun": "Nigerien(s)"
+ },
+ "NI": {
+  "name": "Nigeria",
+  "long_name": "Federal Republic of Nigeria",
+  "nationality_adjective": "Nigerian",
+  "nationality_noun": "Nigerian(s)"
+ },
+ "OD": {
+  "name": "South Sudan",
+  "long_name": "Republic of South Sudan",
+  "nationality_adjective": "South Sudanese",
+  "nationality_noun": "South Sudanese (singular and plural)"
+ },
+ "PU": {
+  "name": "Guinea-Bissau",
+  "long_name": "Republic of Guinea-Bissau",
+  "nationality_adjective": "Bissau-Guinean",
+  "nationality_noun": "Bissau-Guinean(s)"
+ },
+ "RW": {
+  "name": "Rwanda",
+  "long_name": "Republic of Rwanda",
+  "nationality_adjective": "Rwandan",
+  "nationality_noun": "Rwandan(s)"
+ },
+ "SE": {
+  "name": "Seychelles",
+  "long_name": "Republic of Seychelles",
+  "nationality_adjective": "Seychellois",
+  "nationality_noun": "Seychellois (singular and plural)"
+ },
+ "SF": {
+  "name": "South Africa",
+  "long_name": "Republic of South Africa",
+  "nationality_adjective": "South African",
+  "nationality_noun": "South African(s)"
+ },
+ "SG": {
+  "name": "Senegal",
+  "long_name": "Republic of Senegal",
+  "nationality_adjective": "Senegalese",
+  "nationality_noun": "Senegalese (singular and plural)"
+ },
+ "SH": {
+  "name": "none",
+  "long_name": "Saint Helena, Ascension, and Tristan da Cunha",
+  "nationality_adjective": "Saint Helenian",
+  "nationality_noun": "Saint Helenian(s)"
+ },
+ "SL": {
+  "name": "Sierra Leone",
+  "long_name": "Republic of Sierra Leone",
+  "nationality_adjective": "Sierra Leonean",
+  "nationality_noun": "Sierra Leonean(s)"
+ },
+ "SO": {
+  "name": "Somalia",
+  "long_name": "Federal Republic of Somalia",
+  "nationality_adjective": "Somali",
+  "nationality_noun": "Somali(s)"
+ },
+ "SU": {
+  "name": "Sudan",
+  "long_name": "Republic of the Sudan",
+  "nationality_adjective": "Sudanese",
+  "nationality_noun": "Sudanese (singular and plural)"
+ },
+ "TO": {
+  "name": "Togo",
+  "long_name": "Togolese Republic",
+  "nationality_adjective": "Togolese",
+  "nationality_noun": "Togolese (singular and plural)"
+ },
+ "TP": {
+  "name": "Sao Tome and Principe",
+  "long_name": "Democratic Republic of Sao Tome and Principe",
+  "nationality_adjective": "Sao Tomean",
+  "nationality_noun": "Sao Tomean(s)"
+ },
+ "TS": {
+  "name": "Tunisia",
+  "long_name": "Republic of Tunisia",
+  "nationality_adjective": "Tunisian",
+  "nationality_noun": "Tunisian(s)"
+ },
+ "TZ": {
+  "name": "Tanzania",
+  "long_name": "United Republic of Tanzania",
+  "nationality_adjective": "Tanzanian",
+  "nationality_noun": "Tanzanian(s)"
+ },
+ "UG": {
+  "name": "Uganda",
+  "long_name": "Republic of Uganda",
+  "nationality_adjective": "Ugandan",
+  "nationality_noun": "Ugandan(s)"
+ },
+ "UV": {
+  "name": "Burkina Faso",
+  "long_name": "none",
+  "nationality_adjective": "Burkinabe",
+  "nationality_noun": "Burkinabe (singular and plural)"
+ },
+ "WA": {
+  "name": "Namibia",
+  "long_name": "Republic of Namibia",
+  "nationality_adjective": "Namibian",
+  "nationality_noun": "Namibian(s)"
+ },
+ "WI": {
+  "name": "Western Sahara",
+  "long_name": "none",
+  "nationality_adjective": "Sahrawi, Sahrawian, Sahraouian",
+  "nationality_noun": "Sahrawi(s), Sahraoui(s)"
+ },
+ "WZ": {
+  "name": "Eswatini",
+  "long_name": "Kingdom of Eswatini",
+  "nationality_adjective": "Swati; note - former term, Swazi, still used among English speakers",
+  "nationality_noun": "liSwati (singular), emaSwati (plural); note - former term, Swazi(s), still used among English speakers"
+ },
+ "ZA": {
+  "name": "Zambia",
+  "long_name": "Republic of Zambia",
+  "nationality_adjective": "Zambian",
+  "nationality_noun": "Zambian(s)"
+ },
+ "ZI": {
+  "name": "Zimbabwe",
+  "long_name": "Republic of Zimbabwe",
+  "nationality_adjective": "Zimbabwean",
+  "nationality_noun": "Zimbabwean(s)"
+ },
+ "AY": {
+  "name": "Antarctica",
+  "long_name": "none",
+  "nationality_adjective": null,
+  "nationality_noun": null
+ },
+ "BV": {
+  "name": "Bouvet Island",
+  "long_name": "none",
+  "nationality_adjective": null,
+  "nationality_noun": null
+ },
+ "FS": {
+  "name": "French Southern and Antarctic Lands",
+  "long_name": "Territory of the French Southern and Antarctic Lands",
+  "nationality_adjective": null,
+  "nationality_noun": null
+ },
+ "HM": {
+  "name": "Heard Island and McDonald Islands",
+  "long_name": "Territory of Heard Island and McDonald Islands",
+  "nationality_adjective": null,
+  "nationality_noun": null
+ },
+ "AQ": {
+  "name": "American Samoa",
+  "long_name": "American Samoa",
+  "nationality_adjective": "American Samoan",
+  "nationality_noun": "American Samoan(s) (US nationals)"
+ },
+ "AS": {
+  "name": "Australia",
+  "long_name": "Commonwealth of Australia",
+  "nationality_adjective": "Australian",
+  "nationality_noun": "Australian(s)"
+ },
+ "AT": {
+  "name": "Ashmore and Cartier Islands",
+  "long_name": "Territory of Ashmore and Cartier Islands",
+  "nationality_adjective": null,
+  "nationality_noun": null
+ },
+ "BP": {
+  "name": "Solomon Islands",
+  "long_name": "none",
+  "nationality_adjective": "Solomon Islander",
+  "nationality_noun": "Solomon Islander(s)"
+ },
+ "CK": {
+  "name": "Cocos (Keeling) Islands",
+  "long_name": "Territory of Cocos (Keeling) Islands",
+  "nationality_adjective": "Cocos Islander",
+  "nationality_noun": "Cocos Islander(s)"
+ },
+ "CQ": {
+  "name": "Northern Mariana Islands",
+  "long_name": "Commonwealth of the Northern Mariana Islands",
+  "nationality_adjective": "NA",
+  "nationality_noun": "NA (US citizens)"
+ },
+ "CR": {
+  "name": "Coral Sea Islands",
+  "long_name": "Coral Sea Islands Territory",
+  "nationality_adjective": null,
+  "nationality_noun": null
+ },
+ "CW": {
+  "name": "Cook Islands",
+  "long_name": "none",
+  "nationality_adjective": "Cook Islander",
+  "nationality_noun": "Cook Islander(s)"
+ },
+ "FJ": {
+  "name": "Fiji",
+  "long_name": "Republic of Fiji",
+  "nationality_adjective": "Fijian",
+  "nationality_noun": "Fijian(s)"
+ },
+ "FM": {
+  "name": "none",
+  "long_name": "Federated States of Micronesia",
+  "nationality_adjective": "Micronesian; Chuukese, Kosraen(s), Pohnpeian(s), Yapese",
+  "nationality_noun": "Micronesian(s)"
+ },
+ "FP": {
+  "name": "French Polynesia",
+  "long_name": "Overseas Lands of French Polynesia",
+  "nationality_adjective": "French Polynesian",
+  "nationality_noun": "French Polynesian(s)"
+ },
+ "GQ": {
+  "name": "Guam",
+  "long_name": "none",
+  "nationality_adjective": "Guamanian",
+  "nationality_noun": "Guamanian(s) (US citizens)"
+ },
+ "KR": {
+  "name": "Kiribati",
+  "long_name": "Republic of Kiribati",
+  "nationality_adjective": "Kiribati",
+  "nationality_noun": "I-Kiribati (singular and plural)"
+ },
+ "KT": {
+  "name": "Christmas Island",
+  "long_name": "Territory of Christmas Island",
+  "nationality_adjective": "Christmas Island",
+  "nationality_noun": "Christmas Islander(s)"
+ },
+ "NC": {
+  "name": "New Caledonia",
+  "long_name": "Territory of New Caledonia and Dependencies",
+  "nationality_adjective": "New Caledonian",
+  "nationality_noun": "New Caledonian(s)"
+ },
+ "NE": {
+  "name": "Niue",
+  "long_name": "none",
+  "nationality_adjective": "Niuean",
+  "nationality_noun": "Niuean(s)"
+ },
+ "NF": {
+  "name": "Norfolk Island",
+  "long_name": "Territory of Norfolk Island",
+  "nationality_adjective": "Norfolk Islander(s)",
+  "nationality_noun": "Norfolk Islander(s)"
+ },
+ "NH": {
+  "name": "Vanuatu",
+  "long_name": "Republic of Vanuatu",
+  "nationality_adjective": "Ni-Vanuatu",
+  "nationality_noun": "Ni-Vanuatu (singular and plural)"
+ },
+ "NR": {
+  "name": "Nauru",
+  "long_name": "Republic of Nauru",
+  "nationality_adjective": "Nauruan",
+  "nationality_noun": "Nauruan(s)"
+ },
+ "NZ": {
+  "name": "New Zealand",
+  "long_name": "none",
+  "nationality_adjective": "New Zealand",
+  "nationality_noun": "New Zealander(s)"
+ },
+ "PC": {
+  "name": "Pitcairn Islands",
+  "long_name": "Pitcairn, Henderson, Ducie, and Oeno Islands",
+  "nationality_adjective": "Pitcairn Islander",
+  "nationality_noun": "Pitcairn Islander(s)"
+ },
+ "PS": {
+  "name": "Palau",
+  "long_name": "Republic of Palau",
+  "nationality_adjective": "Palauan",
+  "nationality_noun": "Palauan(s)"
+ },
+ "RM": {
+  "name": "Marshall Islands",
+  "long_name": "Republic of the Marshall Islands",
+  "nationality_adjective": "Marshallese",
+  "nationality_noun": "Marshallese (singular and plural)"
+ },
+ "TL": {
+  "name": "Tokelau",
+  "long_name": "none",
+  "nationality_adjective": "Tokelauan",
+  "nationality_noun": "Tokelauan(s)"
+ },
+ "TN": {
+  "name": "Tonga",
+  "long_name": "Kingdom of Tonga",
+  "nationality_adjective": "Tongan",
+  "nationality_noun": "Tongan(s)"
+ },
+ "TV": {
+  "name": "Tuvalu",
+  "long_name": "none",
+  "nationality_adjective": "Tuvaluan",
+  "nationality_noun": "Tuvaluan(s)"
+ },
+ "UM": {
+  "name": "Baker Island, Howland Island, Jarvis Island, Johnston Atoll, Kingman Reef, Midway Islands, Palmyra Atoll",
+  "long_name": "none",
+  "nationality_adjective": null,
+  "nationality_noun": null
+ },
+ "WF": {
+  "name": "Wallis and Futuna",
+  "long_name": "Territory of the Wallis and Futuna Islands",
+  "nationality_adjective": "Wallisian, Futunan, or Wallis and Futuna Islander",
+  "nationality_noun": "Wallisian(s), Futunan(s), or Wallis and Futuna Islanders"
+ },
+ "WQ": {
+  "name": "Wake Island",
+  "long_name": "none",
+  "nationality_adjective": null,
+  "nationality_noun": null
+ },
+ "WS": {
+  "name": "Samoa",
+  "long_name": "Independent State of Samoa",
+  "nationality_adjective": "Samoan",
+  "nationality_noun": "Samoan(s)"
+ },
+ "AA": {
+  "name": "Aruba",
+  "long_name": "Country of Aruba",
+  "nationality_adjective": "Aruban; Dutch",
+  "nationality_noun": "Aruban(s)"
+ },
+ "AC": {
+  "name": "Antigua and Barbuda",
+  "long_name": "Antigua and Barbuda",
+  "nationality_adjective": "Antiguan, Barbudan",
+  "nationality_noun": "Antiguan(s), Barbudan(s)"
+ },
+ "AV": {
+  "name": "Anguilla",
+  "long_name": "none",
+  "nationality_adjective": "Anguillan",
+  "nationality_noun": "Anguillan(s)"
+ },
+ "BB": {
+  "name": "Barbados",
+  "long_name": "none",
+  "nationality_adjective": "Barbadian or Bajan (colloquial)",
+  "nationality_noun": "Barbadian(s) or Bajan (colloquial)"
+ },
+ "BF": {
+  "name": "The Bahamas",
+  "long_name": "Commonwealth of The Bahamas",
+  "nationality_adjective": "Bahamian",
+  "nationality_noun": "Bahamian(s)"
+ },
+ "BH": {
+  "name": "Belize",
+  "long_name": "none",
+  "nationality_adjective": "Belizean",
+  "nationality_noun": "Belizean(s)"
+ },
+ "BQ": {
+  "name": "Navassa Island",
+  "long_name": "none",
+  "nationality_adjective": null,
+  "nationality_noun": null
+ },
+ "CJ": {
+  "name": "Cayman Islands",
+  "long_name": "none",
+  "nationality_adjective": "Caymanian",
+  "nationality_noun": "Caymanian(s)"
+ },
+ "CS": {
+  "name": "Costa Rica",
+  "long_name": "Republic of Costa Rica",
+  "nationality_adjective": "Costa Rican",
+  "nationality_noun": "Costa Rican(s)"
+ },
+ "CU": {
+  "name": "Cuba",
+  "long_name": "Republic of Cuba",
+  "nationality_adjective": "Cuban",
+  "nationality_noun": "Cuban(s)"
+ },
+ "DO": {
+  "name": "Dominica",
+  "long_name": "Commonwealth of Dominica",
+  "nationality_adjective": "Dominican",
+  "nationality_noun": "Dominican(s)"
+ },
+ "DR": {
+  "name": "The Dominican",
+  "long_name": "Dominican Republic",
+  "nationality_adjective": "Dominican",
+  "nationality_noun": "Dominican(s)"
+ },
+ "ES": {
+  "name": "El Salvador",
+  "long_name": "Republic of El Salvador",
+  "nationality_adjective": "Salvadoran",
+  "nationality_noun": "Salvadoran(s)"
+ },
+ "GJ": {
+  "name": "Grenada",
+  "long_name": "none",
+  "nationality_adjective": "Grenadian",
+  "nationality_noun": "Grenadian(s)"
+ },
+ "GT": {
+  "name": "Guatemala",
+  "long_name": "Republic of Guatemala",
+  "nationality_adjective": "Guatemalan",
+  "nationality_noun": "Guatemalan(s)"
+ },
+ "HA": {
+  "name": "Haiti",
+  "long_name": "Republic of Haiti",
+  "nationality_adjective": "Haitian",
+  "nationality_noun": "Haitian(s)"
+ },
+ "HO": {
+  "name": "Honduras",
+  "long_name": "Republic of Honduras",
+  "nationality_adjective": "Honduran",
+  "nationality_noun": "Honduran(s)"
+ },
+ "JM": {
+  "name": "Jamaica",
+  "long_name": "none",
+  "nationality_adjective": "Jamaican",
+  "nationality_noun": "Jamaican(s)"
+ },
+ "MH": {
+  "name": "Montserrat",
+  "long_name": "none",
+  "nationality_adjective": "Montserratian",
+  "nationality_noun": "Montserratian(s)"
+ },
+ "NN": {
+  "name": "Sint Maarten",
+  "long_name": "Country of Sint Maarten",
+  "nationality_adjective": null,
+  "nationality_noun": null
+ },
+ "NU": {
+  "name": "Nicaragua",
+  "long_name": "Republic of Nicaragua",
+  "nationality_adjective": "Nicaraguan",
+  "nationality_noun": "Nicaraguan(s)"
+ },
+ "PM": {
+  "name": "Panama",
+  "long_name": "Republic of Panama",
+  "nationality_adjective": "Panamanian",
+  "nationality_noun": "Panamanian(s)"
+ },
+ "RN": {
+  "name": "Saint Martin",
+  "long_name": "Overseas Collectivity of Saint Martin",
+  "nationality_adjective": null,
+  "nationality_noun": null
+ },
+ "RQ": {
+  "name": "Puerto Rico",
+  "long_name": "Commonwealth of Puerto Rico",
+  "nationality_adjective": "Puerto Rican",
+  "nationality_noun": "Puerto Rican(s) (US citizens)"
+ },
+ "SC": {
+  "name": "Saint Kitts and Nevis",
+  "long_name": "Federation of Saint Kitts and Nevis",
+  "nationality_adjective": "Kittitian, Nevisian",
+  "nationality_noun": "Kittitian(s), Nevisian(s)"
+ },
+ "ST": {
+  "name": "Saint Lucia",
+  "long_name": "none",
+  "nationality_adjective": "Saint Lucian",
+  "nationality_noun": "Saint Lucian(s)"
+ },
+ "TB": {
+  "name": "Saint Barthelemy",
+  "long_name": "Overseas Collectivity of Saint Barthelemy",
+  "nationality_adjective": null,
+  "nationality_noun": null
+ },
+ "TD": {
+  "name": "Trinidad and Tobago",
+  "long_name": "Republic of Trinidad and Tobago",
+  "nationality_adjective": "Trinidadian, Tobagonian",
+  "nationality_noun": "Trinidadian(s), Tobagonian(s)"
+ },
+ "TK": {
+  "name": "Turks and Caicos Islands",
+  "long_name": "none",
+  "nationality_adjective": "none",
+  "nationality_noun": "none"
+ },
+ "UC": {
+  "name": "Curacao",
+  "long_name": "Country of Curacao",
+  "nationality_adjective": "Curacaoan; Dutch",
+  "nationality_noun": "Curacaoan"
+ },
+ "VC": {
+  "name": "Saint Vincent and the Grenadines",
+  "long_name": "none",
+  "nationality_adjective": "Saint Vincentian or Vincentian",
+  "nationality_noun": "Saint Vincentian(s) or Vincentian(s)"
+ },
+ "VI": {
+  "name": "British Virgin Islands",
+  "long_name": "none",
+  "nationality_adjective": "British Virgin Islander",
+  "nationality_noun": "British Virgin Islander(s)"
+ },
+ "VQ": {
+  "name": "Virgin Islands",
+  "long_name": "none",
+  "nationality_adjective": "Virgin Islander",
+  "nationality_noun": "Virgin Islander(s) (US citizens)"
+ },
+ "AJ": {
+  "name": "Azerbaijan",
+  "long_name": "Republic of Azerbaijan",
+  "nationality_adjective": "Azerbaijani",
+  "nationality_noun": "Azerbaijani(s)"
+ },
+ "AM": {
+  "name": "Armenia",
+  "long_name": "Republic of Armenia",
+  "nationality_adjective": "Armenian",
+  "nationality_noun": "Armenian(s)"
+ },
+ "GG": {
+  "name": "Georgia",
+  "long_name": "none",
+  "nationality_adjective": "Georgian",
+  "nationality_noun": "Georgian(s)"
+ },
+ "KG": {
+  "name": "Kyrgyzstan",
+  "long_name": "Kyrgyz Republic",
+  "nationality_adjective": "Kyrgyzstani",
+  "nationality_noun": "Kyrgyzstani(s)"
+ },
+ "KZ": {
+  "name": "Kazakhstan",
+  "long_name": "Republic of Kazakhstan",
+  "nationality_adjective": "Kazakhstani",
+  "nationality_noun": "Kazakhstani(s)"
+ },
+ "RS": {
+  "name": "Russia",
+  "long_name": "Russian Federation",
+  "nationality_adjective": "Russian",
+  "nationality_noun": "Russian(s)"
+ },
+ "TI": {
+  "name": "Tajikistan",
+  "long_name": "Republic of Tajikistan",
+  "nationality_adjective": "Tajikistani",
+  "nationality_noun": "Tajikistani(s)"
+ },
+ "TX": {
+  "name": "Turkmenistan",
+  "long_name": "none",
+  "nationality_adjective": "Turkmenistani",
+  "nationality_noun": "Turkmenistani(s)"
+ },
+ "UZ": {
+  "name": "Uzbekistan",
+  "long_name": "Republic of Uzbekistan",
+  "nationality_adjective": "Uzbekistani",
+  "nationality_noun": "Uzbekistani"
+ },
+ "BM": {
+  "name": "Burma",
+  "long_name": "Union of Burma",
+  "nationality_adjective": "Burmese",
+  "nationality_noun": "Burmese (singular and plural)"
+ },
+ "BX": {
+  "name": "Brunei",
+  "long_name": "Brunei Darussalam",
+  "nationality_adjective": "Bruneian",
+  "nationality_noun": "Bruneian(s)"
+ },
+ "CB": {
+  "name": "Cambodia",
+  "long_name": "Kingdom of Cambodia",
+  "nationality_adjective": "Cambodian",
+  "nationality_noun": "Cambodian(s)"
+ },
+ "CH": {
+  "name": "China",
+  "long_name": "People's Republic of China",
+  "nationality_adjective": "Chinese",
+  "nationality_noun": "Chinese (singular and plural)"
+ },
+ "HK": {
+  "name": "Hong Kong",
+  "long_name": "Hong Kong Special Administrative Region",
+  "nationality_adjective": "Chinese/Hong Kong",
+  "nationality_noun": "Chinese/Hong Konger"
+ },
+ "ID": {
+  "name": "Indonesia",
+  "long_name": "Republic of Indonesia",
+  "nationality_adjective": "Indonesian",
+  "nationality_noun": "Indonesian(s)"
+ },
+ "JA": {
+  "name": "Japan",
+  "long_name": "none",
+  "nationality_adjective": "Japanese",
+  "nationality_noun": "Japanese (singular and plural)"
+ },
+ "KN": {
+  "name": "North Korea",
+  "long_name": "Democratic People's Republic of Korea",
+  "nationality_adjective": "Korean",
+  "nationality_noun": "Korean(s)"
+ },
+ "KS": {
+  "name": "South Korea",
+  "long_name": "Republic of Korea",
+  "nationality_adjective": "Korean",
+  "nationality_noun": "Korean(s)"
+ },
+ "LA": {
+  "name": "Laos",
+  "long_name": "Lao People's Democratic Republic",
+  "nationality_adjective": "Lao or Laotian",
+  "nationality_noun": "Lao(s) or Laotian(s)"
+ },
+ "MC": {
+  "name": "Macau",
+  "long_name": "Macau Special Administrative Region",
+  "nationality_adjective": "Chinese",
+  "nationality_noun": "Chinese"
+ },
+ "MG": {
+  "name": "Mongolia",
+  "long_name": "none",
+  "nationality_adjective": "Mongolian",
+  "nationality_noun": "Mongolian(s)"
+ },
+ "MY": {
+  "name": "Malaysia",
+  "long_name": "none",
+  "nationality_adjective": "Malaysian",
+  "nationality_noun": "Malaysian(s)"
+ },
+ "PF": {
+  "name": "Paracel Islands",
+  "long_name": "none",
+  "nationality_adjective": null,
+  "nationality_noun": null
+ },
+ "PG": {
+  "name": "Spratly Islands",
+  "long_name": "none",
+  "nationality_adjective": null,
+  "nationality_noun": null
+ },
+ "PP": {
+  "name": "Papua New Guinea",
+  "long_name": "Independent State of Papua New Guinea",
+  "nationality_adjective": "Papua New Guinean",
+  "nationality_noun": "Papua New Guinean(s)"
+ },
+ "RP": {
+  "name": "Philippines",
+  "long_name": "Republic of the Philippines",
+  "nationality_adjective": "Philippine",
+  "nationality_noun": "Filipino(s)"
+ },
+ "SN": {
+  "name": "Singapore",
+  "long_name": "Republic of Singapore",
+  "nationality_adjective": "Singapore",
+  "nationality_noun": "Singaporean(s)"
+ },
+ "TH": {
+  "name": "Thailand",
+  "long_name": "Kingdom of Thailand",
+  "nationality_adjective": "Thai",
+  "nationality_noun": "Thai (singular and plural)"
+ },
+ "TT": {
+  "name": "Timor-Leste",
+  "long_name": "Democratic Republic of Timor-Leste",
+  "nationality_adjective": "Timorese",
+  "nationality_noun": "Timorese"
+ },
+ "TW": {
+  "name": "Taiwan",
+  "long_name": "none",
+  "nationality_adjective": "Taiwan (or Taiwanese)",
+  "nationality_noun": "Taiwan (singular and plural)"
+ },
+ "VM": {
+  "name": "Vietnam",
+  "long_name": "Socialist Republic of Vietnam",
+  "nationality_adjective": "Vietnamese",
+  "nationality_noun": "Vietnamese (singular and plural)"
+ },
+ "AL": {
+  "name": "Albania",
+  "long_name": "Republic of Albania",
+  "nationality_adjective": "Albanian",
+  "nationality_noun": "Albanian(s)"
+ },
+ "AN": {
+  "name": "Andorra",
+  "long_name": "Principality of Andorra",
+  "nationality_adjective": "Andorran",
+  "nationality_noun": "Andorran(s)"
+ },
+ "AU": {
+  "name": "Austria",
+  "long_name": "Republic of Austria",
+  "nationality_adjective": "Austrian",
+  "nationality_noun": "Austrian(s)"
+ },
+ "AX": {
+  "name": "Akrotiri",
+  "long_name": "none",
+  "nationality_adjective": null,
+  "nationality_noun": null
+ },
+ "BE": {
+  "name": "Belgium",
+  "long_name": "Kingdom of Belgium",
+  "nationality_adjective": "Belgian",
+  "nationality_noun": "Belgian(s)"
+ },
+ "BK": {
+  "name": "Bosnia and Herzegovina",
+  "long_name": "none",
+  "nationality_adjective": "Bosnian, Herzegovinian",
+  "nationality_noun": "Bosnian(s), Herzegovinian(s)"
+ },
+ "BO": {
+  "name": "Belarus",
+  "long_name": "Republic of Belarus",
+  "nationality_adjective": "Belarusian",
+  "nationality_noun": "Belarusian(s)"
+ },
+ "BU": {
+  "name": "Bulgaria",
+  "long_name": "Republic of Bulgaria",
+  "nationality_adjective": "Bulgarian",
+  "nationality_noun": "Bulgarian(s)"
+ },
+ "CY": {
+  "name": "Cyprus",
+  "long_name": "Republic of Cyprus",
+  "nationality_adjective": "Cypriot",
+  "nationality_noun": "Cypriot(s)"
+ },
+ "DA": {
+  "name": "Denmark",
+  "long_name": "Kingdom of Denmark",
+  "nationality_adjective": "Danish",
+  "nationality_noun": "Dane(s)"
+ },
+ "DX": {
+  "name": "Dhekelia",
+  "long_name": "none",
+  "nationality_adjective": null,
+  "nationality_noun": null
+ },
+ "EE": {
+  "name": null,
+  "long_name": null,
+  "nationality_adjective": null,
+  "nationality_noun": null
+ },
+ "EI": {
+  "name": "Ireland",
+  "long_name": "none",
+  "nationality_adjective": "Irish",
+  "nationality_noun": "Irishman(men), Irishwoman(women), Irish (collective plural)"
+ },
+ "EN": {
+  "name": "Estonia",
+  "long_name": "Republic of Estonia",
+  "nationality_adjective": "Estonian",
+  "nationality_noun": "Estonian(s)"
+ },
+ "EZ": {
+  "name": "Czechia",
+  "long_name": "Czech Republic",
+  "nationality_adjective": "Czech",
+  "nationality_noun": "Czech(s)"
+ },
+ "FI": {
+  "name": "Finland",
+  "long_name": "Republic of Finland",
+  "nationality_adjective": "Finnish",
+  "nationality_noun": "Finn(s)"
+ },
+ "FO": {
+  "name": "Faroe Islands",
+  "long_name": "none",
+  "nationality_adjective": "Faroese",
+  "nationality_noun": "Faroese (singular and plural)"
+ },
+ "FR": {
+  "name": "France",
+  "long_name": "French Republic",
+  "nationality_adjective": "French",
+  "nationality_noun": "Frenchman(men), Frenchwoman(women)"
+ },
+ "GI": {
+  "name": "Gibraltar",
+  "long_name": "none",
+  "nationality_adjective": "Gibraltar",
+  "nationality_noun": "Gibraltarian(s)"
+ },
+ "GK": {
+  "name": "Guernsey",
+  "long_name": "Bailiwick of Guernsey",
+  "nationality_adjective": "Channel Islander",
+  "nationality_noun": "Channel Islander(s)"
+ },
+ "GM": {
+  "name": "Germany",
+  "long_name": "Federal Republic of Germany",
+  "nationality_adjective": "German",
+  "nationality_noun": "German(s)"
+ },
+ "GR": {
+  "name": "Greece",
+  "long_name": "Hellenic Republic",
+  "nationality_adjective": "Greek",
+  "nationality_noun": "Greek(s)"
+ },
+ "HR": {
+  "name": "Croatia",
+  "long_name": "Republic of Croatia",
+  "nationality_adjective": "Croatian",
+  "nationality_noun": "Croat(s), Croatian(s)"
+ },
+ "HU": {
+  "name": "Hungary",
+  "long_name": "none",
+  "nationality_adjective": "Hungarian",
+  "nationality_noun": "Hungarian(s)"
+ },
+ "IC": {
+  "name": "Iceland",
+  "long_name": "none",
+  "nationality_adjective": "Icelandic",
+  "nationality_noun": "Icelander(s)"
+ },
+ "IM": {
+  "name": "Isle of Man",
+  "long_name": "none",
+  "nationality_adjective": "Manx",
+  "nationality_noun": "Manxman (men), Manxwoman (women)"
+ },
+ "IT": {
+  "name": "Italy",
+  "long_name": "Italian Republic",
+  "nationality_adjective": "Italian",
+  "nationality_noun": "Italian(s)"
+ },
+ "JE": {
+  "name": "Jersey",
+  "long_name": "Bailiwick of Jersey",
+  "nationality_adjective": "Channel Islander",
+  "nationality_noun": "Channel Islander(s)"
+ },
+ "JN": {
+  "name": "Jan Mayen",
+  "long_name": "none",
+  "nationality_adjective": null,
+  "nationality_noun": null
+ },
+ "KV": {
+  "name": "Kosovo",
+  "long_name": "Republic of Kosovo",
+  "nationality_adjective": "Kosovan",
+  "nationality_noun": "Kosovan"
+ },
+ "LG": {
+  "name": "Latvia",
+  "long_name": "Republic of Latvia",
+  "nationality_adjective": "Latvian",
+  "nationality_noun": "Latvian(s)"
+ },
+ "LH": {
+  "name": "Lithuania",
+  "long_name": "Republic of Lithuania",
+  "nationality_adjective": "Lithuanian",
+  "nationality_noun": "Lithuanian(s)"
+ },
+ "LO": {
+  "name": "Slovakia",
+  "long_name": "Slovak Republic",
+  "nationality_adjective": "Slovak",
+  "nationality_noun": "Slovak(s)"
+ },
+ "LS": {
+  "name": "Liechtenstein",
+  "long_name": "Principality of Liechtenstein",
+  "nationality_adjective": "Liechtenstein",
+  "nationality_noun": "Liechtensteiner(s)"
+ },
+ "LU": {
+  "name": "Luxembourg",
+  "long_name": "Grand Duchy of Luxembourg",
+  "nationality_adjective": "Luxembourg",
+  "nationality_noun": "Luxembourger(s)"
+ },
+ "MD": {
+  "name": "Moldova",
+  "long_name": "Republic of Moldova",
+  "nationality_adjective": "Moldovan",
+  "nationality_noun": "Moldovan(s)"
+ },
+ "MJ": {
+  "name": "Montenegro",
+  "long_name": "none",
+  "nationality_adjective": "Montenegrin",
+  "nationality_noun": "Montenegrin(s)"
+ },
+ "MK": {
+  "name": "North Macedonia",
+  "long_name": "Republic of North Macedonia",
+  "nationality_adjective": "Macedonian",
+  "nationality_noun": "Macedonian(s)"
+ },
+ "MN": {
+  "name": "Monaco",
+  "long_name": "Principality of Monaco",
+  "nationality_adjective": "Monegasque or Monacan",
+  "nationality_noun": "Monegasque(s) or Monacan(s)"
+ },
+ "MT": {
+  "name": "Malta",
+  "long_name": "Republic of Malta",
+  "nationality_adjective": "Maltese",
+  "nationality_noun": "Maltese (singular and plural)"
+ },
+ "NL": {
+  "name": "Netherlands",
+  "long_name": "Kingdom of the Netherlands",
+  "nationality_adjective": "Dutch",
+  "nationality_noun": "Dutchman(men), Dutchwoman(women)"
+ },
+ "NO": {
+  "name": "Norway",
+  "long_name": "Kingdom of Norway",
+  "nationality_adjective": "Norwegian",
+  "nationality_noun": "Norwegian(s)"
+ },
+ "PL": {
+  "name": "Poland",
+  "long_name": "Republic of Poland",
+  "nationality_adjective": "Polish",
+  "nationality_noun": "Pole(s)"
+ },
+ "PO": {
+  "name": "Portugal",
+  "long_name": "Portuguese Republic",
+  "nationality_adjective": "Portuguese",
+  "nationality_noun": "Portuguese (singular and plural)"
+ },
+ "RI": {
+  "name": "Serbia",
+  "long_name": "Republic of Serbia",
+  "nationality_adjective": "Serbian",
+  "nationality_noun": "Serb(s)"
+ },
+ "RO": {
+  "name": "Romania",
+  "long_name": "none",
+  "nationality_adjective": "Romanian",
+  "nationality_noun": "Romanian(s)"
+ },
+ "SI": {
+  "name": "Slovenia",
+  "long_name": "Republic of Slovenia",
+  "nationality_adjective": "Slovenian",
+  "nationality_noun": "Slovene(s)"
+ },
+ "SM": {
+  "name": "San Marino",
+  "long_name": "Republic of San Marino",
+  "nationality_adjective": "Sammarinese",
+  "nationality_noun": "Sammarinese (singular and plural)"
+ },
+ "SP": {
+  "name": "Spain",
+  "long_name": "Kingdom of Spain",
+  "nationality_adjective": "Spanish",
+  "nationality_noun": "Spaniard(s)"
+ },
+ "SV": {
+  "name": "Svalbard (sometimes referred to as Spitsbergen, the largest island in the archipelago)",
+  "long_name": "none",
+  "nationality_adjective": null,
+  "nationality_noun": null
+ },
+ "SW": {
+  "name": "Sweden",
+  "long_name": "Kingdom of Sweden",
+  "nationality_adjective": "Swedish",
+  "nationality_noun": "Swede(s)"
+ },
+ "SZ": {
+  "name": "Switzerland",
+  "long_name": "Swiss Confederation",
+  "nationality_adjective": "Swiss",
+  "nationality_noun": "Swiss (singular and plural)"
+ },
+ "UK": {
+  "name": "United Kingdom",
+  "long_name": "United Kingdom of Great Britain and Northern Ireland; note - the island of Great Britain includes England, Scotland, and Wales",
+  "nationality_adjective": "British",
+  "nationality_noun": "Briton(s), British (collective plural)"
+ },
+ "UP": {
+  "name": "Ukraine",
+  "long_name": "none",
+  "nationality_adjective": "Ukrainian",
+  "nationality_noun": "Ukrainian(s)"
+ },
+ "VT": {
+  "name": "Holy See (Vatican City)",
+  "long_name": "The Holy See (Vatican City State)",
+  "nationality_adjective": "none",
+  "nationality_noun": "none"
+ },
+ "AE": {
+  "name": "none",
+  "long_name": "United Arab Emirates",
+  "nationality_adjective": "Emirati",
+  "nationality_noun": "Emirati(s)"
+ },
+ "BA": {
+  "name": "Bahrain",
+  "long_name": "Kingdom of Bahrain",
+  "nationality_adjective": "Bahraini",
+  "nationality_noun": "Bahraini(s)"
+ },
+ "GZ": {
+  "name": "Gaza, Gaza Strip",
+  "long_name": "none",
+  "nationality_adjective": null,
+  "nationality_noun": null
+ },
+ "IR": {
+  "name": "Iran",
+  "long_name": "Islamic Republic of Iran",
+  "nationality_adjective": "Iranian",
+  "nationality_noun": "Iranian(s)"
+ },
+ "IS": {
+  "name": "Israel",
+  "long_name": "State of Israel",
+  "nationality_adjective": "Israeli",
+  "nationality_noun": "Israeli(s)"
+ },
+ "IZ": {
+  "name": "Iraq",
+  "long_name": "Republic of Iraq",
+  "nationality_adjective": "Iraqi",
+  "nationality_noun": "Iraqi(s)"
+ },
+ "JO": {
+  "name": "Jordan",
+  "long_name": "Hashemite Kingdom of Jordan",
+  "nationality_adjective": "Jordanian",
+  "nationality_noun": "Jordanian(s)"
+ },
+ "KU": {
+  "name": "Kuwait",
+  "long_name": "State of Kuwait",
+  "nationality_adjective": "Kuwaiti",
+  "nationality_noun": "Kuwaiti(s)"
+ },
+ "LE": {
+  "name": "Lebanon",
+  "long_name": "Lebanese Republic",
+  "nationality_adjective": "Lebanese",
+  "nationality_noun": "Lebanese (singular and plural)"
+ },
+ "MU": {
+  "name": "Oman",
+  "long_name": "Sultanate of Oman",
+  "nationality_adjective": "Omani",
+  "nationality_noun": "Omani(s)"
+ },
+ "QA": {
+  "name": "Qatar",
+  "long_name": "State of Qatar",
+  "nationality_adjective": "Qatari",
+  "nationality_noun": "Qatari(s)"
+ },
+ "SA": {
+  "name": "Saudi Arabia",
+  "long_name": "Kingdom of Saudi Arabia",
+  "nationality_adjective": "Saudi or Saudi Arabian",
+  "nationality_noun": "Saudi(s)"
+ },
+ "SY": {
+  "name": "Syria",
+  "long_name": "Syrian Arab Republic",
+  "nationality_adjective": "Syrian",
+  "nationality_noun": "Syrian(s)"
+ },
+ "TU": {
+  "name": "Turkey",
+  "long_name": "Republic of Turkey",
+  "nationality_adjective": "Turkish",
+  "nationality_noun": "Turk(s)"
+ },
+ "WE": {
+  "name": "West Bank",
+  "long_name": "none",
+  "nationality_adjective": null,
+  "nationality_noun": null
+ },
+ "YM": {
+  "name": "Yemen",
+  "long_name": "Republic of Yemen",
+  "nationality_adjective": "Yemeni",
+  "nationality_noun": "Yemeni(s)"
+ },
+ "BD": {
+  "name": "Bermuda",
+  "long_name": "none",
+  "nationality_adjective": "Bermudian",
+  "nationality_noun": "Bermudian(s)"
+ },
+ "CA": {
+  "name": "Canada",
+  "long_name": "none",
+  "nationality_adjective": "Canadian",
+  "nationality_noun": "Canadian(s)"
+ },
+ "GL": {
+  "name": "Greenland",
+  "long_name": "none",
+  "nationality_adjective": "Greenlandic",
+  "nationality_noun": "Greenlander(s)"
+ },
+ "IP": {
+  "name": "Clipperton Island",
+  "long_name": "none",
+  "nationality_adjective": null,
+  "nationality_noun": null
+ },
+ "MX": {
+  "name": "Mexico",
+  "long_name": "United Mexican States",
+  "nationality_adjective": "Mexican",
+  "nationality_noun": "Mexican(s)"
+ },
+ "SB": {
+  "name": "Saint Pierre and Miquelon",
+  "long_name": "Territorial Collectivity of Saint Pierre and Miquelon",
+  "nationality_adjective": "French",
+  "nationality_noun": "Frenchman(men), Frenchwoman(women)"
+ },
+ "US": {
+  "name": "United States",
+  "long_name": "United States of America",
+  "nationality_adjective": "American",
+  "nationality_noun": "American(s)"
+ },
+ "OO": {
+  "name": null,
+  "long_name": null,
+  "nationality_adjective": null,
+  "nationality_noun": null
+ },
+ "XO": {
+  "name": null,
+  "long_name": null,
+  "nationality_adjective": null,
+  "nationality_noun": null
+ },
+ "XQ": {
+  "name": null,
+  "long_name": null,
+  "nationality_adjective": null,
+  "nationality_noun": null
+ },
+ "ZH": {
+  "name": null,
+  "long_name": null,
+  "nationality_adjective": null,
+  "nationality_noun": null
+ },
+ "ZN": {
+  "name": null,
+  "long_name": null,
+  "nationality_adjective": null,
+  "nationality_noun": null
+ },
+ "AR": {
+  "name": "Argentina",
+  "long_name": "Argentine Republic",
+  "nationality_adjective": "Argentine",
+  "nationality_noun": "Argentine(s)"
+ },
+ "BL": {
+  "name": "Bolivia",
+  "long_name": "Plurinational State of Bolivia",
+  "nationality_adjective": "Bolivian",
+  "nationality_noun": "Bolivian(s)"
+ },
+ "BR": {
+  "name": "Brazil",
+  "long_name": "Federative Republic of Brazil",
+  "nationality_adjective": "Brazilian",
+  "nationality_noun": "Brazilian(s)"
+ },
+ "CI": {
+  "name": "Chile",
+  "long_name": "Republic of Chile",
+  "nationality_adjective": "Chilean",
+  "nationality_noun": "Chilean(s)"
+ },
+ "CO": {
+  "name": "Colombia",
+  "long_name": "Republic of Colombia",
+  "nationality_adjective": "Colombian",
+  "nationality_noun": "Colombian(s)"
+ },
+ "EC": {
+  "name": "Ecuador",
+  "long_name": "Republic of Ecuador",
+  "nationality_adjective": "Ecuadorian",
+  "nationality_noun": "Ecuadorian(s)"
+ },
+ "FK": {
+  "name": "Falkland Islands (Islas Malvinas)",
+  "long_name": "none",
+  "nationality_adjective": "Falkland Island",
+  "nationality_noun": "Falkland Islander(s)"
+ },
+ "GY": {
+  "name": "Guyana",
+  "long_name": "Cooperative Republic of Guyana",
+  "nationality_adjective": "Guyanese",
+  "nationality_noun": "Guyanese (singular and plural)"
+ },
+ "NS": {
+  "name": "Suriname",
+  "long_name": "Republic of Suriname",
+  "nationality_adjective": "Surinamese",
+  "nationality_noun": "Surinamer(s)"
+ },
+ "PA": {
+  "name": "Paraguay",
+  "long_name": "Republic of Paraguay",
+  "nationality_adjective": "Paraguayan",
+  "nationality_noun": "Paraguayan(s)"
+ },
+ "PE": {
+  "name": "Peru",
+  "long_name": "Republic of Peru",
+  "nationality_adjective": "Peruvian",
+  "nationality_noun": "Peruvian(s)"
+ },
+ "SX": {
+  "name": "South Georgia and South Sandwich Islands",
+  "long_name": "South Georgia and the South Sandwich Islands",
+  "nationality_adjective": null,
+  "nationality_noun": null
+ },
+ "UY": {
+  "name": "Uruguay",
+  "long_name": "Oriental Republic of Uruguay",
+  "nationality_adjective": "Uruguayan",
+  "nationality_noun": "Uruguayan(s)"
+ },
+ "VE": {
+  "name": "Venezuela",
+  "long_name": "Bolivarian Republic of Venezuela",
+  "nationality_adjective": "Venezuelan",
+  "nationality_noun": "Venezuelan(s)"
+ },
+ "AF": {
+  "name": "Afghanistan",
+  "long_name": "Islamic Republic of Afghanistan (prior to 15 August 2021); current country name disputed",
+  "nationality_adjective": "Afghan",
+  "nationality_noun": "Afghan(s)"
+ },
+ "BG": {
+  "name": "Bangladesh",
+  "long_name": "People's Republic of Bangladesh",
+  "nationality_adjective": "Bangladeshi",
+  "nationality_noun": "Bangladeshi(s)"
+ },
+ "BT": {
+  "name": "Bhutan",
+  "long_name": "Kingdom of Bhutan",
+  "nationality_adjective": "Bhutanese",
+  "nationality_noun": "Bhutanese (singular and plural)"
+ },
+ "CE": {
+  "name": "Sri Lanka",
+  "long_name": "Democratic Socialist Republic of Sri Lanka",
+  "nationality_adjective": "Sri Lankan",
+  "nationality_noun": "Sri Lankan(s)"
+ },
+ "IN": {
+  "name": "India",
+  "long_name": "Republic of India",
+  "nationality_adjective": "Indian",
+  "nationality_noun": "Indian(s)"
+ },
+ "IO": {
+  "name": "none",
+  "long_name": "British Indian Ocean Territory",
+  "nationality_adjective": null,
+  "nationality_noun": null
+ },
+ "MV": {
+  "name": "Maldives",
+  "long_name": "Republic of Maldives",
+  "nationality_adjective": "Maldivian",
+  "nationality_noun": "Maldivian(s)"
+ },
+ "NP": {
+  "name": "Nepal",
+  "long_name": "none",
+  "nationality_adjective": "Nepali",
+  "nationality_noun": "Nepali (singular and plural)"
+ },
+ "PK": {
+  "name": "Pakistan",
+  "long_name": "Islamic Republic of Pakistan",
+  "nationality_adjective": "Pakistani",
+  "nationality_noun": "Pakistani(s)"
+ },
+ "XX": {
+  "name": null,
+  "long_name": null,
+  "nationality_adjective": null,
+  "nationality_noun": null
+ }
+}

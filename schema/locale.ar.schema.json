@@ -1,0 +1,81 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://arj-89.github.io/worldref/schema/locale.ar.schema.json",
+  "title": "worldref locale.ar",
+  "type": "array",
+  "items": {
+    "type": "object",
+    "additionalProperties": false,
+    "required": [
+      "iso2",
+      "locale"
+    ],
+    "properties": {
+      "iso2": {
+        "description": "ISO 3166-1 alpha-2 code (XK for Kosovo). The key that joins every module.",
+        "type": "string"
+      },
+      "locale": {
+        "description": "Locale conventions.",
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "languages",
+          "week_start",
+          "weekend",
+          "calendars",
+          "measurement"
+        ],
+        "properties": {
+          "languages": {
+            "description": "Official languages, most spoken first.",
+            "type": "array",
+            "items": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "code",
+                "name"
+              ],
+              "properties": {
+                "code": {
+                  "description": "BCP 47 language code.",
+                  "type": "string"
+                },
+                "name": {
+                  "description": "Language name in Arabic.",
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                }
+              }
+            }
+          },
+          "week_start": {
+            "description": "First day of the week (sun, mon, sat...).",
+            "type": "string"
+          },
+          "weekend": {
+            "description": "Weekend days.",
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "calendars": {
+            "description": "Calendars in use, most preferred first (gregorian, islamic-umalqura...).",
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "measurement": {
+            "description": "metric, us or uk.",
+            "type": "string"
+          }
+        }
+      }
+    }
+  }
+}

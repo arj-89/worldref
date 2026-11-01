@@ -1,0 +1,12 @@
+name: Bug in a package
+description: A helper (search, sorting, phone parsing) behaves wrongly in one of the language packages
+labels: [bug]
+body:
+  - type: dropdown
+    id: package
+    attributes: { label: Package, options: [JavaScript/TypeScript, Python, Swift, Kotlin, Dart, PHP, Go, C#, MCP server] }
+    validations: { required: true }
+  - type: textarea
+    id: repro
+    attributes: { label: Input, expected result, actual result }
+    validations: { required: true }

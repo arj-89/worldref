@@ -1,0 +1,19 @@
+cff-version: 1.2.0
+title: "worldref: every country in Arabic, English, or both"
+message: "If you use this dataset, please cite it as below."
+type: dataset
+authors:
+  - name: "worldref contributors"
+repository-code: "https://github.com/arj-89/worldref"
+url: "https://arj-89.github.io/worldref"
+license: MIT
+version: 1.0.0
+date-released: 2026-11-01
+keywords:
+  - countries
+  - arabic
+  - bilingual
+  - nationality
+  - phone numbers
+  - iso 3166
+abstract: "Reference data for 242 countries and territories and 5012 subdivisions in Arabic and English: names, nationalities, phone rules, currencies, capitals, languages, time zones, address formats and emergency numbers, from official sources."

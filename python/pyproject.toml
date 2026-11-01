@@ -1,0 +1,21 @@
+[build-system]
+requires = ["setuptools>=61"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "worldref"
+version = "1.0.0"
+description = "Countries and territories in Arabic and English: names, phone plans, currencies, subdivisions, search and phone parsing."
+readme = "README.md"
+requires-python = ">=3.9"
+license = { text = "MIT" }
+dependencies = []
+
+[project.urls]
+Homepage = "https://github.com/arj-89/worldref"
+
+[tool.setuptools]
+packages = ["worldref"]
+
+[tool.setuptools.package-data]
+worldref = ["py.typed", "data/*.json"]

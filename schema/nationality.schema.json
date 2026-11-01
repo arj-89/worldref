@@ -1,0 +1,61 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://arj-89.github.io/worldref/schema/nationality.schema.json",
+  "title": "worldref nationality",
+  "type": "array",
+  "items": {
+    "type": "object",
+    "additionalProperties": false,
+    "required": [
+      "iso2",
+      "nationality"
+    ],
+    "properties": {
+      "iso2": {
+        "description": "ISO 3166-1 alpha-2 code (XK for Kosovo). The key that joins every module.",
+        "type": "string"
+      },
+      "nationality": {
+        "description": "Nationality names. Filled for countries and for TW, HK, MO; null for other territories.",
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "nationality_ar_m",
+          "nationality_ar_f",
+          "nationality_en",
+          "icao_code"
+        ],
+        "properties": {
+          "nationality_ar_m": {
+            "description": "Arabic nationality, masculine (سعودي).",
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "nationality_ar_f": {
+            "description": "Arabic nationality, feminine (سعودية).",
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "nationality_en": {
+            "description": "English nationality adjective (Saudi).",
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "icao_code": {
+            "description": "ICAO Doc 9303 code used on passports (mostly iso3; D for Germany, RKS for Kosovo).",
+            "type": [
+              "string",
+              "null"
+            ]
+          }
+        }
+      }
+    }
+  }
+}

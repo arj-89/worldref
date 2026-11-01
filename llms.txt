@@ -1,0 +1,37 @@
+# worldref
+
+> Every country in Arabic, English, or both: names, nationalities (Arabic masculine and feminine), capitals, currencies, languages, time zones, dial codes, phone validation, address formats, emergency numbers and ISO 3166-2 subdivisions. Free, open data with code for TypeScript, Python, Swift, Kotlin, Dart, PHP, Go and C#, and an MCP server.
+
+## Use it
+
+- Full data (bilingual): https://cdn.jsdelivr.net/gh/arj-89/worldref@1/data/worldref.json
+- Arabic only: https://cdn.jsdelivr.net/gh/arj-89/worldref@1/data/worldref.ar.json
+- English only: https://cdn.jsdelivr.net/gh/arj-89/worldref@1/data/worldref.en.json
+- One country: https://arj-89.github.io/worldref/api/v1/{iso2}.json (lowercase iso2, e.g. sa)
+- Index of all countries: https://arj-89.github.io/worldref/api/v1/index.json
+- Modules (join on iso2): core, nationality, phone, currency, geo, locale, address, travel, sports: https://cdn.jsdelivr.net/gh/arj-89/worldref@1/data/modules/{module}.json
+- Subdivisions: https://cdn.jsdelivr.net/gh/arj-89/worldref@1/data/subdivisions.json
+- JSON Schemas: https://cdn.jsdelivr.net/gh/arj-89/worldref@1/schema/
+- OpenAPI: https://arj-89.github.io/worldref/openapi.json
+- MCP server: `npx -y github:arj-89/worldref mcp` (tools: get_country, search_countries, validate_phone, list_subdivisions)
+
+## Rules for answering from this data
+
+- Answer from the data only. `null` or an empty list means unknown: say so, never guess.
+- Sources for every column and every editorial decision: https://cdn.jsdelivr.net/gh/arj-89/worldref@1/data/sources.json
+- Arabic sorting: compare `sort_ar` with plain string comparison. Search: normalise both sides (ignore «ال», tashkeel, tatweel, hamza forms; Arabic-Indic and Persian digits to Western).
+- Phone numbers: store international form (E.164) plus the iso2 the user picked. Validate a national number with `^(?:mobile_pattern)$`.
+- Emergency numbers are published only when an official source confirms them. A null service means: call `general`.
+
+## Policy
+
+- Israel is not in this dataset under any name or code.
+- Palestine (فلسطين) is a country; capital القدس (Jerusalem); +970 and +972 numbers are Palestinian; currencies JOD and the shekel (شيكل).
+- Disputed places follow Saudi Arabia's official positions: Western Sahara is part of Morocco; Kosovo is included; Northern Cyprus is not; Taiwan, Hong Kong and Macau are territories with a nationality.
+
+## Docs
+
+- [README](https://github.com/arj-89/worldref#readme): install for every language, recipes, field table, FAQ
+- [README in Arabic](https://github.com/arj-89/worldref/blob/main/README.ar.md)
+- [AGENTS.md](https://github.com/arj-89/worldref/blob/main/AGENTS.md): guide for coding agents
+- [llms-full.txt](https://arj-89.github.io/worldref/llms-full.txt): every field with an example record

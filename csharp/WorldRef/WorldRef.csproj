@@ -1,0 +1,18 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <LangVersion>latest</LangVersion>
+    <RootNamespace>WorldRef</RootNamespace>
+    <AssemblyName>WorldRef</AssemblyName>
+    <Version>1.0.0</Version>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="Data\worldref.json" LogicalName="WorldRef.Data.worldref.json" />
+    <EmbeddedResource Include="Data\subdivisions.json" LogicalName="WorldRef.Data.subdivisions.json" />
+  </ItemGroup>
+
+</Project>

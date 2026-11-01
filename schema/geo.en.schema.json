@@ -1,0 +1,75 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://arj-89.github.io/worldref/schema/geo.en.schema.json",
+  "title": "worldref geo.en",
+  "type": "array",
+  "items": {
+    "type": "object",
+    "additionalProperties": false,
+    "required": [
+      "iso2",
+      "geo"
+    ],
+    "properties": {
+      "iso2": {
+        "description": "ISO 3166-1 alpha-2 code (XK for Kosovo). The key that joins every module.",
+        "type": "string"
+      },
+      "geo": {
+        "description": "Geography.",
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "capital",
+          "lat",
+          "lng",
+          "area_km2",
+          "population",
+          "population_year",
+          "timezones",
+          "driving_side"
+        ],
+        "properties": {
+          "capital": {
+            "description": "Capital in Arabic.",
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "lat": {
+            "description": "Latitude of the country's centre point.",
+            "type": "number"
+          },
+          "lng": {
+            "description": "Longitude of the country's centre point.",
+            "type": "number"
+          },
+          "area_km2": {
+            "description": "Area in square kilometres.",
+            "type": "integer"
+          },
+          "population": {
+            "description": "Population.",
+            "type": "integer"
+          },
+          "population_year": {
+            "description": "Year of the population figure.",
+            "type": "integer"
+          },
+          "timezones": {
+            "description": "IANA time zone names.",
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "driving_side": {
+            "description": "left or right.",
+            "type": "string"
+          }
+        }
+      }
+    }
+  }
+}

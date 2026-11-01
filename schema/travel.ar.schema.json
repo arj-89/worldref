@@ -1,0 +1,101 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://arj-89.github.io/worldref/schema/travel.ar.schema.json",
+  "title": "worldref travel.ar",
+  "type": "array",
+  "items": {
+    "type": "object",
+    "additionalProperties": false,
+    "required": [
+      "iso2",
+      "travel"
+    ],
+    "properties": {
+      "iso2": {
+        "description": "ISO 3166-1 alpha-2 code (XK for Kosovo). The key that joins every module.",
+        "type": "string"
+      },
+      "travel": {
+        "description": "Travel facts.",
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "emergency",
+          "plug_types",
+          "voltage",
+          "frequency_hz"
+        ],
+        "properties": {
+          "emergency": {
+            "description": "Emergency numbers confirmed from an official source. A null service means: call `general`.",
+            "type": [
+              "object",
+              "null"
+            ],
+            "additionalProperties": false,
+            "required": [
+              "police",
+              "ambulance",
+              "fire",
+              "general"
+            ],
+            "properties": {
+              "police": {
+                "description": "Police.",
+                "type": [
+                  "string",
+                  "null"
+                ]
+              },
+              "ambulance": {
+                "description": "Ambulance.",
+                "type": [
+                  "string",
+                  "null"
+                ]
+              },
+              "fire": {
+                "description": "Fire and civil defence.",
+                "type": [
+                  "string",
+                  "null"
+                ]
+              },
+              "general": {
+                "description": "All-services number (112, 911, 999...).",
+                "type": [
+                  "string",
+                  "null"
+                ]
+              }
+            }
+          },
+          "plug_types": {
+            "description": "IEC plug letters (A to N).",
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "voltage": {
+            "description": "Residential mains voltages.",
+            "type": "array",
+            "items": {
+              "type": "integer"
+            }
+          },
+          "frequency_hz": {
+            "description": "Mains frequency in hertz.",
+            "type": [
+              "array",
+              "null"
+            ],
+            "items": {
+              "type": "integer"
+            }
+          }
+        }
+      }
+    }
+  }
+}

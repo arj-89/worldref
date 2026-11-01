@@ -1,0 +1,40 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://arj-89.github.io/worldref/schema/subdivisions.ar.schema.json",
+  "title": "worldref subdivisions.ar",
+  "type": "array",
+  "items": {
+    "type": "object",
+    "additionalProperties": false,
+    "required": [
+      "iso2",
+      "code",
+      "name",
+      "parent"
+    ],
+    "properties": {
+      "iso2": {
+        "description": "Country code.",
+        "type": "string"
+      },
+      "code": {
+        "description": "ISO 3166-2 code (SA-01).",
+        "type": "string"
+      },
+      "name": {
+        "description": "Name in Arabic.",
+        "type": [
+          "string",
+          "null"
+        ]
+      },
+      "parent": {
+        "description": "ISO 3166-2 code of the parent subdivision, for nested ones.",
+        "type": [
+          "string",
+          "null"
+        ]
+      }
+    }
+  }
+}

@@ -1,0 +1,68 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://arj-89.github.io/worldref/schema/currency.schema.json",
+  "title": "worldref currency",
+  "type": "array",
+  "items": {
+    "type": "object",
+    "additionalProperties": false,
+    "required": [
+      "iso2",
+      "currencies"
+    ],
+    "properties": {
+      "iso2": {
+        "description": "ISO 3166-1 alpha-2 code (XK for Kosovo). The key that joins every module.",
+        "type": "string"
+      },
+      "currencies": {
+        "description": "Currencies in use.",
+        "type": "array",
+        "items": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "code",
+            "name_ar",
+            "name_en",
+            "symbol",
+            "symbol_ar",
+            "symbol_fallback"
+          ],
+          "properties": {
+            "code": {
+              "description": "ISO 4217 code.",
+              "type": "string"
+            },
+            "name_ar": {
+              "description": "Currency name in Arabic.",
+              "type": "string"
+            },
+            "name_en": {
+              "description": "Currency name in English.",
+              "type": "string"
+            },
+            "symbol": {
+              "description": "Symbol (the new Unicode sign where one exists, e.g. the riyal sign).",
+              "type": "string"
+            },
+            "symbol_ar": {
+              "description": "Symbol as written in Arabic (ر.س).",
+              "type": [
+                "string",
+                "null"
+              ]
+            },
+            "symbol_fallback": {
+              "description": "Text to show when the font lacks the new sign.",
+              "type": [
+                "string",
+                "null"
+              ]
+            }
+          }
+        }
+      }
+    }
+  }
+}

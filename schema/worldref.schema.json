@@ -1,0 +1,607 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://arj-89.github.io/worldref/schema/worldref.schema.json",
+  "title": "worldref worldref",
+  "type": "array",
+  "items": {
+    "type": "object",
+    "additionalProperties": false,
+    "required": [
+      "iso2",
+      "iso3",
+      "iso_numeric",
+      "kind",
+      "name_ar",
+      "name_en",
+      "official_name_ar",
+      "official_name_en",
+      "aliases_ar",
+      "aliases_en",
+      "flag",
+      "flag_svg",
+      "continent",
+      "groups",
+      "un_member",
+      "tld",
+      "sort_ar",
+      "sort_en",
+      "nationality",
+      "phone",
+      "currencies",
+      "geo",
+      "locale",
+      "address",
+      "travel",
+      "sports"
+    ],
+    "properties": {
+      "iso2": {
+        "description": "ISO 3166-1 alpha-2 code (XK for Kosovo). The key that joins every module.",
+        "type": "string"
+      },
+      "iso3": {
+        "description": "ISO 3166-1 alpha-3 code (XKK for Kosovo, as in CLDR).",
+        "type": "string"
+      },
+      "iso_numeric": {
+        "description": "ISO 3166-1 numeric code, as text to keep leading zeros.",
+        "type": "string"
+      },
+      "kind": {
+        "description": "country (sovereign state, including Palestine, Vatican and Kosovo) or territory.",
+        "type": "string"
+      },
+      "name_ar": {
+        "description": "Short common name in Arabic.",
+        "type": "string"
+      },
+      "name_en": {
+        "description": "Short common name in English.",
+        "type": "string"
+      },
+      "official_name_ar": {
+        "description": "Official long name in Arabic, when a source states one.",
+        "type": [
+          "string",
+          "null"
+        ]
+      },
+      "official_name_en": {
+        "description": "Official long name in English, when a source states one.",
+        "type": [
+          "string",
+          "null"
+        ]
+      },
+      "aliases_ar": {
+        "description": "Other Arabic names people search with. For search only, not display.",
+        "type": "array",
+        "items": {
+          "type": "string"
+        }
+      },
+      "aliases_en": {
+        "description": "Other English names people search with. For search only, not display.",
+        "type": "array",
+        "items": {
+          "type": "string"
+        }
+      },
+      "flag": {
+        "description": "Flag emoji (regional indicator pair). Windows does not draw these; use flag_svg on the web.",
+        "type": "string"
+      },
+      "flag_svg": {
+        "description": "Path of the 4:3 SVG flag in this package.",
+        "type": "string"
+      },
+      "continent": {
+        "description": "africa, americas, asia, europe or oceania (UN M49 via CLDR).",
+        "type": "string"
+      },
+      "groups": {
+        "description": "Memberships: gcc, arab_league.",
+        "type": "array",
+        "items": {
+          "type": "string"
+        }
+      },
+      "un_member": {
+        "description": "true for the 193 UN member states.",
+        "type": "boolean"
+      },
+      "tld": {
+        "description": "Country-code top-level domain, when one is delegated.",
+        "type": [
+          "string",
+          "null"
+        ]
+      },
+      "sort_ar": {
+        "description": "Arabic sort key: compare these with plain string comparison for correct Arabic order (ignores «ال», hamza forms, tashkeel).",
+        "type": "string"
+      },
+      "sort_en": {
+        "description": "English sort key: compare with plain string comparison.",
+        "type": "string"
+      },
+      "nationality": {
+        "description": "Nationality names. Filled for countries and for TW, HK, MO; null for other territories.",
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "nationality_ar_m",
+          "nationality_ar_f",
+          "nationality_en",
+          "icao_code"
+        ],
+        "properties": {
+          "nationality_ar_m": {
+            "description": "Arabic nationality, masculine (سعودي).",
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "nationality_ar_f": {
+            "description": "Arabic nationality, feminine (سعودية).",
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "nationality_en": {
+            "description": "English nationality adjective (Saudi).",
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "icao_code": {
+            "description": "ICAO Doc 9303 code used on passports (mostly iso3; D for Germany, RKS for Kosovo).",
+            "type": [
+              "string",
+              "null"
+            ]
+          }
+        }
+      },
+      "phone": {
+        "description": "Numbering plans for this row. Most rows have one; some have several (Palestine: +970 and +972).",
+        "type": "array",
+        "items": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "calling_code",
+            "leading_digits",
+            "primary",
+            "trunk_prefix",
+            "pattern",
+            "lengths",
+            "mobile_pattern",
+            "mobile_lengths",
+            "mobile_prefixes",
+            "mobile_distinguishable",
+            "mobile_example",
+            "mobile_format"
+          ],
+          "properties": {
+            "calling_code": {
+              "description": "International calling code with +.",
+              "type": "string"
+            },
+            "leading_digits": {
+              "description": "Regex the national number must start with when the calling code is shared (e.g. +1 809|829|849 for DO). null when the code is not shared this way.",
+              "type": [
+                "string",
+                "null"
+              ]
+            },
+            "primary": {
+              "description": "true when this row is the default country for the calling code.",
+              "type": "boolean"
+            },
+            "trunk_prefix": {
+              "description": "Digit(s) dropped from local numbers before the calling code (0 in 0501234567).",
+              "type": [
+                "string",
+                "null"
+              ]
+            },
+            "pattern": {
+              "description": "Regex for any valid national number (all types). Match against the full national number.",
+              "type": "string"
+            },
+            "lengths": {
+              "description": "Valid national number lengths, all types.",
+              "type": "array",
+              "items": {
+                "type": "integer"
+              }
+            },
+            "mobile_pattern": {
+              "description": "Regex for a valid mobile national number. Match against the full national number.",
+              "type": [
+                "string",
+                "null"
+              ]
+            },
+            "mobile_lengths": {
+              "description": "Valid mobile national number lengths.",
+              "type": "array",
+              "items": {
+                "type": "integer"
+              }
+            },
+            "mobile_prefixes": {
+              "description": "Leading digits of mobile numbers (up to 3 digits). Quick check; use mobile_pattern for exact validation.",
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "mobile_distinguishable": {
+              "description": "false when mobile and landline numbers look the same (US, CA).",
+              "type": "boolean"
+            },
+            "mobile_example": {
+              "description": "Example mobile national number, good as an input placeholder.",
+              "type": [
+                "string",
+                "null"
+              ]
+            },
+            "mobile_format": {
+              "description": "Display grouping for a mobile national number, # = digit.",
+              "type": [
+                "string",
+                "null"
+              ]
+            }
+          }
+        }
+      },
+      "currencies": {
+        "description": "Currencies in use.",
+        "type": "array",
+        "items": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "code",
+            "name_ar",
+            "name_en",
+            "symbol",
+            "symbol_ar",
+            "symbol_fallback"
+          ],
+          "properties": {
+            "code": {
+              "description": "ISO 4217 code.",
+              "type": "string"
+            },
+            "name_ar": {
+              "description": "Currency name in Arabic.",
+              "type": "string"
+            },
+            "name_en": {
+              "description": "Currency name in English.",
+              "type": "string"
+            },
+            "symbol": {
+              "description": "Symbol (the new Unicode sign where one exists, e.g. the riyal sign).",
+              "type": "string"
+            },
+            "symbol_ar": {
+              "description": "Symbol as written in Arabic (ر.س).",
+              "type": [
+                "string",
+                "null"
+              ]
+            },
+            "symbol_fallback": {
+              "description": "Text to show when the font lacks the new sign.",
+              "type": [
+                "string",
+                "null"
+              ]
+            }
+          }
+        }
+      },
+      "geo": {
+        "description": "Geography.",
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "capital_ar",
+          "capital_en",
+          "lat",
+          "lng",
+          "area_km2",
+          "population",
+          "population_year",
+          "timezones",
+          "driving_side"
+        ],
+        "properties": {
+          "capital_ar": {
+            "description": "Capital in Arabic.",
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "capital_en": {
+            "description": "Capital in English.",
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "lat": {
+            "description": "Latitude of the country's centre point.",
+            "type": "number"
+          },
+          "lng": {
+            "description": "Longitude of the country's centre point.",
+            "type": "number"
+          },
+          "area_km2": {
+            "description": "Area in square kilometres.",
+            "type": "integer"
+          },
+          "population": {
+            "description": "Population.",
+            "type": "integer"
+          },
+          "population_year": {
+            "description": "Year of the population figure.",
+            "type": "integer"
+          },
+          "timezones": {
+            "description": "IANA time zone names.",
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "driving_side": {
+            "description": "left or right.",
+            "type": "string"
+          }
+        }
+      },
+      "locale": {
+        "description": "Locale conventions.",
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "languages",
+          "week_start",
+          "weekend",
+          "calendars",
+          "measurement"
+        ],
+        "properties": {
+          "languages": {
+            "description": "Official languages, most spoken first.",
+            "type": "array",
+            "items": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "code",
+                "name_ar",
+                "name_en"
+              ],
+              "properties": {
+                "code": {
+                  "description": "BCP 47 language code.",
+                  "type": "string"
+                },
+                "name_ar": {
+                  "description": "Language name in Arabic.",
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                },
+                "name_en": {
+                  "description": "Language name in English.",
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                }
+              }
+            }
+          },
+          "week_start": {
+            "description": "First day of the week (sun, mon, sat...).",
+            "type": "string"
+          },
+          "weekend": {
+            "description": "Weekend days.",
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "calendars": {
+            "description": "Calendars in use, most preferred first (gregorian, islamic-umalqura...).",
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "measurement": {
+            "description": "metric, us or uk.",
+            "type": "string"
+          }
+        }
+      },
+      "address": {
+        "description": "Postal address conventions.",
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "postal_code_format",
+          "postal_code_regex",
+          "postal_code_example",
+          "address_format",
+          "region_label_ar",
+          "region_label_en"
+        ],
+        "properties": {
+          "postal_code_format": {
+            "description": "Postal code shape: # = digit, @ = letter.",
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "postal_code_regex": {
+            "description": "Regex for a valid postal code.",
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "postal_code_example": {
+            "description": "Example postal code.",
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "address_format": {
+            "description": "Address template: %N name, %O organisation, %A street, %D district, %C city, %S region, %Z postal code, %X sorting code, %n new line.",
+            "type": "string"
+          },
+          "region_label_ar": {
+            "description": "What the top-level region is called, in Arabic.",
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "region_label_en": {
+            "description": "What the top-level region is called (state, province, emirate...).",
+            "type": [
+              "string",
+              "null"
+            ]
+          }
+        }
+      },
+      "travel": {
+        "description": "Travel facts.",
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "emergency",
+          "plug_types",
+          "voltage",
+          "frequency_hz"
+        ],
+        "properties": {
+          "emergency": {
+            "description": "Emergency numbers confirmed from an official source. A null service means: call `general`.",
+            "type": [
+              "object",
+              "null"
+            ],
+            "additionalProperties": false,
+            "required": [
+              "police",
+              "ambulance",
+              "fire",
+              "general"
+            ],
+            "properties": {
+              "police": {
+                "description": "Police.",
+                "type": [
+                  "string",
+                  "null"
+                ]
+              },
+              "ambulance": {
+                "description": "Ambulance.",
+                "type": [
+                  "string",
+                  "null"
+                ]
+              },
+              "fire": {
+                "description": "Fire and civil defence.",
+                "type": [
+                  "string",
+                  "null"
+                ]
+              },
+              "general": {
+                "description": "All-services number (112, 911, 999...).",
+                "type": [
+                  "string",
+                  "null"
+                ]
+              }
+            }
+          },
+          "plug_types": {
+            "description": "IEC plug letters (A to N).",
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "voltage": {
+            "description": "Residential mains voltages.",
+            "type": "array",
+            "items": {
+              "type": "integer"
+            }
+          },
+          "frequency_hz": {
+            "description": "Mains frequency in hertz.",
+            "type": [
+              "array",
+              "null"
+            ],
+            "items": {
+              "type": "integer"
+            }
+          }
+        }
+      },
+      "sports": {
+        "description": "Sports codes.",
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "fifa",
+          "ioc"
+        ],
+        "properties": {
+          "fifa": {
+            "description": "FIFA country code.",
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "ioc": {
+            "description": "IOC country code.",
+            "type": [
+              "string",
+              "null"
+            ]
+          }
+        }
+      }
+    }
+  }
+}

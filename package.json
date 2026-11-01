@@ -1,0 +1,90 @@
+{
+  "name": "worldref",
+  "version": "1.0.0",
+  "description": "Every country in Arabic, English, or both: names, nationalities, capitals, currencies, languages, time zones, dial codes, phone validation, address formats and subdivisions.",
+  "keywords": [
+    "countries",
+    "country-list",
+    "country-data",
+    "arabic",
+    "english",
+    "bilingual",
+    "i18n",
+    "l10n",
+    "rtl",
+    "nationality",
+    "nationalities",
+    "phone-number",
+    "phone-validation",
+    "dial-codes",
+    "currencies",
+    "timezones",
+    "subdivisions",
+    "iso-3166",
+    "dataset",
+    "mcp"
+  ],
+  "homepage": "https://arj-89.github.io/worldref",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/arj-89/worldref.git"
+  },
+  "bugs": "https://github.com/arj-89/worldref/issues",
+  "license": "MIT AND Unicode-3.0 AND Apache-2.0 AND CC-BY-4.0",
+  "type": "module",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "default": "./dist/index.js"
+    },
+    "./helpers": {
+      "types": "./dist/helpers.d.ts",
+      "default": "./dist/helpers.js"
+    },
+    "./text": {
+      "types": "./dist/text.d.ts",
+      "default": "./dist/text.js"
+    },
+    "./data/*": "./data/*",
+    "./schema/*": "./schema/*",
+    "./flags/*": "./flags/*",
+    "./package.json": "./package.json"
+  },
+  "bin": {
+    "worldref": "./mcp/cli.js"
+  },
+  "files": [
+    "dist",
+    "data/*.json",
+    "data/modules",
+    "data/meta.json",
+    "data/sources.json",
+    "schema",
+    "flags",
+    "mcp",
+    "LICENSES",
+    "README.md",
+    "README.ar.md",
+    "AGENTS.md",
+    "llms.txt"
+  ],
+  "sideEffects": false,
+  "engines": {
+    "node": ">=18"
+  },
+  "scripts": {
+    "fetch": "node scripts/fetch.mjs",
+    "build": "node scripts/build.mjs && node scripts/sync-packages.mjs && tsc -p .",
+    "test": "node --test tests/js.test.mjs tests/repro.test.mjs"
+  },
+  "devDependencies": {
+    "@types/node": "22.20.5",
+    "cldr-core": "49.0.0",
+    "cldr-localenames-full": "49.0.0",
+    "cldr-numbers-full": "49.0.0",
+    "flag-icons": "7.6.0",
+    "typescript": "5.9.3"
+  }
+}

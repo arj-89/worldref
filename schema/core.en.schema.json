@@ -1,0 +1,96 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://arj-89.github.io/worldref/schema/core.en.schema.json",
+  "title": "worldref core.en",
+  "type": "array",
+  "items": {
+    "type": "object",
+    "additionalProperties": false,
+    "required": [
+      "iso2",
+      "iso3",
+      "iso_numeric",
+      "kind",
+      "name",
+      "official_name",
+      "aliases",
+      "flag",
+      "flag_svg",
+      "continent",
+      "groups",
+      "un_member",
+      "tld",
+      "sort"
+    ],
+    "properties": {
+      "iso2": {
+        "description": "ISO 3166-1 alpha-2 code (XK for Kosovo). The key that joins every module.",
+        "type": "string"
+      },
+      "iso3": {
+        "description": "ISO 3166-1 alpha-3 code (XKK for Kosovo, as in CLDR).",
+        "type": "string"
+      },
+      "iso_numeric": {
+        "description": "ISO 3166-1 numeric code, as text to keep leading zeros.",
+        "type": "string"
+      },
+      "kind": {
+        "description": "country (sovereign state, including Palestine, Vatican and Kosovo) or territory.",
+        "type": "string"
+      },
+      "name": {
+        "description": "Short common name in Arabic.",
+        "type": "string"
+      },
+      "official_name": {
+        "description": "Official long name in Arabic, when a source states one.",
+        "type": [
+          "string",
+          "null"
+        ]
+      },
+      "aliases": {
+        "description": "Other Arabic names people search with. For search only, not display.",
+        "type": "array",
+        "items": {
+          "type": "string"
+        }
+      },
+      "flag": {
+        "description": "Flag emoji (regional indicator pair). Windows does not draw these; use flag_svg on the web.",
+        "type": "string"
+      },
+      "flag_svg": {
+        "description": "Path of the 4:3 SVG flag in this package.",
+        "type": "string"
+      },
+      "continent": {
+        "description": "africa, americas, asia, europe or oceania (UN M49 via CLDR).",
+        "type": "string"
+      },
+      "groups": {
+        "description": "Memberships: gcc, arab_league.",
+        "type": "array",
+        "items": {
+          "type": "string"
+        }
+      },
+      "un_member": {
+        "description": "true for the 193 UN member states.",
+        "type": "boolean"
+      },
+      "tld": {
+        "description": "Country-code top-level domain, when one is delegated.",
+        "type": [
+          "string",
+          "null"
+        ]
+      },
+      "sort": {
+        "description": "Arabic sort key: compare these with plain string comparison for correct Arabic order (ignores «ال», hamza forms, tashkeel).",
+        "type": "string"
+      }
+    }
+  }
+}

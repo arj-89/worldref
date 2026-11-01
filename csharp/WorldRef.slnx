@@ -1,0 +1,4 @@
+<Solution>
+  <Project Path="WorldRef.Tests/WorldRef.Tests.csproj" />
+  <Project Path="WorldRef/WorldRef.csproj" />
+</Solution>

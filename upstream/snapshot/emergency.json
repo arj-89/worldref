@@ -1,0 +1,2684 @@
+[
+ {
+  "iso2": "AD",
+  "police": "110",
+  "ambulance": "116",
+  "fire": "118",
+  "general": "112",
+  "sources": [
+   "https://www.gov.uk/foreign-travel-advice/andorra/getting-help",
+   "https://travel.gc.ca/destinations/andorra"
+  ],
+  "note": "Police/ambulance/fire per gov.uk; 112 general per travel.gc.ca ('all emergencies'); gov.uk lists 112 only for mountain rescue"
+ },
+ {
+  "iso2": "AE",
+  "police": "999",
+  "ambulance": "998",
+  "fire": "997",
+  "general": "112",
+  "sources": [
+   "https://u.ae/en/information-and-services/justice-safety-and-the-law/handling-emergencies",
+   "https://www.itu.int/net/itu-t/inrdb/e129_important_numbers.aspx"
+  ],
+  "note": "112 only from ITU E.129 notification (2012); not shown on u.ae page"
+ },
+ {
+  "iso2": "AF",
+  "police": "119",
+  "ambulance": null,
+  "fire": null,
+  "general": null,
+  "sources": [
+   "https://www.gov.uk/foreign-travel-advice/afghanistan/getting-help"
+  ],
+  "note": "FCDO lists only 119 (police)."
+ },
+ {
+  "iso2": "AG",
+  "police": "911",
+  "ambulance": "911",
+  "fire": "911",
+  "general": "911",
+  "sources": [
+   "https://www.gov.uk/foreign-travel-advice/antigua-and-barbuda/getting-help"
+  ],
+  "note": "FCDO: 999 or 911 for all services; 911 listed first. 999 also stated."
+ },
+ {
+  "iso2": "AI",
+  "police": "911",
+  "ambulance": "911",
+  "fire": "911",
+  "general": "911",
+  "sources": [
+   "https://www.gov.uk/foreign-travel-advice/anguilla/getting-help"
+  ]
+ },
+ {
+  "iso2": "AL",
+  "police": "129",
+  "ambulance": "127",
+  "fire": "128",
+  "general": "112",
+  "sources": [
+   "https://www.itu.int/net/itu-t/inrdb/e129_important_numbers.aspx",
+   "https://travel.gc.ca/assistance/embassies-consulates/albania"
+  ]
+ },
+ {
+  "iso2": "AM",
+  "police": null,
+  "ambulance": null,
+  "fire": null,
+  "general": "911",
+  "sources": [
+   "https://www.gov.uk/foreign-travel-advice/armenia/getting-help"
+  ],
+  "note": "FCDO lists only 911; 101/102/103 not confirmed."
+ },
+ {
+  "iso2": "AO",
+  "police": null,
+  "ambulance": null,
+  "fire": null,
+  "general": null,
+  "sources": [
+   "https://www.gov.uk/foreign-travel-advice/angola/getting-help"
+  ],
+  "note": "Conflict: FCDO lists police 110, ambulance 112, fire 118, but Angolan press quoting authorities says 115 is fire/civil protection and 113 police was deactivated in favour of 111. Left null."
+ },
+ {
+  "iso2": "AR",
+  "police": "911",
+  "ambulance": "107",
+  "fire": "100",
+  "general": "911",
+  "sources": [
+   "https://www.gov.uk/foreign-travel-advice/argentina/getting-help"
+  ],
+  "note": "gov.uk: police '911 or 101'; 911 not nationwide per other sources (101 in some provinces), general 911 is closest match, not labelled general by source"
+ },
+ {
+  "iso2": "AS",
+  "police": null,
+  "ambulance": null,
+  "fire": null,
+  "general": "911",
+  "sources": [
+   "https://www.dhs.gov/see-something-say-something/reporting/american-samoa",
+   "https://travel.gc.ca/assistance/embassies-consulates/american-samoa"
+  ],
+  "note": "Official sources say only 'call 911'; per-service split not stated"
+ },
+ {
+  "iso2": "AT",
+  "police": "133",
+  "ambulance": "144",
+  "fire": "122",
+  "general": "112",
+  "sources": [
+   "https://www.gov.uk/foreign-travel-advice/austria/getting-help",
+   "https://europa.eu/youreurope/citizens/travel/security-and-emergencies/emergency/index_en.htm"
+  ]
+ },
+ {
+  "iso2": "AU",
+  "police": "000",
+  "ambulance": "000",
+  "fire": "000",
+  "general": "000",
+  "sources": [
+   "https://www.gov.uk/foreign-travel-advice/australia/getting-help"
+  ]
+ },
+ {
+  "iso2": "AW",
+  "police": "100",
+  "ambulance": "911",
+  "fire": "911",
+  "general": null,
+  "sources": [
+   "https://www.gov.uk/foreign-travel-advice/aruba/getting-help"
+  ],
+  "note": "gov.uk: ambulance and fire 911; no general number listed"
+ },
+ {
+  "iso2": "AX",
+  "police": null,
+  "ambulance": null,
+  "fire": null,
+  "general": "112",
+  "sources": [
+   "https://www.kokar.ax/noednummer-och-alarmsignaler?lang=en"
+  ],
+  "note": "Source is Kokar municipality (Aland); lists only general 112"
+ },
+ {
+  "iso2": "AZ",
+  "police": "102",
+  "ambulance": "103",
+  "fire": "101",
+  "general": null,
+  "sources": [
+   "https://www.gov.uk/foreign-travel-advice/azerbaijan/getting-help"
+  ]
+ },
+ {
+  "iso2": "BA",
+  "police": "122",
+  "ambulance": "124",
+  "fire": "123",
+  "general": null,
+  "sources": [
+   "https://www.gov.uk/foreign-travel-advice/bosnia-and-herzegovina/getting-help"
+  ],
+  "note": "112 not confirmed by an official source."
+ },
+ {
+  "iso2": "BB",
+  "police": "211",
+  "ambulance": "511",
+  "fire": "311",
+  "general": null,
+  "sources": [
+   "https://www.gov.uk/foreign-travel-advice/barbados/getting-help"
+  ]
+ },
+ {
+  "iso2": "BD",
+  "police": "999",
+  "ambulance": "999",
+  "fire": "999",
+  "general": "999",
+  "sources": [
+   "https://www.gov.uk/foreign-travel-advice/bangladesh/getting-help"
+  ],
+  "note": "FCDO: 999 (ambulance, fire, police)"
+ },
+ {
+  "iso2": "BE",
+  "police": null,
+  "ambulance": null,
+  "fire": null,
+  "general": "112",
+  "sources": [
+   "https://www.gov.uk/foreign-travel-advice/belgium/getting-help",
+   "https://europa.eu/youreurope/citizens/travel/security-and-emergencies/emergency/index_en.htm"
+  ],
+  "note": "FCDO: 112 (ambulance, fire, police); 100/101 not confirmed."
+ },
+ {
+  "iso2": "BF",
+  "police": "17",
+  "ambulance": "18",
+  "fire": "18",
+  "general": null,
+  "sources": [
+   "https://www.gov.uk/foreign-travel-advice/burkina-faso/getting-help"
+  ],
+  "note": "FCDO numbers are for Ouagadougou only."
+ },
+ {
+  "iso2": "BG",
+  "police": "112",
+  "ambulance": "112",
+  "fire": "112",
+  "general": "112",
+  "sources": [
+   "https://www.gov.uk/foreign-travel-advice/bulgaria/getting-help",
+   "https://digital-strategy.ec.europa.eu/en/policies/112"
+  ]
+ },
+ {
+  "iso2": "BH",
+  "police": "999",
+  "ambulance": "999",
+  "fire": "999",
+  "general": "999",
+  "sources": [
+   "https://www.bahrain.bh/wps/portal/en/!ut/p/z0/fYy7EoIwEEV_JQ31Rh2B1keBjqOWsA0T4oqrcQMhOvL30tlZ3nPOXEAoAcW8uTWRvRg37QrTerZb6iLfaF0cz1udnoo8m2frhT4sYA_4P5ge-N73uAK0XiJ9IpSNdDVJokf_CsrxlRSLaswtGJ4oPSm0JJZpSHQgZyJdVPQd2-EnR2WNc8qSxEDQPbD6AuuFmrw!",
+   "https://www.itu.int/net/itu-t/inrdb/e129_important_numbers.aspx"
+  ],
+  "note": "Wikidata hint of 112 for police/ambulance/fire not supported; official portal and ITU give 999 (ITU also lists 112 as alternate)"
+ },
+ {
+  "iso2": "BI",
+  "police": null,
+  "ambulance": null,
+  "fire": null,
+  "general": "112",
+  "sources": [
+   "https://www.gov.uk/foreign-travel-advice/burundi/getting-help"
+  ],
+  "note": "FCDO: 112 (ambulance, fire, police)."
+ },
+ {
+  "iso2": "BJ",
+  "police": "117",
+  "ambulance": "118",
+  "fire": "118",
+  "general": null,
+  "sources": [
+   "https://www.gov.uk/foreign-travel-advice/benin/getting-help"
+  ],
+  "note": "FCDO: fire and ambulance share 118."
+ },
+ {
+  "iso2": "BL",
+  "police": "17",
+  "ambulance": null,
+  "fire": "18",
+  "general": "112",
+  "sources": [
+   "https://www.gendarmerie.interieur.gouv.fr/contact/trouver-ma-gendarmerie/brigade-de-saint-barthelemy-saint-barthelemy-977",
+   "https://travel.gc.ca/destinations/saint-barthelemy"
+  ],
+  "note": "17/18 per gendarmerie page; 112 per travel.gc.ca; ambulance (15) not confirmed for the territory"
+ },
+ {
+  "iso2": "BM",
+  "police": "911",
+  "ambulance": "911",
+  "fire": "911",
+  "general": "911",
+  "sources": [
+   "https://www.gov.uk/foreign-travel-advice/bermuda/getting-help",
+   "https://www.gov.bm/what-do-emergency"
+  ]
+ },
+ {
+  "iso2": "BN",
+  "police": "993",
+  "ambulance": "991",
+  "fire": "995",
+  "general": null,
+  "sources": [
+   "https://www.gov.uk/foreign-travel-advice/brunei/getting-help"
+  ],
+  "note": "Search and rescue 998."
+ },
+ {
+  "iso2": "BO",
+  "police": "110",
+  "ambulance": "118",
+  "fire": "119",
+  "general": null,
+  "sources": [
+   "https://www.gov.uk/foreign-travel-advice/bolivia/getting-help"
+  ]
+ },
+ {
+  "iso2": "BQ",
+  "police": "911",
+  "ambulance": null,
+  "fire": null,
+  "general": "911",
+  "sources": [
+   "https://english.rijksdienstcn.com/justice--security/the-dutch-caribbean-police-force"
+  ],
+  "note": "Official KPCN/Rijksdienst page lists 911 as emergency number for Bonaire, St Eustatius, Saba but does not state which services; other sources cite 912/919 (unconfirmed)"
+ },
+ {
+  "iso2": "BR",
+  "police": "190",
+  "ambulance": "192",
+  "fire": "193",
+  "general": null,
+  "sources": [
+   "https://www.itu.int/net/itu-t/inrdb/e129_important_numbers.aspx",
+   "https://www.gov.uk/foreign-travel-advice/brazil/getting-help"
+  ],
+  "note": "FCDO lists police as '190 or 911'; 911 not recorded as general"
+ },
+ {
+  "iso2": "BS",
+  "police": null,
+  "ambulance": null,
+  "fire": null,
+  "general": "911",
+  "sources": [
+   "https://www.gov.uk/foreign-travel-advice/bahamas/getting-help"
+  ],
+  "note": "FCDO: 911 or 919 (ambulance, fire, police)."
+ },
+ {
+  "iso2": "BT",
+  "police": "113",
+  "ambulance": "112",
+  "fire": "110",
+  "general": null,
+  "sources": [
+   "https://www.gov.uk/foreign-travel-advice/bhutan/getting-help"
+  ]
+ },
+ {
+  "iso2": "BW",
+  "police": "999",
+  "ambulance": "997",
+  "fire": "998",
+  "general": null,
+  "sources": [
+   "https://www.gov.uk/foreign-travel-advice/botswana/getting-help"
+  ]
+ },
+ {
+  "iso2": "BY",
+  "police": "102",
+  "ambulance": "103",
+  "fire": "101",
+  "general": null,
+  "sources": [
+   "https://www.gov.uk/foreign-travel-advice/belarus/getting-help",
+   "https://www.itu.int/net/itu-t/inrdb/e129_important_numbers.aspx"
+  ]
+ },
+ {
+  "iso2": "BZ",
+  "police": null,
+  "ambulance": null,
+  "fire": null,
+  "general": "911",
+  "sources": [
+   "https://www.gov.uk/foreign-travel-advice/belize/getting-help"
+  ],
+  "note": "FCDO: 911 or 90 (ambulance, fire, police)."
+ },
+ {
+  "iso2": "CA",
+  "police": "911",
+  "ambulance": "911",
+  "fire": "911",
+  "general": "911",
+  "sources": [
+   "https://www.gov.uk/foreign-travel-advice/canada/getting-help"
+  ]
+ },
+ {
+  "iso2": "CC",
+  "police": "000",
+  "ambulance": null,
+  "fire": null,
+  "general": null,
+  "sources": [
+   "https://infrastructure.gov.au/territories-regions-cities/territories/indian_ocean/iot_bulletins/2018/A18-2018-mobile-phone-network-update"
+  ],
+  "note": "Search snippet of 2018 Dept of Infrastructure bulletin: 000 connects to Cocos police; fetch of page timed out so not re-verified; ambulance/fire not confirmed"
+ },
+ {
+  "iso2": "CD",
+  "police": "112",
+  "ambulance": null,
+  "fire": null,
+  "general": null,
+  "sources": [
+   "https://www.gov.uk/foreign-travel-advice/democratic-republic-of-the-congo/getting-help",
+   "https://www.itu.int/net/itu-t/inrdb/e129_important_numbers.aspx"
+  ],
+  "note": "Police 112 agreed by FCDO (Kinshasa) and ITU 2024. Fire: FCDO 118 (Kinshasa) vs ITU 113 conflict; ambulance: FCDO says no general medical number vs ITU 103/150; left null. Wikidata police 114/118 unsupported"
+ },
+ {
+  "iso2": "CF",
+  "police": "117",
+  "ambulance": "610600",
+  "fire": "118",
+  "general": null,
+  "sources": [
+   "https://www.gov.uk/foreign-travel-advice/central-african-republic/getting-help"
+  ],
+  "note": "FCDO calls 117 a general line; warns numbers unreliable outside Bangui."
+ },
+ {
+  "iso2": "CG",
+  "police": null,
+  "ambulance": null,
+  "fire": null,
+  "general": null,
+  "sources": [
+   "https://www.gov.uk/foreign-travel-advice/congo/getting-help"
+  ],
+  "note": "FCDO: no central emergency number in Republic of the Congo."
+ },
+ {
+  "iso2": "CH",
+  "police": "117",
+  "ambulance": "144",
+  "fire": "118",
+  "general": "112",
+  "sources": [
+   "https://www.gov.uk/foreign-travel-advice/switzerland/getting-help",
+   "https://www.ch.ch/en/safety-and-justice/emergencies-and-danger"
+  ]
+ },
+ {
+  "iso2": "CI",
+  "police": "110",
+  "ambulance": "185",
+  "fire": "180",
+  "general": null,
+  "sources": [
+   "https://www.gov.uk/foreign-travel-advice/cote-d-ivoire/getting-help",
+   "https://www.itu.int/net/itu-t/inrdb/e129_important_numbers.aspx"
+  ],
+  "note": "Police also 111 and 170 per FCDO/ITU"
+ },
+ {
+  "iso2": "CK",
+  "police": "999",
+  "ambulance": "998",
+  "fire": "996",
+  "general": null,
+  "sources": [
+   "https://travel.gc.ca/assistance/embassies-consulates/cook-islands"
+  ],
+  "note": "Government of Canada travel page."
+ },
+ {
+  "iso2": "CL",
+  "police": "133",
+  "ambulance": "131",
+  "fire": "132",
+  "general": null,
+  "sources": [
+   "https://www.gov.uk/foreign-travel-advice/chile/getting-help"
+  ]
+ },
+ {
+  "iso2": "CM",
+  "police": "117",
+  "ambulance": "112",
+  "fire": "119",
+  "general": null,
+  "sources": [
+   "https://www.gov.uk/foreign-travel-advice/cameroon/getting-help"
+  ],
+  "note": "gov.uk lists 112 as ambulance"
+ },
+ {
+  "iso2": "CN",
+  "police": "110",
+  "ambulance": "120",
+  "fire": "119",
+  "general": null,
+  "sources": [
+   "https://www.gov.uk/foreign-travel-advice/china/getting-help",
+   "https://www.itu.int/net/itu-t/inrdb/e129_important_numbers.aspx"
+  ]
+ },
+ {
+  "iso2": "CO",
+  "police": "123",
+  "ambulance": "123",
+  "fire": "119",
+  "general": null,
+  "sources": [
+   "https://www.gov.uk/foreign-travel-advice/colombia/getting-help"
+  ]
+ },
+ {
+  "iso2": "CR",
+  "police": "911",
+  "ambulance": "911",
+  "fire": "911",
+  "general": "911",
+  "sources": [
+   "https://www.gov.uk/foreign-travel-advice/costa-rica/getting-help"
+  ]
+ },
+ {
+  "iso2": "CU",
+  "police": "106",
+  "ambulance": "104",
+  "fire": "105",
+  "general": null,
+  "sources": [
+   "https://www.gov.uk/foreign-travel-advice/cuba/getting-help"
+  ]
+ },
+ {
+  "iso2": "CV",
+  "police": "132",
+  "ambulance": "130",
+  "fire": "131",
+  "general": null,
+  "sources": [
+   "https://www.gov.uk/foreign-travel-advice/cape-verde/getting-help",
+   "https://www.itu.int/net/itu-t/inrdb/e129_important_numbers.aspx"
+  ]
+ },
+ {
+  "iso2": "CW",
+  "police": "911",
+  "ambulance": "912",
+  "fire": "911",
+  "general": null,
+  "sources": [
+   "https://www.gov.uk/foreign-travel-advice/curacao/getting-help"
+  ],
+  "note": "Coastguard 913."
+ },
+ {
+  "iso2": "CX",
+  "police": "000",
+  "ambulance": "000",
+  "fire": "000",
+  "general": "000",
+  "sources": [
+   "https://www.afp.gov.au/about-us/contact-us",
+   "https://www.infrastructure.gov.au/sites/default/files/documents/christmas-island-emergency-management-plan-june-2024.pdf"
+  ],
+  "note": "AFP says call 000 for police, fire, ambulance; Christmas Island plan says 000 routes to on-island AFP."
+ },
+ {
+  "iso2": "CY",
+  "police": "112",
+  "ambulance": "112",
+  "fire": "112",
+  "general": "112",
+  "sources": [
+   "https://www.gov.uk/foreign-travel-advice/cyprus/getting-help",
+   "https://digital-strategy.ec.europa.eu/en/policies/112"
+  ],
+  "note": "Wikidata 1400/199 not confirmed by official source"
+ },
+ {
+  "iso2": "CZ",
+  "police": "158",
+  "ambulance": "155",
+  "fire": "150",
+  "general": "112",
+  "sources": [
+   "https://www.itu.int/net/itu-t/inrdb/e129_important_numbers.aspx",
+   "https://www.gov.uk/foreign-travel-advice/czech-republic/getting-help",
+   "https://europa.eu/youreurope/citizens/travel/security-and-emergencies/emergency/index_en.htm"
+  ],
+  "note": "FCDO: 112 for ambulance, fire, police"
+ },
+ {
+  "iso2": "DE",
+  "police": "110",
+  "ambulance": "112",
+  "fire": "112",
+  "general": "112",
+  "sources": [
+   "https://www.gov.uk/foreign-travel-advice/germany/getting-help",
+   "https://europa.eu/youreurope/citizens/travel/security-and-emergencies/emergency/index_en.htm"
+  ]
+ },
+ {
+  "iso2": "DJ",
+  "police": "17",
+  "ambulance": null,
+  "fire": "18",
+  "general": null,
+  "sources": [
+   "https://www.gov.uk/foreign-travel-advice/djibouti/getting-help"
+  ],
+  "note": "FCDO ambulance numbers are long local numbers (21 35 09 62 / 21 35 27 12), left null."
+ },
+ {
+  "iso2": "DK",
+  "police": "112",
+  "ambulance": "112",
+  "fire": "112",
+  "general": "112",
+  "sources": [
+   "https://www.gov.uk/foreign-travel-advice/denmark/getting-help",
+   "https://digital-strategy.ec.europa.eu/en/policies/112"
+  ]
+ },
+ {
+  "iso2": "DM",
+  "police": "999",
+  "ambulance": "999",
+  "fire": "999",
+  "general": "999",
+  "sources": [
+   "https://www.gov.uk/foreign-travel-advice/dominica/getting-help",
+   "https://www.itu.int/net/itu-t/inrdb/e129_important_numbers.aspx"
+  ]
+ },
+ {
+  "iso2": "DO",
+  "police": null,
+  "ambulance": null,
+  "fire": null,
+  "general": "911",
+  "sources": [
+   "https://www.gov.uk/foreign-travel-advice/dominican-republic/getting-help"
+  ],
+  "note": "FCDO: 911 (ambulance, fire, police); limited coverage outside Santo Domingo."
+ },
+ {
+  "iso2": "DZ",
+  "police": "17",
+  "ambulance": "1021",
+  "fire": "14",
+  "general": null,
+  "sources": [
+   "https://www.gov.uk/foreign-travel-advice/algeria/getting-help"
+  ],
+  "note": "FCDO police: 17 or 1548."
+ },
+ {
+  "iso2": "EC",
+  "police": "911",
+  "ambulance": "911",
+  "fire": "911",
+  "general": "911",
+  "sources": [
+   "https://www.gov.uk/foreign-travel-advice/ecuador/getting-help"
+  ],
+  "note": "Wikidata 101/131/102 not confirmed"
+ },
+ {
+  "iso2": "EE",
+  "police": "112",
+  "ambulance": "112",
+  "fire": "112",
+  "general": "112",
+  "sources": [
+   "https://www.gov.uk/foreign-travel-advice/estonia/getting-help",
+   "https://europa.eu/youreurope/citizens/travel/security-and-emergencies/emergency/index_en.htm"
+  ],
+  "note": "ITU (2012) lists police 110, which is not confirmed as an emergency line; FCDO says 112 for police"
+ },
+ {
+  "iso2": "EG",
+  "police": "122",
+  "ambulance": "123",
+  "fire": "180",
+  "general": null,
+  "sources": [
+   "https://www.gov.uk/foreign-travel-advice/egypt/getting-help"
+  ],
+  "note": "Tourist police 126."
+ },
+ {
+  "iso2": "ER",
+  "police": "113",
+  "ambulance": "122244",
+  "fire": "116",
+  "general": null,
+  "sources": [
+   "https://www.gov.uk/foreign-travel-advice/eritrea/getting-help"
+  ]
+ },
+ {
+  "iso2": "ES",
+  "police": "112",
+  "ambulance": "112",
+  "fire": "112",
+  "general": "112",
+  "sources": [
+   "https://www.gov.uk/foreign-travel-advice/spain/getting-help",
+   "https://digital-strategy.ec.europa.eu/en/policies/112"
+  ],
+  "note": "gov.uk lists only 112; national 091/061 not confirmed"
+ },
+ {
+  "iso2": "ET",
+  "police": "911",
+  "ambulance": "907",
+  "fire": "939",
+  "general": "911",
+  "sources": [
+   "https://www.gov.uk/foreign-travel-advice/ethiopia/getting-help",
+   "https://www.itu.int/net/itu-t/inrdb/e129_important_numbers.aspx"
+  ],
+  "note": "911 primary national number (112 secondary per ITU 2024). Ambulance 907 is Addis Ababa (Red Cross); fire 939 from ITU 2012 only; ITU also lists police 991 (2012)"
+ },
+ {
+  "iso2": "FI",
+  "police": null,
+  "ambulance": null,
+  "fire": null,
+  "general": "112",
+  "sources": [
+   "https://www.gov.uk/foreign-travel-advice/finland/getting-help",
+   "https://europa.eu/youreurope/citizens/travel/security-and-emergencies/emergency/index_en.htm"
+  ],
+  "note": "FCDO: 112 (ambulance, fire, police). Wikidata '000' not confirmed."
+ },
+ {
+  "iso2": "FJ",
+  "police": "911",
+  "ambulance": "911",
+  "fire": "910",
+  "general": "911",
+  "sources": [
+   "https://www.gov.uk/foreign-travel-advice/fiji/getting-help"
+  ],
+  "note": "FCDO: 911 (ambulance, fire, police) plus separate fire 910."
+ },
+ {
+  "iso2": "FK",
+  "police": "999",
+  "ambulance": "999",
+  "fire": "999",
+  "general": "999",
+  "sources": [
+   "https://www.gov.uk/foreign-travel-advice/falkland-islands/getting-help"
+  ]
+ },
+ {
+  "iso2": "FM",
+  "police": "911",
+  "ambulance": null,
+  "fire": "911",
+  "general": "911",
+  "sources": [
+   "https://www.gov.uk/foreign-travel-advice/micronesia/getting-help",
+   "https://www.itu.int/net/itu-t/inrdb/e129_important_numbers.aspx"
+  ],
+  "note": "FCDO: 911 for ambulance/fire/police; ITU lists medical 111 (2012) -> conflict, ambulance left null"
+ },
+ {
+  "iso2": "FO",
+  "police": null,
+  "ambulance": null,
+  "fire": null,
+  "general": "112",
+  "sources": [
+   "https://politi.fo/en/police-stations/tvoeroyri-police-station"
+  ],
+  "note": "Faroese police site shows Alarm 112 112; police service line 114. Taken from search snippet."
+ },
+ {
+  "iso2": "FR",
+  "police": "17",
+  "ambulance": "15",
+  "fire": "18",
+  "general": "112",
+  "sources": [
+   "https://www.gov.uk/foreign-travel-advice/france/getting-help",
+   "https://europa.eu/youreurope/citizens/travel/security-and-emergencies/emergency/index_en.htm"
+  ]
+ },
+ {
+  "iso2": "GA",
+  "police": "177",
+  "ambulance": "117",
+  "fire": "177",
+  "general": null,
+  "sources": [
+   "https://www.gov.uk/foreign-travel-advice/gabon/getting-help"
+  ],
+  "note": "gov.uk: police 177, fire 177, ambulance 117; page warns none guaranteed reliable; conflicts with Wikidata"
+ },
+ {
+  "iso2": "GB",
+  "police": "999",
+  "ambulance": "999",
+  "fire": "999",
+  "general": "999",
+  "sources": [
+   "https://www.itu.int/net/itu-t/inrdb/e129_important_numbers.aspx"
+  ],
+  "note": "112 also works (ITU)"
+ },
+ {
+  "iso2": "GD",
+  "police": "911",
+  "ambulance": null,
+  "fire": "911",
+  "general": null,
+  "sources": [
+   "https://www.gov.uk/foreign-travel-advice/grenada/getting-help"
+  ],
+  "note": "Ambulance is hospital-specific (434/724/774), so left null."
+ },
+ {
+  "iso2": "GE",
+  "police": "112",
+  "ambulance": "112",
+  "fire": "112",
+  "general": "112",
+  "sources": [
+   "https://www.gov.uk/foreign-travel-advice/georgia/getting-help"
+  ],
+  "note": "FCDO: 112 for ambulance, fire, police."
+ },
+ {
+  "iso2": "GF",
+  "police": "17",
+  "ambulance": "15",
+  "fire": "18",
+  "general": "112",
+  "sources": [
+   "https://www.gendarmerie.interieur.gouv.fr/contact/les-numeros-d-urgence",
+   "https://www.sante.fr/node/7063615"
+  ],
+  "note": "Based on search results summary listing same numbers as metropolitan France for Guyane; gendarmerie page fetch returned 403"
+ },
+ {
+  "iso2": "GG",
+  "police": "999",
+  "ambulance": "999",
+  "fire": "999",
+  "general": "999",
+  "sources": [
+   "https://alderney.gov.gg/article/172529/statesofalderney2019/scripts/main.js"
+  ],
+  "note": "Official Bailiwick page: 'dial 999 or 112 for any of the emergency services'"
+ },
+ {
+  "iso2": "GH",
+  "police": null,
+  "ambulance": null,
+  "fire": null,
+  "general": "999",
+  "sources": [
+   "https://www.gov.uk/foreign-travel-advice/ghana/getting-help"
+  ],
+  "note": "FCDO: 999 or 112 (all services). FCDO text gives police as 192, conflicting with Wikidata 191; left null."
+ },
+ {
+  "iso2": "GI",
+  "police": "999",
+  "ambulance": "999",
+  "fire": "999",
+  "general": "999",
+  "sources": [
+   "https://www.gov.uk/foreign-travel-advice/gibraltar/getting-help"
+  ],
+  "note": "112 not confirmed by official source."
+ },
+ {
+  "iso2": "GL",
+  "police": null,
+  "ambulance": null,
+  "fire": null,
+  "general": "112",
+  "sources": [
+   "https://travel.gc.ca/destinations/greenland"
+  ],
+  "note": "travel.gc.ca: 'Dial 112 for emergency assistance'"
+ },
+ {
+  "iso2": "GM",
+  "police": "117",
+  "ambulance": "116",
+  "fire": "118",
+  "general": null,
+  "sources": [
+   "https://www.itu.int/net/itu-t/inrdb/e129_important_numbers.aspx",
+   "https://www.gov.uk/foreign-travel-advice/the-gambia/getting-help"
+  ],
+  "note": "ITU 2024 notification; FCDO says no single number and station numbers are often unpublished. 112 and 999 also route to police per ITU. Wikidata police 112 not primary"
+ },
+ {
+  "iso2": "GN",
+  "police": null,
+  "ambulance": null,
+  "fire": null,
+  "general": null,
+  "sources": [
+   "https://www.gov.uk/foreign-travel-advice/guinea/getting-help"
+  ],
+  "note": "FCDO states no emergency services listed."
+ },
+ {
+  "iso2": "GP",
+  "police": "17",
+  "ambulance": "15",
+  "fire": "18",
+  "general": "112",
+  "sources": [
+   "https://www.gendarmerie.interieur.gouv.fr/contact/les-numeros-d-urgence",
+   "https://europa.eu/youreurope/citizens/travel/security-and-emergencies/emergency/index_en.htm"
+  ],
+  "note": "Source is French national interior ministry page; applies to overseas departments, not Guadeloupe-specific."
+ },
+ {
+  "iso2": "GQ",
+  "police": null,
+  "ambulance": "3101",
+  "fire": "115",
+  "general": null,
+  "sources": [
+   "https://www.gov.uk/foreign-travel-advice/equatorial-guinea/getting-help",
+   "https://travel.gc.ca/destinations/equatorial-guinea"
+  ],
+  "note": "Police conflict between gov.uk (666 404040/666 303030) and Canada (113) so null; ambulance from gov.uk only; fire from Canada only; gov.uk says emergency response unreliable; 112 not confirmed"
+ },
+ {
+  "iso2": "GR",
+  "police": "100",
+  "ambulance": "166",
+  "fire": "199",
+  "general": "112",
+  "sources": [
+   "https://www.itu.int/net/itu-t/inrdb/e129_important_numbers.aspx",
+   "https://www.gov.uk/foreign-travel-advice/greece/getting-help",
+   "https://europa.eu/youreurope/citizens/travel/security-and-emergencies/emergency/index_en.htm"
+  ]
+ },
+ {
+  "iso2": "GT",
+  "police": "110",
+  "ambulance": null,
+  "fire": null,
+  "general": null,
+  "sources": [
+   "https://www.gov.uk/foreign-travel-advice/guatemala/getting-help"
+  ],
+  "note": "FCDO: fire and ambulance 122 or 123 (ambiguous, left null)."
+ },
+ {
+  "iso2": "GU",
+  "police": "911",
+  "ambulance": null,
+  "fire": null,
+  "general": "911",
+  "sources": [
+   "https://gpd.guam.gov/contact-us/"
+  ],
+  "note": "GPD site states 911 for emergencies; fire/ambulance not confirmed on official page."
+ },
+ {
+  "iso2": "GW",
+  "police": "117",
+  "ambulance": "1313",
+  "fire": "1313",
+  "general": null,
+  "sources": [
+   "https://www.gov.uk/foreign-travel-advice/guinea-bissau/getting-help"
+  ],
+  "note": "Conflicts with Wikidata"
+ },
+ {
+  "iso2": "GY",
+  "police": "911",
+  "ambulance": "913",
+  "fire": "912",
+  "general": null,
+  "sources": [
+   "https://www.gov.uk/foreign-travel-advice/guyana/getting-help",
+   "https://www.itu.int/net/itu-t/inrdb/e129_important_numbers.aspx"
+  ]
+ },
+ {
+  "iso2": "HK",
+  "police": null,
+  "ambulance": null,
+  "fire": null,
+  "general": "999",
+  "sources": [
+   "https://www.gov.uk/foreign-travel-advice/hong-kong/getting-help"
+  ]
+ },
+ {
+  "iso2": "HN",
+  "police": "911",
+  "ambulance": "911",
+  "fire": "911",
+  "general": "911",
+  "sources": [
+   "https://www.gov.uk/foreign-travel-advice/honduras/getting-help"
+  ],
+  "note": "Hint 199/198 not supported by FCDO."
+ },
+ {
+  "iso2": "HR",
+  "police": "112",
+  "ambulance": "112",
+  "fire": "112",
+  "general": "112",
+  "sources": [
+   "https://www.gov.uk/foreign-travel-advice/croatia/getting-help",
+   "https://digital-strategy.ec.europa.eu/en/policies/112"
+  ],
+  "note": "gov.uk lists only 112; Wikidata 192/94/93 not confirmed"
+ },
+ {
+  "iso2": "HT",
+  "police": "122",
+  "ambulance": "116",
+  "fire": "115",
+  "general": null,
+  "sources": [
+   "https://www.gov.uk/foreign-travel-advice/haiti/getting-help",
+   "https://www.itu.int/net/itu-t/inrdb/e129_important_numbers.aspx"
+  ],
+  "note": "ITU also lists police 114; FCDO warns services may not respond"
+ },
+ {
+  "iso2": "HU",
+  "police": null,
+  "ambulance": null,
+  "fire": null,
+  "general": "112",
+  "sources": [
+   "https://www.gov.uk/foreign-travel-advice/hungary/getting-help",
+   "https://europa.eu/youreurope/citizens/travel/security-and-emergencies/emergency/index_en.htm"
+  ],
+  "note": "FCDO: 112 (ambulance, fire, police)."
+ },
+ {
+  "iso2": "ID",
+  "police": "110",
+  "ambulance": "118",
+  "fire": "112",
+  "general": null,
+  "sources": [
+   "https://www.gov.uk/foreign-travel-advice/indonesia/getting-help"
+  ],
+  "note": "As stated by FCDO (fire: 112). 112 is widely the national emergency line but FCDO does not label it general."
+ },
+ {
+  "iso2": "IE",
+  "police": "999",
+  "ambulance": "999",
+  "fire": "999",
+  "general": "112",
+  "sources": [
+   "https://www.gov.uk/foreign-travel-advice/ireland/getting-help",
+   "https://digital-strategy.ec.europa.eu/en/policies/112"
+  ],
+  "note": "gov.uk: '112 or 999' for all services"
+ },
+ {
+  "iso2": "IM",
+  "police": null,
+  "ambulance": "999",
+  "fire": "999",
+  "general": "999",
+  "sources": [
+   "https://gov.im/ambulance",
+   "https://www.gov.im/categories/home-and-neighbourhood/emergency-services/fire-and-rescue-service"
+  ],
+  "note": "gov.im confirms 999 for ambulance, fire and coastguard; police number not found on an official page, so null"
+ },
+ {
+  "iso2": "IN",
+  "police": null,
+  "ambulance": null,
+  "fire": null,
+  "general": "112",
+  "sources": [
+   "https://www.gov.uk/foreign-travel-advice/india/getting-help"
+  ],
+  "note": "FCDO: 112 (ambulance, fire, police)."
+ },
+ {
+  "iso2": "IO",
+  "police": null,
+  "ambulance": null,
+  "fire": null,
+  "general": null,
+  "sources": [
+   "https://www.gov.uk/foreign-travel-advice/british-indian-ocean-territory/getting-help"
+  ],
+  "note": "FCDO gives only a police station line (+246 370 29 38), no emergency short numbers."
+ },
+ {
+  "iso2": "IQ",
+  "police": "911",
+  "ambulance": "122",
+  "fire": "115",
+  "general": null,
+  "sources": [
+   "https://www.gov.uk/foreign-travel-advice/iraq/getting-help"
+  ],
+  "note": "gov.uk lists police 911; Wikidata police 104"
+ },
+ {
+  "iso2": "IR",
+  "police": "110",
+  "ambulance": "115",
+  "fire": "125",
+  "general": null,
+  "sources": [
+   "https://www.gov.uk/foreign-travel-advice/iran/getting-help",
+   "https://www.itu.int/net/itu-t/inrdb/e129_important_numbers.aspx"
+  ]
+ },
+ {
+  "iso2": "IS",
+  "police": null,
+  "ambulance": null,
+  "fire": null,
+  "general": "112",
+  "sources": [
+   "https://www.gov.uk/foreign-travel-advice/iceland/getting-help"
+  ],
+  "note": "FCDO: 112 (ambulance, fire, police)."
+ },
+ {
+  "iso2": "IT",
+  "police": "112",
+  "ambulance": "118",
+  "fire": "115",
+  "general": "112",
+  "sources": [
+   "https://www.gov.uk/foreign-travel-advice/italy/getting-help",
+   "https://europa.eu/youreurope/citizens/travel/security-and-emergencies/emergency/index_en.htm"
+  ],
+  "note": "FCDO lists police as 112; 113 not confirmed by official source."
+ },
+ {
+  "iso2": "JE",
+  "police": "999",
+  "ambulance": "999",
+  "fire": "999",
+  "general": "999",
+  "sources": [
+   "https://gov.je/stayingsafe/emergencyplanning/pages/reportinganemergency.aspx"
+  ],
+  "note": "gov.je: 'In an emergency dial 999'; per-service split from search snippets of gov.je pages; 112 not confirmed on that page"
+ },
+ {
+  "iso2": "JM",
+  "police": "119",
+  "ambulance": "110",
+  "fire": "110",
+  "general": null,
+  "sources": [
+   "https://www.gov.uk/foreign-travel-advice/jamaica/getting-help",
+   "https://jis.gov.jm/jfb-official-encourages-persons-to-call-emergency-numbers/"
+  ],
+  "note": "911/112 not confirmed by an official source"
+ },
+ {
+  "iso2": "JO",
+  "police": null,
+  "ambulance": null,
+  "fire": null,
+  "general": "911",
+  "sources": [
+   "https://www.gov.uk/foreign-travel-advice/jordan/getting-help"
+  ],
+  "note": "FCDO: 911 (ambulance, fire, police)."
+ },
+ {
+  "iso2": "JP",
+  "police": "110",
+  "ambulance": "119",
+  "fire": "119",
+  "general": null,
+  "sources": [
+   "https://www.gov.uk/foreign-travel-advice/japan/getting-help"
+  ],
+  "note": "118 (Coast Guard hint) not asked here."
+ },
+ {
+  "iso2": "KE",
+  "police": "999",
+  "ambulance": "999",
+  "fire": "999",
+  "general": "999",
+  "sources": [
+   "https://www.gov.uk/foreign-travel-advice/kenya/getting-help"
+  ],
+  "note": "Wikidata 112 not confirmed"
+ },
+ {
+  "iso2": "KG",
+  "police": "102",
+  "ambulance": "103",
+  "fire": "101",
+  "general": "112",
+  "sources": [
+   "https://www.gov.uk/foreign-travel-advice/kyrgyzstan/getting-help",
+   "https://www.itu.int/net/itu-t/inrdb/e129_important_numbers.aspx"
+  ],
+  "note": "FCDO: 112 'rescue and emergency'; ITU 2012 lists 161 as emergency rescue"
+ },
+ {
+  "iso2": "KH",
+  "police": "117",
+  "ambulance": "119",
+  "fire": "118",
+  "general": null,
+  "sources": [
+   "https://www.gov.uk/foreign-travel-advice/cambodia/getting-help"
+  ]
+ },
+ {
+  "iso2": "KI",
+  "police": "992",
+  "ambulance": "994",
+  "fire": "993",
+  "general": "999",
+  "sources": [
+   "https://www.gov.uk/foreign-travel-advice/kiribati/getting-help"
+  ],
+  "note": "FCDO: 999 general; local 992/994/993. Conflicts with hint 192/195/193."
+ },
+ {
+  "iso2": "KM",
+  "police": null,
+  "ambulance": null,
+  "fire": null,
+  "general": null,
+  "sources": [
+   "https://www.gov.uk/foreign-travel-advice/comoros/getting-help",
+   "https://travel.gc.ca/destinations/comoros"
+  ],
+  "note": "gov.uk (police 117, fire 113/114) and travel.gc.ca (police 17, fire 18) conflict; ambulance unconfirmed; set null"
+ },
+ {
+  "iso2": "KN",
+  "police": "911",
+  "ambulance": "911",
+  "fire": null,
+  "general": "911",
+  "sources": [
+   "https://www.itu.int/net/itu-t/inrdb/e129_important_numbers.aspx",
+   "https://www.gov.uk/foreign-travel-advice/st-kitts-and-nevis/getting-help"
+  ],
+  "note": "Fire: FCDO 333 vs ITU 911, left null"
+ },
+ {
+  "iso2": "KP",
+  "police": null,
+  "ambulance": null,
+  "fire": null,
+  "general": null,
+  "sources": [
+   "https://www.gov.uk/foreign-travel-advice/north-korea/getting-help"
+  ],
+  "note": "No in-country numbers listed by FCDO."
+ },
+ {
+  "iso2": "KR",
+  "police": "112",
+  "ambulance": "119",
+  "fire": "119",
+  "general": null,
+  "sources": [
+   "https://www.gov.uk/foreign-travel-advice/south-korea/getting-help"
+  ]
+ },
+ {
+  "iso2": "KW",
+  "police": "112",
+  "ambulance": "112",
+  "fire": "112",
+  "general": "112",
+  "sources": [
+   "https://www.gov.uk/foreign-travel-advice/kuwait/getting-help"
+  ]
+ },
+ {
+  "iso2": "KY",
+  "police": "911",
+  "ambulance": "911",
+  "fire": "911",
+  "general": "911",
+  "sources": [
+   "https://www.gov.uk/foreign-travel-advice/cayman-islands/getting-help"
+  ]
+ },
+ {
+  "iso2": "KZ",
+  "police": "102",
+  "ambulance": "103",
+  "fire": "101",
+  "general": "112",
+  "sources": [
+   "https://www.gov.uk/foreign-travel-advice/kazakhstan/getting-help"
+  ]
+ },
+ {
+  "iso2": "LA",
+  "police": "1191",
+  "ambulance": "1195",
+  "fire": "1190",
+  "general": null,
+  "sources": [
+   "https://www.gov.uk/foreign-travel-advice/laos/getting-help"
+  ]
+ },
+ {
+  "iso2": "LB",
+  "police": "112",
+  "ambulance": "140",
+  "fire": "175",
+  "general": null,
+  "sources": [
+   "https://www.gov.uk/foreign-travel-advice/lebanon/getting-help"
+  ],
+  "note": "gov.uk police 112; Wikidata 160 not confirmed"
+ },
+ {
+  "iso2": "LC",
+  "police": null,
+  "ambulance": "911",
+  "fire": "911",
+  "general": null,
+  "sources": [
+   "https://www.gov.uk/foreign-travel-advice/st-lucia/getting-help",
+   "https://www.itu.int/net/itu-t/inrdb/e129_important_numbers.aspx"
+  ],
+  "note": "Police: FCDO 911 vs ITU 999, left null"
+ },
+ {
+  "iso2": "LI",
+  "police": "117",
+  "ambulance": "144",
+  "fire": "118",
+  "general": null,
+  "sources": [
+   "https://www.gov.uk/foreign-travel-advice/liechtenstein/getting-help"
+  ]
+ },
+ {
+  "iso2": "LK",
+  "police": "119",
+  "ambulance": "1990",
+  "fire": "111",
+  "general": null,
+  "sources": [
+   "https://www.gov.uk/foreign-travel-advice/sri-lanka/getting-help"
+  ],
+  "note": "FCDO police: 118/119; ambulance 1990 or 011 2691111; fire 111. Conflicts with hint 110."
+ },
+ {
+  "iso2": "LR",
+  "police": null,
+  "ambulance": null,
+  "fire": null,
+  "general": "911",
+  "sources": [
+   "https://travel.gc.ca/destinations/liberia",
+   "https://www.gov.uk/foreign-travel-advice/liberia/getting-help"
+  ],
+  "note": "travel.gc.ca: 'dial 911'; police phone numbers differ between gov.uk (+231 770 800 911) and Canada (+231 777-800-911) so null; emergency services unreliable"
+ },
+ {
+  "iso2": "LS",
+  "police": "112",
+  "ambulance": "112",
+  "fire": "112",
+  "general": "112",
+  "sources": [
+   "https://www.gov.uk/foreign-travel-advice/lesotho/getting-help",
+   "https://www.itu.int/net/itu-t/inrdb/e129_important_numbers.aspx"
+  ],
+  "note": "Wikidata ambulance 114 / fire 115 unsupported"
+ },
+ {
+  "iso2": "LT",
+  "police": null,
+  "ambulance": null,
+  "fire": null,
+  "general": "112",
+  "sources": [
+   "https://www.gov.uk/foreign-travel-advice/lithuania/getting-help",
+   "https://europa.eu/youreurope/citizens/travel/security-and-emergencies/emergency/index_en.htm"
+  ],
+  "note": "FCDO: 112 (ambulance, fire, police). Wikidata '02' not confirmed."
+ },
+ {
+  "iso2": "LU",
+  "police": "113",
+  "ambulance": "112",
+  "fire": "112",
+  "general": "112",
+  "sources": [
+   "https://www.gov.uk/foreign-travel-advice/luxembourg/getting-help",
+   "https://europa.eu/youreurope/citizens/travel/security-and-emergencies/emergency/index_en.htm"
+  ]
+ },
+ {
+  "iso2": "LV",
+  "police": "110",
+  "ambulance": "113",
+  "fire": "112",
+  "general": "112",
+  "sources": [
+   "https://www.gov.uk/foreign-travel-advice/latvia/getting-help",
+   "https://digital-strategy.ec.europa.eu/en/policies/112"
+  ],
+  "note": "gov.uk lists fire as 112"
+ },
+ {
+  "iso2": "LY",
+  "police": "1415",
+  "ambulance": "1415",
+  "fire": "1415",
+  "general": "1415",
+  "sources": [
+   "https://www.gov.uk/foreign-travel-advice/libya/getting-help"
+  ],
+  "note": "FCDO current page; ITU (2012) lists 193/191/190, now stale"
+ },
+ {
+  "iso2": "MA",
+  "police": "190",
+  "ambulance": "150",
+  "fire": "150",
+  "general": null,
+  "sources": [
+   "https://www.gov.uk/foreign-travel-advice/morocco/getting-help"
+  ],
+  "note": "Gendarmerie 177. Conflicts with Wikidata (19/15)."
+ },
+ {
+  "iso2": "MC",
+  "police": null,
+  "ambulance": null,
+  "fire": null,
+  "general": "112",
+  "sources": [
+   "https://www.gov.uk/foreign-travel-advice/monaco/getting-help"
+  ],
+  "note": "FCDO: 112 on mobile or 18 on landline for all services; separate police/ambulance/fire not listed."
+ },
+ {
+  "iso2": "MD",
+  "police": "112",
+  "ambulance": "112",
+  "fire": "112",
+  "general": "112",
+  "sources": [
+   "https://www.gov.uk/foreign-travel-advice/moldova/getting-help"
+  ],
+  "note": "Wikidata 902/903/901 not confirmed"
+ },
+ {
+  "iso2": "ME",
+  "police": "122",
+  "ambulance": "124",
+  "fire": "123",
+  "general": "112",
+  "sources": [
+   "https://www.itu.int/net/itu-t/inrdb/e129_important_numbers.aspx",
+   "https://www.gov.uk/foreign-travel-advice/montenegro/getting-help"
+  ]
+ },
+ {
+  "iso2": "MF",
+  "police": "17",
+  "ambulance": "15",
+  "fire": "18",
+  "general": "112",
+  "sources": [
+   "https://www.gendarmerie.interieur.gouv.fr/contact/trouver-ma-gendarmerie/brigade-de-saint-martin-marigot-saint-martin-978"
+  ],
+  "note": "From French gendarmerie brigade page via search snippet (page returned 403 on direct fetch)."
+ },
+ {
+  "iso2": "MG",
+  "police": "117",
+  "ambulance": "117",
+  "fire": "118",
+  "general": null,
+  "sources": [
+   "https://www.gov.uk/foreign-travel-advice/madagascar/getting-help"
+  ],
+  "note": "Mobile numbers; landline equivalents 17 (police/ambulance) and 18 (fire). FCDO combines 'ambulance or police'."
+ },
+ {
+  "iso2": "MH",
+  "police": "6258666",
+  "ambulance": "6254142",
+  "fire": null,
+  "general": null,
+  "sources": [
+   "https://www.gov.uk/foreign-travel-advice/marshall-islands/getting-help",
+   "https://travel.gc.ca/destinations/marshall-islands"
+  ],
+  "note": "Police 625 8666 in both gov.uk and travel.gc.ca; ambulance gov.uk only; Canada says no centralized number; Wikidata 911 not confirmed"
+ },
+ {
+  "iso2": "MK",
+  "police": "192",
+  "ambulance": "194",
+  "fire": "193",
+  "general": null,
+  "sources": [
+   "https://www.gov.uk/foreign-travel-advice/north-macedonia/getting-help",
+   "https://www.itu.int/net/itu-t/inrdb/e129_important_numbers.aspx"
+  ],
+  "note": "Fire 193 from ITU 2012; 112 not confirmed by an official source"
+ },
+ {
+  "iso2": "ML",
+  "police": "17",
+  "ambulance": "15",
+  "fire": "18",
+  "general": null,
+  "sources": [
+   "https://www.gov.uk/foreign-travel-advice/mali/getting-help"
+  ],
+  "note": "112 not confirmed."
+ },
+ {
+  "iso2": "MM",
+  "police": "199",
+  "ambulance": "192",
+  "fire": "191",
+  "general": null,
+  "sources": [
+   "https://www.gov.uk/foreign-travel-advice/myanmar/getting-help"
+  ]
+ },
+ {
+  "iso2": "MN",
+  "police": "102",
+  "ambulance": "103",
+  "fire": "101",
+  "general": null,
+  "sources": [
+   "https://www.gov.uk/foreign-travel-advice/mongolia/getting-help"
+  ],
+  "note": "Wikidata 105 not confirmed"
+ },
+ {
+  "iso2": "MO",
+  "police": "999",
+  "ambulance": "999",
+  "fire": "999",
+  "general": "999",
+  "sources": [
+   "https://www.gov.uk/foreign-travel-advice/macao/getting-help"
+  ]
+ },
+ {
+  "iso2": "MP",
+  "police": null,
+  "ambulance": null,
+  "fire": null,
+  "general": null,
+  "sources": [],
+  "note": "No official source found."
+ },
+ {
+  "iso2": "MQ",
+  "police": "17",
+  "ambulance": "15",
+  "fire": "18",
+  "general": "112",
+  "sources": [
+   "https://www.gendarmerie.interieur.gouv.fr/contact/les-numeros-d-urgence",
+   "https://europa.eu/youreurope/citizens/travel/security-and-emergencies/emergency/index_en.htm"
+  ],
+  "note": "Source is French national interior ministry page; applies to overseas departments."
+ },
+ {
+  "iso2": "MR",
+  "police": "117",
+  "ambulance": "101",
+  "fire": "118",
+  "general": null,
+  "sources": [
+   "https://www.gov.uk/foreign-travel-advice/mauritania/getting-help"
+  ],
+  "note": "Authorities may not answer"
+ },
+ {
+  "iso2": "MS",
+  "police": "911",
+  "ambulance": "911",
+  "fire": "911",
+  "general": "911",
+  "sources": [
+   "https://www.gov.uk/foreign-travel-advice/montserrat/getting-help"
+  ],
+  "note": "FCDO: '911 or 999'; both valid"
+ },
+ {
+  "iso2": "MT",
+  "police": null,
+  "ambulance": null,
+  "fire": null,
+  "general": "112",
+  "sources": [
+   "https://www.gov.uk/foreign-travel-advice/malta/getting-help",
+   "https://europa.eu/youreurope/citizens/travel/security-and-emergencies/emergency/index_en.htm"
+  ],
+  "note": "FCDO: 112 (ambulance, fire, police); 191/196/199 not confirmed."
+ },
+ {
+  "iso2": "MU",
+  "police": "999",
+  "ambulance": "114",
+  "fire": "115",
+  "general": null,
+  "sources": [
+   "https://www.gov.uk/foreign-travel-advice/mauritius/getting-help"
+  ],
+  "note": "FCDO also lists 999 for all and 112 for police."
+ },
+ {
+  "iso2": "MV",
+  "police": "119",
+  "ambulance": "102",
+  "fire": "118",
+  "general": null,
+  "sources": [
+   "https://www.gov.uk/foreign-travel-advice/maldives/getting-help"
+  ]
+ },
+ {
+  "iso2": "MW",
+  "police": "997",
+  "ambulance": "998",
+  "fire": "999",
+  "general": null,
+  "sources": [
+   "https://www.gov.uk/foreign-travel-advice/malawi/getting-help",
+   "https://www.itu.int/net/itu-t/inrdb/e129_important_numbers.aspx"
+  ],
+  "note": "Police also 990; FCDO warns numbers unreliable"
+ },
+ {
+  "iso2": "MX",
+  "police": null,
+  "ambulance": null,
+  "fire": null,
+  "general": "911",
+  "sources": [
+   "https://www.gov.uk/foreign-travel-advice/mexico/getting-help"
+  ],
+  "note": "FCDO: 911 (ambulance, fire, police)."
+ },
+ {
+  "iso2": "MY",
+  "police": "999",
+  "ambulance": "999",
+  "fire": "994",
+  "general": null,
+  "sources": [
+   "https://www.gov.uk/foreign-travel-advice/malaysia/getting-help"
+  ],
+  "note": "FCDO: police and ambulance 999, fire 994, ambulance from mobile 112. Hint fire 999 not supported."
+ },
+ {
+  "iso2": "MZ",
+  "police": "112",
+  "ambulance": "112",
+  "fire": "198",
+  "general": "112",
+  "sources": [
+   "https://www.gov.uk/foreign-travel-advice/mozambique/getting-help"
+  ],
+  "note": "gov.uk: 'Call 112 (ambulance, fire, police)'; fire direct 198; conflicts with Wikidata police 119/ambulance 198/fire 117"
+ },
+ {
+  "iso2": "NA",
+  "police": "10111",
+  "ambulance": null,
+  "fire": null,
+  "general": "112",
+  "sources": [
+   "https://www.gov.uk/foreign-travel-advice/namibia/getting-help",
+   "https://www.itu.int/net/itu-t/inrdb/e129_important_numbers.aspx"
+  ],
+  "note": "ITU also lists 911 as emergency; FCDO lists 10111, 999, 112; no per-service ambulance/fire number in official sources"
+ },
+ {
+  "iso2": "NC",
+  "police": "17",
+  "ambulance": "15",
+  "fire": "18",
+  "general": null,
+  "sources": [
+   "https://www.gov.uk/foreign-travel-advice/new-caledonia/getting-help"
+  ]
+ },
+ {
+  "iso2": "NE",
+  "police": "17",
+  "ambulance": "15",
+  "fire": "18",
+  "general": null,
+  "sources": [
+   "https://www.gov.uk/foreign-travel-advice/niger/getting-help"
+  ]
+ },
+ {
+  "iso2": "NF",
+  "police": "000",
+  "ambulance": "000",
+  "fire": "000",
+  "general": "000",
+  "sources": [
+   "https://www.nirc.gov.au/Your-council/News-Articles/Emergency-Phone-System-Process"
+  ],
+  "note": "Norfolk Island Regional Council: 000 with menu (1 ambulance, 2 police, 3 fire); 999 only for declared island-wide disasters; 000 had outages in 2025"
+ },
+ {
+  "iso2": "NG",
+  "police": "112",
+  "ambulance": "112",
+  "fire": "112",
+  "general": "112",
+  "sources": [
+   "https://www.gov.uk/foreign-travel-advice/nigeria/getting-help",
+   "https://www.itu.int/net/itu-t/inrdb/e129_important_numbers.aspx"
+  ],
+  "note": "Wikidata 199 not supported"
+ },
+ {
+  "iso2": "NI",
+  "police": null,
+  "ambulance": null,
+  "fire": null,
+  "general": "911",
+  "sources": [
+   "https://www.gov.uk/foreign-travel-advice/nicaragua/getting-help"
+  ],
+  "note": "FCDO: 911 (ambulance, fire, police). Wikidata numbers not confirmed."
+ },
+ {
+  "iso2": "NL",
+  "police": "112",
+  "ambulance": "112",
+  "fire": "112",
+  "general": "112",
+  "sources": [
+   "https://www.gov.uk/foreign-travel-advice/netherlands/getting-help",
+   "https://europa.eu/youreurope/citizens/travel/security-and-emergencies/emergency/index_en.htm"
+  ],
+  "note": "FCDO covers European Netherlands; Caribbean parts of the Kingdom may differ."
+ },
+ {
+  "iso2": "NO",
+  "police": "112",
+  "ambulance": "113",
+  "fire": "110",
+  "general": null,
+  "sources": [
+   "https://www.gov.uk/foreign-travel-advice/norway/getting-help"
+  ]
+ },
+ {
+  "iso2": "NP",
+  "police": "100",
+  "ambulance": "102",
+  "fire": "101",
+  "general": null,
+  "sources": [
+   "https://www.gov.uk/foreign-travel-advice/nepal/getting-help",
+   "https://www.itu.int/net/itu-t/inrdb/e129_important_numbers.aspx"
+  ]
+ },
+ {
+  "iso2": "NR",
+  "police": "110",
+  "ambulance": "111",
+  "fire": "112",
+  "general": null,
+  "sources": [
+   "https://www.gov.uk/foreign-travel-advice/nauru/getting-help"
+  ]
+ },
+ {
+  "iso2": "NU",
+  "police": null,
+  "ambulance": null,
+  "fire": null,
+  "general": "999",
+  "sources": [
+   "https://www.gov.nu/notice-board"
+  ],
+  "note": "Government of Niue notice board: dial 999 in an emergency."
+ },
+ {
+  "iso2": "NZ",
+  "police": "111",
+  "ambulance": "111",
+  "fire": "111",
+  "general": "111",
+  "sources": [
+   "https://www.gov.uk/foreign-travel-advice/new-zealand/getting-help",
+   "https://www.govt.nz/browse/crime-law-and-justice/police/111-emergency-service"
+  ]
+ },
+ {
+  "iso2": "OM",
+  "police": "9999",
+  "ambulance": "9999",
+  "fire": "9999",
+  "general": "9999",
+  "sources": [
+   "https://www.gov.uk/foreign-travel-advice/oman/getting-help",
+   "https://www.omanobserver.om/emergency-number-9999-not-112/"
+  ],
+  "note": "FCDO: 9999; conflicts with Wikidata 112 and ITU 2012 (999/112)"
+ },
+ {
+  "iso2": "PA",
+  "police": "104",
+  "ambulance": "103",
+  "fire": "103",
+  "general": "911",
+  "sources": [
+   "https://www.gov.uk/foreign-travel-advice/panama/getting-help"
+  ]
+ },
+ {
+  "iso2": "PE",
+  "police": "105",
+  "ambulance": "106",
+  "fire": "116",
+  "general": null,
+  "sources": [
+   "https://www.gov.uk/foreign-travel-advice/peru/getting-help"
+  ],
+  "note": "Hint 911/111 not supported."
+ },
+ {
+  "iso2": "PF",
+  "police": "17",
+  "ambulance": "15",
+  "fire": "18",
+  "general": null,
+  "sources": [
+   "https://tahititourisme.pf/app/uploads/tahiti/2025/02/Maquette-PIMS-Francais-1.pdf"
+  ],
+  "note": "Source is Tahiti Tourisme (territory tourism board) via search snippet; also lists 16 sea rescue and 112; 112 left null as not confirmed by a stricter source"
+ },
+ {
+  "iso2": "PG",
+  "police": "112",
+  "ambulance": "111",
+  "fire": "110",
+  "general": null,
+  "sources": [
+   "https://www.gov.uk/foreign-travel-advice/papua-new-guinea/getting-help",
+   "https://www.itu.int/net/itu-t/inrdb/e129_important_numbers.aspx"
+  ]
+ },
+ {
+  "iso2": "PH",
+  "police": null,
+  "ambulance": null,
+  "fire": null,
+  "general": "911",
+  "sources": [
+   "https://www.gov.uk/foreign-travel-advice/philippines/getting-help"
+  ],
+  "note": "FCDO: 911 (ambulance, fire, police)."
+ },
+ {
+  "iso2": "PK",
+  "police": "15",
+  "ambulance": "1122",
+  "fire": "1122",
+  "general": null,
+  "sources": [
+   "https://www.gov.uk/foreign-travel-advice/pakistan/getting-help"
+  ],
+  "note": "FCDO: 1122 for ambulance and fire."
+ },
+ {
+  "iso2": "PL",
+  "police": "997",
+  "ambulance": "999",
+  "fire": "998",
+  "general": "112",
+  "sources": [
+   "https://www.gov.uk/foreign-travel-advice/poland/getting-help",
+   "https://digital-strategy.ec.europa.eu/en/policies/112"
+  ]
+ },
+ {
+  "iso2": "PM",
+  "police": "17",
+  "ambulance": "15",
+  "fire": "18",
+  "general": "112",
+  "sources": [
+   "https://www.gendarmerie.interieur.gouv.fr/contact/trouver-ma-gendarmerie/brigade-de-saint-pierre-saint-pierre-et-miquelon-975"
+  ]
+ },
+ {
+  "iso2": "PN",
+  "police": "9840141",
+  "ambulance": null,
+  "fire": null,
+  "general": null,
+  "sources": [
+   "https://www.gov.uk/foreign-travel-advice/pitcairn-island/getting-help"
+  ],
+  "note": "Local police officer line 984 0141 (not a short emergency code); no other service; VHF radio call-out."
+ },
+ {
+  "iso2": "PR",
+  "police": "911",
+  "ambulance": "911",
+  "fire": "911",
+  "general": "911",
+  "sources": [
+   "https://www.911.pr.gov/"
+  ],
+  "note": "911.pr.gov: 9-1-1 system routes calls to emergency response agencies."
+ },
+ {
+  "iso2": "PS",
+  "police": "100",
+  "ambulance": "101",
+  "fire": "102",
+  "general": null,
+  "sources": [
+   "https://www.gov.uk/foreign-travel-advice/palestine/getting-help"
+  ]
+ },
+ {
+  "iso2": "PT",
+  "police": "112",
+  "ambulance": "112",
+  "fire": "112",
+  "general": "112",
+  "sources": [
+   "https://www.gov.uk/foreign-travel-advice/portugal/getting-help",
+   "https://www.itu.int/net/itu-t/inrdb/e129_important_numbers.aspx",
+   "https://europa.eu/youreurope/citizens/travel/security-and-emergencies/emergency/index_en.htm"
+  ]
+ },
+ {
+  "iso2": "PW",
+  "police": null,
+  "ambulance": null,
+  "fire": null,
+  "general": "911",
+  "sources": [
+   "https://www.gov.uk/foreign-travel-advice/palau/getting-help"
+  ],
+  "note": "FCDO: 911 (ambulance, fire, police)."
+ },
+ {
+  "iso2": "PY",
+  "police": "911",
+  "ambulance": "141",
+  "fire": "132",
+  "general": null,
+  "sources": [
+   "https://www.gov.uk/foreign-travel-advice/paraguay/getting-help"
+  ]
+ },
+ {
+  "iso2": "QA",
+  "police": "999",
+  "ambulance": "999",
+  "fire": "999",
+  "general": "999",
+  "sources": [
+   "https://www.gov.uk/foreign-travel-advice/qatar/getting-help"
+  ],
+  "note": "Wikidata 112 not confirmed"
+ },
+ {
+  "iso2": "RE",
+  "police": "17",
+  "ambulance": "15",
+  "fire": "18",
+  "general": "112",
+  "sources": [
+   "https://www.sante.fr/urgences-les-numeros-utiles-la-reunion"
+  ]
+ },
+ {
+  "iso2": "RO",
+  "police": null,
+  "ambulance": null,
+  "fire": null,
+  "general": "112",
+  "sources": [
+   "https://www.gov.uk/foreign-travel-advice/romania/getting-help",
+   "https://europa.eu/youreurope/citizens/travel/security-and-emergencies/emergency/index_en.htm"
+  ],
+  "note": "FCDO: 112 (ambulance, fire, police)."
+ },
+ {
+  "iso2": "RS",
+  "police": "192",
+  "ambulance": "194",
+  "fire": "193",
+  "general": "112",
+  "sources": [
+   "https://www.gov.uk/foreign-travel-advice/serbia/getting-help"
+  ]
+ },
+ {
+  "iso2": "RU",
+  "police": "112",
+  "ambulance": "112",
+  "fire": "112",
+  "general": "112",
+  "sources": [
+   "https://www.gov.uk/foreign-travel-advice/russia/getting-help"
+  ],
+  "note": "gov.uk lists only 112; Wikidata 102/103/101 not confirmed"
+ },
+ {
+  "iso2": "RW",
+  "police": "112",
+  "ambulance": "912",
+  "fire": "111",
+  "general": "112",
+  "sources": [
+   "https://www.gov.rw/emergency",
+   "https://www.itu.int/net/itu-t/inrdb/e129_important_numbers.aspx"
+  ],
+  "note": "Ambulance 912 per gov.rw (ITU 2024 says 911); fire 111 per ITU 2024; police 112 per ITU"
+ },
+ {
+  "iso2": "SA",
+  "police": "999",
+  "ambulance": "997",
+  "fire": "998",
+  "general": "911",
+  "sources": [
+   "https://www.itu.int/net/ITU-T/inrdb/e129_important_numbers.aspx"
+  ],
+  "note": "ITU-T E.129 national emergency numbers, Saudi Arabia (999 police, 997 Saudi Red Crescent, 998 Civil Defense, 911 unified emergency)."
+ },
+ {
+  "iso2": "SB",
+  "police": "999",
+  "ambulance": "111",
+  "fire": "988",
+  "general": null,
+  "sources": [
+   "https://www.gov.uk/foreign-travel-advice/solomon-islands/getting-help"
+  ],
+  "note": "Conflicts with hint ambulance 911."
+ },
+ {
+  "iso2": "SC",
+  "police": "999",
+  "ambulance": "999",
+  "fire": "999",
+  "general": "999",
+  "sources": [
+   "https://www.gov.uk/foreign-travel-advice/seychelles/getting-help"
+  ]
+ },
+ {
+  "iso2": "SD",
+  "police": "999",
+  "ambulance": null,
+  "fire": null,
+  "general": "999",
+  "sources": [
+   "https://www.gov.uk/foreign-travel-advice/sudan/getting-help",
+   "https://www.itu.int/net/itu-t/inrdb/e129_important_numbers.aspx"
+  ],
+  "note": "FCDO: 999 for ambulance/fire/police; ITU 2023 lists ambulance 444 and fire 998 -> conflict, left null"
+ },
+ {
+  "iso2": "SE",
+  "police": null,
+  "ambulance": null,
+  "fire": null,
+  "general": "112",
+  "sources": [
+   "https://www.gov.uk/foreign-travel-advice/sweden/getting-help",
+   "https://europa.eu/youreurope/citizens/travel/security-and-emergencies/emergency/index_en.htm"
+  ],
+  "note": "FCDO: 112 (ambulance, fire, police)."
+ },
+ {
+  "iso2": "SG",
+  "police": "999",
+  "ambulance": "995",
+  "fire": "995",
+  "general": null,
+  "sources": [
+   "https://www.gov.uk/foreign-travel-advice/singapore/getting-help"
+  ]
+ },
+ {
+  "iso2": "SH",
+  "police": "999",
+  "ambulance": "999",
+  "fire": "999",
+  "general": "999",
+  "sources": [
+   "https://www.gov.uk/foreign-travel-advice/st-helena-ascension-and-tristan-da-cunha/getting-help"
+  ],
+  "note": "999 for St Helena and Ascension; Tristan da Cunha has separate numbers (police 5111, ambulance 5000)"
+ },
+ {
+  "iso2": "SI",
+  "police": "113",
+  "ambulance": "112",
+  "fire": "112",
+  "general": "112",
+  "sources": [
+   "https://www.gov.uk/foreign-travel-advice/slovenia/getting-help",
+   "https://www.itu.int/net/itu-t/inrdb/e129_important_numbers.aspx",
+   "https://europa.eu/youreurope/citizens/travel/security-and-emergencies/emergency/index_en.htm"
+  ]
+ },
+ {
+  "iso2": "SJ",
+  "police": null,
+  "ambulance": null,
+  "fire": null,
+  "general": "112",
+  "sources": [
+   "https://sysselmesteren.no/en/contact"
+  ],
+  "note": "Governor of Svalbard lists Emergency 112 only; police on duty 02800."
+ },
+ {
+  "iso2": "SK",
+  "police": "158",
+  "ambulance": "155",
+  "fire": "150",
+  "general": "112",
+  "sources": [
+   "https://www.gov.uk/foreign-travel-advice/slovakia/getting-help",
+   "https://europa.eu/youreurope/citizens/travel/security-and-emergencies/emergency/index_en.htm"
+  ]
+ },
+ {
+  "iso2": "SL",
+  "police": "117",
+  "ambulance": "117",
+  "fire": "117",
+  "general": "117",
+  "sources": [
+   "https://www.gov.uk/foreign-travel-advice/sierra-leone/getting-help"
+  ],
+  "note": "gov.uk: '117 (ambulance, fire, police)'; conflicts with Wikidata 019/999"
+ },
+ {
+  "iso2": "SM",
+  "police": "113",
+  "ambulance": "118",
+  "fire": "115",
+  "general": null,
+  "sources": [
+   "https://www.gov.uk/foreign-travel-advice/san-marino/getting-help",
+   "https://www.itu.int/net/itu-t/inrdb/e129_important_numbers.aspx"
+  ],
+  "note": "112 also reaches police per FCDO/ITU"
+ },
+ {
+  "iso2": "SN",
+  "police": "17",
+  "ambulance": "15",
+  "fire": "18",
+  "general": null,
+  "sources": [
+   "https://www.gov.uk/foreign-travel-advice/senegal/getting-help"
+  ],
+  "note": "Military police 123."
+ },
+ {
+  "iso2": "SO",
+  "police": "888",
+  "ambulance": "999",
+  "fire": "555",
+  "general": null,
+  "sources": [
+   "https://www.gov.uk/foreign-travel-advice/somalia/getting-help"
+  ],
+  "note": "FCDO warns numbers can be unreliable; also says Somali Red Crescent free line 446 for all emergencies."
+ },
+ {
+  "iso2": "SR",
+  "police": "115",
+  "ambulance": "113",
+  "fire": "110",
+  "general": "115",
+  "sources": [
+   "https://www.gov.uk/foreign-travel-advice/suriname/getting-help"
+  ],
+  "note": "gov.uk: 115 (ambulance, fire, police); separate ambulance 113 and fire 110; Wikidata 112 not confirmed"
+ },
+ {
+  "iso2": "SS",
+  "police": null,
+  "ambulance": null,
+  "fire": null,
+  "general": null,
+  "sources": [
+   "https://www.gov.uk/foreign-travel-advice/south-sudan/getting-help",
+   "https://www.itu.int/net/itu-t/inrdb/e129_important_numbers.aspx"
+  ],
+  "note": "FCDO: no central emergency numbers; ITU 2023 lists 112/777/333/555 -> conflict, all null"
+ },
+ {
+  "iso2": "ST",
+  "police": "113",
+  "ambulance": "2222222",
+  "fire": "112",
+  "general": null,
+  "sources": [
+   "https://www.gov.uk/foreign-travel-advice/sao-tome-and-principe/getting-help"
+  ],
+  "note": "FCDO: police 113 or 222 22 22."
+ },
+ {
+  "iso2": "SV",
+  "police": "911",
+  "ambulance": "911",
+  "fire": "911",
+  "general": "911",
+  "sources": [
+   "https://www.gov.uk/foreign-travel-advice/el-salvador/getting-help"
+  ],
+  "note": "Hint fire 913 not supported."
+ },
+ {
+  "iso2": "SX",
+  "police": null,
+  "ambulance": "912",
+  "fire": "919",
+  "general": null,
+  "sources": [
+   "https://travel.gc.ca/destinations/sint-maarten"
+  ],
+  "note": "travel.gc.ca police line is 721-542-2222 (landline, left null); 911 not confirmed by official source"
+ },
+ {
+  "iso2": "SY",
+  "police": "112",
+  "ambulance": "110",
+  "fire": "113",
+  "general": null,
+  "sources": [
+   "https://www.itu.int/net/itu-t/inrdb/e129_important_numbers.aspx"
+  ],
+  "note": "ITU 2012 only; FCDO lists no local numbers; verify"
+ },
+ {
+  "iso2": "SZ",
+  "police": "999",
+  "ambulance": "977",
+  "fire": "933",
+  "general": null,
+  "sources": [
+   "https://www.gov.uk/foreign-travel-advice/eswatini/getting-help"
+  ]
+ },
+ {
+  "iso2": "TC",
+  "police": "911",
+  "ambulance": "911",
+  "fire": "911",
+  "general": "911",
+  "sources": [
+   "https://www.gov.uk/foreign-travel-advice/turks-and-caicos-islands/getting-help"
+  ]
+ },
+ {
+  "iso2": "TD",
+  "police": "2020",
+  "ambulance": "1212",
+  "fire": "1212",
+  "general": null,
+  "sources": [
+   "https://www.gov.uk/foreign-travel-advice/chad/getting-help"
+  ],
+  "note": "Conflicts with Wikidata"
+ },
+ {
+  "iso2": "TG",
+  "police": "117",
+  "ambulance": "8200",
+  "fire": "118",
+  "general": null,
+  "sources": [
+   "https://www.gov.uk/foreign-travel-advice/togo/getting-help",
+   "https://www.itu.int/net/itu-t/inrdb/e129_important_numbers.aspx"
+  ],
+  "note": "Police also 177 (FCDO) / 172 gendarmerie (ITU)"
+ },
+ {
+  "iso2": "TH",
+  "police": "191",
+  "ambulance": "1669",
+  "fire": "199",
+  "general": null,
+  "sources": [
+   "https://www.gov.uk/foreign-travel-advice/thailand/getting-help"
+  ],
+  "note": "Tourist police 1155."
+ },
+ {
+  "iso2": "TJ",
+  "police": "102",
+  "ambulance": "103",
+  "fire": "101",
+  "general": null,
+  "sources": [
+   "https://www.gov.uk/foreign-travel-advice/tajikistan/getting-help"
+  ],
+  "note": "Mobile forms; landline 02/03/01. 112 not confirmed."
+ },
+ {
+  "iso2": "TK",
+  "police": null,
+  "ambulance": null,
+  "fire": null,
+  "general": null,
+  "sources": [
+   "https://www.safetravel.govt.nz/tokelau"
+  ],
+  "note": "No emergency numbers published on NZ MFAT page"
+ },
+ {
+  "iso2": "TL",
+  "police": "112",
+  "ambulance": "110",
+  "fire": "115",
+  "general": null,
+  "sources": [
+   "https://www.gov.uk/foreign-travel-advice/timor-leste/getting-help"
+  ],
+  "note": "FCDO notes emergency numbers are unreliable"
+ },
+ {
+  "iso2": "TM",
+  "police": "02",
+  "ambulance": "03",
+  "fire": "01",
+  "general": null,
+  "sources": [
+   "https://www.gov.uk/foreign-travel-advice/turkmenistan/getting-help"
+  ],
+  "note": "Landline codes; mobile 002/003/001. Wikidata 112 not confirmed."
+ },
+ {
+  "iso2": "TN",
+  "police": "197",
+  "ambulance": "190",
+  "fire": "198",
+  "general": null,
+  "sources": [
+   "https://www.gov.uk/foreign-travel-advice/tunisia/getting-help"
+  ],
+  "note": "National Guard 193 for rural areas."
+ },
+ {
+  "iso2": "TO",
+  "police": "922",
+  "ambulance": "933",
+  "fire": "999",
+  "general": "911",
+  "sources": [
+   "https://www.gov.uk/foreign-travel-advice/tonga/getting-help",
+   "https://travel.gc.ca/destinations/tonga"
+  ],
+  "note": "gov.uk lists 911 (all services) and also separate police 922/ambulance 933/fire 999; travel.gc.ca confirms 911; separate numbers single-source and internally inconsistent"
+ },
+ {
+  "iso2": "TR",
+  "police": "112",
+  "ambulance": "112",
+  "fire": "112",
+  "general": "112",
+  "sources": [
+   "https://www.gov.uk/foreign-travel-advice/turkey/getting-help"
+  ],
+  "note": "Single 112 since 2021; ITU 2012 (155/110) stale"
+ },
+ {
+  "iso2": "TT",
+  "police": "999",
+  "ambulance": "811",
+  "fire": "990",
+  "general": null,
+  "sources": [
+   "https://www.gov.uk/foreign-travel-advice/trinidad-and-tobago/getting-help"
+  ]
+ },
+ {
+  "iso2": "TV",
+  "police": "911",
+  "ambulance": "999",
+  "fire": "000",
+  "general": null,
+  "sources": [
+   "https://www.gov.uk/foreign-travel-advice/tuvalu/getting-help"
+  ],
+  "note": "As stated by FCDO (police 911, ambulance 999, fire 000); unusual, verify locally."
+ },
+ {
+  "iso2": "TW",
+  "police": "110",
+  "ambulance": "119",
+  "fire": "119",
+  "general": null,
+  "sources": [
+   "https://www.gov.uk/foreign-travel-advice/taiwan/getting-help"
+  ],
+  "note": "gov.uk: ambulance and fire 119; Wikidata 112 not confirmed"
+ },
+ {
+  "iso2": "TZ",
+  "police": "112",
+  "ambulance": "115",
+  "fire": "114",
+  "general": "112",
+  "sources": [
+   "https://www.gov.uk/foreign-travel-advice/tanzania/getting-help",
+   "https://www.itu.int/net/itu-t/inrdb/e129_important_numbers.aspx"
+  ],
+  "note": "FCDO: 112 for all; ITU gives 115 ambulance, 114 fire"
+ },
+ {
+  "iso2": "UA",
+  "police": "102",
+  "ambulance": "103",
+  "fire": "101",
+  "general": null,
+  "sources": [
+   "https://www.gov.uk/foreign-travel-advice/ukraine/getting-help"
+  ],
+  "note": "112 not confirmed."
+ },
+ {
+  "iso2": "UG",
+  "police": "999",
+  "ambulance": "999",
+  "fire": "999",
+  "general": "999",
+  "sources": [
+   "https://www.gov.uk/foreign-travel-advice/uganda/getting-help"
+  ],
+  "note": "112 not confirmed."
+ },
+ {
+  "iso2": "US",
+  "police": "911",
+  "ambulance": "911",
+  "fire": "911",
+  "general": "911",
+  "sources": [
+   "https://www.gov.uk/foreign-travel-advice/usa/getting-help"
+  ]
+ },
+ {
+  "iso2": "UY",
+  "police": "911",
+  "ambulance": "911",
+  "fire": "911",
+  "general": "911",
+  "sources": [
+   "https://www.gov.uk/foreign-travel-advice/uruguay/getting-help",
+   "https://www.itu.int/net/itu-t/inrdb/e129_important_numbers.aspx"
+  ]
+ },
+ {
+  "iso2": "UZ",
+  "police": "102",
+  "ambulance": "103",
+  "fire": "101",
+  "general": "112",
+  "sources": [
+   "https://www.gov.uk/foreign-travel-advice/uzbekistan/getting-help"
+  ],
+  "note": "FCDO: 112 unified number introduced 2024."
+ },
+ {
+  "iso2": "VA",
+  "police": null,
+  "ambulance": null,
+  "fire": null,
+  "general": null,
+  "sources": [
+   "https://vaticanstate.va/en/directorates/directorate-of-security-and-civil-protection-services/gendarmerie-corps.html"
+  ],
+  "note": "Vatican Gendarmerie operations room is +39 06 698112 (vaticanstate.va), a full number, not a short code; 112 unconfirmed for Vatican."
+ },
+ {
+  "iso2": "VC",
+  "police": "999",
+  "ambulance": "911",
+  "fire": null,
+  "general": null,
+  "sources": [
+   "https://www.gov.uk/foreign-travel-advice/st-vincent-and-the-grenadines/getting-help"
+  ],
+  "note": "gov.uk: '911 or 999 (ambulance, fire, police)'; ambulance 911, police 999; fire not separately listed"
+ },
+ {
+  "iso2": "VE",
+  "police": "911",
+  "ambulance": "911",
+  "fire": "911",
+  "general": "911",
+  "sources": [
+   "https://www.gov.uk/foreign-travel-advice/venezuela/getting-help"
+  ],
+  "note": "FCDO: 911; ITU 2012 (171) and Wikidata 171 stale"
+ },
+ {
+  "iso2": "VG",
+  "police": null,
+  "ambulance": null,
+  "fire": null,
+  "general": "911",
+  "sources": [
+   "https://www.gov.uk/foreign-travel-advice/british-virgin-islands/getting-help"
+  ],
+  "note": "FCDO: 911 (ambulance, fire, police); sea emergencies 767."
+ },
+ {
+  "iso2": "VI",
+  "police": "911",
+  "ambulance": "911",
+  "fire": "911",
+  "general": "911",
+  "sources": [
+   "https://vitema.vi.gov/contact-us/",
+   "https://vifems.vi.gov/home/",
+   "https://vipd.vi.gov/contact-us/"
+  ],
+  "note": "VITEMA, VIPD and VIFEMS sites state 911."
+ },
+ {
+  "iso2": "VN",
+  "police": "113",
+  "ambulance": "115",
+  "fire": "114",
+  "general": null,
+  "sources": [
+   "https://www.gov.uk/foreign-travel-advice/vietnam/getting-help"
+  ],
+  "note": "112 is listed as national search and rescue only"
+ },
+ {
+  "iso2": "VU",
+  "police": "111",
+  "ambulance": "115",
+  "fire": "113",
+  "general": null,
+  "sources": [
+   "https://www.gov.uk/foreign-travel-advice/vanuatu/getting-help",
+   "https://www.itu.int/net/itu-t/inrdb/e129_important_numbers.aspx"
+  ],
+  "note": "Police also 22222; ambulance 115 is private (Port Vila/Luganville); ITU 2012 lists police 11, medical 112 -> conflict"
+ },
+ {
+  "iso2": "WF",
+  "police": "17",
+  "ambulance": "15",
+  "fire": "18",
+  "general": null,
+  "sources": [
+   "https://www.gendarmerie.interieur.gouv.fr/contact/trouver-ma-gendarmerie/brigade-de-wallis-wallis-et-futuna-986",
+   "https://www.gendarmerie.interieur.gouv.fr/contact/trouver-ma-gendarmerie/brigade-de-futuna-wallis-et-futuna-986"
+  ],
+  "note": "From gendarmerie brigade pages via search snippet (403 on direct fetch). 112 appears there as European number but left null (territory not in EU)."
+ },
+ {
+  "iso2": "WS",
+  "police": "911",
+  "ambulance": "911",
+  "fire": "911",
+  "general": "911",
+  "sources": [
+   "https://www.gov.uk/foreign-travel-advice/samoa/getting-help"
+  ],
+  "note": "Conflicts with hint 995/996/994."
+ },
+ {
+  "iso2": "XK",
+  "police": "192",
+  "ambulance": "194",
+  "fire": "193",
+  "general": "112",
+  "sources": [
+   "https://www.gov.uk/foreign-travel-advice/kosovo/getting-help"
+  ]
+ },
+ {
+  "iso2": "YE",
+  "police": "199",
+  "ambulance": "191",
+  "fire": "191",
+  "general": null,
+  "sources": [
+   "https://www.gov.uk/foreign-travel-advice/yemen/getting-help"
+  ],
+  "note": "Police also 194 per FCDO; services highly unreliable"
+ },
+ {
+  "iso2": "YT",
+  "police": "17",
+  "ambulance": "15",
+  "fire": "18",
+  "general": "112",
+  "sources": [
+   "https://www.mayotte.ars.sante.fr/media/44006/download",
+   "https://europa.eu/youreurope/citizens/travel/security-and-emergencies/emergency/index_en.htm"
+  ],
+  "note": "ARS Mayotte guide via search snippet (PDF unreadable on fetch); Mayotte is an EU outermost region."
+ },
+ {
+  "iso2": "ZA",
+  "police": "10111",
+  "ambulance": "10177",
+  "fire": "10177",
+  "general": "112",
+  "sources": [
+   "https://www.gov.uk/foreign-travel-advice/south-africa/getting-help"
+  ],
+  "note": "112 is for mobile phones."
+ },
+ {
+  "iso2": "ZM",
+  "police": "991",
+  "ambulance": "992",
+  "fire": "993",
+  "general": null,
+  "sources": [
+   "https://www.gov.uk/foreign-travel-advice/zambia/getting-help"
+  ],
+  "note": "Wikidata 112/911/999 not confirmed"
+ },
+ {
+  "iso2": "ZW",
+  "police": "112",
+  "ambulance": "112",
+  "fire": "112",
+  "general": "112",
+  "sources": [
+   "https://www.gov.uk/foreign-travel-advice/zimbabwe/getting-help",
+   "https://www.itu.int/net/itu-t/inrdb/e129_important_numbers.aspx"
+  ],
+  "note": "Wikidata 993-995 unsupported; ITU also lists 911 general"
+ }
+]

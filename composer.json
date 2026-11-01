@@ -1,0 +1,17 @@
+{
+    "name": "arj-89/worldref",
+    "description": "Countries and territories in Arabic and English: names, phone plans, currencies, subdivisions, search and sorting.",
+    "type": "library",
+    "license": "MIT",
+    "require": {
+        "php": ">=8.1",
+        "ext-json": "*",
+        "ext-mbstring": "*",
+        "ext-intl": "*"
+    },
+    "autoload": {
+        "psr-4": {
+            "WorldRef\\": "php/src/"
+        }
+    }
+}

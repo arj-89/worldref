@@ -1,0 +1,50 @@
+{
+ "name": "worldref",
+ "version": "1.0.0",
+ "countries": 242,
+ "subdivisions": 5012,
+ "modules": [
+  "core",
+  "nationality",
+  "phone",
+  "currency",
+  "geo",
+  "locale",
+  "address",
+  "travel",
+  "sports"
+ ],
+ "builds": {
+  "bilingual": ".json",
+  "arabic": ".ar.json",
+  "english": ".en.json"
+ },
+ "excluded": [
+  "EH",
+  "AQ",
+  "BV",
+  "HM",
+  "TF",
+  "UM",
+  "GS"
+ ],
+ "sources": {
+  "iso": "49.0.0",
+  "cldr": "49.0.0",
+  "cldrSub": "release-49",
+  "wikidata": "snapshot",
+  "factbook": "2026",
+  "worldbank": "snapshot",
+  "libphonenumber": "v9.0.42",
+  "iana_tz": "2026f",
+  "iana_root": "snapshot",
+  "google_address": "snapshot",
+  "ecw": "archived 2026-04-16",
+  "emergency": "verified 2026-11-01",
+  "official_lists": "2026-11-01",
+  "icao": "8th edition",
+  "flag_icons": "7.6.0",
+  "editorial": "see overrides",
+  "generated": "-"
+ }
+}

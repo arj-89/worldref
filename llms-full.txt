@@ -1,0 +1,299 @@
+# worldref: full reference for language models
+
+> Every country and territory (242) in Arabic and English, plus 5012 ISO 3166-2 subdivisions. Version 1.0.0.
+
+> Every country in Arabic, English, or both: names, nationalities (Arabic masculine and feminine), capitals, currencies, languages, time zones, dial codes, phone validation, address formats, emergency numbers and ISO 3166-2 subdivisions. Free, open data with code for TypeScript, Python, Swift, Kotlin, Dart, PHP, Go and C#, and an MCP server.
+
+## Use it
+
+- Full data (bilingual): https://cdn.jsdelivr.net/gh/arj-89/worldref@1/data/worldref.json
+- Arabic only: https://cdn.jsdelivr.net/gh/arj-89/worldref@1/data/worldref.ar.json
+- English only: https://cdn.jsdelivr.net/gh/arj-89/worldref@1/data/worldref.en.json
+- One country: https://arj-89.github.io/worldref/api/v1/{iso2}.json (lowercase iso2, e.g. sa)
+- Index of all countries: https://arj-89.github.io/worldref/api/v1/index.json
+- Modules (join on iso2): core, nationality, phone, currency, geo, locale, address, travel, sports: https://cdn.jsdelivr.net/gh/arj-89/worldref@1/data/modules/{module}.json
+- Subdivisions: https://cdn.jsdelivr.net/gh/arj-89/worldref@1/data/subdivisions.json
+- JSON Schemas: https://cdn.jsdelivr.net/gh/arj-89/worldref@1/schema/
+- OpenAPI: https://arj-89.github.io/worldref/openapi.json
+- MCP server: `npx -y github:arj-89/worldref mcp` (tools: get_country, search_countries, validate_phone, list_subdivisions)
+
+## Rules for answering from this data
+
+- Answer from the data only. `null` or an empty list means unknown: say so, never guess.
+- Sources for every column and every editorial decision: https://cdn.jsdelivr.net/gh/arj-89/worldref@1/data/sources.json
+- Arabic sorting: compare `sort_ar` with plain string comparison. Search: normalise both sides (ignore «ال», tashkeel, tatweel, hamza forms; Arabic-Indic and Persian digits to Western).
+- Phone numbers: store international form (E.164) plus the iso2 the user picked. Validate a national number with `^(?:mobile_pattern)$`.
+- Emergency numbers are published only when an official source confirms them. A null service means: call `general`.
+
+## Policy
+
+- Israel is not in this dataset under any name or code.
+- Palestine (فلسطين) is a country; capital القدس (Jerusalem); +970 and +972 numbers are Palestinian; currencies JOD and the shekel (شيكل).
+- Disputed places follow Saudi Arabia's official positions: Western Sahara is part of Morocco; Kosovo is included; Northern Cyprus is not; Taiwan, Hong Kong and Macau are territories with a nationality.
+
+## Docs
+
+- [README](https://github.com/arj-89/worldref#readme): install for every language, recipes, field table, FAQ
+- [README in Arabic](https://github.com/arj-89/worldref/blob/main/README.ar.md)
+- [AGENTS.md](https://github.com/arj-89/worldref/blob/main/AGENTS.md): guide for coding agents
+- [llms-full.txt](https://arj-89.github.io/worldref/llms-full.txt): every field with an example record
+
+
+## Every field
+
+| Field | Module | Example (SA) | Meaning |
+|---|---|---|---|
+| `iso2` | all | `SA` | ISO 3166-1 alpha-2 code (XK for Kosovo). The key that joins every module. |
+| `iso3` | core | `SAU` | ISO 3166-1 alpha-3 code (XKK for Kosovo, as in CLDR). |
+| `iso_numeric` | core | `682` | ISO 3166-1 numeric code, as text to keep leading zeros. |
+| `kind` | core | `country` | country (sovereign state, including Palestine, Vatican and Kosovo) or territory. |
+| `name_ar` | core | `السعودية` | Short common name in Arabic. |
+| `name_en` | core | `Saudi Arabia` | Short common name in English. |
+| `official_name_ar` | core | `المملكة العربية السعودية` | Official long name in Arabic, when a source states one. |
+| `official_name_en` | core | `Kingdom of Saudi Arabia` | Official long name in English, when a source states one. |
+| `aliases_ar` | core | `["المملكة العربية السعودية","المملكة"...` | Other Arabic names people search with. For search only, not display. |
+| `aliases_en` | core | `["KSA","Kingdom of Saudi Arabia","Sau...` | Other English names people search with. For search only, not display. |
+| `flag` | core | `🇸🇦` | Flag emoji (regional indicator pair). Windows does not draw these; use flag_svg on the web. |
+| `flag_svg` | core | `flags/sa.svg` | Path of the 4:3 SVG flag in this package. |
+| `continent` | core | `asia` | africa, americas, asia, europe or oceania (UN M49 via CLDR). |
+| `groups` | core | `["gcc","arab_league"]` | Memberships: gcc, arab_league. |
+| `un_member` | core | `true` | true for the 193 UN member states. |
+| `tld` | core | `.sa` | Country-code top-level domain, when one is delegated. |
+| `sort_ar` | core | `سعوديه` | Arabic sort key: compare these with plain string comparison for correct Arabic order (ignores «ال», hamza forms, tashkeel). |
+| `sort_en` | core | `saudi arabia` | English sort key: compare with plain string comparison. |
+| `nationality` | nationality |  | Nationality names. Filled for countries and for TW, HK, MO; null for other territories. |
+| `nationality.nationality_ar_m` | nationality | `سعودي` | Arabic nationality, masculine (سعودي). |
+| `nationality.nationality_ar_f` | nationality | `سعودية` | Arabic nationality, feminine (سعودية). |
+| `nationality.nationality_en` | nationality | `Saudi` | English nationality adjective (Saudi). |
+| `nationality.icao_code` | nationality | `SAU` | ICAO Doc 9303 code used on passports (mostly iso3; D for Germany, RKS for Kosovo). |
+| `phone` | phone | `[{"calling_code":"+966","leading_digi...` | Numbering plans for this row. Most rows have one; some have several (Palestine: +970 and +972). |
+| `phone[].calling_code` | phone | `+966` | International calling code with +. |
+| `phone[].leading_digits` | phone | `null` | Regex the national number must start with when the calling code is shared (e.g. +1 809\|829\|849 for DO). null when the code is not shared this way. |
+| `phone[].primary` | phone | `true` | true when this row is the default country for the calling code. |
+| `phone[].trunk_prefix` | phone | `0` | Digit(s) dropped from local numbers before the calling code (0 in 0501234567). |
+| `phone[].pattern` | phone | `(?:[15]\d\|800\|92)\d{7}` | Regex for any valid national number (all types). Match against the full national number. |
+| `phone[].lengths` | phone | `[9,10]` | Valid national number lengths, all types. |
+| `phone[].mobile_pattern` | phone | `579[0-8]\d{5}\|5(?:[013-689]\d\|7[0-8])...` | Regex for a valid mobile national number. Match against the full national number. |
+| `phone[].mobile_lengths` | phone | `[9]` | Valid mobile national number lengths. |
+| `phone[].mobile_prefixes` | phone | `["50","51","53","54","55","56","57","...` | Leading digits of mobile numbers (up to 3 digits). Quick check; use mobile_pattern for exact validation. |
+| `phone[].mobile_distinguishable` | phone | `true` | false when mobile and landline numbers look the same (US, CA). |
+| `phone[].mobile_example` | phone | `512345678` | Example mobile national number, good as an input placeholder. |
+| `phone[].mobile_format` | phone | `## ### ####` | Display grouping for a mobile national number, # = digit. |
+| `currencies` | currency | `[{"code":"SAR","name_ar":"ريال سعودي"...` | Currencies in use. |
+| `currencies[].code` | currency | `SAR` | ISO 4217 code. |
+| `currencies[].name_ar` | currency | `ريال سعودي` | Currency name in Arabic. |
+| `currencies[].name_en` | currency | `Saudi Riyal` | Currency name in English. |
+| `currencies[].symbol` | currency | `⃁` | Symbol (the new Unicode sign where one exists, e.g. the riyal sign). |
+| `currencies[].symbol_ar` | currency | `ر.س.` | Symbol as written in Arabic (ر.س). |
+| `currencies[].symbol_fallback` | currency | `ر.س` | Text to show when the font lacks the new sign. |
+| `geo` | geo |  | Geography. |
+| `geo.capital_ar` | geo | `الرياض` | Capital in Arabic. |
+| `geo.capital_en` | geo | `Riyadh` | Capital in English. |
+| `geo.lat` | geo | `23.7167` | Latitude of the country's centre point. |
+| `geo.lng` | geo | `44.1167` | Longitude of the country's centre point. |
+| `geo.area_km2` | geo | `2149690` | Area in square kilometres. |
+| `geo.population` | geo | `36973555` | Population. |
+| `geo.population_year` | geo | `2025` | Year of the population figure. |
+| `geo.timezones` | geo | `["Asia/Riyadh"]` | IANA time zone names. |
+| `geo.driving_side` | geo | `right` | left or right. |
+| `locale` | locale |  | Locale conventions. |
+| `locale.languages` | locale | `[{"code":"ar","name_ar":"العربية","na...` | Official languages, most spoken first. |
+| `locale.languages[].code` | locale | `ar` | BCP 47 language code. |
+| `locale.languages[].name_ar` | locale | `العربية` | Language name in Arabic. |
+| `locale.languages[].name_en` | locale | `Arabic` | Language name in English. |
+| `locale.week_start` | locale | `sun` | First day of the week (sun, mon, sat...). |
+| `locale.weekend` | locale | `["fri","sat"]` | Weekend days. |
+| `locale.calendars` | locale | `["gregorian","islamic-umalqura","isla...` | Calendars in use, most preferred first (gregorian, islamic-umalqura...). |
+| `locale.measurement` | locale | `metric` | metric, us or uk. |
+| `address` | address |  | Postal address conventions. |
+| `address.postal_code_format` | address | `#####` | Postal code shape: # = digit, @ = letter. |
+| `address.postal_code_regex` | address | `^(?:\d{5})$` | Regex for a valid postal code. |
+| `address.postal_code_example` | address | `11564` | Example postal code. |
+| `address.address_format` | address | `%N%n%O%n%A%n%C %Z` | Address template: %N name, %O organisation, %A street, %D district, %C city, %S region, %Z postal code, %X sorting code, %n new line. |
+| `address.region_label_ar` | address | `null` | What the top-level region is called, in Arabic. |
+| `address.region_label_en` | address | `null` | What the top-level region is called (state, province, emirate...). |
+| `travel` | travel |  | Travel facts. |
+| `travel.emergency` | travel |  | Emergency numbers confirmed from an official source. A null service means: call `general`. |
+| `travel.emergency.police` | travel | `999` | Police. |
+| `travel.emergency.ambulance` | travel | `997` | Ambulance. |
+| `travel.emergency.fire` | travel | `998` | Fire and civil defence. |
+| `travel.emergency.general` | travel | `911` | All-services number (112, 911, 999...). |
+| `travel.plug_types` | travel | `["G"]` | IEC plug letters (A to N). |
+| `travel.voltage` | travel | `[220,230]` | Residential mains voltages. |
+| `travel.frequency_hz` | travel | `[60]` | Mains frequency in hertz. |
+| `sports` | sports |  | Sports codes. |
+| `sports.fifa` | sports | `KSA` | FIFA country code. |
+| `sports.ioc` | sports | `KSA` | IOC country code. |
+| `subdivisions.iso2` | subdivisions | `SA` | Country code. |
+| `subdivisions.code` | subdivisions | `SA-01` | ISO 3166-2 code (SA-01). |
+| `subdivisions.name_ar` | subdivisions | `منطقة الرياض` | Name in Arabic. |
+| `subdivisions.name_en` | subdivisions | `Riyadh` | Name in English. |
+| `subdivisions.parent` | subdivisions | `null` | ISO 3166-2 code of the parent subdivision, for nested ones. |
+
+## Example record (Saudi Arabia, bilingual build)
+
+```json
+{
+ "iso2": "SA",
+ "iso3": "SAU",
+ "iso_numeric": "682",
+ "kind": "country",
+ "name_ar": "السعودية",
+ "name_en": "Saudi Arabia",
+ "official_name_ar": "المملكة العربية السعودية",
+ "official_name_en": "Kingdom of Saudi Arabia",
+ "aliases_ar": [
+  "المملكة العربية السعودية",
+  "المملكة",
+  "الدولة السعودية",
+  "المملكة السعودية",
+  "المملكة العربية",
+  "بلاد الحرمين الشريفين",
+  "منبع الرسالة",
+  "مهبط الوحي"
+ ],
+ "aliases_en": [
+  "KSA",
+  "Kingdom of Saudi Arabia",
+  "Saudi"
+ ],
+ "flag": "🇸🇦",
+ "flag_svg": "flags/sa.svg",
+ "continent": "asia",
+ "groups": [
+  "gcc",
+  "arab_league"
+ ],
+ "un_member": true,
+ "tld": ".sa",
+ "sort_ar": "سعوديه",
+ "sort_en": "saudi arabia",
+ "nationality": {
+  "nationality_ar_m": "سعودي",
+  "nationality_ar_f": "سعودية",
+  "nationality_en": "Saudi",
+  "icao_code": "SAU"
+ },
+ "phone": [
+  {
+   "calling_code": "+966",
+   "leading_digits": null,
+   "primary": true,
+   "trunk_prefix": "0",
+   "pattern": "(?:[15]\\d|800|92)\\d{7}",
+   "lengths": [
+    9,
+    10
+   ],
+   "mobile_pattern": "579[0-8]\\d{5}|5(?:[013-689]\\d|7[0-8])\\d{6}",
+   "mobile_lengths": [
+    9
+   ],
+   "mobile_prefixes": [
+    "50",
+    "51",
+    "53",
+    "54",
+    "55",
+    "56",
+    "57",
+    "58",
+    "59"
+   ],
+   "mobile_distinguishable": true,
+   "mobile_example": "512345678",
+   "mobile_format": "## ### ####"
+  }
+ ],
+ "currencies": [
+  {
+   "code": "SAR",
+   "name_ar": "ريال سعودي",
+   "name_en": "Saudi Riyal",
+   "symbol": "⃁",
+   "symbol_ar": "ر.س.",
+   "symbol_fallback": "ر.س"
+  }
+ ],
+ "geo": {
+  "capital_ar": "الرياض",
+  "capital_en": "Riyadh",
+  "lat": 23.7167,
+  "lng": 44.1167,
+  "area_km2": 2149690,
+  "population": 36973555,
+  "population_year": 2025,
+  "timezones": [
+   "Asia/Riyadh"
+  ],
+  "driving_side": "right"
+ },
+ "locale": {
+  "languages": [
+   {
+    "code": "ar",
+    "name_ar": "العربية",
+    "name_en": "Arabic"
+   }
+  ],
+  "week_start": "sun",
+  "weekend": [
+   "fri",
+   "sat"
+  ],
+  "calendars": [
+   "gregorian",
+   "islamic-umalqura",
+   "islamic",
+   "islamic-rgsa"
+  ],
+  "measurement": "metric"
+ },
+ "address": {
+  "postal_code_format": "#####",
+  "postal_code_regex": "^(?:\\d{5})$",
+  "postal_code_example": "11564",
+  "address_format": "%N%n%O%n%A%n%C %Z",
+  "region_label_ar": null,
+  "region_label_en": null
+ },
+ "travel": {
+  "emergency": {
+   "police": "999",
+   "ambulance": "997",
+   "fire": "998",
+   "general": "911"
+  },
+  "plug_types": [
+   "G"
+  ],
+  "voltage": [
+   220,
+   230
+  ],
+  "frequency_hz": [
+   60
+  ]
+ },
+ "sports": {
+  "fifa": "KSA",
+  "ioc": "KSA"
+ },
+ "subdivisions": [
+  {
+   "iso2": "SA",
+   "code": "SA-01",
+   "name_ar": "منطقة الرياض",
+   "name_en": "Riyadh",
+   "parent": null
+  },
+  {
+   "iso2": "SA",
+   "code": "SA-02",
+   "name_ar": "منطقة مكة المكرمة",
+   "name_en": "Makkah",
+   "parent": null
+  }
+ ]
+}
+```

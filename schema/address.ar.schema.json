@@ -1,0 +1,66 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://arj-89.github.io/worldref/schema/address.ar.schema.json",
+  "title": "worldref address.ar",
+  "type": "array",
+  "items": {
+    "type": "object",
+    "additionalProperties": false,
+    "required": [
+      "iso2",
+      "address"
+    ],
+    "properties": {
+      "iso2": {
+        "description": "ISO 3166-1 alpha-2 code (XK for Kosovo). The key that joins every module.",
+        "type": "string"
+      },
+      "address": {
+        "description": "Postal address conventions.",
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "postal_code_format",
+          "postal_code_regex",
+          "postal_code_example",
+          "address_format",
+          "region_label"
+        ],
+        "properties": {
+          "postal_code_format": {
+            "description": "Postal code shape: # = digit, @ = letter.",
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "postal_code_regex": {
+            "description": "Regex for a valid postal code.",
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "postal_code_example": {
+            "description": "Example postal code.",
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "address_format": {
+            "description": "Address template: %N name, %O organisation, %A street, %D district, %C city, %S region, %Z postal code, %X sorting code, %n new line.",
+            "type": "string"
+          },
+          "region_label": {
+            "description": "What the top-level region is called, in Arabic.",
+            "type": [
+              "string",
+              "null"
+            ]
+          }
+        }
+      }
+    }
+  }
+}

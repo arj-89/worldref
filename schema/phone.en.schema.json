@@ -1,0 +1,116 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://arj-89.github.io/worldref/schema/phone.en.schema.json",
+  "title": "worldref phone.en",
+  "type": "array",
+  "items": {
+    "type": "object",
+    "additionalProperties": false,
+    "required": [
+      "iso2",
+      "phone"
+    ],
+    "properties": {
+      "iso2": {
+        "description": "ISO 3166-1 alpha-2 code (XK for Kosovo). The key that joins every module.",
+        "type": "string"
+      },
+      "phone": {
+        "description": "Numbering plans for this row. Most rows have one; some have several (Palestine: +970 and +972).",
+        "type": "array",
+        "items": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "calling_code",
+            "leading_digits",
+            "primary",
+            "trunk_prefix",
+            "pattern",
+            "lengths",
+            "mobile_pattern",
+            "mobile_lengths",
+            "mobile_prefixes",
+            "mobile_distinguishable",
+            "mobile_example",
+            "mobile_format"
+          ],
+          "properties": {
+            "calling_code": {
+              "description": "International calling code with +.",
+              "type": "string"
+            },
+            "leading_digits": {
+              "description": "Regex the national number must start with when the calling code is shared (e.g. +1 809|829|849 for DO). null when the code is not shared this way.",
+              "type": [
+                "string",
+                "null"
+              ]
+            },
+            "primary": {
+              "description": "true when this row is the default country for the calling code.",
+              "type": "boolean"
+            },
+            "trunk_prefix": {
+              "description": "Digit(s) dropped from local numbers before the calling code (0 in 0501234567).",
+              "type": [
+                "string",
+                "null"
+              ]
+            },
+            "pattern": {
+              "description": "Regex for any valid national number (all types). Match against the full national number.",
+              "type": "string"
+            },
+            "lengths": {
+              "description": "Valid national number lengths, all types.",
+              "type": "array",
+              "items": {
+                "type": "integer"
+              }
+            },
+            "mobile_pattern": {
+              "description": "Regex for a valid mobile national number. Match against the full national number.",
+              "type": [
+                "string",
+                "null"
+              ]
+            },
+            "mobile_lengths": {
+              "description": "Valid mobile national number lengths.",
+              "type": "array",
+              "items": {
+                "type": "integer"
+              }
+            },
+            "mobile_prefixes": {
+              "description": "Leading digits of mobile numbers (up to 3 digits). Quick check; use mobile_pattern for exact validation.",
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "mobile_distinguishable": {
+              "description": "false when mobile and landline numbers look the same (US, CA).",
+              "type": "boolean"
+            },
+            "mobile_example": {
+              "description": "Example mobile national number, good as an input placeholder.",
+              "type": [
+                "string",
+                "null"
+              ]
+            },
+            "mobile_format": {
+              "description": "Display grouping for a mobile national number, # = digit.",
+              "type": [
+                "string",
+                "null"
+              ]
+            }
+          }
+        }
+      }
+    }
+  }
+}

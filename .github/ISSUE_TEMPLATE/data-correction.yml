@@ -1,0 +1,22 @@
+name: Data correction
+description: A value in worldref is wrong or missing
+labels: [data]
+body:
+  - type: input
+    id: country
+    attributes: { label: Country (iso2), placeholder: SA }
+    validations: { required: true }
+  - type: input
+    id: field
+    attributes: { label: Field, placeholder: geo.capital_en }
+    validations: { required: true }
+  - type: textarea
+    id: change
+    attributes: { label: Current value and correct value }
+    validations: { required: true }
+  - type: input
+    id: source
+    attributes:
+      label: Source link
+      description: An official source (government, UN, ITU, ISO, World Bank) or the upstream source listed in data/sources.json. Corrections without a source are closed.
+    validations: { required: true }

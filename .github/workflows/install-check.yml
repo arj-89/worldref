@@ -1,0 +1,81 @@
+# Gate: every install command in the README works from the real tag.
+name: Install check
+on:
+  release: { types: [published] }
+  workflow_dispatch:
+    inputs:
+      tag: { description: "Tag to test, e.g. v1.0.0", required: true }
+
+env:
+  TAG: ${{ github.event.release.tag_name || inputs.tag }}
+
+jobs:
+  npm:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/setup-node@v5
+        with: { node-version: 22 }
+      - run: |
+          mkdir t && cd t && npm init -y >/dev/null && npm i "github:arj-89/worldref#$TAG"
+          node --input-type=module -e 'import { byIso2, parsePhone } from "worldref"; if (byIso2("SA").name_ar !== "السعودية" || !parsePhone("0501234567", byIso2("SA")).mobile) process.exit(1)'
+          npx -y "github:arj-89/worldref#$TAG" sa | grep -q '"iso2": "SA"'
+  cdn:
+    runs-on: ubuntu-latest
+    steps:
+      - run: curl -fsSL "https://cdn.jsdelivr.net/gh/arj-89/worldref@${TAG#v}/data/worldref.json" | grep -q '"SA"'
+  python:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/setup-python@v6
+        with: { python-version: "3.12" }
+      - run: |
+          pip install "git+https://github.com/arj-89/worldref@$TAG#subdirectory=python"
+          python -c 'import worldref as w; assert w.by_iso2("SA").name_ar == "السعودية"'
+  swift:
+    runs-on: macos-latest
+    steps:
+      - run: |
+          mkdir t && cd t && swift package init --type executable --name T
+          cat > Package.swift <<SWIFT
+          // swift-tools-version:5.9
+          import PackageDescription
+          let package = Package(name: "T", platforms: [.macOS(.v12)],
+            dependencies: [.package(url: "https://github.com/arj-89/worldref.git", exact: "${TAG#v}")],
+            targets: [.executableTarget(name: "T", dependencies: [.product(name: "WorldRef", package: "worldref")])])
+          SWIFT
+          echo 'import WorldRef; print(WorldRef.country(iso2: "SA")!.nameAr)' > Sources/T/main.swift
+          swift run T | grep -q "السعودية"
+  kotlin:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/setup-java@v5
+        with: { distribution: temurin, java-version: "21" }
+      - run: |
+          # JitPack builds on first request; allow it time.
+          for i in 1 2 3 4 5 6; do curl -fsS "https://jitpack.io/com/github/arj-89/worldref/$TAG/worldref-$TAG.pom" && exit 0; sleep 60; done; exit 1
+  dart:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: dart-lang/setup-dart@v1
+      - run: |
+          dart create -t console t && cd t
+          printf '\n  worldref:\n    git: { url: https://github.com/arj-89/worldref.git, ref: %s, path: dart }\n' "$TAG" >> pubspec.yaml
+          sed -i 's/^dependencies:$/dependencies:/' pubspec.yaml
+          dart pub get
+  php:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: shivammathur/setup-php@v2
+        with: { php-version: "8.3", extensions: intl, mbstring }
+      - run: |
+          mkdir t && cd t
+          echo '{"repositories":[{"type":"vcs","url":"https://github.com/arj-89/worldref"}],"require":{"arj-89/worldref":"^1.0"},"minimum-stability":"stable"}' > composer.json
+          composer install
+          php -r 'require "vendor/autoload.php"; exit(WorldRef\WorldRef::byIso2("SA")->name_ar === "السعودية" ? 0 : 1);'
+  go:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/setup-go@v6
+        with: { go-version: stable }
+      - run: |
+          mkdir t && cd t && go mod init t && go get "github.com/arj-89/worldref/go@$TAG"

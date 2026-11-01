@@ -1,0 +1,10 @@
+name: worldref
+description: Countries and territories in Arabic and English, with phone plans, search and sorting.
+version: 1.0.0
+repository: https://github.com/arj-89/worldref
+
+environment:
+  sdk: ">=3.0.0 <4.0.0"
+
+dev_dependencies:
+  test: ^1.24.0
