@@ -93,7 +93,9 @@ Proposed answer: **Font Awesome Free, a self-hosted inline SVG subset (about 12 
 
 **10. Apps or sites admired, and why.**
 
-None sent with the request. K2 therefore runs as a designer shortlist (6 to 10 candidates, one line each on what they teach), from developer data and docs sites with a live demo on the first screen, bilingual developer portals with real RTL, and dataset pages with strong fact tables. Candidate pool for K2 (to be verified live, not yet references): libphonenumber's demo, restcountries, flagcdn, the Unicode CLDR charts, Astro docs, Tailwind docs, Stripe docs, Moyasar docs (Arabic and English), Hudhud developer docs, MDN. The approver picks.
+None sent with the request. K2 therefore runs as a designer shortlist (6 to 10 candidates, one line each on what they teach), from developer data and docs sites with a live demo on the first screen, bilingual developer portals with real RTL, and dataset pages with strong fact tables. Candidate pool for K2 (to be verified live, not yet references): the Unicode CLDR charts, Astro docs, Tailwind docs, Stripe docs, Moyasar docs (Arabic and English), Hudhud developer docs, MDN. The approver picks. Competitor country-data sites (the libphonenumber demo, restcountries, flagcdn) are not in the pool: item 11 blocks them as look references (content coverage only).
+
+**Ruled (approver, 02/11/2026, entry 11, model Opus 5.5):** 7 of the 9 shortlisted references are picked; the list and the K4 direction each one seeds sit at the top of `docs/design/references.md`.
 
 *Source: request (no references sent); skill K2 (nothing sent: search and shortlist).*
 
@@ -211,7 +213,7 @@ Wrong even if polished:
 | 8 | No identity exists; K4 proposes; no studio brand; flags from `flags/*.svg` | request; skill |
 | 9 | Type: OFL, Arabic-capable family from the Google Fonts pool, self-hosted `.woff2`, default IBM Plex Sans Arabic unless a K4 direction proposes another pool pairing; must render U+20C1 or declare a fallback; Thmanyah out of this public repo (jsDelivr would serve it); no Actions secret; per-project exception in `DESIGN.md` | approver ruled, 02/11/2026, entry 1 (owner can overturn) |
 | 9b | Icons: Font Awesome Free, classic solid, bundled (free npm packages or inline SVG subset), `fa-brands` for GitHub, attribution in the footer; no hosted kit, no token | approver ruled, 02/11/2026, entry 2 |
-| 10 | No references sent; designer shortlists at K2 from the pool above; approver picks | request; skill K2 |
+| 10 | No references sent; designer shortlists at K2 from the pool above (blocked sites removed); approver picked 7 of 9 with three direction seeds (Astro Arabic docs, Apple Arabic specs, Lucide) | request; skill K2; approver ruled, 02/11/2026, entry 11 |
 | 11 | Blocked: studio and other-project UIs, competitor sites as look references, maps and border imagery, generic template tells | approver ruled, 02/11/2026, entry 9; Handoff 3.1, 6.2, 14 (maps clause assumed) |
 | 12 | Designer shortlist | request; skill |
 | 13 | Delegated; hard stops to the owner | request; `DESIGN.md` |
