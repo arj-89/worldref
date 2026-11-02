@@ -33,13 +33,13 @@ parsePhone("٠٥٠١٢٣٤٥٦٧", byIso2("SA"));      // { e164: "+966501234567
 
 | البيئة | التثبيت |
 |---|---|
-| JavaScript وTypeScript | `npm i github:arj-89/worldref#v1.0.0` |
+| JavaScript وTypeScript | `npm i github:arj-89/worldref#v1.1.0` |
 | Swift | Swift Package Manager من `https://github.com/arj-89/worldref` |
-| Kotlin وAndroid | JitPack: `com.github.arj-89:worldref:v1.0.0` |
-| Python | `pip install "git+https://github.com/arj-89/worldref@v1.0.0#subdirectory=python"` |
+| Kotlin وAndroid | JitPack: `com.github.arj-89:worldref:v1.1.0` |
+| Python | `pip install "git+https://github.com/arj-89/worldref@v1.1.0#subdirectory=python"` |
 | Dart وFlutter | اعتماد git مع `path: dart` |
 | PHP وLaravel | Composer مع مستودع VCS |
-| Go | `go get github.com/arj-89/worldref/go@v1.0.0` |
+| Go | `go get github.com/arj-89/worldref/go@v1.1.0` |
 | بلا تثبيت | `https://arj-89.github.io/worldref/api/v1/sa.json` |
 
 ## استخدم ما تحتاجه فقط
@@ -83,7 +83,7 @@ parsePhone("٠٥٠١٢٣٤٥٦٧", byIso2("SA"));      // { e164: "+966501234567
 **البيانات**
 - `null` أو القائمة الفارغة تعني أن القيمة غير معروفة؛ اعرضها كذلك ولا تملأها من مصدر آخر.
 - حمّل الوحدات التي تحتاجها فقط، ويجمعها المفتاح `iso2`.
-- ثبّت رقم الإصدار (`#v1.0.0` أو `@1.0.0`) حتى لا تتغير الأسماء والقواعد دون علمك.
+- ثبّت رقم الإصدار (`#v1.1.0` أو `@1.1.0`) حتى لا تتغير الأسماء والقواعد دون علمك.
 
 ## سياسة البيانات
 

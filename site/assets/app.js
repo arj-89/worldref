@@ -17,7 +17,7 @@ const store = { get: (k) => { try { return localStorage.getItem(k); } catch { re
 function applyTheme(mode) {
     if (mode === "system") delete document.documentElement.dataset.theme;
     else document.documentElement.dataset.theme = mode;
-    $$("[data-theme-set]").forEach((b) => b.setAttribute("aria-checked", String(b.dataset.themeSet === mode)));
+    $$("[data-theme-set]").forEach((b) => b.setAttribute("aria-pressed", String(b.dataset.themeSet === mode)));
 }
 applyTheme(store.get("wr-theme") || "system");
 $$("[data-theme-set]").forEach((b) => b.addEventListener("click", () => { store.set("wr-theme", b.dataset.themeSet); applyTheme(b.dataset.themeSet); }));
@@ -28,17 +28,19 @@ document.addEventListener("click", async (e) => {
     const b = e.target.closest("[data-copy]");
     if (!b) return;
     const label = b.innerHTML;
+    b.parentElement.querySelector(".copy-error")?.remove();
     try {
         await navigator.clipboard.writeText(b.dataset.copy);
         b.textContent = b.dataset.done;
         const first = b.closest(".stack")?.querySelector("details.first");
         if (first) first.open = true;
+        setTimeout(() => (b.innerHTML = label), 2000);
     } catch {
-        b.textContent = b.dataset.fail;
-        const code = b.previousElementSibling;
+        const prev = b.previousElementSibling;
+        const code = prev?.matches("pre, code") ? prev.querySelector("code") ?? prev : b.parentElement.querySelector("code.url, pre code, pre");
         if (code) getSelection().selectAllChildren(code);
+        b.insertAdjacentHTML("afterend", `<p class="error copy-error">${esc(b.dataset.fail)}</p>`);
     }
-    setTimeout(() => (b.innerHTML = label), 2000);
 });
 
 // ---------- search data ----------
@@ -47,7 +49,7 @@ const loadSearch = () => (searchData ??= fetch(`${BASE}/assets/search.json`).the
 const region = (navigator.languages?.[0] || navigator.language || "").split("-")[1]?.toUpperCase();
 const nameOf = (c) => (LANG === "ar" ? c.name_ar : c.name_en);
 const otherName = (c) => (LANG === "ar" ? c.name_en : c.name_ar);
-const rowHtml = (c) => `<li><a href="${BASE}/${LANG}/countries/${c.iso2.toLowerCase()}/"><img class="flag" src="${BASE}/flags/${c.iso2.toLowerCase()}.svg" alt="" width="22" height="16"><span class="name">${esc(nameOf(c))}</span><span class="oth" lang="${LANG === "ar" ? "en" : "ar"}">${esc(otherName(c))}</span><span class="meta"><bdi dir="ltr">${c.phone[0]?.calling_code ?? ""}</bdi></span></a></li>`;
+const rowHtml = (c, pinned) => `<li><a href="${BASE}/${LANG}/countries/${c.iso2.toLowerCase()}/"><img class="flag" src="${BASE}/flags/${c.iso2.toLowerCase()}.svg" alt="" width="22" height="16"><span class="name">${esc(nameOf(c))}</span><span class="oth" lang="${LANG === "ar" ? "en" : "ar"}">${esc(otherName(c))}</span><span class="meta">${pinned ? `<span class="tag">${esc(pinned)}</span>` : ""}<bdi dir="ltr">${c.phone[0]?.calling_code ?? ""}</bdi></span></a></li>`;
 
 const box = $("[data-search]");
 if (box) {
@@ -74,7 +76,7 @@ if (box) {
         out.classList.add("fresh");
         if (!q.trim()) {
             const list = sortCountries(data, LANG, region).slice(0, 5);
-            out.innerHTML = `<ul class="rows">${list.map(rowHtml).join("")}</ul><p><a href="${BASE}/${LANG}/countries/">${fill(W["search.list.all"], { count: num(data.length) })}</a></p>`;
+            out.innerHTML = `<ul class="rows">${list.map((c) => rowHtml(c, c.iso2 === region ? W["search.region"] : null)).join("")}</ul><p><a href="${BASE}/${LANG}/countries/">${fill(W["search.list.all"], { count: num(data.length) })}</a></p>`;
             return;
         }
         const hits = search(data, q, LANG);
@@ -83,9 +85,11 @@ if (box) {
             return;
         }
         const shown = showAll ? hits : hits.slice(0, 8);
-        out.innerHTML = `<p class="count">${fill(W[`search.results.count.${plural(hits.length)}`], { n: num(hits.length) })}</p><ul class="rows">${shown.map(rowHtml).join("")}</ul>${hits.length > shown.length ? `<button type="button" class="link" data-more>${fill(W["search.results.more"], { n: num(hits.length) })}</button>` : ""}<p class="fine">${fill(W["search.results.source"], {})}</p>`;
+        out.innerHTML = `<p class="count">${fill(W[`search.results.count.${plural(hits.length)}`], { n: num(hits.length) })}</p><ul class="rows">${shown.map((c) => rowHtml(c)).join("")}</ul>${hits.length > shown.length ? `<button type="button" class="link" data-more>${fill(W["search.results.more"], { n: num(hits.length) })}</button>` : ""}<p class="fine">${fill(W["search.results.source"], {})}</p>`;
     };
     input.addEventListener("input", () => { showAll = false; draw(); });
+    addEventListener("offline", () => { if (!$(".offline", box)) out.insertAdjacentHTML("beforebegin", `<p class="hint offline">${esc(W["search.offline.body"])}</p>`); });
+    addEventListener("online", () => $(".offline", box)?.remove());
     input.addEventListener("focus", draw, { once: true });
     box.addEventListener("click", (e) => {
         const chip = e.target.closest("[data-chip]");
@@ -106,7 +110,8 @@ if (filter) {
         const q = input.value.trim();
         if (!q) return rows.forEach((r) => (r.hidden = false)), $$("main section").forEach((s) => (s.hidden = false));
         let data;
-        try { data = await loadSearch(); } catch { return; }
+        try { data = await loadSearch(); $(".error", filter)?.remove(); }
+        catch { searchData = undefined; if (!$(".error", filter)) filter.insertAdjacentHTML("beforeend", `<p class="error">${esc(filter.dataset.error)}</p>`); return; }
         const keep = new Set(search(data, q, LANG).map((c) => c.iso2));
         rows.forEach((r) => (r.hidden = !keep.has(r.dataset.iso)));
         $$("main section").forEach((s) => { const lis = $$("li[data-iso]", s); if (lis.length) s.hidden = lis.every((l) => l.hidden); });
@@ -132,7 +137,7 @@ if (tryForm) {
         const plan = all.find((c) => c.iso2 === p.iso2).phone.find((x) => x.calling_code === p.calling_code);
         let verdict;
         if (p.iso2 !== here.iso2) verdict = fill(W["country.try.other"], { country: `<a href="${BASE}/${LANG}/countries/${p.iso2.toLowerCase()}/">${name(p.iso2)}</a>`, here: name(here.iso2) });
-        else if (!p.valid) verdict = plan.lengths.includes(p.national.length) ? fill(W["country.try.bad-pattern"], { country: name(p.iso2) }) : fill(W["country.try.bad-length"], { n: num(p.national.length), lengths: plan.lengths.join(", ") });
+        else if (!p.valid) verdict = plan.lengths.includes(p.national.length) ? fill(W["country.try.bad-pattern"], { country: name(p.iso2) }) : fill(W["country.try.bad-length"], { n: num(p.national.length), lengths: plan.lengths.join(LANG === "ar" ? "، " : ", ") });
         else if (!plan.mobile_distinguishable) verdict = fill(W["country.try.valid-indistinct"], { country: name(p.iso2) });
         else verdict = fill(W[p.mobile ? "country.try.valid-mobile" : "country.try.valid-fixed"], { country: name(p.iso2) });
         out.innerHTML = `<p class="${p.valid ? "ok" : "error"}">${verdict}</p><dl><div><dt>${esc(W["country.try.e164"])}</dt><dd><bdi dir="ltr">${esc(p.e164)}</bdi></dd></div><div><dt>${esc(W["country.try.national"])}</dt><dd><bdi dir="ltr">${esc(formatNational(p.national, plan))}</bdi></dd></div></dl><p class="fine">${esc(W["country.try.from"])} <code dir="ltr">parsePhone()</code></p>`;
@@ -145,6 +150,7 @@ if (form) {
     const W = words("b-words");
     const sizes = words("b-sizes");
     const MODS = $$('input[name="m"]', form).map((i) => i.value);
+    const sepL = LANG === "ar" ? "، " : ", ";
     const state = () => {
         const fd = new FormData(form);
         const picked = fd.getAll("m");
@@ -189,35 +195,56 @@ if (form) {
     }
     async function update() {
         const s = state();
-        $("[data-mod-status]", form).innerHTML = s.all ? `${esc(W["build.modules.all"])}. ${esc(W["build.modules.hint"])}` : fill(W["build.modules.some"], { n: s.mods.length, list: s.mods.map((m) => esc(W[`module.${m}`])).join("، ") });
+        $('input[name="m"]', form).closest("fieldset").disabled = s.subs === "only";
+        const csvInside = s.fmt === "csv" && s.subs === "inside";
+        $("[data-mod-status]", form).innerHTML = s.subs === "only" ? esc(W["build.modules.off"]) : s.all ? `${esc(W["build.modules.all"])}. ${esc(W["build.modules.hint"])}` : fill(W["build.modules.some"], { n: s.mods.length, list: s.mods.map((m) => esc(W[`module.${m}`])).join(sepL) });
         const file = shipped(s);
-        const est = file ? sizes[file] : s.mods.reduce((a, m) => a + (sizes[`modules/${m}${s.b}.json`] ?? 0), 0) + (s.subs === "inside" ? sizes[`subdivisions${s.b}.json`] : 0);
+        const est = file ? sizes[file] : s.mods.reduce((a, m) => a + (sizes[`modules/${m}${s.b}.json`] ?? 0), 0) + (s.subs === "inside" ? sizes[csvInside ? `csv/subdivisions${s.b}.csv` : `subdivisions${s.b}.json`] : 0);
         $("[data-size]", form).innerHTML = `${sizeLine(est)}${file ? ` <span class="tag">${esc(W["build.shipped.tag"])}</span>` : ""}`;
         try {
-            const { blob } = await make(s);
+            const { blob } = await make(csvInside ? { ...s, subs: "none" } : s);
             const text = await blob.text();
             const lines = text.replace(/^﻿/, "").split("\n");
-            $("[data-preview]", form).textContent = lines.slice(0, 6).map((l) => (l.length > 160 ? l.slice(0, 157) + "..." : l)).join("\n");
+            $("[data-preview]", form).textContent = lines.slice(0, 6).map((l) => (l.length > 160 ? l.slice(0, 159) + "…" : l)).join("\n");
             const rows = s.fmt === "csv" ? lines.filter(Boolean).length - 1 : (text.match(/\n\{/g) || []).length;
             $("[data-preview-end]", form).innerHTML = fill(W["build.preview.end"], { rows: fill(W["build.rows"], { n: num(rows) }) });
-            $("[data-size]", form).innerHTML = `${sizeLine(blob.size)}${file ? ` <span class="tag">${esc(W["build.shipped.tag"])}</span>` : ""}`;
+            const total = blob.size + (csvInside ? sizes[`csv/subdivisions${s.b}.csv`] : 0);
+            $("[data-size]", form).innerHTML = `${sizeLine(total)}${file ? ` <span class="tag">${esc(W["build.shipped.tag"])}</span>` : ""}${csvInside ? `<br><span class="hint">${esc(W["build.csv.two-files"])}</span>` : ""}`;
         } catch (e) {
             $("[data-preview-end]", form).innerHTML = fill(W["build.error"], { file: esc(e.message) });
         }
     }
     form.addEventListener("change", update);
     $("[data-mod-clear]", form).addEventListener("click", () => { $$('input[name="m"]', form).forEach((i) => (i.checked = false)); update(); });
+    const save = (name, blob) => {
+        const a = Object.assign(document.createElement("a"), { href: URL.createObjectURL(blob), download: name });
+        a.click();
+        setTimeout(() => URL.revokeObjectURL(a.href), 1000);
+    };
     form.addEventListener("submit", async (e) => {
         e.preventDefault();
         const status = $("[data-status]", form);
+        const btn = $('button[type="submit"]', form);
+        const s = state();
+        btn.disabled = true;
+        status.innerHTML = fill(W["build.loading"], { done: 0, total: s.mods.length });
         try {
-            const { name, blob } = await make(state());
-            const a = Object.assign(document.createElement("a"), { href: URL.createObjectURL(blob), download: name });
-            a.click();
-            URL.revokeObjectURL(a.href);
+            // CSV cannot nest: "inside each country" as CSV downloads the countries file and the subdivisions file.
+            const csvInside = s.fmt === "csv" && s.subs === "inside";
+            const { name, blob } = await make(csvInside ? { ...s, subs: "none" } : s);
+            status.innerHTML = fill(W["build.loading"], { done: s.mods.length, total: s.mods.length });
+            save(name, blob);
             status.innerHTML = fill(W["build.success"], { file: name });
+            if (csvInside) {
+                // A second automatic download can be blocked by the browser, so the second file is one more tap.
+                const second = `subdivisions${s.b}.csv`;
+                status.insertAdjacentHTML("beforeend", ` <button type="button" class="copy" data-second>${esc(W["build.download.second"])}</button>`);
+                $("[data-second]", status).addEventListener("click", async () => { save(second, await (await fetch(`${BASE}/data/csv/${second}`)).blob()); status.innerHTML = fill(W["build.success"], { file: `${name}, ${second}` }); }, { once: true });
+            }
         } catch (err) {
             status.innerHTML = fill(W["build.error"], { file: esc(err.message) });
+        } finally {
+            btn.disabled = false;
         }
     });
     update();

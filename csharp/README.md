@@ -6,14 +6,14 @@ The library targets net8.0 and has no dependencies beyond the base library. The 
 
 ## Install
 
-There is no NuGet package. Take the source from GitHub (github.com/arj-89/worldref, tag v1.0.0) and add it as a project reference.
+There is no NuGet package. Take the source from GitHub (github.com/arj-89/worldref, tag v1.1.0) and add it as a project reference.
 
 ```sh
 # Option 1: git submodule
-git submodule add https://github.com/arj-89/worldref vendor/worldref && git -C vendor/worldref checkout v1.0.0
+git submodule add https://github.com/arj-89/worldref vendor/worldref && git -C vendor/worldref checkout v1.1.0
 dotnet add reference vendor/worldref/csharp/WorldRef/WorldRef.csproj
 
-# Option 2: download the v1.0.0 release zip, copy the csharp/WorldRef folder into your solution
+# Option 2: download the v1.1.0 release zip, copy the csharp/WorldRef folder into your solution
 dotnet add reference path/to/WorldRef/WorldRef.csproj
 ```
 

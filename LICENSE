@@ -32,5 +32,6 @@ sources under their own licences; full texts are in LICENSES/:
 - CIA World Factbook (English nationality, official names): public domain.
 - IANA Time Zone Database and root zone list: public domain.
 - flag-icons (SVG flags): MIT, Copyright (c) 2013 Panayiotis Lipiridis.
+- Website fonts in site/assets/fonts (IBM Plex Sans Arabic, Noto Kufi Arabic, JetBrains Mono): OFL-1.1.
 
 Per-column sources, versions and every editorial decision are listed in data/sources.json.

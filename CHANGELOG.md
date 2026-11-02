@@ -14,7 +14,9 @@ First release.
 - MCP server for AI agents.
 - Sources: Unicode CLDR 49, libphonenumber v9.0.42, World Bank, Wikidata, CIA World Factbook (final edition), IANA tzdata 2026f, Google address metadata, official sources for emergency numbers.
 
-## Unreleased
+## 1.1.0 (2026-11-02)
+
+- New: the website at https://arj-89.github.io/worldref in Arabic and English: live search on the real data, install for every platform, a file builder, a page for each of the 242 countries with a phone checker, and an agents page. The static API, schemas and data files stay at their paths.
 
 - Fixed: English names used CLDR's abbreviated forms for some rows ("US", "UK", "Bosnia"). Names now use the standard CLDR name, falling back to the short or variant form only when the standard one carries a qualifier ("Hong Kong SAR China" becomes "Hong Kong", "Cocos (Keeling) Islands" becomes "Cocos Islands").
 - Fixed: Macao's Arabic name is now the short form «مكاو».

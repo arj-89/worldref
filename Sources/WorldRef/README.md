@@ -5,7 +5,7 @@
 ## Install
 
 ```swift
-.package(url: "https://github.com/arj-89/worldref.git", from: "1.0.0")
+.package(url: "https://github.com/arj-89/worldref.git", from: "1.1.0")
 // target dependency: .product(name: "WorldRef", package: "worldref")
 ```
 

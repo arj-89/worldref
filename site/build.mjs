@@ -30,8 +30,13 @@ const t = (key, lang, vars) => {
         missing.add(key);
         return key;
     }
-    return render(e[lang], vars);
+    const out = render(e[lang], vars);
+    return lang === "ar" ? out.replace(/لـ /g, "لـ\u00a0") : out;
 };
+const tl = (key, lang, vars) => (lang === "ar" ? isoLatin(t(key, lang, vars)) : t(key, lang, vars));
+const sep = (lang) => (lang === "ar" ? "، " : ", ");
+// In Arabic text, isolate Latin runs (C#, .NET, iOS) so they keep their order, and keep «لـ» with the next word.
+const isoLatin = (html) => html.replace(/(^|[\s(«،\u0600-\u06FF])((?:[A-Za-z.#+][A-Za-z0-9.#+/-]*)(?: [A-Z][A-Za-z0-9.#+/-]*)*)(?![^<]*>)/g, (m, pre, run) => `${pre}<bdi dir="ltr">${run}</bdi>`);
 const plain = (key, lang) => (W[key]?.[lang] ?? key).replace(/`/g, "");
 const tp = (base, n, lang, vars = {}) => t(pluralKey(base, n, lang), lang, { n: num(n), ...vars });
 const ltr = (s) => `<bdi dir="ltr">${esc(s)}</bdi>`;
@@ -92,23 +97,24 @@ const NAV = [
 function switches(lang, path, other) {
     return `<div class="switches">
 <nav class="seg" aria-label="${plain("switch.language.label", lang)}"><a href="${href("ar", path)}" lang="ar" ${lang === "ar" ? 'aria-current="true"' : ""} data-lang-switch="ar">${t("switch.language.ar", lang)}</a><a href="${href("en", path)}" lang="en" ${lang === "en" ? 'aria-current="true"' : ""} data-lang-switch="en">${t("switch.language.en", lang)}</a></nav>
-<div class="seg" role="radiogroup" aria-label="${plain("switch.theme.label", lang)}">${["system", "light", "dark"].map((m) => `<button type="button" role="radio" aria-checked="${m === "system"}" data-theme-set="${m}">${t(`switch.theme.${m}`, lang)}</button>`).join("")}</div>
+<div class="seg" role="group" aria-label="${plain("switch.theme.label", lang)}">${["system", "light", "dark"].map((m) => `<button type="button" aria-pressed="${m === "system"}" data-theme-set="${m}">${t(`switch.theme.${m}`, lang)}</button>`).join("")}</div>
 </div>`;
 }
 function header(lang, path, other) {
     return `<header class="site-header">
-<a class="wordmark" href="${href(lang)}" dir="ltr">worldref</a>
-<nav class="nav" aria-label="${plain("chrome.menu.open", lang)}">${NAV.map(([k, p]) => `<a href="${href(lang, p)}" ${path === p ? 'aria-current="page"' : ""}>${t(k, lang)}</a>`).join("")}<a href="${href(other, path)}" lang="${other}" data-lang-switch="${other}">${t(`switch.language.${other}`, lang)}</a></nav>
+<a class="wordmark" href="${href(lang)}" dir="ltr" translate="no">worldref</a>
+<a class="lang" href="${href(other, path)}" lang="${other}" data-lang-switch="${other}">${t(`switch.language.${other}`, lang)}</a>
+<nav class="nav" aria-label="${plain("chrome.menu.open", lang)}">${NAV.map(([k, p]) => `<a href="${href(lang, p)}" ${path === p || (p !== "" && path.startsWith(p)) ? 'aria-current="page"' : ""}>${t(k, lang)}</a>`).join("")}</nav>
 ${switches(lang, path, other)}
 </header>`;
 }
 function footer(lang, path, other) {
     const gh = "https://github.com/arj-89/worldref";
     return `<footer class="site-footer">
-<nav aria-label="${plain("chrome.nav.home", lang)}"><a href="${href(lang)}">${t("chrome.nav.home", lang)}</a>${NAV.map(([k, p]) => `<a href="${href(lang, p)}">${t(k, lang)}</a>`).join("")}<a href="${href(lang)}#faq">${t("chrome.nav.faq", lang)}</a><a href="${href(lang)}#policy">${t("chrome.nav.policy", lang)}</a></nav>
+<nav aria-label="${plain("footer.site", lang)}"><a href="${href(lang)}">${t("chrome.nav.home", lang)}</a>${NAV.map(([k, p]) => `<a href="${href(lang, p)}">${t(k, lang)}</a>`).join("")}<a href="${href(lang)}#faq">${t("chrome.nav.faq", lang)}</a><a href="${href(lang)}#policy">${t("chrome.nav.policy", lang)}</a></nav>
 <nav aria-label="GitHub"><a href="${gh}">${t("footer.repo", lang)}</a><a href="${gh}/issues/new/choose">${t("footer.issues", lang)}</a><a href="${gh}/tree/main/LICENSES">${t("footer.licences", lang)}</a><a href="${gh}/blob/main/CITATION.cff">${t("footer.cite", lang)}</a></nav>
 ${switches(lang, path, other)}
-<p class="fine">${t("footer.licence-line", lang)} ${ltr(`v${pkg.version}`)}</p>
+<p class="fine">${t("footer.privacy", lang)} ${t("footer.licence-line", lang)} ${ltr(`v${pkg.version}`)}</p>
 </footer>`;
 }
 const copyBtn = (text, lang, kind = "command") => `<button type="button" class="copy" data-copy="${esc(text)}" data-done="${esc(plain(`action.copied-${kind}`, lang))}" data-fail="${esc(plain("action.copy.error", lang))}">${t(`action.copy-${kind}`, lang)}</button>`;
@@ -146,7 +152,7 @@ function home(lang) {
         ["8", t("home.facts.languages", lang), ""],
     ];
     const chips = ["الامارات", "00971", "KSA", "+1"];
-    const faq = [1, 2, 3, 4, 5, 6].map((i) => `<details><summary>${t(`faq.q${i}`, lang)}</summary><div>${t(`faq.a${i}`, lang)}</div></details>`).join("");
+    const faq = [1, 2, 3, 4, 5, 6].map((i) => `<details><summary><span>${t(`faq.q${i}`, lang)}</span></summary><div>${t(`faq.a${i}`, lang)}</div></details>`).join("");
     const body = `
 <section class="hero">
 <h1>${t("home.hero.title", lang)}</h1>
@@ -154,11 +160,12 @@ function home(lang) {
 <p class="actions"><a class="btn primary" href="${href(lang, "install/")}">${t("home.hero.install", lang)}</a><a class="btn" href="${href(lang, "build/")}">${t("home.hero.build", lang)}</a></p>
 <div class="search" data-search>
 <label for="q">${t("search.label", lang)}<sup class="fn"><a href="#note-1" aria-label="${plain("country.fn", lang).replace("{n}", "1")}">1</a></sup></label>
-<input id="q" type="search" autocomplete="off" spellcheck="false" enterkeyhint="search" aria-describedby="q-hint" aria-controls="q-results">
+<input id="q" dir="auto" type="search" autocomplete="off" spellcheck="false" enterkeyhint="search" aria-describedby="q-hint" aria-controls="q-results">
 <p id="q-hint" class="hint">${t("search.hint", lang)}</p>
 <p class="chips"><span>${t("search.try", lang)}</span>${chips.map((c) => `<button type="button" class="chip" data-chip="${esc(c)}"><bdi ${/[A-Za-z\u0621-\u064A]/.test(c) ? "" : 'dir="ltr"'}>${esc(c)}</bdi></button>`).join("")}</p>
-<div id="q-results" class="results" role="region" aria-live="polite" aria-label="${plain("search.region", lang)}"></div>
-<template id="q-words">${JSON.stringify(Object.fromEntries(["search.results.count.one", "search.results.count.two", "search.results.count.few", "search.results.count.many", "search.results.more", "search.results.source", "search.empty.body", "search.empty.action", "search.loading.label", "search.error.body", "search.offline.body", "search.list.all", "search.clear", "action.retry"].map((k) => [k, W[k]?.[lang] ?? k]))).replace(/</g, "\\u003c")}</template>
+<div id="q-results" class="results" role="region" aria-live="polite" aria-label="${plain("search.results.label", lang)}"></div>
+<noscript><p><a href="${href(lang, "countries/")}">${t("search.list.all", lang, { count: num(meta.countries) })}</a></p></noscript>
+<template id="q-words">${JSON.stringify(Object.fromEntries(["search.results.count.one", "search.results.count.two", "search.results.count.few", "search.results.count.many", "search.results.more", "search.results.source", "search.empty.body", "search.empty.action", "search.loading.label", "search.error.body", "search.offline.body", "search.list.all", "search.clear", "action.retry", "search.region"].map((k) => [k, W[k]?.[lang] ?? k]))).replace(/</g, "\\u003c")}</template>
 </div>
 </section>
 <section class="facts" aria-labelledby="facts-h">
@@ -235,11 +242,11 @@ function install(lang) {
               ? `<p><a href="${href(lang, "agents/")}">${t("install.mcp.more", lang)}</a></p>`
               : "";
         const first = r.first ? `<details class="first"><summary>${t("install.first.show", lang)}</summary><p class="where">${t("install.first.title", lang)}</p><pre dir="ltr"><code>${esc(r.first)}</code></pre></details>` : "";
-        return `<section class="stack" id="${r.id}" aria-labelledby="${r.id}-h"><h2 id="${r.id}-h">${t(`install.stack.${r.id}`, lang)} <span>${t(`install.stack.${r.id}.on`, lang)}</span></h2>${r.id === "files" ? `<p>${t("install.files.body", lang)}</p>` : ""}${blocks}${extra}${first}<p class="guide"><a href="https://github.com/arj-89/worldref/blob/main/${r.guide}">${t("install.guide", lang)}</a></p></section>`;
+        return `<section class="stack" id="${r.id}" aria-labelledby="${r.id}-h"><h2 id="${r.id}-h">${tl(`install.stack.${r.id}`, lang)} <span>${tl(`install.stack.${r.id}.on`, lang)}</span></h2>${r.id === "files" ? `<p>${t("install.files.body", lang)}</p>` : ""}${blocks}${extra}${first}<p class="guide"><a href="https://github.com/arj-89/worldref/blob/main/${r.guide}">${t("install.guide", lang)}</a></p></section>`;
     }).join("");
-    const jump = `<nav class="jump" aria-label="${plain("install.jump", lang)}">${INSTALL_ROWS.map((r) => `<a href="#${r.id}">${t(`install.stack.${r.id}`, lang)}</a>`).join("")}</nav>`;
+    const jump = `<nav class="jump" aria-label="${plain("install.jump", lang)}">${INSTALL_ROWS.map((r) => `<a href="#${r.id}"><span>${tl(`install.stack.${r.id}`, lang)}</span></a>`).join("")}</nav>`;
     const body = `<section class="intro"><h1>${t("install.title", lang)}</h1><p class="lede">${t("install.body", lang)}</p>${jump}</section>${rows}
-<section class="modules" aria-labelledby="mods-h"><h2 id="mods-h">${t("install.modules.title", lang)}</h2><p>${t("install.modules.body", lang)}</p><pre dir="ltr"><code>${esc('import phone from "worldref/data/modules/phone.json" with { type: "json" };\nimport { parsePhone } from "worldref/helpers";')}</code></pre><p>${t("install.modules.other", lang)}</p><p>${t("install.null", lang)}</p><p><a class="btn" href="${href(lang, "build/")}">${t("install.modules.build", lang)}</a></p></section>`;
+<section class="modules" aria-labelledby="mods-h"><h2 id="mods-h">${t("install.modules.title", lang)}</h2><p>${t("install.modules.body", lang)}</p><pre dir="ltr"><code>${esc('import phone from "worldref/data/modules/phone.json" with { type: "json" };\nimport { parsePhone } from "worldref/helpers";')}</code></pre><p>${t("install.modules.other", lang)}</p><div class="cmd"><pre dir="ltr"><code>${esc(`https://cdn.jsdelivr.net/gh/arj-89/worldref@${pkg.version}/data/modules/phone${lang === "ar" ? ".ar" : ".en"}.json`)}</code></pre>${copyBtn(`https://cdn.jsdelivr.net/gh/arj-89/worldref@${pkg.version}/data/modules/phone${lang === "ar" ? ".ar" : ".en"}.json`, lang, "url")}</div><p>${t("install.null", lang)}</p><p><a class="btn" href="${href(lang, "build/")}">${t("install.modules.build", lang)}</a></p></section>`;
     return page({ lang, path: "install/", title: `${plain("install.title", lang)} | worldref`, description: plain("install.body", lang), body, jsonld: [datasetLd(lang)] });
 }
 
@@ -255,7 +262,7 @@ function builder(lang) {
     const body = `<section class="intro"><h1>${t("build.title", lang)}</h1><p class="lede">${t("build.body", lang)}</p></section>
 <form class="builder" data-builder>
 <fieldset class="seg-field"><legend>${t("build.lang.label", lang)}</legend>${radio("b", "", t("build.bilingual", lang), true)}${radio("b", ".ar", t("build.ar", lang))}${radio("b", ".en", t("build.en", lang))}</fieldset>
-<fieldset><legend>${t("build.modules.label", lang)}</legend><p class="hint" data-mod-status>${t("build.modules.all", lang)}. ${t("build.modules.hint", lang)}</p>${MODULES.map((m) => `<label class="check"><input type="checkbox" name="m" value="${m}">${t(`module.${m}`, lang)}</label>`).join("")}<button type="button" class="link" data-mod-clear>${t("build.modules.clear", lang)}</button></fieldset>
+<fieldset><legend>${t("build.modules.label", lang)}</legend><p class="hint" data-mod-status>${t("build.modules.all", lang)}. ${t("build.modules.hint", lang)}</p>${MODULES.map((m) => `<label class="check"><input type="checkbox" name="m" value="${m}">${lang === "en" ? t(`module.${m}`, lang).replace(/^./, (c) => c.toUpperCase()) : t(`module.${m}`, lang)}</label>`).join("")}<button type="button" class="link" data-mod-clear>${t("build.modules.clear", lang)}</button></fieldset>
 <fieldset class="seg-field"><legend>${t("build.subs.label", lang, { n: num(meta.subdivisions) })}</legend>${radio("s", "none", t("build.subs.none", lang), true)}${radio("s", "inside", t("build.subs.inside", lang))}${radio("s", "only", t("build.subs.only", lang))}</fieldset>
 <fieldset class="seg-field"><legend>${t("build.format.label", lang)}</legend>${radio("f", "json", "JSON", true)}${radio("f", "csv", "CSV")}</fieldset>
 <div class="bar"><p data-size aria-live="polite"></p><button type="submit" class="btn primary">${t("build.download", lang)}</button><p data-status class="hint" aria-live="polite"></p></div>
@@ -271,12 +278,13 @@ const CONTINENTS = ["asia", "africa", "europe", "americas", "oceania"];
 function index(lang) {
     const kinds = { countries: countries.filter((c) => c.kind === "country").length, territories: countries.filter((c) => c.kind === "territory").length };
     const key = lang === "ar" ? "sort_ar" : "sort_en";
-    const groups = CONTINENTS.map((ct) => {
+    const order = [...CONTINENTS].sort((a, b) => (W[`continent.${a}`][lang].replace(/^ال/, "") < W[`continent.${b}`][lang].replace(/^ال/, "") ? -1 : 1));
+    const groups = order.map((ct) => {
         const rows = countries.filter((c) => c.continent === ct).sort((a, b) => (a[key] < b[key] ? -1 : 1));
-        return `<section aria-labelledby="ct-${ct}"><h2 id="ct-${ct}">${t(`continent.${ct}`, lang)} <span>${ltr(num(rows.length))}</span></h2><ul class="rows">${rows.map((c) => `<li data-iso="${c.iso2}"><a href="${href(lang, `countries/${c.iso2.toLowerCase()}/`)}"><img class="flag" src="${BASE}/flags/${c.iso2.toLowerCase()}.svg" alt="" width="22" height="16" loading="lazy"><span class="name">${esc(nameOf(c, lang))}</span><span class="oth" lang="${lang === "ar" ? "en" : "ar"}">${esc(nameOf(c, lang === "ar" ? "en" : "ar"))}</span><span class="meta">${c.phone[0] ? ltr(c.phone[0].calling_code) : ""}</span></a></li>`).join("")}</ul></section>`;
+        return `<section aria-labelledby="ct-${ct}"><h2 id="ct-${ct}">${t(`continent.${ct}`, lang)} (${ltr(num(rows.length))})</h2><ul class="rows">${rows.map((c) => `<li data-iso="${c.iso2}"><a href="${href(lang, `countries/${c.iso2.toLowerCase()}/`)}"><img class="flag" src="${BASE}/flags/${c.iso2.toLowerCase()}.svg" alt="" width="22" height="16" loading="lazy"><span class="name">${esc(nameOf(c, lang))}</span><span class="oth" lang="${lang === "ar" ? "en" : "ar"}">(${esc(nameOf(c, lang === "ar" ? "en" : "ar"))})</span><span class="meta">${c.phone[0] ? ltr(c.phone[0].calling_code) : ""}</span></a></li>`).join("")}</ul></section>`;
     }).join("");
     const body = `<section class="intro"><h1>${t("index.title", lang)}</h1><p class="lede">${t("index.body", lang, { count: num(countries.length), countries: num(kinds.countries), territories: num(kinds.territories) })}</p>
-<div class="search" data-filter><label for="f">${t("search.label", lang)}</label><input id="f" type="search" autocomplete="off" spellcheck="false"><p class="hint">${t("search.hint", lang)}</p></div>
+<div class="search" data-filter data-error="${esc(plain("index.error", lang))}"><label for="f">${t("search.label", lang)}</label><input id="f" dir="auto" type="search" autocomplete="off" spellcheck="false"><p class="hint">${t("search.hint", lang)}</p></div>
 <p class="fine"><a href="${href(lang)}#policy">${t("index.policy", lang)}</a></p></section>${groups}`;
     return page({ lang, path: "countries/", title: `${plain("index.title", lang)} | worldref`, description: plain("index.title", lang), body, jsonld: [datasetLd(lang)] });
 }
@@ -299,9 +307,9 @@ function countryPage(c, lang) {
         row("country.f.calling", ltr(p.calling_code) + (c.phone.length > 1 && p.primary ? "" : "")),
         row("country.f.leading", p.leading_digits ? code(p.leading_digits) : null),
         row("country.f.trunk", p.trunk_prefix ? ltr(p.trunk_prefix) : null),
-        row("country.f.lengths", p.lengths.length ? ltr(p.lengths.join(", ")) : null),
-        row("country.f.mobile-lengths", p.mobile_lengths.length ? ltr(p.mobile_lengths.join(", ")) : null),
-        row("country.f.prefixes", p.mobile_prefixes.length ? ltr(p.mobile_prefixes.join(", ")) : null),
+        row("country.f.lengths", p.lengths.length ? p.lengths.map((x) => ltr(x)).join(sep(lang)) : null),
+        row("country.f.mobile-lengths", p.mobile_lengths.length ? p.mobile_lengths.map((x) => ltr(x)).join(sep(lang)) : null),
+        row("country.f.prefixes", p.mobile_prefixes.length ? p.mobile_prefixes.map((x) => ltr(x)).join(sep(lang)) : null),
         row("country.f.example", p.mobile_example ? ltr(p.mobile_example) : null),
         row("country.f.mobile-pattern", p.mobile_pattern ? code(p.mobile_pattern) : null),
         row("country.f.distinct", t(p.mobile_distinguishable ? "country.yes" : "country.no", lang)),
@@ -317,21 +325,24 @@ function countryPage(c, lang) {
     ["name_ar", "nationality.nationality_ar_m", "nationality.nationality_en", "phone", "currencies", "geo.capital_ar", "geo.population", "geo.timezones", "locale", "address", "travel.emergency", "travel.plug_types", "travel.frequency_hz", "sports.fifa", "flag_svg", "iso2"].forEach(srcFor);
     const srcList = [...used].map((k) => {
         const s = sources.sources[k];
-        const ver = /^\d|^v\d|release/.test(s.version) ? t("country.src.version", lang, { v: esc(s.version) }) : s.version === "snapshot" ? t("country.src.snapshot", lang) : "";
-        return `<li>${t(SRC_KEY[k] ?? "source.editorial", lang)}${ver ? `, ${ver}` : ""}${s.url.startsWith("http") ? ` <a href="${esc(s.url)}" rel="external">${t("country.src.open", lang)}</a>` : ""}</li>`;
+        let ver = /^\d|^v\d|release/.test(s.version) ? t("country.src.version", lang, { v: esc(s.version) }) : s.version === "snapshot" ? t("country.src.snapshot", lang) : "";
+        if (lang === "en") ver = ver.replace(/^./, (x) => x.toLowerCase());
+        const name = t(SRC_KEY[k] ?? "source.editorial", lang);
+        const lic = s.licence ? t("country.src.licence", lang, { l: esc(s.licence.replace(/ \(.*\)$/, "")) }) : "";
+        return `<li>${s.url.startsWith("http") ? `<a href="${esc(s.url)}" rel="external">${name}</a>` : name}${ver ? `${sep(lang)}${ver}` : ""}${lic ? `${sep(lang)}${lic}` : ""}</li>`;
     }).join("");
     const emSources = sources.emergency_sources.find((e) => e.iso2 === c.iso2);
     const body = `<article class="country">
 <header class="c-head"><p class="flag" aria-hidden="true"><img src="${BASE}/flags/${c.iso2.toLowerCase()}.svg" alt="" width="64" height="48"></p><h1>${esc(n)}</h1><p class="lede">${ltr(c.iso2)} ${ltr(c.iso3 ?? "")} ${c.phone[0] ? ltr(c.phone[0].calling_code) : ""} ${t(`kind.${c.kind}`, lang)}</p>
-<p class="actions"><a class="btn" href="${BASE}/api/v1/${c.iso2.toLowerCase()}.json">${t("country.json.open", lang)}</a>${copyBtn(`${ORIGIN}${BASE}/api/v1/${c.iso2.toLowerCase()}.json`, lang, "url")}</p></header>
+<p class="actions"><a class="btn" href="${BASE}/api/v1/${c.iso2.toLowerCase()}.json">${t("country.json.open", lang)}</a></p><div class="cmd"><code class="url" dir="ltr">${ORIGIN}${BASE}/api/v1/${c.iso2.toLowerCase()}.json</code>${copyBtn(`${ORIGIN}${BASE}/api/v1/${c.iso2.toLowerCase()}.json`, lang, "url")}</div></header>
 ${sec("names", t("country.sec.names", lang), [
     row("country.f.name", `${esc(c.name_ar)} / ${esc(c.name_en)}`),
     row("country.f.official", c.official_name_ar || c.official_name_en ? [c.official_name_ar, c.official_name_en].filter(Boolean).map(esc).join(" / ") : null),
-    row("country.f.aliases", [...c.aliases_ar, ...c.aliases_en].length ? `<details><summary>${t("country.v.aliases", lang, { ar: num(c.aliases_ar.length), en: num(c.aliases_en.length) })}</summary>${[...c.aliases_ar, ...c.aliases_en].map(esc).join("، ")}</details>` : null),
+    row("country.f.aliases", [...c.aliases_ar, ...c.aliases_en].length ? `<details><summary><span>${t("country.v.aliases", lang, { ar: num(c.aliases_ar.length), en: num(c.aliases_en.length) })}</span></summary>${[...c.aliases_ar, ...c.aliases_en].map(esc).join(sep(lang))}</details>` : null),
     row("country.f.codes", `${ltr(c.iso2)} ${ltr(c.iso3 ?? "")} ${ltr(c.iso_numeric ?? "")}`),
     row("country.f.kind", t(`kind.${c.kind}`, lang)),
     row("country.f.continent", c.continent ? t(`continent.${c.continent}`, lang) : null),
-    row("country.f.groups", c.groups.length ? c.groups.map((g) => t(`group.${g.replace("_", "-")}`, lang)).join("، ") : null),
+    row("country.f.groups", c.groups.length ? c.groups.map((g) => t(`group.${g.replace("_", "-")}`, lang)).join(sep(lang)) : null),
     row("country.f.un", t(c.un_member ? "country.yes" : "country.no", lang)),
     row("country.f.tld", c.tld ? ltr(c.tld) : null),
 ])}
@@ -354,10 +365,10 @@ ${sec("geo", t("country.sec.geo", lang), [
     row("country.f.driving", geo.driving_side ? t(`driving.${geo.driving_side}`, lang) : null),
 ])}
 ${sec("locale", t("country.sec.locale", lang), [
-    row("country.f.languages", loc.languages.length ? loc.languages.map((l) => esc((lang === "ar" ? l.name_ar : l.name_en) ?? l.code)).join("، ") : null),
+    row("country.f.languages", loc.languages.length ? loc.languages.map((l) => esc((lang === "ar" ? l.name_ar : l.name_en) ?? l.code)).join(sep(lang)) : null),
     row("country.f.week-start", DAYS(loc.week_start, lang)),
-    row("country.f.weekend", loc.weekend.map((d) => DAYS(d, lang)).join("، ")),
-    row("country.f.calendars", loc.calendars.map((k) => (W[`cal.${k}`] ? t(`cal.${k}`, lang) : code(k))).join("، ")),
+    row("country.f.weekend", loc.weekend.map((d) => DAYS(d, lang)).join(sep(lang))),
+    row("country.f.calendars", loc.calendars.map((k) => (W[`cal.${k}`] ? t(`cal.${k}`, lang) : code(k))).join(sep(lang))),
     row("country.f.measurement", t(`measurement.${loc.measurement}`, lang)),
 ])}
 ${sec("address", t("country.sec.address", lang), [
@@ -372,10 +383,10 @@ ${sec("travel", t("country.sec.travel", lang), [
     row("country.f.ambulance", emv("ambulance")),
     row("country.f.fire", emv("fire")),
     row("country.f.general", em?.general ? ltr(em.general) : null),
-    row("country.f.plugs", c.travel.plug_types.length ? ltr(c.travel.plug_types.join(", ")) : null),
-    row("country.f.voltage", c.travel.voltage.length ? c.travel.voltage.map((x) => t("country.v.volts", lang, { v: num(x) })).join("، ") : null),
-    row("country.f.frequency", c.travel.frequency_hz?.length ? c.travel.frequency_hz.map((x) => t("country.v.hertz", lang, { v: num(x) })).join("، ") : null),
-], emSources ? `<p class="fine">${t("country.src.links", lang, { name: esc(n) })} ${emSources.sources.map((u, i) => `<a href="${esc(u)}" rel="external">${ltr(String(i + 1))}</a>`).join(" ")}</p>` : "")}
+    row("country.f.plugs", c.travel.plug_types.length ? c.travel.plug_types.map((x) => ltr(x)).join(sep(lang)) : null),
+    row("country.f.voltage", c.travel.voltage.length ? c.travel.voltage.map((x) => t("country.v.volts", lang, { v: num(x) })).join(sep(lang)) : null),
+    row("country.f.frequency", c.travel.frequency_hz?.length ? c.travel.frequency_hz.map((x) => t("country.v.hertz", lang, { v: num(x) })).join(sep(lang)) : null),
+], emSources ? `<p class="fine">${t("country.src.links", lang, { name: esc(n) })} ${emSources.sources.map((u) => `<a href="${esc(u)}" rel="external">${ltr(new URL(u).hostname.replace(/^www\./, ""))}</a>`).join(sep(lang))}</p>` : "")}
 ${sec("sports", t("country.sec.sports", lang), [row("country.f.fifa", c.sports.fifa ? ltr(c.sports.fifa) : null), row("country.f.ioc", c.sports.ioc ? ltr(c.sports.ioc) : null)])}
 <section id="subdivisions" aria-labelledby="subs-h"><h2 id="subs-h">${t("country.sec.subdivisions", lang, { n: num(subs.length) })}</h2>${subs.length ? `<ul class="rows subs">${subs.map((s) => `<li><span class="name">${esc((lang === "ar" ? s.name_ar : s.name_en) ?? s.name_en ?? s.name_ar ?? "")}</span><span class="meta">${ltr(s.code)}</span></li>`).join("")}</ul>` : `<p>${t("country.subs.empty", lang, { name: esc(n) })}</p>`}</section>
 ${overrides.length ? `<section id="overrides" aria-labelledby="ovr-h"><h2 id="ovr-h">${t("country.sec.overrides", lang)}</h2><ul>${overrides.map((o) => { const k = `ovr.${o.iso2.toLowerCase()}.${o.field}`; return `<li>${code(o.field)}: ${W[k] ? t(k, lang) : lang === "en" ? esc(o.why) : `<a href="https://github.com/arj-89/worldref/blob/main/data/sources.json">${t("country.sec.sources", lang)}</a>`}</li>`; }).join("")}</ul></section>` : ""}
@@ -391,7 +402,7 @@ ${overrides.length ? `<section id="overrides" aria-labelledby="ovr-h"><h2 id="ov
         ...(geo.lat != null ? { geo: { "@type": "GeoCoordinates", latitude: geo.lat, longitude: geo.lng } } : {}),
         isPartOf: { "@type": "Dataset", name: "worldref", url: `${ORIGIN}${href(lang)}` },
     };
-    const desc = [n, c.phone[0]?.calling_code, lang === "ar" ? nat.nationality_ar_m : nat.nationality_en, lang === "ar" ? geo.capital_ar : geo.capital_en].filter(Boolean).join(" · ".replace("·", ","));
+    const desc = [n, c.phone[0]?.calling_code, lang === "ar" ? nat.nationality_ar_m : nat.nationality_en, lang === "ar" ? geo.capital_ar : geo.capital_en].filter(Boolean).join(sep(lang));
     return page({ lang, path: `countries/${c.iso2.toLowerCase()}/`, title: plain("country.title", lang).replace("{name}", n), description: desc, body, jsonld: [ld] });
 }
 
@@ -432,14 +443,14 @@ function root() {
 `;
 }
 function notFound() {
-    const block = (lang) => `<div lang="${lang}" dir="${lang === "ar" ? "rtl" : "ltr"}" class="nf" data-nf="${lang}"><h1>${t("notfound.title", lang)}</h1><p>${t("notfound.body", lang)}</p><p class="actions"><a class="btn primary" href="${href(lang)}">${t("notfound.home", lang)}</a><a class="btn" href="${href(lang, "countries/")}">${t("chrome.nav.countries", lang)}</a></p></div>`;
+    const block = (lang) => `<div lang="${lang}" dir="${lang === "ar" ? "rtl" : "ltr"}" class="nf" data-nf="${lang}"><h2>${t("notfound.title", lang)}</h2><p>${t("notfound.body", lang)}</p><p class="actions"><a class="btn primary" href="${href(lang)}">${t("notfound.home", lang)}</a><a class="btn" href="${href(lang, "countries/")}">${t("chrome.nav.countries", lang)}</a></p></div>`;
     return `<!doctype html>
 <html lang="ar" dir="rtl"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="robots" content="noindex">
 <title>404 | worldref</title><meta name="color-scheme" content="light dark"><link rel="icon" href="${BASE}/assets/icon.svg" type="image/svg+xml"><link rel="stylesheet" href="${asset("site.css")}">
 <script>try{var t=localStorage.getItem("wr-theme");if(t&&t!=="system")document.documentElement.dataset.theme=t}catch(e){}</script>
-</head><body class="root"><main id="main"><p class="wordmark" dir="ltr"><a href="${BASE}/">worldref</a></p>${block("ar")}${block("en")}
-<script>(function(){var l;try{l=localStorage.getItem("wr-lang")}catch(e){}if(!l)l=/\\/en\\//.test(location.pathname)?"en":/\\/ar\\//.test(location.pathname)?"ar":((navigator.language||"").toLowerCase().indexOf("ar")===0?"ar":"en");var o=document.querySelector('[data-nf="'+(l==="ar"?"en":"ar")+'"]');if(o)o.classList.add("secondary");document.documentElement.lang=l;document.documentElement.dir=l==="ar"?"rtl":"ltr"})()</script>
-</main></body></html>
+</head><body class="root"><main id="main"><h1 class="wordmark" dir="ltr"><a href="${BASE}/" translate="no">worldref</a> <bdi>404</bdi></h1>${block("ar")}${block("en")}
+<script>(function(){var l;try{l=localStorage.getItem("wr-lang")}catch(e){}var m=location.pathname.match(/\\/(ar|en)\\//);if(m)l=m[1];if(!l)l=(navigator.language||"").toLowerCase().indexOf("ar")===0?"ar":"en";var c=location.pathname.match(/^(.*\\/countries\\/)([A-Z]{2})\\/?$/);if(c){location.replace(c[1]+c[2].toLowerCase()+"/");return}var o=document.querySelector('[data-nf="'+(l==="ar"?"en":"ar")+'"]');if(o){o.classList.add("secondary");o.querySelectorAll(".primary").forEach(function(b){b.classList.remove("primary")})}document.documentElement.lang=l;document.documentElement.dir=l==="ar"?"rtl":"ltr"})()</script>
+</main><footer class="site-footer"><p class="fine" lang="ar" dir="rtl">${t("footer.privacy", "ar")}</p><p class="fine" lang="en" dir="ltr">${t("footer.privacy", "en")}</p></footer></body></html>
 `;
 }
 

@@ -37,7 +37,10 @@ Rules for the build:
 | footer.issues | أبلغ عن خطأ في البيانات | Report a data error | links to the repo issues |
 | footer.licences | التراخيص | Licences | links to `LICENSES/` |
 | footer.cite | طريقة الاستشهاد | How to cite | links to `CITATION.cff` |
-| footer.licence-line | الكود بترخيص MIT، ولكل مصدر بيانات ترخيصه. الأيقونات من Font Awesome Free بترخيص CC BY 4.0. | Code is MIT; each data source keeps its own licence. Icons: Font Awesome Free, CC BY 4.0. | Font Awesome attribution required by entry 2 |
+| footer.site | الموقع | Site | accessible name of the footer navigation |
+| footer.privacy | لا ملفات تعريف ارتباط ولا تحليلات؛ اللغة والمظهر يُحفظان في متصفحك فقط. | No cookies and no analytics; your language and theme stay in your browser. | privacy line in every footer (review check 20) |
+| search.results.label | نتائج البحث | Search results | accessible name of the results region |
+| footer.licence-line | الكود بترخيص MIT، ولكل مصدر بيانات ترخيصه. | Code is MIT; each data source keeps its own licence. | Font Awesome attribution required by entry 2 |
 | action.copy-url | انسخ الرابط | Copy URL | one label for every URL copy on the site |
 | action.copied-url | نُسخ الرابط | URL copied | success; replaces the button label for 2 s, then returns |
 | action.copy-command | انسخ الأمر | Copy command | one label for every command copy on the site |
@@ -150,7 +153,7 @@ Rules for the build:
 | key | Arabic | English | note |
 | --- | --- | --- | --- |
 | notfound.title | هذه الصفحة غير موجودة | This page doesn't exist | h1 |
-| notfound.body | ربما تغيّر الرابط أو فيه خطأ في الكتابة. ابحث عن الدولة، أو ارجع إلى الصفحة الرئيسية. | The link may have changed or have a typo. Search for the country, or go to the home page. | cause, then fix |
+| notfound.body | ربما تغيّر الرابط أو فيه خطأ في الكتابة. افتح قائمة الدول، أو ارجع إلى الصفحة الرئيسية. | The link may have changed or have a typo. Open the country list, or go to the home page. | cause, then fix |
 | notfound.home | ارجع إلى الصفحة الرئيسية | Go to the home page | the one action besides the search control |
 | notfound.other | النسخة الإنجليزية | English version | label of the foot block that repeats `notfound.title` and `notfound.home` in the other language, with its own `lang` and `dir`; shown as plain text without JavaScript |
 

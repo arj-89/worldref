@@ -30,14 +30,14 @@ No package registry account is needed for any of these; everything installs from
 
 | Stack | Install |
 |---|---|
-| JavaScript, TypeScript (web, Node, React Native, Bun, Deno) | `npm i github:arj-89/worldref#v1.0.0` |
-| CDN (no build step) | `https://cdn.jsdelivr.net/gh/arj-89/worldref@1.0.0/data/worldref.json` |
-| Swift (iOS, macOS) | Swift Package Manager: `https://github.com/arj-89/worldref`, from `1.0.0`, product `WorldRef` |
-| Kotlin, Android | JitPack: `maven("https://jitpack.io")`, then `implementation("com.github.arj-89:worldref:v1.0.0")` |
-| Python | `pip install "git+https://github.com/arj-89/worldref@v1.0.0#subdirectory=python"` |
-| Dart, Flutter | `worldref: { git: { url: https://github.com/arj-89/worldref.git, ref: v1.0.0, path: dart } }` |
+| JavaScript, TypeScript (web, Node, React Native, Bun, Deno) | `npm i github:arj-89/worldref#v1.1.0` |
+| CDN (no build step) | `https://cdn.jsdelivr.net/gh/arj-89/worldref@1.1.0/data/worldref.json` |
+| Swift (iOS, macOS) | Swift Package Manager: `https://github.com/arj-89/worldref`, from `1.1.0`, product `WorldRef` |
+| Kotlin, Android | JitPack: `maven("https://jitpack.io")`, then `implementation("com.github.arj-89:worldref:v1.1.0")` |
+| Python | `pip install "git+https://github.com/arj-89/worldref@v1.1.0#subdirectory=python"` |
+| Dart, Flutter | `worldref: { git: { url: https://github.com/arj-89/worldref.git, ref: v1.1.0, path: dart } }` |
 | PHP, Laravel | Composer: add the VCS repository `https://github.com/arj-89/worldref`, then `composer require arj-89/worldref:^1.0` |
-| Go | `go get github.com/arj-89/worldref/go@v1.0.0` |
+| Go | `go get github.com/arj-89/worldref/go@v1.1.0` |
 | C#, .NET | Add [`csharp/WorldRef`](csharp/README.md) as a project reference |
 | Any language | JSON, CSV and SQL (Postgres, MySQL, SQLite) in [`data/`](data) and on the [releases page](https://github.com/arj-89/worldref/releases) |
 | AI agents | MCP server: `npx -y github:arj-89/worldref mcp` |
@@ -118,7 +118,7 @@ Every rule below is built into the helpers of all eight packages and locked by t
 **Data**
 - `null` (or an empty list) means unknown. Show it as unknown; never fill it from elsewhere.
 - Load only the modules you need; they join on `iso2`.
-- Pin a version (`#v1.0.0`, `@1.0.0`) so names and rules do not change under you.
+- Pin a version (`#v1.1.0`, `@1.1.0`) so names and rules do not change under you.
 
 ## Data policy
 

@@ -1,6 +1,6 @@
 # worldref: full reference for language models
 
-> Every country and territory (242) in Arabic and English, plus 5012 ISO 3166-2 subdivisions. Version 1.0.0.
+> Every country and territory (242) in Arabic and English, plus 5012 ISO 3166-2 subdivisions. Version 1.1.0.
 
 > Every country in Arabic, English, or both: names, nationalities (Arabic masculine and feminine), capitals, currencies, languages, time zones, dial codes, phone validation, address formats, emergency numbers and ISO 3166-2 subdivisions. Free, open data with code for TypeScript, Python, Swift, Kotlin, Dart, PHP, Go and C#, and an MCP server.
 

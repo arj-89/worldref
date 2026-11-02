@@ -4,7 +4,7 @@
 
 ## Install
 
-Composer reads the package straight from GitHub (repo `github.com/arj-89/worldref`, tag `v1.0.0`). In your `composer.json`:
+Composer reads the package straight from GitHub (repo `github.com/arj-89/worldref`, tag `v1.1.0`). In your `composer.json`:
 
 ```json
 {

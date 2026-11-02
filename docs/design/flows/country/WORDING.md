@@ -138,10 +138,10 @@ Values from the data (names, codes, numbers, IANA zones, regexes) are not copy a
 | measurement.uk | البريطاني | UK imperial | |
 | cal.gregorian | الميلادي | Gregorian | |
 | cal.islamic | الهجري | Islamic | |
-| cal.islamic-umalqura | الهجري (أم القرى) | Islamic, Umm al-Qura | |
-| cal.islamic-civil | الهجري الجدولي المدني | Islamic, civil tabular | |
-| cal.islamic-tbla | الهجري الجدولي الفلكي | Islamic, astronomical tabular | |
-| cal.islamic-rgsa | الهجري برؤية السعودية | Islamic, Saudi sighting | |
+| cal.islamic-umalqura | الهجري (أم القرى) | Islamic (Umm al-Qura) | |
+| cal.islamic-civil | الهجري الجدولي المدني | Islamic (civil tabular) | |
+| cal.islamic-tbla | الهجري الجدولي الفلكي | Islamic (astronomical tabular) | |
+| cal.islamic-rgsa | الهجري برؤية السعودية | Islamic (Saudi sighting) | |
 | cal.persian | الهجري الشمسي | Persian | |
 | cal.chinese | الصيني | Chinese | |
 | cal.dangi | الكوري (دانغي) | Korean (Dangi) | |
