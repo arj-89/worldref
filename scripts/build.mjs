@@ -61,7 +61,7 @@ const override = (iso2, field, value, why) => overrides.push({ iso2, field, valu
 const first = (a) => (Array.isArray(a) && a.length ? a[0] : null);
 const uniq = (a) => [...new Set(a)];
 const TASHKEEL = /[ً-ٰٟـ]/;
-const AWKWARD = /\(| - |&|\bSt\. /;
+const AWKWARD = /\(| - |&|\bSt\. | SAR |الإدارية الخاصة/;
 const continentOf = (() => {
     const parent = {};
     for (const [k, v] of Object.entries(containment)) for (const c of v._contains ?? []) if (!k.includes("-status")) (parent[c] ??= []).push(k);
@@ -88,14 +88,10 @@ function names(iso) {
             return E.SHORT_NAMES[iso].ar;
         }
         const t = terr[lang];
-        let n = t[`${iso}-alt-short`] ?? t[iso];
-        if (lang === "en") n = n.replace(/ & /g, " and ").replace(/\bSt\. /g, "Saint ");
-        if (AWKWARD.test(n)) {
-            const variant = t[`${iso}-alt-variant`];
-            if (variant && !AWKWARD.test(variant)) n = variant;
-            else if (first(wd[iso][`label_${lang}`])) n = first(wd[iso][`label_${lang}`]);
-        }
-        return n;
+        const tidy = (x) => (lang === "en" ? x.replace(/ & /g, " and ").replace(/\bSt\. /g, "Saint ") : x);
+        // The standard name, unless it carries a qualifier; then the first clean alternative.
+        const candidates = [t[iso], t[`${iso}-alt-short`], t[`${iso}-alt-variant`], first(wd[iso][`label_${lang}`])].filter(Boolean).map(tidy);
+        return candidates.find((x) => !AWKWARD.test(x)) ?? candidates[0];
     };
     return { ar: pick("ar"), en: pick("en") };
 }
@@ -313,7 +309,7 @@ function emergencyOf(iso) {
 }
 
 for (const [iso, v] of Object.entries(E.WEEK_FILL)) override(iso, "locale.week_start,locale.weekend", v, "CLDR has no week data for this row; neighbouring Arab practice");
-override("PS", "travel.frequency_hz", null, "Electric Current Worldwide lists this grid under the excluded row's name; mapped to Palestine");
+override("PS", "travel.frequency_hz", [50], "Electric Current Worldwide lists this grid under the excluded row's name; mapped to Palestine");
 override("PS", "phone[+972]", null, "+972 numbering (Jerusalem, 1948 lines) mapped to Palestine by policy");
 
 // ---------- assemble ----------

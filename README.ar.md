@@ -35,7 +35,7 @@ parsePhone("٠٥٠١٢٣٤٥٦٧", byIso2("SA"));      // { e164: "+966501234567
 |---|---|
 | JavaScript وTypeScript | `npm i github:arj-89/worldref#v1.0.0` |
 | Swift | Swift Package Manager من `https://github.com/arj-89/worldref` |
-| Kotlin وAndroid | JitPack: `com.github.arj-89:worldref:1.0.0` |
+| Kotlin وAndroid | JitPack: `com.github.arj-89:worldref:v1.0.0` |
 | Python | `pip install "git+https://github.com/arj-89/worldref@v1.0.0#subdirectory=python"` |
 | Dart وFlutter | اعتماد git مع `path: dart` |
 | PHP وLaravel | Composer مع مستودع VCS |
