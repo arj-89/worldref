@@ -22,10 +22,19 @@ Format: date, feature, what happened (as a role, no blame), root cause, what cha
 - **Affects siblings:** none checked (outside this task's scope).
 - **Candidate for the skill:** yes (`references/copy.md`, RTL and bidi: name the bidi-mirrored glyph trap next to the icon-mirroring rule).
 
+### 02/11/2026 · K3 Stop 1 (approver rulings)
+
+- **What happened:** at K1 the approver ruled that strings from `sources.json` and `meta.json` are shown verbatim (entry 8). At K3 the designer found that four of them are English words and that the source names are English sentences, which would put English text in the Arabic build. The ruling had to be narrowed (entry 16).
+- **Root cause:** the K1 ruling was made from the field names and two sample values, not from the full set of values it covered.
+- **What changed here:** entry 16 limits "verbatim" to version numbers; word forms and source names go through `WORDING.md`. The approver now reads every distinct value a "show as stored" ruling covers before making it.
+- **Affects siblings:** none checked (outside this task's scope).
+- **Candidate for the skill:** yes (`references/process.md` 4.3: before a Delegated ruling says "show as stored", list the distinct values it covers and check each against the language rules).
+
 ## Rejected, do not reopen
 
 Decisions tried and rejected in this project, so a later session does not propose them again.
 
 | Date | Proposal | Why rejected |
 | --- | --- | --- |
-| | | |
+| 02/11/2026 | Arabic-Indic or Persian digits on the site as example inputs (chips, proof rows, sample states), with an `example_inputs` allowlist in `design-lint.json` | The owner's hard rule 1 bans Eastern Arabic digits in any UI, even in fully Arabic text; the hint copy and the automated digit-vector run prove the feature instead (entry 15) |
+| 02/11/2026 | English override reasons with `lang="en"` on Arabic country pages | Puts English text in the Arabic build (brief item 15); Arabic reasons are site copy instead (entry 17) |

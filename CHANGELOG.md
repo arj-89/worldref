@@ -19,4 +19,4 @@ First release.
 - Fixed: English names used CLDR's abbreviated forms for some rows ("US", "UK", "Bosnia"). Names now use the standard CLDR name, falling back to the short or variant form only when the standard one carries a qualifier ("Hong Kong SAR China" becomes "Hong Kong", "Cocos (Keeling) Islands" becomes "Cocos Islands").
 - Fixed: Macao's Arabic name is now the short form «مكاو».
 - Fixed: the README showed most of its sections twice.
-- Docs: the Arabic README's JitPack coordinate now uses the tag v1.0.0.
+- Docs: the Arabic README now uses the JitPack tag v1.0.0 and states that policy-change requests are closed.
