@@ -2,7 +2,7 @@
 
 **Every country in Arabic, English, or both:** names, nationalities, capitals, currencies, languages, time zones, dial codes, phone validation, address formats and subdivisions. One dataset, ready for JSON, CSV, SQL, TypeScript, Python, Swift, Kotlin, Dart, PHP, Go and C#, and for AI agents (MCP).
 
-[العربية](README.ar.md) · [Website and search demo](https://arj-89.github.io/worldref) · [Field reference](#fields) · [Data sources](#sources-and-licences)
+[العربية](README.ar.md) · [Website and search demo](https://arj-89.github.io/worldref) · [Best practices](#best-practices) · [Field reference](#fields) · [Data sources](#sources-and-licences)
 
 [![CI](https://github.com/arj-89/worldref/actions/workflows/ci.yml/badge.svg)](https://github.com/arj-89/worldref/actions/workflows/ci.yml)
 ![countries](https://img.shields.io/badge/countries-242-blue) ![subdivisions](https://img.shields.io/badge/subdivisions-5012-blue) ![languages](https://img.shields.io/badge/names-Arabic%20%7C%20English-green)
@@ -82,6 +82,43 @@ const label = (c, female) => (female ? c.nationality.nationality_ar_f : c.nation
 ```
 
 **Database seed:** run [`data/sql/postgres.sql`](data/sql/postgres.sql) (or `mysql.sql`, `sqlite.sql`). It creates `countries` and `subdivisions`.
+
+## Best practices
+
+Every rule below is built into the helpers of all eight packages and locked by the shared tests in [`tests/vectors.json`](tests/vectors.json). Use the helpers; if you write your own, follow these rules exactly.
+
+**Search** (`normalize()`, `search()`)
+- Normalise both sides, the query and the names, the same way.
+- Arabic: drop «ال» at the start of every word (not only the first); remove tashkeel (fatha, damma, kasra, sukun, shadda, tanween) and tatweel (ـ); treat أ إ آ ٱ as ا, ة as ه, ى as ي, ؤ as و, ئ as ي. So «الإمارات», «امارات» and «الأمارات» all find the UAE.
+- Latin: ignore case and accents, and treat punctuation as a space, so «cote d'ivoire» finds Côte d’Ivoire.
+- Digits: convert Arabic-Indic (٠١٢٣٤٥٦٧٨٩) and Persian (۰۱۲۳۴۵۶۷۸۹) digits to Western before anything else.
+- Match names and aliases in both languages, ISO codes (SA, SAU), and dial codes with or without «+» or «00» (+966, 00966, 966).
+
+**Sorting** (`sortCountries()`)
+- Put the user's country first: from their profile, else the device region, else pin nothing.
+- Then sort by `sort_ar` or `sort_en` with plain string comparison. Do not use locale collation (`Intl.Collator("ar")`, `localizedStandardCompare`): neither ignores «ال», so every «ال» name bunches under ا.
+
+**Display**
+- Show the flag, then the name in the UI language, then the dial code.
+- In Arabic, isolate the dial code and any Latin text left-to-right in the UI (`<bdi dir="ltr">+966</bdi>`, or U+2066 ... U+2069). The data never contains bidi marks.
+- Show Western numerals (0-9) in the UI, in both languages.
+- Use `flag_svg` on the web: Windows does not draw flag emoji.
+- Currency: show `symbol` (the Saudi riyal sign is U+20C1) and fall back to `symbol_fallback` (ر.س) where the font lacks the new sign.
+
+**Phone fields** (`parsePhone()`, `formatNational()`)
+- Accept whatever the user types: Arabic or Western digits, spaces, dashes, a leading 0, «+» or «00».
+- Store the international form (`e164`) together with the `iso2` the user picked. Shared calling codes (+1, +7, +44, +599...) cannot be read back to one country from the number alone.
+- Validate a mobile with `mobile_pattern`. Where `mobile_distinguishable` is false (US, Canada), do not reject a number for not looking like a mobile.
+- Format for display with `formatNational()` (5X XXX XXXX style).
+
+**Nationality fields**
+- List only rows where `nationality.nationality_en` is not null (countries, plus Taiwan, Hong Kong and Macau).
+- In Arabic, use the form that matches the person: `nationality_ar_m` (سعودي) or `nationality_ar_f` (سعودية).
+
+**Data**
+- `null` (or an empty list) means unknown. Show it as unknown; never fill it from elsewhere.
+- Load only the modules you need; they join on `iso2`.
+- Pin a version (`#v1.0.0`, `@1.0.0`) so names and rules do not change under you.
 
 ## Data policy
 

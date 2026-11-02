@@ -20,3 +20,4 @@ First release.
 - Fixed: Macao's Arabic name is now the short form «مكاو».
 - Fixed: the README showed most of its sections twice.
 - Docs: the Arabic README now uses the JitPack tag v1.0.0 and states that policy-change requests are closed.
+- Docs: a "Best practices" section in both READMEs (search folding, sorting, display, phone storage, nationality forms, data handling), linked from llms.txt and AGENTS.md.

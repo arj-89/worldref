@@ -21,7 +21,9 @@
 
 - Answer from the data only. `null` or an empty list means unknown: say so, never guess.
 - Sources for every column and every editorial decision: https://cdn.jsdelivr.net/gh/arj-89/worldref@1/data/sources.json
-- Arabic sorting: compare `sort_ar` with plain string comparison. Search: normalise both sides (ignore «ال», tashkeel, tatweel, hamza forms; Arabic-Indic and Persian digits to Western).
+- Arabic sorting: compare `sort_ar` with plain string comparison, never locale collation; put the user's country first.
+- Search: normalise both sides: drop «ال» from every word, remove tashkeel and tatweel, treat أ إ آ ٱ as ا, ة as ه, ى as ي, ؤ as و, ئ as ي; ignore Latin case and accents; Arabic-Indic and Persian digits to Western. Full list: https://github.com/arj-89/worldref#best-practices
+- Display: flag, name in the UI language, then the dial code isolated left-to-right in Arabic; Western numerals; `flag_svg` on the web.
 - Phone numbers: store international form (E.164) plus the iso2 the user picked. Validate a national number with `^(?:mobile_pattern)$`.
 - Emergency numbers are published only when an official source confirms them. A null service means: call `general`.
 
