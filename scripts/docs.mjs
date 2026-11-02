@@ -35,7 +35,9 @@ const rows = Object.entries(FIELDS).map(([f, d]) => `| \`${f}\` | ${moduleOf(f)}
 const table = ["| Field | Module | Example (SA) | Meaning |", "|---|---|---|---|", ...rows].join("\n");
 
 const readme = readFileSync(`${ROOT}README.md`, "utf8");
-writeFileSync(`${ROOT}README.md`, readme.replace(/<!-- fields:start -->[\s\S]*<!-- fields:end -->/, `<!-- fields:start -->\nSingle-language builds drop the \`_ar\` / \`_en\` suffix (\`name_ar\` becomes \`name\` in \`.ar.json\`).\n\n${table}\n<!-- fields:end -->`));
+// A function replacement, so "$`" inside the table (a regex example) is not read as a replacement pattern.
+const block = `<!-- fields:start -->\nSingle-language builds drop the \`_ar\` / \`_en\` suffix (\`name_ar\` becomes \`name\` in \`.ar.json\`).\n\n${table}\n<!-- fields:end -->`;
+writeFileSync(`${ROOT}README.md`, readme.replace(/<!-- fields:start -->[\s\S]*<!-- fields:end -->/, () => block));
 
 const llmsFull = `# worldref: full reference for language models
 
