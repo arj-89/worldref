@@ -1,0 +1,931 @@
+<!doctype html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>worldref K4 directions: home</title>
+<!-- K4 directions for the worldref home (flow 1). Three structurally different directions of one core screen, switched by ?direction=a|b|c and the floating bar.
+     Self-contained: no external requests. Fonts are OFL families from the Google Fonts pool, converted to woff2 unchanged, in ./fonts/.
+     Flags are the repo's own flags/ files (same repository, relative path). Copy comes from docs/design/flows/onboarding/WORDING.md (plus build.lang.label from flows/builder).
+     Data comes from data/meta.json, data/api/v1/index.json and the D1 search rows derived from data/worldref.json. Search runs dist/text.js and dist/helpers.js inlined unchanged.
+     Icons: Font Awesome Free 7.3.1, classic solid plus fa-brands GitHub, CC BY 4.0 (attribution in the footer). Designer model: Opus 5.5 (claude-opus-5-5). 02/11/2026. -->
+<style>
+@font-face{font-family:"Plex Arabic";src:url("fonts/ibm-plex-sans-arabic-400.woff2") format("woff2");font-weight:400;font-display:swap}
+@font-face{font-family:"Plex Arabic";src:url("fonts/ibm-plex-sans-arabic-600.woff2") format("woff2");font-weight:600;font-display:swap}
+@font-face{font-family:"Kufi";src:url("fonts/noto-kufi-arabic-var.woff2") format("woff2");font-weight:100 900;font-display:swap}
+@font-face{font-family:"Rubik";src:url("fonts/rubik-var.woff2") format("woff2");font-weight:300 900;font-display:swap}
+@font-face{font-family:"JBM";src:url("fonts/jetbrains-mono-400.woff2") format("woff2");font-weight:400;font-display:swap}
+
+*,*::before,*::after{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%;text-size-adjust:100%}
+body{margin:0;background:#8a8a8a}
+#site{min-height:100dvh;overflow-x:clip;background:var(--bg)}
+body.capture #tool{display:none}
+:where(#site) :where(h1,h2,h3,p,ul,ol,dl,dd,figure){margin:0}
+:where(#site) :where(ul,ol){padding:0;list-style:none}
+:where(#site) a{color:inherit}
+:where(#site) :where(button,input){font:inherit;color:inherit}
+:where(#site) img{display:block}
+:where(#site) .fa{display:inline-block;height:1em;width:auto;flex:none;overflow:visible;vertical-align:-0.125em}
+:where(#site[dir=rtl]) .fa.flip{transform:scaleX(-1)}
+#site .sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+:where(#site) .skip{position:absolute;inset-inline-start:12px;inset-block-start:-60px;z-index:20;padding:10px 14px}
+:where(#site) .skip:focus{inset-block-start:12px}
+:where(#site) :where(code,.mono){font-family:"JBM",ui-monospace,Menlo,Consolas,monospace;direction:ltr;unicode-bidi:isolate}
+:where(#site) bdi{unicode-bidi:isolate}
+:where(#site) .flag{flex:none;object-fit:cover;background:var(--hair)}
+@media (prefers-reduced-motion:no-preference){#site .moment{animation:moment var(--moment-dur,120ms) var(--moment-ease,ease-out)}@keyframes moment{from{opacity:.6}to{opacity:1}}}
+
+/* ---------- tooling: visibly not part of the design ---------- */
+#tool{position:fixed;inset-block-end:10px;inset-inline:0;margin-inline:auto;width:max-content;max-width:calc(100% - 16px);z-index:50;display:flex;flex-wrap:wrap;gap:6px;align-items:center;justify-content:center;padding:8px 10px;background:#ffef8a;color:#111;border:2px dashed #111;font:12px/1.3 ui-monospace,Menlo,Consolas,monospace;direction:ltr;box-shadow:0 6px 18px rgba(0,0,0,.35)}
+#tool button{font:inherit;min-height:32px;padding:0 10px;border:1px solid #111;background:#fff8c4;color:#111;cursor:pointer}
+#tool button[aria-pressed=true]{background:#111;color:#ffef8a}
+#tool .name{font-weight:700;padding-inline:6px;min-width:13ch;text-align:center}
+#tool .grp{display:flex;gap:3px;align-items:center}
+#tool .note{opacity:.75}
+#tool select{font:inherit;min-height:32px;border:1px solid #111;background:#fff8c4;color:#111}
+#ribbon{font:11px/1.4 ui-monospace,Menlo,Consolas,monospace;background:#ffef8a;color:#111;border-block-end:2px dashed #111;padding:6px 12px;direction:ltr;text-align:left}
+#ribbon .riy{font-size:15px}
+
+/* =========================================================
+   Direction A: Docs shell (seed: Astro Docs in Arabic)
+   ========================================================= */
+.dir-a{--bg:#f8faf9;--nav:#eef2f0;--code:#f0f3f1;--codehead:#e3e9e6;--hair:#dde4e0;--line:#b7c1bc;--text:#2b3330;--strong:#121715;--muted:#525d58;--accent:#0b7a5c;--accent-high:#064c39;--accent-low:#d3ebe2;--on-accent:#f8faf9;--focus:#0b7a5c;
+  --moment-dur:120ms;background:var(--bg);color:var(--text);font:400 1rem/1.75 "Plex Arabic",system-ui,sans-serif}
+.dir-a[data-theme=dark]{--bg:#121614;--nav:#181d1b;--code:#1a201d;--codehead:#232b27;--hair:#29312d;--line:#46514c;--text:#c6d0cb;--strong:#eef3f0;--muted:#97a39d;--accent:#5fd4a8;--accent-high:#c3f2df;--accent-low:#14392c;--on-accent:#0b1a14;--focus:#5fd4a8}
+.dir-a :focus-visible{outline:2px solid var(--focus);outline-offset:2px}
+.dir-a .skip{background:var(--nav);border:1px solid var(--line)}
+.dir-a .hdr{display:flex;align-items:center;gap:16px;height:64px;padding-inline:24px;background:var(--nav);border-block-end:1px solid var(--hair)}
+.dir-a .wm{font-weight:600;font-size:1.25rem;color:var(--strong);text-decoration:none;direction:ltr;unicode-bidi:isolate;display:inline-flex;align-items:center;min-height:44px}
+.dir-a .hdr .end{margin-inline-start:auto;display:flex;gap:4px;align-items:center}
+.dir-a .iconbtn{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-width:44px;min-height:44px;padding-inline:10px;border:0;border-radius:4px;background:transparent;color:var(--text);text-decoration:none;cursor:pointer;font-size:.9375rem}
+.dir-a .iconbtn:hover{background:var(--codehead)}.dir-a .iconbtn:active{background:var(--hair)}
+.dir-a .shell{display:grid;grid-template-columns:1fr}
+.dir-a .side{display:none}
+.dir-a .main{padding:32px 20px 0;min-width:0}
+.dir-a .col{max-width:45rem;margin-inline:auto}
+@media (min-width:1000px){
+  .dir-a .shell{grid-template-columns:18.75rem minmax(0,1fr)}
+  .dir-a .side{display:block;border-inline-end:1px solid var(--hair);padding:24px 16px}
+  .dir-a .menu-btn{display:none}
+  .dir-a .main{padding:48px 40px 0}
+}
+.dir-a .side ul{display:grid;gap:2px}
+.dir-a .side a{display:flex;align-items:center;min-height:44px;padding:6px 10px;border-radius:4px;text-decoration:none;font-size:.875rem;font-weight:600;color:var(--muted)}
+.dir-a .side a:hover{background:var(--codehead);color:var(--strong)}
+.dir-a .side a[aria-current=page]{background:var(--accent);color:var(--on-accent)}
+.dir-a h1{font-weight:600;font-size:clamp(1.875rem,1.1rem + 2.4vw,2.625rem);line-height:1.2;color:var(--strong);margin-block:0 16px}
+.dir-a .lead{font-size:1.125rem;color:var(--text);max-width:40rem}
+.dir-a .actions{display:flex;flex-wrap:wrap;gap:12px;margin-block:24px 0}
+.dir-a .btn{display:inline-flex;align-items:center;gap:10px;min-height:44px;padding-inline:18px;border-radius:4px;border:1px solid var(--line);background:transparent;color:var(--strong);font-weight:600;text-decoration:none;cursor:pointer}
+.dir-a .btn:hover{background:var(--codehead)}.dir-a .btn:active{background:var(--hair)}
+.dir-a .btn.pri{background:var(--accent);border-color:var(--accent);color:var(--on-accent)}
+.dir-a .btn.pri:hover{background:var(--accent-high);border-color:var(--accent-high)}
+.dir-a[data-theme=dark] .btn.pri:hover{color:#0b1a14}
+.dir-a .frame{margin-block:40px 0;border:1px solid var(--line);border-radius:2px;background:var(--code)}
+.dir-a .frame-h{display:flex;align-items:center;gap:10px;padding:6px 14px;background:var(--codehead);border-block-end:1px solid var(--line);font-size:.9rem;font-weight:600;color:var(--strong);min-height:40px}
+.dir-a .frame-h .fa{color:var(--accent)}
+.dir-a .frame-b{padding:16px 14px 14px}
+.dir-a .hint{font-size:.875rem;color:var(--muted);margin-block:0 10px}
+.dir-a .field{display:flex;align-items:center;gap:8px;min-height:48px;padding-inline:12px;border:1px solid var(--line);border-radius:4px;background:var(--bg)}
+.dir-a .field:focus-within{outline:2px solid var(--focus);outline-offset:1px}
+.dir-a .field .fa{color:var(--muted)}
+.dir-a .field input{flex:1;min-width:0;border:0;background:transparent;font-size:1.0625rem;min-height:46px;outline:none}
+.dir-a .chips{display:flex;flex-wrap:wrap;align-items:center;gap:6px 8px;margin-block:12px 4px;font-size:.875rem;color:var(--muted)}
+.dir-a .chip{min-height:44px;padding-inline:10px;border:1px solid var(--hair);border-radius:4px;background:var(--codehead);color:var(--strong);cursor:pointer;font-size:.875rem}
+.dir-a .chip:hover{border-color:var(--line)}.dir-a .chip[aria-pressed=true]{border-color:var(--accent);box-shadow:inset 0 -2px 0 var(--accent)}
+.dir-a .res{margin-block-start:12px}
+.dir-a .meta{display:flex;justify-content:space-between;flex-wrap:wrap;gap:4px 12px;font-size:.875rem;color:var(--muted);padding-block:6px}
+.dir-a .row{display:flex;align-items:center;gap:12px;min-height:48px;padding:6px 8px;margin-inline:-8px;border-radius:4px;text-decoration:none;color:var(--strong)}
+.dir-a .row:hover{background:var(--codehead)}.dir-a .row:active{background:var(--hair)}
+.dir-a .row .flag{width:24px;height:18px;border-radius:2px}
+.dir-a .row .nm{flex:1;min-width:0}
+.dir-a .row .oth{font-size:.8125rem;color:var(--accent)}
+.dir-a .row .dial{font-size:.8125rem;color:var(--muted)}
+.dir-a .tag{font-size:.75rem;font-weight:600;padding:1px 6px;border-radius:4px;border:1px solid var(--accent);color:var(--accent);margin-inline-start:6px;white-space:nowrap}
+.dir-a .more{display:inline-flex;align-items:center;gap:8px;min-height:44px;font-weight:600;color:var(--accent);text-decoration:none;background:none;border:0;padding:0;cursor:pointer}
+.dir-a .note .more{color:var(--accent-high)}
+.dir-a .src{font-size:.8125rem;color:var(--muted);margin-block-start:8px}
+.dir-a .note{border-inline-start:4px solid var(--accent);background:var(--accent-low);padding:14px 16px;margin-block:10px 0;color:var(--strong)}
+.dir-a .skel{display:flex;align-items:center;gap:12px;min-height:48px}
+.dir-a .skel i{display:block;height:12px;border-radius:2px;background:var(--hair)}
+.dir-a h2{font-weight:600;font-size:clamp(1.5rem,1.1rem + 1.4vw,2.1875rem);line-height:1.2;color:var(--strong);margin-block:72px 18px;scroll-margin-top:24px}
+.dir-a .facts{display:grid;grid-template-columns:auto 1fr;border-block-start:1px solid var(--hair)}
+.dir-a .facts dt,.dir-a .facts dd{padding:12px 0;border-block-end:1px solid var(--hair)}
+.dir-a .facts dt{font-family:"JBM",ui-monospace,monospace;font-size:1.25rem;color:var(--strong);padding-inline-end:24px;text-align:end;font-variant-numeric:tabular-nums}
+.dir-a .facts dd .sub{display:block;font-size:.875rem;color:var(--muted)}
+.dir-a .version{font-size:.875rem;color:var(--muted);margin-block-start:12px}
+.dir-a .links{display:grid;gap:12px}
+.dir-a .lc{display:flex;align-items:center;gap:16px;padding:16px;border:1px solid var(--hair);border-radius:4px;text-decoration:none;color:var(--text)}
+.dir-a a.lc:hover{border-color:var(--line);background:var(--code)}
+.dir-a .lc strong{display:block;color:var(--strong);font-weight:600}
+.dir-a .lc .grow{flex:1;min-width:0}
+.dir-a .lc .fa.flip{color:var(--accent)}
+.dir-a .urlrow{display:flex;align-items:stretch;gap:0;margin-block-start:10px;border:1px solid var(--line);border-radius:2px;background:var(--code)}
+.dir-a .urlrow code{flex:1;min-width:0;padding:10px 12px;font-size:.8125rem;overflow-wrap:anywhere;color:var(--strong);text-align:left}
+.dir-a .urlrow button{border:0;border-inline-start:1px solid var(--line);background:var(--codehead);padding-inline:12px;min-height:44px;display:inline-flex;align-items:center;gap:8px;cursor:pointer;font-size:.875rem;font-weight:600;white-space:nowrap}
+.dir-a .kv{display:grid;grid-template-columns:minmax(0,1fr);gap:2px;padding-block:10px;border-block-end:1px solid color-mix(in srgb,var(--accent) 25%,transparent)}
+.dir-a .kv:last-child{border-block-end:0}
+.dir-a .kv .k{font-size:.875rem;color:var(--muted)}
+.dir-a[data-theme=dark] .note .kv .k{color:#a9c9bc}
+.dir-a .kv code{font-size:.8125rem;overflow-wrap:anywhere}
+.dir-a .bul{list-style:disc;padding-inline-start:1.25rem;display:grid;gap:10px}
+.dir-a .faq details{border-block-end:1px solid var(--hair)}
+.dir-a .faq summary{min-height:52px;display:flex;align-items:center;gap:12px;cursor:pointer;font-weight:600;color:var(--strong);list-style:none;padding-block:10px}
+.dir-a .faq summary::-webkit-details-marker{display:none}
+.dir-a .faq summary .fa{margin-inline-start:auto;color:var(--muted);transition:transform .15s ease-out}
+.dir-a .faq details[open] summary .fa{transform:rotate(90deg)}
+.dir-a[dir=rtl] .faq details[open] summary .fa{transform:scaleX(-1) rotate(90deg)}
+.dir-a .faq p{padding-block:0 16px}
+.dir-a .foot{margin-block-start:96px;border-block-start:1px solid var(--hair);background:var(--nav);padding:32px 20px 40px}
+.dir-a .foot .col{display:grid;gap:20px}
+.dir-a .foot ul{display:grid;grid-template-columns:repeat(auto-fill,minmax(12rem,1fr));gap:0 16px}
+.dir-a .foot li a{display:flex;align-items:center;gap:8px;min-height:44px;text-decoration:none;font-size:.9375rem}
+.dir-a .foot li a:hover{color:var(--accent)}
+.dir-a .foot .lic{font-size:.8125rem;color:var(--muted)}
+.dir-a .seg{display:inline-flex;border:1px solid var(--line);border-radius:4px;overflow:hidden}
+.dir-a .seg button,.dir-a .seg a{min-height:44px;padding-inline:14px;border:0;border-inline-start:1px solid var(--line);background:transparent;cursor:pointer;font-size:.875rem;display:inline-flex;align-items:center;text-decoration:none}
+.dir-a .seg :first-child{border-inline-start:0}
+.dir-a .seg [aria-current=true],.dir-a .seg [aria-pressed=true]{background:var(--accent);color:var(--on-accent);font-weight:600}
+.dir-a .switches{display:flex;flex-wrap:wrap;gap:16px 24px}
+.dir-a .switches label{display:block;font-size:.8125rem;color:var(--muted);margin-block-end:6px}
+
+/* =========================================================
+   Direction B: Fact sheet (seed: Apple Saudi Arabia iPhone specs)
+   ========================================================= */
+.dir-b{--bg:#fbfbfc;--text:#1d1d1f;--muted:#64646a;--hair:#d2d2d7;--field:#f0f0f3;--accent:#0b5cad;--accent-hover:#084a8c;--on-accent:#fbfbfc;--focus:#0b5cad;
+  --moment-dur:200ms;background:var(--bg);color:var(--text);font:400 1.0625rem/1.47 "Plex Arabic",system-ui,sans-serif}
+.dir-b[data-theme=dark]{--bg:#111113;--text:#f2f2f4;--muted:#a3a3aa;--hair:#38383d;--field:#1d1d20;--accent:#5ea6ff;--accent-hover:#8cc0ff;--on-accent:#0b0b0d;--focus:#5ea6ff}
+.dir-b :focus-visible{outline:2px solid var(--focus);outline-offset:3px;border-radius:4px}
+.dir-b .skip{background:var(--bg);border:1px solid var(--hair)}
+.dir-b .kufi{font-family:"Kufi","Plex Arabic",system-ui,sans-serif}
+.dir-b .wrap{max-width:980px;margin-inline:auto;padding-inline:22px}
+.dir-b .lnav{border-block-end:1px solid var(--hair)}
+.dir-b .lnav .wrap{display:flex;align-items:center;gap:20px;min-height:52px}
+.dir-b .wm{font-family:"Kufi",system-ui,sans-serif;font-weight:600;font-size:1.3125rem;text-decoration:none;direction:ltr;unicode-bidi:isolate;min-height:44px;display:inline-flex;align-items:center}
+.dir-b .lnav nav{margin-inline-start:auto;display:flex;align-items:center;gap:4px}
+.dir-b .lnav nav a.tl{display:none;font-size:.75rem;min-height:44px;align-items:center;padding-inline:8px;text-decoration:none;color:var(--muted)}
+.dir-b .lnav nav a.tl:hover{color:var(--text)}
+@media (min-width:860px){.dir-b .lnav nav a.tl{display:inline-flex}.dir-b .menu-btn{display:none}}
+.dir-b .pill{display:inline-flex;align-items:center;gap:8px;min-height:44px;padding-inline:20px;border-radius:980px;border:0;background:var(--accent);color:var(--on-accent);text-decoration:none;font-weight:600;font-size:1rem;cursor:pointer}
+.dir-b .pill:hover{background:var(--accent-hover)}.dir-b .pill:active{opacity:.85}
+.dir-b .pill.sm{min-height:32px;padding-inline:12px;font-size:.75rem;font-weight:400;position:relative}
+.dir-b .pill.sm::after{content:"";position:absolute;inset:-6px -2px}
+.dir-b .plain{display:inline-flex;align-items:center;gap:6px;min-height:44px;color:var(--accent);text-decoration:none;font-size:1.0625rem;background:none;border:0;padding:0;cursor:pointer}
+.dir-b .plain:hover{text-decoration:underline}
+.dir-b .plain .fa{font-size:.75em}
+.dir-b .menu-btn{display:inline-flex;align-items:center;justify-content:center;min-width:44px;min-height:44px;border:0;background:none;color:var(--text);cursor:pointer;font-size:1.0625rem}
+.dir-b .hero{padding-block:56px 8px}
+.dir-b h1{font-family:"Kufi","Plex Arabic",system-ui,sans-serif;font-weight:600;font-size:clamp(2rem,1.2rem + 3vw,3rem);line-height:1.15;max-width:22ch}
+.dir-b .lede{font-size:clamp(1.125rem,1rem + .4vw,1.3125rem);color:var(--muted);max-width:36rem;margin-block:16px 0;line-height:1.5}
+.dir-b .actions{display:flex;flex-wrap:wrap;align-items:center;gap:12px 28px;margin-block:28px 0}
+.dir-b .sec{display:grid;grid-template-columns:1fr;gap:14px;padding-block:40px 36px;border-block-start:1px solid var(--hair)}
+.dir-b .sec.first{border-block-start:0}
+@media (min-width:860px){.dir-b .sec{grid-template-columns:216px minmax(0,1fr);gap:0 48px;padding-block:61px 56px}}
+.dir-b .lab{font-family:"Kufi","Plex Arabic",system-ui,sans-serif;font-weight:600;font-size:1.5rem;line-height:1.17;scroll-margin-top:24px}
+.dir-b .lab label{cursor:pointer}
+.dir-b sup.fn a{font-size:.6em;text-decoration:none;color:var(--text);padding-inline:2px;margin-inline-start:2px}
+.dir-b sup.fn a:hover{color:var(--accent)}
+.dir-b .facts{min-width:0;color:var(--muted)}
+.dir-b .facts strong,.dir-b .facts .d{color:var(--text);font-weight:600}
+.dir-b .hint{margin-block:0 12px}
+.dir-b .field{display:flex;align-items:center;gap:10px;min-height:48px;padding-inline:14px;border-radius:12px;background:var(--field);color:var(--text)}
+.dir-b .field:focus-within{outline:2px solid var(--focus);outline-offset:2px}
+.dir-b .field input{flex:1;min-width:0;border:0;background:transparent;font-size:1.0625rem;min-height:46px;outline:none}
+.dir-b .field .fa{color:var(--muted)}
+.dir-b .chips{display:flex;flex-wrap:wrap;align-items:center;gap:8px;margin-block:14px 0}
+.dir-b .chip{min-height:44px;padding-inline:14px;border:1px solid var(--hair);border-radius:980px;background:transparent;cursor:pointer;font-size:.9375rem;color:var(--text)}
+.dir-b .chip:hover{border-color:var(--muted)}.dir-b .chip[aria-pressed=true]{border-color:var(--text);font-weight:600}
+.dir-b .res{margin-block-start:22px}
+.dir-b .count{color:var(--text);font-weight:600;margin-block-end:6px}
+.dir-b .line{display:flex;align-items:center;gap:10px;min-height:44px;text-decoration:none;color:var(--muted)}
+.dir-b .line:hover .nm{color:var(--accent)}
+.dir-b .line .flag{width:22px;height:16px;border-radius:2px}
+.dir-b .line .nm{color:var(--text);font-weight:600}
+.dir-b .line .oth{font-size:.875rem;color:var(--accent);font-weight:400}
+.dir-b .line .dialw{margin-inline-start:auto}.dir-b .line .dial{font-size:.9375rem}
+.dir-b .tag{font-size:.75rem;color:var(--muted);border:1px solid var(--hair);border-radius:980px;padding:0 8px;white-space:nowrap}
+.dir-b .skel{display:flex;gap:10px;align-items:center;min-height:44px}
+.dir-b .skel i{display:block;height:12px;border-radius:6px;background:var(--field)}
+.dir-b .notice{color:var(--text);margin-block:14px 0}
+.dir-b .figs{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:28px 24px}
+@media (min-width:860px){.dir-b .figs{grid-template-columns:repeat(3,minmax(0,1fr))}}
+.dir-b .fig b{display:block;font-family:"Kufi","Plex Arabic",system-ui,sans-serif;font-weight:600;font-size:clamp(2rem,1.5rem + 1.6vw,2.75rem);line-height:1.1;color:var(--text)}
+.dir-b .fig span{display:block;margin-block-start:6px}
+.dir-b .ways{display:grid;gap:22px}
+.dir-b .ways .d{display:block}
+.dir-b .url{display:flex;flex-wrap:wrap;align-items:center;gap:6px 14px;margin-block-start:8px}
+.dir-b .url code{font-size:.875rem;color:var(--text);overflow-wrap:anywhere;min-width:0}
+.dir-b .pairs{display:grid;gap:18px}
+.dir-b .pairs code{font-size:.875rem;color:var(--text);overflow-wrap:anywhere}
+.dir-b .pairs .v{display:block;margin-block-start:2px}
+.dir-b .bul{display:grid;gap:12px;list-style:disc;padding-inline-start:1.1rem}
+.dir-b .faq details{padding-block:4px}
+.dir-b .faq summary{min-height:44px;display:flex;align-items:center;gap:10px;cursor:pointer;color:var(--text);font-weight:600;list-style:none}
+.dir-b .faq summary::-webkit-details-marker{display:none}
+.dir-b .faq summary .fa{font-size:.75em;color:var(--accent);transition:transform .2s ease-out}
+.dir-b .faq details[open] summary .fa{transform:rotate(90deg)}
+.dir-b[dir=rtl] .faq details[open] summary .fa{transform:scaleX(-1) rotate(90deg)}
+.dir-b .faq p{padding-block:4px 12px}
+.dir-b .notes{font-size:.75rem;line-height:1.67;color:var(--muted)}
+.dir-b .notes ol{list-style:decimal;padding-inline-start:1.2rem;display:grid;gap:6px}
+.dir-b .notes code{font-size:.75rem}
+.dir-b .foot{background:var(--field);margin-block-start:40px;padding-block:28px 40px;font-size:.75rem;color:var(--muted)}
+.dir-b[data-theme=dark] .foot{background:#18181b}
+.dir-b .foot ul{display:flex;flex-wrap:wrap;gap:0 22px;border-block-end:1px solid var(--hair);margin-block-end:12px}
+.dir-b .foot li a{display:inline-flex;align-items:center;gap:6px;min-height:44px;text-decoration:none;color:var(--text)}
+.dir-b .foot li a:hover{text-decoration:underline}
+.dir-b .switches{display:flex;flex-wrap:wrap;gap:12px 24px;margin-block-start:14px}
+.dir-b .switches label{display:block;margin-block-end:6px}
+.dir-b .seg{display:inline-flex;padding:2px;border-radius:980px;background:var(--bg);border:1px solid var(--hair)}
+.dir-b .seg button,.dir-b .seg a{min-height:40px;padding-inline:14px;border:0;border-radius:980px;background:transparent;cursor:pointer;font-size:.8125rem;display:inline-flex;align-items:center;text-decoration:none;color:var(--text)}
+.dir-b .seg [aria-current=true],.dir-b .seg [aria-pressed=true]{background:var(--text);color:var(--bg);font-weight:600}
+
+/* =========================================================
+   Direction C: Instrument (seed: Lucide icons)
+   ========================================================= */
+.dir-c{--bg:#f6f6f4;--panel:#fdfdfc;--tile:#ebebe8;--tile-h:#e1e1dd;--text:#1c1c1a;--muted:#5f5f5a;--hair:#dadad5;--accent:#b53d0b;--accent-h:#94310a;--ring:rgba(181,61,11,.16);--on-accent:#fdfdfc;--focus:#b53d0b;
+  --moment-dur:120ms;background:var(--bg);color:var(--text);font:400 1rem/1.55 "Rubik",system-ui,sans-serif}
+.dir-c[data-theme=dark]{--bg:#141413;--panel:#1c1c1a;--tile:#262624;--tile-h:#30302d;--text:#ededea;--muted:#a3a39d;--hair:#34342f;--accent:#ff8552;--accent-h:#ffa47d;--ring:rgba(255,133,82,.2);--on-accent:#1a0c05;--focus:#ff8552}
+.dir-c :focus-visible{outline:2px solid var(--focus);outline-offset:2px}
+.dir-c .skip{background:var(--panel);border:1px solid var(--hair);border-radius:8px}
+.dir-c .wrap{max-width:1200px;margin-inline:auto;padding-inline:20px}
+.dir-c .hdr .wrap{display:flex;align-items:center;gap:8px;min-height:60px}
+.dir-c .wm{font-weight:600;font-size:1.25rem;text-decoration:none;direction:ltr;unicode-bidi:isolate;min-height:44px;display:inline-flex;align-items:center;gap:8px}
+.dir-c .wm .dot{width:10px;height:10px;border-radius:3px;background:var(--accent)}
+.dir-c .hdr nav{margin-inline-start:auto;display:flex;align-items:center;gap:2px}
+.dir-c .hdr nav a.tl{display:none;min-height:44px;align-items:center;padding-inline:10px;text-decoration:none;font-size:.9375rem;color:var(--muted);border-radius:8px}
+.dir-c .hdr nav a.tl:hover{color:var(--text);background:var(--tile)}
+.dir-c .hdr nav a.tl[aria-current=page]{color:var(--accent)}
+@media (min-width:900px){.dir-c .hdr nav a.tl{display:inline-flex}.dir-c .menu-btn{display:none}}
+.dir-c .iconbtn{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-width:44px;min-height:44px;border:0;border-radius:8px;background:transparent;color:var(--text);cursor:pointer;text-decoration:none}
+.dir-c .iconbtn:hover{background:var(--tile)}
+.dir-c .hero{display:grid;gap:14px;padding-block:28px 20px}
+@media (min-width:900px){.dir-c .hero{grid-template-columns:minmax(0,1fr) auto;align-items:end;gap:24px 48px;padding-block:40px 28px}}
+.dir-c h1{font-weight:600;font-size:clamp(1.75rem,1.3rem + 1.6vw,2.25rem);line-height:1.15;letter-spacing:-.01em}
+.dir-c .lede{color:var(--muted);max-width:38rem;margin-block-start:10px}
+.dir-c .actions{display:flex;flex-wrap:wrap;gap:10px}
+.dir-c .btn{display:inline-flex;align-items:center;gap:10px;min-height:44px;padding-inline:16px;border-radius:8px;border:1px solid var(--hair);background:var(--panel);color:var(--text);font-weight:500;text-decoration:none;cursor:pointer}
+.dir-c .btn:hover{background:var(--tile)}.dir-c .btn:active{background:var(--tile-h)}
+.dir-c .btn.pri{background:var(--accent);border-color:var(--accent);color:var(--on-accent)}
+.dir-c .btn.pri:hover{background:var(--accent-h);border-color:var(--accent-h)}
+.dir-c .inst{display:grid;gap:16px}
+@media (min-width:900px){.dir-c .inst{grid-template-columns:280px minmax(0,1fr);align-items:start;gap:24px}}
+.dir-c .panel{background:var(--panel);border:1px solid var(--hair);border-radius:12px;padding:16px;display:grid;gap:14px;order:2}
+@media (min-width:900px){.dir-c .panel{order:0}}
+.dir-c .panel h2{font-size:1rem;font-weight:600}
+.dir-c .ctl label,.dir-c .ctl .lab{display:flex;justify-content:space-between;font-size:.875rem;font-weight:500;margin-block-end:8px}
+.dir-c .ctl .lab span{color:var(--muted);font-weight:400}
+.dir-c .strip{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));background:var(--tile);border-radius:8px;padding:3px;gap:3px}
+.dir-c .strip button{min-height:40px;border:0;border-radius:6px;background:transparent;cursor:pointer;font-size:.8125rem;padding-inline:4px;color:var(--muted);line-height:1.2}
+.dir-c .strip button[aria-checked=true]{background:var(--panel);color:var(--text);font-weight:600;box-shadow:0 1px 3px rgba(0,0,0,.12)}
+@media (min-width:900px){.dir-c .strip{grid-template-columns:1fr}.dir-c .strip button{text-align:start;padding-inline:12px}}
+.dir-c pre{margin:0;padding:12px;background:var(--tile);border-radius:8px;font-family:"JBM","Rubik",ui-monospace,monospace;font-size:.75rem;line-height:1.6;white-space:pre-wrap;overflow-wrap:anywhere;direction:ltr;text-align:left;color:var(--text)}
+.dir-c .path{font-size:.75rem;color:var(--muted);margin-block-end:6px}
+.dir-c .search{min-width:0}
+.dir-c .search>label{display:block;font-weight:500;margin-block-end:2px}
+.dir-c .hint{font-size:.875rem;color:var(--muted);margin-block:0 10px}
+.dir-c .field{display:flex;align-items:center;gap:12px;min-height:52px;padding-inline:14px;border:1px solid var(--accent);border-radius:8px;background:var(--panel);box-shadow:0 0 0 4px var(--ring)}
+.dir-c .field:focus-within{outline:2px solid var(--focus);outline-offset:2px}
+.dir-c .field>.fa{color:var(--accent);font-size:1.125rem}
+.dir-c .field input{flex:1;min-width:0;border:0;background:transparent;font-size:1.0625rem;min-height:50px;outline:none}
+.dir-c .field .n{font-family:"JBM",ui-monospace,monospace;font-size:.75rem;color:var(--muted);background:var(--tile);border-radius:4px;padding:2px 6px;direction:ltr}
+.dir-c .chips{display:flex;flex-wrap:wrap;align-items:center;gap:6px;margin-block:12px 0;font-size:.875rem;color:var(--muted)}
+.dir-c .chip{min-height:44px;padding-inline:14px;border:0;border-radius:999px;background:var(--tile);cursor:pointer;font-size:.875rem;color:var(--text)}
+.dir-c .chip:hover{background:var(--tile-h)}.dir-c .chip[aria-pressed=true]{background:var(--accent);color:var(--on-accent)}
+.dir-c .bar2{display:flex;align-items:baseline;justify-content:space-between;gap:12px;flex-wrap:wrap;margin-block:18px 10px;font-size:.875rem;color:var(--muted)}
+.dir-c .bar2 strong{color:var(--text);font-weight:600}
+.dir-c .tiles{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}
+@media (min-width:640px){.dir-c .tiles{grid-template-columns:repeat(3,minmax(0,1fr))}}
+@media (min-width:1100px){.dir-c .tiles{grid-template-columns:repeat(4,minmax(0,1fr))}}
+.dir-c .tile{position:relative;display:grid;gap:6px;align-content:start;min-height:112px;padding:12px;border-radius:8px;background:var(--tile);text-decoration:none;color:var(--text)}
+.dir-c .tile:hover{background:var(--tile-h)}.dir-c .tile:active{transform:scale(.99)}
+.dir-c .tile .flag{width:32px;height:24px;border-radius:3px}
+.dir-c .tile .nm{font-weight:500;line-height:1.3;overflow-wrap:anywhere}
+.dir-c .tile .oth{display:block;font-size:.8125rem;color:var(--accent);font-weight:400}
+.dir-c .tile .codes{display:flex;gap:10px;font-family:"JBM",ui-monospace,monospace;font-size:.75rem;color:var(--muted);direction:ltr;justify-content:flex-end}
+.dir-c[dir=ltr] .tile .codes{justify-content:flex-start}
+.dir-c .tile .tag{position:absolute;inset-block-start:10px;inset-inline-end:10px;font-size:.6875rem;font-weight:600;background:var(--accent);color:var(--on-accent);border-radius:999px;padding:1px 8px}
+.dir-c .tile.all{place-content:center;text-align:center;font-weight:500;color:var(--accent);background:transparent;border:1px dashed var(--hair)}
+.dir-c .skel{min-height:112px;border-radius:8px;background:var(--tile);opacity:.7}
+.dir-c .note{background:var(--panel);border:1px solid var(--hair);border-radius:12px;padding:14px 16px;margin-block:10px 0}
+.dir-c .src{font-size:.8125rem;color:var(--muted);margin-block-start:12px}
+.dir-c section.s{padding-block:56px 0}
+.dir-c h2.t{font-size:clamp(1.375rem,1.1rem + .9vw,1.75rem);font-weight:600;line-height:1.2;margin-block-end:18px;scroll-margin-top:24px}
+.dir-c .bento{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}
+@media (min-width:900px){.dir-c .bento{grid-template-columns:2fr 1fr 1fr 1fr 1fr}}
+.dir-c .cell{background:var(--panel);border:1px solid var(--hair);border-radius:12px;padding:16px;display:grid;align-content:space-between;gap:10px;min-height:120px}
+.dir-c .cell.big{grid-column:1/-1}
+@media (min-width:900px){.dir-c .cell.big{grid-column:auto}}
+.dir-c .cell b{font-family:"JBM",ui-monospace,monospace;font-weight:400;font-size:clamp(1.75rem,1.4rem + 1.2vw,2.5rem);line-height:1;direction:ltr;text-align:start}
+.dir-c[dir=rtl] .cell b{text-align:right}
+.dir-c .cell span{font-size:.875rem;color:var(--muted)}
+.dir-c .vline{font-size:.875rem;color:var(--muted);margin-block-start:10px}
+.dir-c .ways{display:grid;gap:8px}
+@media (min-width:900px){.dir-c .ways{grid-template-columns:repeat(2,minmax(0,1fr))}.dir-c .ways .wide{grid-column:1/-1}}
+.dir-c .way{display:flex;gap:14px;align-items:flex-start;padding:16px;border-radius:12px;background:var(--panel);border:1px solid var(--hair);text-decoration:none;color:var(--text)}
+.dir-c a.way:hover{border-color:var(--accent)}
+.dir-c .way .ico{display:grid;place-items:center;width:40px;height:40px;border-radius:8px;background:var(--tile);color:var(--accent);flex:none}
+.dir-c .way .grow{flex:1;min-width:0}
+.dir-c .way strong{display:block;font-weight:600}
+.dir-c .way p{color:var(--muted);font-size:.9375rem}
+.dir-c .urlrow{display:flex;gap:8px;align-items:center;margin-block-start:10px;flex-wrap:wrap}
+.dir-c .urlrow code{flex:1 1 16rem;min-width:0;padding:10px 12px;border-radius:8px;background:var(--tile);font-size:.8125rem;overflow-wrap:anywhere;text-align:left}
+.dir-c .console{background:var(--panel);border:1px solid var(--hair);border-radius:12px;overflow:hidden}
+.dir-c .console .r{display:grid;gap:4px;padding:14px 16px;border-block-end:1px solid var(--hair)}
+@media (min-width:900px){.dir-c .console .r{grid-template-columns:minmax(0,1fr) minmax(0,1.3fr);gap:16px;align-items:baseline}}
+.dir-c .console .r:last-child{border-block-end:0}
+.dir-c .console .k{font-weight:500}
+.dir-c .console code{font-size:.8125rem;overflow-wrap:anywhere}
+.dir-c .console .out{color:var(--accent)}
+.dir-c .bul{display:grid;gap:10px;list-style:disc;padding-inline-start:1.2rem;max-width:44rem}
+.dir-c .faq{max-width:44rem}
+.dir-c .faq details{border-block-end:1px solid var(--hair)}
+.dir-c .faq summary{min-height:52px;display:flex;align-items:center;gap:10px;cursor:pointer;font-weight:500;list-style:none;padding-block:8px}
+.dir-c .faq summary::-webkit-details-marker{display:none}
+.dir-c .faq summary .fa{margin-inline-start:auto;color:var(--accent);transition:transform .12s ease-out}
+.dir-c .faq details[open] summary .fa{transform:rotate(90deg)}
+.dir-c[dir=rtl] .faq details[open] summary .fa{transform:scaleX(-1) rotate(90deg)}
+.dir-c .faq p{padding-block:0 14px;color:var(--muted)}
+.dir-c .lnk{display:inline-flex;align-items:center;gap:8px;min-height:44px;color:var(--accent);font-weight:500;text-decoration:none}
+.dir-c .foot{margin-block-start:72px;border-block-start:1px solid var(--hair);padding-block:28px 40px}
+.dir-c .foot .wrap{display:grid;gap:18px}
+@media (min-width:900px){.dir-c .foot .wrap{grid-template-columns:minmax(0,1fr) auto;align-items:start}}
+.dir-c .foot ul{display:flex;flex-wrap:wrap;gap:0 18px}
+.dir-c .foot li a{display:inline-flex;align-items:center;gap:6px;min-height:44px;text-decoration:none;font-size:.9375rem}
+.dir-c .foot li a:hover{color:var(--accent)}
+.dir-c .foot .lic{font-size:.8125rem;color:var(--muted)}
+.dir-c .switches{display:flex;flex-wrap:wrap;gap:12px 20px}
+.dir-c .switches label{display:block;font-size:.8125rem;color:var(--muted);margin-block-end:6px}
+.dir-c .seg{display:inline-flex;background:var(--tile);border-radius:8px;padding:3px;gap:3px}
+.dir-c .seg button,.dir-c .seg a{min-height:40px;padding-inline:12px;border:0;border-radius:6px;background:transparent;cursor:pointer;font-size:.8125rem;display:inline-flex;align-items:center;text-decoration:none;color:var(--muted)}
+.dir-c .seg [aria-current=true],.dir-c .seg [aria-pressed=true]{background:var(--panel);color:var(--text);font-weight:600;box-shadow:0 1px 3px rgba(0,0,0,.12)}
+
+/* shared menu sheet, styled from each direction's tokens */
+#site .sheet{position:fixed;inset:0;z-index:40;display:none;background:color-mix(in srgb,#000 40%,transparent)}
+#site .sheet.on{display:block}
+#site .sheet .in{position:absolute;inset-block:0;inset-inline-end:0;width:min(22rem,100%);background:var(--bg);color:var(--text);padding:12px 20px 24px;overflow-y:auto;box-shadow:0 8px 32px rgba(0,0,0,.3)}
+@media (prefers-reduced-motion:no-preference){#site .sheet.on .in{animation:sheet .18s ease-out}@keyframes sheet{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}}
+#site .sheet .top{display:flex;justify-content:flex-end;margin-block-end:8px}
+#site .sheet .nav a{display:flex;align-items:center;justify-content:space-between;min-height:52px;border-block-end:1px solid var(--hair);text-decoration:none;font-size:1.0625rem}
+#site .sheet .switches{margin-block-start:20px;display:grid;gap:16px}
+</style></head>
+<body>
+<div id="tool" role="region" aria-label="Directions tooling (not part of the design)"></div>
+<div id="site"></div>
+<script>
+const W = {"chrome.skip-link":["تخطَّ إلى المحتوى","Skip to content"],"chrome.wordmark":["worldref","worldref"],"chrome.menu.open":["القائمة","Menu"],"chrome.menu.close":["إغلاق القائمة","Close menu"],"chrome.nav.home":["الرئيسية","Home"],"chrome.nav.install":["ثبّت","Install"],"chrome.nav.build":["ابنِ ملفك","Build a file"],"chrome.nav.countries":["الدول","Countries"],"chrome.nav.agents":["لوكلاء الذكاء الاصطناعي","For AI agents"],"chrome.nav.faq":["الأسئلة الشائعة","Questions and answers"],"chrome.nav.policy":["سياسة البيانات","Data policy"],"switch.language.label":["اللغة","Language"],"switch.language.ar":["العربية","العربية"],"switch.language.en":["English","English"],"switch.theme.label":["المظهر","Theme"],"switch.theme.system":["حسب الجهاز","System"],"switch.theme.light":["فاتح","Light"],"switch.theme.dark":["داكن","Dark"],"footer.repo":["المستودع على GitHub","Repository on GitHub"],"footer.issues":["أبلغ عن خطأ في البيانات","Report a data error"],"footer.licences":["التراخيص","Licences"],"footer.cite":["طريقة الاستشهاد","How to cite"],"footer.licence-line":["الكود بترخيص MIT، ولكل مصدر بيانات ترخيصه. الأيقونات من Font Awesome Free بترخيص CC BY 4.0.","Code is MIT; each data source keeps its own licence. Icons: Font Awesome Free, CC BY 4.0."],"action.copy-url":["انسخ الرابط","Copy URL"],"action.copied-url":["نُسخ الرابط","URL copied"],"action.copy-command":["انسخ الأمر","Copy command"],"action.copied-command":["نُسخ الأمر","Command copied"],"action.copy.error":["لم يُنسخ النص لأن المتصفح منع الوصول إلى الحافظة. حدّد النص وانسخه يدويًا.","Copy didn't work: the browser blocked the clipboard. Select the text and copy it by hand."],"action.retry":["أعد المحاولة","Try again"],"state.offline.line":["أنت غير متصل الآن.","You're offline."],"root.line":["كل دول العالم بالعربية والإنجليزية، من مصادر رسمية.","Every country in Arabic, English, or both, from official sources."],"root.enter":["ادخل بالعربية","Continue in English"],"home.title":["worldref: كل دول العالم بالعربية والإنجليزية","worldref: every country in Arabic, English, or both"],"home.hero.title":["كل دول العالم بالعربية والإنجليزية","Every country in Arabic, English, or both"],"home.hero.body":["الأسماء والجنسيات ومفاتيح الاتصال والتحقق من أرقام الجوال والعملات لـ {count} دولة وإقليمًا، من مصادر رسمية وبلا حساب.","Names, nationalities, dial codes, phone validation and currencies for {count} countries and territories. Sourced, free, no account."],"home.hero.install":["ثبّت","Install"],"home.hero.build":["ابنِ ملفك","Build a file"],"search.label":["ابحث عن دولة","Search for a country"],"search.hint":["بالاسم أو رمز الدولة أو مفتاح الاتصال، بالعربية أو الإنجليزية","By name, country code or dial code, in Arabic or English"],"search.clear":["امسح البحث","Clear search"],"search.try":["جرّب:","Try:"],"search.region":["منطقتك","Your region"],"search.list.all":["اعرض الدول كلها ({count})","Show all {count} countries"],"search.results.count.one":["نتيجة واحدة","1 match"],"search.results.count.two":["نتيجتان","2 matches"],"search.results.count.few":["{n} نتائج","{n} matches"],"search.results.count.many":["{n} نتيجة","{n} matches"],"search.results.more":["اعرض النتائج كلها ({n})","Show all {n} matches"],"search.results.source":["النتائج من دالة `search()` نفسها التي تثبّتها.","These results come from the same `search()` you install."],"search.empty.body":["لا دولة تطابق «{q}»؛ ابحث باسم الدولة أو رمزها أو مفتاح الاتصال.","No country matches \"{q}\"; try a country name, code or dial code."],"search.empty.action":["امسح البحث","Clear search"],"search.loading.label":["نحمّل قائمة الدول","Loading the country list"],"search.error.body":["لم تُحمَّل قائمة الدول لأن الاتصال انقطع. تحقق من اتصالك ثم أعد المحاولة.","The country list didn't load because the connection dropped. Check your connection, then try again."],"search.offline.body":["البحث يعمل على القائمة المحمّلة، وصفحات الدول تحتاج اتصالًا.","Search still works on the loaded list; country pages need a connection."],"home.facts.title":["البيانات بالأرقام","The data in numbers"],"home.facts.rows":["دولة وإقليمًا","countries and territories"],"home.facts.rows.split":["{countries} دولة و{territories} إقليمًا","{countries} countries, {territories} territories"],"home.facts.subdivisions":["تقسيمًا إداريًا","subdivisions"],"home.facts.modules":["وحدات تجمعها `iso2`","modules joined on `iso2`"],"home.facts.builds":["نسخ: ثنائية اللغة وعربية وإنجليزية","builds: bilingual, Arabic, English"],"home.facts.languages":["لغات برمجة وخادم MCP","programming languages, plus an MCP server"],"home.facts.version":["الإصدار {version}، من CLDR {cldr} وlibphonenumber {phone}","Version {version}, from CLDR {cldr} and libphonenumber {phone}"],"home.ways.title":["خذ ما تحتاجه فقط","Take only what you need"],"home.ways.install.title":["ثبّته في مشروعك","Install it in your project"],"home.ways.install.body":["{count} طريقة، منها JavaScript وSwift وKotlin وPython وGo.","{count} ways, including JavaScript, Swift, Kotlin, Python and Go."],"home.ways.build.title":["ابنِ ملفك","Build a file"],"home.ways.build.body":["اختر اللغة والوحدات والصيغة، وشاهد الحجم قبل التنزيل.","Pick the language, modules and format, and see the size before you download."],"home.ways.api.title":["دولة واحدة برابط","One country by URL"],"home.ways.api.body":["بلا تثبيت: ملف JSON لكل دولة، وهذا رابط السعودية.","No install: one JSON file per country. This one is Saudi Arabia."],"home.ways.agents.title":["لوكلاء الذكاء الاصطناعي","For AI agents"],"home.ways.agents.body":["خادم MCP وملف llms.txt وأنماط JSON Schema.","An MCP server, llms.txt and JSON Schemas."],"home.native.title":["عربية أصيلة لا مترجمة","Arabic done natively"],"home.native.body":["كل سطر هنا ناتج فعلي من المكتبة.","Every line here is real output from the library."],"home.native.search":["البحث يتجاهل «ال» والهمزة والتشكيل","Search ignores «ال», hamza forms and tashkeel"],"home.native.nationality":["الجنسية بالمذكر والمؤنث","Nationality, masculine and feminine"],"home.native.digits":["حقل الجوال يقبل الأرقام العربية","Phone fields accept Arabic digits"],"home.native.digits.body":["اكتب الرقم بالأرقام العربية أو الفارسية، وتحوّلها `parsePhone()` إلى أرقام غربية قبل التحقق.","Type the number in Arabic-Indic or Persian digits; `parsePhone()` turns them into Western digits before it checks."],"home.native.digits.result":["النتيجة واحدة للرقم {number} أيًّا كانت أرقامه:","Same result for {number} in any of the three digit sets:"],"home.native.sort":["الترتيب الأبجدي العربي الصحيح","Correct Arabic alphabetical order"],"home.native.sort.value":["«السعودية» تحت حرف السين لا الألف","«السعودية» sorts under س, not ا"],"policy.title":["سياسة البيانات","Data policy"],"policy.palestine":["**فلسطين** دولة، عاصمتها «القدس». الأرقام التي تبدأ بـ **+970 و+972** (ومنها القدس وأراضي 48) أرقام فلسطينية. عملاتها الدينار الأردني و«الشيكل».","**Palestine** is «فلسطين» / \"Palestine\", a country, with its capital «القدس» / \"Jerusalem\". Numbers with **+970 and +972** (including Jerusalem and the 1948 lines) are Palestinian numbers here. Its currencies are the Jordanian dinar and the shekel (shown as «شيكل» / \"Shekel\")."],"policy.disputed":["**الأماكن المتنازع عليها تتبع المواقف الرسمية للمملكة العربية السعودية:** الصحراء الغربية جزء من المغرب، وكوسوفو مدرجة، وشمال قبرص غير مدرجة، وتايوان وهونغ كونغ ومكاو أقاليم لها جنسية.","**Disputed places follow the official positions of Saudi Arabia:** Western Sahara is part of Morocco (no separate row), Kosovo is included, Northern Cyprus is not, and Taiwan, Hong Kong and Macau are territories that still have a nationality (they issue their own passports)."],"policy.requests":["طلبات تغيير هذه السياسة تُغلق دون نقاش، ونرحّب بتصحيح البيانات مع رابط المصدر.","Requests to change this policy are closed without discussion. Corrections to data are welcome with a source link."],"policy.full":["السياسة كاملة على GitHub","Full policy on GitHub"],"faq.title":["الأسئلة الشائعة","Questions and answers"],"faq.q1":["أين أجد قائمة الدول بالعربية؟","How do I get a list of countries in Arabic?"],"faq.a1":["في `data/worldref.ar.json`، ورتّبها حسب الحقل `sort`.","Use `data/worldref.ar.json` (or `data/modules/core.ar.json` for names only). Each row has `name` in Arabic. For a ready-made picker order, sort by `sort` (it ignores «ال» and hamza forms)."],"faq.q2":["أين أجد قائمة الجنسيات بالعربية مذكرًا ومؤنثًا؟","Where is a list of nationalities in Arabic, masculine and feminine?"],"faq.a2":["في `data/modules/nationality.json`: الحقلان `nationality_ar_m` و`nationality_ar_f`.","`data/modules/nationality.json`: `nationality_ar_m` (سعودي) and `nationality_ar_f` (سعودية), plus `nationality_en` (Saudi)."],"faq.q3":["كيف أتحقق من رقم جوال سعودي؟","How do I validate a Saudi mobile number?"],"faq.a3":["`parsePhone(input, byIso2(\"SA\"))` ثم تحقق من `valid` و`mobile`. تُقبل الأرقام العربية.","`parsePhone(input, byIso2(\"SA\"))` and check `valid && mobile`. The rule is in `phone[0].mobile_pattern`: 9 digits starting with 50, 51, 53 to 59 after dropping the leading 0. Arabic digits are accepted."],"faq.q4":["لماذا قيمة `travel.emergency.police` فارغة في بعض الدول؟","Why is `travel.emergency.police` null for some countries?"],"faq.a4":["لا ننشر الرقم إلا إذا أكّده مصدر رسمي. إذا كانت الخدمة `null` فاتصل بالرقم العام `general`.","Only numbers confirmed by an official source are published. If a service is null, call `general`."],"faq.q5":["هل يمكنني استخدام worldref في مشروع تجاري؟","Can I use this commercially?"],"faq.a5":["نعم. الكود بترخيص MIT، وتراخيص البيانات كلها (Unicode وApache-2.0 وCC-BY-4.0 وCC0 والملكية العامة) تسمح بالاستخدام التجاري مع ذكر المصدر متى اشتُرط.","Yes. Code is MIT; data licences (Unicode, Apache-2.0, CC-BY-4.0, CC0, public domain) all allow commercial use with attribution where required."],"faq.q6":["ما مدى حداثة البيانات؟","How current is it?"],"faq.a6":["تفحص مهمة آلية المصادر كل شهر (وبيانات السكان كل ثلاثة أشهر)، وتصدر تحديثًا متى تغيّرت ونجحت الاختبارات كلها. الإصدارات في `data/meta.json`.","An automated job checks the upstream sources monthly (population quarterly) and releases a patch when they change and every test passes. Versions are in `data/meta.json`."],"agents.title":["لوكلاء الذكاء الاصطناعي","For AI agents"],"agents.body":["كل ما يحتاجه الوكيل ليقرأ البيانات ويجيب منها وحدها.","Everything an agent needs to read the data and answer from it alone."],"agents.mcp.title":["خادم MCP","MCP server"],"agents.mcp.tools":["الأدوات: {tools}","Tools: {tools}"],"agents.files.title":["ملفات للقراءة","Files to read"],"agents.file.llms":["فهرس مختصر للوكلاء","Short index for agents"],"agents.file.llms-full":["كل حقل مع سجل كامل مثالًا","Every field, with a full example record"],"agents.file.agents-md":["دليل لوكلاء البرمجة","Guide for coding agents"],"agents.file.openapi":["واجهة API الثابتة بمواصفة OpenAPI","The static API as an OpenAPI description"],"agents.file.schema":["JSON Schema لكل ملف ولكل نسخة","A JSON Schema for every file and build"],"agents.file.country":["دولة واحدة برمز iso2 بحروف صغيرة","One country, by lowercase iso2"],"agents.offline.body":["الأوامر والروابط تُنسخ، وفتح الملفات يحتاج اتصالًا.","Commands and links still copy; opening the files needs a connection."],"agents.rules.title":["قواعد الإجابة من البيانات","Rules for answering from this data"],"agents.rules.null":["أجب من البيانات فقط. القيمة `null` أو القائمة الفارغة تعني أنها مجهولة: قل ذلك ولا تخمّن.","Answer from the data only. `null` or an empty list means unknown: say so, never guess."],"agents.rules.phone":["احفظ رقم الجوال بالصيغة الدولية (E.164) مع رمز `iso2` للدولة التي اختارها المستخدم.","Store phone numbers in international form (E.164) plus the `iso2` the user picked."],"agents.rules.emergency":["أرقام الطوارئ منشورة فقط إذا أكّدها مصدر رسمي، والخدمة `null` تعني: اتصل بالرقم العام `general`.","Emergency numbers are published only when an official source confirms them. A null service means: call `general`."],"notfound.title":["هذه الصفحة غير موجودة","This page doesn't exist"],"notfound.body":["ربما تغيّر الرابط أو فيه خطأ في الكتابة. ابحث عن الدولة، أو ارجع إلى الصفحة الرئيسية.","The link may have changed or have a typo. Search for the country, or go to the home page."],"notfound.home":["ارجع إلى الصفحة الرئيسية","Go to the home page"],"notfound.other":["النسخة الإنجليزية","English version"],"module.core":["الأسماء والرموز","names and codes"],"module.nationality":["الجنسية","nationality"],"module.phone":["الهاتف والتحقق من الجوال","phone and mobile validation"],"module.currency":["العملة","currency"],"module.geo":["العاصمة والمساحة والسكان","capital, area, population"],"module.locale":["اللغة والأسبوع والتقويم","language, week, calendar"],"module.address":["العنوان البريدي","postal address"],"module.travel":["الطوارئ والكهرباء","emergency numbers and power"],"module.sports":["رموز فيفا والأولمبية","FIFA and IOC codes"],"module.subdivisions":["التقسيمات الإدارية","subdivisions"],"build.bilingual":["عربي وإنجليزي","Arabic and English"],"build.ar":["عربي فقط","Arabic only"],"build.en":["إنجليزي فقط","English only"],"build.lang.label":["لغة الأسماء","Language of names"],"country.sec.sources":["المصادر","Sources"]};
+const D = {"meta":{"name":"worldref","version":"1.0.0","countries":242,"subdivisions":5012,"modules":["core","nationality","phone","currency","geo","locale","address","travel","sports"],"builds":{"bilingual":".json","arabic":".ar.json","english":".en.json"},"excluded":["EH","AQ","BV","HM","TF","UM","GS"],"sources":{"iso":"49.0.0","cldr":"49.0.0","cldrSub":"release-49","wikidata":"snapshot","factbook":"2026","worldbank":"snapshot","libphonenumber":"v9.0.42","iana_tz":"2026f","iana_root":"snapshot","google_address":"snapshot","ecw":"archived 2026-04-16","emergency":"verified 2026-11-01","official_lists":"2026-11-01","icao":"8th edition","flag_icons":"7.6.0","editorial":"see overrides","generated":"-"}},"kinds":{"country":195,"territory":47},"installRows":12,"languages":8,"rows":[{"iso2":"AD","iso3":"AND","name_ar":"أندورا","name_en":"Andorra","aliases_ar":[],"aliases_en":["Principality of Andorra","Principality of the Valleys of Andorra"],"sort_ar":"اندورا","sort_en":"andorra","phone":[{"calling_code":"+376","primary":true}],"continent":"europe","kind":"country"},{"iso2":"AE","iso3":"ARE","name_ar":"الإمارات","name_en":"United Arab Emirates","aliases_ar":["الإمارات العربية المتحدة","دولة الإمارات العربية المتحدة"],"aliases_en":["Emirates","ae","the United Arab Emirates","the Emirates","the U.A.E.","the UAE","U.A.E."],"sort_ar":"امارات","sort_en":"united arab emirates","phone":[{"calling_code":"+971","primary":true}],"continent":"asia","kind":"country"},{"iso2":"AF","iso3":"AFG","name_ar":"أفغانستان","name_en":"Afghanistan","aliases_ar":[],"aliases_en":["Affghanistan","Affghanisthan","Affghaunistan","Afghania","Afghanisthan","Afghaunistan","Afghaunistaun"],"sort_ar":"افغانستان","sort_en":"afghanistan","phone":[{"calling_code":"+93","primary":true}],"continent":"asia","kind":"country"},{"iso2":"AG","iso3":"ATG","name_ar":"أنتيغوا وبربودا","name_en":"Antigua and Barbuda","aliases_ar":["أنتيغوا وباربودا"],"aliases_en":["Antigua & Barbuda"],"sort_ar":"انتيغوا وبربودا","sort_en":"antigua and barbuda","phone":[{"calling_code":"+1","primary":false}],"continent":"americas","kind":"country"},{"iso2":"AI","iso3":"AIA","name_ar":"أنغويلا","name_en":"Anguilla","aliases_ar":["انجويلا"],"aliases_en":["ai","Malliouhana"],"sort_ar":"انغويلا","sort_en":"anguilla","phone":[{"calling_code":"+1","primary":false}],"continent":"americas","kind":"territory"},{"iso2":"AL","iso3":"ALB","name_ar":"ألبانيا","name_en":"Albania","aliases_ar":[],"aliases_en":["Republic of Albania","People's Republic of Albania","People's Socialist Republic of Albania","Republika Popullore e Shqiperise","Republika Popullore Socialiste e Shqiperise","Shqipërisë"],"sort_ar":"بانيا","sort_en":"albania","phone":[{"calling_code":"+355","primary":true}],"continent":"europe","kind":"country"},{"iso2":"AM","iso3":"ARM","name_ar":"أرمينيا","name_en":"Armenia","aliases_ar":["أرمنيا","جمهورية أرمينيا"],"aliases_en":["Hayastan","Hayastani Hanrapetut’yun","Republic of Armenia","Հայաստան"],"sort_ar":"ارمينيا","sort_en":"armenia","phone":[{"calling_code":"+374","primary":true}],"continent":"asia","kind":"country"},{"iso2":"AO","iso3":"AGO","name_ar":"أنغولا","name_en":"Angola","aliases_ar":["أنجولا","جمهورية أنغولا"],"aliases_en":["Ngola","ao","Republic of Angola"],"sort_ar":"انغولا","sort_en":"angola","phone":[{"calling_code":"+244","primary":true}],"continent":"africa","kind":"country"},{"iso2":"AR","iso3":"ARG","name_ar":"الأرجنتين","name_en":"Argentina","aliases_ar":["جمهورية الأرجنتين"],"aliases_en":["Argentine Republic","Republic of Argentina","Republica Argentina"],"sort_ar":"ارجنتين","sort_en":"argentina","phone":[{"calling_code":"+54","primary":true}],"continent":"americas","kind":"country"},{"iso2":"AS","iso3":"ASM","name_ar":"ساموا الأمريكية","name_en":"American Samoa","aliases_ar":[],"aliases_en":["as","East Samoa","ISO 3166-1:AS","Samoa (American)","Samoa, United States","Territory of American Samoa","U.S. Samoa","US Samoa"],"sort_ar":"ساموا امريكيه","sort_en":"american samoa","phone":[{"calling_code":"+1","primary":false}],"continent":"oceania","kind":"territory"},{"iso2":"AT","iso3":"AUT","name_ar":"النمسا","name_en":"Austria","aliases_ar":[],"aliases_en":["Republic of Austria"],"sort_ar":"نمسا","sort_en":"austria","phone":[{"calling_code":"+43","primary":true}],"continent":"europe","kind":"country"},{"iso2":"AU","iso3":"AUS","name_ar":"أستراليا","name_en":"Australia","aliases_ar":["أوستراليا","كومنولث أستراليا","كومنولث أوستراليا"],"aliases_en":["Down Under","Oz","Stria","Commonwealth of Australia","New Holland","Straya","Nova Hollandia","Aussieland","New Hollandia","Stralia","The Commonwealth of Australia"],"sort_ar":"استراليا","sort_en":"australia","phone":[{"calling_code":"+61","primary":true}],"continent":"oceania","kind":"country"},{"iso2":"AW","iso3":"ABW","name_ar":"أروبا","name_en":"Aruba","aliases_ar":[],"aliases_en":["aw","Country of Aruba","Island of Aruba"],"sort_ar":"اروبا","sort_en":"aruba","phone":[{"calling_code":"+297","primary":true}],"continent":"americas","kind":"territory"},{"iso2":"AX","iso3":"ALA","name_ar":"جزر آلاند","name_en":"Åland Islands","aliases_ar":["جزر أولاند"],"aliases_en":["Åland","Ahvenanmaa","Aland Isles","Åland region","ax","Aaland","Aaland Islands"],"sort_ar":"جزر اند","sort_en":"aland islands","phone":[{"calling_code":"+358","primary":false}],"continent":"europe","kind":"territory"},{"iso2":"AZ","iso3":"AZE","name_ar":"أذربيجان","name_en":"Azerbaijan","aliases_ar":["جمهورية أذربيجان"],"aliases_en":["Republic of Azerbaijan"],"sort_ar":"اذربيجان","sort_en":"azerbaijan","phone":[{"calling_code":"+994","primary":true}],"continent":"asia","kind":"country"},{"iso2":"BA","iso3":"BIH","name_ar":"البوسنة والهرسك","name_en":"Bosnia and Herzegovina","aliases_ar":[],"aliases_en":["Bosnia & Herzegovina","Bosnia","ba","B&H","Bosnia and Hercegovina"],"sort_ar":"بوسنه والهرسك","sort_en":"bosnia and herzegovina","phone":[{"calling_code":"+387","primary":true}],"continent":"europe","kind":"country"},{"iso2":"BB","iso3":"BRB","name_ar":"بربادوس","name_en":"Barbados","aliases_ar":["باربادوس","باربيدوس","بربيدوس"],"aliases_en":["BAR","Barbadoes","bb"],"sort_ar":"بربادوس","sort_en":"barbados","phone":[{"calling_code":"+1","primary":false}],"continent":"americas","kind":"country"},{"iso2":"BD","iso3":"BGD","name_ar":"بنغلاديش","name_en":"Bangladesh","aliases_ar":["بنجلاديش","جمهورية بنغلاديش الشعبية"],"aliases_en":["bd","Bangla Desh","Country of Bengal","Land of Bengal","People's Republic of Bangladesh"],"sort_ar":"بنغلاديش","sort_en":"bangladesh","phone":[{"calling_code":"+880","primary":true}],"continent":"asia","kind":"country"},{"iso2":"BE","iso3":"BEL","name_ar":"بلجيكا","name_en":"Belgium","aliases_ar":[],"aliases_en":["Kingdom of Belgium"],"sort_ar":"بلجيكا","sort_en":"belgium","phone":[{"calling_code":"+32","primary":true}],"continent":"europe","kind":"country"},{"iso2":"BF","iso3":"BFA","name_ar":"بوركينا فاسو","name_en":"Burkina Faso","aliases_ar":["بركينا فاسو","بوركينا فاصو","بوركينافاسو","بوركينافاصو","بوركينفاسو","بوركينياني","بوركینا فاسو","بورکینا فاسو","فولطا العليا","قائمة جزر بوركينا فاسو"],"aliases_en":["bf","Republic of Burkina Faso","Republic of Upper Volta (-1984)"],"sort_ar":"بوركينا فاسو","sort_en":"burkina faso","phone":[{"calling_code":"+226","primary":true}],"continent":"africa","kind":"country"},{"iso2":"BG","iso3":"BGR","name_ar":"بلغاريا","name_en":"Bulgaria","aliases_ar":["البلغاري","بلغارية","بلقاريا"],"aliases_en":["Republic of Bulgaria","Bulgarian Republic"],"sort_ar":"بلغاريا","sort_en":"bulgaria","phone":[{"calling_code":"+359","primary":true}],"continent":"europe","kind":"country"},{"iso2":"BH","iso3":"BHR","name_ar":"البحرين","name_en":"Bahrain","aliases_ar":[],"aliases_en":["bh","Bahrein Islands","Dawlat al-Bahrain","ISO 3166-1:BH","Kingdom of Bahrain","Mamlakat al-Baḥrayn"],"sort_ar":"بحرين","sort_en":"bahrain","phone":[{"calling_code":"+973","primary":true}],"continent":"asia","kind":"country"},{"iso2":"BI","iso3":"BDI","name_ar":"بوروندي","name_en":"Burundi","aliases_ar":[],"aliases_en":["bi","Gouvernement du Burundi","Republic of Burundi","Republika y'Uburundi"],"sort_ar":"بوروندي","sort_en":"burundi","phone":[{"calling_code":"+257","primary":true}],"continent":"africa","kind":"country"},{"iso2":"BJ","iso3":"BEN","name_ar":"بنين","name_en":"Benin","aliases_ar":[],"aliases_en":["Republic of Benin"],"sort_ar":"بنين","sort_en":"benin","phone":[{"calling_code":"+229","primary":true}],"continent":"africa","kind":"country"},{"iso2":"BL","iso3":"BLM","name_ar":"سان بارتليمي","name_en":"Saint Barthélemy","aliases_ar":["سان بارتيلمي","سانت بارتليمي"],"aliases_en":["St. Barthélemy","St. Barts","Collectivite de Saint-Barthelemy","Collectivity of Saint Barthelemy","Ile Saint-Barthelemy","Ouanalao","Saint Barth","Saint Barths","Saint Barts","Saint Bartz","St barths","St. Barth"],"sort_ar":"سان بارتليمي","sort_en":"saint barthelemy","phone":[{"calling_code":"+590","primary":false}],"continent":"americas","kind":"territory"},{"iso2":"BM","iso3":"BMU","name_ar":"برمودا","name_en":"Bermuda","aliases_ar":[],"aliases_en":["Somers Isles","bm","Atlantic/Bermuda","Barmuda","Barmuda I.","Barmuda Isl.","Barmuda Islands","Barmudas","Bermoothes","Bermuda Islands","Bermudian Islands","Colony of Bermuda"],"sort_ar":"برمودا","sort_en":"bermuda","phone":[{"calling_code":"+1","primary":false}],"continent":"americas","kind":"territory"},{"iso2":"BN","iso3":"BRN","name_ar":"بروناي","name_en":"Brunei","aliases_ar":["bn","🇧🇳","اتحاد بروناي","بروناي دار السلام"],"aliases_en":["bn","Nation of Brunei, the Abode of Peace","Negara Brunei Darussalam"],"sort_ar":"بروناي","sort_en":"brunei","phone":[{"calling_code":"+673","primary":true}],"continent":"asia","kind":"country"},{"iso2":"BO","iso3":"BOL","name_ar":"بوليفيا","name_en":"Bolivia","aliases_ar":["البوليفية","بوليفي","بولیفیا"],"aliases_en":["Bolivia (Plurinational State of)","Plurinational State of Bolivia","Republic of Bolivia"],"sort_ar":"بوليفيا","sort_en":"bolivia","phone":[{"calling_code":"+591","primary":true}],"continent":"americas","kind":"country"},{"iso2":"BQ","iso3":"BES","name_ar":"هولندا الكاريبية","name_en":"Caribbean Netherlands","aliases_ar":["الجزر الكاريبية الهولندية","جزر الكاريبي الهولندية"],"aliases_en":["BES islands","Bonaire, Saint Eustatius and Saba"],"sort_ar":"هولندا كاريبيه","sort_en":"caribbean netherlands","phone":[{"calling_code":"+599","primary":false}],"continent":"americas","kind":"territory"},{"iso2":"BR","iso3":"BRA","name_ar":"البرازيل","name_en":"Brazil","aliases_ar":["الجمهورية البرازيلية","البرازيلي","البرازیل","برازيلية","جمهورية البرازيل الإتحادية","شرق أمريكا الجنوبية"],"aliases_en":["Federative Republic of Brazil"],"sort_ar":"برازيل","sort_en":"brazil","phone":[{"calling_code":"+55","primary":true}],"continent":"americas","kind":"country"},{"iso2":"BS","iso3":"BHS","name_ar":"جزر البهاما","name_en":"Bahamas","aliases_ar":["باهاماس","البهاما"],"aliases_en":["The Bahamas","bs","Bahama Islands","Commonwealth of the Bahamas","Bahamas, The"],"sort_ar":"جزر بهاما","sort_en":"bahamas","phone":[{"calling_code":"+1","primary":false}],"continent":"americas","kind":"country"},{"iso2":"BT","iso3":"BTN","name_ar":"بوتان","name_en":"Bhutan","aliases_ar":["مملكة بوتان"],"aliases_en":["BHU","Kingdom of Bhutan"],"sort_ar":"بوتان","sort_en":"bhutan","phone":[{"calling_code":"+975","primary":true}],"continent":"asia","kind":"country"},{"iso2":"BW","iso3":"BWA","name_ar":"بوتسوانا","name_en":"Botswana","aliases_ar":[],"aliases_en":["bw","Lefatshe la Botswana","Republic of Botswana"],"sort_ar":"بوتسوانا","sort_en":"botswana","phone":[{"calling_code":"+267","primary":true}],"continent":"africa","kind":"country"},{"iso2":"BY","iso3":"BLR","name_ar":"بيلاروس","name_en":"Belarus","aliases_ar":["بيلاروسيا","روسيا البيضاء","بيلوروسية"],"aliases_en":["by","White Russia","Belorussia","Bielaruś","Bielorussia","Byeloruss","Byelorussia","Republic of Belarus","Respublika Belarus'","Respublika Bielaruś","White Ruthenia"],"sort_ar":"بيلاروس","sort_en":"belarus","phone":[{"calling_code":"+375","primary":true}],"continent":"europe","kind":"country"},{"iso2":"BZ","iso3":"BLZ","name_ar":"بليز","name_en":"Belize","aliases_ar":[],"aliases_en":["bz"],"sort_ar":"بليز","sort_en":"belize","phone":[{"calling_code":"+501","primary":true}],"continent":"americas","kind":"country"},{"iso2":"CA","iso3":"CAN","name_ar":"كندا","name_en":"Canada","aliases_ar":[],"aliases_en":[],"sort_ar":"كندا","sort_en":"canada","phone":[{"calling_code":"+1","primary":false}],"continent":"americas","kind":"country"},{"iso2":"CC","iso3":"CCK","name_ar":"جزر كوكوس","name_en":"Cocos Islands","aliases_ar":["جزر كوكوس (كيلينغ)","جزر كيلينغ","قائمة جزر جزر كوكس"],"aliases_en":["Cocos (Keeling) Islands","cc","Keeling Islands","Territory of the Cocos (Keeling) Islands"],"sort_ar":"جزر كوكوس","sort_en":"cocos islands","phone":[{"calling_code":"+61","primary":false}],"continent":"oceania","kind":"territory"},{"iso2":"CD","iso3":"COD","name_ar":"جمهورية الكونغو الديمقراطية","name_en":"Democratic Republic of the Congo","aliases_ar":["الكونغو - كينشاسا","الكونغو","الكونغو الديمقراطية"],"aliases_en":["Congo - Kinshasa","Congo (DRC)","DRC","D.R.C.","cd","Dem. Rep. Congo","Dem. Republic of Congo","Dem. Republic of the Congo","Democratic Republic of Congo","DR Congo"],"sort_ar":"جمهوريه كونغو ديمقراطيه","sort_en":"democratic republic of the congo","phone":[{"calling_code":"+243","primary":true}],"continent":"africa","kind":"country"},{"iso2":"CF","iso3":"CAF","name_ar":"جمهورية أفريقيا الوسطى","name_en":"Central African Republic","aliases_ar":[],"aliases_en":["Central Africa","cf"],"sort_ar":"جمهوريه افريقيا وسطي","sort_en":"central african republic","phone":[{"calling_code":"+236","primary":true}],"continent":"africa","kind":"country"},{"iso2":"CG","iso3":"COG","name_ar":"جمهورية الكونغو","name_en":"Republic of the Congo","aliases_ar":["الكونغو - برازافيل"],"aliases_en":["Congo - Brazzaville","Congo (Republic)","Congo","CGO","cg","Rep. Congo","Republic of Congo","Republique du Congo"],"sort_ar":"جمهوريه كونغو","sort_en":"republic of the congo","phone":[{"calling_code":"+242","primary":true}],"continent":"africa","kind":"country"},{"iso2":"CH","iso3":"CHE","name_ar":"سويسرا","name_en":"Switzerland","aliases_ar":["الاتحاد السويسري","سويسرة"],"aliases_en":["Swiss","Confoederatio Helvetica","Swiss Confederation"],"sort_ar":"سويسرا","sort_en":"switzerland","phone":[{"calling_code":"+41","primary":true}],"continent":"europe","kind":"country"},{"iso2":"CI","iso3":"CIV","name_ar":"ساحل العاج","name_en":"Côte d’Ivoire","aliases_ar":["كوت ديفوار","جمهورية ساحل العاج","جمهورية كوت ديفوار"],"aliases_en":["Ivory Coast","ci","Cote d'lvoire","Cote Ivoire","Republic of Cote d'Ivoire","Republic of Ivory Coast","Republic of the Ivory Coast","The Ivory Coast"],"sort_ar":"ساحل عاج","sort_en":"cote d ivoire","phone":[{"calling_code":"+225","primary":true}],"continent":"africa","kind":"country"},{"iso2":"CK","iso3":"COK","name_ar":"جزر كوك","name_en":"Cook Islands","aliases_ar":[],"aliases_en":["ck","Hervey Islands","Cook Group"],"sort_ar":"جزر كوك","sort_en":"cook islands","phone":[{"calling_code":"+682","primary":true}],"continent":"oceania","kind":"territory"},{"iso2":"CL","iso3":"CHL","name_ar":"تشيلي","name_en":"Chile","aliases_ar":["جمهورية تشيلي"],"aliases_en":["Republic of Chile","CHI"],"sort_ar":"تشيلي","sort_en":"chile","phone":[{"calling_code":"+56","primary":true}],"continent":"americas","kind":"country"},{"iso2":"CM","iso3":"CMR","name_ar":"الكاميرون","name_en":"Cameroon","aliases_ar":["جمهورية الكاميرون","جمهورية الكمرون","كمرون"],"aliases_en":["Republic of Cameroon"],"sort_ar":"كاميرون","sort_en":"cameroon","phone":[{"calling_code":"+237","primary":true}],"continent":"africa","kind":"country"},{"iso2":"CN","iso3":"CHN","name_ar":"الصين","name_en":"China","aliases_ar":["الصين الشعبية","جمهورية الصين الشعبية"],"aliases_en":["People's Republic of China","cn","Red China","Communist China","China PR","P.R.C.","PR China","The PRC","the People's Republic of China"],"sort_ar":"صين","sort_en":"china","phone":[{"calling_code":"+86","primary":true}],"continent":"asia","kind":"country"},{"iso2":"CO","iso3":"COL","name_ar":"كولومبيا","name_en":"Colombia","aliases_ar":[],"aliases_en":["Republic of Colombia","The Republic of Colombia"],"sort_ar":"كولومبيا","sort_en":"colombia","phone":[{"calling_code":"+57","primary":true}],"continent":"americas","kind":"country"},{"iso2":"CR","iso3":"CRI","name_ar":"كوستاريكا","name_en":"Costa Rica","aliases_ar":[],"aliases_en":["cr","Republic of Costa Rica"],"sort_ar":"كوستاريكا","sort_en":"costa rica","phone":[{"calling_code":"+506","primary":true}],"continent":"americas","kind":"country"},{"iso2":"CU","iso3":"CUB","name_ar":"كوبا","name_en":"Cuba","aliases_ar":["جمهورية كوبا"],"aliases_en":["Republic of Cuba","cu"],"sort_ar":"كوبا","sort_en":"cuba","phone":[{"calling_code":"+53","primary":true}],"continent":"americas","kind":"country"},{"iso2":"CV","iso3":"CPV","name_ar":"الرأس الأخضر","name_en":"Cape Verde","aliases_ar":[],"aliases_en":["Cabo Verde","Cape Verde Islands","Republic of Cabo Verde","Republic of Cape Verde"],"sort_ar":"راس اخضر","sort_en":"cape verde","phone":[{"calling_code":"+238","primary":true}],"continent":"africa","kind":"country"},{"iso2":"CW","iso3":"CUW","name_ar":"كوراساو","name_en":"Curaçao","aliases_ar":["جزر كوراكاو"],"aliases_en":["Country of Curaçao","Curacau","Curaçoa","Curazao","Curaςao","Curocao","Island Territory of Curaçao","ISO 3166-1:CW"],"sort_ar":"كوراساو","sort_en":"curacao","phone":[{"calling_code":"+599","primary":true}],"continent":"americas","kind":"territory"},{"iso2":"CX","iso3":"CXR","name_ar":"جزيرة كريسماس","name_en":"Christmas Island","aliases_ar":["جزيرة عيد الميلاد","عيد الميلاد","جزر الكريسماس","جزيرة كريسمس","قائمة جزر جزيرة كريسمس"],"aliases_en":["cx","Christmas Island, Other Territories","Christmas Island, Other Territories, Australia","Territory of Christmas Island"],"sort_ar":"جزيره كريسماس","sort_en":"christmas island","phone":[{"calling_code":"+61","primary":false}],"continent":"oceania","kind":"territory"},{"iso2":"CY","iso3":"CYP","name_ar":"قبرص","name_en":"Cyprus","aliases_ar":[],"aliases_en":["Republic of Cyprus","Greek Administration of Southern Cyprus","Greek Cypriot State"],"sort_ar":"قبرص","sort_en":"cyprus","phone":[{"calling_code":"+357","primary":true}],"continent":"asia","kind":"country"},{"iso2":"CZ","iso3":"CZE","name_ar":"التشيك","name_en":"Czechia","aliases_ar":["جمهورية التشيك","التشيكي","الجمهورية التشيكية","الجمهوريةالتشيكية","تشيكيا","جمهورية تشيكيا"],"aliases_en":["Czech Republic","the Czech Republic"],"sort_ar":"تشيك","sort_en":"czechia","phone":[{"calling_code":"+420","primary":true}],"continent":"europe","kind":"country"},{"iso2":"DE","iso3":"DEU","name_ar":"ألمانيا","name_en":"Germany","aliases_ar":["جمهورية ألمانيا اﻻتحادية"],"aliases_en":["Federal Republic of Germany","FRG","BRD"],"sort_ar":"مانيا","sort_en":"germany","phone":[{"calling_code":"+49","primary":true}],"continent":"europe","kind":"country"},{"iso2":"DJ","iso3":"DJI","name_ar":"جيبوتي","name_en":"Djibouti","aliases_ar":[],"aliases_en":["dj","Jabuuti","Gabuuti","Jībūtī","Republic of Djibouti"],"sort_ar":"جيبوتي","sort_en":"djibouti","phone":[{"calling_code":"+253","primary":true}],"continent":"africa","kind":"country"},{"iso2":"DK","iso3":"DNK","name_ar":"الدانمرك","name_en":"Denmark","aliases_ar":["الدنمارك"],"aliases_en":["Danmark","Dania","TAN","dk","Danemark","Denmark proper","metropolitan Denmark"],"sort_ar":"دانمرك","sort_en":"denmark","phone":[{"calling_code":"+45","primary":true}],"continent":"europe","kind":"country"},{"iso2":"DM","iso3":"DMA","name_ar":"دومينيكا","name_en":"Dominica","aliases_ar":[],"aliases_en":["DOM","dm","Commonwealth of Dominica","Island of Dominica","The Commonwealth of Dominica","Wai'tu kubuli"],"sort_ar":"دومينيكا","sort_en":"dominica","phone":[{"calling_code":"+1","primary":false}],"continent":"americas","kind":"country"},{"iso2":"DO","iso3":"DOM","name_ar":"جمهورية الدومينيكان","name_en":"Dominican Republic","aliases_ar":["جمهورية الدومنيكان"],"aliases_en":["RD","Dominicana","DomRep","Republica Dominicana"],"sort_ar":"جمهوريه دومينيكان","sort_en":"dominican republic","phone":[{"calling_code":"+1","primary":false}],"continent":"americas","kind":"country"},{"iso2":"DZ","iso3":"DZA","name_ar":"الجزائر","name_en":"Algeria","aliases_ar":["الدزاير"],"aliases_en":["Djazaïr","Dzayer","People's Democratic Republic of Algeria"],"sort_ar":"جزاير","sort_en":"algeria","phone":[{"calling_code":"+213","primary":true}],"continent":"africa","kind":"country"},{"iso2":"EC","iso3":"ECU","name_ar":"الإكوادور","name_en":"Ecuador","aliases_ar":["أكوادوري","إکوادور"],"aliases_en":["Republic of Ecuador","Republic of the Equator","The Ecuadorian State","Republic of Equator"],"sort_ar":"اكوادور","sort_en":"ecuador","phone":[{"calling_code":"+593","primary":true}],"continent":"americas","kind":"country"},{"iso2":"EE","iso3":"EST","name_ar":"إستونيا","name_en":"Estonia","aliases_ar":["جمهورية إستونيا"],"aliases_en":["ee","Estland","Eesti Vabariik","Republic of Estonia"],"sort_ar":"استونيا","sort_en":"estonia","phone":[{"calling_code":"+372","primary":true}],"continent":"europe","kind":"country"},{"iso2":"EG","iso3":"EGY","name_ar":"مصر","name_en":"Egypt","aliases_ar":["جمهوريّة مصر العربيّة"],"aliases_en":["Misr","Republic of Egypt","Arab Rep. Egypt","Arab Republic of Egypt","Rep. Egypt"],"sort_ar":"مصر","sort_en":"egypt","phone":[{"calling_code":"+20","primary":true}],"continent":"africa","kind":"country"},{"iso2":"ER","iso3":"ERI","name_ar":"إريتريا","name_en":"Eritrea","aliases_ar":["إرتريا","دولة إرتريا","دولة إريتريا"],"aliases_en":["er","Ertrā","Iritriyā","State of Eritrea"],"sort_ar":"اريتريا","sort_en":"eritrea","phone":[{"calling_code":"+291","primary":true}],"continent":"africa","kind":"country"},{"iso2":"ES","iso3":"ESP","name_ar":"إسبانيا","name_en":"Spain","aliases_ar":["مملكة إسبانيا"],"aliases_en":["Kingdom of Spain"],"sort_ar":"اسبانيا","sort_en":"spain","phone":[{"calling_code":"+34","primary":true}],"continent":"europe","kind":"country"},{"iso2":"ET","iso3":"ETH","name_ar":"إثيوبيا","name_en":"Ethiopia","aliases_ar":["الجمهورية الفدرالية الديمقراطية لإثيوبيا","جمهورية إثيوبيا الفيدرالية الديمقراطية"],"aliases_en":["et","Federal Democratic Republic of Ethiopia"],"sort_ar":"اثيوبيا","sort_en":"ethiopia","phone":[{"calling_code":"+251","primary":true}],"continent":"africa","kind":"country"},{"iso2":"FI","iso3":"FIN","name_ar":"فنلندا","name_en":"Finland","aliases_ar":[],"aliases_en":["fi","Finnia","Land of Thousand Lakes","Republic of Finland","Republiken Finland","Suomen tasavalta"],"sort_ar":"فنلندا","sort_en":"finland","phone":[{"calling_code":"+358","primary":true}],"continent":"europe","kind":"country"},{"iso2":"FJ","iso3":"FJI","name_ar":"فيجي","name_en":"Fiji","aliases_ar":[],"aliases_en":["Viti","fj","Fijī Gaṇarājya","Matanitu Tugalala o Viti","Republic of Fiji","Republic of the Fiji Islands"],"sort_ar":"فيجي","sort_en":"fiji","phone":[{"calling_code":"+679","primary":true}],"continent":"oceania","kind":"country"},{"iso2":"FK","iso3":"FLK","name_ar":"جزر فوكلاند","name_en":"Falkland Islands","aliases_ar":["جزر فوكلاند - جزر مالفيناس"],"aliases_en":["Falkland Islands (Islas Malvinas)","Falklands","Islas Malvinas","Malvinas","Malvinas Islands"],"sort_ar":"جزر فوكلاند","sort_en":"falkland islands","phone":[{"calling_code":"+500","primary":true}],"continent":"americas","kind":"territory"},{"iso2":"FM","iso3":"FSM","name_ar":"ميكرونيزيا","name_en":"Micronesia","aliases_ar":["ولايات ميكرونيسيا المتحدة","الولايات المتحدة الميكرونيزية","الولايات المتحدة الميكرونيسية","مايكرونيزيا"],"aliases_en":["Federated States of Micronesia","fm","Fed. Sts. Micronesia","Fed. Sts. of Micronesia","Federated States of Micronesia, FSM"],"sort_ar":"ميكرونيزيا","sort_en":"micronesia","phone":[{"calling_code":"+691","primary":true}],"continent":"oceania","kind":"country"},{"iso2":"FO","iso3":"FRO","name_ar":"جزر فارو","name_en":"Faroe Islands","aliases_ar":[],"aliases_en":["the Faroe Islands","🇫🇴","Færøerne","Færøyene","Farre","fo","Faeroes","Sheep Islands","Faroes","Atlantic/Faroe","Faer Oer","Fær Øer"],"sort_ar":"جزر فارو","sort_en":"faroe islands","phone":[{"calling_code":"+298","primary":true}],"continent":"europe","kind":"territory"},{"iso2":"FR","iso3":"FRA","name_ar":"فرنسا","name_en":"France","aliases_ar":[],"aliases_en":["French Republic"],"sort_ar":"فرنسا","sort_en":"france","phone":[{"calling_code":"+33","primary":true}],"continent":"europe","kind":"country"},{"iso2":"GA","iso3":"GAB","name_ar":"الغابون","name_en":"Gabon","aliases_ar":["الجابون","الجمهورية الغابونية","جمهورية الغابون"],"aliases_en":["ga","Gabonese Republic","Republique Gabonaise"],"sort_ar":"غابون","sort_en":"gabon","phone":[{"calling_code":"+241","primary":true}],"continent":"africa","kind":"country"},{"iso2":"GB","iso3":"GBR","name_ar":"المملكة المتحدة","name_en":"United Kingdom","aliases_ar":["المملكة المتحدة في بريطانيا وشمال إيرلندا","المملكة المتحدة لبريطانيا العظمى وأيرلندا الشمالية","بريطانيا العظمى"],"aliases_en":["UK","G B","Great Britain and Northern Ireland","U K","United Kingdom of Great Britain and Northern Ireland","the UK","the United Kingdom","Great Britain","the United Kingdom of Great Britain and Northern Ireland"],"sort_ar":"مملكه متحده","sort_en":"united kingdom","phone":[{"calling_code":"+44","primary":true}],"continent":"europe","kind":"country"},{"iso2":"GD","iso3":"GRD","name_ar":"غرينادا","name_en":"Grenada","aliases_ar":["غرنادة"],"aliases_en":["GRN","gd"],"sort_ar":"غرينادا","sort_en":"grenada","phone":[{"calling_code":"+1","primary":false}],"continent":"americas","kind":"country"},{"iso2":"GE","iso3":"GEO","name_ar":"جورجيا","name_en":"Georgia","aliases_ar":["جورجي","جمهورية جورجيا","جيورجا","غرجستان","كرجستان"],"aliases_en":["Georgia (country)","Sakartvelo","Republic of Georgia","Georgia (Sakartvelo)"],"sort_ar":"جورجيا","sort_en":"georgia","phone":[{"calling_code":"+995","primary":true}],"continent":"asia","kind":"country"},{"iso2":"GF","iso3":"GUF","name_ar":"غويانا الفرنسية","name_en":"French Guiana","aliases_ar":[],"aliases_en":["Guiana","Guyane","Guiana, France"],"sort_ar":"غويانا فرنسيه","sort_en":"french guiana","phone":[{"calling_code":"+594","primary":true}],"continent":"americas","kind":"territory"},{"iso2":"GG","iso3":"GGY","name_ar":"غيرنزي","name_en":"Guernsey","aliases_ar":["بيليويك غويرنسي","جزيرة جرنزي","جزيرة جيرنزي","جزيرة غيرنزي","غيرنسى"],"aliases_en":["GBG","Lisia","Bailliage de Guernesey","Bailliage dé Guernési","GB-GSY","Giernési","Great Britain Guernsey","XA-GG","gg"],"sort_ar":"غيرنزي","sort_en":"guernsey","phone":[{"calling_code":"+44","primary":false}],"continent":"europe","kind":"territory"},{"iso2":"GH","iso3":"GHA","name_ar":"غانا","name_en":"Ghana","aliases_ar":["جمهورية غانا"],"aliases_en":[],"sort_ar":"غانا","sort_en":"ghana","phone":[{"calling_code":"+233","primary":true}],"continent":"africa","kind":"country"},{"iso2":"GI","iso3":"GIB","name_ar":"جبل طارق","name_en":"Gibraltar","aliases_ar":["جبرلتار","جبل طارق (منطقة حكم ذاتي)","جبلرتار","جيبرالتار","محمية جبل طارق","مستعمرة جبل طارق"],"aliases_en":["gi","Gib"],"sort_ar":"جبل طارق","sort_en":"gibraltar","phone":[{"calling_code":"+350","primary":true}],"continent":"europe","kind":"territory"},{"iso2":"GL","iso3":"GRL","name_ar":"غرينلاند","name_en":"Greenland","aliases_ar":["جرينلاند","جرينلند"],"aliases_en":["Groenland","Kalaallit Nunaat","Greenlandia"],"sort_ar":"غرينلاند","sort_en":"greenland","phone":[{"calling_code":"+299","primary":true}],"continent":"americas","kind":"territory"},{"iso2":"GM","iso3":"GMB","name_ar":"غامبيا","name_en":"Gambia","aliases_ar":["جمهورية غامبيا"],"aliases_en":["The Gambia","Islamic Republic of the Gambia","Republic of the Gambia"],"sort_ar":"غامبيا","sort_en":"gambia","phone":[{"calling_code":"+220","primary":true}],"continent":"africa","kind":"country"},{"iso2":"GN","iso3":"GIN","name_ar":"غينيا","name_en":"Guinea","aliases_ar":["جمهورية غينيا"],"aliases_en":["gn","GUI","Guinea-Conakry","Republic of Guinea"],"sort_ar":"غينيا","sort_en":"guinea","phone":[{"calling_code":"+224","primary":true}],"continent":"africa","kind":"country"},{"iso2":"GP","iso3":"GLP","name_ar":"غوادلوب","name_en":"Guadeloupe","aliases_ar":["جوادلوب"],"aliases_en":["971","gp","Gwada","Gwadloup","Karukera"],"sort_ar":"غوادلوب","sort_en":"guadeloupe","phone":[{"calling_code":"+590","primary":true}],"continent":"americas","kind":"territory"},{"iso2":"GQ","iso3":"GNQ","name_ar":"غينيا الاستوائية","name_en":"Equatorial Guinea","aliases_ar":[],"aliases_en":["GEQ","gq","Republic of Equatorial Guinea"],"sort_ar":"غينيا استواييه","sort_en":"equatorial guinea","phone":[{"calling_code":"+240","primary":true}],"continent":"africa","kind":"country"},{"iso2":"GR","iso3":"GRC","name_ar":"اليونان","name_en":"Greece","aliases_ar":[],"aliases_en":["Hellas","el","gr","Hellenic Republic","Ellada","Greek Republic","Hellas, Greece"],"sort_ar":"يونان","sort_en":"greece","phone":[{"calling_code":"+30","primary":true}],"continent":"europe","kind":"country"},{"iso2":"GT","iso3":"GTM","name_ar":"غواتيمالا","name_en":"Guatemala","aliases_ar":["جمهورية غواتيمالا","جواتيمالا"],"aliases_en":["gt","Republic of Guatemala"],"sort_ar":"غواتيمالا","sort_en":"guatemala","phone":[{"calling_code":"+502","primary":true}],"continent":"americas","kind":"country"},{"iso2":"GU","iso3":"GUM","name_ar":"غوام","name_en":"Guam","aliases_ar":[],"aliases_en":["Guahan","Guam (USA)","Island of Guam","ISO 3166-1:GU","Territory of Guam","US-GU"],"sort_ar":"غوام","sort_en":"guam","phone":[{"calling_code":"+1","primary":false}],"continent":"oceania","kind":"territory"},{"iso2":"GW","iso3":"GNB","name_ar":"غينيا بيساو","name_en":"Guinea-Bissau","aliases_ar":["جمهورية غينيا بيساو"],"aliases_en":["GBS","gw","Republic of Guinea-Bissau"],"sort_ar":"غينيا بيساو","sort_en":"guinea bissau","phone":[{"calling_code":"+245","primary":true}],"continent":"africa","kind":"country"},{"iso2":"GY","iso3":"GUY","name_ar":"غيانا","name_en":"Guyana","aliases_ar":["غويانا","جمهورية التعاونية غويانا","جمهورية التعاونية غيانا","جمهورية غيانا التعاونية"],"aliases_en":["gy","Co-operative Republic of Guyana","Republic of Guyana"],"sort_ar":"غيانا","sort_en":"guyana","phone":[{"calling_code":"+592","primary":true}],"continent":"americas","kind":"country"},{"iso2":"HK","iso3":"HKG","name_ar":"هونغ كونغ","name_en":"Hong Kong","aliases_ar":["هونغ كونغ الصينية (منطقة إدارية خاصة)","هونج كونج","هونق كونق","هونك كونك"],"aliases_en":["Hong Kong SAR China","Hong Kong, China","Hongkong","HKSAR","Hong Kong SAR","Hong Kong Special Administrative Region"],"sort_ar":"هونغ كونغ","sort_en":"hong kong","phone":[{"calling_code":"+852","primary":true}],"continent":"asia","kind":"territory"},{"iso2":"HN","iso3":"HND","name_ar":"هندوراس","name_en":"Honduras","aliases_ar":[],"aliases_en":["HON","hn","Honduran Republic","Republic of Honduras"],"sort_ar":"هندوراس","sort_en":"honduras","phone":[{"calling_code":"+504","primary":true}],"continent":"americas","kind":"country"},{"iso2":"HR","iso3":"HRV","name_ar":"كرواتيا","name_en":"Croatia","aliases_ar":[],"aliases_en":["CRO","RH","Republic of Croatia"],"sort_ar":"كرواتيا","sort_en":"croatia","phone":[{"calling_code":"+385","primary":true}],"continent":"europe","kind":"country"},{"iso2":"HT","iso3":"HTI","name_ar":"هايتي","name_en":"Haiti","aliases_ar":[],"aliases_en":["Hayti","ht","HAI","Ayiti","Haitian Republic","Republic of Haiti"],"sort_ar":"هايتي","sort_en":"haiti","phone":[{"calling_code":"+509","primary":true}],"continent":"americas","kind":"country"},{"iso2":"HU","iso3":"HUN","name_ar":"هنغاريا","name_en":"Hungary","aliases_ar":["المجر","هنجاريا"],"aliases_en":[],"sort_ar":"هنغاريا","sort_en":"hungary","phone":[{"calling_code":"+36","primary":true}],"continent":"europe","kind":"country"},{"iso2":"ID","iso3":"IDN","name_ar":"إندونيسيا","name_en":"Indonesia","aliases_ar":["جمهورية إندونيسيا"],"aliases_en":["id","Republic of Indonesia"],"sort_ar":"اندونيسيا","sort_en":"indonesia","phone":[{"calling_code":"+62","primary":true}],"continent":"asia","kind":"country"},{"iso2":"IE","iso3":"IRL","name_ar":"أيرلندا","name_en":"Ireland","aliases_ar":["آرسنال","آيرلندية","إيرلنده","إيرلندي","ايرلاندية","جمهورية آيرلندا","جمهورية أيرلندة","جمهورية ايرلاندا","الجمهورية الأيرلندية"],"aliases_en":["Republic of Ireland","Southern Ireland","Irish Republic"],"sort_ar":"ايرلندا","sort_en":"ireland","phone":[{"calling_code":"+353","primary":true}],"continent":"europe","kind":"country"},{"iso2":"IM","iso3":"IMN","name_ar":"جزيرة مان","name_en":"Isle of Man","aliases_ar":["آيل أوف مان","مان (جزيرة)"],"aliases_en":["Man","the Isle of Man","Mann","Manx","I. M.","I. Man","I. Mann","I. Mannin","Isle of Mann"],"sort_ar":"جزيره مان","sort_en":"isle of man","phone":[{"calling_code":"+44","primary":false}],"continent":"europe","kind":"territory"},{"iso2":"IN","iso3":"IND","name_ar":"الهند","name_en":"India","aliases_ar":["جمهورية الهند"],"aliases_en":["Hindustan","Bharata","Tianzhu","Hindoostan","Al Hind","Bharatvarsh","Tenjiku","Bharat Ganarajya","Indostan","Republic of India"],"sort_ar":"هند","sort_en":"india","phone":[{"calling_code":"+91","primary":true}],"continent":"asia","kind":"country"},{"iso2":"IO","iso3":"IOT","name_ar":"الإقليم البريطاني في المحيط الهندي","name_en":"British Indian Ocean Territory","aliases_ar":["إقليم المحيط الهندي البريطاني","British Indian Ocean Territory","منطقة المحيط الهندي البريطانية"],"aliases_en":["🇮🇴","io","BIOT","The British Indian Ocean Territory"],"sort_ar":"اقليم بريطاني في محيط هندي","sort_en":"british indian ocean territory","phone":[{"calling_code":"+246","primary":true}],"continent":"africa","kind":"territory"},{"iso2":"IQ","iso3":"IRQ","name_ar":"العراق","name_en":"Iraq","aliases_ar":["الجمهورية العراقية","جمهورية العراق"],"aliases_en":["Republic of Iraq","iq"],"sort_ar":"عراق","sort_en":"iraq","phone":[{"calling_code":"+964","primary":true}],"continent":"asia","kind":"country"},{"iso2":"IR","iso3":"IRN","name_ar":"إيران","name_en":"Iran","aliases_ar":["الجمهور الإسلامية الإيرانية","الجمهورية الإسلامية الإيرانية","الجمهورية الإسلامية في إيران","الديار الإيرانية","ايران الأکبر","ایران","جمهورية إيران","جمهورية إيران الإسلامية","جمهوریة إیران الإسلامیة"],"aliases_en":["IRI","ir","Islamic Rep. Iran","Islamic Republic of Iran"],"sort_ar":"ايران","sort_en":"iran","phone":[{"calling_code":"+98","primary":true}],"continent":"asia","kind":"country"},{"iso2":"IS","iso3":"ISL","name_ar":"آيسلندا","name_en":"Iceland","aliases_ar":["جمهورية آيسلندا"],"aliases_en":["Ysland","Icelandic republic","Isl.","Republic of Iceland"],"sort_ar":"ايسلندا","sort_en":"iceland","phone":[{"calling_code":"+354","primary":true}],"continent":"europe","kind":"country"},{"iso2":"IT","iso3":"ITA","name_ar":"إيطاليا","name_en":"Italy","aliases_ar":[],"aliases_en":["Italian Republic","Republic of Italy"],"sort_ar":"ايطاليا","sort_en":"italy","phone":[{"calling_code":"+39","primary":true}],"continent":"europe","kind":"country"},{"iso2":"JE","iso3":"JEY","name_ar":"جيرسي","name_en":"Jersey","aliases_ar":["جيرزي"],"aliases_en":["Isle of Jersey","Iersey","je","Jersey Island","Jerri","Bailliage de Jerri","Bailliage de Jersey","Balliwick of Jersey","I. Iersey","I. Jersey","Iersey I.","Jersey I."],"sort_ar":"جيرسي","sort_en":"jersey","phone":[{"calling_code":"+44","primary":false}],"continent":"europe","kind":"territory"},{"iso2":"JM","iso3":"JAM","name_ar":"جامايكا","name_en":"Jamaica","aliases_ar":["جامايكي","جاميكا","جمايكا"],"aliases_en":["JA","Commonwealth of Jamaica"],"sort_ar":"جامايكا","sort_en":"jamaica","phone":[{"calling_code":"+1","primary":false}],"continent":"americas","kind":"country"},{"iso2":"JO","iso3":"JOR","name_ar":"الأردن","name_en":"Jordan","aliases_ar":["المملكة الأردنيّة الهاشميّة"],"aliases_en":["HKJ","Yarden","Giordania","Hashemite Kingdom of Jordan","ISO 3166-1:JO","Kingdom of Jordan","State of Jordan"],"sort_ar":"اردن","sort_en":"jordan","phone":[{"calling_code":"+962","primary":true}],"continent":"asia","kind":"country"},{"iso2":"JP","iso3":"JPN","name_ar":"اليابان","name_en":"Japan","aliases_ar":["دولة اليابان"],"aliases_en":["Land of the Rising Sun","Iapan","Iapon","Land of Rising Sun","Nihon-koku","Nippon-koku","State of Japan"],"sort_ar":"يابان","sort_en":"japan","phone":[{"calling_code":"+81","primary":true}],"continent":"asia","kind":"country"},{"iso2":"KE","iso3":"KEN","name_ar":"كينيا","name_en":"Kenya","aliases_ar":[],"aliases_en":["ke","Republic of Kenya"],"sort_ar":"كينيا","sort_en":"kenya","phone":[{"calling_code":"+254","primary":true}],"continent":"africa","kind":"country"},{"iso2":"KG","iso3":"KGZ","name_ar":"قيرغيزستان","name_en":"Kyrgyzstan","aliases_ar":["قرغيزستان","قرغيزيا"],"aliases_en":["kg","Kyrgyz Republic"],"sort_ar":"قيرغيزستان","sort_en":"kyrgyzstan","phone":[{"calling_code":"+996","primary":true}],"continent":"asia","kind":"country"},{"iso2":"KH","iso3":"KHM","name_ar":"كمبوديا","name_en":"Cambodia","aliases_ar":["كامبوديا"],"aliases_en":["Kamboja","Kingdom of Cambodia","kh","Camboya","Campuchia","Kambodzha","Kampuchea"],"sort_ar":"كمبوديا","sort_en":"cambodia","phone":[{"calling_code":"+855","primary":true}],"continent":"asia","kind":"country"},{"iso2":"KI","iso3":"KIR","name_ar":"كيريباتي","name_en":"Kiribati","aliases_ar":["كيريباس"],"aliases_en":["ki","Republic of Kiribati"],"sort_ar":"كيريباتي","sort_en":"kiribati","phone":[{"calling_code":"+686","primary":true}],"continent":"oceania","kind":"country"},{"iso2":"KM","iso3":"COM","name_ar":"جزر القمر","name_en":"Comoros","aliases_ar":["القمر","الاتحاد القمري"],"aliases_en":["the Comoros","km","al-Ittiḥād al-Qumurī","Juzur al-Qamar","Juzur al-Qumur","Massiwa ya komori","ouvoimoja wakomori","Udzima wa Komori","Union des Comores","Union of the Comoros"],"sort_ar":"جزر قمر","sort_en":"comoros","phone":[{"calling_code":"+269","primary":true}],"continent":"africa","kind":"country"},{"iso2":"KN","iso3":"KNA","name_ar":"سانت كيتس ونيفيس","name_en":"Saint Kitts and Nevis","aliases_ar":[],"aliases_en":["St. Kitts & Nevis","Federation of Saint Christopher and Nevis","Federation of Saint Kitts and Nevis","Kitts & Nevis","Kitts and Nevis","Saint Christopher and Nevis","St Kitts and Nevis"],"sort_ar":"سانت كيتس ونيفيس","sort_en":"saint kitts and nevis","phone":[{"calling_code":"+1","primary":false}],"continent":"americas","kind":"country"},{"iso2":"KP","iso3":"PRK","name_ar":"كوريا الشمالية","name_en":"North Korea","aliases_ar":["جمهورية كوريا الديمقراطية الشعبية"],"aliases_en":["DPR Korea","kp","Democratic People's Republic of Korea","DPRK","N. Korea"],"sort_ar":"كوريا شماليه","sort_en":"north korea","phone":[{"calling_code":"+850","primary":true}],"continent":"asia","kind":"country"},{"iso2":"KR","iso3":"KOR","name_ar":"كوريا الجنوبية","name_en":"South Korea","aliases_ar":["جمهورية كوريا"],"aliases_en":["Daehanminguk","Korea Republic","Rep. Korea","S. Korea","Republic of Korea","Silla","Choson","Korea (South)","Hanguk","Daehan Minguk"],"sort_ar":"كوريا جنوبيه","sort_en":"south korea","phone":[{"calling_code":"+82","primary":true}],"continent":"asia","kind":"country"},{"iso2":"KW","iso3":"KWT","name_ar":"الكويت","name_en":"Kuwait","aliases_ar":["دولة الكويت"],"aliases_en":["kw","State of Kuwait"],"sort_ar":"كويت","sort_en":"kuwait","phone":[{"calling_code":"+965","primary":true}],"continent":"asia","kind":"country"},{"iso2":"KY","iso3":"CYM","name_ar":"جزر كايمان","name_en":"Cayman Islands","aliases_ar":[],"aliases_en":["Caymans","CAY","ky"],"sort_ar":"جزر كايمان","sort_en":"cayman islands","phone":[{"calling_code":"+1","primary":false}],"continent":"americas","kind":"territory"},{"iso2":"KZ","iso3":"KAZ","name_ar":"كازاخستان","name_en":"Kazakhstan","aliases_ar":["قازاقستان"],"aliases_en":["kz","Qazaqstan","Republic of Kazakhstan","Republic of Qazaqstan"],"sort_ar":"كازاخستان","sort_en":"kazakhstan","phone":[{"calling_code":"+7","primary":false}],"continent":"asia","kind":"country"},{"iso2":"LA","iso3":"LAO","name_ar":"لاوس","name_en":"Laos","aliases_ar":[],"aliases_en":["la","Lao PDR","Lao People's Democratic Republic"],"sort_ar":"لاوس","sort_en":"laos","phone":[{"calling_code":"+856","primary":true}],"continent":"asia","kind":"country"},{"iso2":"LB","iso3":"LBN","name_ar":"لبنان","name_en":"Lebanon","aliases_ar":["الجمهورية اللبنانية"],"aliases_en":["lb","Lebanese Republic","Lubnan","Republic of Lebanon","State of Lebanon"],"sort_ar":"لبنان","sort_en":"lebanon","phone":[{"calling_code":"+961","primary":true}],"continent":"asia","kind":"country"},{"iso2":"LC","iso3":"LCA","name_ar":"سانت لوسيا","name_en":"Saint Lucia","aliases_ar":[],"aliases_en":["St. Lucia","lca","Hewanorra","Iyonola","lc"],"sort_ar":"سانت لوسيا","sort_en":"saint lucia","phone":[{"calling_code":"+1","primary":false}],"continent":"americas","kind":"country"},{"iso2":"LI","iso3":"LIE","name_ar":"ليختنشتاين","name_en":"Liechtenstein","aliases_ar":[],"aliases_en":["li","FL","Principality of Liechtenstein"],"sort_ar":"ليختنشتاين","sort_en":"liechtenstein","phone":[{"calling_code":"+423","primary":true}],"continent":"europe","kind":"country"},{"iso2":"LK","iso3":"LKA","name_ar":"سريلانكا","name_en":"Sri Lanka","aliases_ar":["جمهورية سريلنكا الاشتراكية الديمقراطية","سري لنكا","سريلنكا"],"aliases_en":["SRI","Ceylan","ce","Serendib","Taprobane","Srilanka","Democratic Socialist Republic of Sri Lanka","Lanka, Sri","lk","lke"],"sort_ar":"سريلانكا","sort_en":"sri lanka","phone":[{"calling_code":"+94","primary":true}],"continent":"asia","kind":"country"},{"iso2":"LR","iso3":"LBR","name_ar":"ليبيريا","name_en":"Liberia","aliases_ar":[],"aliases_en":["Liber","lr","Republic of Liberia"],"sort_ar":"ليبيريا","sort_en":"liberia","phone":[{"calling_code":"+231","primary":true}],"continent":"africa","kind":"country"},{"iso2":"LS","iso3":"LSO","name_ar":"ليسوتو","name_en":"Lesotho","aliases_ar":["مملكة ليسوتو"],"aliases_en":["ls","Kingdom of Lesotho","LES","The Mountain Kingdom"],"sort_ar":"ليسوتو","sort_en":"lesotho","phone":[{"calling_code":"+266","primary":true}],"continent":"africa","kind":"country"},{"iso2":"LT","iso3":"LTU","name_ar":"ليتوانيا","name_en":"Lithuania","aliases_ar":["لتوانيا"],"aliases_en":["Republic of Lithuania"],"sort_ar":"ليتوانيا","sort_en":"lithuania","phone":[{"calling_code":"+370","primary":true}],"continent":"europe","kind":"country"},{"iso2":"LU","iso3":"LUX","name_ar":"لوكسمبورغ","name_en":"Luxembourg","aliases_ar":["لوكسمبورج","دوقية لوكسمبورغ","اللكسمبورج","اللكسمبورغ","دوقية اللوغسمبورغ","لكسمبرغ","لوكسمبرج","لوكسمبورگ"],"aliases_en":["Grand Duchy of Luxembourg"],"sort_ar":"لوكسمبورغ","sort_en":"luxembourg","phone":[{"calling_code":"+352","primary":true}],"continent":"europe","kind":"country"},{"iso2":"LV","iso3":"LVA","name_ar":"لاتفيا","name_en":"Latvia","aliases_ar":["بلتفيا","جيلغافا","داوغافبلس","داوغالفس","لاتفي","لاتيفيا","لتفيا"],"aliases_en":["lv","Latveja","Latvejas Republika","Latvian Republic","Latvija","Latvijas Republika","Leţmо̄","Leţmо̄ Vabāmо̄","Republic of Latvia"],"sort_ar":"لاتفيا","sort_en":"latvia","phone":[{"calling_code":"+371","primary":true}],"continent":"europe","kind":"country"},{"iso2":"LY","iso3":"LBY","name_ar":"ليبيا","name_en":"Libya","aliases_ar":["الجمهورية الليبية","الليبي","الليبية","الليبين","دولة ليبيا","ليببيا"],"aliases_en":["ly","LBA","State of Libya"],"sort_ar":"ليبيا","sort_en":"libya","phone":[{"calling_code":"+218","primary":true}],"continent":"africa","kind":"country"},{"iso2":"MA","iso3":"MAR","name_ar":"المغرب","name_en":"Morocco","aliases_ar":["المملكة المغربية"],"aliases_en":["al-Maġrib","Kingdom of Morocco","Lmaġrib","Maroc","Marocco"],"sort_ar":"مغرب","sort_en":"morocco","phone":[{"calling_code":"+212","primary":true}],"continent":"africa","kind":"country"},{"iso2":"MC","iso3":"MCO","name_ar":"موناكو","name_en":"Monaco","aliases_ar":["إمارة موناكو"],"aliases_en":["mc","Fort-Hercule","Mùnegu","Principality and Diocese of Monaco","Principality of Monaco","Principato di Monaco","Principatu de Mu̍negu","Principauté de Monaco"],"sort_ar":"موناكو","sort_en":"monaco","phone":[{"calling_code":"+377","primary":true}],"continent":"europe","kind":"country"},{"iso2":"MD","iso3":"MDA","name_ar":"مولدوفا","name_en":"Moldova","aliases_ar":["مولدافيا","إمارة البُغدان","البغدان","جمهورية مولدوفا","جمهورية مولدوڤا"],"aliases_en":["Moldavia","Republic of Moldova","Republica Moldova"],"sort_ar":"مولدوفا","sort_en":"moldova","phone":[{"calling_code":"+373","primary":true}],"continent":"europe","kind":"country"},{"iso2":"ME","iso3":"MNE","name_ar":"الجبل الأسود","name_en":"Montenegro","aliases_ar":["مونتينيغرو"],"aliases_en":["Republic of Montenegro"],"sort_ar":"جبل اسود","sort_en":"montenegro","phone":[{"calling_code":"+382","primary":true}],"continent":"europe","kind":"country"},{"iso2":"MF","iso3":"MAF","name_ar":"سان مارتن","name_en":"Saint Martin","aliases_ar":["تجمع سان مارتين","سان مارتن الفرنسية","سان مارتين"],"aliases_en":["St. Martin","Saint Martin (French part)","Collectivity of Saint Martin","FR-MF","mf","Saint Martin (France)","St. Martin (French part)"],"sort_ar":"سان مارتن","sort_en":"saint martin","phone":[{"calling_code":"+590","primary":false}],"continent":"americas","kind":"territory"},{"iso2":"MG","iso3":"MDG","name_ar":"مدغشقر","name_en":"Madagascar","aliases_ar":["ملجاش"],"aliases_en":["Malagascar","Malagaskar","mg","Republic of Madagascar"],"sort_ar":"مدغشقر","sort_en":"madagascar","phone":[{"calling_code":"+261","primary":true}],"continent":"africa","kind":"country"},{"iso2":"MH","iso3":"MHL","name_ar":"جزر مارشال","name_en":"Marshall Islands","aliases_ar":[],"aliases_en":["mh","Republic of the Marshall Islands"],"sort_ar":"جزر مارشال","sort_en":"marshall islands","phone":[{"calling_code":"+692","primary":true}],"continent":"oceania","kind":"country"},{"iso2":"MK","iso3":"MKD","name_ar":"مقدونيا الشمالية","name_en":"North Macedonia","aliases_ar":["مقدونيا","جمهورية شمال مقدونيا","جمهورية مقدونيا","جمهورية مقدونيا الشمالية","جمهورية مقدونيا اليوغوسلافية السابقة","شمال مقدونيا"],"aliases_en":["Former Yugoslav Republic of Macedonia","FYR Macedonia","Republic of Macedonia","Republic of North Macedonia","Macedonia","NM","Makedonia"],"sort_ar":"مقدونيا شماليه","sort_en":"north macedonia","phone":[{"calling_code":"+389","primary":true}],"continent":"europe","kind":"country"},{"iso2":"ML","iso3":"MLI","name_ar":"مالي","name_en":"Mali","aliases_ar":["جمهورية مالي"],"aliases_en":["ml","Republic of Mali"],"sort_ar":"مالي","sort_en":"mali","phone":[{"calling_code":"+223","primary":true}],"continent":"africa","kind":"country"},{"iso2":"MM","iso3":"MMR","name_ar":"ميانمار","name_en":"Myanmar","aliases_ar":["ميانمار (بورما)","اتحاد بورما","برمانيا","بورما","جمهورية اتحاد ميانمار"],"aliases_en":["Myanmar (Burma)","Union of Burma","Republic of the Union of Myanmar"],"sort_ar":"ميانمار","sort_en":"myanmar","phone":[{"calling_code":"+95","primary":true}],"continent":"asia","kind":"country"},{"iso2":"MN","iso3":"MNG","name_ar":"منغوليا","name_en":"Mongolia","aliases_ar":[],"aliases_en":["Mongol State","State of Mongolia"],"sort_ar":"منغوليا","sort_en":"mongolia","phone":[{"calling_code":"+976","primary":true}],"continent":"asia","kind":"country"},{"iso2":"MO","iso3":"MAC","name_ar":"مكاو","name_en":"Macao","aliases_ar":["منطقة ماكاو الإدارية الخاصة","ماكاو","قائمة جزر ماكاو","ماكاو، الصين"],"aliases_en":["Macao SAR China","Macau","Aomen","Macao S.A.R.","Macao SAR","Macao Special Administrative Region","Macau SAR","Macau SAR, China","Macau Special Administrative Region"],"sort_ar":"مكاو","sort_en":"macao","phone":[{"calling_code":"+853","primary":true}],"continent":"asia","kind":"territory"},{"iso2":"MP","iso3":"MNP","name_ar":"جزر ماريانا الشمالية","name_en":"Northern Mariana Islands","aliases_ar":["ماريانا الشمالية"],"aliases_en":["Commonwealth of the Northern Mariana Islands","the Northern Mariana Islands","mp","NMI","CNMI","Commonwealth of the Northern Maria Islands","ISO 3166-1:MP","Northern Marianas","US-MP"],"sort_ar":"جزر ماريانا شماليه","sort_en":"northern mariana islands","phone":[{"calling_code":"+1","primary":false}],"continent":"oceania","kind":"territory"},{"iso2":"MQ","iso3":"MTQ","name_ar":"جزر المارتينيك","name_en":"Martinique","aliases_ar":["مارتينيك"],"aliases_en":["Madiana","Jouanacaëra","Madinina","Martinica","Matinik","Matinino","Matnik","Territorial Collectivity of Martinique","Wanakaera"],"sort_ar":"جزر مارتينيك","sort_en":"martinique","phone":[{"calling_code":"+596","primary":true}],"continent":"americas","kind":"territory"},{"iso2":"MR","iso3":"MRT","name_ar":"موريتانيا","name_en":"Mauritania","aliases_ar":["🇲🇷","الجمهورية الإسلامية الموريتانية"],"aliases_en":["Agawej","Gannaar","Islamic Republic of Mauritania","Mauretania","Moritani","mr","Muritanya","Murutaane"],"sort_ar":"موريتانيا","sort_en":"mauritania","phone":[{"calling_code":"+222","primary":true}],"continent":"africa","kind":"country"},{"iso2":"MS","iso3":"MSR","name_ar":"مونتسرات","name_en":"Montserrat","aliases_ar":["مونتسيرات"],"aliases_en":["ms","Island of Montserrat"],"sort_ar":"مونتسرات","sort_en":"montserrat","phone":[{"calling_code":"+1","primary":false}],"continent":"americas","kind":"territory"},{"iso2":"MT","iso3":"MLT","name_ar":"مالطا","name_en":"Malta","aliases_ar":["جمهورية مالطا"],"aliases_en":["Republic of Malta"],"sort_ar":"مالطا","sort_en":"malta","phone":[{"calling_code":"+356","primary":true}],"continent":"europe","kind":"country"},{"iso2":"MU","iso3":"MUS","name_ar":"موريشيوس","name_en":"Mauritius","aliases_ar":["بور لوي","بور لويس","جمهورية موريشيوس","عاصمة موريشيوس","مورشس","موريتيوس","موريشوس"],"aliases_en":["Maurice","MRI","Moris","Republic of Mauritius"],"sort_ar":"موريشيوس","sort_en":"mauritius","phone":[{"calling_code":"+230","primary":true}],"continent":"africa","kind":"country"},{"iso2":"MV","iso3":"MDV","name_ar":"جزر المالديف","name_en":"Maldives","aliases_ar":["المالديف","جمهورية المالديف"],"aliases_en":["mv","Republic of Maldives"],"sort_ar":"جزر مالديف","sort_en":"maldives","phone":[{"calling_code":"+960","primary":true}],"continent":"asia","kind":"country"},{"iso2":"MW","iso3":"MWI","name_ar":"ملاوي","name_en":"Malawi","aliases_ar":["جمهورية مالاوي","مالاوي"],"aliases_en":["MAW","mw","Republic of Malawi"],"sort_ar":"ملاوي","sort_en":"malawi","phone":[{"calling_code":"+265","primary":true}],"continent":"africa","kind":"country"},{"iso2":"MX","iso3":"MEX","name_ar":"المكسيك","name_en":"Mexico","aliases_ar":["الولايات المتحدة المكسيكية"],"aliases_en":["Mexican Republic","Mexican United States","US of M","United Mexican States","mx","MXN","United States of Mexico"],"sort_ar":"مكسيك","sort_en":"mexico","phone":[{"calling_code":"+52","primary":true}],"continent":"americas","kind":"country"},{"iso2":"MY","iso3":"MYS","name_ar":"ماليزيا","name_en":"Malaysia","aliases_ar":["🇲🇾"],"aliases_en":["Federation of Malaysia","Malaysia Federation"],"sort_ar":"ماليزيا","sort_en":"malaysia","phone":[{"calling_code":"+60","primary":true}],"continent":"asia","kind":"country"},{"iso2":"MZ","iso3":"MOZ","name_ar":"موزمبيق","name_en":"Mozambique","aliases_ar":[],"aliases_en":["Moçambique","mz","Republic of Mozambique","República de Moçambique"],"sort_ar":"موزمبيق","sort_en":"mozambique","phone":[{"calling_code":"+258","primary":true}],"continent":"africa","kind":"country"},{"iso2":"NA","iso3":"NAM","name_ar":"ناميبيا","name_en":"Namibia","aliases_ar":["نامبيا","ناميبي"],"aliases_en":["na","Republic of Namibia"],"sort_ar":"ناميبيا","sort_en":"namibia","phone":[{"calling_code":"+264","primary":true}],"continent":"africa","kind":"country"},{"iso2":"NC","iso3":"NCL","name_ar":"كاليدونيا الجديدة","name_en":"New Caledonia","aliases_ar":["كاناكي","نيو كاليدونيا","نيوكاليدونيا"],"aliases_en":["Territory of New Caledonia and Dependencies","New Cal"],"sort_ar":"كاليدونيا جديده","sort_en":"new caledonia","phone":[{"calling_code":"+687","primary":true}],"continent":"oceania","kind":"territory"},{"iso2":"NE","iso3":"NER","name_ar":"النيجر","name_en":"Niger","aliases_ar":["جمهورية النيجر","زندر","عاصمة النيجر","قائمة جزر النيجر","منطقة حضارية نيامي"],"aliases_en":["ne","Republic Niger","Republic of Niger","Republic of the Niger","The Niger"],"sort_ar":"نيجر","sort_en":"niger","phone":[{"calling_code":"+227","primary":true}],"continent":"africa","kind":"country"},{"iso2":"NF","iso3":"NFK","name_ar":"جزيرة نورفولك","name_en":"Norfolk Island","aliases_ar":["جزير نورفولك","جزيرة نورفلوك"],"aliases_en":["Norfolk Island, Australia","Norfolk Island, Other Territories","Norfolk Island, Other Territories, Australia","Territory of Norfolk Island"],"sort_ar":"جزيره نورفولك","sort_en":"norfolk island","phone":[{"calling_code":"+672","primary":true}],"continent":"oceania","kind":"territory"},{"iso2":"NG","iso3":"NGA","name_ar":"نيجيريا","name_en":"Nigeria","aliases_ar":["جمهورية نيجيريا الاتحادية"],"aliases_en":["Federal Republic of Nigeria","Naija"],"sort_ar":"نيجيريا","sort_en":"nigeria","phone":[{"calling_code":"+234","primary":true}],"continent":"africa","kind":"country"},{"iso2":"NI","iso3":"NIC","name_ar":"نيكاراغوا","name_en":"Nicaragua","aliases_ar":["نيكاراجوا"],"aliases_en":["NCA","ni","Republic of Nicaragua"],"sort_ar":"نيكاراغوا","sort_en":"nicaragua","phone":[{"calling_code":"+505","primary":true}],"continent":"americas","kind":"country"},{"iso2":"NL","iso3":"NLD","name_ar":"هولندا","name_en":"Netherlands","aliases_ar":["مملكة هولندا","مملكة الرڭوڭ المهوّدة"],"aliases_en":["Kingdom of the Netherlands","the Netherlands","Nederlanden","Kingdom of Netherlands"],"sort_ar":"هولندا","sort_en":"netherlands","phone":[{"calling_code":"+31","primary":true}],"continent":"europe","kind":"country"},{"iso2":"NO","iso3":"NOR","name_ar":"النرويج","name_en":"Norway","aliases_ar":["مملكة النرويج"],"aliases_en":["Kingdom of Norway"],"sort_ar":"نرويج","sort_en":"norway","phone":[{"calling_code":"+47","primary":true}],"continent":"europe","kind":"country"},{"iso2":"NP","iso3":"NPL","name_ar":"نيبال","name_en":"Nepal","aliases_ar":["جمهورية نيبال الديمقراطية الاتحادية"],"aliases_en":["Naipála","Ne-pel","Necbal","Nehpal","Nei-pal","Nekpal","Népaal","Nepall","Nepaul","Nercerri","Ni-po-lo","Ni-po-louo"],"sort_ar":"نيبال","sort_en":"nepal","phone":[{"calling_code":"+977","primary":true}],"continent":"asia","kind":"country"},{"iso2":"NR","iso3":"NRU","name_ar":"ناورو","name_en":"Nauru","aliases_ar":["نورو"],"aliases_en":["Naoero","Pleasant Island","Republic of Nauru","Republic of Naoero"],"sort_ar":"ناورو","sort_en":"nauru","phone":[{"calling_code":"+674","primary":true}],"continent":"oceania","kind":"country"},{"iso2":"NU","iso3":"NIU","name_ar":"نيوي","name_en":"Niue","aliases_ar":["نييوي","نيويه"],"aliases_en":["nu"],"sort_ar":"نيوي","sort_en":"niue","phone":[{"calling_code":"+683","primary":true}],"continent":"oceania","kind":"territory"},{"iso2":"NZ","iso3":"NZL","name_ar":"نيوزيلندا","name_en":"New Zealand","aliases_ar":["زيلاندا الجديدة","نيوزيلاندا","نيو زيلندا","زلندة الجديدة"],"aliases_en":["Aotearoa New Zealand","nz","Dominion of New Zealand"],"sort_ar":"نيوزيلندا","sort_en":"new zealand","phone":[{"calling_code":"+64","primary":true}],"continent":"oceania","kind":"country"},{"iso2":"OM","iso3":"OMN","name_ar":"عُمان","name_en":"Oman","aliases_ar":["سلطنة عمان"],"aliases_en":["Uman","om","omn","Sultanate of Oman"],"sort_ar":"عمان","sort_en":"oman","phone":[{"calling_code":"+968","primary":true}],"continent":"asia","kind":"country"},{"iso2":"PA","iso3":"PAN","name_ar":"بنما","name_en":"Panama","aliases_ar":["باناما","جمهورية بنما"],"aliases_en":["pa","Republic of Panama"],"sort_ar":"بنما","sort_en":"panama","phone":[{"calling_code":"+507","primary":true}],"continent":"americas","kind":"country"},{"iso2":"PE","iso3":"PER","name_ar":"بيرو","name_en":"Peru","aliases_ar":["جمهورية بيرو"],"aliases_en":["per","pe","Republic of Peru","Republica del Peru"],"sort_ar":"بيرو","sort_en":"peru","phone":[{"calling_code":"+51","primary":true}],"continent":"americas","kind":"country"},{"iso2":"PF","iso3":"PYF","name_ar":"بولينيزيا الفرنسية","name_en":"French Polynesia","aliases_ar":["بولنيزيا الفرنسية","بولينسيا الفرنسية","بولينيسيا الفرنسية"],"aliases_en":["pf","French Oceania","French Establishments in Oceania","French Settlements in Oceania","Territory of French Polynesia"],"sort_ar":"بولينيزيا فرنسيه","sort_en":"french polynesia","phone":[{"calling_code":"+689","primary":true}],"continent":"oceania","kind":"territory"},{"iso2":"PG","iso3":"PNG","name_ar":"بابوا غينيا الجديدة","name_en":"Papua New Guinea","aliases_ar":["بابوا نيو غينيا","بابوا نيوغينيا","بابوا وغينيا الجديدة"],"aliases_en":["Independent State of Papua New Guinea"],"sort_ar":"بابوا غينيا جديده","sort_en":"papua new guinea","phone":[{"calling_code":"+675","primary":true}],"continent":"oceania","kind":"country"},{"iso2":"PH","iso3":"PHL","name_ar":"الفلبين","name_en":"Philippines","aliases_ar":["جمهورية الفلبين"],"aliases_en":["RP","Republic of the Philippines","Philippine Islands","The Philippines"],"sort_ar":"فلبين","sort_en":"philippines","phone":[{"calling_code":"+63","primary":true}],"continent":"asia","kind":"country"},{"iso2":"PK","iso3":"PAK","name_ar":"باكستان","name_en":"Pakistan","aliases_ar":["جمهورية باكستان الإسلامية"],"aliases_en":["Hồi Quốc","Tây Hồi","pk","Islamic Republic of Pakistan","Republic of Pakistan"],"sort_ar":"باكستان","sort_en":"pakistan","phone":[{"calling_code":"+92","primary":true}],"continent":"asia","kind":"country"},{"iso2":"PL","iso3":"POL","name_ar":"بولندا","name_en":"Poland","aliases_ar":["الجمهورية البولندية"],"aliases_en":["Republic of Poland"],"sort_ar":"بولندا","sort_en":"poland","phone":[{"calling_code":"+48","primary":true}],"continent":"europe","kind":"country"},{"iso2":"PM","iso3":"SPM","name_ar":"سان بيير ومكويلون","name_en":"Saint Pierre and Miquelon","aliases_ar":["سان بيير وميكلون","سانت بايري وميكلون"],"aliases_en":["St. Pierre & Miquelon","pm","FR-PM","Saint Pierre & Miquelon","St Pierre and Miquelon","Territorial Collectivity of Saint Pierre and Miquelon"],"sort_ar":"سان بيير ومكويلون","sort_en":"saint pierre and miquelon","phone":[{"calling_code":"+508","primary":true}],"continent":"americas","kind":"territory"},{"iso2":"PN","iso3":"PCN","name_ar":"جزر بيتكيرن","name_en":"Pitcairn Islands","aliases_ar":["بيتكرن","جزيرة بيتكيرن"],"aliases_en":["Pitcairn","pn","Occas Island","Pitcairn, Henderson, Ducie and Oeno Islands"],"sort_ar":"جزر بيتكيرن","sort_en":"pitcairn islands","phone":[],"continent":"oceania","kind":"territory"},{"iso2":"PR","iso3":"PRI","name_ar":"بورتوريكو","name_en":"Puerto Rico","aliases_ar":["دولة بورتوريكو الحرة المرتبطة"],"aliases_en":["Borinquen","Porto Rico","Borikén","Boriquén","Commonwealth of Puerto Rico","Free Associated State of Puerto Rico","Island of Enchantment","Isle of Enchantment","Territory of Puerto Rico","Territory of Porto Rico"],"sort_ar":"بورتوريكو","sort_en":"puerto rico","phone":[{"calling_code":"+1","primary":false}],"continent":"americas","kind":"territory"},{"iso2":"PS","iso3":"PSE","name_ar":"فلسطين","name_en":"Palestine","aliases_ar":["الأراضي الفلسطينية","دولة فلسطين","السلطة الوطنية الفلسطينية","الدولة الفلسطينية","السلطة الفلسطينية"],"aliases_en":["Palestinian Territories","State of Palestine"],"sort_ar":"فلسطين","sort_en":"palestine","phone":[{"calling_code":"+970","primary":true},{"calling_code":"+972","primary":true}],"continent":"asia","kind":"country"},{"iso2":"PT","iso3":"PRT","name_ar":"البرتغال","name_en":"Portugal","aliases_ar":["الجمهورية البرتغالية"],"aliases_en":["POR","Portuguese Republic"],"sort_ar":"برتغال","sort_en":"portugal","phone":[{"calling_code":"+351","primary":true}],"continent":"europe","kind":"country"},{"iso2":"PW","iso3":"PLW","name_ar":"بالاو","name_en":"Palau","aliases_ar":[],"aliases_en":["Belau","pw","Pellew","Peeloo","Pelew","Pelew islands","Republic of Belau","Republic of Palau"],"sort_ar":"بالاو","sort_en":"palau","phone":[{"calling_code":"+680","primary":true}],"continent":"oceania","kind":"country"},{"iso2":"PY","iso3":"PRY","name_ar":"باراغواي","name_en":"Paraguay","aliases_ar":[],"aliases_en":["Heart of South America","Republic of Paraguay"],"sort_ar":"باراغواي","sort_en":"paraguay","phone":[{"calling_code":"+595","primary":true}],"continent":"americas","kind":"country"},{"iso2":"QA","iso3":"QAT","name_ar":"قطر","name_en":"Qatar","aliases_ar":["إمارة قطر"],"aliases_en":["qat","qa","State of Qatar"],"sort_ar":"قطر","sort_en":"qatar","phone":[{"calling_code":"+974","primary":true}],"continent":"asia","kind":"country"},{"iso2":"RE","iso3":"REU","name_ar":"روينيون","name_en":"Réunion","aliases_ar":["ريونيون","لا ريونيون"],"aliases_en":["re","La Réunion","Bourbon Island","Île de la Réunion","La Réunion Island","Reunion Island","ISO 3166-1:RE","Île de Bourbon"],"sort_ar":"روينيون","sort_en":"reunion","phone":[{"calling_code":"+262","primary":true}],"continent":"africa","kind":"territory"},{"iso2":"RO","iso3":"ROU","name_ar":"رومانيا","name_en":"Romania","aliases_ar":["رومانية","جمهورية رومانيا"],"aliases_en":["Roumania","Rumania"],"sort_ar":"رومانيا","sort_en":"romania","phone":[{"calling_code":"+40","primary":true}],"continent":"europe","kind":"country"},{"iso2":"RS","iso3":"SRB","name_ar":"صربيا","name_en":"Serbia","aliases_ar":["جمهورية صربيا"],"aliases_en":["Republic of Serbia"],"sort_ar":"صربيا","sort_en":"serbia","phone":[{"calling_code":"+381","primary":true}],"continent":"europe","kind":"country"},{"iso2":"RU","iso3":"RUS","name_ar":"روسيا","name_en":"Russia","aliases_ar":["الاتحاد الروسي","روسيا الاتحادية"],"aliases_en":["Russian Federation"],"sort_ar":"روسيا","sort_en":"russia","phone":[{"calling_code":"+7","primary":true}],"continent":"europe","kind":"country"},{"iso2":"RW","iso3":"RWA","name_ar":"رواندا","name_en":"Rwanda","aliases_ar":[],"aliases_en":["Republic of Rwanda","The Land of a Thousand Hills"],"sort_ar":"رواندا","sort_en":"rwanda","phone":[{"calling_code":"+250","primary":true}],"continent":"africa","kind":"country"},{"iso2":"SA","iso3":"SAU","name_ar":"السعودية","name_en":"Saudi Arabia","aliases_ar":["المملكة العربية السعودية","المملكة","الدولة السعودية","المملكة السعودية","المملكة العربية","بلاد الحرمين الشريفين","منبع الرسالة","مهبط الوحي"],"aliases_en":["KSA","Kingdom of Saudi Arabia","Saudi"],"sort_ar":"سعوديه","sort_en":"saudi arabia","phone":[{"calling_code":"+966","primary":true}],"continent":"asia","kind":"country"},{"iso2":"SB","iso3":"SLB","name_ar":"جزر سليمان","name_en":"Solomon Islands","aliases_ar":[],"aliases_en":["sb","the Solomon Islands","SOL"],"sort_ar":"جزر سليمان","sort_en":"solomon islands","phone":[{"calling_code":"+677","primary":true}],"continent":"oceania","kind":"country"},{"iso2":"SC","iso3":"SYC","name_ar":"سيشل","name_en":"Seychelles","aliases_ar":["جمهورية سيشل","سيشيل"],"aliases_en":["Republic of Seychelles","sc","SEY"],"sort_ar":"سيشل","sort_en":"seychelles","phone":[{"calling_code":"+248","primary":true}],"continent":"africa","kind":"country"},{"iso2":"SD","iso3":"SDN","name_ar":"السودان","name_en":"Sudan","aliases_ar":["جمهورية السودان"],"aliases_en":["al-Sudan","as-Sudan","North Sudan","Republic of Sudan","Republic of the Sudan","sd","Soudan","SUD","the Sudan"],"sort_ar":"سودان","sort_en":"sudan","phone":[{"calling_code":"+249","primary":true}],"continent":"africa","kind":"country"},{"iso2":"SE","iso3":"SWE","name_ar":"السويد","name_en":"Sweden","aliases_ar":["مملكة السويد"],"aliases_en":["Kingdom of Sweden","se","Swedish Kingdom"],"sort_ar":"سويد","sort_en":"sweden","phone":[{"calling_code":"+46","primary":true}],"continent":"europe","kind":"country"},{"iso2":"SG","iso3":"SGP","name_ar":"سنغافورة","name_en":"Singapore","aliases_ar":[],"aliases_en":["Garden City","sg","Lion City","Singapore City","Republic of Singapore","S'pore"],"sort_ar":"سنغافوره","sort_en":"singapore","phone":[{"calling_code":"+65","primary":true}],"continent":"asia","kind":"country"},{"iso2":"SH","iso3":"SHN","name_ar":"سانت هيلينا","name_en":"Saint Helena, Ascension and Tristan da Cunha","aliases_ar":["سانت هيلانة وأسينشين وتريستان دا كونا","جزر سانت هيلينا وأسينشين وتريستان دا كونا","سانت هيلينا وأسينشين وتريستان دا كونا"],"aliases_en":["St. Helena, Ascension & Tristan da Cunha","St. Helena","Saint Helena and Dependencies"],"sort_ar":"سانت هيلينا","sort_en":"saint helena ascension and tristan da cunha","phone":[{"calling_code":"+290","primary":true},{"calling_code":"+247","primary":true},{"calling_code":"+290","primary":false}],"continent":"africa","kind":"territory"},{"iso2":"SI","iso3":"SVN","name_ar":"سلوفينيا","name_en":"Slovenia","aliases_ar":["جمهورية سلوفينيا"],"aliases_en":["si","svn","Slovenija","Republic of Slovenia","slo"],"sort_ar":"سلوفينيا","sort_en":"slovenia","phone":[{"calling_code":"+386","primary":true}],"continent":"europe","kind":"country"},{"iso2":"SJ","iso3":"SJM","name_ar":"سفالبارد وجان ماين","name_en":"Svalbard and Jan Mayen","aliases_ar":["سفالبارد ويان ماين"],"aliases_en":["Svalbard & Jan Mayen","🇸🇯","sj"],"sort_ar":"سفالبارد وجان ماين","sort_en":"svalbard and jan mayen","phone":[{"calling_code":"+47","primary":false}],"continent":"europe","kind":"territory"},{"iso2":"SK","iso3":"SVK","name_ar":"سلوفاكيا","name_en":"Slovakia","aliases_ar":["جمهورية سلوفاكيا"],"aliases_en":["Slovak Republic"],"sort_ar":"سلوفاكيا","sort_en":"slovakia","phone":[{"calling_code":"+421","primary":true}],"continent":"europe","kind":"country"},{"iso2":"SL","iso3":"SLE","name_ar":"سيراليون","name_en":"Sierra Leone","aliases_ar":["جمهورية سيراليون"],"aliases_en":["Republic of Sierra Leone","sl"],"sort_ar":"سيراليون","sort_en":"sierra leone","phone":[{"calling_code":"+232","primary":true}],"continent":"africa","kind":"country"},{"iso2":"SM","iso3":"SMR","name_ar":"سان مارينو","name_en":"San Marino","aliases_ar":["جمهورية سان مارينو","جمهورية سان مارينو الأكثر صفاء"],"aliases_en":["sm","Most Serene Republic of San Marino"],"sort_ar":"سان مارينو","sort_en":"san marino","phone":[{"calling_code":"+378","primary":true}],"continent":"europe","kind":"country"},{"iso2":"SN","iso3":"SEN","name_ar":"السنغال","name_en":"Senegal","aliases_ar":["السنيغال","السينغال","السينيغال","جمهورية السنغال","سنغالي"],"aliases_en":["Republic of Senegal"],"sort_ar":"سنغال","sort_en":"senegal","phone":[{"calling_code":"+221","primary":true}],"continent":"africa","kind":"country"},{"iso2":"SO","iso3":"SOM","name_ar":"الصومال","name_en":"Somalia","aliases_ar":["جمهورية الصومال","جمهورية الصومال الديموقراطية"],"aliases_en":["Federal Republic of Somalia"],"sort_ar":"صومال","sort_en":"somalia","phone":[{"calling_code":"+252","primary":true}],"continent":"africa","kind":"country"},{"iso2":"SR","iso3":"SUR","name_ar":"سورينام","name_en":"Suriname","aliases_ar":["جمهورية سورينام"],"aliases_en":["sr","Surinam","Dutch Guiana","Republic of Surinam","Republic of Suriname","Surrinam"],"sort_ar":"سورينام","sort_en":"suriname","phone":[{"calling_code":"+597","primary":true}],"continent":"americas","kind":"country"},{"iso2":"SS","iso3":"SSD","name_ar":"جنوب السودان","name_en":"South Sudan","aliases_ar":["جمهورية جنوب السودان"],"aliases_en":["ss","Southern Sudan","Republic of South Sudan"],"sort_ar":"جنوب سودان","sort_en":"south sudan","phone":[{"calling_code":"+211","primary":true}],"continent":"africa","kind":"country"},{"iso2":"ST","iso3":"STP","name_ar":"ساو تومي وبرينسيبي","name_en":"São Tomé and Príncipe","aliases_ar":["ساو تومي وبرينسيب","جمهورية ساو تومي وبرينسيب الديمقراطية"],"aliases_en":["São Tomé & Príncipe","Democratic Republic of São Tomé and Príncipe","São Tomé og Príncipe","st"],"sort_ar":"ساو تومي وبرينسيبي","sort_en":"sao tome and principe","phone":[{"calling_code":"+239","primary":true}],"continent":"africa","kind":"country"},{"iso2":"SV","iso3":"SLV","name_ar":"السلفادور","name_en":"El Salvador","aliases_ar":["جمهورية السلفادور"],"aliases_en":["Salvador","ESA","sv","Republic of El Salvador"],"sort_ar":"سلفادور","sort_en":"el salvador","phone":[{"calling_code":"+503","primary":true}],"continent":"americas","kind":"country"},{"iso2":"SX","iso3":"SXM","name_ar":"سانت مارتن","name_en":"Sint Maarten","aliases_ar":["سينت مارتن"],"aliases_en":["NL-SX","Saint Martin (Dutch part)","Sint Martin","St. Maarten","sxm","Saint Martin","Sint Maarten (Dutch part)","St Martin"],"sort_ar":"سانت مارتن","sort_en":"sint maarten","phone":[{"calling_code":"+1","primary":false}],"continent":"americas","kind":"territory"},{"iso2":"SY","iso3":"SYR","name_ar":"سوريا","name_en":"Syria","aliases_ar":["الجمهورية العربية السورية","سورية"],"aliases_en":["Sūriyā","Syrian Arab Republic"],"sort_ar":"سوريا","sort_en":"syria","phone":[{"calling_code":"+963","primary":true}],"continent":"asia","kind":"country"},{"iso2":"SZ","iso3":"SWZ","name_ar":"إسواتيني","name_en":"Eswatini","aliases_ar":["سوازيلاند","مملكة إسواتيني"],"aliases_en":["Swaziland","Kingdom of Eswatini","Kingdom of Swaziland","sz","Umbuso weSwatini"],"sort_ar":"اسواتيني","sort_en":"eswatini","phone":[{"calling_code":"+268","primary":true}],"continent":"africa","kind":"country"},{"iso2":"TC","iso3":"TCA","name_ar":"جزر توركس وكايكوس","name_en":"Turks and Caicos Islands","aliases_ar":["جزر توركس وكيكوس"],"aliases_en":["Turks & Caicos Islands","TCI","Turks & Caicos","tc","Turks and Caicos"],"sort_ar":"جزر توركس وكايكوس","sort_en":"turks and caicos islands","phone":[{"calling_code":"+1","primary":false}],"continent":"americas","kind":"territory"},{"iso2":"TD","iso3":"TCD","name_ar":"تشاد","name_en":"Chad","aliases_ar":["جمهورية تشاد"],"aliases_en":["GUM","CHA","td","Republic of Chad"],"sort_ar":"تشاد","sort_en":"chad","phone":[{"calling_code":"+235","primary":true}],"continent":"africa","kind":"country"},{"iso2":"TG","iso3":"TGO","name_ar":"توغو","name_en":"Togo","aliases_ar":["جمهورية توغو"],"aliases_en":["tg","Togolese Republic"],"sort_ar":"توغو","sort_en":"togo","phone":[{"calling_code":"+228","primary":true}],"continent":"africa","kind":"country"},{"iso2":"TH","iso3":"THA","name_ar":"تايلاند","name_en":"Thailand","aliases_ar":["تايلند","مملكة تايلاند"],"aliases_en":["The Kingdom of Siam","The Kingdom of Thailand","Prathet Thai","Ratcha-anachak Thai","th","Thai","Kingdom of Siam","Kingdom of Thailand"],"sort_ar":"تايلاند","sort_en":"thailand","phone":[{"calling_code":"+66","primary":true}],"continent":"asia","kind":"country"},{"iso2":"TJ","iso3":"TJK","name_ar":"طاجيكستان","name_en":"Tajikistan","aliases_ar":["تاجیکستان"],"aliases_en":["Republic of Tajikistan","tj"],"sort_ar":"طاجيكستان","sort_en":"tajikistan","phone":[{"calling_code":"+992","primary":true}],"continent":"asia","kind":"country"},{"iso2":"TK","iso3":"TKL","name_ar":"توكيلاو","name_en":"Tokelau","aliases_ar":["Tokelau","توكالو"],"aliases_en":["tk","Tokelau Islands","Union Islands"],"sort_ar":"توكيلاو","sort_en":"tokelau","phone":[{"calling_code":"+690","primary":true}],"continent":"oceania","kind":"territory"},{"iso2":"TL","iso3":"TLS","name_ar":"تيمور الشرقية","name_en":"Timor-Leste","aliases_ar":["تيمور - ليشتي"],"aliases_en":["East Timor","Democratic Republic of Timor-Leste"],"sort_ar":"تيمور شرقيه","sort_en":"timor leste","phone":[{"calling_code":"+670","primary":true}],"continent":"asia","kind":"country"},{"iso2":"TM","iso3":"TKM","name_ar":"تركمانستان","name_en":"Turkmenistan","aliases_ar":["تركمانيا"],"aliases_en":["tm","Turkmenia"],"sort_ar":"تركمانستان","sort_en":"turkmenistan","phone":[{"calling_code":"+993","primary":true}],"continent":"asia","kind":"country"},{"iso2":"TN","iso3":"TUN","name_ar":"تونس","name_en":"Tunisia","aliases_ar":["الجمهورية التونسية","تونس الخضراء"],"aliases_en":["tn","Republic of Tunisia","Tunisian Republic"],"sort_ar":"تونس","sort_en":"tunisia","phone":[{"calling_code":"+216","primary":true}],"continent":"africa","kind":"country"},{"iso2":"TO","iso3":"TON","name_ar":"تونغا","name_en":"Tonga","aliases_ar":["تونجا"],"aliases_en":["to","TGA","Kingdom of Tonga","Tonga Islands","Friendly Islands"],"sort_ar":"تونغا","sort_en":"tonga","phone":[{"calling_code":"+676","primary":true}],"continent":"oceania","kind":"country"},{"iso2":"TR","iso3":"TUR","name_ar":"تركيا","name_en":"Türkiye","aliases_ar":["جمهورية تركيا"],"aliases_en":["Turkey","Republic of Turkey","Republic of Türkiye"],"sort_ar":"تركيا","sort_en":"turkiye","phone":[{"calling_code":"+90","primary":true}],"continent":"asia","kind":"country"},{"iso2":"TT","iso3":"TTO","name_ar":"ترينيداد وتوباغو","name_en":"Trinidad and Tobago","aliases_ar":[],"aliases_en":["Trinidad & Tobago","Republic of Trinidad and Tobago","tt"],"sort_ar":"ترينيداد وتوباغو","sort_en":"trinidad and tobago","phone":[{"calling_code":"+1","primary":false}],"continent":"americas","kind":"country"},{"iso2":"TV","iso3":"TUV","name_ar":"توفالو","name_en":"Tuvalu","aliases_ar":[],"aliases_en":["tv","Ellice Islands"],"sort_ar":"توفالو","sort_en":"tuvalu","phone":[{"calling_code":"+688","primary":true}],"continent":"oceania","kind":"country"},{"iso2":"TW","iso3":"TWN","name_ar":"تايوان","name_en":"Taiwan","aliases_ar":["تايبيه الصينية","جمهورية الصين"],"aliases_en":["Nationalist China","Free China","Taiwan ROC","Chunghwa Minkuo","Chunghwa Minkwo","The ROC","ROC","Chinese Taipei","Republic of China (Taiwan)","Republic of China","China, Republic of","Chinese Republic"],"sort_ar":"تايوان","sort_en":"taiwan","phone":[{"calling_code":"+886","primary":true}],"continent":"asia","kind":"territory"},{"iso2":"TZ","iso3":"TZA","name_ar":"تنزانيا","name_en":"Tanzania","aliases_ar":["جمهورية تنزانيا الاتحادية"],"aliases_en":["United Republic of Tanzania","Tanzania, United Republic of","tz","tza","United Republic of Tanganyika and Zanzibar"],"sort_ar":"تنزانيا","sort_en":"tanzania","phone":[{"calling_code":"+255","primary":true}],"continent":"africa","kind":"country"},{"iso2":"UA","iso3":"UKR","name_ar":"أوكرانيا","name_en":"Ukraine","aliases_ar":[],"aliases_en":["Ukrainia","Ukraina","Ukr."],"sort_ar":"اوكرانيا","sort_en":"ukraine","phone":[{"calling_code":"+380","primary":true}],"continent":"europe","kind":"country"},{"iso2":"UG","iso3":"UGA","name_ar":"أوغندا","name_en":"Uganda","aliases_ar":["جمهورية أوغندا"],"aliases_en":["+256","Ouganda","Pearl of Africa","Republic of Uganda","The Republic of Uganda","ug","Ugandah"],"sort_ar":"اوغندا","sort_en":"uganda","phone":[{"calling_code":"+256","primary":true}],"continent":"africa","kind":"country"},{"iso2":"US","iso3":"USA","name_ar":"الولايات المتحدة","name_en":"United States","aliases_ar":["الولايات المتحدة الأمريكية","أمريكا","و م","و م أ"],"aliases_en":["the States","the U.S.","the U.S. of A","the U.S. of America","the U.S.A.","the United States of America","'Murica","the United States","United States of America","the USA","Merica","the US"],"sort_ar":"ولايات متحده","sort_en":"united states","phone":[{"calling_code":"+1","primary":true}],"continent":"americas","kind":"country"},{"iso2":"UY","iso3":"URY","name_ar":"أورغواي","name_en":"Uruguay","aliases_ar":["الأوروغواي","الجمهورية الشرقية للأوروغواي","جمهورية الأوروغواي الشرقية"],"aliases_en":["uy","URU","Eastern Republic of Uruguay","Oriental Republic of Uruguay"],"sort_ar":"اورغواي","sort_en":"uruguay","phone":[{"calling_code":"+598","primary":true}],"continent":"americas","kind":"country"},{"iso2":"UZ","iso3":"UZB","name_ar":"أوزبكستان","name_en":"Uzbekistan","aliases_ar":["جمهورية أوزبكستان"],"aliases_en":["Republic of Uzbekistan"],"sort_ar":"اوزبكستان","sort_en":"uzbekistan","phone":[{"calling_code":"+998","primary":true}],"continent":"asia","kind":"country"},{"iso2":"VA","iso3":"VAT","name_ar":"الفاتيكان","name_en":"Vatican City","aliases_ar":["دولة مدينة الفاتيكان"],"aliases_en":["Città del Vaticano","State of Vatican City","Stato della Città del Vaticano","Status Civitatis Vaticanae","Vatican City State","Vatican","The Vatican","Holy See","Papal State"],"sort_ar":"فاتيكان","sort_en":"vatican city","phone":[{"calling_code":"+39","primary":false}],"continent":"europe","kind":"country"},{"iso2":"VC","iso3":"VCT","name_ar":"سانت فنسنت وجزر غرينادين","name_en":"Saint Vincent and Grenadines","aliases_ar":["سانت فينسنت والغرينادين","سانت فنسينت والجرينادينز"],"aliases_en":["St. Vincent & Grenadines","Saint Vincent and the Grenadines","St. Vincent","Saint Vincent","vc","St Vincent and the Grenadines","vct"],"sort_ar":"سانت فنسنت وجزر غرينادين","sort_en":"saint vincent and grenadines","phone":[{"calling_code":"+1","primary":false}],"continent":"americas","kind":"country"},{"iso2":"VE","iso3":"VEN","name_ar":"فنزويلا","name_en":"Venezuela","aliases_ar":[],"aliases_en":["Republic of Venezuela","Bolivarian Republic of Venezuela","BR Venezuela"],"sort_ar":"فنزويلا","sort_en":"venezuela","phone":[{"calling_code":"+58","primary":true}],"continent":"americas","kind":"country"},{"iso2":"VG","iso3":"VGB","name_ar":"جزر فيرجن البريطانية","name_en":"British Virgin Islands","aliases_ar":["جزر عذراء بريطانية"],"aliases_en":["B.V.I.","BVI","Virgin Islands of the United Kingdom","Virgin Islands, United Kingdom","IVB","vg"],"sort_ar":"جزر فيرجن بريطانيه","sort_en":"british virgin islands","phone":[{"calling_code":"+1","primary":false}],"continent":"americas","kind":"territory"},{"iso2":"VI","iso3":"VIR","name_ar":"جزر فيرجن الأمريكية","name_en":"U.S. Virgin Islands","aliases_ar":["جزر العذراء الولايات المتحدة","الجزر العذراء الأمريكيه"],"aliases_en":["United States Virgin Islands","US Virgin Islands","American Virgin Islands","the United States Virgin Islands","Virgin Islands of the United States"],"sort_ar":"جزر فيرجن امريكيه","sort_en":"u s virgin islands","phone":[{"calling_code":"+1","primary":false}],"continent":"americas","kind":"territory"},{"iso2":"VN","iso3":"VNM","name_ar":"فيتنام","name_en":"Vietnam","aliases_ar":["جمهورية فيتنام الاشتراكية"],"aliases_en":["VIE","Socialist Republic of Viet Nam","Socialist Republic of Vietnam","Việt Nam","SRV"],"sort_ar":"فيتنام","sort_en":"vietnam","phone":[{"calling_code":"+84","primary":true}],"continent":"asia","kind":"country"},{"iso2":"VU","iso3":"VUT","name_ar":"فانواتو","name_en":"Vanuatu","aliases_ar":[],"aliases_en":["van","vu","Republic of Vanuatu","vut"],"sort_ar":"فانواتو","sort_en":"vanuatu","phone":[{"calling_code":"+678","primary":true}],"continent":"oceania","kind":"country"},{"iso2":"WF","iso3":"WLF","name_ar":"جزر والس وفوتونا","name_en":"Wallis and Futuna","aliases_ar":["واليس وفوتونا","والس وفوتانا"],"aliases_en":["Wallis & Futuna","Wallis and Futuna Islands"],"sort_ar":"جزر والس وفوتونا","sort_en":"wallis and futuna","phone":[{"calling_code":"+681","primary":true}],"continent":"oceania","kind":"territory"},{"iso2":"WS","iso3":"WSM","name_ar":"ساموا","name_en":"Samoa","aliases_ar":["ساموا الغربية"],"aliases_en":["ws","SAM","Western Samoa","Independent State of Samoa"],"sort_ar":"ساموا","sort_en":"samoa","phone":[{"calling_code":"+685","primary":true}],"continent":"oceania","kind":"country"},{"iso2":"XK","iso3":"XKK","name_ar":"كوسوفو","name_en":"Kosovo","aliases_ar":["جمهورية كوسوفو","قوصوة","كوسوفا"],"aliases_en":["KOS","KV","Kosova","Republic of Kosovo","RKS","XKX"],"sort_ar":"كوسوفو","sort_en":"kosovo","phone":[{"calling_code":"+383","primary":true}],"continent":"europe","kind":"country"},{"iso2":"YE","iso3":"YEM","name_ar":"اليمن","name_en":"Yemen","aliases_ar":["الجمهورية اليمنية","دولة اليمن"],"aliases_en":["ye","Rep. Yemen","Republic of Yemen"],"sort_ar":"يمن","sort_en":"yemen","phone":[{"calling_code":"+967","primary":true}],"continent":"asia","kind":"country"},{"iso2":"YT","iso3":"MYT","name_ar":"مايوت","name_en":"Mayotte","aliases_ar":[],"aliases_en":["Department of Mayotte"],"sort_ar":"مايوت","sort_en":"mayotte","phone":[{"calling_code":"+262","primary":false}],"continent":"africa","kind":"territory"},{"iso2":"ZA","iso3":"ZAF","name_ar":"جنوب أفريقيا","name_en":"South Africa","aliases_ar":[],"aliases_en":["SA","RSA","R.S.A.","Republic of South Africa","zaf"],"sort_ar":"جنوب افريقيا","sort_en":"south africa","phone":[{"calling_code":"+27","primary":true}],"continent":"africa","kind":"country"},{"iso2":"ZM","iso3":"ZMB","name_ar":"زامبيا","name_en":"Zambia","aliases_ar":["جمهورية زامبيا"],"aliases_en":["Zed","Republic of Zambia"],"sort_ar":"زامبيا","sort_en":"zambia","phone":[{"calling_code":"+260","primary":true}],"continent":"africa","kind":"country"},{"iso2":"ZW","iso3":"ZWE","name_ar":"زيمبابوي","name_en":"Zimbabwe","aliases_ar":["جمهورية زيمبابوي"],"aliases_en":["Rhodesia","Southern Rhodesia","Zimbabwe Rhodesia","Republic of Zimbabwe"],"sort_ar":"زيمبابوي","sort_en":"zimbabwe","phone":[{"calling_code":"+263","primary":true}],"continent":"africa","kind":"country"}]};
+const ICONS = {"magnifying-glass":[512,"M416 208c0 45.9-14.9 88.3-40 122.7L502.6 457.4c12.5 12.5 12.5 32.8 0 45.3s-32.8 12.5-45.3 0L330.7 376C296.3 401.1 253.9 416 208 416 93.1 416 0 322.9 0 208S93.1 0 208 0 416 93.1 416 208zM208 352a144 144 0 1 0 0-288 144 144 0 1 0 0 288z"],"xmark":[384,"M55.1 73.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L147.2 256 9.9 393.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L192.5 301.3 329.9 438.6c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L237.8 256 375.1 118.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L192.5 210.7 55.1 73.4z"],"copy":[448,"M192 0c-35.3 0-64 28.7-64 64l0 256c0 35.3 28.7 64 64 64l192 0c35.3 0 64-28.7 64-64l0-200.6c0-17.4-7.1-34.1-19.7-46.2L370.6 17.8C358.7 6.4 342.8 0 326.3 0L192 0zM64 128c-35.3 0-64 28.7-64 64L0 448c0 35.3 28.7 64 64 64l192 0c35.3 0 64-28.7 64-64l0-16-64 0 0 16-192 0 0-256 16 0 0-64-16 0z"],"check":[448,"M434.8 70.1c14.3 10.4 17.5 30.4 7.1 44.7l-256 352c-5.5 7.6-14 12.3-23.4 13.1s-18.5-2.7-25.1-9.3l-128-128c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l101.5 101.5 234-321.7c10.4-14.3 30.4-17.5 44.7-7.1z"],"chevron-right":[320,"M311.1 233.4c12.5 12.5 12.5 32.8 0 45.3l-192 192c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L243.2 256 73.9 86.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l192 192z"],"arrow-right":[512,"M502.6 278.6c12.5-12.5 12.5-32.8 0-45.3l-160-160c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L402.7 224 32 224c-17.7 0-32 14.3-32 32s14.3 32 32 32l370.7 0-105.4 105.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0l160-160z"],"download":[448,"M256 32c0-17.7-14.3-32-32-32s-32 14.3-32 32l0 210.7-41.4-41.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3l96 96c12.5 12.5 32.8 12.5 45.3 0l96-96c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L256 242.7 256 32zM64 320c-35.3 0-64 28.7-64 64l0 32c0 35.3 28.7 64 64 64l320 0c35.3 0 64-28.7 64-64l0-32c0-35.3-28.7-64-64-64l-46.9 0-56.6 56.6c-31.2 31.2-81.9 31.2-113.1 0L110.9 320 64 320zm304 56a24 24 0 1 1 0 48 24 24 0 1 1 0-48z"],"terminal":[512,"M9.4 118.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l160 160c12.5 12.5 12.5 32.8 0 45.3l-160 160c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L146.7 256 9.4 118.6zM224 384l256 0c17.7 0 32 14.3 32 32s-14.3 32-32 32l-256 0c-17.7 0-32-14.3-32-32s14.3-32 32-32z"],"github":[512,"M216.5 362.5c-66-8-112.5-55.5-112.5-117 0-25 9-52 24-70-6.5-16.5-5.5-51.5 2-66 20-2.5 47 8 63 22.5 19-6 39-9 63.5-9s44.5 3 62.5 8.5c15.5-14 43-24.5 63-22 7 13.5 8 48.5 1.5 65.5 16 19 24.5 44.5 24.5 70.5 0 61.5-46.5 108-113.5 116.5 17 11 28.5 35 28.5 62.5l0 52C323 491.5 335.5 500 350.5 494 441 459.5 512 369 512 257 512 115.5 397 0 255.5 0S0 115.5 0 257c0 111 70.5 203 165.5 237.5 13.5 5 26.5-4 26.5-17.5l0-40c-7 3-16 5-24 5-33 0-52.5-18-66.5-51.5-5.5-13.5-11.5-21.5-23-23-6-.5-8-3-8-6 0-6 10-10.5 20-10.5 14.5 0 27 9 40 27.5 10 14.5 20.5 21 33 21s20.5-4.5 32-16c8.5-8.5 15-16 21-21z"],"bars":[448,"M0 96C0 78.3 14.3 64 32 64l384 0c17.7 0 32 14.3 32 32s-14.3 32-32 32L32 128C14.3 128 0 113.7 0 96zM0 256c0-17.7 14.3-32 32-32l384 0c17.7 0 32 14.3 32 32s-14.3 32-32 32L32 288c-17.7 0-32-14.3-32-32zM448 416c0 17.7-14.3 32-32 32L32 448c-17.7 0-32-14.3-32-32s14.3-32 32-32l384 0c17.7 0 32 14.3 32 32z"]};
+// dist/text.js and dist/helpers.js, inlined unchanged (imports and exports removed)
+// Text folding shared by search and sorting. Mirrors scripts/lib/text.mjs; tests/vectors.json keeps every
+// language package identical to it.
+const DIGITS = /[٠-٩۰-۹]/g;
+const MARKS = /[ً-ٰٟـ]/g;
+const LETTERS = { "أ": "ا", "إ": "ا", "آ": "ا", "ٱ": "ا", "ة": "ه", "ى": "ي", "ؤ": "و", "ئ": "ي" };
+/** Arabic-Indic (٠-٩) and Persian (۰-۹) digits to Western (0-9). Nothing else changes. */
+function westernDigits(text) {
+    return text.replace(DIGITS, (d) => String(d.charCodeAt(0) & 0xf));
+}
+/** Folds a name or a query for matching: case, accents, Arabic letter variants, tashkeel, tatweel, «ال», punctuation. */
+function normalize(text) {
+    return westernDigits(text)
+        .normalize("NFD")
+        .replace(/[̀-ͯ]/g, "")
+        .toLowerCase()
+        .replace(MARKS, "")
+        .replace(/[أإآٱةىؤئ]/g, (c) => LETTERS[c])
+        .replace(/[^\p{L}\p{N}]+/gu, " ")
+        .trim()
+        .split(" ")
+        .map((w) => (w.startsWith("ال") && w.length > 3 ? w.slice(2) : w))
+        .join(" ");
+}
+
+
+/**
+ * Countries matching a query, best first. Matches names and aliases in both languages (ignoring «ال», tashkeel,
+ * hamza forms, case and accents), ISO codes, and dial codes with or without «+» or «00».
+ */
+function search(countries, query, lang = "en") {
+    const q = normalize(query);
+    if (!q)
+        return [];
+    const digits = westernDigits(query).replace(/[\s()-]/g, "");
+    const dial = /^(\+|00)?\d{1,4}$/.test(digits) ? digits.replace(/^(\+|00)/, "") : null;
+    const scored = [];
+    for (const c of countries) {
+        const own = normalize(lang === "ar" ? c.name_ar : c.name_en);
+        const other = normalize(lang === "ar" ? c.name_en : c.name_ar);
+        const aliases = [...c.aliases_ar, ...c.aliases_en].map(normalize);
+        // Tiers: exact (50s), name starts with the query (40s), a word starts with it (30s), contains it (10s).
+        // Within a tier: the UI-language name, then the other language, then aliases.
+        const rank = (name, place) => {
+            if (name === q)
+                return 50 - place;
+            if (name.startsWith(q))
+                return 40 - place;
+            if (name.split(" ").some((w) => w.startsWith(q)))
+                return 30 - place;
+            if (q.length >= 3 && name.includes(q))
+                return 10 - place;
+            return 0;
+        };
+        let score = Math.max(rank(own, 0), rank(other, 1), ...aliases.map((a) => rank(a, 2)));
+        const upper = query.trim().toUpperCase();
+        if (upper === c.iso2 || upper === c.iso3)
+            score = Math.max(score, 49.5);
+        const codes = (c.phone ?? []).map((p) => ({ cc: p.calling_code.slice(1), primary: p.primary }));
+        if (dial && codes.some((p) => p.cc === dial))
+            score = Math.max(score, codes.some((p) => p.cc === dial && p.primary) ? 46 : 45);
+        else if (dial && codes.some((p) => p.cc.startsWith(dial)))
+            score = Math.max(score, 5);
+        if (score)
+            scored.push({ c, score });
+    }
+    const key = lang === "ar" ? "sort_ar" : "sort_en";
+    return scored.sort((a, b) => b.score - a.score || cmp(a.c[key], b.c[key])).map((s) => s.c);
+}
+const cmp = (a, b) => (a < b ? -1 : a > b ? 1 : 0);
+/** Alphabetical in the UI language, with the user's country (if given) first. Returns a new array. */
+function sortCountries(countries, lang = "en", first) {
+    const key = lang === "ar" ? "sort_ar" : "sort_en";
+    const pin = first?.toUpperCase();
+    return [...countries].sort((a, b) => (a.iso2 === pin ? -1 : b.iso2 === pin ? 1 : cmp(a[key], b[key])));
+}
+const fullMatch = (pattern, s) => !!pattern && new RegExp(`^(?:${pattern})$`).test(s);
+/**
+ * Reads what a user typed into a phone field. `country` is the one picked in the field; numbers typed with
+ * «+» or «00» are matched against `all` (or `country` alone if `all` is not given).
+ */
+function parsePhone(input, country, all) {
+    let s = westernDigits(input).replace(/[^\d+]/g, "");
+    if (!s)
+        return null;
+    let plans = [];
+    if (s.startsWith("+") || s.startsWith("00")) {
+        s = s.replace(/^(\+|00)/, "");
+        for (const c of all ?? [country])
+            for (const plan of c.phone) {
+                const cc = plan.calling_code.slice(1);
+                if (!s.startsWith(cc))
+                    continue;
+                const rest = s.slice(cc.length);
+                if (plan.leading_digits && !new RegExp(`^(?:${plan.leading_digits})`).test(rest))
+                    continue;
+                plans.push({ iso2: c.iso2, plan, rest });
+            }
+        // Shared codes (+1, +7, +44...): the picked country first, then a plan whose leading digits matched,
+        // then one whose mobile pattern fits, then a secondary plan whose own pattern fits, then the main country.
+        const weight = (p) => (p.iso2 === country.iso2 ? 16 : 0) +
+            (p.plan.leading_digits ? 8 : 0) +
+            (fullMatch(p.plan.mobile_pattern, p.rest) ? 4 : 0) +
+            (!p.plan.primary && fullMatch(p.plan.pattern, p.rest) ? 2 : 0) +
+            (p.plan.primary ? 1 : 0);
+        plans.sort((a, b) => weight(b) - weight(a));
+    }
+    else {
+        for (const plan of country.phone) {
+            const rest = plan.trunk_prefix && s.startsWith(plan.trunk_prefix) && !fullMatch(plan.pattern, s) ? s.slice(plan.trunk_prefix.length) : s;
+            plans.push({ iso2: country.iso2, plan, rest });
+        }
+    }
+    if (!plans.length)
+        return null;
+    const pick = plans.find((p) => fullMatch(p.plan.pattern, p.rest)) ?? plans[0];
+    const mobile = fullMatch(pick.plan.mobile_pattern, pick.rest);
+    return {
+        e164: `${pick.plan.calling_code}${pick.rest}`,
+        iso2: pick.iso2,
+        calling_code: pick.plan.calling_code,
+        national: pick.rest,
+        valid: fullMatch(pick.plan.pattern, pick.rest),
+        mobile,
+    };
+}
+/** True when the input is a valid mobile number for the country. */
+function isValidMobile(input, country, all) {
+    const p = parsePhone(input, country, all);
+    return !!p && p.valid && p.mobile && (!all || p.iso2 === country.iso2);
+}
+/** Groups national digits with the plan's mobile_format mask (5 123 4567 style); returns the digits as-is when the mask does not fit. */
+function formatNational(national, plan) {
+    const mask = plan.mobile_format;
+    if (!mask || mask.replace(/[^#]/g, "").length !== national.length)
+        return national;
+    let i = 0;
+    return mask.replace(/#/g, () => national[i++]);
+}
+
+
+const DIRS = [
+  { id: "a", name: "A. Docs shell", seed: "Astro Docs in Arabic", type: "IBM Plex Sans Arabic 400 and 600, JetBrains Mono 400", fam: '"Plex Arabic",system-ui' },
+  { id: "b", name: "B. Fact sheet", seed: "Apple Saudi Arabia, iPhone specs in Arabic", type: "Noto Kufi Arabic 600 (labels, figures), IBM Plex Sans Arabic 400 and 600 (facts)", fam: '"Kufi","Plex Arabic",system-ui' },
+  { id: "c", name: "C. Instrument", seed: "Lucide icons", type: "Rubik 400 to 600, JetBrains Mono 400 (codes and figures)", fam: '"Rubik",system-ui' },
+];
+const STATES = ["first-run", "empty", "loading", "partial", "error", "offline", "success"];
+const SAMPLE = { empty: { ar: "الرياض", en: "Riyadh" }, partial: { ar: "+1", en: "+1" }, offline: { ar: "مصر", en: "Egypt" }, success: { ar: "الامارات", en: "emirates" } };
+const CHIPS = ["الامارات", "00971", "KSA", "+1"];
+const Q = new URLSearchParams(location.search);
+const regionFromBrowser = () => { const l = (navigator.languages && navigator.languages[0]) || navigator.language || ""; const m = l.match(/[-_]([A-Za-z]{2})\b/); return m ? m[1].toUpperCase() : null; };
+const st = {
+  dir: DIRS.some((d) => d.id === Q.get("direction")) ? Q.get("direction") : "a",
+  lang: Q.get("lang") === "en" ? "en" : "ar",
+  theme: ["light", "dark", "system"].includes(Q.get("theme")) ? Q.get("theme") : "system",
+  state: STATES.includes(Q.get("state")) ? Q.get("state") : "first-run",
+  region: (Q.get("region") ?? regionFromBrowser()) || null,
+  q: "", all: false, copied: null, copyErr: null, menu: false, build: "bilingual",
+};
+if (st.region && !D.rows.some((r) => r.iso2 === st.region)) st.region = null;
+const MISSING = [];
+const esc = (s) => String(s ?? "").replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" })[c]);
+const num = (n) => Number(n).toLocaleString("en-US");
+const L = () => (st.lang === "ar" ? 0 : 1);
+function fmt(raw, vars, langIdx) {
+  const parts = String(raw).split(/(`[^`]+`|\{\w+\})/);
+  let h = parts.map((p) => {
+    if (p.startsWith("`") && p.endsWith("`") && p.length > 1) return `<code dir="ltr">${esc(p.slice(1, -1))}</code>`;
+    if (/^\{\w+\}$/.test(p)) return p;
+    let e = esc(p);
+    if (langIdx === 0) e = e.replace(/[.+#@]?[A-Za-z][A-Za-z0-9#+.\/_-]*(?: [A-Za-z0-9][A-Za-z0-9#+.\/_-]*)*/g, (m) => { const tail = m.match(/[.]+$/); const core = tail ? m.slice(0, -tail[0].length) : m; return `<bdi dir="ltr">${core}</bdi>${tail ? tail[0] : ""}`; });
+    else e = e.replace(/[؀-ۿ][؀-ۿً-ٟ ]*[؀-ۿ]|[؀-ۿ]/g, (m) => `<bdi dir="rtl">${m}</bdi>`);
+    return e;
+  }).join("");
+  h = h.replace(/\*\*([^*]+)\*\*/g, "<strong>$1</strong>");
+  h = h.replace(/\{(\w+)\}/g, (_, n) => {
+    const v = vars && vars[n];
+    if (v === undefined) return `{${n}}`;
+    if (typeof v === "number") return `<bdi dir="ltr">${num(v)}</bdi>`;
+    if (v && v.html) return `<bdi>${v.html}</bdi>`;
+    return /[A-Za-zء-ي]/.test(v) ? `<bdi>${esc(v)}</bdi>` : `<bdi dir="ltr">${esc(v)}</bdi>`;
+  });
+  return h;
+}
+function t(key, vars) { const s = W[key]; if (!s) { MISSING.push(key); return `<mark>[[${esc(key)}]]</mark>`; } return `<span>${fmt(s[L()], vars, L())}</span>`; }
+const tt = (key, vars) => t(key, vars).replace(/<[^>]+>/g, "");
+function plural(base, n) { const f = st.lang === "ar" ? (n === 1 ? "one" : n === 2 ? "two" : n <= 10 ? "few" : "many") : n === 1 ? "one" : "many"; return t(`${base}.${f}`, { n }); }
+const ic = (name, cls = "") => { const [w, d] = ICONS[name]; return `<svg class="fa ${cls}" viewBox="0 0 ${w} 512" aria-hidden="true" focusable="false"><path fill="currentColor" d="${d}"/></svg>`; };
+const flag = (iso2) => `<img class="flag" src="../../../flags/${iso2.toLowerCase()}.svg" alt="" width="32" height="24" loading="lazy" decoding="async">`;
+const nm = (r, l) => ((l || st.lang) === "ar" ? r.name_ar : r.name_en);
+const oth = (r) => (st.lang === "ar" ? r.name_en : r.name_ar);
+const dials = (r) => r.phone.map((p) => p.calling_code).join(" ");
+const PAGES = "https://arj-89.github.io/worldref";
+const GH = "https://github.com/arj-89/worldref";
+const apiUrl = () => `${PAGES}/api/v1/${(st.region || "sa").toLowerCase()}.json`;
+const policyUrl = () => (st.lang === "ar" ? `${GH}/blob/main/README.ar.md#${encodeURIComponent("سياسة-البيانات")}` : `${GH}/blob/main/README.md#data-policy`);
+const NAV = [["home", "chrome.nav.home", "#top"], ["install", "chrome.nav.install", "#install"], ["build", "chrome.nav.build", "#build"], ["countries", "chrome.nav.countries", "#countries"], ["agents", "chrome.nav.agents", "#agents"], ["faq", "chrome.nav.faq", "#faq"], ["policy", "chrome.nav.policy", "#policy"]];
+
+/* ----- search model: the shipped search() and sortCountries() on the D1 rows ----- */
+function model() {
+  const s = st.state;
+  if (s === "loading") return { kind: "loading" };
+  if (s === "error") return { kind: "error" };
+  const q = st.q.trim();
+  if (!q) { const list = sortCountries(D.rows, st.lang, st.region).slice(0, 5); return { kind: "first", rows: list, offline: s === "offline" }; }
+  const hits = search(D.rows, q, st.lang);
+  if (!hits.length) return { kind: "empty", offline: s === "offline" };
+  return { kind: "match", rows: st.all ? hits : hits.slice(0, 8), total: hits.length, offline: s === "offline" };
+}
+const pinned = (r) => r.iso2 === st.region && !st.q.trim();
+function chipsHtml(cls) {
+  return `<span>${t("search.try")}</span>` + CHIPS.map((c) => `<button type="button" class="chip" data-chip="${esc(c)}" aria-pressed="${st.q === c}"><bdi${/[A-Za-zء-ي]/.test(c) ? "" : ' dir="ltr"'}>${esc(c)}</bdi></button>`).join("");
+}
+const countLine = (m) => plural("search.results.count", m.total);
+const offlineLine = () => `<p class="${st.dir === "b" ? "notice" : "note"}" role="status">${t("state.offline.line")} ${t("search.offline.body")}</p>`;
+const errorBlock = (btn) => `<div class="${st.dir === "b" ? "notice" : "note"}" role="alert"><p>${t("search.error.body")}</p><p style="margin-block-start:10px"><button type="button" class="${btn}" data-act="retry">${t("action.retry")}</button></p></div>`;
+
+/* ======================= Direction A ======================= */
+const A = {
+  rows(m) {
+    if (m.kind === "loading") return `<div aria-busy="true"><span class="sr">${t("search.loading.label")}</span>${[60, 44, 52, 38, 48].map((w) => `<div class="skel"><i style="width:24px;height:18px"></i><i style="width:${w}%"></i></div>`).join("")}</div>`;
+    if (m.kind === "error") return errorBlock("btn");
+    if (m.kind === "empty") return `${m.offline ? offlineLine() : ""}<div class="note"><p>${t("search.empty.body", { q: st.q.trim() })}</p><p style="margin-block-start:8px"><button type="button" class="more" data-act="clear">${t("search.empty.action")}</button></p></div>`;
+    const list = m.rows.map((r) => `<a class="row" href="#countries"><span>${flag(r.iso2)}</span><span class="nm">${esc(nm(r))} <span class="oth">(<bdi>${esc(oth(r))}</bdi>)</span>${pinned(r) ? `<span class="tag">${t("search.region")}</span>` : ""}</span><span class="dial mono">${esc(dials(r))}</span></a>`).join("");
+    const head = m.kind === "match" ? `<div class="meta" role="status"><span>${countLine(m)}</span></div>` : "";
+    const foot = m.kind === "first" ? `<a class="more" href="#countries">${t("search.list.all", { count: D.meta.countries })} ${ic("chevron-right", "flip")}</a>`
+      : m.total > 8 && !st.all ? `<button type="button" class="more" data-act="all">${t("search.results.more", { n: m.total })} ${ic("chevron-right", "flip")}</button>` : "";
+    return `${m.offline ? offlineLine() : ""}${head}<div>${list}</div>${foot}${m.kind === "match" ? `<p class="src">${t("search.results.source")}</p>` : ""}`;
+  },
+  page() {
+    const navList = NAV.map(([id, k, href]) => `<li><a href="${href}"${id === "home" ? ' aria-current="page"' : ""}>${t(k)}</a></li>`).join("");
+    return `<a class="skip" href="#main">${t("chrome.skip-link")}</a>
+<header class="hdr"><a class="wm" href="#top">worldref</a><div class="end"><a class="iconbtn" href="${GH}" aria-label="${tt("footer.repo")}">${ic("github")}</a><button type="button" class="iconbtn menu-btn" data-act="menu" aria-haspopup="dialog" aria-expanded="${st.menu}">${ic("bars")}<span>${t("chrome.menu.open")}</span></button></div></header>
+<div class="shell"><nav class="side" aria-label="${tt("chrome.menu.open")}"><ul>${navList}</ul></nav>
+<main class="main" id="main" tabindex="-1"><div class="col">
+  <section aria-labelledby="h1" id="top">
+    <h1 id="h1">${t("home.hero.title")}</h1>
+    <p class="lead">${t("home.hero.body", { count: D.meta.countries })}</p>
+    <div class="actions"><a class="btn pri" href="#install">${ic("terminal")}<span>${t("home.hero.install")}</span></a><a class="btn" href="#build">${ic("download")}<span>${t("home.hero.build")}</span></a></div>
+    <div class="frame" role="search">
+      <div class="frame-h">${ic("magnifying-glass")}<label for="q">${t("search.label")}</label></div>
+      <div class="frame-b">
+        <p class="hint" id="qh">${t("search.hint")}</p>
+        <div class="field"><input id="q" type="search" autocomplete="off" spellcheck="false" enterkeyhint="search" aria-describedby="qh" aria-controls="results" value="${esc(st.q)}" dir="${qdir()}">${st.q ? `<button type="button" class="iconbtn" data-act="clear" aria-label="${tt("search.clear")}">${ic("xmark")}</button>` : ""}</div>
+        <div class="chips" id="chips">${chipsHtml()}</div>
+        <div class="res" id="results" aria-live="polite"></div>
+      </div>
+    </div>
+  </section>
+  ${A.lower()}
+</div></main></div>
+${A.foot()}`;
+  },
+  lower() {
+    return `<h2 id="numbers">${t("home.facts.title")}</h2>
+  <dl class="facts">
+    <dt><bdi dir="ltr">${num(D.meta.countries)}</bdi></dt><dd>${t("home.facts.rows")}<span class="sub">${t("home.facts.rows.split", { countries: D.kinds.country, territories: D.kinds.territory })}</span></dd>
+    <dt><bdi dir="ltr">${num(D.meta.subdivisions)}</bdi></dt><dd>${t("home.facts.subdivisions")}</dd>
+    <dt>${D.meta.modules.length}</dt><dd>${t("home.facts.modules")}</dd>
+    <dt>${Object.keys(D.meta.builds).length}</dt><dd>${t("home.facts.builds")}</dd>
+    <dt>${D.languages}</dt><dd>${t("home.facts.languages")}</dd>
+  </dl>
+  <p class="version">${t("home.facts.version", { version: D.meta.version, cldr: D.meta.sources.cldr, phone: D.meta.sources.libphonenumber })}</p>
+  <h2 id="ways">${t("home.ways.title")}</h2>
+  <div class="links">
+    <a class="lc" href="#install" id="install"><span class="grow"><strong>${t("home.ways.install.title")}</strong>${t("home.ways.install.body", { count: D.installRows })}</span>${ic("arrow-right", "flip")}</a>
+    <a class="lc" href="#build" id="build"><span class="grow"><strong>${t("home.ways.build.title")}</strong>${t("home.ways.build.body")}</span>${ic("arrow-right", "flip")}</a>
+    <div class="lc"><span class="grow"><strong>${t("home.ways.api.title")}</strong>${t("home.ways.api.body")}<span class="urlrow"><code>${esc(apiUrl())}</code>${copyBtn("api", "")}</span>${copyErr("api")}</span></div>
+    <a class="lc" href="#agents" id="agents"><span class="grow"><strong>${t("home.ways.agents.title")}</strong>${t("home.ways.agents.body")}</span>${ic("arrow-right", "flip")}</a>
+  </div>
+  <h2 id="native">${t("home.native.title")}</h2>
+  <div class="note">
+    <p>${t("home.native.body")}</p>
+    ${nativeRows().map(([k, v]) => `<div class="kv"><span class="k">${k}</span><span>${v}</span></div>`).join("")}
+  </div>
+  <h2 id="policy">${t("policy.title")}</h2>
+  <ul class="bul"><li>${t("policy.palestine")}</li><li>${t("policy.disputed")}</li><li>${t("policy.requests")}</li></ul>
+  <p><a class="more" href="${policyUrl()}">${t("policy.full")} ${ic("arrow-right", "flip")}</a></p>
+  <h2 id="faq">${t("faq.title")}</h2>
+  <div class="faq">${faq()}</div>`;
+  },
+  foot() {
+    return `<footer class="foot"><div class="col">${footLinks()}<p class="lic">${t("footer.licence-line")}</p>${switches()}</div></footer>`;
+  },
+};
+
+/* ======================= Direction B ======================= */
+const B = {
+  rows(m) {
+    if (m.kind === "loading") return `<div aria-busy="true"><span class="sr">${t("search.loading.label")}</span>${[40, 28, 34, 24, 30].map((w) => `<div class="skel"><i style="width:22px;height:16px;border-radius:2px"></i><i style="width:${w}%"></i></div>`).join("")}</div>`;
+    if (m.kind === "error") return errorBlock("pill");
+    if (m.kind === "empty") return `${m.offline ? offlineLine() : ""}<p class="notice">${t("search.empty.body", { q: st.q.trim() })}</p><button type="button" class="plain" data-act="clear">${t("search.empty.action")}</button>`;
+    const list = m.rows.map((r) => `<a class="line" href="#countries">${flag(r.iso2)}<span><span class="nm">${esc(nm(r))}</span> <span class="oth">(<bdi>${esc(oth(r))}</bdi>)</span></span>${pinned(r) ? `<span class="tag">${t("search.region")}</span>` : ""}<span class="dialw"><span class="dial mono">${esc(dials(r))}</span></span></a>`).join("");
+    const head = m.kind === "match" ? `<p class="count" role="status">${countLine(m)}<sup class="fn"><a href="#fn1" aria-label="1">1</a></sup></p>` : "";
+    const foot = m.kind === "first" ? `<a class="plain" href="#countries">${t("search.list.all", { count: D.meta.countries })} ${ic("chevron-right", "flip")}</a>`
+      : m.total > 8 && !st.all ? `<button type="button" class="plain" data-act="all">${t("search.results.more", { n: m.total })} ${ic("chevron-right", "flip")}</button>` : "";
+    return `${m.offline ? offlineLine() : ""}${head}<div>${list}</div>${foot}`;
+  },
+  page() {
+    const tl = [["countries", "chrome.nav.countries", "#countries"], ["build", "chrome.nav.build", "#build"], ["agents", "chrome.nav.agents", "#agents"], ["faq", "chrome.nav.faq", "#faq"]];
+    return `<a class="skip" href="#main">${t("chrome.skip-link")}</a>
+<header class="lnav"><div class="wrap"><a class="wm" href="#top">worldref</a><nav aria-label="${tt("chrome.menu.open")}">${tl.map(([, k, h]) => `<a class="tl" href="${h}">${t(k)}</a>`).join("")}<a class="pill sm" href="#install">${t("chrome.nav.install")}</a><button type="button" class="menu-btn" data-act="menu" aria-haspopup="dialog" aria-expanded="${st.menu}" aria-label="${tt("chrome.menu.open")}">${ic("bars")}</button></nav></div></header>
+<main id="main" tabindex="-1"><div class="wrap">
+  <section class="hero" id="top" aria-labelledby="h1">
+    <h1 id="h1">${t("home.hero.title")}</h1>
+    <p class="lede">${t("home.hero.body", { count: D.meta.countries })}</p>
+    <div class="actions"><a class="pill" href="#install">${t("home.hero.install")}</a><a class="plain" href="#build">${t("home.hero.build")} ${ic("chevron-right", "flip")}</a></div>
+  </section>
+  <section class="sec first" role="search">
+    <div class="lab"><label for="q">${t("search.label")}</label></div>
+    <div class="facts">
+      <p class="hint" id="qh">${t("search.hint")}</p>
+      <div class="field">${ic("magnifying-glass")}<input id="q" type="search" autocomplete="off" spellcheck="false" enterkeyhint="search" aria-describedby="qh" aria-controls="results" value="${esc(st.q)}" dir="${qdir()}">${st.q ? `<button type="button" class="menu-btn" style="display:inline-flex" data-act="clear" aria-label="${tt("search.clear")}">${ic("xmark")}</button>` : ""}</div>
+      <div class="chips" id="chips">${chipsHtml()}</div>
+      <div class="res" id="results" aria-live="polite"></div>
+    </div>
+  </section>
+  <section class="sec" aria-labelledby="numbers">
+    <h2 class="lab" id="numbers">${t("home.facts.title")}<sup class="fn"><a href="#fn2" aria-label="2">2</a></sup></h2>
+    <div class="facts"><div class="figs">
+      <p class="fig"><b>${num(D.meta.countries)}</b><span>${t("home.facts.rows")}<br>${t("home.facts.rows.split", { countries: D.kinds.country, territories: D.kinds.territory })}</span></p>
+      <p class="fig"><b>${num(D.meta.subdivisions)}</b><span>${t("home.facts.subdivisions")}</span></p>
+      <p class="fig"><b>${D.meta.modules.length}</b><span>${t("home.facts.modules")}</span></p>
+      <p class="fig"><b>${Object.keys(D.meta.builds).length}</b><span>${t("home.facts.builds")}</span></p>
+      <p class="fig"><b>${D.languages}</b><span>${t("home.facts.languages")}</span></p>
+    </div></div>
+  </section>
+  <section class="sec" aria-labelledby="ways">
+    <h2 class="lab" id="ways">${t("home.ways.title")}</h2>
+    <div class="facts ways">
+      <p id="install"><a class="plain" href="#install">${t("home.ways.install.title")} ${ic("chevron-right", "flip")}</a><span class="d" style="font-weight:400;color:var(--muted)">${t("home.ways.install.body", { count: D.installRows })}</span></p>
+      <p id="build"><a class="plain" href="#build">${t("home.ways.build.title")} ${ic("chevron-right", "flip")}</a><span class="d" style="font-weight:400;color:var(--muted)">${t("home.ways.build.body")}</span></p>
+      <div><span class="d">${t("home.ways.api.title")}</span>${t("home.ways.api.body")}<div class="url"><code>${esc(apiUrl())}</code>${copyBtn("api", "plain")}</div>${copyErr("api")}</div>
+      <p id="agents"><a class="plain" href="#agents">${t("home.ways.agents.title")} ${ic("chevron-right", "flip")}</a><span class="d" style="font-weight:400;color:var(--muted)">${t("home.ways.agents.body")}</span></p>
+    </div>
+  </section>
+  <section class="sec" aria-labelledby="native">
+    <h2 class="lab" id="native">${t("home.native.title")}</h2>
+    <div class="facts"><p style="margin-block-end:18px">${t("home.native.body")}</p><div class="pairs">${nativeRows().map(([k, v]) => `<p><span class="d">${k}</span><span class="v">${v}</span></p>`).join("")}</div></div>
+  </section>
+  <section class="sec" aria-labelledby="policy">
+    <h2 class="lab" id="policy">${t("policy.title")}</h2>
+    <div class="facts"><ul class="bul"><li>${t("policy.palestine")}</li><li>${t("policy.disputed")}</li><li>${t("policy.requests")}</li></ul><p style="margin-block-start:12px"><a class="plain" href="${policyUrl()}">${t("policy.full")} ${ic("chevron-right", "flip")}</a></p></div>
+  </section>
+  <section class="sec" aria-labelledby="faq">
+    <h2 class="lab" id="faq">${t("faq.title")}</h2>
+    <div class="facts faq">${faq()}</div>
+  </section>
+  <section class="sec notes" aria-labelledby="fnh">
+    <h2 class="sr" id="fnh">${t("country.sec.sources")}</h2>
+    <ol style="grid-column:1/-1"><li id="fn1">${t("search.results.source")}</li><li id="fn2">${t("home.facts.version", { version: D.meta.version, cldr: D.meta.sources.cldr, phone: D.meta.sources.libphonenumber })}</li></ol>
+  </section>
+</div></main>
+<footer class="foot"><div class="wrap">${footLinks()}<p>${t("footer.licence-line")}</p>${switches()}</div></footer>`;
+  },
+};
+
+/* ======================= Direction C ======================= */
+const C = {
+  shapeName(r) {
+    if (st.build === "ar") return esc(r.name_ar);
+    if (st.build === "en") return esc(r.name_en);
+    return `${esc(nm(r))} <span class="oth"><bdi>${esc(oth(r))}</bdi></span>`;
+  },
+  json(r) {
+    const o = st.build === "bilingual" ? { iso2: r.iso2, iso3: r.iso3, name_ar: r.name_ar, name_en: r.name_en } : { iso2: r.iso2, iso3: r.iso3, name: st.build === "ar" ? r.name_ar : r.name_en };
+    return JSON.stringify(o, null, 2);
+  },
+  rows(m) {
+    if (m.kind === "loading") return `<div class="tiles" aria-busy="true"><span class="sr">${t("search.loading.label")}</span>${"<div class=\"skel\"></div>".repeat(4)}</div>`;
+    if (m.kind === "error") return errorBlock("btn");
+    if (m.kind === "empty") return `${m.offline ? offlineLine() : ""}<div class="note"><p>${t("search.empty.body", { q: st.q.trim() })}</p><button type="button" class="lnk" style="border:0;background:none;padding:0;cursor:pointer" data-act="clear">${t("search.empty.action")}</button></div>`;
+    const tiles = m.rows.map((r) => `<a class="tile" href="#countries">${flag(r.iso2)}${pinned(r) ? `<span class="tag">${t("search.region")}</span>` : ""}<span class="nm">${C.shapeName(r)}</span><span class="codes"><span>${r.iso2}</span><span>${esc(dials(r))}</span></span></a>`).join("");
+    const extra = m.kind === "first" ? `<a class="tile all" href="#countries"><span>${t("search.list.all", { count: D.meta.countries })}</span></a>`
+      : m.total > 8 && !st.all ? `<button type="button" class="tile all" data-act="all" style="border:1px dashed var(--hair);cursor:pointer;font:inherit"><span>${t("search.results.more", { n: m.total })}</span></button>` : "";
+    const bar = `<div class="bar2" role="status"><span>${m.kind === "match" ? `<strong>${countLine(m)}</strong>` : ""}</span></div>`;
+    return `${m.offline ? offlineLine() : ""}${m.kind === "match" ? bar : ""}<div class="tiles${m.kind === "first" ? "" : ""}" style="${m.kind === "first" ? "margin-block-start:18px" : ""}">${tiles}${extra}</div>${m.kind === "match" ? `<p class="src">${t("search.results.source")}</p>` : ""}`;
+  },
+  panel(m) {
+    const r = (m.rows && m.rows[0]) || D.rows.find((x) => x.iso2 === (st.region || "SA"));
+    const file = `data/modules/core${D.meta.builds[st.build === "bilingual" ? "bilingual" : st.build === "ar" ? "arabic" : "english"]}`;
+    const opts = [["bilingual", "build.bilingual"], ["ar", "build.ar"], ["en", "build.en"]];
+    return `<div class="ctl"><span class="lab" id="bl">${t("build.lang.label")}</span><div class="strip" role="radiogroup" aria-labelledby="bl">${opts.map(([v, k]) => `<button type="button" role="radio" aria-checked="${st.build === v}" data-build="${v}">${t(k)}</button>`).join("")}</div></div>
+      <div><p class="path"><code>${esc(file)}</code></p><pre id="json">${esc(C.json(r))}</pre></div>`;
+  },
+  page() {
+    const tl = [["install", "chrome.nav.install", "#install"], ["build", "chrome.nav.build", "#build"], ["countries", "chrome.nav.countries", "#countries"], ["agents", "chrome.nav.agents", "#agents"]];
+    return `<a class="skip" href="#main">${t("chrome.skip-link")}</a>
+<header class="hdr"><div class="wrap"><a class="wm" href="#top"><span class="dot" aria-hidden="true"></span>worldref</a><nav aria-label="${tt("chrome.menu.open")}">${tl.map(([, k, h]) => `<a class="tl" href="${h}">${t(k)}</a>`).join("")}<a class="iconbtn" href="${GH}" aria-label="${tt("footer.repo")}">${ic("github")}</a><button type="button" class="iconbtn menu-btn" data-act="menu" aria-haspopup="dialog" aria-expanded="${st.menu}" aria-label="${tt("chrome.menu.open")}">${ic("bars")}</button></nav></div></header>
+<main id="main" tabindex="-1"><div class="wrap">
+  <section class="hero" id="top" aria-labelledby="h1">
+    <div><h1 id="h1">${t("home.hero.title")}</h1><p class="lede">${t("home.hero.body", { count: D.meta.countries })}</p></div>
+    <div class="actions"><a class="btn pri" href="#install">${ic("terminal")}<span>${t("home.hero.install")}</span></a><a class="btn" href="#build">${ic("download")}<span>${t("home.hero.build")}</span></a></div>
+  </section>
+  <div class="inst">
+    <aside class="panel" id="panel" aria-label="${tt("build.lang.label")}"></aside>
+    <div class="search" role="search">
+      <label for="q">${t("search.label")}</label>
+      <p class="hint" id="qh">${t("search.hint")}</p>
+      <div class="field">${ic("magnifying-glass")}<input id="q" type="search" autocomplete="off" spellcheck="false" enterkeyhint="search" aria-describedby="qh" aria-controls="results" value="${esc(st.q)}" dir="${qdir()}">${st.q ? `<button type="button" class="iconbtn" data-act="clear" aria-label="${tt("search.clear")}">${ic("xmark")}</button>` : `<span class="n" aria-hidden="true">${D.meta.countries}</span>`}</div>
+      <div class="chips" id="chips">${chipsHtml()}</div>
+      <div id="results" aria-live="polite"></div>
+    </div>
+  </div>
+  <section class="s" aria-labelledby="numbers"><h2 class="t" id="numbers">${t("home.facts.title")}</h2>
+    <div class="bento">
+      <div class="cell big"><b>${num(D.meta.countries)}</b><span>${t("home.facts.rows")}<br>${t("home.facts.rows.split", { countries: D.kinds.country, territories: D.kinds.territory })}</span></div>
+      <div class="cell"><b>${num(D.meta.subdivisions)}</b><span>${t("home.facts.subdivisions")}</span></div>
+      <div class="cell"><b>${D.meta.modules.length}</b><span>${t("home.facts.modules")}</span></div>
+      <div class="cell"><b>${Object.keys(D.meta.builds).length}</b><span>${t("home.facts.builds")}</span></div>
+      <div class="cell"><b>${D.languages}</b><span>${t("home.facts.languages")}</span></div>
+    </div>
+    <p class="vline">${t("home.facts.version", { version: D.meta.version, cldr: D.meta.sources.cldr, phone: D.meta.sources.libphonenumber })}</p>
+  </section>
+  <section class="s" aria-labelledby="ways"><h2 class="t" id="ways">${t("home.ways.title")}</h2>
+    <div class="ways">
+      <a class="way" href="#install" id="install"><span class="ico">${ic("terminal")}</span><span class="grow"><strong>${t("home.ways.install.title")}</strong><p>${t("home.ways.install.body", { count: D.installRows })}</p></span></a>
+      <a class="way" href="#build" id="build"><span class="ico">${ic("download")}</span><span class="grow"><strong>${t("home.ways.build.title")}</strong><p>${t("home.ways.build.body")}</p></span></a>
+      <div class="way wide"><span class="ico">${ic("copy")}</span><span class="grow"><strong>${t("home.ways.api.title")}</strong><p>${t("home.ways.api.body")}</p><span class="urlrow"><code>${esc(apiUrl())}</code>${copyBtn("api", "btn")}</span>${copyErr("api")}</span></div>
+      <a class="way wide" href="#agents" id="agents"><span class="ico">${ic("terminal")}</span><span class="grow"><strong>${t("home.ways.agents.title")}</strong><p>${t("home.ways.agents.body")}</p></span></a>
+    </div>
+  </section>
+  <section class="s" aria-labelledby="native"><h2 class="t" id="native">${t("home.native.title")}</h2>
+    <p style="color:var(--muted);margin-block-end:14px">${t("home.native.body")}</p>
+    <div class="console">${nativeRows().map(([k, v]) => `<div class="r"><span class="k">${k}</span><span class="out">${v}</span></div>`).join("")}</div>
+  </section>
+  <section class="s" aria-labelledby="policy"><h2 class="t" id="policy">${t("policy.title")}</h2>
+    <ul class="bul"><li>${t("policy.palestine")}</li><li>${t("policy.disputed")}</li><li>${t("policy.requests")}</li></ul>
+    <a class="lnk" href="${policyUrl()}">${t("policy.full")} ${ic("arrow-right", "flip")}</a>
+  </section>
+  <section class="s" aria-labelledby="faq"><h2 class="t" id="faq">${t("faq.title")}</h2><div class="faq">${faq()}</div></section>
+</div></main>
+<footer class="foot"><div class="wrap"><div style="display:grid;gap:12px">${footLinks()}<p class="lic">${t("footer.licence-line")}</p></div>${switches()}</div></footer>`;
+  },
+};
+
+/* ======================= shared pieces ======================= */
+function nativeRows() {
+  return [
+    [t("home.native.search"), `<code>search(countries, "الامارات", "ar")[0].iso2</code> <code>"AE"</code>`],
+    [t("home.native.nationality"), `<code>nationality_ar_m</code> سعودي، <code>nationality_ar_f</code> سعودية`],
+    [t("home.native.digits"), `${t("home.native.digits.body")} ${t("home.native.digits.result", { number: { html: "<code>0501234567</code>" } })} <code>e164: "+966501234567", valid: true, mobile: true</code>`],
+    [t("home.native.sort"), `${t("home.native.sort.value")} <code>sort_ar: "سعوديه"</code>`],
+  ];
+}
+function faq() { return [1, 2, 3, 4, 5, 6].map((i) => `<details><summary><span>${t("faq.q" + i)}</span>${ic("chevron-right", "flip")}</summary><p>${t("faq.a" + i)}</p></details>`).join(""); }
+function footLinks() {
+  const nav = NAV.filter(([id]) => id !== "home").map(([, k, h]) => `<li><a href="${h}">${t(k)}</a></li>`).join("");
+  return `<ul>${nav}<li><a href="${GH}">${ic("github")}<span>${t("footer.repo")}</span></a></li><li><a href="${GH}/issues">${t("footer.issues")}</a></li><li><a href="${GH}/tree/main/LICENSES">${t("footer.licences")}</a></li><li><a href="${GH}/blob/main/CITATION.cff">${t("footer.cite")}</a></li></ul>`;
+}
+function switches() {
+  const langSeg = `<div class="seg" role="group" aria-labelledby="sl"><a href="?${qs({ lang: "ar" })}" lang="ar" data-lang="ar" aria-current="${st.lang === "ar"}">${W["switch.language.ar"][0]}</a><a href="?${qs({ lang: "en" })}" lang="en" data-lang="en" aria-current="${st.lang === "en"}">${W["switch.language.en"][1]}</a></div>`;
+  const themeSeg = `<div class="seg" role="group" aria-labelledby="st">${["system", "light", "dark"].map((v) => `<button type="button" data-theme-set="${v}" aria-pressed="${st.theme === v}">${t("switch.theme." + v)}</button>`).join("")}</div>`;
+  return `<div class="switches"><div><label id="sl">${t("switch.language.label")}</label>${langSeg}</div><div><label id="st">${t("switch.theme.label")}</label>${themeSeg}</div></div>`;
+}
+function copyBtn(id, cls) {
+  const done = st.copied === id;
+  const label = done ? t("action.copied-url") : t("action.copy-url");
+  return `<button type="button" class="${cls}" data-copy="${id}" aria-live="polite">${ic(done ? "check" : "copy")}<span>${label}</span></button>`;
+}
+const copyErr = (id) => (st.copyErr === id ? `<p class="${st.dir === "b" ? "notice" : "note"}" role="alert">${t("action.copy.error")}</p>` : "");
+function menuSheet() {
+  return `<div class="sheet${st.menu ? " on" : ""}" id="sheet" role="dialog" aria-modal="true" aria-label="${tt("chrome.menu.open")}"${st.menu ? "" : " hidden"}><div class="in">
+    <div class="top"><button type="button" class="${st.dir === "b" ? "menu-btn" : "iconbtn"}" style="display:inline-flex" id="sheetClose" data-act="close" aria-label="${tt("chrome.menu.close")}">${ic("xmark")}</button></div>
+    <nav class="nav">${NAV.map(([, k, h]) => `<a href="${h}" data-act="close">${t(k)}${ic("chevron-right", "flip")}</a>`).join("")}</nav>${switches()}</div></div>`;
+}
+const qdir = () => (st.lang === "ar" && st.q && !/[؀-ۿ]/.test(st.q) ? "ltr" : st.lang === "ar" ? "rtl" : "ltr");
+function qs(over) { const p = new URLSearchParams({ direction: st.dir, lang: st.lang, theme: st.theme, state: st.state, ...over }); return p.toString(); }
+const R = { a: A, b: B, c: C };
+const effTheme = () => (st.theme === "system" ? (matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light") : st.theme);
+
+/* ======================= render ======================= */
+const site = document.getElementById("site");
+function render() {
+  const d = DIRS.find((x) => x.id === st.dir);
+  site.className = "dir-" + st.dir;
+  site.setAttribute("lang", st.lang);
+  site.setAttribute("dir", st.lang === "ar" ? "rtl" : "ltr");
+  site.dataset.theme = effTheme();
+  document.documentElement.lang = st.lang;
+  document.documentElement.dir = st.lang === "ar" ? "rtl" : "ltr";
+  document.title = `${d.name} (${st.lang}, ${effTheme()}): worldref K4 directions`;
+  const ribbon = `<div id="ribbon" title="Type: ${d.type}">${d.name}, seeded by ${d.seed}. U+20C1: <span class="riy" style="font-family:${d.fam.replace(/"/g, "'")}">&#x20C1; 1,250</span> (fallback system-ui). Tooling only.</div>`;
+  site.innerHTML = ribbon + R[st.dir].page() + menuSheet();
+  renderResults(false);
+  tool();
+  history.replaceState(null, "", "?" + qs({}));
+  if (MISSING.length) console.warn("missing keys", [...new Set(MISSING)]);
+}
+function renderResults(animate) {
+  const m = model();
+  const box = document.getElementById("results");
+  box.innerHTML = R[st.dir].rows(m);
+  if (animate) { box.classList.remove("moment"); void box.offsetWidth; box.classList.add("moment"); }
+  const chips = document.getElementById("chips"); if (chips) chips.innerHTML = chipsHtml();
+  if (st.dir === "c") document.getElementById("panel").innerHTML = C.panel(m);
+  const q = document.getElementById("q"); if (q) q.setAttribute("dir", qdir());
+}
+function setState(s) {
+  st.state = s; st.all = false; st.copied = null; st.copyErr = null;
+  st.q = SAMPLE[s] ? SAMPLE[s][st.lang] : "";
+}
+function tool() {
+  const i = DIRS.findIndex((x) => x.id === st.dir);
+  const d = DIRS[i];
+  document.getElementById("tool").innerHTML = `<span class="note">Directions tooling, not part of the design</span>
+    <span class="grp"><button type="button" data-tool="prev" aria-label="Previous direction">&larr; Prev</button><span class="name" aria-live="polite">${d.name}</span><button type="button" data-tool="next" aria-label="Next direction">Next &rarr;</button></span>
+    <span class="grp" role="group" aria-label="Language">${["ar", "en"].map((l) => `<button type="button" data-tool-lang="${l}" aria-pressed="${st.lang === l}">${l.toUpperCase()}</button>`).join("")}</span>
+    <span class="grp" role="group" aria-label="Theme">${["light", "dark"].map((v) => `<button type="button" data-tool-theme="${v}" aria-pressed="${effTheme() === v}">${v}</button>`).join("")}</span>
+    <label class="grp">state <select data-tool-state>${STATES.map((s) => `<option${s === st.state ? " selected" : ""}>${s}</option>`).join("")}</select></label>`;
+  site.style.paddingBlockEnd = document.getElementById("tool").offsetHeight + 24 + "px";
+}
+function cycle(n) { const i = DIRS.findIndex((x) => x.id === st.dir); st.dir = DIRS[(i + n + DIRS.length) % DIRS.length].id; st.menu = false; render(); }
+
+document.addEventListener("click", async (e) => {
+  const el = e.target.closest("[data-tool],[data-tool-lang],[data-tool-theme],[data-act],[data-chip],[data-copy],[data-theme-set],[data-lang],[data-build],a[href^='#']");
+  if (!el) return;
+  if (el.dataset.tool) return cycle(el.dataset.tool === "next" ? 1 : -1);
+  if (el.dataset.toolLang || el.dataset.lang) { e.preventDefault(); st.lang = el.dataset.toolLang || el.dataset.lang; setState(st.state); st.menu = false; return render(); }
+  if (el.dataset.toolTheme) { st.theme = el.dataset.toolTheme; return render(); }
+  if (el.dataset.themeSet) { st.theme = el.dataset.themeSet; return render(); }
+  if (el.dataset.build) { st.build = el.dataset.build; return renderResults(true); }
+  if (el.dataset.chip !== undefined && el.dataset.chip !== "") { st.q = el.dataset.chip; st.all = false; if (st.state !== "offline") st.state = "first-run"; return renderAndKeep(); }
+  if (el.dataset.copy) {
+    const text = apiUrl();
+    try { await navigator.clipboard.writeText(text); st.copied = el.dataset.copy; st.copyErr = null; render(); setTimeout(() => { if (st.copied === el.dataset.copy) { st.copied = null; render(); } }, 2000); }
+    catch (err) { st.copyErr = el.dataset.copy; render(); const c = document.querySelector(".urlrow code, .url code"); if (c) { const r = document.createRange(); r.selectNodeContents(c); getSelection().removeAllRanges(); getSelection().addRange(r); } }
+    return;
+  }
+  const act = el.dataset.act;
+  if (act === "menu") { st.menu = true; render(); document.getElementById("sheetClose")?.focus(); return; }
+  if (act === "close") { st.menu = false; render(); document.querySelector(".menu-btn")?.focus(); return; }
+  if (act === "clear") { st.q = ""; st.all = false; if (st.state !== "offline") st.state = "first-run"; renderAndKeep(); document.getElementById("q")?.focus(); return; }
+  if (act === "all") { st.all = true; return renderResults(true); }
+  if (act === "retry") { st.state = "first-run"; return render(); }
+  if (el.matches("a[href^='#']")) { const id = el.getAttribute("href").slice(1); const tgt = id && document.getElementById(id); if (!tgt) e.preventDefault(); }
+});
+function renderAndKeep() { const q = document.getElementById("q"); if (q) q.value = st.q; renderResults(true); }
+document.addEventListener("input", (e) => {
+  if (e.target.id === "q") { st.q = e.target.value; st.all = false; if (["empty", "partial", "success", "loading", "error"].includes(st.state)) st.state = "first-run"; renderResults(true); }
+});
+document.addEventListener("change", (e) => { if (e.target.matches("[data-tool-state]")) { setState(e.target.value); render(); } });
+document.addEventListener("keydown", (e) => {
+  if (e.key === "Escape" && st.menu) { st.menu = false; render(); document.querySelector(".menu-btn")?.focus(); return; }
+  const a = document.activeElement;
+  if (a && (a.matches("input,textarea,select") || a.isContentEditable)) return;
+  if (e.key === "ArrowRight") cycle(1);
+  if (e.key === "ArrowLeft") cycle(-1);
+});
+matchMedia("(prefers-color-scheme: dark)").addEventListener("change", () => { if (st.theme === "system") render(); });
+new ResizeObserver(() => { site.style.paddingBlockEnd = document.getElementById("tool").offsetHeight + 24 + "px"; }).observe(document.getElementById("tool"));
+setState(st.state);
+render();
+</script>
+</body></html>

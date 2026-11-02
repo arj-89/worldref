@@ -18,6 +18,7 @@ First release.
 
 - Fixed: English names used CLDR's abbreviated forms for some rows ("US", "UK", "Bosnia"). Names now use the standard CLDR name, falling back to the short or variant form only when the standard one carries a qualifier ("Hong Kong SAR China" becomes "Hong Kong", "Cocos (Keeling) Islands" becomes "Cocos Islands").
 - Fixed: Macao's Arabic name is now the short form «مكاو».
+- Fixed: purely numeric aliases removed (Guadeloupe carried "971", which outranked the UAE in a "+971" search). Dial codes are matched through `phone` instead.
 - Fixed: the README showed most of its sections twice.
 - Docs: the Arabic README now uses the JitPack tag v1.0.0 and states that policy-change requests are closed.
 - Docs: a "Best practices" section in both READMEs (search folding, sorting, display, phone storage, nationality forms, data handling), linked from llms.txt and AGENTS.md.

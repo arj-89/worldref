@@ -4,7 +4,7 @@ Keys for `/{lang}/build/`. Shared keys (`chrome.*`, `switch.*`, `footer.*`, `act
 
 Sizes are data, not copy: computed at build time from the files in `data/`, exact to the byte, shown in KB (1 KB = 1,024 bytes) to one decimal with the byte count beside it.
 
-**Status:** draft for Stop 1, 02/11/2026. **Model:** Opus 5.5 (claude-opus-5-5).
+**Status:** Stop 1 approved with changes (`DELEGATED-DECISIONS.md` entry 23); changes applied 02/11/2026. **Model:** Opus 5.5 (claude-opus-5-5).
 
 | key | Arabic | English | note |
 | --- | --- | --- | --- |

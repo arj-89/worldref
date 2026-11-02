@@ -4,7 +4,7 @@ Keys for `/{lang}/install/`. Shared keys (`chrome.*`, `switch.*`, `footer.*`, `a
 
 Commands and first calls are not copy: they are taken verbatim from `README.md` (install table) and each language folder's README, and listed in the spec, section 7.
 
-**Status:** draft for Stop 1, 02/11/2026. **Model:** Opus 5.5 (claude-opus-5-5).
+**Status:** Stop 1 approved with changes (`DELEGATED-DECISIONS.md` entry 22); changes applied 02/11/2026. **Model:** Opus 5.5 (claude-opus-5-5).
 
 ## Page
 
@@ -15,7 +15,7 @@ Commands and first calls are not copy: they are taken verbatim from `README.md` 
 | install.jump | انتقل إلى بيئتك | Jump to your stack | label above the jump row of 12 links |
 | install.where.terminal | الطرفية | Terminal | label above a command that runs in a shell |
 | install.where.url | رابط | URL | label above a URL |
-| install.step | الخطوة {n} من {total} | Step {n} of {total} | for stacks with two blocks (Kotlin, PHP, C#) |
+| install.step | الخطوة {n} من {total} | Step {n} of {total} | for the two stacks whose lines go to two destinations (Kotlin, PHP); C# is one Terminal block (entry 20) |
 | install.step.next | بقيت الخطوة {n} من {total} | Next: step {n} of {total} | partial state, on the block not yet copied |
 | install.first.show | اعرض أول استدعاء | Show the first call | toggle under each stack; opens by itself after a copy |
 | install.first.hide | أخفِ أول استدعاء | Hide the first call | |

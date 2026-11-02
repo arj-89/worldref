@@ -17,6 +17,8 @@ jobs:
       - name: Generated files are committed and up to date
         run: git diff --exit-code
       - run: npm test
+      - name: Site builds and passes the absence scan
+        run: node site/build.mjs && node tests/site-scan.mjs
 
   python:
     runs-on: ubuntu-latest

@@ -4,7 +4,7 @@ Keys for `/{lang}/countries/{iso2}/` (242 pages per language) and `/{lang}/count
 
 Values from the data (names, codes, numbers, IANA zones, regexes) are not copy and are shown as stored. Enum values (`asia`, `sun`, `right`) are shown through the labels below with the raw value in the code face beside them.
 
-**Status:** draft for Stop 1, 02/11/2026. **Model:** Opus 5.5 (claude-opus-5-5).
+**Status:** Stop 1 approved with changes (`DELEGATED-DECISIONS.md` entry 24); changes applied 02/11/2026. **Model:** Opus 5.5 (claude-opus-5-5).
 
 ## Page frame
 
@@ -196,9 +196,105 @@ Values from the data (names, codes, numbers, IANA zones, regexes) are not copy a
 | country.ovr.why | السبب | Why | label beside each override's note (D6) |
 | date.both | {g} الموافق {h} | {g} ({h}) | Gregorian then Hijri Umm al-Qura through the site's one date formatter (entry 8): `01/11/2026 الموافق 21 جمادى الأولى 1448 هـ`, `01/11/2026 (21 Jumada al-Ula 1448 AH)` |
 
+## Hijri months (decision D5, entry 16)
+
+Month names for the Hijri half of `date.both`, from the Umm al-Qura month number the site's one date formatter returns. Written in full in both languages; never the platform's short form.
+
+| key | Arabic | English | note |
+| --- | --- | --- | --- |
+| date.hijri | {d} {month} {y} هـ | {d} {month} {y} AH | Hijri half of `date.both`; {d} and {y} in Western digits; the era is «هـ» (ه plus tatweel) |
+| hijri.m1 | محرم | Muharram | month 1 |
+| hijri.m2 | صفر | Safar | month 2 |
+| hijri.m3 | ربيع الأول | Rabi al-Awwal | month 3 |
+| hijri.m4 | ربيع الآخر | Rabi al-Akhir | month 4 |
+| hijri.m5 | جمادى الأولى | Jumada al-Ula | month 5 |
+| hijri.m6 | جمادى الآخرة | Jumada al-Akhirah | month 6 |
+| hijri.m7 | رجب | Rajab | month 7 |
+| hijri.m8 | شعبان | Shaban | month 8 |
+| hijri.m9 | رمضان | Ramadan | month 9 |
+| hijri.m10 | شوال | Shawwal | month 10 |
+| hijri.m11 | ذو القعدة | Dhu al-Qadah | month 11 |
+| hijri.m12 | ذو الحجة | Dhu al-Hijjah | month 12 |
+
+## Editorial decision reasons (decision D6, entry 17)
+
+One key per override in `data/sources.json` `overrides` (67 keys), named `ovr.{iso2 in lowercase}.{field}` with the field exactly as in the data. Arabic pages show the Arabic column under "Editorial decisions in this row"; English pages show `why` verbatim from `sources.json`, and the English column here is that same text, kept for review only. `data/` and `scripts/editorial.mjs` stay unchanged.
+
+Build check: the site build fails when an override has no `ovr.*` key, when an `ovr.*` key matches no override, or when a key's English cell differs from the override's `why`.
+
+| key | Arabic | English | note |
+| --- | --- | --- | --- |
+| ovr.ps.locale.week_start,locale.weekend | لا بيانات أسبوع لهذا الصف في CLDR، فاعتمدنا ما تعمل به الدول العربية المجاورة. | CLDR has no week data for this row; neighbouring Arab practice | |
+| ovr.ps.travel.frequency_hz | يذكر مصدر التيار الكهربائي حول العالم هذه الشبكة باسم الكيان المستبعد، فنسبناها إلى فلسطين. | Electric Current Worldwide lists this grid under the excluded row's name; mapped to Palestine | |
+| ovr.ps.phone[+972] | أرقام +972 (ومنها القدس وأراضي 48) منسوبة إلى فلسطين وفق سياسة البيانات. | +972 numbering (Jerusalem, 1948 lines) mapped to Palestine by policy | |
+| ovr.ae.name_ar | الاسم المختصر الشائع، وصيغة CLDR العربية هي الاسم الرسمي الطويل. | Common short name; CLDR's standard Arabic form is the official long name | |
+| ovr.ba.nationality_ar_m | الصيغة العربية المعتمدة، ولا صيغة لها في Wikidata. | Standard Arabic form; Wikidata has none | |
+| ovr.ba.nationality_en | صيغة كتاب حقائق العالم ليست صفة واحدة، فاعتمدنا الصفة الإنجليزية الشائعة. | Factbook form is not a single adjective | |
+| ovr.bf.nationality_ar_m | الصيغة العربية المعتمدة، وصيغة Wikidata «بورتوريكي» خطأ. | Standard Arabic form; Wikidata's "بورتوريكي" is wrong | |
+| ovr.bo.capital | العاصمة الدستورية، ولاباز مقر الحكومة. | Constitutional capital (La Paz is the seat of government) | |
+| ovr.bq.capital | مقر الهيئة العامة لهولندا الكاريبية (Wikidata Q331584). | Seat of the Caribbean Netherlands public body (Wikidata Q331584) | |
+| ovr.cd.nationality_ar_m | الصيغة العربية المعتمدة، ولا صيغة لها في Wikidata. | Standard Arabic form; Wikidata has none | |
+| ovr.cd.nationality_en | صيغة كتاب حقائق العالم ليست صفة واحدة، فاعتمدنا الصفة الإنجليزية الشائعة. | Factbook form is not a single adjective | |
+| ovr.cg.nationality_ar_m | الصيغة العربية المعتمدة، ولا صيغة لها في Wikidata. | Standard Arabic form; Wikidata has none | |
+| ovr.cg.nationality_en | صيغة كتاب حقائق العالم ليست صفة واحدة، فاعتمدنا الصفة الإنجليزية الشائعة. | Factbook form is not a single adjective | |
+| ovr.cm.nationality_ar_m | الصيغة العربية المعتمدة، وصيغة Wikidata «كمروني» خطأ. | Standard Arabic form; Wikidata's "كمروني" is wrong | |
+| ovr.dk.nationality_ar_m | الصيغة العربية المعتمدة، ولا صيغة لها في Wikidata. | Standard Arabic form; Wikidata has none | |
+| ovr.dm.nationality_ar_m | الصيغة العربية المعتمدة، ولا صيغة لها في Wikidata. | Standard Arabic form; Wikidata has none | |
+| ovr.do.nationality_ar_m | الصيغة العربية المعتمدة، ولا صيغة لها في Wikidata. | Standard Arabic form; Wikidata has none | |
+| ovr.er.nationality_ar_m | الصيغة العربية المعتمدة، وصيغة Wikidata «إرتري» خطأ. | Standard Arabic form; Wikidata's "إرتري" is wrong | |
+| ovr.fm.nationality_ar_m | الصيغة العربية المعتمدة، ولا صيغة لها في Wikidata. | Standard Arabic form; Wikidata has none | |
+| ovr.gd.nationality_ar_m | الصيغة العربية المعتمدة، وصيغة Wikidata «غرنادي» خطأ. | Standard Arabic form; Wikidata's "غرنادي" is wrong | |
+| ovr.gh.nationality_ar_m | الصيغة العربية المعتمدة، ولا صيغة لها في Wikidata. | Standard Arabic form; Wikidata has none | |
+| ovr.gq.nationality_ar_m | الصيغة العربية المعتمدة، ولا صيغة لها في Wikidata. | Standard Arabic form; Wikidata has none | |
+| ovr.gw.nationality_ar_m | الصيغة العربية المعتمدة، ولا صيغة لها في Wikidata. | Standard Arabic form; Wikidata has none | |
+| ovr.hk.nationality_ar_m | الصيغة العربية المعتمدة، ولا صيغة لها في Wikidata. | Standard Arabic form; Wikidata has none | |
+| ovr.hk.nationality_en | صيغة كتاب حقائق العالم ليست صفة واحدة، فاعتمدنا الصفة الإنجليزية الشائعة. | Factbook form is not a single adjective | |
+| ovr.is.nationality_ar_m | الصيغة العربية المعتمدة، ولا صيغة لها في Wikidata. | Standard Arabic form; Wikidata has none | |
+| ovr.ki.nationality_en | صيغة كتاب حقائق العالم ليست صفة واحدة، فاعتمدنا الصفة الإنجليزية الشائعة. | Factbook form is not a single adjective | |
+| ovr.kp.nationality_en | صيغة كتاب حقائق العالم ليست صفة واحدة، فاعتمدنا الصفة الإنجليزية الشائعة. | Factbook form is not a single adjective | |
+| ovr.kr.nationality_en | صيغة كتاب حقائق العالم ليست صفة واحدة، فاعتمدنا الصفة الإنجليزية الشائعة. | Factbook form is not a single adjective | |
+| ovr.kz.nationality_ar_m | الصيغة العربية المعتمدة، وصيغة Wikidata «قزاقي» خطأ. | Standard Arabic form; Wikidata's "قزاقي" is wrong | |
+| ovr.li.nationality_en | صيغة كتاب حقائق العالم ليست صفة واحدة، فاعتمدنا الصفة الإنجليزية الشائعة. | Factbook form is not a single adjective | |
+| ovr.lk.capital | العاصمة الرسمية، وكولومبو العاصمة التجارية. | Official capital (Colombo is the commercial capital) | |
+| ovr.lk.nationality_ar_m | الصيغة العربية المعتمدة، وصيغة Wikidata «سريلنكي» خطأ. | Standard Arabic form; Wikidata's "سريلنكي" is wrong | |
+| ovr.lu.nationality_en | صيغة كتاب حقائق العالم ليست صفة واحدة، فاعتمدنا الصفة الإنجليزية الشائعة. | Factbook form is not a single adjective | |
+| ovr.md.nationality_ar_m | الصيغة العربية المعتمدة، وصيغة Wikidata «ملداوي» خطأ. | Standard Arabic form; Wikidata's "ملداوي" is wrong | |
+| ovr.mh.nationality_ar_m | الصيغة العربية المعتمدة، ولا صيغة لها في Wikidata. | Standard Arabic form; Wikidata has none | |
+| ovr.mm.nationality_ar_m | الصيغة العربية المعتمدة، وصيغة Wikidata «مينماري» خطأ. | Standard Arabic form; Wikidata's "مينماري" is wrong | |
+| ovr.mo.nationality_ar_m | الصيغة العربية المعتمدة، ولا صيغة لها في Wikidata. | Standard Arabic form; Wikidata has none | |
+| ovr.mo.nationality_en | صيغة كتاب حقائق العالم ليست صفة واحدة، فاعتمدنا الصفة الإنجليزية الشائعة. | Factbook form is not a single adjective | |
+| ovr.ms.capital | العاصمة القانونية، وبرادس المقر الفعلي. | De jure capital (Brades is the de facto seat) | |
+| ovr.mz.nationality_ar_m | الصيغة العربية المعتمدة، وصيغة Wikidata «موزنبيقي» خطأ. | Standard Arabic form; Wikidata's "موزنبيقي" is wrong | |
+| ovr.ph.nationality_en | صيغة كتاب حقائق العالم ليست صفة واحدة، فاعتمدنا الصفة الإنجليزية الشائعة. | Factbook form is not a single adjective | |
+| ovr.ps.nationality_en | صيغة كتاب حقائق العالم ليست صفة واحدة، فاعتمدنا الصفة الإنجليزية الشائعة. | Factbook form is not a single adjective | |
+| ovr.ps.currency.ILS.name | وفق سياسة البيانات، لا يرد اسم الكيان المستبعد في أسماء العملات. | Policy: no excluded-state name in currency names | |
+| ovr.py.nationality_ar_m | الصيغة العربية المعتمدة، وصيغة Wikidata «باراغواياني» خطأ. | Standard Arabic form; Wikidata's "باراغواياني" is wrong | |
+| ovr.qa.nationality_ar_m | الصيغة العربية المعتمدة، وصيغة Wikidata «عربي» خطأ. | Standard Arabic form; Wikidata's "عربي" is wrong | |
+| ovr.rw.nationality_ar_m | الصيغة العربية المعتمدة، وصيغة Wikidata «روندي» خطأ. | Standard Arabic form; Wikidata's "روندي" is wrong | |
+| ovr.sa.name_ar | الاسم المختصر الشائع، وصيغة CLDR العربية هي الاسم الرسمي الطويل. | Common short name; CLDR's standard Arabic form is the official long name | |
+| ovr.sg.nationality_en | صيغة كتاب حقائق العالم ليست صفة واحدة، فاعتمدنا الصفة الإنجليزية الشائعة. | Factbook form is not a single adjective | |
+| ovr.sj.capital | المركز الإداري لسفالبارد (Wikidata Q25923). | Administrative centre of Svalbard (Wikidata Q25923) | |
+| ovr.sm.nationality_ar_m | الصيغة العربية المعتمدة، ولا صيغة لها في Wikidata. | Standard Arabic form; Wikidata has none | |
+| ovr.ss.nationality_ar_m | الصيغة العربية المعتمدة، ولا صيغة لها في Wikidata. | Standard Arabic form; Wikidata has none | |
+| ovr.sz.capital | العاصمة الإدارية، ولوبامبا العاصمة الملكية والتشريعية. | Administrative capital (Lobamba is the royal and legislative capital) | |
+| ovr.tt.nationality_ar_m | الصيغة العربية المعتمدة، ولا صيغة لها في Wikidata. | Standard Arabic form; Wikidata has none | |
+| ovr.tw.nationality_ar_m | الصيغة العربية المعتمدة، ولا صيغة لها في Wikidata. | Standard Arabic form; Wikidata has none | |
+| ovr.tw.nationality_en | صيغة كتاب حقائق العالم ليست صفة واحدة، فاعتمدنا الصفة الإنجليزية الشائعة. | Factbook form is not a single adjective | |
+| ovr.ua.nationality_ar_m | الصيغة العربية المعتمدة، ولا صيغة لها في Wikidata. | Standard Arabic form; Wikidata has none | |
+| ovr.uy.nationality_ar_m | الصيغة العربية المعتمدة، وصيغة Wikidata «أوروغواياني» خطأ. | Standard Arabic form; Wikidata's "أوروغواياني" is wrong | |
+| ovr.uz.nationality_ar_m | الصيغة العربية المعتمدة، وصيغة Wikidata «أزبكستاني» خطأ. | Standard Arabic form; Wikidata's "أزبكستاني" is wrong | |
+| ovr.va.nationality_ar_m | الصيغة العربية المعتمدة، ولا صيغة لها في Wikidata. | Standard Arabic form; Wikidata has none | |
+| ovr.xk.nationality_ar_m | الصيغة العربية المعتمدة، وصيغة Wikidata «قوصوي» خطأ. | Standard Arabic form; Wikidata's "قوصوي" is wrong | |
+| ovr.xk.nationality_en | صيغة كتاب حقائق العالم ليست صفة واحدة، فاعتمدنا الصفة الإنجليزية الشائعة. | Factbook form is not a single adjective | |
+| ovr.ye.capital | العاصمة الدستورية. | Constitutional capital | |
+| ovr.yt.capital | مقر المحافظة. | Seat of the prefecture | |
+| ovr.za.capital | العاصمة التنفيذية، وكيب تاون العاصمة التشريعية، وبلومفونتين العاصمة القضائية. | Executive capital (Cape Town legislative, Bloemfontein judicial) | |
+| ovr.za.nationality_ar_m | الصيغة العربية المعتمدة، ولا صيغة لها في Wikidata. | Standard Arabic form; Wikidata has none | |
+| ovr.zw.nationality_ar_m | الصيغة العربية المعتمدة، وصيغة Wikidata «زنبابي» خطأ. | Standard Arabic form; Wikidata's "زنبابي" is wrong | |
+
 ## Source names
 
-Keys are the source ids in `data/sources.json` in kebab-case (`iana_tz` is `source.iana-tz`). English is the `name` in `data/sources.json`, verbatim. Arabic is written for the site (decision D5 covers whether the site may name sources in Arabic).
+Keys are the source ids in `data/sources.json` in kebab-case (`iana_tz` is `source.iana-tz`). English is the `name` in `data/sources.json`, verbatim. Arabic is written for the site and shown on Arabic pages; English pages show the `sources.json` `name` verbatim (D5, approved in entry 16).
 
 | key | Arabic | English | note |
 | --- | --- | --- | --- |

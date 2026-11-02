@@ -2,7 +2,7 @@
 
 Covers the root page `/`, the home `/{lang}/`, the agents page `/{lang}/agents/`, the single bilingual 404, and the shared chrome every page uses (header, menu sheet, language and theme switches, footer, copy actions). Platform-neutral. Approved at Stop 1 together with the wireframe; nothing here is built before approval.
 
-**Status:** draft, 02/11/2026
+**Status:** Stop 1 approved with changes (`DELEGATED-DECISIONS.md` entry 21); changes applied 02/11/2026
 **Approval mode:** Delegated
 **Model:** Opus 5.5 (claude-opus-5-5), by the owner's ruling in `DELEGATED-DECISIONS.md` entry 10
 **Wording:** `docs/design/flows/onboarding/WORDING.md`
@@ -52,12 +52,12 @@ The header is not sticky in this flow: it scrolls away, so no bar ever covers co
 | --- | --- | --- |
 | Understand what this is | 0 taps (h1 and one sentence on the first screen at 390 px) | 0 |
 | Search the real data | 1 interaction (type, or tap one example chip) | 1 |
-| Landing to a copied install command, any of the 12 stacks | 2 taps: Install, then Copy command on the stack's row | 2 |
+| Landing to a copied install command | 2 taps to the first copied command for each of the 11 rows with a command: Install, then Copy command (or Copy URL) on the stack's row. Any language leads to Build a file. Kotlin and PHP take one more copy (entry 20) | 2 |
 | Landing to a country page | 1 interaction plus 1 tap on the result | not set |
 | Copy one country's API URL | 1 tap (Copy URL in "One country by URL") | not set |
 | Root to home | 0 with JavaScript, 1 without | not set |
 
-All within budget. The 2-tap install path depends on flow 2 showing every stack's command with its own copy button (no stack picker step); that is how flow 2 is specified.
+All within budget. The 2-tap install path depends on flow 2 showing every stack's command with its own copy button (no stack picker step); that is how flow 2 is specified. Kotlin and PHP put their two lines in two different destinations, so they take a second copy for the second destination (entry 20: the budget counts one copy per destination).
 
 ## 6. States
 
@@ -81,7 +81,7 @@ Every row is captured in both languages and both themes, at default and largest 
 | Home numbers | `home.facts.*` |
 | Home ways in | `home.ways.*`, `action.copy-url`, `action.copied-url` |
 | Home Arabic proof | `home.native.*` (output values are library output, shown in the code face) |
-| Home policy | `policy.palestine`, `policy.disputed`, `policy.requests`, `policy.full` (see decision D3) |
+| Home policy | `policy.palestine`, `policy.disputed`, `policy.requests`, `policy.full` (entry 14: `README.ar.md#سياسة-البيانات` on Arabic pages, `README.md#data-policy` on English pages) |
 | Home questions | `faq.title`, `faq.q1` to `faq.q6`, `faq.a1` to `faq.a6` |
 | Agents | `agents.*`, `action.copy-command`, `action.copied-command`, `action.copy.error` |
 | 404 | `notfound.*`, `search.*` |
@@ -110,10 +110,10 @@ One input: the search field. Model question: names, aliases, ISO codes and dial 
 | Visitor region unknown (`navigator.languages` has no region, e.g. plain `ar`) | No pinned row; the list starts alphabetically; the one-country URL uses `sa` |
 | Region is a code not in the data | Treated as unknown; nothing pinned |
 | Query with no Arabic letter (`+966`, `KSA`) on an Arabic page | The input switches to `dir="ltr"` so `+966` never shows as `966+`; Arabic queries stay right to left |
-| Query in Arabic-Indic or Persian digits (`٠٠٩٧١`) | Same result as `00971`: الإمارات (the helper converts digits) |
+| Query in Arabic-Indic or Persian digits (typed by the visitor; the site never prints these digits, entry 15) | Same result as the Western-digit query: `00971` gives الإمارات (the helper converts digits). The query is echoed as typed |
 | Query with tashkeel, tatweel or hamza variants | Same result as the bare form |
 | Query for a capital or city (الرياض) | Empty state; the sentence says what can be searched |
-| Query for a name or code that is not a row (excluded places, the absent state) | The generic empty state, never a special message, so no excluded name is ever printed by the site |
+| Query for a name or code that is not a row (excluded places, the absent state) | The generic empty state, never a special message. The site's own content never prints the name; the empty state echoes the visitor's query as typed |
 | `+1`, `+7`, `+44` (shared codes) | Partial state with the exact count; primary rows first, as the helper ranks them |
 | Longest names: `Democratic Republic of the Congo`, «الإقليم البريطاني في المحيط الهندي» | Wrap inside the row; the dial code keeps its own column |
 | `+970` or `+972` | Palestine |
@@ -128,8 +128,8 @@ One input: the search field. Model question: names, aliases, ISO codes and dial 
 The reviewer's checklist at Stop 2. Each item is checkable from the evidence board alone.
 
 - [ ] At 390 px, in both languages, the h1, the one sentence and the Install action are visible without scrolling at default text size.
-- [ ] Landing to a copied install command takes 2 taps for each of the 12 stacks (recording per language for at least JavaScript, Python and the MCP row).
-- [ ] Typing `الامارات` returns الإمارات first; `٠٠٩٧١` returns الإمارات; `+1` returns 30 matches with 8 shown and "Show all 30 matches"; `الرياض` returns the empty state. Results equal the output of `dist/helpers.js` for the same query (test vectors run against the page).
+- [ ] 2 taps to the first copied command for each of the 11 rows with a command. Any language leads to Build a file. Kotlin and PHP take one more copy (entry 20). Recording per language for at least JavaScript, Python and the MCP row.
+- [ ] Typing `الامارات` returns الإمارات first; the chip `00971` returns الإمارات; `+1` returns 30 matches with 8 shown and "Show all 30 matches"; `الرياض` returns the empty state. The automated digit-vector run against the page (the Arabic-Indic and Persian digit vectors and every search vector in `tests/vectors.json`) gives the same results as `dist/helpers.js`.
 - [ ] The empty-query list pins the visitor's region with the "Your region" tag (captured with `ar-SA` and `en-EG` browser languages) and shows no pin when the browser language has no region.
 - [ ] Every state in section 6 is rendered in both languages, both themes, default and largest text.
 - [ ] Numbers on the page equal `data/meta.json` (242, 5,012, 9, 3) and the kind split (195, 47); the version line shows 1.0.0, CLDR 49.0.0 and libphonenumber v9.0.42, and no date.
@@ -137,8 +137,9 @@ The reviewer's checklist at Stop 2. Each item is checkable from the evidence boa
 - [ ] The 404 renders in the path's language with the other language at the foot; without JavaScript both blocks render; it contains no English in the Arabic block and no Arabic in the English block.
 - [ ] The language switch keeps the path (`/ar/agents/` to `/en/agents/`); the theme switch has System, Light, Dark with System selected by default; both are segmented switches, in the footer of every page and in the menu sheet.
 - [ ] Menu sheet: focus moves in on open, Escape closes, focus returns to the Menu button.
-- [ ] No string, path, alt text or JSON-LD on any generated page contains the absent state's name in either language or its codes (scan of the generated HTML; see D3 for the copied text files).
-- [ ] Western numerals everywhere, except the example inputs allowlisted under D4; no em dashes; every Latin identifier isolated (`+966` never flips in Arabic).
+- [ ] Absence scan (entry 14): every file in `site/_out` (HTML, JSON-LD, sitemap, paths, alt text, the search file, the copied data) is scanned for both names in both languages (with and without hamza, case-insensitive), `IL` and `ISR` as standalone tokens (open for the approver: whether the ISO 3166-2 codes `US-IL` Illinois and `RO-IL` Ialomița, present in the data, count as standalone; the designer's check treats a hyphen-joined code as not standalone) (`ILS` passes), `376` as an ISO numeric value, and any `il` path segment or `il.json` / `il.svg` file. Exempt: `llms.txt`, `llms-full.txt` and `AGENTS.md` at the output root, each only while byte-identical to its repo copy. The scan passes.
+- [ ] D1 build check (entry 12): the site build runs every search vector in `tests/vectors.json` against the derived search file and against `data/worldref.json` and fails on any difference; the search file keeps the field shape `search()` and `sortCountries()` read, is written to the site output only (never to `data/`), loads after first paint and is fetched same-origin.
+- [ ] Western numerals everywhere (no Arabic-Indic or Persian digit in any authored content: chips, rows, sample states, evidence); no em dashes; every Latin identifier isolated (`+966` never flips in Arabic).
 - [ ] `FAQPage` JSON-LD on `/ar/` and `/en/` matches the visible questions; `Dataset` JSON-LD on the home.
 - [ ] Footer on every page: navigation, repo, issues, licences, citation, the Font Awesome attribution, both switches.
 - [ ] Every copy action shows "copied" within 100 ms and returns after 2 s; a blocked clipboard shows the error line with the text selected.
@@ -148,10 +149,10 @@ The reviewer's checklist at Stop 2. Each item is checkable from the evidence boa
 
 `docs/design/flows/onboarding/wireframe.html`: clickable greyscale at 390 px. Screens: Root, Home, Agents, 404, plus the menu sheet from the header. The corner panel (dashed, marked "not part of the design") switches screen, state, language (flips `dir`), theme and visitor region, and counts taps. Copy comes from this flow's `WORDING.md`; country rows come from the real data; search runs the shipped `dist/helpers.js` unchanged. Install, Build and country taps open the other flows' wireframes with language, theme and the tap count carried over.
 
-## 13. Decisions needed at Stop 1
+## 13. Decisions ruled at Stop 1
 
-- **D1. Search file.** `api/v1/index.json` (24,515 bytes) has no aliases, sort keys or dial codes, so `search()` and `sortCountries()` cannot run on it. Proposed: the site build derives a search file from `data/worldref.json` (iso2, iso3, both names, both alias lists, both sort keys, calling codes with `primary`, continent, kind): 88,719 bytes, 17,886 gzipped, written into the site output only, loaded after first paint. `data/` is untouched. Alternative: fetch `core.json` and `phone.json` (244,002 bytes together, nearly 3 times heavier, and 10 times `index.json`).
-- **D3. The policy line and the absence scan.** Bullet 1 of the README policy names the absent state, and brief item 15 forbids that name on any page. Both cannot hold. Proposed: the site omits that bullet (the Palestine bullet carries the substance: +970 and +972 are Palestinian numbers, Jerusalem is the capital) and links to the full policy on GitHub; the absence scan covers generated HTML, the sitemap, paths and alt text. The copied `llms.txt`, `llms-full.txt` and `AGENTS.md` already contain the policy line, so a scan of all of `site/_out` fails today; proposed: exempt those three untouched files by name. Also: `policy.requests` and FAQ answers 4 to 6 are new Arabic (absent from `README.ar.md`); approve them for the site, or add them to `README.ar.md` first.
-- **D4. Arabic-Indic digits as example inputs.** The chip `٠٠٩٧١` and the proof row `٠٥٠١٢٣٤٥٦٧` show Eastern digits on purpose, to prove the search and phone helpers accept them. Proposed: allow them only as example input values in the code face, listed in a new `example_inputs` key in `design-lint.json`; never in copy.
+- **D1. Search file: approved (entry 12).** The site build derives a search file from `data/worldref.json` (iso2, iso3, both names, both alias lists, both sort keys, calling codes with `primary`, continent, kind; 88,719 bytes, 17,886 gzipped), written to the site output only, never to `data/`, loaded after first paint, fetched same-origin. Rows keep the field shape `search()` and `sortCountries()` read, so the shipped helpers run on it unchanged. The build check is in section 11. `api/v1/index.json` stays as published.
+- **D3. The policy line and the absence scan: approved with conditions (entry 14).** Site pages omit README policy bullet 1 and show the Palestine, disputed-places and requests bullets, then "Full policy on GitHub" (`README.ar.md#سياسة-البيانات` on Arabic pages, `README.md#data-policy` on English pages). The scan scope, patterns and exemption are in section 11. `policy.requests` and FAQ 4 to 6: approved, entry 14.
+- **D4. Arabic-Indic example inputs: rejected (entry 15).** The site renders no Arabic-Indic or Persian digit in any authored content. The example chip is `00971`; the "Arabic done natively" digits row states the behaviour in words with Western-digit output (`home.native.digits.body`, `home.native.digits.result`); the proof is the automated digit-vector run in section 11. No `example_inputs` key in `design-lint.json`. Text a visitor types is shown as typed.
 
-D2 (data files on Pages) is raised in flow 3; D5 and D6 in flow 4; D7 in flow 2.
+D2 is ruled in flow 3, D5 and D6 in flow 4, D7 in flow 2.

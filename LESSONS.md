@@ -30,6 +30,22 @@ Format: date, feature, what happened (as a role, no blame), root cause, what cha
 - **Affects siblings:** none checked (outside this task's scope).
 - **Candidate for the skill:** yes (`references/process.md` 4.3: before a Delegated ruling says "show as stored", list the distinct values it covers and check each against the language rules).
 
+### 02/11/2026 · K4 directions (route build)
+
+- **What happened:** (1) base resets scoped as `#site a{color:inherit}` and `#site :where(h1,…){margin:0}` silently beat every direction's class rules (ID specificity): primary-button text went pale in dark mode and heading spacing collapsed. (2) A logical margin or padding on an element set to `direction:ltr` (dial codes, figures) resolves against that element's own direction, so `margin-inline-start:auto` pushed the wrong way on Arabic pages. (3) Flex containers (`summary`, link buttons, tiles) split a translated string with isolated `<bdi>` runs into separate flex items, opening gaps mid-sentence.
+- **Root cause:** (1) resets written with an ID selector; (2) logical properties follow the element's own `direction`, not the page's; (3) bidi isolation creates element children inside flex boxes.
+- **What changed here:** resets moved under `:where(#site)`; LTR runs are wrapped in a `<bdi dir="ltr">` inside a wrapper that keeps the page direction, and the wrapper carries the logical spacing; the string helper returns one `<span>` per string.
+- **Affects siblings:** none checked (outside this task's scope).
+- **Candidate for the skill:** yes (`references/copy.md` RTL and bidi: LTR islands never carry logical spacing themselves; one wrapper per translated string inside flex).
+
+### 02/11/2026 · K3 Stop 1 checks (absence scan)
+
+- **What happened:** the entry 14 patterns, applied literally, fail on legitimate content: `IL` matches the ISO 3166-2 codes `US-IL` (Illinois) and `RO-IL` (Ialomița) in the data; `376` matches Andorra's dial code `+376` and coordinates inside Font Awesome SVG path data.
+- **Root cause:** token patterns written without the context that makes a value an ISO code.
+- **What changed here:** the designer's checks treat hyphen-joined codes as not standalone and skip `+376` and SVG path geometry; the definition is raised to the approver.
+- **Affects siblings:** none checked.
+- **Candidate for the skill:** yes (absence scans match values in their field context, not bare tokens).
+
 ## Rejected, do not reopen
 
 Decisions tried and rejected in this project, so a later session does not propose them again.

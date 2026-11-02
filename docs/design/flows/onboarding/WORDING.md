@@ -9,7 +9,7 @@ Rules for the build:
 - Values marked "verbatim" come from `README.md` or `README.ar.md` and change only when the README changes.
 - Arabic plural keys follow Arabic number agreement: `one` (1), `two` (2), `few` (3 to 10), `many` (11 and over, and 0 is never shown).
 
-**Status:** draft for Stop 1, 02/11/2026. **Model:** Opus 5.5 (claude-opus-5-5).
+**Status:** Stop 1 approved with changes (`DELEGATED-DECISIONS.md` entries 14 and 21); changes applied 02/11/2026. **Model:** Opus 5.5 (claude-opus-5-5).
 
 ## Shared chrome
 
@@ -59,7 +59,7 @@ Rules for the build:
 | --- | --- | --- | --- |
 | home.title | worldref: كل دول العالم بالعربية والإنجليزية | worldref: every country in Arabic, English, or both | `<title>` and Open Graph title |
 | home.hero.title | كل دول العالم بالعربية والإنجليزية | Every country in Arabic, English, or both | h1, at most 2 lines at 390 px |
-| home.hero.body | الأسماء والجنسيات ورموز الاتصال والتحقق من أرقام الجوال والعملات لـ {count} دولة وإقليمًا، من مصادر رسمية وبلا حساب. | Names, nationalities, dial codes, phone validation and currencies for {count} countries and territories. Sourced, free, no account. | {count} = `meta.countries` (242); under 20 words |
+| home.hero.body | الأسماء والجنسيات ومفاتيح الاتصال والتحقق من أرقام الجوال والعملات لـ {count} دولة وإقليمًا، من مصادر رسمية وبلا حساب. | Names, nationalities, dial codes, phone validation and currencies for {count} countries and territories. Sourced, free, no account. | {count} = `meta.countries` (242); under 20 words; «مفاتيح الاتصال» is the one Arabic term for dial codes on the site (entry 21) |
 | home.hero.install | ثبّت | Install | primary action; opens `/{lang}/install/` |
 | home.hero.build | ابنِ ملفك | Build a file | secondary action; opens `/{lang}/build/` |
 | search.label | ابحث عن دولة | Search for a country | visible label above the input |
@@ -100,14 +100,16 @@ Rules for the build:
 | home.native.body | كل سطر هنا ناتج فعلي من المكتبة. | Every line here is real output from the library. | |
 | home.native.search | البحث يتجاهل «ال» والهمزة والتشكيل | Search ignores «ال», hamza forms and tashkeel | label of the example row |
 | home.native.nationality | الجنسية بالمذكر والمؤنث | Nationality, masculine and feminine | |
-| home.native.digits | حقل الجوال يقبل الأرقام العربية | Phone fields accept Arabic digits | |
+| home.native.digits | حقل الجوال يقبل الأرقام العربية | Phone fields accept Arabic digits | label of the digits row |
+| home.native.digits.body | اكتب الرقم بالأرقام العربية أو الفارسية، وتحوّلها `parsePhone()` إلى أرقام غربية قبل التحقق. | Type the number in Arabic-Indic or Persian digits; `parsePhone()` turns them into Western digits before it checks. | the behaviour in words; no Arabic-Indic or Persian digit is rendered anywhere on the site (entry 15) |
+| home.native.digits.result | النتيجة واحدة للرقم {number} أيًّا كانت أرقامه: | Same result for {number} in any of the three digit sets: | {number} = `0501234567` in the code face; the output line under it is library output in Western digits |
 | home.native.sort | الترتيب الأبجدي العربي الصحيح | Correct Arabic alphabetical order | |
 | home.native.sort.value | «السعودية» تحت حرف السين لا الألف | «السعودية» sorts under س, not ا | output column of the sort row |
 | policy.title | سياسة البيانات | Data policy | h2, anchor `#policy` |
 | policy.palestine | **فلسطين** دولة، عاصمتها «القدس». الأرقام التي تبدأ بـ **+970 و+972** (ومنها القدس وأراضي 48) أرقام فلسطينية. عملاتها الدينار الأردني و«الشيكل». | **Palestine** is «فلسطين» / "Palestine", a country, with its capital «القدس» / "Jerusalem". Numbers with **+970 and +972** (including Jerusalem and the 1948 lines) are Palestinian numbers here. Its currencies are the Jordanian dinar and the shekel (shown as «شيكل» / "Shekel"). | verbatim; dial codes isolated LTR |
 | policy.disputed | **الأماكن المتنازع عليها تتبع المواقف الرسمية للمملكة العربية السعودية:** الصحراء الغربية جزء من المغرب، وكوسوفو مدرجة، وشمال قبرص غير مدرجة، وتايوان وهونغ كونغ ومكاو أقاليم لها جنسية. | **Disputed places follow the official positions of Saudi Arabia:** Western Sahara is part of Morocco (no separate row), Kosovo is included, Northern Cyprus is not, and Taiwan, Hong Kong and Macau are territories that still have a nationality (they issue their own passports). | verbatim |
-| policy.requests | طلبات تغيير هذه السياسة تُغلق دون نقاش، ونرحّب بتصحيح البيانات مع رابط المصدر. | Requests to change this policy are closed without discussion. Corrections to data are welcome with a source link. | English verbatim; Arabic is new (not in `README.ar.md`), pending decision D3 |
-| policy.full | السياسة كاملة على GitHub | Full policy on GitHub | link to `README.md#data-policy` or `README.ar.md` |
+| policy.requests | طلبات تغيير هذه السياسة تُغلق دون نقاش، ونرحّب بتصحيح البيانات مع رابط المصدر. | Requests to change this policy are closed without discussion. Corrections to data are welcome with a source link. | English verbatim; Arabic approved, entry 14 |
+| policy.full | السياسة كاملة على GitHub | Full policy on GitHub | Arabic pages link to `README.ar.md#سياسة-البيانات`; English pages link to `README.md#data-policy` (entry 14) |
 | faq.title | الأسئلة الشائعة | Questions and answers | h2, anchor `#faq`; `FAQPage` JSON-LD per language |
 | faq.q1 | أين أجد قائمة الدول بالعربية؟ | How do I get a list of countries in Arabic? | verbatim |
 | faq.a1 | في `data/worldref.ar.json`، ورتّبها حسب الحقل `sort`. | Use `data/worldref.ar.json` (or `data/modules/core.ar.json` for names only). Each row has `name` in Arabic. For a ready-made picker order, sort by `sort` (it ignores «ال» and hamza forms). | verbatim |
@@ -115,12 +117,12 @@ Rules for the build:
 | faq.a2 | في `data/modules/nationality.json`: الحقلان `nationality_ar_m` و`nationality_ar_f`. | `data/modules/nationality.json`: `nationality_ar_m` (سعودي) and `nationality_ar_f` (سعودية), plus `nationality_en` (Saudi). | verbatim |
 | faq.q3 | كيف أتحقق من رقم جوال سعودي؟ | How do I validate a Saudi mobile number? | verbatim |
 | faq.a3 | `parsePhone(input, byIso2("SA"))` ثم تحقق من `valid` و`mobile`. تُقبل الأرقام العربية. | `parsePhone(input, byIso2("SA"))` and check `valid && mobile`. The rule is in `phone[0].mobile_pattern`: 9 digits starting with 50, 51, 53 to 59 after dropping the leading 0. Arabic digits are accepted. | verbatim |
-| faq.q4 | لماذا قيمة `travel.emergency.police` فارغة في بعض الدول؟ | Why is `travel.emergency.police` null for some countries? | Arabic new; English verbatim |
-| faq.a4 | ننشر الرقم فقط إذا أكّده مصدر رسمي. إذا كانت الخدمة `null` فاتصل بالرقم العام `general`. | Only numbers confirmed by an official source are published. If a service is null, call `general`. | Arabic new; English verbatim |
-| faq.q5 | هل يمكنني استخدامها في مشروع تجاري؟ | Can I use this commercially? | Arabic new; English verbatim |
-| faq.a5 | نعم. الكود بترخيص MIT، وتراخيص البيانات كلها (Unicode وApache-2.0 وCC-BY-4.0 وCC0 والملكية العامة) تسمح بالاستخدام التجاري مع ذكر المصدر متى اشتُرط. | Yes. Code is MIT; data licences (Unicode, Apache-2.0, CC-BY-4.0, CC0, public domain) all allow commercial use with attribution where required. | Arabic new; English verbatim |
-| faq.q6 | ما مدى حداثة البيانات؟ | How current is it? | Arabic new; English verbatim |
-| faq.a6 | تفحص مهمة آلية المصادر كل شهر (والسكان كل ثلاثة أشهر)، وتصدر تحديثًا متى تغيّرت ونجحت الاختبارات كلها. الإصدارات في `data/meta.json`. | An automated job checks the upstream sources monthly (population quarterly) and releases a patch when they change and every test passes. Versions are in `data/meta.json`. | Arabic new; English verbatim |
+| faq.q4 | لماذا قيمة `travel.emergency.police` فارغة في بعض الدول؟ | Why is `travel.emergency.police` null for some countries? | English verbatim; Arabic approved, entry 14 |
+| faq.a4 | لا ننشر الرقم إلا إذا أكّده مصدر رسمي. إذا كانت الخدمة `null` فاتصل بالرقم العام `general`. | Only numbers confirmed by an official source are published. If a service is null, call `general`. | English verbatim; Arabic approved, entry 14 (wording fixed, entry 21) |
+| faq.q5 | هل يمكنني استخدام worldref في مشروع تجاري؟ | Can I use this commercially? | English verbatim; Arabic approved, entry 14 (wording fixed, entry 21); `worldref` isolated |
+| faq.a5 | نعم. الكود بترخيص MIT، وتراخيص البيانات كلها (Unicode وApache-2.0 وCC-BY-4.0 وCC0 والملكية العامة) تسمح بالاستخدام التجاري مع ذكر المصدر متى اشتُرط. | Yes. Code is MIT; data licences (Unicode, Apache-2.0, CC-BY-4.0, CC0, public domain) all allow commercial use with attribution where required. | English verbatim; Arabic approved, entry 14 |
+| faq.q6 | ما مدى حداثة البيانات؟ | How current is it? | English verbatim; Arabic approved, entry 14 |
+| faq.a6 | تفحص مهمة آلية المصادر كل شهر (وبيانات السكان كل ثلاثة أشهر)، وتصدر تحديثًا متى تغيّرت ونجحت الاختبارات كلها. الإصدارات في `data/meta.json`. | An automated job checks the upstream sources monthly (population quarterly) and releases a patch when they change and every test passes. Versions are in `data/meta.json`. | English verbatim; Arabic approved, entry 14 (wording fixed, entry 21) |
 
 ## For AI agents `/{lang}/agents/`
 

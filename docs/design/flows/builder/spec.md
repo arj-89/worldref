@@ -2,7 +2,7 @@
 
 The page `/{lang}/build/`: choose language build, modules, subdivisions and format, see the exact size and a real preview before downloading, and get the published file's CDN URL whenever the choice equals a shipped file. Everything runs in the browser from the published files. Platform-neutral. Approved at Stop 1 together with the wireframe; nothing here is built before approval.
 
-**Status:** draft, 02/11/2026
+**Status:** Stop 1 approved with changes (`DELEGATED-DECISIONS.md` entry 23); changes applied 02/11/2026
 **Approval mode:** Delegated
 **Model:** Opus 5.5 (claude-opus-5-5), by the owner's ruling in `DELEGATED-DECISIONS.md` entry 10
 **Wording:** `docs/design/flows/builder/WORDING.md` (plus the shared keys in `docs/design/flows/onboarding/WORDING.md`)
@@ -40,7 +40,7 @@ One screen; each choice updates the size line and the preview at once (Lucide re
 | 6 | Preview of the first row | Show the exact shape (Andorra, the first row) | none | | |
 | 7 | Bar (sticky at the bottom) | Name, size, download | Download | Download subdivisions (CSV with "Inside" only) | +1 |
 
-**Selection model (decision D8).** Picking no module means all 9; the summary line says "All 9 modules", and picking the 9th module manually folds back to the same state. This keeps the full file at 1 tap and any narrowed file within 5. "Only subdivisions" replaces the module rows with one line saying modules don't apply.
+**Selection model (D8, approved with conditions in entry 19).** Picking no module means all 9; there is no explicit "All modules" toggle. Conditions: (1) the summary line ("All 9 modules") and the hint ("Pick none and you get every module.") sit directly above the module rows, so what "none picked" means is visible before the download; (2) picking all 9 one by one folds back to the same state as picking none, with the "Same as the published file" tag and the CDN URL; (3) the states table keeps Empty as n/a by construction, with the reason written (section 6). This keeps the full file at 1 tap and any narrowed file within 5. "Only subdivisions" replaces the module rows with one line saying modules don't apply.
 
 **Output.** The builder writes files with the generator's own serialisation (`jsonLines`, `csv`, `localize` in `scripts/lib/outputs.mjs`): one row per line in JSON, the same flattened columns and quoting in CSV, the same key order. So a selection equal to a shipped file is byte-identical to it, and every custom file looks like its shipped siblings. "Inside each country" nests `subdivisions` in each row, the same shape as `api/v1/{iso2}.json`. CSV cannot nest, so it gives the published `subdivisions{build}.csv` as a second file.
 
@@ -76,7 +76,7 @@ All within budget.
 
 | Screen | First-run | Empty | Loading | Partial | Error | Offline | Success |
 | --- | --- | --- | --- | --- | --- | --- | --- |
-| Builder | Defaults; the bar reads `worldref.json`, "Same as the published file", `491.5 KB (503,245 bytes)`; the CDN URL block shows; the preview shows Andorra | n/a by construction: no module picked means all 9, and every other choice always has a value, so no selection can be empty (D8) | Download pressed and the module files have not arrived after 300 ms: the button is disabled, shows a spinner and "Preparing the file: 0 of 2 files" | 1 of 2 files arrived: "Preparing the file: 1 of 2 files"; choices stay editable and a change cancels the build | A module file failed: the bar shows the cause naming the file (`phone.ar.json`), the fix (try again or remove that module) and Try again; nothing is saved | Offline line names the files already loaded in this visit; Download stays enabled when every needed file is loaded, else disabled with the line saying the others need a connection | "Downloaded `worldref-core-phone.ar.csv`." in the bar; the button returns to Download |
+| Builder | Defaults; the bar reads `worldref.json`, "Same as the published file", `491.5 KB (503,245 bytes)`; the CDN URL block shows; the preview shows Andorra | n/a by construction (entry 19): no module picked means all 9, picking all 9 folds back to the same state, and every other choice always has a value, so no selection can be empty; the summary line and hint above the rows say so before any download | Download pressed and the module files have not arrived after 300 ms: the button is disabled, shows a spinner and "Preparing the file: 0 of 2 files" | 1 of 2 files arrived: "Preparing the file: 1 of 2 files"; choices stay editable and a change cancels the build | A module file failed: the bar shows the cause naming the file (`phone.ar.json`), the fix (try again or remove that module) and Try again; nothing is saved | Offline line names the files already loaded in this visit; Download stays enabled when every needed file is loaded, else disabled with the line saying the others need a connection | "Downloaded `worldref-core-phone.ar.csv`." in the bar; the button returns to Download |
 
 Every row captured in both languages, both themes, default and largest text, with the bar visible and the last section scrolled clear of it.
 
@@ -136,13 +136,17 @@ The model question applies: build, modules, subdivisions and format are four fac
 - [ ] The sticky bar never covers the last section when scrolled to the end; nothing scrolls sideways at 390 px.
 - [ ] All switches are segmented, keyboard reachable, with visible selected state not shown by colour alone.
 - [ ] File names follow `worldref-{modules}{-with-subdivisions}{build}.{json|csv}` for custom files and the shipped name otherwise.
+- [ ] The summary line and the hint sit directly above the module rows; picking all 9 modules one by one returns the "All 9 modules" state with the shipped tag and the CDN URL (entry 19).
+- [ ] D2 build check (entry 13): every file under `/worldref/data/` in the site output is byte-identical to its repo file (SHA-256 of each pair listed in the evidence, all equal).
+- [ ] `data/sql/` is not copied: no path under `/worldref/data/sql/` exists in the site output.
+- [ ] No `/worldref/data/` path appears in `sitemap.xml`.
 
 ## 12. Wireframe
 
 `docs/design/flows/builder/wireframe.html`: one screen, every state in the corner panel. Sizes come from the exact table computed from `data/`; the preview is the real first row in each build; CSV preview uses the generator's flattening and quoting. Download is simulated (success line) in the wireframe.
 
-## 13. Decisions needed at Stop 1
+## 13. Decisions ruled at Stop 1
 
-- **D2. Data files on Pages.** Pages serves only `api/`, `schema/`, `flags/` and the text files today; `data/` is not published there. The builder must fetch module files from the same origin (no external requests). Proposed: `site/build.mjs` also copies `data/worldref*.json`, `data/modules/`, `data/subdivisions*.json` and `data/csv/` to `/worldref/data/`, matching the repo paths (5,312,191 bytes, free on Pages). New paths only; nothing moves. Not proposed: `data/sql/` (3.9 MB, not offered by the builder).
-- **D8. "No module picked means all 9".** It keeps the full file at 1 tap and a 2-module, single-language CSV at 5, but makes the builder's empty state unreachable by design. Alternative: an explicit "All modules" toggle above the rows, which costs 1 more tap on every narrowed file (6 for the example in section 5, over budget).
-- **Shared serialiser (implementation note, no ruling needed unless the approver objects).** Byte-identical output needs `jsonLines`, `csv`, `flatten` and `localize` in the site bundle. They live in `scripts/lib/outputs.mjs`, which imports `node:fs`. The builder is their second real use, so moving them to a pure module both sides import is justified; that is a generator change outside design scope and is listed under Noticed.
+- **D2. Data files on Pages: approved (entry 13).** `site/build.mjs` also copies `data/worldref*.json`, `data/modules/`, `data/subdivisions*.json` and `data/csv/` to `/worldref/data/` at their repo-relative paths, byte for byte (5,312,191 bytes). `data/sql/` is not copied. New paths only; no existing Pages path moves. The copies stay out of `sitemap.xml`. Once published, `/worldref/data/` follows the same rule as `api/`: its paths never move. The three checks are in section 11.
+- **D8. "No module picked means all 9": approved with conditions (entry 19).** No explicit "All modules" toggle. The conditions are written into section 4 (selection model) and section 6 (Empty n/a by construction, with the reason).
+- **Shared serialiser: no objection (entry 23).** Moving `jsonLines`, `csv`, `flatten` and `localize` to a pure module is allowed as their second real use, only as a pure move, with Handoff gate 3 (regenerating produces no diff) and every test green. It stays on the Noticed list as a generator change outside design scope.

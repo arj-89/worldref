@@ -38,6 +38,7 @@
     { "query": "٩٦٦", "lang": "ar", "first": "SA" },
     { "query": "+1", "lang": "en", "first": "US" },
     { "query": "+970", "lang": "en", "first": "PS" },
+    { "query": "+971", "lang": "en", "first": "AE" },
     { "query": "+972", "lang": "en", "first": "PS" },
     { "query": "palestine", "lang": "en", "first": "PS" },
     { "query": "jordan", "lang": "en", "first": "JO" },

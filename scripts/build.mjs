@@ -115,7 +115,7 @@ function aliases(iso, lang, name) {
     const t = terr[lang];
     const pool = [t[iso], t[`${iso}-alt-short`], t[`${iso}-alt-variant`], ...(E.ALIAS_ADD[iso]?.[lang] ?? []), ...(wd[iso][`label_${lang}`] ?? []), ...(wd[iso][`alias_${lang}`] ?? [])];
     for (const a of pool) {
-        if (!a || block.has(a) || a.length > 60 || [iso, codeMappings[iso]?._alpha3].includes(a) || /israel|إسرائيل|اسرائيل/i.test(a)) continue;
+        if (!a || block.has(a) || a.length > 60 || [iso, codeMappings[iso]?._alpha3].includes(a) || /^[\d\s+()-]+$/.test(a) || /israel|إسرائيل|اسرائيل/i.test(a)) continue;
         const k = normalize(a);
         if (seen.has(k)) continue;
         seen.add(k);
