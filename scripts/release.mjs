@@ -27,6 +27,7 @@ edit("CITATION.cff", [[new RegExp(`version: ${esc}`), `version: ${next}`], [/dat
 for (const f of ["README.md", "README.ar.md", "python/README.md", "Sources/WorldRef/README.md", "kotlin/README.md", "dart/README.md", "php/README.md", "go/README.md", "csharp/README.md"])
     edit(f, [[new RegExp(esc, "g"), next]]);
 
+execFileSync("npm", ["install", "--package-lock-only", "--no-audit", "--no-fund"], { cwd: ROOT, stdio: "inherit" });
 execFileSync("npm", ["run", "build"], { cwd: ROOT, stdio: "inherit" });
 execFileSync("node", ["scripts/docs.mjs"], { cwd: ROOT, stdio: "inherit" });
 console.log(`\n${old} -> ${next}\ntags: v${next} go/v${next}`);
