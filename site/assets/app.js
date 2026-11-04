@@ -96,7 +96,7 @@ if (box) {
     input.addEventListener("input", () => { showAll = false; draw(); });
     // Live demo: the hero search types a few real queries and shows the real results, until the visitor
     // touches the page. Off under Reduce Motion, and silent for screen readers while it runs.
-    const DEMO = ["مصـر", "+971", "KSA", "الامارات", "00966"];
+    const DEMO = ["مصـر", "+962", "KSA", "الاردن", "00966"];
     let demo = !matchMedia("(prefers-reduced-motion: reduce)").matches;
     const stop = () => { if (!demo) return; demo = false; out.setAttribute("aria-live", "polite"); box.classList.remove("demo"); if (document.activeElement !== input) { input.value = ""; draw(); } };
     ["pointerdown", "keydown", "wheel", "touchstart"].forEach((ev) => addEventListener(ev, stop, { once: true, passive: true }));
@@ -132,6 +132,30 @@ if (map) {
     const show = (a) => (cap.textContent = a ? a.querySelector("title").textContent : "\u00a0");
     map.addEventListener("pointerover", (e) => show(e.target.closest("a")));
     map.addEventListener("pointerleave", () => show(null));
+    // Zoom and pan by changing the viewBox; the shapes stay the real Natural Earth geometry.
+    const svg = $("svg", map);
+    const full = svg.viewBox.baseVal;
+    const home = { x: full.x, y: full.y, w: full.width, h: full.height };
+    let v = { ...home };
+    const apply = () => svg.setAttribute("viewBox", `${v.x} ${v.y} ${v.w} ${v.h}`);
+    const clamp = () => {
+        v.w = Math.min(home.w, Math.max(home.w / 8, v.w));
+        v.h = v.w * (home.h / home.w);
+        v.x = Math.min(home.x + home.w - v.w, Math.max(home.x, v.x));
+        v.y = Math.min(home.y + home.h - v.h, Math.max(home.y, v.y));
+    };
+    const zoom = (f, cx = v.x + v.w / 2, cy = v.y + v.h / 2) => { const w = v.w * f; v = { x: cx - (cx - v.x) * f, y: cy - (cy - v.y) * f, w, h: w }; clamp(); apply(); };
+    $$("[data-zoom]", map).forEach((b) => b.addEventListener("click", () => (b.dataset.zoom === "in" ? zoom(0.6) : b.dataset.zoom === "out" ? zoom(1 / 0.6) : ((v = { ...home }), apply()))));
+    let drag = null;
+    svg.addEventListener("pointerdown", (e) => { if (v.w < home.w) drag = { x: e.clientX, y: e.clientY, moved: false }; });
+    addEventListener("pointermove", (e) => {
+        if (!drag) return;
+        const k = v.w / svg.clientWidth;
+        if (Math.abs(e.clientX - drag.x) + Math.abs(e.clientY - drag.y) > 3) drag.moved = true;
+        v.x -= (e.clientX - drag.x) * k; v.y -= (e.clientY - drag.y) * k; drag.x = e.clientX; drag.y = e.clientY; clamp(); apply();
+    });
+    addEventListener("pointerup", () => setTimeout(() => (drag = null)));
+    svg.addEventListener("click", (e) => { if (drag?.moved) e.preventDefault(); }, true);
 }
 
 // ---------- countries index filter ----------

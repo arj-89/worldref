@@ -20,8 +20,9 @@ jobs:
       - run: npm install -g npm@latest && npm publish --access public
 
   mcp-registry:
+    # Runs after npm when npm publishes, or on its own when npm is off (the package already exists there).
     needs: npm
-    if: vars.PUBLISH_MCP == 'true'
+    if: always() && vars.PUBLISH_MCP == 'true' && needs.npm.result != 'failure'
     runs-on: ubuntu-latest
     env: { MCP_PUBLISHER_VERSION: v1.8.7 }
     steps:

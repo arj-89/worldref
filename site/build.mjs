@@ -150,7 +150,7 @@ function home(lang) {
         ["3", t("home.facts.builds", lang), ""],
         ["8", t("home.facts.languages", lang), ""],
     ];
-    const chips = ["الامارات", "00971", "KSA", "+1"];
+    const chips = ["الاردن", "00962", "KSA", "+1"];
     const faq = [1, 2, 3, 4, 5, 6].map((i) => `<details><summary><span>${t(`faq.q${i}`, lang)}</span></summary><div>${t(`faq.a${i}`, lang)}</div></details>`).join("");
     const body = `
 <section class="hero">
@@ -184,7 +184,7 @@ function home(lang) {
 <h2 id="native-h">${t("home.native.title", lang)}</h2>
 <p>${t("home.native.body", lang)}</p>
 <dl>
-<div><dt>${t("home.native.search", lang)}</dt><dd>«الامارات» ← ${esc(by.AE.name_ar)}، «مصـر» ← ${esc(by.EG.name_ar)}</dd></div>
+<div><dt>${t("home.native.search", lang)}</dt><dd>«الاردن» ← ${esc(by.JO.name_ar)}، «مصـر» ← ${esc(by.EG.name_ar)}</dd></div>
 <div><dt>${t("home.native.nationality", lang)}</dt><dd>${esc(sa.nationality.nationality_ar_m)} / ${esc(sa.nationality.nationality_ar_f)}، ${esc(by.EG.nationality.nationality_ar_m)} / ${esc(by.EG.nationality.nationality_ar_f)}</dd></div>
 <div><dt>${t("home.native.digits", lang)}</dt><dd>${t("home.native.digits.body", lang)}<br>${t("home.native.digits.result", lang, { number: ltr("0501234567") })} ${code("+966501234567")}</dd></div>
 <div><dt>${t("home.native.sort", lang)}</dt><dd>${t("home.native.sort.value", lang)}</dd></div>
@@ -215,7 +215,7 @@ function installRows() {
     const csharp = read("csharp/README.md").match(/# Option 1: git submodule\n([\s\S]*?)\n\n/)?.[1].split("\n").filter((l) => l && !l.startsWith("#")).join("\n");
     const fetchLine = (url) => `const sa = await fetch("${url}").then((r) => r.json());\nconsole.log(sa.name_ar, sa.phone[0].calling_code); // السعودية +966`;
     return [
-        { id: "js", blocks: [["terminal", "npm i github:arj-89/worldref#v" + pkg.version]], first: 'import { countries, byIso2, search, parsePhone } from "worldref";\n\nbyIso2("SA").name_ar;                        // "السعودية"\nsearch(countries, "الامارات", "ar")[0].iso2; // "AE"\nparsePhone("0501234567", byIso2("SA")).e164; // "+966501234567"', guide: "README.md#install" },
+        { id: "js", blocks: [["terminal", "npm i github:arj-89/worldref#v" + pkg.version]], first: 'import { countries, byIso2, search, parsePhone } from "worldref";\n\nbyIso2("SA").name_ar;                        // "السعودية"\nsearch(countries, "الاردن", "ar")[0].iso2;   // "JO"\nparsePhone("0501234567", byIso2("SA")).e164; // "+966501234567"', guide: "README.md#install" },
         { id: "cdn", blocks: [["url", `https://cdn.jsdelivr.net/gh/arj-89/worldref@${pkg.version}/data/worldref.json`]], first: fetchLine(`https://cdn.jsdelivr.net/gh/arj-89/worldref@${pkg.version}/data/worldref.json`).replace('const sa = await fetch', "const all = await fetch").replace("console.log(sa.name_ar, sa.phone[0].calling_code); // السعودية +966", 'console.log(all.find((c) => c.iso2 === "SA").name_ar); // السعودية'), guide: "README.md#install" },
         { id: "swift", blocks: [["Package.swift", `.package(url: "https://github.com/arj-89/worldref.git", from: "${pkg.version}")`]], first: usageBlock("Sources/WorldRef/README.md"), guide: "Sources/WorldRef/README.md" },
         { id: "kotlin", blocks: [["settings.gradle.kts", 'maven("https://jitpack.io")'], ["build.gradle.kts", `implementation("com.github.arj-89:worldref:v${pkg.version}")`]], first: usageBlock("kotlin/README.md"), guide: "kotlin/README.md" },
@@ -285,7 +285,7 @@ function index(lang) {
     const body = `<section class="intro"><h1>${t("index.title", lang)}</h1><p class="lede">${t("index.body", lang, { count: num(countries.length), countries: num(kinds.countries), territories: num(kinds.territories) })}</p>
 <div class="search" data-filter data-error="${esc(plain("index.error", lang))}"><label for="f">${t("search.label", lang)}</label><input id="f" dir="auto" type="search" autocomplete="off" spellcheck="false"><p class="hint">${t("search.hint", lang)}</p></div>
 <p class="fine"><a href="${href(lang)}#policy">${t("index.policy", lang)}</a></p></section>
-<figure class="map" dir="ltr" data-map><svg viewBox="${MAP.viewBox}" role="img" aria-label="${esc(plain("index.title", lang))}">${Object.entries(MAP.paths).filter(([iso]) => by[iso]).map(([iso, d]) => `<a href="${href(lang, `countries/${iso.toLowerCase()}/`)}" tabindex="-1" data-iso="${iso}"><path d="${d}"><title>${esc(nameOf(by[iso], lang))}</title></path></a>`).join("")}</svg><figcaption dir="${lang === "ar" ? "rtl" : "ltr"}" data-map-name aria-hidden="true">&nbsp;</figcaption></figure>
+<figure class="map" dir="ltr" data-map><svg viewBox="${MAP.viewBox}" role="img" aria-label="${esc(plain("index.title", lang))}">${Object.entries(MAP.paths).filter(([iso]) => by[iso]).map(([iso, d]) => `<a href="${href(lang, `countries/${iso.toLowerCase()}/`)}" tabindex="-1" data-iso="${iso}"><path d="${d}"><title>${esc(nameOf(by[iso], lang))}</title></path></a>`).join("")}</svg><div class="map-tools" dir="${lang === "ar" ? "rtl" : "ltr"}"><button type="button" data-zoom="in" aria-label="${plain("index.map.zoom-in", lang)}">+</button><button type="button" data-zoom="out" aria-label="${plain("index.map.zoom-out", lang)}">−</button><button type="button" data-zoom="reset" aria-label="${plain("index.map.reset", lang)}"><svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path d="M4 9V4h5M20 9V4h-5M4 15v5h5M20 15v5h-5" fill="none" stroke="currentColor" stroke-width="2"/></svg></button></div><figcaption dir="${lang === "ar" ? "rtl" : "ltr"}" data-map-name aria-hidden="true">&nbsp;</figcaption></figure>
 ${groups}`;
     return page({ lang, path: "countries/", title: `${plain("index.title", lang)} | worldref`, description: plain("index.title", lang), body, jsonld: [datasetLd(lang)] });
 }
@@ -340,6 +340,7 @@ ${sec("names", t("country.sec.names", lang), [
     row("country.f.name", `${esc(c.name_ar)} / ${esc(c.name_en)}`),
     row("country.f.official", c.official_name_ar || c.official_name_en ? [c.official_name_ar, c.official_name_en].filter(Boolean).map(esc).join(" / ") : null),
     row("country.f.aliases", [...c.aliases_ar, ...c.aliases_en].length ? `<details><summary><span>${t("country.v.aliases", lang, { ar: num(c.aliases_ar.length), en: num(c.aliases_en.length) })}</span></summary>${[...c.aliases_ar, ...c.aliases_en].map(esc).join(sep(lang))}</details>` : null),
+    row("country.f.flag-emoji", `<span class="emoji" role="img" aria-label="${esc(n)}">${c.flag}</span> <img src="${BASE}/${c.flag_svg}" alt="" width="28" height="21" class="inline-flag"> ${code(c.flag_svg)}`),
     row("country.f.codes", `${ltr(c.iso2)} ${ltr(c.iso3 ?? "")} ${ltr(c.iso_numeric ?? "")}`),
     row("country.f.kind", t(`kind.${c.kind}`, lang)),
     row("country.f.continent", c.continent ? t(`continent.${c.continent}`, lang) : null),

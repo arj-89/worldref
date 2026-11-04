@@ -220,6 +220,14 @@ body.root .site-footer { background: none; }
 .map svg { display: block; inline-size: 100%; block-size: auto; }
 .map path { fill: var(--land); stroke: var(--bg); stroke-width: 0.4; fill-rule: evenodd; }
 .map a:hover path, .map a:focus path { fill: var(--accent); }
+.map a, .map a:focus, .map a:focus-visible, .map path:focus { outline: none; }
+.map svg { -webkit-tap-highlight-color: transparent; touch-action: pan-y; }
+.map { position: relative; }
+.map-tools { position: absolute; inset-block-start: 8px; inset-inline-end: 8px; display: grid; gap: 6px; }
+.map-tools button { inline-size: 44px; block-size: 44px; display: grid; place-items: center; border: 1px solid var(--hair); border-radius: 980px; background: var(--bg); color: var(--text); font: 600 1.25rem/1 var(--body); cursor: pointer; }
+.map-tools button:hover { border-color: var(--muted); }
+.emoji { font-size: 1.6rem; line-height: 1; vertical-align: middle; }
+.inline-flag { vertical-align: middle; border-radius: 2px; box-shadow: 0 0 0 1px var(--hair); }
 .map a.dim path { fill: var(--land); opacity: 0.35; }
 .map a:not(.dim) path { transition: fill 120ms ease-out; }
 .map figcaption { min-block-size: 1.5em; font-weight: 600; text-align: center; color: var(--text); }

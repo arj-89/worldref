@@ -50,6 +50,7 @@ Values from the data (names, codes, numbers, IANA zones, regexes) are not copy a
 | country.f.tld | النطاق الوطني | Country domain | |
 | country.f.sort | مفتاح الترتيب | Sort key | the page language's key |
 | country.f.flag | ملف العلم | Flag file | `flag_svg` path |
+| country.f.flag-emoji | العلم | Flag | the `flag` emoji and the SVG side by side |
 | country.f.nat-m | المذكر | Arabic, masculine | |
 | country.f.nat-f | المؤنث | Arabic, feminine | |
 | country.f.nat-en | بالإنجليزية | English | |
@@ -320,5 +321,8 @@ Keys are the source ids in `data/sources.json` in kebab-case (`iana_tz` is `sour
 | --- | --- | --- | --- |
 | index.title | الدول والأقاليم | Countries and territories | h1 |
 | index.body | {count} صفًا: {countries} دولة و{territories} إقليمًا، مرتبة أبجديًا داخل كل قارة. | {count} rows: {countries} countries and {territories} territories, alphabetical within each continent. | counts from the data |
+| index.map.zoom-in | كبّر الخريطة | Zoom in | map button |
+| index.map.zoom-out | صغّر الخريطة | Zoom out | map button |
+| index.map.reset | أعد الخريطة | Reset the map | map button, back to the whole world |
 | index.policy | لا تجد مكانًا تبحث عنه؟ راجع سياسة البيانات. | Can't find a place? See the data policy. | links to `/{lang}/#policy` |
 | index.error | لم يُحمَّل ملف البحث، فالتصفية متوقفة الآن، والقائمة كاملة أدناه. | The search file didn't load, so filtering is off for now; the full list is below. | then `action.retry` |
