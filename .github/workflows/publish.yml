@@ -1,0 +1,57 @@
+# Publishes a release to the package registries. Each registry is off until its repository variable is set
+# to "true" (Settings > Secrets and variables > Actions > Variables), after its account is linked.
+# Tokenless where the registry supports it (OIDC trusted publishing): npm, PyPI, NuGet, MCP Registry.
+name: Publish
+on:
+  release: { types: [published] }
+  workflow_call:
+  workflow_dispatch:
+
+permissions: { contents: read, id-token: write }
+
+jobs:
+  npm:
+    if: vars.PUBLISH_NPM == 'true'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+      - uses: actions/setup-node@v5
+        with: { node-version: 24, registry-url: "https://registry.npmjs.org" }
+      - run: npm install -g npm@latest && npm publish --access public
+
+  mcp-registry:
+    needs: npm
+    if: vars.PUBLISH_MCP == 'true'
+    runs-on: ubuntu-latest
+    env: { MCP_PUBLISHER_VERSION: v1.8.7 }
+    steps:
+      - uses: actions/checkout@v5
+      - run: |
+          curl -fsSL "https://github.com/modelcontextprotocol/registry/releases/download/${MCP_PUBLISHER_VERSION}/mcp-publisher_linux_amd64.tar.gz" | tar xz mcp-publisher
+          ./mcp-publisher login github-oidc
+          ./mcp-publisher publish
+
+  pypi:
+    if: vars.PUBLISH_PYPI == 'true'
+    runs-on: ubuntu-latest
+    environment: pypi
+    steps:
+      - uses: actions/checkout@v5
+      - uses: actions/setup-python@v6
+        with: { python-version: "3.12" }
+      - run: pip install build && python -m build python
+      - uses: pypa/gh-action-pypi-publish@release/v1
+        with: { packages-dir: python/dist }
+
+  nuget:
+    if: vars.PUBLISH_NUGET == 'true'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+      - uses: actions/setup-dotnet@v5
+        with: { dotnet-version: "8.0.x" }
+      - run: dotnet pack csharp/WorldRef/WorldRef.csproj -c Release -o out
+      - uses: NuGet/login@v1
+        id: login
+        with: { user: arj89 }
+      - run: dotnet nuget push "out/*.nupkg" --api-key "${{ steps.login.outputs.NUGET_API_KEY }}" --source https://api.nuget.org/v3/index.json --skip-duplicate

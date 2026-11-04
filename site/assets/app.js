@@ -14,13 +14,19 @@ const words = (id) => JSON.parse($(`#${id}`)?.innerHTML || "{}");
 const store = { get: (k) => { try { return localStorage.getItem(k); } catch { return null; } }, set: (k, v) => { try { localStorage.setItem(k, v); } catch {} } };
 
 // ---------- theme and language ----------
+const MODES = ["system", "light", "dark"];
 function applyTheme(mode) {
     if (mode === "system") delete document.documentElement.dataset.theme;
     else document.documentElement.dataset.theme = mode;
-    $$("[data-theme-set]").forEach((b) => b.setAttribute("aria-pressed", String(b.dataset.themeSet === mode)));
+    document.documentElement.dataset.themeMode = mode;
+    $$("[data-theme-cycle]").forEach((b) => b.setAttribute("aria-label", JSON.parse(b.dataset.labels)[mode]));
 }
 applyTheme(store.get("wr-theme") || "system");
-$$("[data-theme-set]").forEach((b) => b.addEventListener("click", () => { store.set("wr-theme", b.dataset.themeSet); applyTheme(b.dataset.themeSet); }));
+$$("[data-theme-cycle]").forEach((b) => b.addEventListener("click", () => {
+    const next = MODES[(MODES.indexOf(document.documentElement.dataset.themeMode || "system") + 1) % 3];
+    store.set("wr-theme", next);
+    applyTheme(next);
+}));
 $$("[data-lang-switch]").forEach((a) => a.addEventListener("click", () => store.set("wr-lang", a.dataset.langSwitch)));
 
 // ---------- copy ----------
@@ -88,9 +94,27 @@ if (box) {
         out.innerHTML = `<p class="count">${fill(W[`search.results.count.${plural(hits.length)}`], { n: num(hits.length) })}</p><ul class="rows">${shown.map((c) => rowHtml(c)).join("")}</ul>${hits.length > shown.length ? `<button type="button" class="link" data-more>${fill(W["search.results.more"], { n: num(hits.length) })}</button>` : ""}<p class="fine">${fill(W["search.results.source"], {})}</p>`;
     };
     input.addEventListener("input", () => { showAll = false; draw(); });
+    // Live demo: the hero search types a few real queries and shows the real results, until the visitor
+    // touches the page. Off under Reduce Motion, and silent for screen readers while it runs.
+    const DEMO = ["مصـر", "+971", "KSA", "الامارات", "00966"];
+    let demo = !matchMedia("(prefers-reduced-motion: reduce)").matches;
+    const stop = () => { if (!demo) return; demo = false; out.setAttribute("aria-live", "polite"); box.classList.remove("demo"); if (document.activeElement !== input) { input.value = ""; draw(); } };
+    ["pointerdown", "keydown", "wheel", "touchstart"].forEach((ev) => addEventListener(ev, stop, { once: true, passive: true }));
+    input.addEventListener("focus", stop);
+    (async () => {
+        await new Promise((r) => setTimeout(r, 900));
+        if (!demo) return;
+        out.setAttribute("aria-live", "off");
+        box.classList.add("demo");
+        for (let i = 0; demo; i = (i + 1) % DEMO.length) {
+            input.value = "";
+            for (const ch of DEMO[i]) { if (!demo) return; input.value += ch; await draw(); await new Promise((r) => setTimeout(r, 110)); }
+            await new Promise((r) => setTimeout(r, 1800));
+        }
+    })();
     addEventListener("offline", () => { if (!$(".offline", box)) out.insertAdjacentHTML("beforebegin", `<p class="hint offline">${esc(W["search.offline.body"])}</p>`); });
     addEventListener("online", () => $(".offline", box)?.remove());
-    input.addEventListener("focus", draw, { once: true });
+
     box.addEventListener("click", (e) => {
         const chip = e.target.closest("[data-chip]");
         if (chip) { input.value = chip.dataset.chip; showAll = false; draw(); }
@@ -101,6 +125,15 @@ if (box) {
     if (input.value) draw();
 }
 
+// ---------- map ----------
+const map = $("[data-map]");
+if (map) {
+    const cap = $("[data-map-name]", map);
+    const show = (a) => (cap.textContent = a ? a.querySelector("title").textContent : "\u00a0");
+    map.addEventListener("pointerover", (e) => show(e.target.closest("a")));
+    map.addEventListener("pointerleave", () => show(null));
+}
+
 // ---------- countries index filter ----------
 const filter = $("[data-filter]");
 if (filter) {
@@ -108,12 +141,13 @@ if (filter) {
     const rows = $$("li[data-iso]");
     input.addEventListener("input", async () => {
         const q = input.value.trim();
-        if (!q) return rows.forEach((r) => (r.hidden = false)), $$("main section").forEach((s) => (s.hidden = false));
+        if (!q) return rows.forEach((r) => (r.hidden = false)), $$("main section").forEach((s) => (s.hidden = false)), $$("[data-map] a").forEach((a) => a.classList.remove("dim"));
         let data;
         try { data = await loadSearch(); $(".error", filter)?.remove(); }
         catch { searchData = undefined; if (!$(".error", filter)) filter.insertAdjacentHTML("beforeend", `<p class="error">${esc(filter.dataset.error)}</p>`); return; }
         const keep = new Set(search(data, q, LANG).map((c) => c.iso2));
         rows.forEach((r) => (r.hidden = !keep.has(r.dataset.iso)));
+        $$("[data-map] a").forEach((a) => a.classList.toggle("dim", !keep.has(a.dataset.iso)));
         $$("main section").forEach((s) => { const lis = $$("li[data-iso]", s); if (lis.length) s.hidden = lis.every((l) => l.hidden); });
     });
 }

@@ -20,6 +20,7 @@ const meta = json("data/meta.json");
 const sources = json("data/sources.json");
 const pkg = json("package.json");
 const by = Object.fromEntries(countries.map((c) => [c.iso2, c]));
+const MAP = json("upstream/snapshot/world-map.json");
 const subsBy = {};
 for (const s of subdivisions) (subsBy[s.iso2] ??= []).push(s);
 
@@ -103,9 +104,8 @@ function switches(lang, path, other) {
 function header(lang, path, other) {
     return `<header class="site-header">
 <a class="wordmark" href="${href(lang)}" dir="ltr" translate="no">worldref</a>
-<a class="lang" href="${href(other, path)}" lang="${other}" data-lang-switch="${other}">${t(`switch.language.${other}`, lang)}</a>
+<span class="prefs"><a class="lang" href="${href(other, path)}" lang="${other}" data-lang-switch="${other}">${t(`switch.language.${other}`, lang)}</a><button type="button" class="theme" data-theme-cycle data-labels="${esc(JSON.stringify(Object.fromEntries(["system", "light", "dark"].map((m) => [m, `${plain("switch.theme.label", lang)}: ${plain(`switch.theme.${m}`, lang)}`]))))}" aria-label="${esc(`${plain("switch.theme.label", lang)}: ${plain("switch.theme.system", lang)}`)}"><svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><circle cx="12" cy="12" r="8" fill="none" stroke="currentColor" stroke-width="2"/><path d="M12 4a8 8 0 0 1 0 16z" fill="currentColor" class="half"/></svg></button></span>
 <nav class="nav" aria-label="${plain("chrome.menu.open", lang)}">${NAV.map(([k, p]) => `<a href="${href(lang, p)}" ${path === p || (p !== "" && path.startsWith(p)) ? 'aria-current="page"' : ""}>${t(k, lang)}</a>`).join("")}</nav>
-${switches(lang, path, other)}
 </header>`;
 }
 function footer(lang, path, other) {
@@ -113,7 +113,6 @@ function footer(lang, path, other) {
     return `<footer class="site-footer">
 <nav aria-label="${plain("footer.site", lang)}"><a href="${href(lang)}">${t("chrome.nav.home", lang)}</a>${NAV.map(([k, p]) => `<a href="${href(lang, p)}">${t(k, lang)}</a>`).join("")}<a href="${href(lang)}#faq">${t("chrome.nav.faq", lang)}</a><a href="${href(lang)}#policy">${t("chrome.nav.policy", lang)}</a></nav>
 <nav aria-label="GitHub"><a href="${gh}">${t("footer.repo", lang)}</a><a href="${gh}/issues/new/choose">${t("footer.issues", lang)}</a><a href="${gh}/tree/main/LICENSES">${t("footer.licences", lang)}</a><a href="${gh}/blob/main/CITATION.cff">${t("footer.cite", lang)}</a></nav>
-${switches(lang, path, other)}
 <p class="fine">${t("footer.privacy", lang)} ${t("footer.licence-line", lang)} ${ltr(`v${pkg.version}`)}</p>
 </footer>`;
 }
@@ -285,7 +284,9 @@ function index(lang) {
     }).join("");
     const body = `<section class="intro"><h1>${t("index.title", lang)}</h1><p class="lede">${t("index.body", lang, { count: num(countries.length), countries: num(kinds.countries), territories: num(kinds.territories) })}</p>
 <div class="search" data-filter data-error="${esc(plain("index.error", lang))}"><label for="f">${t("search.label", lang)}</label><input id="f" dir="auto" type="search" autocomplete="off" spellcheck="false"><p class="hint">${t("search.hint", lang)}</p></div>
-<p class="fine"><a href="${href(lang)}#policy">${t("index.policy", lang)}</a></p></section>${groups}`;
+<p class="fine"><a href="${href(lang)}#policy">${t("index.policy", lang)}</a></p></section>
+<figure class="map" dir="ltr" data-map><svg viewBox="${MAP.viewBox}" role="img" aria-label="${esc(plain("index.title", lang))}">${Object.entries(MAP.paths).filter(([iso]) => by[iso]).map(([iso, d]) => `<a href="${href(lang, `countries/${iso.toLowerCase()}/`)}" tabindex="-1" data-iso="${iso}"><path d="${d}"><title>${esc(nameOf(by[iso], lang))}</title></path></a>`).join("")}</svg><figcaption dir="${lang === "ar" ? "rtl" : "ltr"}" data-map-name aria-hidden="true">&nbsp;</figcaption></figure>
+${groups}`;
     return page({ lang, path: "countries/", title: `${plain("index.title", lang)} | worldref`, description: plain("index.title", lang), body, jsonld: [datasetLd(lang)] });
 }
 

@@ -135,6 +135,14 @@ const jobs = {
         save("factbook.json", out);
     },
 
+    async map() {
+        // Natural Earth (public domain). Large source; cached outside the snapshot, reduced by scripts/map.mjs.
+        const dir = new URL("../upstream/.cache/", import.meta.url).pathname;
+        mkdirSync(dir, { recursive: true });
+        writeFileSync(`${dir}ne_10m_admin_0_countries_sau.geojson`, await get("https://raw.githubusercontent.com/nvkelso/natural-earth-vector/master/geojson/ne_10m_admin_0_countries_sau.geojson"));
+        execFileSync("node", [new URL("./map.mjs", import.meta.url).pathname], { stdio: "inherit" });
+    },
+
     async power() {
         // U.S. Department of Commerce "Electric Current Worldwide" (public domain), via the Internet Archive.
         save("electric-current-worldwide.html", await get(PINS.ecwArchive));

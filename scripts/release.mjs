@@ -22,6 +22,8 @@ edit("package.json", [[`"version": "${old}"`, `"version": "${next}"`]]);
 edit("python/pyproject.toml", [[new RegExp(`version = "${esc}"`), `version = "${next}"`]]);
 edit("dart/pubspec.yaml", [[new RegExp(`version: ${esc}`), `version: ${next}`]]);
 edit("kotlin/build.gradle.kts", [[new RegExp(`version = "${esc}"`), `version = "${next}"`]]);
+edit("csharp/WorldRef/WorldRef.csproj", [[new RegExp(`<Version>${esc}</Version>`), `<Version>${next}</Version>`]]);
+edit("server.json", [[new RegExp(`"version": "${esc}"`, "g"), `"version": "${next}"`]]);
 edit("CITATION.cff", [[new RegExp(`version: ${esc}`), `version: ${next}`], [/date-released: .*/, `date-released: ${new Date().toISOString().slice(0, 10)}`]]);
 // Install lines in every README: v1.0.0, @1.0.0, from: "1.0.0", ^1.0 stays valid within a major.
 for (const f of ["README.md", "README.ar.md", "python/README.md", "Sources/WorldRef/README.md", "kotlin/README.md", "dart/README.md", "php/README.md", "go/README.md", "csharp/README.md"])

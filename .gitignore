@@ -1,5 +1,6 @@
 node_modules/
 upstream/.tz/
+upstream/.cache/
 .build/
 .swiftpm/
 .DS_Store

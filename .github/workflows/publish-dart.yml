@@ -1,0 +1,11 @@
+# pub.dev accepts automated publishing only from a pushed version tag, so this runs on the tag itself.
+# Enable it on pub.dev (package admin > Automated publishing) after the first manual publish.
+name: Publish to pub.dev
+on:
+  push: { tags: ["v[0-9]+.[0-9]+.[0-9]+"] }
+jobs:
+  publish:
+    if: vars.PUBLISH_PUB == 'true'
+    permissions: { id-token: write }
+    uses: dart-lang/setup-dart/.github/workflows/publish.yml@v1
+    with: { working-directory: dart }

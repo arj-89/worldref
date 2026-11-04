@@ -5,14 +5,28 @@ build-backend = "setuptools.build_meta"
 [project]
 name = "worldref"
 version = "1.1.0"
-description = "Countries and territories in Arabic and English: names, phone plans, currencies, subdivisions, search and phone parsing."
+description = "Every country in Arabic, English, or both: names, nationalities, dial codes, phone validation, currencies, subdivisions."
 readme = "README.md"
 requires-python = ">=3.9"
 license = { text = "MIT" }
 dependencies = []
+keywords = ["countries", "arabic", "bilingual", "nationality", "phone-number", "dial-codes", "iso-3166", "i18n", "dataset"]
+classifiers = [
+    "Development Status :: 5 - Production/Stable",
+    "Intended Audience :: Developers",
+    "License :: OSI Approved :: MIT License",
+    "Natural Language :: Arabic",
+    "Natural Language :: English",
+    "Programming Language :: Python :: 3",
+    "Topic :: Software Development :: Internationalization",
+    "Typing :: Typed",
+]
 
 [project.urls]
-Homepage = "https://github.com/arj-89/worldref"
+Homepage = "https://arj-89.github.io/worldref"
+Source = "https://github.com/arj-89/worldref"
+Issues = "https://github.com/arj-89/worldref/issues"
+Changelog = "https://github.com/arj-89/worldref/blob/main/CHANGELOG.md"
 
 [tool.setuptools]
 packages = ["worldref"]

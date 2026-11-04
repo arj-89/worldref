@@ -90,6 +90,12 @@
    "licence": "MIT",
    "url": "https://github.com/lipis/flag-icons"
   },
+  "natural_earth": {
+   "name": "Natural Earth admin-0, Saudi Arabia point of view (website map only)",
+   "version": "snapshot",
+   "licence": "Public domain",
+   "url": "https://www.naturalearthdata.com"
+  },
   "editorial": {
    "name": "worldref editorial decision",
    "version": "see overrides",

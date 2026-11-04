@@ -10,13 +10,13 @@
     --bg: #fbfbfc; --text: #1d1d1f; --muted: #64646a; --hair: #d2d2d7; --field: #f0f0f3; --band: #f0f0f3;
     --accent: #0b5cad; --accent-hover: #084a8c; --on-accent: #fbfbfc; --focus: #0b5cad; --error: #a3271c;
     --body: "Plex Arabic", system-ui, sans-serif; --display: "Kufi", "Plex Arabic", system-ui, sans-serif; --mono: "Mono", ui-monospace, Menlo, Consolas, monospace;
-    --field-edge: #8e8e93;
+    --field-edge: #8e8e93; --land: #d6d6dc;
     color-scheme: light;
 }
 @media (prefers-color-scheme: dark) {
-    :root:not([data-theme="light"]) { --bg: #111113; --text: #f2f2f4; --muted: #a3a3aa; --hair: #38383d; --field: #1d1d20; --band: #18181b; --accent: #5ea6ff; --accent-hover: #8cc0ff; --on-accent: #0b0b0d; --focus: #5ea6ff; --error: #ff9b8f; --field-edge: #6e6e73; color-scheme: dark; }
+    :root:not([data-theme="light"]) { --bg: #111113; --text: #f2f2f4; --muted: #a3a3aa; --hair: #38383d; --field: #1d1d20; --band: #18181b; --accent: #5ea6ff; --accent-hover: #8cc0ff; --on-accent: #0b0b0d; --focus: #5ea6ff; --error: #ff9b8f; --field-edge: #6e6e73; --land: #2c2c31; color-scheme: dark; }
 }
-:root[data-theme="dark"] { --bg: #111113; --text: #f2f2f4; --muted: #a3a3aa; --hair: #38383d; --field: #1d1d20; --band: #18181b; --accent: #5ea6ff; --accent-hover: #8cc0ff; --on-accent: #0b0b0d; --focus: #5ea6ff; --error: #ff9b8f; --field-edge: #6e6e73; color-scheme: dark; }
+:root[data-theme="dark"] { --bg: #111113; --text: #f2f2f4; --muted: #a3a3aa; --hair: #38383d; --field: #1d1d20; --band: #18181b; --accent: #5ea6ff; --accent-hover: #8cc0ff; --on-accent: #0b0b0d; --focus: #5ea6ff; --error: #ff9b8f; --field-edge: #6e6e73; --land: #2c2c31; color-scheme: dark; }
 
 * { box-sizing: border-box; }
 html { -webkit-text-size-adjust: 100%; }
@@ -41,8 +41,8 @@ pre { background: var(--field); border-radius: 12px; padding: 14px 16px; white-s
 .site-header { display: flex; align-items: center; flex-wrap: wrap; gap: 4px 20px; min-block-size: 52px; border-block-end: 1px solid var(--hair); max-inline-size: none; padding-inline: max(22px, calc((100% - 936px) / 2)); }
 .wordmark { font-family: var(--display); font-weight: 600; font-size: 1.3125rem; color: var(--text); text-decoration: none; min-block-size: 44px; display: inline-flex; align-items: center; unicode-bidi: isolate; }
 .lang { margin-inline-start: auto; font-size: 0.875rem; color: var(--muted); text-decoration: none; min-block-size: 44px; display: inline-flex; align-items: center; padding-inline: 8px; }
-.nav { display: flex; flex-wrap: wrap; gap: 0 4px; flex-basis: 100%; margin-inline-start: -8px; }
-@media (min-width: 860px) { .nav { flex-basis: auto; margin-inline-start: auto; order: 2; } .lang { order: 3; margin-inline-start: 0; } }
+.nav { display: flex; flex-wrap: wrap; gap: 0 4px; flex-basis: 100%; margin-inline-start: -8px; order: 3; }
+@media (min-width: 860px) { .nav { flex-basis: auto; margin-inline-start: auto; order: 2; } }
 .nav a { font-size: 0.875rem; color: var(--muted); text-decoration: none; min-block-size: 44px; display: inline-flex; align-items: center; padding-inline: 8px; }
 .nav a:hover, .nav a[aria-current="page"], .lang:hover { color: var(--text); }
 .nav a[aria-current="page"] { font-weight: 600; text-decoration: underline; text-underline-offset: 6px; }
@@ -200,3 +200,26 @@ body.root [lang] { display: grid; gap: 14px; }
 body.root .secondary { order: 2; font-size: 0.9375rem; }
 body.root .secondary h2 { font-size: 1.125rem; }
 body.root .site-footer { background: none; }
+
+/* header preferences: language link and a one-button theme cycle (System, Light, Dark) */
+.prefs { margin-inline-start: auto; display: inline-flex; align-items: center; gap: 2px; }
+.prefs .lang { margin-inline-start: 0; }
+.theme { inline-size: 44px; block-size: 44px; display: inline-grid; place-items: center; border: 0; background: none; color: var(--muted); cursor: pointer; border-radius: 980px; }
+.theme:hover { color: var(--text); }
+:root[data-theme-mode="light"] .theme .half { display: none; }
+:root[data-theme-mode="dark"] .theme circle { fill: currentColor; }
+@media (min-width: 860px) { .prefs { order: 3; margin-inline-start: 0; } }
+
+/* hero live demo */
+.search.demo input { caret-color: var(--accent); }
+@media (prefers-reduced-motion: no-preference) { .search.demo input { animation: pulse 1.6s ease-in-out infinite; } }
+@keyframes pulse { 50% { box-shadow: 0 0 0 4px color-mix(in srgb, var(--accent) 18%, transparent); } }
+
+/* countries map: real boundaries (Natural Earth, Saudi Arabia point of view) */
+.map { margin: 8px 0 0; padding: 0; }
+.map svg { display: block; inline-size: 100%; block-size: auto; }
+.map path { fill: var(--land); stroke: var(--bg); stroke-width: 0.4; fill-rule: evenodd; }
+.map a:hover path, .map a:focus path { fill: var(--accent); }
+.map a.dim path { fill: var(--land); opacity: 0.35; }
+.map a:not(.dim) path { transition: fill 120ms ease-out; }
+.map figcaption { min-block-size: 1.5em; font-weight: 600; text-align: center; color: var(--text); }

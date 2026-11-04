@@ -7,8 +7,21 @@
     <LangVersion>latest</LangVersion>
     <RootNamespace>WorldRef</RootNamespace>
     <AssemblyName>WorldRef</AssemblyName>
-    <Version>1.0.0</Version>
+    <Version>1.1.0</Version>
+    <PackageId>WorldRef</PackageId>
+    <Authors>worldref contributors</Authors>
+    <Description>Every country in Arabic, English, or both: names, nationalities, dial codes, phone validation, currencies and subdivisions, with Arabic-aware search.</Description>
+    <PackageTags>countries;arabic;bilingual;nationality;phone;iso-3166;i18n</PackageTags>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <PackageProjectUrl>https://arj-89.github.io/worldref</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/arj-89/worldref</RepositoryUrl>
+    <RepositoryType>git</RepositoryType>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
   </PropertyGroup>
+
+  <ItemGroup>
+    <None Include="..\README.md" Pack="true" PackagePath="\" />
+  </ItemGroup>
 
   <ItemGroup>
     <EmbeddedResource Include="Data\worldref.json" LogicalName="WorldRef.Data.worldref.json" />

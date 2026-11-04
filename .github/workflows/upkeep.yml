@@ -61,6 +61,12 @@ jobs:
           gh release create "v$v" --generate-notes --title "v$v (data refresh)"
         env: { GH_TOKEN: "${{ github.token }}" }
 
+  publish:
+    # Releases made with the workflow token do not trigger other workflows, so the registries are called here.
+    needs: release
+    uses: ./.github/workflows/publish.yml
+    permissions: { contents: read, id-token: write }
+
   report:
     needs: [refresh, test]
     if: failure()
