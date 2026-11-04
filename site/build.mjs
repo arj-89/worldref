@@ -215,17 +215,17 @@ function usageBlock(readmePath) {
 function installRows() {
     const fetchLine = (url) => `const sa = await fetch("${url}").then((r) => r.json());\nconsole.log(sa.name_ar, sa.phone[0].calling_code); // السعودية +966`;
     return [
-        { id: "js", blocks: [["terminal", "npm i worldref"]], first: 'import { countries, byIso2, search, parsePhone } from "worldref";\n\nbyIso2("SA").name_ar;                        // "السعودية"\nsearch(countries, "الاردن", "ar")[0].iso2;   // "JO"\nparsePhone("0501234567", byIso2("SA")).e164; // "+966501234567"', guide: "README.md#install" },
+        { id: "js", registry: ["https://www.npmjs.com/package/worldref", "npm"], blocks: [["terminal", "npm i worldref"]], first: 'import { countries, byIso2, search, parsePhone } from "worldref";\n\nbyIso2("SA").name_ar;                        // "السعودية"\nsearch(countries, "الاردن", "ar")[0].iso2;   // "JO"\nparsePhone("0501234567", byIso2("SA")).e164; // "+966501234567"', guide: "README.md#install" },
         { id: "cdn", blocks: [["url", `https://cdn.jsdelivr.net/npm/worldref@${pkg.version}/data/worldref.json`]], first: fetchLine(`https://cdn.jsdelivr.net/npm/worldref@${pkg.version}/data/worldref.json`).replace('const sa = await fetch', "const all = await fetch").replace("console.log(sa.name_ar, sa.phone[0].calling_code); // السعودية +966", 'console.log(all.find((c) => c.iso2 === "SA").name_ar); // السعودية'), guide: "README.md#install" },
         { id: "swift", blocks: [["Package.swift", `.package(url: "https://github.com/arj-89/worldref.git", from: "${pkg.version}")`]], first: usageBlock("Sources/WorldRef/README.md"), guide: "Sources/WorldRef/README.md" },
-        { id: "kotlin", blocks: [["settings.gradle.kts", 'maven("https://jitpack.io")'], ["build.gradle.kts", `implementation("com.github.arj-89:worldref:v${pkg.version}")`]], first: usageBlock("kotlin/README.md"), guide: "kotlin/README.md" },
-        { id: "python", blocks: [["terminal", "pip install worldref"]], first: usageBlock("python/README.md"), guide: "python/README.md" },
-        { id: "dart", blocks: [["terminal", "dart pub add worldref"]], first: usageBlock("dart/README.md"), guide: "dart/README.md" },
-        { id: "php", blocks: [["terminal", "composer require arj-89/worldref"]], first: usageBlock("php/README.md"), guide: "php/README.md" },
-        { id: "go", blocks: [["terminal", `go get github.com/arj-89/worldref/go@v${pkg.version}`]], first: usageBlock("go/README.md"), guide: "go/README.md" },
-        { id: "csharp", blocks: [["terminal", "dotnet add package WorldRef"]], first: usageBlock("csharp/README.md"), guide: "csharp/README.md" },
+        { id: "kotlin", registry: ["https://jitpack.io/#arj-89/worldref", "JitPack"], blocks: [["settings.gradle.kts", 'maven("https://jitpack.io")'], ["build.gradle.kts", `implementation("com.github.arj-89:worldref:v${pkg.version}")`]], first: usageBlock("kotlin/README.md"), guide: "kotlin/README.md" },
+        { id: "python", registry: ["https://pypi.org/project/worldref/", "PyPI"], blocks: [["terminal", "pip install worldref"]], first: usageBlock("python/README.md"), guide: "python/README.md" },
+        { id: "dart", registry: ["https://pub.dev/packages/worldref", "pub.dev"], blocks: [["terminal", "dart pub add worldref"]], first: usageBlock("dart/README.md"), guide: "dart/README.md" },
+        { id: "php", registry: ["https://packagist.org/packages/arj-89/worldref", "Packagist"], blocks: [["terminal", "composer require arj-89/worldref"]], first: usageBlock("php/README.md"), guide: "php/README.md" },
+        { id: "go", registry: ["https://pkg.go.dev/github.com/arj-89/worldref/go", "pkg.go.dev"], blocks: [["terminal", `go get github.com/arj-89/worldref/go@v${pkg.version}`]], first: usageBlock("go/README.md"), guide: "go/README.md" },
+        { id: "csharp", registry: ["https://www.nuget.org/packages/WorldRef/", "NuGet"], blocks: [["terminal", "dotnet add package WorldRef"]], first: usageBlock("csharp/README.md"), guide: "csharp/README.md" },
         { id: "files", blocks: [], first: null, guide: "README.md#install" },
-        { id: "mcp", blocks: [["terminal", "npx -y worldref mcp"]], first: null, guide: "README.md#for-ai-agents" },
+        { id: "mcp", registry: ["https://registry.modelcontextprotocol.io/?q=worldref", "MCP Registry"], blocks: [["terminal", "npx -y worldref mcp"]], first: null, guide: "README.md#for-ai-agents" },
         { id: "api", blocks: [["url", `${ORIGIN}${BASE}/api/v1/sa.json`]], first: fetchLine(`${ORIGIN}${BASE}/api/v1/sa.json`), guide: "README.md#install" },
     ];
 }
@@ -241,7 +241,7 @@ function install(lang) {
               ? `<p><a href="${href(lang, "agents/")}">${t("install.mcp.more", lang)}</a></p>`
               : "";
         const first = r.first ? `<details class="first"><summary>${t("install.first.show", lang)}</summary><p class="where">${t("install.first.title", lang)}</p><pre dir="ltr"><code>${esc(r.first)}</code></pre></details>` : "";
-        return `<section class="stack" id="${r.id}" aria-labelledby="${r.id}-h"><h2 id="${r.id}-h">${tl(`install.stack.${r.id}`, lang)} <span>${tl(`install.stack.${r.id}.on`, lang)}</span></h2>${r.id === "files" ? `<p>${t("install.files.body", lang)}</p>` : ""}${blocks}${extra}${first}<p class="guide"><a href="https://github.com/arj-89/worldref/blob/main/${r.guide}">${t("install.guide", lang)}</a></p></section>`;
+        return `<section class="stack" id="${r.id}" aria-labelledby="${r.id}-h"><h2 id="${r.id}-h">${tl(`install.stack.${r.id}`, lang)} <span>${tl(`install.stack.${r.id}.on`, lang)}</span></h2>${r.id === "files" ? `<p>${t("install.files.body", lang)}</p>` : ""}${blocks}${extra}${first}<p class="guide actions">${r.registry ? `<a class="btn" href="${r.registry[0]}" rel="external">${t("install.registry", lang, { name: esc(r.registry[1]) })}</a>` : ""}<a class="btn" href="https://github.com/arj-89/worldref/blob/main/${r.guide}">${t("install.guide", lang)}</a></p></section>`;
     }).join("");
     const jump = `<nav class="jump" aria-label="${plain("install.jump", lang)}">${INSTALL_ROWS.map((r) => `<a href="#${r.id}"><span>${tl(`install.stack.${r.id}`, lang)}</span></a>`).join("")}</nav>`;
     const body = `<section class="intro"><h1>${t("install.title", lang)}</h1><p class="lede">${t("install.body", lang)}</p>${jump}</section>${rows}

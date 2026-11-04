@@ -43,3 +43,4 @@ Hard stops are never decided here: anything that costs money, making a repo publ
 | Phase | Date | Summary (one paragraph) | Entries covered |
 | --- | --- | --- | --- |
 | | | | |
+| Kickoff to ship | 04/11/2026 | K1 to K5 ran in Delegated mode (Fable 5.1 for K1, then Opus 5.5 after the credits ran out, entry 10). The approver picked direction B and the lean path set by the owner (entry 25). One design-review pass failed 13 checks; every real defect was fixed and a narrow re-check's 3 remaining FAILs were fixed as prescribed. The owner then directed the map, header switches, live hero and Jordan example (entries 29, 30). Shipped in v1.1.0 and v1.1.1. Overturnable calls to note: Thmanyah kept out of the public repo (entry 1), Can I Use dropped as a reference (entry 11), Arabic-Indic example digits rejected (entry 15). | 1 to 30 |

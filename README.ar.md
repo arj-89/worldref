@@ -8,6 +8,12 @@
 
 </div>
 
+[![npm](https://img.shields.io/npm/v/worldref?label=npm)](https://www.npmjs.com/package/worldref) [![PyPI](https://img.shields.io/pypi/v/worldref?label=PyPI)](https://pypi.org/project/worldref/) [![pub.dev](https://img.shields.io/pub/v/worldref?label=pub.dev)](https://pub.dev/packages/worldref) [![NuGet](https://img.shields.io/nuget/v/WorldRef?label=NuGet)](https://www.nuget.org/packages/WorldRef/) [![Packagist](https://img.shields.io/packagist/v/arj-89/worldref?label=Packagist)](https://packagist.org/packages/arj-89/worldref) [![MCP Registry](https://img.shields.io/badge/MCP%20Registry-io.github.arj--89%2Fworldref-blue)](https://registry.modelcontextprotocol.io/?q=worldref)
+
+<div dir="rtl">
+
+</div>
+
 ```js
 import { countries, search, parsePhone, byIso2 } from "worldref";
 

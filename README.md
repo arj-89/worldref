@@ -5,6 +5,7 @@
 [العربية](README.ar.md) · [Website and search demo](https://arj-89.github.io/worldref) · [Best practices](#best-practices) · [Field reference](#fields) · [Data sources](#sources-and-licences)
 
 [![CI](https://github.com/arj-89/worldref/actions/workflows/ci.yml/badge.svg)](https://github.com/arj-89/worldref/actions/workflows/ci.yml)
+[![npm](https://img.shields.io/npm/v/worldref?label=npm)](https://www.npmjs.com/package/worldref) [![PyPI](https://img.shields.io/pypi/v/worldref?label=PyPI)](https://pypi.org/project/worldref/) [![pub.dev](https://img.shields.io/pub/v/worldref?label=pub.dev)](https://pub.dev/packages/worldref) [![NuGet](https://img.shields.io/nuget/v/WorldRef?label=NuGet)](https://www.nuget.org/packages/WorldRef/) [![Packagist](https://img.shields.io/packagist/v/arj-89/worldref?label=Packagist)](https://packagist.org/packages/arj-89/worldref) [![MCP Registry](https://img.shields.io/badge/MCP%20Registry-io.github.arj--89%2Fworldref-blue)](https://registry.modelcontextprotocol.io/?q=worldref)
 ![countries](https://img.shields.io/badge/countries-242-blue) ![subdivisions](https://img.shields.io/badge/subdivisions-5012-blue) ![languages](https://img.shields.io/badge/names-Arabic%20%7C%20English-green)
 
 ```js

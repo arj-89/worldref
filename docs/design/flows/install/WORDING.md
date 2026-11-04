@@ -20,6 +20,7 @@ Commands and first calls are not copy: they are taken verbatim from `README.md` 
 | install.first.show | اعرض أول استدعاء | Show the first call | toggle under each stack; opens by itself after a copy |
 | install.first.hide | أخفِ أول استدعاء | Hide the first call | |
 | install.first.title | أول استدعاء | First call | label above the first-call block |
+| install.registry | صفحة الحزمة على {name} | The package on {name} | link next to the full guide, only for registry stacks |
 | install.guide | الدليل الكامل على GitHub | Full guide on GitHub | links to the stack's folder README |
 | install.swift.product | اختر المنتج `WorldRef`. | Then pick the product `WorldRef`. | under the Swift line |
 | install.dart.where | تحت `dependencies:` | Under `dependencies:` | label detail for `pubspec.yaml` |
