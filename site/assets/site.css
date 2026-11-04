@@ -231,3 +231,11 @@ body.root .site-footer { background: none; }
 .map a.dim path { fill: var(--land); opacity: 0.35; }
 .map a:not(.dim) path { transition: fill 120ms ease-out; }
 .map figcaption { min-block-size: 1.5em; font-weight: 600; text-align: center; color: var(--text); }
+
+/* back to top: a small pill at the inline end, clear of the content column edge */
+.to-top { position: fixed; inset-block-end: 16px; inset-inline-end: 16px; z-index: 5; display: inline-flex; align-items: center; gap: 6px; min-block-size: 44px; padding-inline: 16px; border-radius: 980px; background: var(--text); color: var(--bg); font-size: 0.875rem; font-weight: 600; text-decoration: none; box-shadow: 0 4px 14px rgb(0 0 0 / 0.18); }
+.to-top::before { content: ""; inline-size: 0.45em; block-size: 0.45em; border-block-start: 2px solid currentColor; border-inline-start: 2px solid currentColor; transform: translateY(0.15em) rotate(45deg); }
+.to-top:dir(rtl)::before { transform: translateY(0.15em) rotate(-45deg); }
+.to-top:hover { color: var(--bg); opacity: 0.9; }
+.to-top[hidden] { display: none; }
+.site-footer { padding-block-end: 76px; }

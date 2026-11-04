@@ -29,6 +29,18 @@ $$("[data-theme-cycle]").forEach((b) => b.addEventListener("click", () => {
 }));
 $$("[data-lang-switch]").forEach((a) => a.addEventListener("click", () => store.set("wr-lang", a.dataset.langSwitch)));
 
+// ---------- back to top: shown once the header has scrolled out of view (no scroll listener) ----------
+const toTop = $("[data-to-top]");
+const head = $(".site-header");
+if (toTop && head && "IntersectionObserver" in window) {
+    new IntersectionObserver(([e]) => (toTop.hidden = e.isIntersecting)).observe(head);
+    toTop.addEventListener("click", (e) => {
+        e.preventDefault();
+        scrollTo({ top: 0, behavior: matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth" });
+        $(".wordmark")?.focus({ preventScroll: true });
+    });
+}
+
 // ---------- copy ----------
 document.addEventListener("click", async (e) => {
     const b = e.target.closest("[data-copy]");

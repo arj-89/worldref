@@ -53,7 +53,7 @@
     "./package.json": "./package.json"
   },
   "bin": {
-    "worldref": "./mcp/cli.js"
+    "worldref": "mcp/cli.js"
   },
   "files": [
     "dist",

@@ -76,13 +76,14 @@ ${alt}
 <script>try{var t=localStorage.getItem("wr-theme");if(t&&t!=="system")document.documentElement.dataset.theme=t}catch(e){}</script>
 ${jsonld.map((j) => `<script type="application/ld+json">${JSON.stringify(j).replace(/</g, "\\u003c")}</script>`).join("\n")}
 </head>
-<body data-base="${BASE}" data-lang="${lang}">
+<body data-base="${BASE}" data-lang="${lang}" id="top">
 <a class="skip" href="#main">${t("chrome.skip-link", lang)}</a>
 ${header(lang, path, other)}
 <main id="main" tabindex="-1">
 ${body}
 </main>
 ${footer(lang, path, other)}
+<a class="to-top" href="#top" data-to-top hidden>${t("chrome.top", lang)}</a>
 <script type="module" src="${asset("app.js")}"></script>
 </body>
 </html>

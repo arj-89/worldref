@@ -16,6 +16,7 @@ Rules for the build:
 | key | Arabic | English | note |
 | --- | --- | --- | --- |
 | chrome.skip-link | تخطَّ إلى المحتوى | Skip to content | first focusable element on every page |
+| chrome.top | إلى الأعلى | Back to top | button at the inline end, shown after the first screen scrolls away |
 | chrome.wordmark | worldref | worldref | Latin in both builds, isolated; links to the home page of the current language |
 | chrome.menu.open | القائمة | Menu | opens the menu sheet; accessible name of the menu button |
 | chrome.menu.close | إغلاق القائمة | Close menu | icon-only close carries this name; Escape also closes |
