@@ -256,6 +256,7 @@ Planned for 1.2.0 (new, non-breaking):
 3. More forgiving search: names typed without punctuation or with small typos ("cote divoire", "Kuwiat").
 4. An address-form helper: the fields, order and labels of a country's address form in Arabic or English.
 5. Kotlin on Maven Central, alongside JitPack.
+6. Cities: a new `cities` module with Arabic and English names, linked to each country and subdivision.
 
 ## Sources and licences
 
