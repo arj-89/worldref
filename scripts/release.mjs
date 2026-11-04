@@ -29,6 +29,10 @@ edit("CITATION.cff", [[new RegExp(`version: ${esc}`), `version: ${next}`], [/dat
 for (const f of ["README.md", "README.ar.md", "python/README.md", "Sources/WorldRef/README.md", "kotlin/README.md", "dart/README.md", "php/README.md", "go/README.md", "csharp/README.md"])
     edit(f, [[new RegExp(esc, "g"), next]]);
 
+// Automated data releases have no hand-written entry; give them one (pub.dev rejects a version without it).
+edit("CHANGELOG.md", [[/\n## /, (m) => (readFileSync(`${ROOT}CHANGELOG.md`, "utf8").includes(`## ${next} `) ? m
+    : `\n## ${next} (${new Date().toISOString().slice(0, 10)})\n\n- Data refresh from the upstream sources; versions in \`data/meta.json\`.\n\n## `)]]);
+
 execFileSync("npm", ["install", "--package-lock-only", "--no-audit", "--no-fund"], { cwd: ROOT, stdio: "inherit" });
 execFileSync("npm", ["run", "build"], { cwd: ROOT, stdio: "inherit" });
 execFileSync("node", ["scripts/docs.mjs"], { cwd: ROOT, stdio: "inherit" });
