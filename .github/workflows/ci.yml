@@ -12,7 +12,7 @@ jobs:
       - uses: actions/checkout@v5
       - uses: actions/setup-node@v5
         with: { node-version: 22 }
-      - run: npm install --no-audit --no-fund
+      - run: npm ci --no-audit --no-fund # fails when package-lock.json is out of date
       - run: npm run build && node scripts/docs.mjs
       - name: Generated files are committed and up to date
         run: git diff --exit-code
@@ -73,17 +73,11 @@ jobs:
         with: { dotnet-version: "8.0.x" }
       - run: cd csharp && dotnet test
 
-  mcp:
-    name: MCP server
+  node-min:
+    name: JavaScript and MCP server on the minimum Node (20.10)
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v5
       - uses: actions/setup-node@v5
-        with: { node-version: 22 }
-      - name: Initialize, list tools, call a tool
-        run: |
-          out=$(printf '%s\n' \
-            '{"jsonrpc":"2.0","id":1,"method":"initialize","params":{}}' \
-            '{"jsonrpc":"2.0","id":2,"method":"tools/list"}' \
-            '{"jsonrpc":"2.0","id":3,"method":"tools/call","params":{"name":"get_country","arguments":{"iso2":"sa"}}}' | node mcp/cli.js mcp)
-          echo "$out" | grep -q '"serverInfo"' && echo "$out" | grep -q 'validate_phone' && echo "$out" | grep -q 'السعودية'
+        with: { node-version: "20.10.0" }
+      - run: node --test tests/js.test.mjs tests/mcp.test.mjs

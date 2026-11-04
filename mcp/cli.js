@@ -35,7 +35,26 @@ const TOOLS = [
     },
 ];
 
+// A bad argument is a tool error the agent can read and fix (isError), not a protocol error.
+function checkArgs(tool, a) {
+    const { properties, required = [] } = tool.inputSchema;
+    for (const k of required) if (a[k] == null || a[k] === "") return `Missing argument: ${k}.`;
+    for (const [k, v] of Object.entries(a)) {
+        const p = properties[k];
+        if (!p) return `Unknown argument: ${k}.`;
+        if (p.type === "string" && typeof v !== "string") return `Argument ${k} must be a string.`;
+        if (p.type === "integer" && !Number.isInteger(v)) return `Argument ${k} must be an integer.`;
+        if (p.enum && !p.enum.includes(v)) return `Argument ${k} must be one of: ${p.enum.join(", ")}.`;
+    }
+    return null;
+}
+
 function call(name, a) {
+    const tool = TOOLS.find((t) => t.name === name);
+    if (!tool) throw Object.assign(new Error(`Unknown tool: ${name}`), { code: -32602 });
+    if (!a || typeof a !== "object" || Array.isArray(a)) return { error: "Arguments must be an object." };
+    const bad = checkArgs(tool, a);
+    if (bad) return { error: bad };
     switch (name) {
         case "get_country": {
             const c = byIso2(String(a.iso2 ?? ""));
@@ -53,8 +72,6 @@ function call(name, a) {
         }
         case "list_subdivisions":
             return subdivisions.filter((s) => s.iso2 === String(a.iso2 ?? "").toUpperCase());
-        default:
-            throw Object.assign(new Error(`Unknown tool ${name}`), { code: -32602 });
     }
 }
 
@@ -68,6 +85,8 @@ function serve() {
         } catch {
             return send({ id: null, error: { code: -32700, message: "Parse error" } });
         }
+        if (!req || typeof req !== "object" || Array.isArray(req) || typeof req.method !== "string")
+            return send({ id: req?.id ?? null, error: { code: -32600, message: "Invalid request" } });
         const { id, method, params = {} } = req;
         if (id === undefined) return; // notifications need no reply
         try {

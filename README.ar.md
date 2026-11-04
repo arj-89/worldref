@@ -41,12 +41,12 @@ parsePhone("٠٥٠١٢٣٤٥٦٧", byIso2("SA"));      // { e164: "+966501234567
 |---|---|
 | JavaScript وTypeScript | `npm i worldref` |
 | Swift | Swift Package Manager من `https://github.com/arj-89/worldref` |
-| Kotlin وAndroid | JitPack: `com.github.arj-89:worldref:v1.1.1` |
+| Kotlin وAndroid | JitPack: `com.github.arj-89:worldref:v1.1.2` |
 | Python | `pip install worldref` |
 | Dart وFlutter | `dart pub add worldref` |
 | PHP وLaravel | `composer require arj-89/worldref` |
 | C# و.NET | `dotnet add package WorldRef` |
-| Go | `go get github.com/arj-89/worldref/go@v1.1.1` |
+| Go | `go get github.com/arj-89/worldref/go@v1.1.2` |
 | بلا تثبيت | `https://arj-89.github.io/worldref/api/v1/sa.json` |
 
 ## استخدم ما تحتاجه فقط
@@ -90,7 +90,7 @@ parsePhone("٠٥٠١٢٣٤٥٦٧", byIso2("SA"));      // { e164: "+966501234567
 **البيانات**
 - `null` أو القائمة الفارغة تعني أن القيمة غير معروفة؛ اعرضها كذلك ولا تملأها من مصدر آخر.
 - حمّل الوحدات التي تحتاجها فقط، ويجمعها المفتاح `iso2`.
-- ثبّت رقم الإصدار (`#v1.1.1` أو `@1.1.1`) حتى لا تتغير الأسماء والقواعد دون علمك.
+- ثبّت رقم الإصدار (`#v1.1.2` أو `@1.1.2`) حتى لا تتغير الأسماء والقواعد دون علمك.
 
 ## سياسة البيانات
 
@@ -106,6 +106,16 @@ parsePhone("٠٥٠١٢٣٤٥٦٧", byIso2("SA"));      // { e164: "+966501234567
 **أين أجد قائمة الجنسيات بالعربية مذكرًا ومؤنثًا؟** في `data/modules/nationality.json`: الحقلان `nationality_ar_m` و`nationality_ar_f`.
 
 **كيف أتحقق من رقم جوال سعودي؟** `parsePhone(input, byIso2("SA"))` ثم تحقق من `valid` و`mobile`. تُقبل الأرقام العربية.
+
+## خارطة الطريق
+
+المخطط للإصدار 1.2.0 (إضافات لا تكسر ما قبلها):
+
+1. الأسماء الرسمية بالعربية: 222 صفًّا فارغة اليوم، وهي أكبر نقص في البيانات.
+2. أنواع التقسيمات الإدارية باللغتين (منطقة، محافظة، إمارة، ولاية).
+3. بحث أكثر تسامحًا: يجد الأسماء المكتوبة بلا علامات ترقيم أو بأخطاء إملائية بسيطة، مثل "cote divoire" و"Kuwiat".
+4. أداة لنموذج العنوان: حقول عنوان كل دولة وترتيبها وتسمياتها بالعربية أو الإنجليزية.
+5. نشر حزمة Kotlin على Maven Central إلى جانب JitPack.
 
 ## المصادر والتراخيص
 

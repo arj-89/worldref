@@ -7,7 +7,7 @@
     <LangVersion>latest</LangVersion>
     <RootNamespace>WorldRef</RootNamespace>
     <AssemblyName>WorldRef</AssemblyName>
-    <Version>1.1.1</Version>
+    <Version>1.1.2</Version>
     <PackageId>WorldRef</PackageId>
     <Authors>worldref contributors</Authors>
     <Description>Every country in Arabic, English, or both: names, nationalities, dial codes, phone validation, currencies and subdivisions, with Arabic-aware search.</Description>

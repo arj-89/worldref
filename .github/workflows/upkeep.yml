@@ -20,7 +20,7 @@ jobs:
       - uses: actions/checkout@v5
       - uses: actions/setup-node@v5
         with: { node-version: 22 }
-      - run: npm install --no-audit --no-fund
+      - run: npm ci --no-audit --no-fund
       - name: Fetch
         run: |
           if [ "${{ github.event.schedule }}" = "0 4 1 1,4,7,10 *" ]; then node scripts/fetch.mjs population;
@@ -46,7 +46,7 @@ jobs:
       - uses: actions/checkout@v5
       - uses: actions/setup-node@v5
         with: { node-version: 22 }
-      - run: npm install --no-audit --no-fund
+      - run: npm ci --no-audit --no-fund
       - name: Refetch the same sources, bump patch, commit, tag
         run: |
           if [ "${{ github.event.schedule }}" = "0 4 1 1,4,7,10 *" ]; then node scripts/fetch.mjs population;

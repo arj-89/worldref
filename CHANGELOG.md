@@ -3,16 +3,11 @@
 All notable changes. Versions follow semantic versioning: a removed row or field is major, a new field
 or a name change is minor, a data fix or upstream refresh is a patch.
 
-## 1.0.0 (2026-11-01)
+## 1.1.2 (2026-11-04)
 
-First release.
-
-- 242 countries and territories, 5012 ISO 3166-2 subdivisions, in Arabic and English.
-- Modules: core, nationality, phone, currency, geo, locale, address, travel, sports, subdivisions.
-- Three builds of every file: bilingual, Arabic-only, English-only. JSON, CSV, SQL (Postgres, MySQL, SQLite), static per-country API.
-- Packages for TypeScript, Python, Swift, Kotlin, Dart, PHP, Go and C#, with shared search, sorting and phone helpers held identical by one set of test cases.
-- MCP server for AI agents.
-- Sources: Unicode CLDR 49, libphonenumber v9.0.42, World Bank, Wikidata, CIA World Factbook (final edition), IANA tzdata 2026f, Google address metadata, official sources for emergency numbers.
+- Fixed: the JavaScript package needs Node 20.10 or newer (its JSON import syntax does not run on earlier Node 18 releases). `engines` now says so, and CI tests that version.
+- MCP server: missing, unknown or wrongly typed arguments now return a clear tool error (`isError`) instead of an empty lookup; malformed requests get JSON-RPC error -32600. A new test suite covers bad input, notifications and long sessions.
+- CI installs with `npm ci`, so an outdated lockfile fails the build.
 
 ## 1.1.1 (2026-11-04)
 
@@ -30,3 +25,14 @@ First release.
 - Fixed: the README showed most of its sections twice.
 - Docs: the Arabic README now uses the JitPack tag v1.0.0 and states that policy-change requests are closed.
 - Docs: a "Best practices" section in both READMEs (search folding, sorting, display, phone storage, nationality forms, data handling), linked from llms.txt and AGENTS.md.
+
+## 1.0.0 (2026-11-01)
+
+First release.
+
+- 242 countries and territories, 5012 ISO 3166-2 subdivisions, in Arabic and English.
+- Modules: core, nationality, phone, currency, geo, locale, address, travel, sports, subdivisions.
+- Three builds of every file: bilingual, Arabic-only, English-only. JSON, CSV, SQL (Postgres, MySQL, SQLite), static per-country API.
+- Packages for TypeScript, Python, Swift, Kotlin, Dart, PHP, Go and C#, with shared search, sorting and phone helpers held identical by one set of test cases.
+- MCP server for AI agents.
+- Sources: Unicode CLDR 49, libphonenumber v9.0.42, World Bank, Wikidata, CIA World Factbook (final edition), IANA tzdata 2026f, Google address metadata, official sources for emergency numbers.

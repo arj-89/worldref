@@ -32,4 +32,4 @@ Guide for AI coding agents using or changing worldref.
 | `python/`, `Sources/WorldRef/` (Swift), `kotlin/`, `dart/`, `php/`, `go/`, `csharp/` | language packages |
 | `mcp/` | CLI and MCP server |
 | `site/` | GitHub Pages site generator |
-| `tests/` | shared vectors, JS tests, reproducibility gate |
+| `tests/` | shared vectors, JS tests, MCP server tests, reproducibility gate |

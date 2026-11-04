@@ -7,10 +7,10 @@ Plus Arabic-aware search, sorting, and phone parsing.
 ## Install
 
 ```sh
-go get github.com/arj-89/worldref/go@v1.1.1
+go get github.com/arj-89/worldref/go@v1.1.2
 ```
 
-The module lives in the `go/` subdirectory of github.com/arj-89/worldref, so the git tag is `go/v1.1.1`.
+The module lives in the `go/` subdirectory of github.com/arj-89/worldref, so the git tag is `go/v1.1.2`.
 
 ## Usage
 
