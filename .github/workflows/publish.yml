@@ -34,6 +34,8 @@ jobs:
           curl -fsSL "https://github.com/modelcontextprotocol/registry/releases/download/${MCP_PUBLISHER_VERSION}/mcp-publisher_linux_amd64.tar.gz" | tar xz mcp-publisher
           v=$(jq -r .version server.json)
           if curl -fsS "https://registry.modelcontextprotocol.io/v0.1/servers?search=io.github.arj-89/worldref" | jq -e --arg v "$v" '.servers[] | select(.server.version == $v)' >/dev/null; then echo "MCP Registry already has $v"; exit 0; fi
+          # The registry validates against npm, which can take a minute to list a new version.
+          for i in $(seq 20); do npm view "worldref@$v" version >/dev/null 2>&1 && break; sleep 15; done
           ./mcp-publisher login github-oidc
           ./mcp-publisher publish
 
