@@ -1,8 +1,10 @@
-# pub.dev accepts automated publishing only from a pushed version tag, so this runs on the tag itself.
-# Enable it on pub.dev (package admin > Automated publishing) after the first manual publish.
+# pub.dev accepts automated publishing only from a version tag: a pushed tag, or a manual run on the tag
+# (upkeep starts one, because tags pushed with the workflow token trigger nothing). Both event types are
+# enabled on pub.dev (package admin > Automated publishing).
 name: Publish to pub.dev
 on:
   push: { tags: ["v[0-9]+.[0-9]+.[0-9]+"] }
+  workflow_dispatch:
 jobs:
   publish:
     if: vars.PUBLISH_PUB == 'true'

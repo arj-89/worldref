@@ -10,7 +10,7 @@ on:
     inputs:
       sources: { description: "fetch.mjs jobs (empty = monthly set)", required: false }
 
-permissions: { contents: write, issues: write }
+permissions: { contents: write, issues: write, actions: write }
 
 jobs:
   refresh:
@@ -59,6 +59,7 @@ jobs:
           git tag "v$v" && git tag "go/v$v"
           git push origin HEAD --tags
           gh release create "v$v" --generate-notes --title "v$v (data refresh)"
+          gh workflow run publish-dart.yml --ref "v$v"
         env: { GH_TOKEN: "${{ github.token }}" }
 
   publish:
