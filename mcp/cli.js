@@ -1,9 +1,9 @@
 #!/usr/bin/env node
 // worldref command line and MCP server (stdio, JSON-RPC 2.0, no dependencies).
 //
-//   npx github:arj-89/worldref mcp        # MCP server for AI agents
-//   npx github:arj-89/worldref sa         # print one country as JSON
-//   npx github:arj-89/worldref search مصر # search in Arabic or English
+//   npx -y worldref mcp        # MCP server for AI agents
+//   npx -y worldref sa         # print one country as JSON
+//   npx -y worldref search مصر # search in Arabic or English
 import { readFileSync } from "node:fs";
 import { createInterface } from "node:readline";
 import { countries, byIso2, search, parsePhone, localizeRecord } from "./lib.js";

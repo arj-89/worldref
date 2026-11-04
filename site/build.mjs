@@ -213,20 +213,19 @@ function usageBlock(readmePath) {
     return m ? m[1].trim() : null;
 }
 function installRows() {
-    const csharp = read("csharp/README.md").match(/# Option 1: git submodule\n([\s\S]*?)\n\n/)?.[1].split("\n").filter((l) => l && !l.startsWith("#")).join("\n");
     const fetchLine = (url) => `const sa = await fetch("${url}").then((r) => r.json());\nconsole.log(sa.name_ar, sa.phone[0].calling_code); // السعودية +966`;
     return [
-        { id: "js", blocks: [["terminal", "npm i github:arj-89/worldref#v" + pkg.version]], first: 'import { countries, byIso2, search, parsePhone } from "worldref";\n\nbyIso2("SA").name_ar;                        // "السعودية"\nsearch(countries, "الاردن", "ar")[0].iso2;   // "JO"\nparsePhone("0501234567", byIso2("SA")).e164; // "+966501234567"', guide: "README.md#install" },
-        { id: "cdn", blocks: [["url", `https://cdn.jsdelivr.net/gh/arj-89/worldref@${pkg.version}/data/worldref.json`]], first: fetchLine(`https://cdn.jsdelivr.net/gh/arj-89/worldref@${pkg.version}/data/worldref.json`).replace('const sa = await fetch', "const all = await fetch").replace("console.log(sa.name_ar, sa.phone[0].calling_code); // السعودية +966", 'console.log(all.find((c) => c.iso2 === "SA").name_ar); // السعودية'), guide: "README.md#install" },
+        { id: "js", blocks: [["terminal", "npm i worldref"]], first: 'import { countries, byIso2, search, parsePhone } from "worldref";\n\nbyIso2("SA").name_ar;                        // "السعودية"\nsearch(countries, "الاردن", "ar")[0].iso2;   // "JO"\nparsePhone("0501234567", byIso2("SA")).e164; // "+966501234567"', guide: "README.md#install" },
+        { id: "cdn", blocks: [["url", `https://cdn.jsdelivr.net/npm/worldref@${pkg.version}/data/worldref.json`]], first: fetchLine(`https://cdn.jsdelivr.net/npm/worldref@${pkg.version}/data/worldref.json`).replace('const sa = await fetch', "const all = await fetch").replace("console.log(sa.name_ar, sa.phone[0].calling_code); // السعودية +966", 'console.log(all.find((c) => c.iso2 === "SA").name_ar); // السعودية'), guide: "README.md#install" },
         { id: "swift", blocks: [["Package.swift", `.package(url: "https://github.com/arj-89/worldref.git", from: "${pkg.version}")`]], first: usageBlock("Sources/WorldRef/README.md"), guide: "Sources/WorldRef/README.md" },
         { id: "kotlin", blocks: [["settings.gradle.kts", 'maven("https://jitpack.io")'], ["build.gradle.kts", `implementation("com.github.arj-89:worldref:v${pkg.version}")`]], first: usageBlock("kotlin/README.md"), guide: "kotlin/README.md" },
-        { id: "python", blocks: [["terminal", `pip install "git+https://github.com/arj-89/worldref@v${pkg.version}#subdirectory=python"`]], first: usageBlock("python/README.md"), guide: "python/README.md" },
-        { id: "dart", blocks: [["pubspec.yaml", `worldref: { git: { url: https://github.com/arj-89/worldref.git, ref: v${pkg.version}, path: dart } }`]], first: usageBlock("dart/README.md"), guide: "dart/README.md" },
-        { id: "php", blocks: [["composer.json", '"repositories": [{"type": "vcs", "url": "https://github.com/arj-89/worldref"}]'], ["terminal", "composer require arj-89/worldref:^1.0"]], first: usageBlock("php/README.md"), guide: "php/README.md" },
+        { id: "python", blocks: [["terminal", "pip install worldref"]], first: usageBlock("python/README.md"), guide: "python/README.md" },
+        { id: "dart", blocks: [["terminal", "dart pub add worldref"]], first: usageBlock("dart/README.md"), guide: "dart/README.md" },
+        { id: "php", blocks: [["terminal", "composer require arj-89/worldref"]], first: usageBlock("php/README.md"), guide: "php/README.md" },
         { id: "go", blocks: [["terminal", `go get github.com/arj-89/worldref/go@v${pkg.version}`]], first: usageBlock("go/README.md"), guide: "go/README.md" },
-        { id: "csharp", blocks: [["terminal", csharp]], first: usageBlock("csharp/README.md"), guide: "csharp/README.md" },
+        { id: "csharp", blocks: [["terminal", "dotnet add package WorldRef"]], first: usageBlock("csharp/README.md"), guide: "csharp/README.md" },
         { id: "files", blocks: [], first: null, guide: "README.md#install" },
-        { id: "mcp", blocks: [["terminal", "npx -y github:arj-89/worldref mcp"]], first: null, guide: "README.md#for-ai-agents" },
+        { id: "mcp", blocks: [["terminal", "npx -y worldref mcp"]], first: null, guide: "README.md#for-ai-agents" },
         { id: "api", blocks: [["url", `${ORIGIN}${BASE}/api/v1/sa.json`]], first: fetchLine(`${ORIGIN}${BASE}/api/v1/sa.json`), guide: "README.md#install" },
     ];
 }
@@ -419,7 +418,7 @@ function agents(lang) {
         ["schema/worldref.schema.json", "agents.file.schema"],
         ["api/v1/sa.json", "agents.file.country"],
     ];
-    const mcp = "npx -y github:arj-89/worldref mcp";
+    const mcp = "npx -y worldref mcp";
     const body = `<section class="intro"><h1>${t("agents.title", lang)}</h1><p class="lede">${t("agents.body", lang)}</p></section>
 <section aria-labelledby="mcp-h"><h2 id="mcp-h">${t("agents.mcp.title", lang)}</h2><pre dir="ltr"><code>${esc(mcp)}</code></pre>${copyBtn(mcp, lang)}<p>${t("agents.mcp.tools", lang, { tools: ["get_country", "search_countries", "validate_phone", "list_subdivisions"].map(code).join(" ") })}</p></section>
 <section aria-labelledby="files-h"><h2 id="files-h">${t("agents.files.title", lang)}</h2><ul class="rows">${files.map(([f, k]) => `<li><a href="${BASE}/${f}"><span class="name">${code(f)}</span><span class="meta">${t(k, lang)}</span></a></li>`).join("")}</ul></section>

@@ -26,21 +26,21 @@ parsePhone("٠٥٠١٢٣٤٥٦٧", byIso2("SA"));     // { e164: "+966501234567"
 
 ## Install
 
-No package registry account is needed for any of these; everything installs from this repository.
+Published on npm, PyPI, pub.dev, Packagist, NuGet and the MCP Registry. Swift, Kotlin and Go install straight from this repository.
 
 | Stack | Install |
 |---|---|
-| JavaScript, TypeScript (web, Node, React Native, Bun, Deno) | `npm i github:arj-89/worldref#v1.1.0` |
-| CDN (no build step) | `https://cdn.jsdelivr.net/gh/arj-89/worldref@1.1.0/data/worldref.json` |
-| Swift (iOS, macOS) | Swift Package Manager: `https://github.com/arj-89/worldref`, from `1.1.0`, product `WorldRef` |
-| Kotlin, Android | JitPack: `maven("https://jitpack.io")`, then `implementation("com.github.arj-89:worldref:v1.1.0")` |
-| Python | `pip install "git+https://github.com/arj-89/worldref@v1.1.0#subdirectory=python"` |
-| Dart, Flutter | `worldref: { git: { url: https://github.com/arj-89/worldref.git, ref: v1.1.0, path: dart } }` |
-| PHP, Laravel | Composer: add the VCS repository `https://github.com/arj-89/worldref`, then `composer require arj-89/worldref:^1.0` |
-| Go | `go get github.com/arj-89/worldref/go@v1.1.0` |
-| C#, .NET | Add [`csharp/WorldRef`](csharp/README.md) as a project reference |
+| JavaScript, TypeScript (web, Node, React Native, Bun, Deno) | `npm i worldref` |
+| CDN (no build step) | `https://cdn.jsdelivr.net/npm/worldref@1.1.1/data/worldref.json` |
+| Swift (iOS, macOS) | Swift Package Manager: `https://github.com/arj-89/worldref`, from `1.1.1`, product `WorldRef` |
+| Kotlin, Android | JitPack: `maven("https://jitpack.io")`, then `implementation("com.github.arj-89:worldref:v1.1.1")` |
+| Python | `pip install worldref` |
+| Dart, Flutter | `dart pub add worldref` (Flutter: `flutter pub add worldref`) |
+| PHP, Laravel | `composer require arj-89/worldref` |
+| Go | `go get github.com/arj-89/worldref/go@v1.1.1` |
+| C#, .NET | `dotnet add package WorldRef` |
 | Any language | JSON, CSV and SQL (Postgres, MySQL, SQLite) in [`data/`](data) and on the [releases page](https://github.com/arj-89/worldref/releases) |
-| AI agents | MCP server: `npx -y github:arj-89/worldref mcp` |
+| AI agents | MCP server: `npx -y worldref mcp` (listed in the MCP Registry as `io.github.arj-89/worldref`) |
 | No install | One country: `https://arj-89.github.io/worldref/api/v1/sa.json` |
 
 Each language folder has its own README with a usage example: [python](python/README.md), [Swift](Sources/WorldRef/README.md), [kotlin](kotlin/README.md), [dart](dart/README.md), [php](php/README.md), [go](go/README.md), [csharp](csharp/README.md).
@@ -118,7 +118,7 @@ Every rule below is built into the helpers of all eight packages and locked by t
 **Data**
 - `null` (or an empty list) means unknown. Show it as unknown; never fill it from elsewhere.
 - Load only the modules you need; they join on `iso2`.
-- Pin a version (`#v1.1.0`, `@1.1.0`) so names and rules do not change under you.
+- Pin a version (`#v1.1.1`, `@1.1.1`) so names and rules do not change under you.
 
 ## Data policy
 
@@ -244,7 +244,7 @@ An automated job checks the upstream sources monthly (population quarterly) and 
 
 ## For AI agents
 
-Start at [`llms.txt`](llms.txt) and [`AGENTS.md`](AGENTS.md). Schemas are in [`schema/`](schema). The MCP server (`npx -y github:arj-89/worldref mcp`) offers `get_country`, `search_countries`, `validate_phone` and `list_subdivisions`. Answer from the data only and treat `null` as unknown.
+Start at [`llms.txt`](llms.txt) and [`AGENTS.md`](AGENTS.md). Schemas are in [`schema/`](schema). The MCP server (`npx -y worldref mcp`) offers `get_country`, `search_countries`, `validate_phone` and `list_subdivisions`. Answer from the data only and treat `null` as unknown.
 
 ## Sources and licences
 

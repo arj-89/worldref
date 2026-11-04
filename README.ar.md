@@ -29,17 +29,18 @@ parsePhone("٠٥٠١٢٣٤٥٦٧", byIso2("SA"));      // { e164: "+966501234567
 
 ## التثبيت
 
-كل الطرق تعمل مباشرة من هذا المستودع دون حساب في أي سجل حزم. التفاصيل الكاملة في [README الإنجليزي](README.md#install).
+منشورة على npm وPyPI وpub.dev وPackagist وNuGet وسجل MCP، وتُثبَّت Swift وKotlin وGo من هذا المستودع مباشرة. التفاصيل الكاملة في [README الإنجليزي](README.md#install).
 
 | البيئة | التثبيت |
 |---|---|
-| JavaScript وTypeScript | `npm i github:arj-89/worldref#v1.1.0` |
+| JavaScript وTypeScript | `npm i worldref` |
 | Swift | Swift Package Manager من `https://github.com/arj-89/worldref` |
-| Kotlin وAndroid | JitPack: `com.github.arj-89:worldref:v1.1.0` |
-| Python | `pip install "git+https://github.com/arj-89/worldref@v1.1.0#subdirectory=python"` |
-| Dart وFlutter | اعتماد git مع `path: dart` |
-| PHP وLaravel | Composer مع مستودع VCS |
-| Go | `go get github.com/arj-89/worldref/go@v1.1.0` |
+| Kotlin وAndroid | JitPack: `com.github.arj-89:worldref:v1.1.1` |
+| Python | `pip install worldref` |
+| Dart وFlutter | `dart pub add worldref` |
+| PHP وLaravel | `composer require arj-89/worldref` |
+| C# و.NET | `dotnet add package WorldRef` |
+| Go | `go get github.com/arj-89/worldref/go@v1.1.1` |
 | بلا تثبيت | `https://arj-89.github.io/worldref/api/v1/sa.json` |
 
 ## استخدم ما تحتاجه فقط
@@ -83,7 +84,7 @@ parsePhone("٠٥٠١٢٣٤٥٦٧", byIso2("SA"));      // { e164: "+966501234567
 **البيانات**
 - `null` أو القائمة الفارغة تعني أن القيمة غير معروفة؛ اعرضها كذلك ولا تملأها من مصدر آخر.
 - حمّل الوحدات التي تحتاجها فقط، ويجمعها المفتاح `iso2`.
-- ثبّت رقم الإصدار (`#v1.1.0` أو `@1.1.0`) حتى لا تتغير الأسماء والقواعد دون علمك.
+- ثبّت رقم الإصدار (`#v1.1.1` أو `@1.1.1`) حتى لا تتغير الأسماء والقواعد دون علمك.
 
 ## سياسة البيانات
 

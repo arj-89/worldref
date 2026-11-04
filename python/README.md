@@ -5,7 +5,7 @@
 ## Install
 
 ```sh
-pip install "git+https://github.com/arj-89/worldref@v1.1.0#subdirectory=python"
+pip install worldref
 ```
 
 ## Usage

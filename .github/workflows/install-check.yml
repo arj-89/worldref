@@ -9,6 +9,7 @@ on:
 env:
   TAG: ${{ github.event.release.tag_name || inputs.tag }}
 
+# Registries need a few minutes after a release; each job retries until the version appears (up to 15 min).
 jobs:
   npm:
     runs-on: ubuntu-latest
@@ -16,20 +17,22 @@ jobs:
       - uses: actions/setup-node@v5
         with: { node-version: 22 }
       - run: |
-          mkdir t && cd t && npm init -y >/dev/null && npm i "github:arj-89/worldref#$TAG"
+          V=${TAG#v}
+          for i in $(seq 30); do npm view "worldref@$V" version && break; sleep 30; done
+          mkdir t && cd t && npm init -y >/dev/null && npm i "worldref@$V"
           node --input-type=module -e 'import { byIso2, parsePhone } from "worldref"; if (byIso2("SA").name_ar !== "السعودية" || !parsePhone("0501234567", byIso2("SA")).mobile) process.exit(1)'
-          npx -y "github:arj-89/worldref#$TAG" sa | grep -q '"iso2": "SA"'
+          npx -y "worldref@$V" sa | grep -q '"iso2": "SA"'
   cdn:
     runs-on: ubuntu-latest
     steps:
-      - run: curl -fsSL "https://cdn.jsdelivr.net/gh/arj-89/worldref@${TAG#v}/data/worldref.json" | grep -q '"SA"'
+      - run: for i in $(seq 30); do curl -fsSL "https://cdn.jsdelivr.net/npm/worldref@${TAG#v}/data/worldref.json" | grep -q '"SA"' && exit 0; sleep 30; done; exit 1
   python:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/setup-python@v6
         with: { python-version: "3.12" }
       - run: |
-          pip install "git+https://github.com/arj-89/worldref@$TAG#subdirectory=python"
+          for i in $(seq 30); do pip install "worldref==${TAG#v}" && break; sleep 30; done
           python -c 'import worldref as w; assert w.by_iso2("SA").name_ar == "السعودية"'
   swift:
     runs-on: macos-latest
@@ -49,34 +52,35 @@ jobs:
   kotlin:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/setup-java@v5
-        with: { distribution: temurin, java-version: "21" }
-      - run: |
-          # JitPack builds on first request; allow it time.
-          for i in 1 2 3 4 5 6; do curl -fsS "https://jitpack.io/com/github/arj-89/worldref/$TAG/worldref-$TAG.pom" && exit 0; sleep 60; done; exit 1
+      - run: for i in 1 2 3 4 5 6; do curl -fsS "https://jitpack.io/com/github/arj-89/worldref/$TAG/worldref-$TAG.pom" && exit 0; sleep 60; done; exit 1
   dart:
     runs-on: ubuntu-latest
     steps:
       - uses: dart-lang/setup-dart@v1
       - run: |
-          dart create -t console t && cd t
-          printf '\n  worldref:\n    git: { url: https://github.com/arj-89/worldref.git, ref: %s, path: dart }\n' "$TAG" >> pubspec.yaml
-          sed -i 's/^dependencies:$/dependencies:/' pubspec.yaml
-          dart pub get
+          for i in $(seq 30); do curl -fsS https://pub.dev/api/packages/worldref | grep -q "\"${TAG#v}\"" && break; sleep 30; done
+          dart create -t console t && cd t && dart pub add "worldref:${TAG#v}"
   php:
     runs-on: ubuntu-latest
     steps:
       - uses: shivammathur/setup-php@v2
         with: { php-version: "8.3", extensions: intl, mbstring }
       - run: |
-          mkdir t && cd t
-          echo '{"repositories":[{"type":"vcs","url":"https://github.com/arj-89/worldref"}],"require":{"arj-89/worldref":"^1.0"},"minimum-stability":"stable"}' > composer.json
-          composer install
+          mkdir t && cd t && echo '{}' > composer.json
+          for i in $(seq 20); do composer require "arj-89/worldref:${TAG#v}" && break; sleep 30; done
           php -r 'require "vendor/autoload.php"; exit(WorldRef\WorldRef::byIso2("SA")->name_ar === "السعودية" ? 0 : 1);'
+  csharp:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/setup-dotnet@v5
+        with: { dotnet-version: "8.0.x" }
+      - run: |
+          dotnet new console -o t && cd t
+          for i in $(seq 30); do dotnet add package WorldRef --version "${TAG#v}" && break; sleep 30; done
+          dotnet build -v q
   go:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/setup-go@v6
         with: { go-version: stable }
-      - run: |
-          mkdir t && cd t && go mod init t && go get "github.com/arj-89/worldref/go@$TAG"
+      - run: mkdir t && cd t && go mod init t && go get "github.com/arj-89/worldref/go@$TAG"

@@ -4,16 +4,12 @@
 
 ## Install
 
-Composer reads the package straight from GitHub (repo `github.com/arj-89/worldref`, tag `v1.1.0`). In your `composer.json`:
-
-```json
-{
-    "repositories": [{"type": "vcs", "url": "https://github.com/arj-89/worldref"}],
-    "require": {"arj-89/worldref": "^1.0"}
-}
+```sh
+composer require arj-89/worldref
 ```
 
-Then run `composer update arj-89/worldref`. This works in Laravel and plain PHP. The data is read from the repo's `data/` folder, so nothing is copied.
+This works in Laravel and plain PHP. The data is read from the package's `data/` folder.
+
 
 ## Usage
 

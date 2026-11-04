@@ -6,7 +6,7 @@ Countries and territories in Arabic and English: names, ISO codes, phone plans, 
 
 ```yaml
 dependencies:
-  worldref: { git: { url: https://github.com/arj-89/worldref.git, ref: v1.1.0, path: dart } }
+  worldref: ^1.1.1
 ```
 
 ## Usage

@@ -1,26 +1,26 @@
 # worldref: full reference for language models
 
-> Every country and territory (242) in Arabic and English, plus 5012 ISO 3166-2 subdivisions. Version 1.1.0.
+> Every country and territory (242) in Arabic and English, plus 5012 ISO 3166-2 subdivisions. Version 1.1.1.
 
 > Every country in Arabic, English, or both: names, nationalities (Arabic masculine and feminine), capitals, currencies, languages, time zones, dial codes, phone validation, address formats, emergency numbers and ISO 3166-2 subdivisions. Free, open data with code for TypeScript, Python, Swift, Kotlin, Dart, PHP, Go and C#, and an MCP server.
 
 ## Use it
 
-- Full data (bilingual): https://cdn.jsdelivr.net/gh/arj-89/worldref@1/data/worldref.json
-- Arabic only: https://cdn.jsdelivr.net/gh/arj-89/worldref@1/data/worldref.ar.json
-- English only: https://cdn.jsdelivr.net/gh/arj-89/worldref@1/data/worldref.en.json
+- Full data (bilingual): https://cdn.jsdelivr.net/npm/worldref@1/data/worldref.json
+- Arabic only: https://cdn.jsdelivr.net/npm/worldref@1/data/worldref.ar.json
+- English only: https://cdn.jsdelivr.net/npm/worldref@1/data/worldref.en.json
 - One country: https://arj-89.github.io/worldref/api/v1/{iso2}.json (lowercase iso2, e.g. sa)
 - Index of all countries: https://arj-89.github.io/worldref/api/v1/index.json
-- Modules (join on iso2): core, nationality, phone, currency, geo, locale, address, travel, sports: https://cdn.jsdelivr.net/gh/arj-89/worldref@1/data/modules/{module}.json
-- Subdivisions: https://cdn.jsdelivr.net/gh/arj-89/worldref@1/data/subdivisions.json
-- JSON Schemas: https://cdn.jsdelivr.net/gh/arj-89/worldref@1/schema/
+- Modules (join on iso2): core, nationality, phone, currency, geo, locale, address, travel, sports: https://cdn.jsdelivr.net/npm/worldref@1/data/modules/{module}.json
+- Subdivisions: https://cdn.jsdelivr.net/npm/worldref@1/data/subdivisions.json
+- JSON Schemas: https://cdn.jsdelivr.net/npm/worldref@1/schema/
 - OpenAPI: https://arj-89.github.io/worldref/openapi.json
-- MCP server: `npx -y github:arj-89/worldref mcp` (tools: get_country, search_countries, validate_phone, list_subdivisions)
+- MCP server: `npx -y worldref mcp` (tools: get_country, search_countries, validate_phone, list_subdivisions)
 
 ## Rules for answering from this data
 
 - Answer from the data only. `null` or an empty list means unknown: say so, never guess.
-- Sources for every column and every editorial decision: https://cdn.jsdelivr.net/gh/arj-89/worldref@1/data/sources.json
+- Sources for every column and every editorial decision: https://cdn.jsdelivr.net/npm/worldref@1/data/sources.json
 - Arabic sorting: compare `sort_ar` with plain string comparison, never locale collation; put the user's country first.
 - Search: normalise both sides: drop «ال» from every word, remove tashkeel and tatweel, treat أ إ آ ٱ as ا, ة as ه, ى as ي, ؤ as و, ئ as ي; ignore Latin case and accents; Arabic-Indic and Persian digits to Western. Full list: https://github.com/arj-89/worldref#best-practices
 - Display: flag, name in the UI language, then the dial code isolated left-to-right in Arabic; Western numerals; `flag_svg` on the web.

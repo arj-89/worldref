@@ -14,6 +14,12 @@ First release.
 - MCP server for AI agents.
 - Sources: Unicode CLDR 49, libphonenumber v9.0.42, World Bank, Wikidata, CIA World Factbook (final edition), IANA tzdata 2026f, Google address metadata, official sources for emergency numbers.
 
+## 1.1.1 (2026-11-04)
+
+- Published to the package registries: npm (`npm i worldref`), PyPI (`pip install worldref`), pub.dev (`dart pub add worldref`), Packagist (`composer require arj-89/worldref`), NuGet (`dotnet add package WorldRef`) and the MCP Registry (`io.github.arj-89/worldref`). READMEs and the website use these commands; Swift, Kotlin (JitPack) and Go still install from the repository.
+- Website: a real world map on the countries page (Natural Earth, Saudi Arabia point of view) with zoom, Jordan as the featured example, language and theme in the header, a live search demo in the hero, flag emoji on country pages, back to top.
+- Packaging: `bin` path without `./`.
+
 ## 1.1.0 (2026-11-02)
 
 - New: the website at https://arj-89.github.io/worldref in Arabic and English: live search on the real data, install for every platform, a file builder, a page for each of the 242 countries with a phone checker, and an agents page. The static API, schemas and data files stay at their paths.
