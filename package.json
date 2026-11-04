@@ -85,7 +85,6 @@
     "cldr-localenames-full": "49.0.0",
     "cldr-numbers-full": "49.0.0",
     "flag-icons": "7.6.0",
-    "mapshaper": "^0.6.121",
     "typescript": "5.9.3"
   },
   "mcpName": "io.github.arj-89/worldref",
