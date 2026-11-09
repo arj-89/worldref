@@ -122,3 +122,22 @@
 1. **Check 4, decisions section, all country pages, both languages:** in `site/build.mjs`, group overrides that share the same field stem (the text before ` (`) and an identical reason into one `<li>`, with the codes joined inside the code run. For example `<code dir="ltr">subdivisions.name (MA-01, MA-02, …, MA-12)</code>: {reason}`. Keep the codes in data order.
 2. **Check 10a, all Arabic reasons:** end every Arabic reason with «.», matching the existing `ovr.*` Arabic cells. Apply it to the new `why_ar` values in `data/sources.json` (through `scripts/editorial.mjs`) and to the WORDING rows. Leave the English `why` as it is: it is verbatim data, consistently without a stop.
 3. **Check 10b, `GB-PTE` reason:** «اسم بيتربرة بالإنجليزية مقطوع في CLDR.»
+
+## Pass 4
+
+**Reviewer:** Opus 5.5 (claude-opus-5-5). **Date:** 10/11/2026.
+**Method:** viewed in the browser at `http://127.0.0.1:8765/worldref/`, 1280 px, dark theme: `ar/countries/gb#overrides`, `ar/countries/ma#overrides`. The built HTML of the decisions section was read for `ar/ma`, `en/ma`, `ar/gb`, `en/gb`, `ar/cn`, `en/cn`, `ar/sa`, `en/sa`, `ar/ph` and `en/ph`. 390 px is still not viewable in this browser (see pass 2).
+
+**Result: PASS.** Checks 4 and 10 pass. No regression found.
+
+| # | Item | Pass 4 | Evidence |
+| --- | --- | --- | --- |
+| 4 | Repeated reasons merged | PASS | `ar/ma` and `en/ma`: one item, `subdivisions.name (MA-01, MA-02, …, MA-12)`, with the reason once (was 12). `ar/gb` and `en/gb`: one item, `subdivisions.type (GB-ABC, GB-AND, …, GB-NMD)` (was 11). `ar/cn` and `en/cn`: two items, `(CN-HK, CN-MO)` and `(CN-BJ, CN-SH, CN-TJ, CN-CQ)` (was 6). Distinct reasons stay separate: `GB-LND`, `GB-CMA`, `GB-NNH` and `GB-WNH` each keep their own item. |
+| 10a | Arabic full stops | PASS | Every Arabic reason on `ar/sa`, `ar/ma`, `ar/gb`, `ar/cn` and `ar/ph` ends with «.», so old and new match within each list. English `why` is unchanged and consistently without a stop. |
+| 10b | `GB-PTE` spelling | PASS | `ar/gb`: «اسم بيتربرة بالإنجليزية مقطوع في CLDR.», matching the row name «بيتربرة». |
+| 18 | Mixed direction after the changes | PASS | `ar/gb` dark: the merged code run wraps after a comma («…GB-FMO،» / «GB-LBC, … GB-NMD)») and stays one LTR isolate in order. The new full stop after a Latin run resolves to the RTL end of the sentence (the stop sits left of «ISO 3166-2:GB»). `ar/ma` dark: «(المرسوم 2.15.40)» keeps its digit order. |
+| 7 | Arabic reasons still complete | PASS | The bare «المصادر» link is still absent. |
+
+### Outside this change (not counted)
+
+- `en/countries/cn`: the English `why` for `CN-HK` and `CN-MO` reads only "ISO 3166-2:CN", while the Arabic says what was decided («منطقة إدارية خاصة، وفق ISO 3166-2:CN.»). This is verbatim `sources.json` data. A fuller English `why` ("Special administrative region, ISO 3166-2:CN") would make the two languages carry the same information.

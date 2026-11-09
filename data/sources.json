@@ -249,14 +249,14 @@
    "iso2": "CN",
    "field": "subdivisions.type (CN-HK)",
    "value": "special administrative region",
-   "why": "ISO 3166-2:CN",
+   "why": "Special administrative region, ISO 3166-2:CN",
    "why_ar": "منطقة إدارية خاصة، وفق ISO 3166-2:CN."
   },
   {
    "iso2": "CN",
    "field": "subdivisions.type (CN-MO)",
    "value": "special administrative region",
-   "why": "ISO 3166-2:CN",
+   "why": "Special administrative region, ISO 3166-2:CN",
    "why_ar": "منطقة إدارية خاصة، وفق ISO 3166-2:CN."
   },
   {
