@@ -117,6 +117,7 @@ input[type="search"]:focus-visible, input[type="tel"]:focus-visible { outline: 2
 .rows .oth { font-size: 0.875rem; color: var(--accent); }
 .rows .meta { margin-inline-start: auto; font-size: 0.9375rem; display: inline-flex; gap: 10px; }
 .tz, .tz-note { display: block; }
+.nw { white-space: nowrap; }
 .tz-note { margin-block-start: 4px; }
 .skeleton li { block-size: 44px; display: flex; align-items: center; }
 .skeleton li::before { content: ""; display: block; block-size: 12px; inline-size: 60%; border-radius: 6px; background: var(--field); }

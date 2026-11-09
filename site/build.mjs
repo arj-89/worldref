@@ -41,6 +41,8 @@ const isoLatin = (html) => html.replace(/(^|[\s(«،\u0600-\u06FF])((?:[A-Za-z.#
 const plain = (key, lang) => (W[key]?.[lang] ?? key).replace(/`/g, "");
 const tp = (base, n, lang, vars = {}) => t(pluralKey(base, n, lang), lang, { n: num(n), ...vars });
 const ltr = (s) => `<bdi dir="ltr">${esc(s)}</bdi>`;
+/** Left-to-right and never broken inside (UTC offsets: a line break after "UTC-" splits the number). */
+const ltrNw = (s) => `<bdi dir="ltr" class="nw">${esc(s)}</bdi>`;
 const code = (s) => `<code dir="ltr">${esc(s)}</code>`;
 /** "+05:30" to minutes, for telling a daylight shift from a winter one. */
 const minutes = (o) => (o[0] === "-" ? -1 : 1) * (Number(o.slice(1, 3)) * 60 + Number(o.slice(4, 6)));
@@ -59,7 +61,9 @@ const mergeOverrides = (list, lang) => {
         if (!groups.has(key)) groups.set(key, { stem: m ? m[1] : o.field, codes: [], reason });
         if (m) groups.get(key).codes.push(m[2]);
     }
-    return [...groups.values()].map((g) => ({ field: g.codes.length ? `${g.stem} (${g.codes.join(", ")})` : g.stem, reason: g.reason }));
+    // Each code stays whole ("MA-" / "08" was a break point); lines break only after the commas.
+    const field = (g) => `<code dir="ltr">${esc(g.stem)}${g.codes.length ? ` (${g.codes.map((c) => `<span class="nw">${esc(c)}</span>`).join(", ")})` : ""}</code>`;
+    return [...groups.values()].map((g) => ({ field: field(g), reason: g.reason }));
 };
 const subName = (s, lang) => (lang === "ar" ? s.name_ar : s.name_en) ?? s.name_en ?? s.name_ar ?? "";
 /** The subdivision type, unless the name already starts with it («منطقة الرياض»); English capitalised. */
@@ -393,7 +397,7 @@ ${sec("geo", t("country.sec.geo", lang), [
     row("country.f.population", geo.population != null ? t("country.v.population", lang, { n: num(geo.population), year: ltr(String(geo.population_year ?? "")) }) : null),
     row("country.f.centre", geo.lat != null ? ltr(`${geo.lat}, ${geo.lng}`) : null),
     row("country.f.timezones", geo.timezone_offsets.length
-        ? `${geo.timezone_offsets.map((z) => `<span class="tz">${code(z.zone)} ${ltr(`UTC${z.standard}`)}${z.dst ? ` ${t(minutes(z.dst) < minutes(z.standard) ? "country.v.tz-winter" : "country.v.tz-dst", lang, { o: ltr(`UTC${z.dst}`) })}` : ""}</span>`).join("")}<span class="hint tz-note">${t("country.v.tz-note", lang)}</span>`
+        ? `${geo.timezone_offsets.map((z) => `<span class="tz">${code(z.zone)} ${ltrNw(`UTC${z.standard}`)}${z.dst ? ` <span class="nw">${t(minutes(z.dst) < minutes(z.standard) ? "country.v.tz-winter" : "country.v.tz-dst", lang, { o: ltrNw(`UTC${z.dst}`) })}</span>` : ""}</span>`).join("")}<span class="hint tz-note">${t("country.v.tz-note", lang)}</span>`
         : null),
     row("country.f.driving", geo.driving_side ? t(`driving.${geo.driving_side}`, lang) : null),
 ])}
@@ -422,7 +426,7 @@ ${sec("travel", t("country.sec.travel", lang), [
 ], emSources ? `<p class="fine">${t("country.src.links", lang, { name: esc(n) })} ${emSources.sources.map((u) => `<a href="${esc(u)}" rel="external">${ltr(new URL(u).hostname.replace(/^www\./, ""))}</a>`).join(sep(lang))}</p>` : "")}
 ${sec("sports", t("country.sec.sports", lang), [row("country.f.fifa", c.sports.fifa ? ltr(c.sports.fifa) : null), row("country.f.ioc", c.sports.ioc ? ltr(c.sports.ioc) : null)])}
 <section id="subdivisions" aria-labelledby="subs-h"><h2 id="subs-h">${t("country.sec.subdivisions", lang, { n: num(subs.length) })}</h2>${subs.length ? `<ul class="rows subs">${subs.map((s) => `<li><span><span class="name">${esc(subName(s, lang))}</span><span class="meta">${subType(s, lang) ? `<span>${esc(subType(s, lang))}</span>` : ""}${ltr(s.code)}</span></span></li>`).join("")}</ul>` : `<p>${t("country.subs.empty", lang, { name: esc(n) })}</p>`}</section>
-${overrides.length ? `<section id="overrides" aria-labelledby="ovr-h"><h2 id="ovr-h">${t("country.sec.overrides", lang)}</h2><ul>${mergeOverrides(overrides, lang).map((o) => `<li>${code(o.field)}: ${o.reason}</li>`).join("")}</ul></section>` : ""}
+${overrides.length ? `<section id="overrides" aria-labelledby="ovr-h"><h2 id="ovr-h">${t("country.sec.overrides", lang)}</h2><ul>${mergeOverrides(overrides, lang).map((o) => `<li>${o.field}: ${o.reason}</li>`).join("")}</ul></section>` : ""}
 <section id="sources" aria-labelledby="src-h"><h2 id="src-h">${t("country.sec.sources", lang)}</h2><ul class="fine">${srcList}</ul><p class="fine"><a href="https://github.com/arj-89/worldref/blob/main/data/sources.json">sources.json</a></p></section>
 </article>`;
     const ld = {

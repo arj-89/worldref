@@ -141,3 +141,25 @@
 ### Outside this change (not counted)
 
 - `en/countries/cn`: the English `why` for `CN-HK` and `CN-MO` reads only "ISO 3166-2:CN", while the Arabic says what was decided («منطقة إدارية خاصة، وفق ISO 3166-2:CN.»). This is verbatim `sources.json` data. A fuller English `why` ("Special administrative region, ISO 3166-2:CN") would make the two languages carry the same information.
+
+## Pass 5 (390 px)
+
+**Reviewer:** Opus 5.5 (claude-opus-5-5). **Date:** 10/11/2026.
+**Method:** viewed in the browser at `http://127.0.0.1:8765/m390.html`. The page holds six 390 px iframes, and each is its own viewport, so the site's media queries apply. I scrolled inside each frame, in dark and then in light: `ar/us` and `en/us` (time zones), `ar/sa` and `en/gb` (subdivisions), `ar/ma` (decisions), `en/ie` (Ireland). I switched the theme with the site's theme button. It is stored per origin, so it applies in every frame. Also confirmed: `en/cn` now reads "Special administrative region, ISO 3166-2:CN".
+
+**Result: FAIL (2 checks: 4, 18).** Checks 15, 16 and 17 pass.
+
+| # | Check | Pass 5 | Evidence at 390 |
+| --- | --- | --- | --- |
+| 4 | Density | FAIL | `ar/us` dark: each zone runs to two lines, and the break falls in a different place on each row. Some second lines hold only «(UTC-04:00» (the closing bracket shows on the left, as RTL should). Others split the term itself: «(التوقيت» at the end of line 1, «الصيفي UTC-04:00)» on line 2 (Indiana/Winamac, Marengo, Vevay, Knox, Los_Angeles, Metlakatla). `en/us`: New_York and Detroit leave "UTC-04:00)" alone on line 2, while the other rows carry "(daylight saving UTC-04:00)" whole. `en/ie`: "(winter time" / "UTC+00:00)". The list reads ragged, and the parenthetical's label and value are separated. |
+| 18 | Mixed-direction lines | FAIL | `ar/us` dark: `America/Nome` and `America/Adak` break inside the offset, «UTC-» at the end of line 1 and «08:00)» / «09:00)» on line 2. `ar/ma#overrides` dark: the merged code run breaks inside codes, `MA-` / `03` and `MA-` / `08`. The colon after the run then lands beside the split code, so line 3 reads «:08, MA-09, MA-10, MA-11, MA-12)». The browser breaks after the hyphen before a digit, so codes and offsets need protecting. |
+| 15 | Bars never hide content | PASS | The to-top pill floats over content mid-scroll and moves out of the way when you scroll. The section ends clear it (footer end padding), as in earlier passes. |
+| 16 | One scroll axis | PASS | No horizontal scroll in any of the six frames, light or dark. The longest zone (`America/North_Dakota/New_Salem UTC-06:00`) fits one line. Long subdivision names wrap their meta to the end of the next line (`en/gb` "Bournemouth, Christchurch and Poole", then "Unitary authority GB-BCP"). |
+| 17 | No clipped icons | PASS | The to-top chevrons and the theme button are whole in both languages and both themes. |
+
+Also seen at 390 and fine: `ar/sa` heading «التقسيمات الإدارية (13)» on one line, codes only on the rows. `en/gb` rows show name, then type and code at the end. The `ar/ma` reasons and `en/ie` note are readable in light (`--muted`) and dark.
+
+### Notes to the builder (pass 5)
+
+1. **Check 18 and check 4, time zones row (`site/build.mjs`, `country.f.timezones`):** add `.nw { white-space: nowrap; }` to `site/assets/site.css`. Render each offset as `<bdi dir="ltr" class="nw">UTC-08:00</bdi>`. Wrap the whole parenthetical (`country.v.tz-dst` or `country.v.tz-winter` with its offset) in `<span class="nw">…</span>`. Each entry then breaks only between zone, offset and parenthetical. Line 2, where needed, is always the whole «(التوقيت الصيفي UTC-04:00)» / "(daylight saving UTC-04:00)" (about 190 px, which fits 346 px).
+2. **Check 18, merged decision codes (`site/build.mjs`, decisions section):** inside the code run, wrap each code in `<span class="nw">MA-01</span>`. Keep the ", " separators outside the spans so lines break after commas only.
