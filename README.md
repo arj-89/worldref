@@ -283,6 +283,7 @@ Planned for 1.3.0 (new, non-breaking):
 
 1. Official Arabic names: 222 rows are empty today, the largest gap in the data.
 2. Cities: a new `cities` module with Arabic and English names, linked to each country and subdivision: capitals, subdivision capitals, and every city of 100,000 people or more.
+3. Kotlin on Maven Central as `io.github.arj-89:worldref` (the build and the release job are ready; publishing starts once signing is set up). Until then, Kotlin installs through JitPack.
 
 Planned for 1.4.0: a full human review of every Arabic name.
 

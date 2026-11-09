@@ -45,6 +45,14 @@ Format: date, feature, what happened (as a role, no blame), root cause, what cha
 - **What changed here:** the designer's checks treat hyphen-joined codes as not standalone and skip `+376` and SVG path geometry; the definition is raised to the approver.
 - **Affects siblings:** none checked.
 - **Candidate for the skill:** yes (absence scans match values in their field context, not bare tokens).
+### 10/11/2026 · 1.2.0 country page additions (Stop 2)
+
+- **What happened:** the reviewer's first pass saw no styles (the local server served the site at the root while pages link `/worldref/...`), and five passes could not see 390 px because the browser window will not narrow below desktop width. Two real 390 px defects (offsets split after "UTC-", codes split after "MA-") were only caught once the reviewer saw true phone width.
+- **Root cause:** review evidence that is not the shipped rendering: wrong base path, and phone width judged from CSS instead of seen.
+- **What changed here:** review servers mirror the Pages base path (`/worldref/`); phone width is reviewed through a page of 390 px iframes, each its own viewport; tokens that must not break (UTC offsets, codes, bracketed qualifiers) carry `.nw`; every data-driven sentence shown on an Arabic page needs an Arabic source (`why_ar` or a WORDING key), and the build fails without one.
+- **Affects siblings:** any BIXET site reviewed by an agent in this browser.
+- **Candidate for the skill:** yes (`references/process.md`, evidence board: serve under the real base path; capture phone width through iframes when the browser cannot narrow).
+
 
 ## Rejected, do not reopen
 

@@ -163,3 +163,19 @@ Also seen at 390 and fine: `ar/sa` heading «التقسيمات الإدارية
 
 1. **Check 18 and check 4, time zones row (`site/build.mjs`, `country.f.timezones`):** add `.nw { white-space: nowrap; }` to `site/assets/site.css`. Render each offset as `<bdi dir="ltr" class="nw">UTC-08:00</bdi>`. Wrap the whole parenthetical (`country.v.tz-dst` or `country.v.tz-winter` with its offset) in `<span class="nw">…</span>`. Each entry then breaks only between zone, offset and parenthetical. Line 2, where needed, is always the whole «(التوقيت الصيفي UTC-04:00)» / "(daylight saving UTC-04:00)" (about 190 px, which fits 346 px).
 2. **Check 18, merged decision codes (`site/build.mjs`, decisions section):** inside the code run, wrap each code in `<span class="nw">MA-01</span>`. Keep the ", " separators outside the spans so lines break after commas only.
+
+## Pass 6
+
+**Reviewer:** Opus 5.5 (claude-opus-5-5). **Date:** 10/11/2026.
+**Method:** viewed in the browser. At 390 px, `http://127.0.0.1:8765/m390.html` after the rebuild: I scrolled through the whole list in `ar/us` and `en/us`, and checked `en/ie` and `ar/ma#overrides`, in light and then dark (switched with the site's theme button). At 1280 px, a regression look at `en/ie` (light), `ar/us` (dark) and `ar/gb#overrides` (dark).
+
+**Result: PASS.** Checks 4 and 18 pass at 390. No regression at 1280.
+
+| # | Check | Pass 6 | Evidence |
+| --- | --- | --- | --- |
+| 4 | Density at 390 | PASS | `ar/us` and `en/us`, light and dark: every switching zone now breaks in the same place. Line 1 holds the zone and its offset (`America/New_York UTC-05:00`). Line 2 holds the whole bracket, «(التوقيت الصيفي UTC-04:00)» / "(daylight saving UTC-04:00)". There is no lone "UTC-04:00)", and «التوقيت الصيفي» is never split. Non-switching zones (`America/Phoenix`, `Pacific/Honolulu`) stay on one line. `en/ie`: `Europe/Dublin UTC+01:00`, then "(winter time UTC+00:00)" whole. |
+| 18 | Mixed-direction lines at 390 | PASS | `ar/us`: `America/Nome` «UTC-09:00» and `America/Adak` «UTC-10:00» stay whole, with their brackets whole on line 2. `ar/ma#overrides`, light and dark: the merged run breaks only after commas, as `subdivisions.name (MA-01, MA-02,` / `MA-03, … MA-07,` / `MA-08, … MA-12)`. Every code is whole. The colon after the run sits on the RTL side of the run's last line, the same as on every other item in the list. |
+| — | Regression at 1280 | PASS | `en/ie` light: one line, `Europe/Dublin UTC+01:00 (winter time UTC+00:00)`. `ar/us` dark: all 29 zones on one line each. `ar/gb#overrides` dark: same layout as pass 4. The merged NI run breaks after «GB-FMO,», and each reason ends with «.». |
+| 15, 16, 17 | Unchanged at 390 | PASS | No horizontal scroll in any frame. The to-top pill still clears section ends. Icons are whole. |
+
+**Final state of this review:** every FAIL from passes 1 to 5 is fixed and verified. The 390 px gap from pass 2 is closed by pass 5 and this pass. Lint output and recordings stay descoped (entry 25). The not-counted items in the "Outside this change" lists are unchanged unless a later pass says they were fixed.
