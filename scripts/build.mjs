@@ -60,7 +60,8 @@ const SOURCES = {
 };
 const COLUMN_SOURCE = {};
 const overrides = [];
-const override = (iso2, field, value, why, why_ar) => overrides.push({ iso2, field, value, why, ...(why_ar ? { why_ar } : {}) });
+// Arabic reasons end with a full stop, like the site's other Arabic sentences; English ones are kept as written.
+const override = (iso2, field, value, why, why_ar) => overrides.push({ iso2, field, value, why, ...(why_ar ? { why_ar: /[.!؟]$/.test(why_ar) ? why_ar : `${why_ar}.` } : {}) });
 
 // ---------- helpers ----------
 const first = (a) => (Array.isArray(a) && a.length ? a[0] : null);

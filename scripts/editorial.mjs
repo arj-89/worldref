@@ -338,7 +338,7 @@ export const SUBDIVISION_NAME_WHY_AR = {
     "BH-14": "الاسم الرسمي للمحافظة الجنوبية، وفي CLDR صفة مجردة",
     "BH-17": "الاسم الرسمي للمحافظة الشمالية، وفي CLDR صفة مجردة",
     "PH-14": "حلّت منطقة بانجسامورو ذاتية الحكم محل منطقة الحكم الذاتي في مينداناو المسلمة عام 2019، وفي CLDR الاسم القديم",
-    "GB-PTE": "اسم بيتربره بالإنجليزية مقطوع في CLDR",
+    "GB-PTE": "اسم بيتربرة بالإنجليزية مقطوع في CLDR",
 };
 export const SUBDIVISION_NAME_WHY = {
     MA: "Morocco's 12 regions since 2015 (Decree 2.15.40); CLDR still has the 16 pre-2015 names, under codes ISO reassigned",

@@ -101,3 +101,24 @@
 - `ar/countries/sa` and `ar/countries/ma` at 1280: the label column heading «التقسيمات الإدارية (13)» wraps, leaving «(13)» alone on the second line. This predates 1.2.0. To fix it, keep the count with the last word: «التقسيمات الإدارية&nbsp;({n})».
 - `ar/countries/gb`: `GB-NNH` and `GB-WNH` show English names («North Northamptonshire») on the Arabic page, because there is no Arabic name in the data.
 - `site/build.mjs` `subType` matches a prefix without a word boundary (`name.startsWith(type)`). It is harmless on the pages checked. A name that merely begins with the type's letters would lose its type.
+
+## Pass 3
+
+**Reviewer:** Opus 5.5 (claude-opus-5-5). **Date:** 10/11/2026.
+**Method:** viewed in the browser at `http://127.0.0.1:8765/worldref/`, 1280 px, dark theme (`ar/countries/ma#overrides`, `ar/countries/sa#subdivisions`). The built HTML of the decisions section was read for `ar/sa`, `ar/ma`, `ar/gb`, `ar/ph`, plus `ar/ly`, `ar/cn` and `ar/iq` (my picks). 390 px is still not viewable in this browser (see pass 2).
+
+**Result: FAIL (2 checks: 4, 10).** Check 7 now passes. The two FAILs are in the same decisions section. I should have caught them in pass 2, because both were already visible in the English section then. They are not regressions from this fix.
+
+| # | Item | Pass 3 | Evidence |
+| --- | --- | --- | --- |
+| 7 | Arabic reasons for the 1.2.0 decisions | PASS | Grep of `site/_out/ar/countries` for the bare «المصادر» link: 0 files. `ar/sa`: «مناطق السعودية الثلاث عشرة (نظام المناطق)». `ar/ly`: «شعبيات ليبيا الاثنتان والعشرون…». `ar/ma`: «جهات المغرب الاثنتا عشرة منذ 2015 (المرسوم 2.15.40)…». `ar/cn`, `ar/iq`, `ar/ph` and `ar/gb` are complete. The number agreement is correct throughout (ثلاث عشرة، الاثنتان والعشرون، الاثنتا عشرة، الستة عشر، الإحدى عشرة). |
+| 18 | Mixed direction in the reasons | PASS | `ar/ma` dark: `subdivisions.name (MA-01)` stays one LTR code run. «(المرسوم 2.15.40)» keeps its digit order. Each «وفق ISO 3166-2:GB» ends its line intact. |
+| Side notes | Heading, `subType` | PASS | `ar/sa` 1280: the heading wraps as «التقسيمات / الإدارية (13)» (U+00A0 before the count), so no lone «(13)». `subType` still omits on `ar/sa` (codes only) and on `ar/ma` «إقليم …» rows. «جهة» is still shown, and «Province», «Prefecture», «London borough» and «State» are unchanged. |
+| 4 | Density | FAIL | `ar/countries/ma#overrides` 1280 dark (same on `en/ma`): 12 consecutive items `subdivisions.name (MA-01)` … `(MA-12)` repeat one identical two-line reason, 24 lines of the same sentence. `ar/gb` and `en/gb`: 11 items `subdivisions.type (GB-ABC … GB-NMD)` repeat «إحدى المناطق الإحدى عشرة في أيرلندا الشمالية، وفق ISO 3166-2:GB». `ar/cn`: 4 items repeat «إحدى البلديات الأربع في الصين…», and 2 more repeat «منطقة إدارية خاصة…». |
+| 10 | Copy rules | FAIL | (a) Within one list, the end punctuation differs. `ar/sa`: the new reason ends with no full stop, the old `name_ar` reason ends with «.». The same mix appears on `ar/ph` (three new without, `nationality_en` with). (b) `ar/gb`, `subdivisions.name (GB-PTE)`: the reason spells «بيتربره», while the same page's row name is «بيتربرة». |
+
+### Notes to the builder (pass 3)
+
+1. **Check 4, decisions section, all country pages, both languages:** in `site/build.mjs`, group overrides that share the same field stem (the text before ` (`) and an identical reason into one `<li>`, with the codes joined inside the code run. For example `<code dir="ltr">subdivisions.name (MA-01, MA-02, …, MA-12)</code>: {reason}`. Keep the codes in data order.
+2. **Check 10a, all Arabic reasons:** end every Arabic reason with «.», matching the existing `ovr.*` Arabic cells. Apply it to the new `why_ar` values in `data/sources.json` (through `scripts/editorial.mjs`) and to the WORDING rows. Leave the English `why` as it is: it is verbatim data, consistently without a stop.
+3. **Check 10b, `GB-PTE` reason:** «اسم بيتربرة بالإنجليزية مقطوع في CLDR.»
