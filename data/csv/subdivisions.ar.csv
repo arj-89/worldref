@@ -1456,18 +1456,18 @@ GB,GB-BEX,,GB-ENG,حي
 GB,GB-BFS,بلفاست,GB-NIR,منطقة
 GB,GB-BGE,,GB-WLS,منطقة رئيسية
 GB,GB-BGW,بليناو غونت,GB-WLS,منطقة رئيسية
-GB,GB-BIR,برمينغهام,GB-ENG,حي
+GB,GB-BIR,برمينغهام,GB-ENG,بلدية
 GB,GB-BKM,باكينغهامشير,GB-ENG,سلطة محلية موحدة
 GB,GB-BNE,منطقة بارنت في لندن,GB-ENG,حي
 GB,GB-BNH,برايتون أند هوف,GB-ENG,سلطة محلية موحدة
-GB,GB-BNS,,GB-ENG,حي
-GB,GB-BOL,,GB-ENG,حي
+GB,GB-BNS,,GB-ENG,بلدية
+GB,GB-BOL,,GB-ENG,بلدية
 GB,GB-BPL,بلاكبول,GB-ENG,سلطة محلية موحدة
 GB,GB-BRC,,GB-ENG,سلطة محلية موحدة
-GB,GB-BRD,,GB-ENG,حي
+GB,GB-BRD,,GB-ENG,بلدية
 GB,GB-BRY,منطقة بروملي,GB-ENG,حي
 GB,GB-BST,برستل,GB-ENG,سلطة محلية موحدة
-GB,GB-BUR,,GB-ENG,حي
+GB,GB-BUR,,GB-ENG,بلدية
 GB,GB-CAM,كامبريدجشير,GB-ENG,مقاطعة
 GB,GB-CAY,كايرفلي,GB-WLS,منطقة رئيسية
 GB,GB-CBF,,GB-ENG,سلطة محلية موحدة
@@ -1475,13 +1475,13 @@ GB,GB-CCG,,GB-NIR,منطقة
 GB,GB-CGN,,GB-WLS,منطقة رئيسية
 GB,GB-CHE,تشيشير إيست,GB-ENG,سلطة محلية موحدة
 GB,GB-CHW,,GB-ENG,سلطة محلية موحدة
-GB,GB-CLD,,GB-ENG,حي
+GB,GB-CLD,,GB-ENG,بلدية
 GB,GB-CLK,كلاكمانشاير,GB-SCT,منطقة مجلس
 GB,GB-CMA,كامبريا,GB-ENG,مقاطعة
 GB,GB-CMD,لندن بورو كامدن,GB-ENG,حي
 GB,GB-CMN,,GB-WLS,منطقة رئيسية
 GB,GB-CON,كورنوال,GB-ENG,سلطة محلية موحدة
-GB,GB-COV,كوفنتري,GB-ENG,حي
+GB,GB-COV,كوفنتري,GB-ENG,بلدية
 GB,GB-CRF,كارديف,GB-WLS,منطقة رئيسية
 GB,GB-CRY,,GB-ENG,حي
 GB,GB-CWY,,GB-WLS,منطقة رئيسية
@@ -1491,11 +1491,11 @@ GB,GB-DEN,دنبيشير,GB-WLS,منطقة رئيسية
 GB,GB-DER,ديربي,GB-ENG,سلطة محلية موحدة
 GB,GB-DEV,ديفون,GB-ENG,مقاطعة
 GB,GB-DGY,دومفريز وغالاوي,GB-SCT,منطقة مجلس
-GB,GB-DNC,,GB-ENG,حي
+GB,GB-DNC,,GB-ENG,بلدية
 GB,GB-DND,دندي,GB-SCT,منطقة مجلس
 GB,GB-DOR,دورست,GB-ENG,سلطة محلية موحدة
 GB,GB-DRS,,GB-NIR,منطقة
-GB,GB-DUD,حي دودلي الحضري,GB-ENG,حي
+GB,GB-DUD,حي دودلي الحضري,GB-ENG,بلدية
 GB,GB-DUR,دورهام,GB-ENG,سلطة محلية موحدة
 GB,GB-EAL,إيلنغ,GB-ENG,حي
 GB,GB-EAY,,GB-SCT,منطقة مجلس
@@ -1513,7 +1513,7 @@ GB,GB-FAL,فالكيرك,GB-SCT,منطقة مجلس
 GB,GB-FIF,فايف,GB-SCT,منطقة مجلس
 GB,GB-FLN,,GB-WLS,منطقة رئيسية
 GB,GB-FMO,,GB-NIR,منطقة
-GB,GB-GAT,,GB-ENG,حي
+GB,GB-GAT,,GB-ENG,بلدية
 GB,GB-GLG,غلاسكو,GB-SCT,منطقة مجلس
 GB,GB-GLS,غلوسترشير,GB-ENG,مقاطعة
 GB,GB-GRE,حي غرينتش الملكي,GB-ENG,حي
@@ -1538,21 +1538,21 @@ GB,GB-IVC,,GB-SCT,منطقة مجلس
 GB,GB-KEC,كينسينغتون وتشيلسي,GB-ENG,حي
 GB,GB-KEN,كنت,GB-ENG,مقاطعة
 GB,GB-KHL,كينغستون أبون هال,GB-ENG,سلطة محلية موحدة
-GB,GB-KIR,,GB-ENG,حي
+GB,GB-KIR,,GB-ENG,بلدية
 GB,GB-KTT,,GB-ENG,حي
-GB,GB-KWL,,GB-ENG,حي
+GB,GB-KWL,,GB-ENG,بلدية
 GB,GB-LAN,لانكشر,GB-ENG,مقاطعة
 GB,GB-LBC,,GB-NIR,منطقة
 GB,GB-LBH,لامبيث,GB-ENG,حي
 GB,GB-LCE,لستر,GB-ENG,سلطة محلية موحدة
-GB,GB-LDS,ليدز,GB-ENG,حي
+GB,GB-LDS,ليدز,GB-ENG,بلدية
 GB,GB-LEC,ليسترشير,GB-ENG,مقاطعة
 GB,GB-LEW,لويشام,GB-ENG,حي
 GB,GB-LIN,لينكونشير,GB-ENG,مقاطعة
-GB,GB-LIV,ليفربول,GB-ENG,حي
+GB,GB-LIV,ليفربول,GB-ENG,بلدية
 GB,GB-LND,مدينة لندن,GB-ENG,
 GB,GB-LUT,لوتن,GB-ENG,سلطة محلية موحدة
-GB,GB-MAN,مانشستر,GB-ENG,حي
+GB,GB-MAN,مانشستر,GB-ENG,بلدية
 GB,GB-MDB,ميدلزبرة,GB-ENG,سلطة محلية موحدة
 GB,GB-MDW,ميدواي,GB-ENG,سلطة محلية موحدة
 GB,GB-MEA,,GB-NIR,منطقة
@@ -1566,7 +1566,7 @@ GB,GB-MUL,,GB-NIR,منطقة
 GB,GB-NAY,,GB-SCT,منطقة مجلس
 GB,GB-NBL,نورثمبرلاند,GB-ENG,سلطة محلية موحدة
 GB,GB-NEL,,GB-ENG,سلطة محلية موحدة
-GB,GB-NET,نيوكاسل أبون تاين,GB-ENG,حي
+GB,GB-NET,نيوكاسل أبون تاين,GB-ENG,بلدية
 GB,GB-NFK,نورفولك,GB-ENG,مقاطعة
 GB,GB-NGM,نوتنغهام,GB-ENG,سلطة محلية موحدة
 GB,GB-NIR,أيرلندا الشمالية,,بلد
@@ -1577,11 +1577,11 @@ GB,GB-NNH,,GB-ENG,
 GB,GB-NSM,,GB-ENG,سلطة محلية موحدة
 GB,GB-NTL,مقاطعة ناحية نيث بورت طالبوت,GB-WLS,منطقة رئيسية
 GB,GB-NTT,نوتنغهامشير,GB-ENG,مقاطعة
-GB,GB-NTY,,GB-ENG,حي
+GB,GB-NTY,,GB-ENG,بلدية
 GB,GB-NWM,نيوهام,GB-ENG,حي
 GB,GB-NWP,,GB-WLS,منطقة رئيسية
 GB,GB-NYK,شمال يوركشير,GB-ENG,سلطة محلية موحدة
-GB,GB-OLD,,GB-ENG,حي
+GB,GB-OLD,,GB-ENG,بلدية
 GB,GB-ORK,جزر أوركني,GB-SCT,منطقة مجلس
 GB,GB-OXF,أكسفوردشير,GB-ENG,مقاطعة
 GB,GB-PEM,بيمبروكشاير,GB-WLS,منطقة رئيسية
@@ -1591,30 +1591,30 @@ GB,GB-POR,بورتسموث,GB-ENG,سلطة محلية موحدة
 GB,GB-POW,باويس,GB-WLS,منطقة رئيسية
 GB,GB-PTE,بيتربرة,GB-ENG,سلطة محلية موحدة
 GB,GB-RCC,,GB-ENG,سلطة محلية موحدة
-GB,GB-RCH,,GB-ENG,حي
+GB,GB-RCH,,GB-ENG,بلدية
 GB,GB-RCT,روندا كينون تاف,GB-WLS,منطقة رئيسية
 GB,GB-RDB,,GB-ENG,حي
 GB,GB-RDG,ريدنج,GB-ENG,سلطة محلية موحدة
 GB,GB-RFW,,GB-SCT,منطقة مجلس
 GB,GB-RIC,ريتشموند، لندن,GB-ENG,حي
-GB,GB-ROT,,GB-ENG,حي
+GB,GB-ROT,,GB-ENG,بلدية
 GB,GB-RUT,روتلاند,GB-ENG,سلطة محلية موحدة
-GB,GB-SAW,ساندويل,GB-ENG,حي
+GB,GB-SAW,ساندويل,GB-ENG,بلدية
 GB,GB-SAY,,GB-SCT,منطقة مجلس
 GB,GB-SCB,الحدود الاسكتلندية,GB-SCT,منطقة مجلس
 GB,GB-SCT,اسكتلندا,,بلد
 GB,GB-SFK,سوفولك,GB-ENG,مقاطعة
-GB,GB-SFT,,GB-ENG,حي
+GB,GB-SFT,,GB-ENG,بلدية
 GB,GB-SGC,,GB-ENG,سلطة محلية موحدة
-GB,GB-SHF,شفيلد,GB-ENG,حي
-GB,GB-SHN,,GB-ENG,حي
+GB,GB-SHF,شفيلد,GB-ENG,بلدية
+GB,GB-SHN,,GB-ENG,بلدية
 GB,GB-SHR,شروبشاير,GB-ENG,سلطة محلية موحدة
-GB,GB-SKP,,GB-ENG,حي
-GB,GB-SLF,سالفورد,GB-ENG,حي
+GB,GB-SKP,,GB-ENG,بلدية
+GB,GB-SLF,سالفورد,GB-ENG,بلدية
 GB,GB-SLG,سلاو,GB-ENG,سلطة محلية موحدة
 GB,GB-SLK,ساوث لانركشاير,GB-SCT,منطقة مجلس
-GB,GB-SND,,GB-ENG,حي
-GB,GB-SOL,,GB-ENG,حي
+GB,GB-SND,,GB-ENG,بلدية
+GB,GB-SOL,,GB-ENG,بلدية
 GB,GB-SOM,مقاطعة سومرست,GB-ENG,سلطة محلية موحدة
 GB,GB-SOS,,GB-ENG,سلطة محلية موحدة
 GB,GB-SRY,سري,GB-ENG,مقاطعة
@@ -1624,35 +1624,35 @@ GB,GB-STH,ساوثهامبتون,GB-ENG,سلطة محلية موحدة
 GB,GB-STN,منطقة ساتون,GB-ENG,حي
 GB,GB-STS,ستافوردشاير,GB-ENG,مقاطعة
 GB,GB-STT,,GB-ENG,سلطة محلية موحدة
-GB,GB-STY,,GB-ENG,حي
+GB,GB-STY,,GB-ENG,بلدية
 GB,GB-SWA,سوانزي,GB-WLS,منطقة رئيسية
 GB,GB-SWD,,GB-ENG,سلطة محلية موحدة
 GB,GB-SWK,,GB-ENG,حي
-GB,GB-TAM,,GB-ENG,حي
+GB,GB-TAM,,GB-ENG,بلدية
 GB,GB-TFW,تلفورد وريكين,GB-ENG,سلطة محلية موحدة
 GB,GB-THR,ثوروك,GB-ENG,سلطة محلية موحدة
 GB,GB-TOB,,GB-ENG,سلطة محلية موحدة
 GB,GB-TOF,تورفين,GB-WLS,منطقة رئيسية
-GB,GB-TRF,ترافورد,GB-ENG,حي
+GB,GB-TRF,ترافورد,GB-ENG,بلدية
 GB,GB-TWH,حي تاور هامليتس، لندن,GB-ENG,حي
 GB,GB-VGL,,GB-WLS,منطقة رئيسية
 GB,GB-WAR,ووريكشير,GB-ENG,مقاطعة
 GB,GB-WBK,,GB-ENG,سلطة محلية موحدة
 GB,GB-WDU,دونبارتونشير الغربية,GB-SCT,منطقة مجلس
 GB,GB-WFT,ناحية غابة والثام في لندن,GB-ENG,حي
-GB,GB-WGN,,GB-ENG,حي
+GB,GB-WGN,,GB-ENG,بلدية
 GB,GB-WIL,ويلتشير,GB-ENG,سلطة محلية موحدة
-GB,GB-WKF,ويكفيلد,GB-ENG,حي
-GB,GB-WLL,,GB-ENG,حي
+GB,GB-WKF,ويكفيلد,GB-ENG,بلدية
+GB,GB-WLL,,GB-ENG,بلدية
 GB,GB-WLN,غرب لوثيان,GB-SCT,منطقة مجلس
 GB,GB-WLS,ويلز,,بلد
-GB,GB-WLV,ولفرهامبتن,GB-ENG,حي
+GB,GB-WLV,ولفرهامبتن,GB-ENG,بلدية
 GB,GB-WND,واندزورث,GB-ENG,حي
 GB,GB-WNH,,GB-ENG,
 GB,GB-WNM,وندسور و ميدينهيد,GB-ENG,سلطة محلية موحدة
 GB,GB-WOK,,GB-ENG,سلطة محلية موحدة
 GB,GB-WOR,وسترشير,GB-ENG,مقاطعة
-GB,GB-WRL,ويرال,GB-ENG,حي
+GB,GB-WRL,ويرال,GB-ENG,بلدية
 GB,GB-WRT,,GB-ENG,سلطة محلية موحدة
 GB,GB-WRX,,GB-WLS,منطقة رئيسية
 GB,GB-WSM,مدينة وستمنستر,GB-ENG,حي
@@ -2462,14 +2462,14 @@ KR,KR-29,غوانغجو,,مدينة حضرية
 KR,KR-30,دايجيون,,مدينة حضرية
 KR,KR-31,أولسان,,مدينة حضرية
 KR,KR-41,مقاطعة غيونغي,,مقاطعة
-KR,KR-42,مقاطعة غانغوون,,مقاطعة ذاتية الحكم خاصة
+KR,KR-42,مقاطعة غانغوون,,مقاطعة خاصة ذاتية الحكم
 KR,KR-43,تشنغتشونغ الشمالية,,مقاطعة
 KR,KR-44,مقاطعة تشنغتشونغ الجنوبية,,مقاطعة
-KR,KR-45,مقاطعة جولا الشمالية,,مقاطعة ذاتية الحكم خاصة
+KR,KR-45,مقاطعة جولا الشمالية,,مقاطعة خاصة ذاتية الحكم
 KR,KR-46,مقاطعة جولا الجنوبية,,مقاطعة
 KR,KR-47,مقاطعة غيونغسانغ الشمالية,,مقاطعة
 KR,KR-48,مقاطعة غيونغسانغ الجنوبية,,مقاطعة
-KR,KR-49,مقاطعة جيجو,,مقاطعة ذاتية الحكم خاصة
+KR,KR-49,مقاطعة جيجو,,مقاطعة خاصة ذاتية الحكم
 KR,KR-50,مدينة سيجونغ,,مدينة
 KW,KW-AH,محافظة الأحمدي,,محافظة
 KW,KW-FA,محافظة الفروانية,,محافظة
@@ -3510,7 +3510,7 @@ PH,PH-10,مينداناو الشمالية,,منطقة
 PH,PH-11,,,منطقة
 PH,PH-12,,,منطقة
 PH,PH-13,كاراجا,,منطقة
-PH,PH-14,الحكم الذاتي الاقليمي لمسلمي مندناو,,منطقة ذاتية الحكم
+PH,PH-14,منطقة بانجسامورو ذاتية الحكم,,منطقة ذاتية الحكم
 PH,PH-15,,,منطقة
 PH,PH-40,كالابارزون,,منطقة
 PH,PH-41,ميماروبا,,منطقة
@@ -4528,7 +4528,7 @@ TT,TT-MRC,ريو كلارو مايارو الإقليمية,,
 TT,TT-PED,شركة بينال ديب الإقليمية,,
 TT,TT-POS,بورت أوف سبين,,بلدية
 TT,TT-PRT,شركة برنس تاون الإقليمية,,
-TT,TT-PTF,بوينت فورتين,,حي
+TT,TT-PTF,بوينت فورتين,,بلدية
 TT,TT-SFO,سان فرناندو، ترينيداد وتوباغو,,بلدية
 TT,TT-SGE,شركة سانجر غراند الإقليمية,,
 TT,TT-SIP,شركة سيباريا الإقليمية,,
@@ -4873,7 +4873,7 @@ VE,VE-S,ولاية تاتشيرا,,ولاية
 VE,VE-T,تروخيو,,ولاية
 VE,VE-U,ياراكوي,,ولاية
 VE,VE-V,زوليا,,ولاية
-VE,VE-W,التبعيات الاتحادية لفنزويلا,,مقاطعة اتحادية
+VE,VE-W,التبعيات الاتحادية لفنزويلا,,إقليم تابع
 VE,VE-X,فارغاس,,ولاية
 VE,VE-Y,دلتا أماكورو,,ولاية
 VE,VE-Z,ولاية آمازون,,ولاية

@@ -168,7 +168,7 @@ export const SUBDIVISION_TYPE_AR = {
     "autonomous province": "مقاطعة ذاتية الحكم",
     "autonomous region": "منطقة ذاتية الحكم",
     "autonomous republic": "جمهورية ذاتية الحكم",
-    borough: "حي",
+    borough: "بلدية",
     canton: "كانتون",
     "capital city": "مدينة عاصمة",
     "capital district": "منطقة العاصمة",
@@ -184,12 +184,14 @@ export const SUBDIVISION_TYPE_AR = {
     division: "قسم",
     emirate: "إمارة",
     entity: "كيان",
+    "federal dependency": "إقليم تابع",
     "federal district": "مقاطعة اتحادية",
     "federal territory": "إقليم اتحادي",
     governorate: "محافظة",
     island: "جزيرة",
     krai: "كراي",
     "local council": "مجلس محلي",
+    "london borough": "حي",
     "metropolitan city": "مدينة حضرية",
     municipality: "بلدية",
     oblast: "أوبلاست",
@@ -203,7 +205,7 @@ export const SUBDIVISION_TYPE_AR = {
     sector: "قطاع",
     "special administrative region": "منطقة إدارية خاصة",
     "special municipality": "بلدية خاصة",
-    "special self-governing province": "مقاطعة ذاتية الحكم خاصة",
+    "special self-governing province": "مقاطعة خاصة ذاتية الحكم",
     state: "ولاية",
     "statistical region": "منطقة إحصائية",
     territory: "إقليم",
@@ -248,7 +250,7 @@ export const SUBDIVISION_TYPE_DEFAULT = {
 /** Where Wikidata gives a subdivision several types: the order to pick from (statutory type first). */
 export const SUBDIVISION_TYPE_PRIORITY = {
     GB: {
-        order: ["constituent country", "unitary authority", "principal area", "council area", "county", "borough", "district"],
+        order: ["constituent country", "unitary authority", "principal area", "council area", "county", "london borough", "borough", "district"],
         why: "UK local government: the statutory type (unitary authority, Welsh principal area, Scottish council area) before honorific ones (city status)",
     },
 };
@@ -287,6 +289,7 @@ export const SUBDIVISION_TYPE_CODE = {
     "BQ-SE": { en: "special municipality", why: "Sint Eustatius, ISO 3166-2:BQ" },
     "PK-IS": { en: "capital territory", why: "Islamabad Capital Territory, ISO 3166-2:PK" },
     "PH-14": { en: "autonomous region", why: "Bangsamoro Autonomous Region, ISO 3166-2:PH" },
+    "VE-W": { en: "federal dependency", why: "Federal Dependencies, ISO 3166-2:VE" },
     ...Object.fromEntries(["GB-ABC", "GB-AND", "GB-ANN", "GB-BFS", "GB-CCG", "GB-DRS", "GB-FMO", "GB-LBC", "GB-MEA", "GB-MUL", "GB-NMD"].map((c) => [c, { en: "district", why: "One of Northern Ireland's 11 districts, ISO 3166-2:GB" }])),
 };
 
@@ -313,6 +316,7 @@ export const SUBDIVISION_NAME = {
     "AE-DU": { ar: "إمارة دبي" },
     "BH-14": { ar: "المحافظة الجنوبية" },
     "BH-17": { ar: "المحافظة الشمالية" },
+    "PH-14": { ar: "منطقة بانجسامورو ذاتية الحكم", en: "Bangsamoro" },
 };
 export const SUBDIVISION_NAME_WHY = {
     MA: "Morocco's 12 regions since 2015 (Decree 2.15.40); CLDR still has the 16 pre-2015 names, under codes ISO reassigned",
@@ -325,6 +329,7 @@ export const SUBDIVISION_NAME_WHY = {
     "AE-DU": "Missing hamza in CLDR",
     "BH-14": "Southern Governorate, its official name; CLDR has a bare adjective",
     "BH-17": "Northern Governorate, its official name; CLDR has a bare adjective",
+    "PH-14": "Bangsamoro Autonomous Region in Muslim Mindanao replaced the ARMM in 2019; CLDR has the old name",
 };
 
 /** Countries whose addresses name a level below the ISO top level; their region label stays Google's. */

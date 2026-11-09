@@ -1450,24 +1450,24 @@ GB,GB-BAS,,Bath and North East Somerset,GB-ENG,سلطة محلية موحدة,un
 GB,GB-BBD,,Blackburn with Darwen,GB-ENG,سلطة محلية موحدة,unitary authority
 GB,GB-BCP,,"Bournemouth, Christchurch and Poole",GB-ENG,سلطة محلية موحدة,unitary authority
 GB,GB-BDF,,Bedford,GB-ENG,سلطة محلية موحدة,unitary authority
-GB,GB-BDG,منطقة باركينغ وداغنهام في لندن,Barking and Dagenham,GB-ENG,حي,borough
-GB,GB-BEN,,Brent,GB-ENG,حي,borough
-GB,GB-BEX,,Bexley,GB-ENG,حي,borough
+GB,GB-BDG,منطقة باركينغ وداغنهام في لندن,Barking and Dagenham,GB-ENG,حي,london borough
+GB,GB-BEN,,Brent,GB-ENG,حي,london borough
+GB,GB-BEX,,Bexley,GB-ENG,حي,london borough
 GB,GB-BFS,بلفاست,Belfast,GB-NIR,منطقة,district
 GB,GB-BGE,,Bridgend,GB-WLS,منطقة رئيسية,principal area
 GB,GB-BGW,بليناو غونت,Blaenau Gwent,GB-WLS,منطقة رئيسية,principal area
-GB,GB-BIR,برمينغهام,Birmingham,GB-ENG,حي,borough
+GB,GB-BIR,برمينغهام,Birmingham,GB-ENG,بلدية,borough
 GB,GB-BKM,باكينغهامشير,Buckinghamshire,GB-ENG,سلطة محلية موحدة,unitary authority
-GB,GB-BNE,منطقة بارنت في لندن,Barnet,GB-ENG,حي,borough
+GB,GB-BNE,منطقة بارنت في لندن,Barnet,GB-ENG,حي,london borough
 GB,GB-BNH,برايتون أند هوف,Brighton and Hove,GB-ENG,سلطة محلية موحدة,unitary authority
-GB,GB-BNS,,Barnsley,GB-ENG,حي,borough
-GB,GB-BOL,,Bolton,GB-ENG,حي,borough
+GB,GB-BNS,,Barnsley,GB-ENG,بلدية,borough
+GB,GB-BOL,,Bolton,GB-ENG,بلدية,borough
 GB,GB-BPL,بلاكبول,Blackpool,GB-ENG,سلطة محلية موحدة,unitary authority
 GB,GB-BRC,,Bracknell Forest,GB-ENG,سلطة محلية موحدة,unitary authority
-GB,GB-BRD,,Bradford,GB-ENG,حي,borough
-GB,GB-BRY,منطقة بروملي,Bromley,GB-ENG,حي,borough
+GB,GB-BRD,,Bradford,GB-ENG,بلدية,borough
+GB,GB-BRY,منطقة بروملي,Bromley,GB-ENG,حي,london borough
 GB,GB-BST,برستل,Bristol,GB-ENG,سلطة محلية موحدة,unitary authority
-GB,GB-BUR,,Bury,GB-ENG,حي,borough
+GB,GB-BUR,,Bury,GB-ENG,بلدية,borough
 GB,GB-CAM,كامبريدجشير,Cambridgeshire,GB-ENG,مقاطعة,county
 GB,GB-CAY,كايرفلي,Caerphilly,GB-WLS,منطقة رئيسية,principal area
 GB,GB-CBF,,Central Bedfordshire,GB-ENG,سلطة محلية موحدة,unitary authority
@@ -1475,15 +1475,15 @@ GB,GB-CCG,,Causeway Coast and Glens,GB-NIR,منطقة,district
 GB,GB-CGN,,Ceredigion,GB-WLS,منطقة رئيسية,principal area
 GB,GB-CHE,تشيشير إيست,Cheshire East,GB-ENG,سلطة محلية موحدة,unitary authority
 GB,GB-CHW,,Cheshire West and Chester,GB-ENG,سلطة محلية موحدة,unitary authority
-GB,GB-CLD,,Calderdale,GB-ENG,حي,borough
+GB,GB-CLD,,Calderdale,GB-ENG,بلدية,borough
 GB,GB-CLK,كلاكمانشاير,Clackmannanshire,GB-SCT,منطقة مجلس,council area
 GB,GB-CMA,كامبريا,Cumbria,GB-ENG,مقاطعة,county
-GB,GB-CMD,لندن بورو كامدن,Camden,GB-ENG,حي,borough
+GB,GB-CMD,لندن بورو كامدن,Camden,GB-ENG,حي,london borough
 GB,GB-CMN,,Carmarthenshire,GB-WLS,منطقة رئيسية,principal area
 GB,GB-CON,كورنوال,Cornwall,GB-ENG,سلطة محلية موحدة,unitary authority
-GB,GB-COV,كوفنتري,Coventry,GB-ENG,حي,borough
+GB,GB-COV,كوفنتري,Coventry,GB-ENG,بلدية,borough
 GB,GB-CRF,كارديف,Cardiff,GB-WLS,منطقة رئيسية,principal area
-GB,GB-CRY,,Croydon,GB-ENG,حي,borough
+GB,GB-CRY,,Croydon,GB-ENG,حي,london borough
 GB,GB-CWY,,Conwy,GB-WLS,منطقة رئيسية,principal area
 GB,GB-DAL,,Darlington,GB-ENG,سلطة محلية موحدة,unitary authority
 GB,GB-DBY,داربيشير,Derbyshire,GB-ENG,مقاطعة,county
@@ -1491,19 +1491,19 @@ GB,GB-DEN,دنبيشير,Denbighshire,GB-WLS,منطقة رئيسية,principal a
 GB,GB-DER,ديربي,Derby,GB-ENG,سلطة محلية موحدة,unitary authority
 GB,GB-DEV,ديفون,Devon,GB-ENG,مقاطعة,county
 GB,GB-DGY,دومفريز وغالاوي,Dumfries and Galloway,GB-SCT,منطقة مجلس,council area
-GB,GB-DNC,,Doncaster,GB-ENG,حي,borough
+GB,GB-DNC,,Doncaster,GB-ENG,بلدية,borough
 GB,GB-DND,دندي,Dundee,GB-SCT,منطقة مجلس,council area
 GB,GB-DOR,دورست,Dorset,GB-ENG,سلطة محلية موحدة,unitary authority
 GB,GB-DRS,,Derry and Strabane,GB-NIR,منطقة,district
-GB,GB-DUD,حي دودلي الحضري,Dudley,GB-ENG,حي,borough
+GB,GB-DUD,حي دودلي الحضري,Dudley,GB-ENG,بلدية,borough
 GB,GB-DUR,دورهام,Durham,GB-ENG,سلطة محلية موحدة,unitary authority
-GB,GB-EAL,إيلنغ,Ealing,GB-ENG,حي,borough
+GB,GB-EAL,إيلنغ,Ealing,GB-ENG,حي,london borough
 GB,GB-EAY,,East Ayrshire,GB-SCT,منطقة مجلس,council area
 GB,GB-EDH,إدنبرة,Edinburgh,GB-SCT,منطقة مجلس,council area
 GB,GB-EDU,شرق دونبارتونشاير,East Dunbartonshire,GB-SCT,منطقة مجلس,council area
 GB,GB-ELN,لوثيان الشرقية,East Lothian,GB-SCT,منطقة مجلس,council area
 GB,GB-ELS,هبرديس الخارجي,Outer Hebrides,GB-SCT,منطقة مجلس,council area
-GB,GB-ENF,منطقة أنفيلد,Enfield,GB-ENG,حي,borough
+GB,GB-ENF,منطقة أنفيلد,Enfield,GB-ENG,حي,london borough
 GB,GB-ENG,إنجلترا,England,,بلد,constituent country
 GB,GB-ERW,,East Renfrewshire,GB-SCT,منطقة مجلس,council area
 GB,GB-ERY,إيست رايدينج أوف يوركشير,East Riding of Yorkshire,GB-ENG,سلطة محلية موحدة,unitary authority
@@ -1513,60 +1513,60 @@ GB,GB-FAL,فالكيرك,Falkirk,GB-SCT,منطقة مجلس,council area
 GB,GB-FIF,فايف,Fife,GB-SCT,منطقة مجلس,council area
 GB,GB-FLN,,Flintshire,GB-WLS,منطقة رئيسية,principal area
 GB,GB-FMO,,Fermanagh and Omagh,GB-NIR,منطقة,district
-GB,GB-GAT,,Gateshead,GB-ENG,حي,borough
+GB,GB-GAT,,Gateshead,GB-ENG,بلدية,borough
 GB,GB-GLG,غلاسكو,Glasgow,GB-SCT,منطقة مجلس,council area
 GB,GB-GLS,غلوسترشير,Gloucestershire,GB-ENG,مقاطعة,county
-GB,GB-GRE,حي غرينتش الملكي,Greenwich,GB-ENG,حي,borough
+GB,GB-GRE,حي غرينتش الملكي,Greenwich,GB-ENG,حي,london borough
 GB,GB-GWN,جوينيد,Gwynedd,GB-WLS,منطقة رئيسية,principal area
 GB,GB-HAL,,Halton,GB-ENG,سلطة محلية موحدة,unitary authority
 GB,GB-HAM,هامبشاير,Hampshire,GB-ENG,مقاطعة,county
-GB,GB-HAV,,Havering,GB-ENG,حي,borough
-GB,GB-HCK,حي هكني في لندن,Hackney,GB-ENG,حي,borough
+GB,GB-HAV,,Havering,GB-ENG,حي,london borough
+GB,GB-HCK,حي هكني في لندن,Hackney,GB-ENG,حي,london borough
 GB,GB-HEF,هيرفوردشير,Herefordshire,GB-ENG,سلطة محلية موحدة,unitary authority
-GB,GB-HIL,ناحية هيلينغدون في لندن,Hillingdon,GB-ENG,حي,borough
+GB,GB-HIL,ناحية هيلينغدون في لندن,Hillingdon,GB-ENG,حي,london borough
 GB,GB-HLD,هايلند,Highland,GB-SCT,منطقة مجلس,council area
-GB,GB-HMF,,Hammersmith and Fulham,GB-ENG,حي,borough
-GB,GB-HNS,هونسلو,Hounslow,GB-ENG,حي,borough
+GB,GB-HMF,,Hammersmith and Fulham,GB-ENG,حي,london borough
+GB,GB-HNS,هونسلو,Hounslow,GB-ENG,حي,london borough
 GB,GB-HPL,,Hartlepool,GB-ENG,سلطة محلية موحدة,unitary authority
 GB,GB-HRT,هارتفوردشير,Hertfordshire,GB-ENG,مقاطعة,county
-GB,GB-HRW,حي هرو لندن,Harrow,GB-ENG,حي,borough
-GB,GB-HRY,هارينجي,Haringey,GB-ENG,حي,borough
+GB,GB-HRW,حي هرو لندن,Harrow,GB-ENG,حي,london borough
+GB,GB-HRY,هارينجي,Haringey,GB-ENG,حي,london borough
 GB,GB-IOS,جزر سيلي,Isles of Scilly,GB-ENG,سلطة محلية موحدة,unitary authority
 GB,GB-IOW,وايت,Isle of Wight,GB-ENG,سلطة محلية موحدة,unitary authority
-GB,GB-ISL,إزلنغتون,Islington,GB-ENG,حي,borough
+GB,GB-ISL,إزلنغتون,Islington,GB-ENG,حي,london borough
 GB,GB-IVC,,Inverclyde,GB-SCT,منطقة مجلس,council area
-GB,GB-KEC,كينسينغتون وتشيلسي,Kensington and Chelsea,GB-ENG,حي,borough
+GB,GB-KEC,كينسينغتون وتشيلسي,Kensington and Chelsea,GB-ENG,حي,london borough
 GB,GB-KEN,كنت,Kent,GB-ENG,مقاطعة,county
 GB,GB-KHL,كينغستون أبون هال,Kingston upon Hull,GB-ENG,سلطة محلية موحدة,unitary authority
-GB,GB-KIR,,Kirklees,GB-ENG,حي,borough
-GB,GB-KTT,,Kingston upon Thames,GB-ENG,حي,borough
-GB,GB-KWL,,Knowsley,GB-ENG,حي,borough
+GB,GB-KIR,,Kirklees,GB-ENG,بلدية,borough
+GB,GB-KTT,,Kingston upon Thames,GB-ENG,حي,london borough
+GB,GB-KWL,,Knowsley,GB-ENG,بلدية,borough
 GB,GB-LAN,لانكشر,Lancashire,GB-ENG,مقاطعة,county
 GB,GB-LBC,,Lisburn and Castlereagh,GB-NIR,منطقة,district
-GB,GB-LBH,لامبيث,Lambeth,GB-ENG,حي,borough
+GB,GB-LBH,لامبيث,Lambeth,GB-ENG,حي,london borough
 GB,GB-LCE,لستر,Leicester,GB-ENG,سلطة محلية موحدة,unitary authority
-GB,GB-LDS,ليدز,Leeds,GB-ENG,حي,borough
+GB,GB-LDS,ليدز,Leeds,GB-ENG,بلدية,borough
 GB,GB-LEC,ليسترشير,Leicestershire,GB-ENG,مقاطعة,county
-GB,GB-LEW,لويشام,Lewisham,GB-ENG,حي,borough
+GB,GB-LEW,لويشام,Lewisham,GB-ENG,حي,london borough
 GB,GB-LIN,لينكونشير,Lincolnshire,GB-ENG,مقاطعة,county
-GB,GB-LIV,ليفربول,Liverpool,GB-ENG,حي,borough
+GB,GB-LIV,ليفربول,Liverpool,GB-ENG,بلدية,borough
 GB,GB-LND,مدينة لندن,City of London,GB-ENG,,city corporation
 GB,GB-LUT,لوتن,Luton,GB-ENG,سلطة محلية موحدة,unitary authority
-GB,GB-MAN,مانشستر,Manchester,GB-ENG,حي,borough
+GB,GB-MAN,مانشستر,Manchester,GB-ENG,بلدية,borough
 GB,GB-MDB,ميدلزبرة,Middlesbrough,GB-ENG,سلطة محلية موحدة,unitary authority
 GB,GB-MDW,ميدواي,Medway,GB-ENG,سلطة محلية موحدة,unitary authority
 GB,GB-MEA,,Mid and East Antrim,GB-NIR,منطقة,district
 GB,GB-MIK,,Milton Keynes,GB-ENG,سلطة محلية موحدة,unitary authority
 GB,GB-MLN,ميدلوثيان,Midlothian,GB-SCT,منطقة مجلس,council area
 GB,GB-MON,,Monmouthshire,GB-WLS,منطقة رئيسية,principal area
-GB,GB-MRT,,Merton,GB-ENG,حي,borough
+GB,GB-MRT,,Merton,GB-ENG,حي,london borough
 GB,GB-MRY,,Moray,GB-SCT,منطقة مجلس,council area
 GB,GB-MTY,,Merthyr Tydfil,GB-WLS,منطقة رئيسية,principal area
 GB,GB-MUL,,Mid Ulster,GB-NIR,منطقة,district
 GB,GB-NAY,,North Ayrshire,GB-SCT,منطقة مجلس,council area
 GB,GB-NBL,نورثمبرلاند,Northumberland,GB-ENG,سلطة محلية موحدة,unitary authority
 GB,GB-NEL,,North East Lincolnshire,GB-ENG,سلطة محلية موحدة,unitary authority
-GB,GB-NET,نيوكاسل أبون تاين,Newcastle upon Tyne,GB-ENG,حي,borough
+GB,GB-NET,نيوكاسل أبون تاين,Newcastle upon Tyne,GB-ENG,بلدية,borough
 GB,GB-NFK,نورفولك,Norfolk,GB-ENG,مقاطعة,county
 GB,GB-NGM,نوتنغهام,Nottingham,GB-ENG,سلطة محلية موحدة,unitary authority
 GB,GB-NIR,أيرلندا الشمالية,Northern Ireland,,بلد,constituent country
@@ -1577,11 +1577,11 @@ GB,GB-NNH,,North Northamptonshire,GB-ENG,,
 GB,GB-NSM,,North Somerset,GB-ENG,سلطة محلية موحدة,unitary authority
 GB,GB-NTL,مقاطعة ناحية نيث بورت طالبوت,Neath Port Talbot,GB-WLS,منطقة رئيسية,principal area
 GB,GB-NTT,نوتنغهامشير,Nottinghamshire,GB-ENG,مقاطعة,county
-GB,GB-NTY,,North Tyneside,GB-ENG,حي,borough
-GB,GB-NWM,نيوهام,Newham,GB-ENG,حي,borough
+GB,GB-NTY,,North Tyneside,GB-ENG,بلدية,borough
+GB,GB-NWM,نيوهام,Newham,GB-ENG,حي,london borough
 GB,GB-NWP,,Newport,GB-WLS,منطقة رئيسية,principal area
 GB,GB-NYK,شمال يوركشير,North Yorkshire,GB-ENG,سلطة محلية موحدة,unitary authority
-GB,GB-OLD,,Oldham,GB-ENG,حي,borough
+GB,GB-OLD,,Oldham,GB-ENG,بلدية,borough
 GB,GB-ORK,جزر أوركني,Orkney Islands,GB-SCT,منطقة مجلس,council area
 GB,GB-OXF,أكسفوردشير,Oxfordshire,GB-ENG,مقاطعة,county
 GB,GB-PEM,بيمبروكشاير,Pembrokeshire,GB-WLS,منطقة رئيسية,principal area
@@ -1591,71 +1591,71 @@ GB,GB-POR,بورتسموث,Portsmouth,GB-ENG,سلطة محلية موحدة,unit
 GB,GB-POW,باويس,Powys,GB-WLS,منطقة رئيسية,principal area
 GB,GB-PTE,بيتربرة,Peter,GB-ENG,سلطة محلية موحدة,unitary authority
 GB,GB-RCC,,Redcar and Cleveland,GB-ENG,سلطة محلية موحدة,unitary authority
-GB,GB-RCH,,Rochdale,GB-ENG,حي,borough
+GB,GB-RCH,,Rochdale,GB-ENG,بلدية,borough
 GB,GB-RCT,روندا كينون تاف,Rhondda Cynon Taf,GB-WLS,منطقة رئيسية,principal area
-GB,GB-RDB,,Redbridge,GB-ENG,حي,borough
+GB,GB-RDB,,Redbridge,GB-ENG,حي,london borough
 GB,GB-RDG,ريدنج,Reading,GB-ENG,سلطة محلية موحدة,unitary authority
 GB,GB-RFW,,Renfrewshire,GB-SCT,منطقة مجلس,council area
-GB,GB-RIC,ريتشموند، لندن,Richmond upon Thames,GB-ENG,حي,borough
-GB,GB-ROT,,Rotherham,GB-ENG,حي,borough
+GB,GB-RIC,ريتشموند، لندن,Richmond upon Thames,GB-ENG,حي,london borough
+GB,GB-ROT,,Rotherham,GB-ENG,بلدية,borough
 GB,GB-RUT,روتلاند,Rutland,GB-ENG,سلطة محلية موحدة,unitary authority
-GB,GB-SAW,ساندويل,Sandwell,GB-ENG,حي,borough
+GB,GB-SAW,ساندويل,Sandwell,GB-ENG,بلدية,borough
 GB,GB-SAY,,South Ayrshire,GB-SCT,منطقة مجلس,council area
 GB,GB-SCB,الحدود الاسكتلندية,Scottish Borders,GB-SCT,منطقة مجلس,council area
 GB,GB-SCT,اسكتلندا,Scotland,,بلد,constituent country
 GB,GB-SFK,سوفولك,Suffolk,GB-ENG,مقاطعة,county
-GB,GB-SFT,,Sefton,GB-ENG,حي,borough
+GB,GB-SFT,,Sefton,GB-ENG,بلدية,borough
 GB,GB-SGC,,South Gloucestershire,GB-ENG,سلطة محلية موحدة,unitary authority
-GB,GB-SHF,شفيلد,Sheffield,GB-ENG,حي,borough
-GB,GB-SHN,,Saint Helens,GB-ENG,حي,borough
+GB,GB-SHF,شفيلد,Sheffield,GB-ENG,بلدية,borough
+GB,GB-SHN,,Saint Helens,GB-ENG,بلدية,borough
 GB,GB-SHR,شروبشاير,Shropshire,GB-ENG,سلطة محلية موحدة,unitary authority
-GB,GB-SKP,,Stockport,GB-ENG,حي,borough
-GB,GB-SLF,سالفورد,Salford,GB-ENG,حي,borough
+GB,GB-SKP,,Stockport,GB-ENG,بلدية,borough
+GB,GB-SLF,سالفورد,Salford,GB-ENG,بلدية,borough
 GB,GB-SLG,سلاو,Slough,GB-ENG,سلطة محلية موحدة,unitary authority
 GB,GB-SLK,ساوث لانركشاير,South Lanarkshire,GB-SCT,منطقة مجلس,council area
-GB,GB-SND,,Sunderland,GB-ENG,حي,borough
-GB,GB-SOL,,Solihull,GB-ENG,حي,borough
+GB,GB-SND,,Sunderland,GB-ENG,بلدية,borough
+GB,GB-SOL,,Solihull,GB-ENG,بلدية,borough
 GB,GB-SOM,مقاطعة سومرست,Somerset,GB-ENG,سلطة محلية موحدة,unitary authority
 GB,GB-SOS,,Southend-on-Sea,GB-ENG,سلطة محلية موحدة,unitary authority
 GB,GB-SRY,سري,Surrey,GB-ENG,مقاطعة,county
 GB,GB-STE,ستوك أون ترينت,Stoke-on-Trent,GB-ENG,سلطة محلية موحدة,unitary authority
 GB,GB-STG,,Stirling,GB-SCT,منطقة مجلس,council area
 GB,GB-STH,ساوثهامبتون,Southampton,GB-ENG,سلطة محلية موحدة,unitary authority
-GB,GB-STN,منطقة ساتون,Sutton,GB-ENG,حي,borough
+GB,GB-STN,منطقة ساتون,Sutton,GB-ENG,حي,london borough
 GB,GB-STS,ستافوردشاير,Staffordshire,GB-ENG,مقاطعة,county
 GB,GB-STT,,Stockton-on-Tees,GB-ENG,سلطة محلية موحدة,unitary authority
-GB,GB-STY,,South Tyneside,GB-ENG,حي,borough
+GB,GB-STY,,South Tyneside,GB-ENG,بلدية,borough
 GB,GB-SWA,سوانزي,Swansea,GB-WLS,منطقة رئيسية,principal area
 GB,GB-SWD,,Swindon,GB-ENG,سلطة محلية موحدة,unitary authority
-GB,GB-SWK,,Southwark,GB-ENG,حي,borough
-GB,GB-TAM,,Tameside,GB-ENG,حي,borough
+GB,GB-SWK,,Southwark,GB-ENG,حي,london borough
+GB,GB-TAM,,Tameside,GB-ENG,بلدية,borough
 GB,GB-TFW,تلفورد وريكين,Telford and Wrekin,GB-ENG,سلطة محلية موحدة,unitary authority
 GB,GB-THR,ثوروك,Thurrock,GB-ENG,سلطة محلية موحدة,unitary authority
 GB,GB-TOB,,Torbay,GB-ENG,سلطة محلية موحدة,unitary authority
 GB,GB-TOF,تورفين,Torfaen,GB-WLS,منطقة رئيسية,principal area
-GB,GB-TRF,ترافورد,Trafford,GB-ENG,حي,borough
-GB,GB-TWH,حي تاور هامليتس، لندن,Tower Hamlets,GB-ENG,حي,borough
+GB,GB-TRF,ترافورد,Trafford,GB-ENG,بلدية,borough
+GB,GB-TWH,حي تاور هامليتس، لندن,Tower Hamlets,GB-ENG,حي,london borough
 GB,GB-VGL,,Vale of Glamorgan,GB-WLS,منطقة رئيسية,principal area
 GB,GB-WAR,ووريكشير,Warwickshire,GB-ENG,مقاطعة,county
 GB,GB-WBK,,West Berkshire,GB-ENG,سلطة محلية موحدة,unitary authority
 GB,GB-WDU,دونبارتونشير الغربية,West Dunbartonshire,GB-SCT,منطقة مجلس,council area
-GB,GB-WFT,ناحية غابة والثام في لندن,Waltham Forest,GB-ENG,حي,borough
-GB,GB-WGN,,Wigan,GB-ENG,حي,borough
+GB,GB-WFT,ناحية غابة والثام في لندن,Waltham Forest,GB-ENG,حي,london borough
+GB,GB-WGN,,Wigan,GB-ENG,بلدية,borough
 GB,GB-WIL,ويلتشير,Wiltshire,GB-ENG,سلطة محلية موحدة,unitary authority
-GB,GB-WKF,ويكفيلد,Wakefield,GB-ENG,حي,borough
-GB,GB-WLL,,Walsall,GB-ENG,حي,borough
+GB,GB-WKF,ويكفيلد,Wakefield,GB-ENG,بلدية,borough
+GB,GB-WLL,,Walsall,GB-ENG,بلدية,borough
 GB,GB-WLN,غرب لوثيان,West Lothian,GB-SCT,منطقة مجلس,council area
 GB,GB-WLS,ويلز,Wales,,بلد,constituent country
-GB,GB-WLV,ولفرهامبتن,Wolverhampton,GB-ENG,حي,borough
-GB,GB-WND,واندزورث,Wandsworth,GB-ENG,حي,borough
+GB,GB-WLV,ولفرهامبتن,Wolverhampton,GB-ENG,بلدية,borough
+GB,GB-WND,واندزورث,Wandsworth,GB-ENG,حي,london borough
 GB,GB-WNH,,West Northamptonshire,GB-ENG,,
 GB,GB-WNM,وندسور و ميدينهيد,Windsor and Maidenhead,GB-ENG,سلطة محلية موحدة,unitary authority
 GB,GB-WOK,,Wokingham,GB-ENG,سلطة محلية موحدة,unitary authority
 GB,GB-WOR,وسترشير,Worcestershire,GB-ENG,مقاطعة,county
-GB,GB-WRL,ويرال,Wirral,GB-ENG,حي,borough
+GB,GB-WRL,ويرال,Wirral,GB-ENG,بلدية,borough
 GB,GB-WRT,,Warrington,GB-ENG,سلطة محلية موحدة,unitary authority
 GB,GB-WRX,,Wrexham,GB-WLS,منطقة رئيسية,principal area
-GB,GB-WSM,مدينة وستمنستر,Westminster,GB-ENG,حي,borough
+GB,GB-WSM,مدينة وستمنستر,Westminster,GB-ENG,حي,london borough
 GB,GB-WSX,غرب ساسكس,West Sussex,GB-ENG,مقاطعة,county
 GB,GB-YOR,يورك,York,GB-ENG,سلطة محلية موحدة,unitary authority
 GB,GB-ZET,جزر شتلاند,Shetland,GB-SCT,منطقة مجلس,council area
@@ -2462,14 +2462,14 @@ KR,KR-29,غوانغجو,Gwangju City,,مدينة حضرية,metropolitan city
 KR,KR-30,دايجيون,Daejeon,,مدينة حضرية,metropolitan city
 KR,KR-31,أولسان,Ulsan,,مدينة حضرية,metropolitan city
 KR,KR-41,مقاطعة غيونغي,Gyeonggi,,مقاطعة,province
-KR,KR-42,مقاطعة غانغوون,Gangwon,,مقاطعة ذاتية الحكم خاصة,special self-governing province
+KR,KR-42,مقاطعة غانغوون,Gangwon,,مقاطعة خاصة ذاتية الحكم,special self-governing province
 KR,KR-43,تشنغتشونغ الشمالية,North Chungcheong,,مقاطعة,province
 KR,KR-44,مقاطعة تشنغتشونغ الجنوبية,South Chungcheong,,مقاطعة,province
-KR,KR-45,مقاطعة جولا الشمالية,North Jeolla,,مقاطعة ذاتية الحكم خاصة,special self-governing province
+KR,KR-45,مقاطعة جولا الشمالية,North Jeolla,,مقاطعة خاصة ذاتية الحكم,special self-governing province
 KR,KR-46,مقاطعة جولا الجنوبية,South Jeolla,,مقاطعة,province
 KR,KR-47,مقاطعة غيونغسانغ الشمالية,North Gyeongsang,,مقاطعة,province
 KR,KR-48,مقاطعة غيونغسانغ الجنوبية,South Gyeongsang,,مقاطعة,province
-KR,KR-49,مقاطعة جيجو,Jeju,,مقاطعة ذاتية الحكم خاصة,special self-governing province
+KR,KR-49,مقاطعة جيجو,Jeju,,مقاطعة خاصة ذاتية الحكم,special self-governing province
 KR,KR-50,مدينة سيجونغ,Sejong,,مدينة,city
 KW,KW-AH,محافظة الأحمدي,Al Ahmadi,,محافظة,governorate
 KW,KW-FA,محافظة الفروانية,Al Farwaniyah,,محافظة,governorate
@@ -3510,7 +3510,7 @@ PH,PH-10,مينداناو الشمالية,Northern Mindanao,,منطقة,region
 PH,PH-11,,Davao,,منطقة,region
 PH,PH-12,,Soccsksargen,,منطقة,region
 PH,PH-13,كاراجا,Caraga,,منطقة,region
-PH,PH-14,الحكم الذاتي الاقليمي لمسلمي مندناو,Muslim Mindanao,,منطقة ذاتية الحكم,autonomous region
+PH,PH-14,منطقة بانجسامورو ذاتية الحكم,Bangsamoro,,منطقة ذاتية الحكم,autonomous region
 PH,PH-15,,Cordillera Administrative,,منطقة,region
 PH,PH-40,كالابارزون,Calabarzon,,منطقة,region
 PH,PH-41,ميماروبا,Mimaropa,,منطقة,region
@@ -4528,7 +4528,7 @@ TT,TT-MRC,ريو كلارو مايارو الإقليمية,Mayaro-Rio Claro,,,
 TT,TT-PED,شركة بينال ديب الإقليمية,Penal-Debe,,,
 TT,TT-POS,بورت أوف سبين,Port of Spain,,بلدية,municipality
 TT,TT-PRT,شركة برنس تاون الإقليمية,Princes Town,,,
-TT,TT-PTF,بوينت فورتين,Point Fortin,,حي,borough
+TT,TT-PTF,بوينت فورتين,Point Fortin,,بلدية,borough
 TT,TT-SFO,سان فرناندو، ترينيداد وتوباغو,San Fernando,,بلدية,municipality
 TT,TT-SGE,شركة سانجر غراند الإقليمية,Sangre Grande,,,
 TT,TT-SIP,شركة سيباريا الإقليمية,Siparia,,,
@@ -4873,7 +4873,7 @@ VE,VE-S,ولاية تاتشيرا,Táchira,,ولاية,state
 VE,VE-T,تروخيو,Trujillo,,ولاية,state
 VE,VE-U,ياراكوي,Yaracuy,,ولاية,state
 VE,VE-V,زوليا,Zulia,,ولاية,state
-VE,VE-W,التبعيات الاتحادية لفنزويلا,Federal Dependencies,,مقاطعة اتحادية,federal district
+VE,VE-W,التبعيات الاتحادية لفنزويلا,Federal Dependencies,,إقليم تابع,federal dependency
 VE,VE-X,فارغاس,Vargas,,ولاية,state
 VE,VE-Y,دلتا أماكورو,Delta Amacuro,,ولاية,state
 VE,VE-Z,ولاية آمازون,Amazonas,,ولاية,state

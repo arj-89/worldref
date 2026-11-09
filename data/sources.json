@@ -208,7 +208,7 @@
   {
    "iso2": "GB",
    "field": "subdivisions.type (order)",
-   "value": "constituent country > unitary authority > principal area > council area > county > borough > district",
+   "value": "constituent country > unitary authority > principal area > council area > county > london borough > borough > district",
    "why": "UK local government: the statutory type (unitary authority, Welsh principal area, Scottish council area) before honorific ones (city status)"
   },
   {
@@ -402,6 +402,12 @@
    "field": "subdivisions.type (PH-14)",
    "value": "autonomous region",
    "why": "Bangsamoro Autonomous Region, ISO 3166-2:PH"
+  },
+  {
+   "iso2": "VE",
+   "field": "subdivisions.type (VE-W)",
+   "value": "federal dependency",
+   "why": "Federal Dependencies, ISO 3166-2:VE"
   },
   {
    "iso2": "GB",
@@ -684,6 +690,12 @@
    "field": "subdivisions.name (BH-17)",
    "value": "المحافظة الشمالية",
    "why": "Northern Governorate, its official name; CLDR has a bare adjective"
+  },
+  {
+   "iso2": "PH",
+   "field": "subdivisions.name (PH-14)",
+   "value": "منطقة بانجسامورو ذاتية الحكم / Bangsamoro",
+   "why": "Bangsamoro Autonomous Region in Muslim Mindanao replaced the ARMM in 2019; CLDR has the old name"
   },
   {
    "iso2": "*",

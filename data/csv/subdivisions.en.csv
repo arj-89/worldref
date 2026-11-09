@@ -1450,22 +1450,22 @@ GB,GB-BAS,Bath and North East Somerset,GB-ENG,unitary authority
 GB,GB-BBD,Blackburn with Darwen,GB-ENG,unitary authority
 GB,GB-BCP,"Bournemouth, Christchurch and Poole",GB-ENG,unitary authority
 GB,GB-BDF,Bedford,GB-ENG,unitary authority
-GB,GB-BDG,Barking and Dagenham,GB-ENG,borough
-GB,GB-BEN,Brent,GB-ENG,borough
-GB,GB-BEX,Bexley,GB-ENG,borough
+GB,GB-BDG,Barking and Dagenham,GB-ENG,london borough
+GB,GB-BEN,Brent,GB-ENG,london borough
+GB,GB-BEX,Bexley,GB-ENG,london borough
 GB,GB-BFS,Belfast,GB-NIR,district
 GB,GB-BGE,Bridgend,GB-WLS,principal area
 GB,GB-BGW,Blaenau Gwent,GB-WLS,principal area
 GB,GB-BIR,Birmingham,GB-ENG,borough
 GB,GB-BKM,Buckinghamshire,GB-ENG,unitary authority
-GB,GB-BNE,Barnet,GB-ENG,borough
+GB,GB-BNE,Barnet,GB-ENG,london borough
 GB,GB-BNH,Brighton and Hove,GB-ENG,unitary authority
 GB,GB-BNS,Barnsley,GB-ENG,borough
 GB,GB-BOL,Bolton,GB-ENG,borough
 GB,GB-BPL,Blackpool,GB-ENG,unitary authority
 GB,GB-BRC,Bracknell Forest,GB-ENG,unitary authority
 GB,GB-BRD,Bradford,GB-ENG,borough
-GB,GB-BRY,Bromley,GB-ENG,borough
+GB,GB-BRY,Bromley,GB-ENG,london borough
 GB,GB-BST,Bristol,GB-ENG,unitary authority
 GB,GB-BUR,Bury,GB-ENG,borough
 GB,GB-CAM,Cambridgeshire,GB-ENG,county
@@ -1478,12 +1478,12 @@ GB,GB-CHW,Cheshire West and Chester,GB-ENG,unitary authority
 GB,GB-CLD,Calderdale,GB-ENG,borough
 GB,GB-CLK,Clackmannanshire,GB-SCT,council area
 GB,GB-CMA,Cumbria,GB-ENG,county
-GB,GB-CMD,Camden,GB-ENG,borough
+GB,GB-CMD,Camden,GB-ENG,london borough
 GB,GB-CMN,Carmarthenshire,GB-WLS,principal area
 GB,GB-CON,Cornwall,GB-ENG,unitary authority
 GB,GB-COV,Coventry,GB-ENG,borough
 GB,GB-CRF,Cardiff,GB-WLS,principal area
-GB,GB-CRY,Croydon,GB-ENG,borough
+GB,GB-CRY,Croydon,GB-ENG,london borough
 GB,GB-CWY,Conwy,GB-WLS,principal area
 GB,GB-DAL,Darlington,GB-ENG,unitary authority
 GB,GB-DBY,Derbyshire,GB-ENG,county
@@ -1497,13 +1497,13 @@ GB,GB-DOR,Dorset,GB-ENG,unitary authority
 GB,GB-DRS,Derry and Strabane,GB-NIR,district
 GB,GB-DUD,Dudley,GB-ENG,borough
 GB,GB-DUR,Durham,GB-ENG,unitary authority
-GB,GB-EAL,Ealing,GB-ENG,borough
+GB,GB-EAL,Ealing,GB-ENG,london borough
 GB,GB-EAY,East Ayrshire,GB-SCT,council area
 GB,GB-EDH,Edinburgh,GB-SCT,council area
 GB,GB-EDU,East Dunbartonshire,GB-SCT,council area
 GB,GB-ELN,East Lothian,GB-SCT,council area
 GB,GB-ELS,Outer Hebrides,GB-SCT,council area
-GB,GB-ENF,Enfield,GB-ENG,borough
+GB,GB-ENF,Enfield,GB-ENG,london borough
 GB,GB-ENG,England,,constituent country
 GB,GB-ERW,East Renfrewshire,GB-SCT,council area
 GB,GB-ERY,East Riding of Yorkshire,GB-ENG,unitary authority
@@ -1516,38 +1516,38 @@ GB,GB-FMO,Fermanagh and Omagh,GB-NIR,district
 GB,GB-GAT,Gateshead,GB-ENG,borough
 GB,GB-GLG,Glasgow,GB-SCT,council area
 GB,GB-GLS,Gloucestershire,GB-ENG,county
-GB,GB-GRE,Greenwich,GB-ENG,borough
+GB,GB-GRE,Greenwich,GB-ENG,london borough
 GB,GB-GWN,Gwynedd,GB-WLS,principal area
 GB,GB-HAL,Halton,GB-ENG,unitary authority
 GB,GB-HAM,Hampshire,GB-ENG,county
-GB,GB-HAV,Havering,GB-ENG,borough
-GB,GB-HCK,Hackney,GB-ENG,borough
+GB,GB-HAV,Havering,GB-ENG,london borough
+GB,GB-HCK,Hackney,GB-ENG,london borough
 GB,GB-HEF,Herefordshire,GB-ENG,unitary authority
-GB,GB-HIL,Hillingdon,GB-ENG,borough
+GB,GB-HIL,Hillingdon,GB-ENG,london borough
 GB,GB-HLD,Highland,GB-SCT,council area
-GB,GB-HMF,Hammersmith and Fulham,GB-ENG,borough
-GB,GB-HNS,Hounslow,GB-ENG,borough
+GB,GB-HMF,Hammersmith and Fulham,GB-ENG,london borough
+GB,GB-HNS,Hounslow,GB-ENG,london borough
 GB,GB-HPL,Hartlepool,GB-ENG,unitary authority
 GB,GB-HRT,Hertfordshire,GB-ENG,county
-GB,GB-HRW,Harrow,GB-ENG,borough
-GB,GB-HRY,Haringey,GB-ENG,borough
+GB,GB-HRW,Harrow,GB-ENG,london borough
+GB,GB-HRY,Haringey,GB-ENG,london borough
 GB,GB-IOS,Isles of Scilly,GB-ENG,unitary authority
 GB,GB-IOW,Isle of Wight,GB-ENG,unitary authority
-GB,GB-ISL,Islington,GB-ENG,borough
+GB,GB-ISL,Islington,GB-ENG,london borough
 GB,GB-IVC,Inverclyde,GB-SCT,council area
-GB,GB-KEC,Kensington and Chelsea,GB-ENG,borough
+GB,GB-KEC,Kensington and Chelsea,GB-ENG,london borough
 GB,GB-KEN,Kent,GB-ENG,county
 GB,GB-KHL,Kingston upon Hull,GB-ENG,unitary authority
 GB,GB-KIR,Kirklees,GB-ENG,borough
-GB,GB-KTT,Kingston upon Thames,GB-ENG,borough
+GB,GB-KTT,Kingston upon Thames,GB-ENG,london borough
 GB,GB-KWL,Knowsley,GB-ENG,borough
 GB,GB-LAN,Lancashire,GB-ENG,county
 GB,GB-LBC,Lisburn and Castlereagh,GB-NIR,district
-GB,GB-LBH,Lambeth,GB-ENG,borough
+GB,GB-LBH,Lambeth,GB-ENG,london borough
 GB,GB-LCE,Leicester,GB-ENG,unitary authority
 GB,GB-LDS,Leeds,GB-ENG,borough
 GB,GB-LEC,Leicestershire,GB-ENG,county
-GB,GB-LEW,Lewisham,GB-ENG,borough
+GB,GB-LEW,Lewisham,GB-ENG,london borough
 GB,GB-LIN,Lincolnshire,GB-ENG,county
 GB,GB-LIV,Liverpool,GB-ENG,borough
 GB,GB-LND,City of London,GB-ENG,city corporation
@@ -1559,7 +1559,7 @@ GB,GB-MEA,Mid and East Antrim,GB-NIR,district
 GB,GB-MIK,Milton Keynes,GB-ENG,unitary authority
 GB,GB-MLN,Midlothian,GB-SCT,council area
 GB,GB-MON,Monmouthshire,GB-WLS,principal area
-GB,GB-MRT,Merton,GB-ENG,borough
+GB,GB-MRT,Merton,GB-ENG,london borough
 GB,GB-MRY,Moray,GB-SCT,council area
 GB,GB-MTY,Merthyr Tydfil,GB-WLS,principal area
 GB,GB-MUL,Mid Ulster,GB-NIR,district
@@ -1578,7 +1578,7 @@ GB,GB-NSM,North Somerset,GB-ENG,unitary authority
 GB,GB-NTL,Neath Port Talbot,GB-WLS,principal area
 GB,GB-NTT,Nottinghamshire,GB-ENG,county
 GB,GB-NTY,North Tyneside,GB-ENG,borough
-GB,GB-NWM,Newham,GB-ENG,borough
+GB,GB-NWM,Newham,GB-ENG,london borough
 GB,GB-NWP,Newport,GB-WLS,principal area
 GB,GB-NYK,North Yorkshire,GB-ENG,unitary authority
 GB,GB-OLD,Oldham,GB-ENG,borough
@@ -1593,10 +1593,10 @@ GB,GB-PTE,Peter,GB-ENG,unitary authority
 GB,GB-RCC,Redcar and Cleveland,GB-ENG,unitary authority
 GB,GB-RCH,Rochdale,GB-ENG,borough
 GB,GB-RCT,Rhondda Cynon Taf,GB-WLS,principal area
-GB,GB-RDB,Redbridge,GB-ENG,borough
+GB,GB-RDB,Redbridge,GB-ENG,london borough
 GB,GB-RDG,Reading,GB-ENG,unitary authority
 GB,GB-RFW,Renfrewshire,GB-SCT,council area
-GB,GB-RIC,Richmond upon Thames,GB-ENG,borough
+GB,GB-RIC,Richmond upon Thames,GB-ENG,london borough
 GB,GB-ROT,Rotherham,GB-ENG,borough
 GB,GB-RUT,Rutland,GB-ENG,unitary authority
 GB,GB-SAW,Sandwell,GB-ENG,borough
@@ -1621,25 +1621,25 @@ GB,GB-SRY,Surrey,GB-ENG,county
 GB,GB-STE,Stoke-on-Trent,GB-ENG,unitary authority
 GB,GB-STG,Stirling,GB-SCT,council area
 GB,GB-STH,Southampton,GB-ENG,unitary authority
-GB,GB-STN,Sutton,GB-ENG,borough
+GB,GB-STN,Sutton,GB-ENG,london borough
 GB,GB-STS,Staffordshire,GB-ENG,county
 GB,GB-STT,Stockton-on-Tees,GB-ENG,unitary authority
 GB,GB-STY,South Tyneside,GB-ENG,borough
 GB,GB-SWA,Swansea,GB-WLS,principal area
 GB,GB-SWD,Swindon,GB-ENG,unitary authority
-GB,GB-SWK,Southwark,GB-ENG,borough
+GB,GB-SWK,Southwark,GB-ENG,london borough
 GB,GB-TAM,Tameside,GB-ENG,borough
 GB,GB-TFW,Telford and Wrekin,GB-ENG,unitary authority
 GB,GB-THR,Thurrock,GB-ENG,unitary authority
 GB,GB-TOB,Torbay,GB-ENG,unitary authority
 GB,GB-TOF,Torfaen,GB-WLS,principal area
 GB,GB-TRF,Trafford,GB-ENG,borough
-GB,GB-TWH,Tower Hamlets,GB-ENG,borough
+GB,GB-TWH,Tower Hamlets,GB-ENG,london borough
 GB,GB-VGL,Vale of Glamorgan,GB-WLS,principal area
 GB,GB-WAR,Warwickshire,GB-ENG,county
 GB,GB-WBK,West Berkshire,GB-ENG,unitary authority
 GB,GB-WDU,West Dunbartonshire,GB-SCT,council area
-GB,GB-WFT,Waltham Forest,GB-ENG,borough
+GB,GB-WFT,Waltham Forest,GB-ENG,london borough
 GB,GB-WGN,Wigan,GB-ENG,borough
 GB,GB-WIL,Wiltshire,GB-ENG,unitary authority
 GB,GB-WKF,Wakefield,GB-ENG,borough
@@ -1647,7 +1647,7 @@ GB,GB-WLL,Walsall,GB-ENG,borough
 GB,GB-WLN,West Lothian,GB-SCT,council area
 GB,GB-WLS,Wales,,constituent country
 GB,GB-WLV,Wolverhampton,GB-ENG,borough
-GB,GB-WND,Wandsworth,GB-ENG,borough
+GB,GB-WND,Wandsworth,GB-ENG,london borough
 GB,GB-WNH,West Northamptonshire,GB-ENG,
 GB,GB-WNM,Windsor and Maidenhead,GB-ENG,unitary authority
 GB,GB-WOK,Wokingham,GB-ENG,unitary authority
@@ -1655,7 +1655,7 @@ GB,GB-WOR,Worcestershire,GB-ENG,county
 GB,GB-WRL,Wirral,GB-ENG,borough
 GB,GB-WRT,Warrington,GB-ENG,unitary authority
 GB,GB-WRX,Wrexham,GB-WLS,principal area
-GB,GB-WSM,Westminster,GB-ENG,borough
+GB,GB-WSM,Westminster,GB-ENG,london borough
 GB,GB-WSX,West Sussex,GB-ENG,county
 GB,GB-YOR,York,GB-ENG,unitary authority
 GB,GB-ZET,Shetland,GB-SCT,council area
@@ -3510,7 +3510,7 @@ PH,PH-10,Northern Mindanao,,region
 PH,PH-11,Davao,,region
 PH,PH-12,Soccsksargen,,region
 PH,PH-13,Caraga,,region
-PH,PH-14,Muslim Mindanao,,autonomous region
+PH,PH-14,Bangsamoro,,autonomous region
 PH,PH-15,Cordillera Administrative,,region
 PH,PH-40,Calabarzon,,region
 PH,PH-41,Mimaropa,,region
@@ -4873,7 +4873,7 @@ VE,VE-S,Táchira,,state
 VE,VE-T,Trujillo,,state
 VE,VE-U,Yaracuy,,state
 VE,VE-V,Zulia,,state
-VE,VE-W,Federal Dependencies,,federal district
+VE,VE-W,Federal Dependencies,,federal dependency
 VE,VE-X,Vargas,,state
 VE,VE-Y,Delta Amacuro,,state
 VE,VE-Z,Amazonas,,state
