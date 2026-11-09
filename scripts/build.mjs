@@ -60,7 +60,7 @@ const SOURCES = {
 };
 const COLUMN_SOURCE = {};
 const overrides = [];
-const override = (iso2, field, value, why) => overrides.push({ iso2, field, value, why });
+const override = (iso2, field, value, why, why_ar) => overrides.push({ iso2, field, value, why, ...(why_ar ? { why_ar } : {}) });
 
 // ---------- helpers ----------
 const first = (a) => (Array.isArray(a) && a.length ? a[0] : null);
@@ -83,8 +83,8 @@ const continentOf = (() => {
     return find;
 })();
 
-for (const [iso, why] of Object.entries(E.REGION_LABEL_KEEP_GOOGLE)) override(iso, "address.region_label", "Google's", why);
-for (const [iso, pol] of Object.entries(E.POLICY)) if (pol.why_timezones) override(iso, "geo.timezones", pol.extra_timezones.join(", "), pol.why_timezones);
+for (const [iso, why] of Object.entries(E.REGION_LABEL_KEEP_GOOGLE)) override(iso, "address.region_label", "Google's", why, E.REGION_LABEL_KEEP_GOOGLE_AR[iso]);
+for (const [iso, pol] of Object.entries(E.POLICY)) if (pol.why_timezones) override(iso, "geo.timezones", pol.extra_timezones.join(", "), pol.why_timezones, pol.why_timezones_ar);
 
 // ---------- core ----------
 function names(iso) {
@@ -339,18 +339,18 @@ function typeSubdivisions(subs) {
     // A subdivision with several candidate terms takes the one most used in its country.
     const freq = {};
     for (const s of subs) for (const t of candidates[s.code]) (freq[s.iso2] ??= {})[t] = (freq[s.iso2][t] ?? 0) + 1;
-    for (const [iso, v] of Object.entries(E.SUBDIVISION_TYPE_COUNTRY)) override(iso, "subdivisions.type", v.en, v.why);
-    for (const [iso, v] of Object.entries(E.SUBDIVISION_TYPE_PRIORITY)) override(iso, "subdivisions.type (order)", v.order.join(" > "), v.why);
+    for (const [iso, v] of Object.entries(E.SUBDIVISION_TYPE_COUNTRY)) override(iso, "subdivisions.type", v.en, v.why, v.why_ar);
+    for (const [iso, v] of Object.entries(E.SUBDIVISION_TYPE_PRIORITY)) override(iso, "subdivisions.type (order)", v.order.join(" > "), v.why, v.why_ar);
     const rank = (iso, t) => {
         const i = E.SUBDIVISION_TYPE_PRIORITY[iso]?.order.indexOf(t) ?? -1;
         return i < 0 ? 99 : i;
     };
-    for (const [code, v] of Object.entries(E.SUBDIVISION_TYPE_CODE)) override(code.slice(0, 2), `subdivisions.type (${code})`, v.en, v.why);
-    for (const [iso, v] of Object.entries(E.SUBDIVISION_TYPE_AR_COUNTRY)) override(iso, "subdivisions.type_ar", Object.entries(v).filter(([k]) => k !== "why").map(([k, a]) => `${k}: ${a}`).join(", "), v.why);
-    for (const [iso, v] of Object.entries(E.SUBDIVISION_TYPE_DEFAULT)) override(iso, "subdivisions.type (untyped rows)", v.en, v.why);
+    for (const [code, v] of Object.entries(E.SUBDIVISION_TYPE_CODE)) override(code.slice(0, 2), `subdivisions.type (${code})`, v.en, v.why, v.why_ar);
+    for (const [iso, v] of Object.entries(E.SUBDIVISION_TYPE_AR_COUNTRY)) override(iso, "subdivisions.type_ar", Object.entries(v).filter(([k]) => !k.startsWith("why")).map(([k, a]) => `${k}: ${a}`).join(", "), v.why, v.why_ar);
+    for (const [iso, v] of Object.entries(E.SUBDIVISION_TYPE_DEFAULT)) override(iso, "subdivisions.type (untyped rows)", v.en, v.why, v.why_ar);
     for (const [code, v] of Object.entries(E.SUBDIVISION_NAME))
-        override(code.slice(0, 2), `subdivisions.name (${code})`, [v.ar, v.en].filter(Boolean).join(" / "), E.SUBDIVISION_NAME_WHY[code] ?? E.SUBDIVISION_NAME_WHY[code.slice(0, 2)]);
-    override("*", "subdivisions.name_ar", "CLDR text cleaned", "CLDR's draft marker ² removed; Persian letters ی ک and the zero-width non-joiner written as Arabic ي ك and a space");
+        override(code.slice(0, 2), `subdivisions.name (${code})`, [v.ar, v.en].filter(Boolean).join(" / "), E.SUBDIVISION_NAME_WHY[code] ?? E.SUBDIVISION_NAME_WHY[code.slice(0, 2)], E.SUBDIVISION_NAME_WHY_AR[code] ?? E.SUBDIVISION_NAME_WHY_AR[code.slice(0, 2)]);
+    override("*", "subdivisions.name_ar", "CLDR text cleaned", "CLDR's draft marker ² removed; Persian letters ی ک and the zero-width non-joiner written as Arabic ي ك and a space", "حُذفت علامة المسودة ² من نصوص CLDR، وكُتب الحرفان الفارسيان ی ک والفاصل غير المرئي بالحرفين العربيين ي ك ومسافة");
     const cleanAr = (n) => n && n.replace(/²/g, "").replace(/ی/g, "ي").replace(/ک/g, "ك").replace(/\u200c/g, " ").replace(/\s+/g, " ").trim();
     return subs.map((s) => {
         const fixed = E.SUBDIVISION_TYPE_CODE[s.code] ?? E.SUBDIVISION_TYPE_COUNTRY[s.iso2];

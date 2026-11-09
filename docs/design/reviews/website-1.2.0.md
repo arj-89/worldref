@@ -64,3 +64,40 @@
 - `/en/countries/gb/`: `GB-NNH` and `GB-WNH` have no type (both are unitary authorities since 2021).
 - Arabic UK glossary terms «منطقة مجلس» (council area) and «منطقة رئيسية» (principal area) read as word-for-word renderings. Not confirmed against an Arabic reference, so not failed here.
 - WORDING `country.subs.more` (over 20 rows) is not built: `/en/countries/gb/` lists all 221 rows.
+
+## Pass 2
+
+**Reviewer:** Opus 5.5 (claude-opus-5-5). **Date:** 10/11/2026.
+**Method:** viewed in the browser at `http://127.0.0.1:8765/worldref/`, styled (CSS and scripts load). 1280 px, light and dark (theme button cycled to Dark), Arabic and English: `ar/countries/sa`, `ar/countries/us`, `ar/countries/ma`, `en/countries/us`, `en/countries/gb`, `en/countries/ie`. The built HTML was also read for `ar/ie`, `ar/cu`, `en/cu` and `ar/gb`. **390 px was not viewable:** the browser window does not narrow below desktop width (the resize call reports success, but the viewport stays 1288 px), and there are no 1.2.0 captures on the board. The 390 behaviour below comes from the shipped CSS (`.tz, .tz-note {display:block}`, `.rows li > span` flex-wrap, `body {overflow-wrap:anywhere}`).
+
+**Result: FAIL (1 check: 7).** Every prescription from pass 1 is applied and verified.
+
+| # | Pass 1 item | Pass 2 | Evidence |
+| --- | --- | --- | --- |
+| 1a | Ireland season label | PASS | `en/ie` 1280 light: `Europe/Dublin UTC+01:00 (winter time UTC+00:00)`. `ar/ie` HTML: «(التوقيت الشتوي UTC+00:00)». `cu` still reads "daylight saving" / «التوقيت الصيفي». |
+| 1b, 4 | Note under the row | PASS | `en/us` 1280 light and `ar/us` 1280 dark: the note sits on its own line under `Pacific/Honolulu UTC-10:00`, 4 px below, muted. |
+| 4a | One zone per line | PASS | `en/us` light and `ar/us` dark: 29 lines, each zone with its offset on one line at 1280. In RTL the zone sits at the right, then the offset, then «(التوقيت الصيفي …)». At 390 an entry may wrap inside its own block, and each block still starts with the mono zone name. |
+| 4b | Meta on the row | PASS | `en/gb` 1280 light: name at the start, "Council area GB-ABD" at the end of the same line. `ar/ma` 1280 dark: «جهة MA-01» at the left end of the row. |
+| 4c | Type repeating the name | PASS | `ar/sa`: codes only (all 13 names already carry «منطقة»). `ar/ma`: «جهة» shown for the regions, «عمالة» for `MA-AGD` «أكادير», omitted for «إقليم …» rows. |
+| 7a | English type case | PASS | `en/gb`: "District", "Council area", "Unitary authority", "London borough", "Borough". |
+| 7b | Arabic note | PASS | `ar/sa` 1280: «للمرجع فقط، ففرق التوقيت يتغيّر: احسبه بأدوات المناطق الزمنية في منصتك.» |
+| 10 | English note | PASS | `en/us` 1280: "For reference only: offsets change, so compute them with your platform's time-zone support." |
+| 14 | Feel | PASS | Its causes (1a, 4a, 4b) are fixed. The US row now reads calm and exact. |
+| 8, 9, 16, 18 | Re-seen styled | PASS | Dark theme on `ar/us` and `ar/ma`: hint and meta legible in `--muted` (7.58:1). No horizontal scroll at 1280. Mixed-direction runs render in the order described in pass 1. |
+
+### New FAIL in pass 2
+
+| # | Check | Page and cell | What is wrong |
+| --- | --- | --- | --- |
+| 7 | Both languages native | `ar/countries/sa` 1280 light, section «قرارات تحريرية في هذا الصف»; also `ar/ma`, `ar/gb` and 31 other Arabic country pages | The editorial decisions added with the subdivision types and names in 1.2.0 have no Arabic reason. The Arabic page shows `subdivisions.type: المصادر` (a bare link) where the English page gives the reason ("Saudi Arabia's 13 regions (Law of Regions, نظام المناطق)"). There are about 85 such rows on 34 Arabic pages, for example `subdivisions.type_ar` (ma, dz, tn, ly, ir…), `subdivisions.type (GB-…)` and `subdivisions.name (MA-01…MA-12)`. Also on `ar/ma`: `geo.timezones`; on `ar/ph`: `address.region_label`. WORDING (section "Editorial decision reasons") requires one `ovr.*` key per override and a build that fails without it. |
+
+**Fix (check 7):**
+- Add one `ovr.{iso2}.{field}` row to `docs/design/flows/country/WORDING.md` for every override that falls back to the link. Write each Arabic reason natively, and copy each English cell verbatim from the `why` in `data/sources.json`.
+- Restore the build check: `site/build.mjs` must fail when an override has no `ovr.*` key, instead of rendering the `المصادر` link.
+- To list the affected rows, grep `site/_out/ar/countries` for `</code>: <a href="https://github.com/arj-89/worldref/blob/main/data/sources.json">المصادر</a>`.
+
+### Outside this change (not counted)
+
+- `ar/countries/sa` and `ar/countries/ma` at 1280: the label column heading «التقسيمات الإدارية (13)» wraps, leaving «(13)» alone on the second line. This predates 1.2.0. To fix it, keep the count with the last word: «التقسيمات الإدارية&nbsp;({n})».
+- `ar/countries/gb`: `GB-NNH` and `GB-WNH` show English names («North Northamptonshire») on the Arabic page, because there is no Arabic name in the data.
+- `site/build.mjs` `subType` matches a prefix without a word boundary (`name.startsWith(type)`). It is harmless on the pages checked. A name that merely begins with the type's letters would lose its type.

@@ -31,7 +31,7 @@ Values from the data (names, codes, numbers, IANA zones, regexes) are not copy a
 | country.sec.address | العنوان البريدي | Postal address | |
 | country.sec.travel | الطوارئ والكهرباء | Emergency and power | |
 | country.sec.sports | الرياضة | Sports | |
-| country.sec.subdivisions | التقسيمات الإدارية ({n}) | Subdivisions ({n}) | |
+| country.sec.subdivisions | التقسيمات الإدارية ({n}) | Subdivisions ({n}) | no-break space keeps the count with the heading |
 | country.sec.sources | المصادر | Sources | footnote targets |
 | country.sec.overrides | قرارات تحريرية في هذا الصف | Editorial decisions in this row | only when the row has overrides |
 

@@ -18,7 +18,11 @@ export const POLICY = {
         extra_calling_territories: ["IL"],
     },
     // Western Sahara is part of Morocco (Saudi official position); its IANA zone belongs to Morocco's row.
-    MA: { extra_timezones: ["Africa/El_Aaiun"], why_timezones: "Western Sahara is part of Morocco (Saudi official position); IANA lists its zone under EH" },
+    MA: {
+        extra_timezones: ["Africa/El_Aaiun"],
+        why_timezones: "Western Sahara is part of Morocco (Saudi official position); IANA lists its zone under EH",
+        why_timezones_ar: "الصحراء الغربية جزء من المغرب (الموقف الرسمي السعودي)، وتدرج IANA منطقتها الزمنية تحت الرمز EH",
+    },
 };
 
 /** Short common names where CLDR's standard form is the long official one (the official form stays in official_name). */
@@ -219,32 +223,32 @@ export const SUBDIVISION_TYPE_IGNORE = /administrative territorial entity|admini
 
 /** Arab countries' own Arabic terms, where they differ from the glossary. */
 export const SUBDIVISION_TYPE_AR_COUNTRY = {
-    DZ: { province: "ولاية", why: "Algeria's official Arabic term for its provinces is ولاية" },
-    TN: { governorate: "ولاية", why: "Tunisia's official Arabic term for its governorates is ولاية" },
-    MA: { region: "جهة", prefecture: "عمالة", province: "إقليم", why: "Morocco's official Arabic terms: جهة (region), عمالة (prefecture), إقليم (province)" },
-    MR: { region: "ولاية", why: "Mauritania's official Arabic term for its regions is ولاية" },
-    SD: { state: "ولاية", why: "Sudan's official Arabic term for its states is ولاية" },
-    SO: { region: "إقليم", why: "Somalia's Arabic term for its regions is إقليم" },
-    DJ: { region: "إقليم", why: "Djibouti's Arabic term for its regions is إقليم" },
-    LY: { district: "شعبية", why: "Libya's official Arabic term for its districts is شعبية" },
-    TR: { province: "ولاية", why: "Turkey's provinces are ولايات in Arabic usage (ولايات تركيا)" },
-    IR: { province: "محافظة", why: "Iran's provinces are محافظات in Arabic usage (محافظات إيران)" },
+    DZ: { province: "ولاية", why: "Algeria's official Arabic term for its provinces is ولاية", why_ar: "المصطلح العربي الرسمي في الجزائر لتقسيماتها هو ولاية" },
+    TN: { governorate: "ولاية", why: "Tunisia's official Arabic term for its governorates is ولاية", why_ar: "المصطلح العربي الرسمي في تونس لتقسيماتها هو ولاية" },
+    MA: { region: "جهة", prefecture: "عمالة", province: "إقليم", why: "Morocco's official Arabic terms: جهة (region), عمالة (prefecture), إقليم (province)", why_ar: "المصطلحات العربية الرسمية في المغرب: جهة، وعمالة، وإقليم" },
+    MR: { region: "ولاية", why: "Mauritania's official Arabic term for its regions is ولاية", why_ar: "المصطلح العربي الرسمي في موريتانيا لتقسيماتها هو ولاية" },
+    SD: { state: "ولاية", why: "Sudan's official Arabic term for its states is ولاية", why_ar: "المصطلح العربي الرسمي في السودان لتقسيماتها هو ولاية" },
+    SO: { region: "إقليم", why: "Somalia's Arabic term for its regions is إقليم", why_ar: "المصطلح العربي لأقاليم الصومال هو إقليم" },
+    DJ: { region: "إقليم", why: "Djibouti's Arabic term for its regions is إقليم", why_ar: "المصطلح العربي لأقاليم جيبوتي هو إقليم" },
+    LY: { district: "شعبية", why: "Libya's official Arabic term for its districts is شعبية", why_ar: "المصطلح العربي الرسمي في ليبيا لتقسيماتها هو شعبية" },
+    TR: { province: "ولاية", why: "Turkey's provinces are ولايات in Arabic usage (ولايات تركيا)", why_ar: "تُسمّى تقسيمات تركيا بالعربية ولايات (ولايات تركيا)" },
+    IR: { province: "محافظة", why: "Iran's provinces are محافظات in Arabic usage (محافظات إيران)", why_ar: "تُسمّى تقسيمات إيران بالعربية محافظات (محافظات إيران)" },
 };
 
 /** Countries where Wikidata gives no usable class: one type for every subdivision, from the official term. */
 export const SUBDIVISION_TYPE_COUNTRY = {
-    SA: { en: "region", ar: "منطقة", why: "Saudi Arabia's 13 regions (Law of Regions, نظام المناطق)" },
-    QA: { en: "municipality", ar: "بلدية", why: "Qatar's 8 municipalities (بلديات)" },
-    LY: { en: "district", ar: "شعبية", why: "Libya's 22 districts (شعبيات), one category in ISO 3166-2:LY" },
+    SA: { en: "region", ar: "منطقة", why: "Saudi Arabia's 13 regions (Law of Regions, نظام المناطق)", why_ar: "مناطق السعودية الثلاث عشرة (نظام المناطق)" },
+    QA: { en: "municipality", ar: "بلدية", why: "Qatar's 8 municipalities (بلديات)", why_ar: "بلديات قطر الثماني" },
+    LY: { en: "district", ar: "شعبية", why: "Libya's 22 districts (شعبيات), one category in ISO 3166-2:LY", why_ar: "شعبيات ليبيا الاثنتان والعشرون، وهي فئة واحدة في ISO 3166-2:LY" },
 };
 
 /** Countries whose untyped subdivisions all share one ISO 3166-2 category; fills nulls only. */
 export const SUBDIVISION_TYPE_DEFAULT = {
-    EE: { en: "municipality", why: "ISO 3166-2:EE: the subdivisions under the counties are rural or urban municipalities" },
-    MT: { en: "local council", why: "ISO 3166-2:MT: local councils" },
-    IS: { en: "municipality", why: "ISO 3166-2:IS: the subdivisions under the regions are municipalities" },
-    CV: { en: "municipality", why: "ISO 3166-2:CV: the subdivisions under the island groups are municipalities" },
-    BI: { en: "province", why: "ISO 3166-2:BI: provinces" },
+    EE: { en: "municipality", why: "ISO 3166-2:EE: the subdivisions under the counties are rural or urban municipalities", why_ar: "وفق ISO 3166-2:EE: التقسيمات التابعة للمقاطعات بلديات ريفية أو حضرية" },
+    MT: { en: "local council", why: "ISO 3166-2:MT: local councils", why_ar: "وفق ISO 3166-2:MT: مجالس محلية" },
+    IS: { en: "municipality", why: "ISO 3166-2:IS: the subdivisions under the regions are municipalities", why_ar: "وفق ISO 3166-2:IS: التقسيمات التابعة للمناطق بلديات" },
+    CV: { en: "municipality", why: "ISO 3166-2:CV: the subdivisions under the island groups are municipalities", why_ar: "وفق ISO 3166-2:CV: التقسيمات التابعة لمجموعات الجزر بلديات" },
+    BI: { en: "province", why: "ISO 3166-2:BI: provinces", why_ar: "وفق ISO 3166-2:BI: مقاطعات" },
 };
 
 /** Where Wikidata gives a subdivision several types: the order to pick from (statutory type first). */
@@ -252,47 +256,48 @@ export const SUBDIVISION_TYPE_PRIORITY = {
     GB: {
         order: ["constituent country", "unitary authority", "principal area", "council area", "county", "london borough", "borough", "district"],
         why: "UK local government: the statutory type (unitary authority, Welsh principal area, Scottish council area) before honorific ones (city status)",
+        why_ar: "في الحكم المحلي البريطاني يُقدَّم النوع القانوني (سلطة محلية موحدة، ومنطقة رئيسية في ويلز، ومنطقة مجلس في اسكتلندا) على الألقاب الشرفية مثل لقب المدينة",
     },
 };
 
 /** Single subdivisions without a usable class. */
 export const SUBDIVISION_TYPE_CODE = {
-    "IQ-KR": { en: "region", ar: "إقليم", why: "Kurdistan Region (إقليم كردستان), its official name" },
-    "YE-SA": { en: "municipality", ar: "أمانة", why: "Amanat Al Asimah (أمانة العاصمة), Sanaa's capital municipality, ISO 3166-2:YE" },
-    "SD-GK": { en: "state", why: "West Kordofan is one of Sudan's 18 states, ISO 3166-2:SD" },
-    "NG-FC": { en: "capital territory", why: "Federal Capital Territory, ISO 3166-2:NG" },
-    "CN-HK": { en: "special administrative region", why: "ISO 3166-2:CN" },
-    "CN-MO": { en: "special administrative region", why: "ISO 3166-2:CN" },
-    "CN-BJ": { en: "municipality", why: "One of China's four municipalities, ISO 3166-2:CN" },
-    "CN-SH": { en: "municipality", why: "One of China's four municipalities, ISO 3166-2:CN" },
-    "CN-TJ": { en: "municipality", why: "One of China's four municipalities, ISO 3166-2:CN" },
-    "CN-CQ": { en: "municipality", why: "One of China's four municipalities, ISO 3166-2:CN" },
-    "GB-LND": { en: "city corporation", ar: null, why: "City of London Corporation, ISO 3166-2:GB; no established Arabic term" },
-    "GB-CMA": { en: "county", why: "Cumbria, a two-tier county in ISO 3166-2:GB" },
-    "UA-43": { en: "autonomous republic", why: "Autonomous Republic of Crimea, ISO 3166-2:UA" },
-    "LT-TA": { en: "county", why: "Tauragė County, ISO 3166-2:LT" },
-    "IT-82": { en: "autonomous region", why: "Sicily, a region with special statute, ISO 3166-2:IT" },
-    "ES-CE": { en: "autonomous city", why: "ISO 3166-2:ES" },
-    "ES-ML": { en: "autonomous city", why: "ISO 3166-2:ES" },
-    "ES-NC": { en: "autonomous community", why: "Navarra, ISO 3166-2:ES" },
-    "ES-PM": { en: "province", why: "Balearic Islands province, ISO 3166-2:ES" },
-    "ES-LO": { en: "province", why: "La Rioja province, ISO 3166-2:ES" },
-    "KR-29": { en: "metropolitan city", why: "Gwangju, ISO 3166-2:KR" },
-    "KR-46": { en: "province", why: "South Jeolla, ISO 3166-2:KR" },
-    "KR-42": { en: "special self-governing province", why: "Gangwon, ISO 3166-2:KR" },
-    "KR-49": { en: "special self-governing province", why: "Jeju, ISO 3166-2:KR" },
-    "NL-BQ1": { en: "special municipality", why: "Bonaire, ISO 3166-2:NL" },
-    "NL-BQ2": { en: "special municipality", why: "Saba, ISO 3166-2:NL" },
-    "NL-BQ3": { en: "special municipality", why: "Sint Eustatius, ISO 3166-2:NL" },
-    "BQ-BO": { en: "special municipality", why: "Bonaire, ISO 3166-2:BQ" },
-    "BQ-SA": { en: "special municipality", why: "Saba, ISO 3166-2:BQ" },
-    "BQ-SE": { en: "special municipality", why: "Sint Eustatius, ISO 3166-2:BQ" },
-    "PK-IS": { en: "capital territory", why: "Islamabad Capital Territory, ISO 3166-2:PK" },
-    "PH-14": { en: "autonomous region", why: "Bangsamoro Autonomous Region, ISO 3166-2:PH" },
-    "GB-NNH": { en: "unitary authority", why: "North Northamptonshire, a unitary authority since 2021, ISO 3166-2:GB" },
-    "GB-WNH": { en: "unitary authority", why: "West Northamptonshire, a unitary authority since 2021, ISO 3166-2:GB" },
-    "VE-W": { en: "federal dependency", why: "Federal Dependencies, ISO 3166-2:VE" },
-    ...Object.fromEntries(["GB-ABC", "GB-AND", "GB-ANN", "GB-BFS", "GB-CCG", "GB-DRS", "GB-FMO", "GB-LBC", "GB-MEA", "GB-MUL", "GB-NMD"].map((c) => [c, { en: "district", why: "One of Northern Ireland's 11 districts, ISO 3166-2:GB" }])),
+    "IQ-KR": { en: "region", ar: "إقليم", why: "Kurdistan Region (إقليم كردستان), its official name", why_ar: "إقليم كردستان، اسمه الرسمي، وفق ISO 3166-2:IQ" },
+    "YE-SA": { en: "municipality", ar: "أمانة", why: "Amanat Al Asimah (أمانة العاصمة), Sanaa's capital municipality, ISO 3166-2:YE", why_ar: "أمانة العاصمة صنعاء، وفق ISO 3166-2:YE" },
+    "SD-GK": { en: "state", why: "West Kordofan is one of Sudan's 18 states, ISO 3166-2:SD", why_ar: "غرب كردفان، إحدى ولايات السودان الثماني عشرة، وفق ISO 3166-2:SD" },
+    "NG-FC": { en: "capital territory", why: "Federal Capital Territory, ISO 3166-2:NG", why_ar: "إقليم العاصمة الاتحادية، وفق ISO 3166-2:NG" },
+    "CN-HK": { en: "special administrative region", why: "ISO 3166-2:CN", why_ar: "منطقة إدارية خاصة، وفق ISO 3166-2:CN" },
+    "CN-MO": { en: "special administrative region", why: "ISO 3166-2:CN", why_ar: "منطقة إدارية خاصة، وفق ISO 3166-2:CN" },
+    "CN-BJ": { en: "municipality", why: "One of China's four municipalities, ISO 3166-2:CN", why_ar: "إحدى البلديات الأربع في الصين، وفق ISO 3166-2:CN" },
+    "CN-SH": { en: "municipality", why: "One of China's four municipalities, ISO 3166-2:CN", why_ar: "إحدى البلديات الأربع في الصين، وفق ISO 3166-2:CN" },
+    "CN-TJ": { en: "municipality", why: "One of China's four municipalities, ISO 3166-2:CN", why_ar: "إحدى البلديات الأربع في الصين، وفق ISO 3166-2:CN" },
+    "CN-CQ": { en: "municipality", why: "One of China's four municipalities, ISO 3166-2:CN", why_ar: "إحدى البلديات الأربع في الصين، وفق ISO 3166-2:CN" },
+    "GB-LND": { en: "city corporation", ar: null, why: "City of London Corporation, ISO 3166-2:GB; no established Arabic term", why_ar: "مؤسسة مدينة لندن، ولا مصطلح عربي مستقر لها، وفق ISO 3166-2:GB" },
+    "GB-CMA": { en: "county", why: "Cumbria, a two-tier county in ISO 3166-2:GB", why_ar: "كمبريا، مقاطعة ذات مستويين، وفق ISO 3166-2:GB" },
+    "UA-43": { en: "autonomous republic", why: "Autonomous Republic of Crimea, ISO 3166-2:UA", why_ar: "جمهورية القرم ذاتية الحكم، وفق ISO 3166-2:UA" },
+    "LT-TA": { en: "county", why: "Tauragė County, ISO 3166-2:LT", why_ar: "مقاطعة تاوراغي، وفق ISO 3166-2:LT" },
+    "IT-82": { en: "autonomous region", why: "Sicily, a region with special statute, ISO 3166-2:IT", why_ar: "صقلية، منطقة ذات نظام خاص، وفق ISO 3166-2:IT" },
+    "ES-CE": { en: "autonomous city", why: "ISO 3166-2:ES", why_ar: "مدينة ذاتية الحكم، وفق ISO 3166-2:ES" },
+    "ES-ML": { en: "autonomous city", why: "ISO 3166-2:ES", why_ar: "مدينة ذاتية الحكم، وفق ISO 3166-2:ES" },
+    "ES-NC": { en: "autonomous community", why: "Navarra, ISO 3166-2:ES", why_ar: "نافارا، منطقة حكم ذاتي، وفق ISO 3166-2:ES" },
+    "ES-PM": { en: "province", why: "Balearic Islands province, ISO 3166-2:ES", why_ar: "مقاطعة جزر البليار، وفق ISO 3166-2:ES" },
+    "ES-LO": { en: "province", why: "La Rioja province, ISO 3166-2:ES", why_ar: "مقاطعة لا ريوخا، وفق ISO 3166-2:ES" },
+    "KR-29": { en: "metropolitan city", why: "Gwangju, ISO 3166-2:KR", why_ar: "غوانغجو، مدينة حضرية، وفق ISO 3166-2:KR" },
+    "KR-46": { en: "province", why: "South Jeolla, ISO 3166-2:KR", why_ar: "جولا الجنوبية، مقاطعة، وفق ISO 3166-2:KR" },
+    "KR-42": { en: "special self-governing province", why: "Gangwon, ISO 3166-2:KR", why_ar: "غانغوون، مقاطعة خاصة ذاتية الحكم، وفق ISO 3166-2:KR" },
+    "KR-49": { en: "special self-governing province", why: "Jeju, ISO 3166-2:KR", why_ar: "جيجو، مقاطعة خاصة ذاتية الحكم، وفق ISO 3166-2:KR" },
+    "NL-BQ1": { en: "special municipality", why: "Bonaire, ISO 3166-2:NL", why_ar: "بونير، بلدية خاصة، وفق ISO 3166-2:NL" },
+    "NL-BQ2": { en: "special municipality", why: "Saba, ISO 3166-2:NL", why_ar: "سابا، بلدية خاصة، وفق ISO 3166-2:NL" },
+    "NL-BQ3": { en: "special municipality", why: "Sint Eustatius, ISO 3166-2:NL", why_ar: "سينت أوستاتيوس، بلدية خاصة، وفق ISO 3166-2:NL" },
+    "BQ-BO": { en: "special municipality", why: "Bonaire, ISO 3166-2:BQ", why_ar: "بونير، بلدية خاصة، وفق ISO 3166-2:BQ" },
+    "BQ-SA": { en: "special municipality", why: "Saba, ISO 3166-2:BQ", why_ar: "سابا، بلدية خاصة، وفق ISO 3166-2:BQ" },
+    "BQ-SE": { en: "special municipality", why: "Sint Eustatius, ISO 3166-2:BQ", why_ar: "سينت أوستاتيوس، بلدية خاصة، وفق ISO 3166-2:BQ" },
+    "PK-IS": { en: "capital territory", why: "Islamabad Capital Territory, ISO 3166-2:PK", why_ar: "إقليم العاصمة إسلام آباد، وفق ISO 3166-2:PK" },
+    "PH-14": { en: "autonomous region", why: "Bangsamoro Autonomous Region, ISO 3166-2:PH", why_ar: "منطقة بانجسامورو ذاتية الحكم، وفق ISO 3166-2:PH" },
+    "GB-NNH": { en: "unitary authority", why: "North Northamptonshire, a unitary authority since 2021, ISO 3166-2:GB", why_ar: "نورثامبتونشير الشمالية، سلطة محلية موحدة منذ 2021، وفق ISO 3166-2:GB" },
+    "GB-WNH": { en: "unitary authority", why: "West Northamptonshire, a unitary authority since 2021, ISO 3166-2:GB", why_ar: "نورثامبتونشير الغربية، سلطة محلية موحدة منذ 2021، وفق ISO 3166-2:GB" },
+    "VE-W": { en: "federal dependency", why: "Federal Dependencies, ISO 3166-2:VE", why_ar: "التوابع الاتحادية، وفق ISO 3166-2:VE" },
+    ...Object.fromEntries(["GB-ABC", "GB-AND", "GB-ANN", "GB-BFS", "GB-CCG", "GB-DRS", "GB-FMO", "GB-LBC", "GB-MEA", "GB-MUL", "GB-NMD"].map((c) => [c, { en: "district", why: "One of Northern Ireland's 11 districts, ISO 3166-2:GB", why_ar: "إحدى المناطق الإحدى عشرة في أيرلندا الشمالية، وفق ISO 3166-2:GB" }])),
 };
 
 /** Subdivision names corrected where CLDR is out of date or wrong (reasons in SUBDIVISION_NAME_WHY). */
@@ -321,6 +326,20 @@ export const SUBDIVISION_NAME = {
     "PH-14": { ar: "منطقة بانجسامورو ذاتية الحكم", en: "Bangsamoro" },
     "GB-PTE": { en: "Peterborough" },
 };
+export const SUBDIVISION_NAME_WHY_AR = {
+    MA: "جهات المغرب الاثنتا عشرة منذ 2015 (المرسوم 2.15.40)، وما زالت CLDR تحمل الأسماء الستة عشر السابقة تحت رموز أعادت ISO توزيعها",
+    "YE-SA": "أمانة العاصمة (ISO 3166-2:YE)، وتكرر CLDR اسم محافظة صنعاء",
+    "IQ-KR": "إقليم كردستان، ولا اسم عربيًا له في CLDR",
+    "PK-IS": "إسلام آباد، والنص العربي في CLDR مكتوب بالفارسية",
+    "IR-19": "محافظة جيلان، والنص في CLDR مكتوب بالفارسية",
+    "GB-BFS": "بلفاست، ولا اسم عربيًا لها في CLDR",
+    "GB-LND": "تسمّي ISO 3166-2:GB هذا الرمز مدينة لندن، لا لندن الكبرى",
+    "AE-DU": "إضافة همزة سقطت في CLDR",
+    "BH-14": "الاسم الرسمي للمحافظة الجنوبية، وفي CLDR صفة مجردة",
+    "BH-17": "الاسم الرسمي للمحافظة الشمالية، وفي CLDR صفة مجردة",
+    "PH-14": "حلّت منطقة بانجسامورو ذاتية الحكم محل منطقة الحكم الذاتي في مينداناو المسلمة عام 2019، وفي CLDR الاسم القديم",
+    "GB-PTE": "اسم بيتربره بالإنجليزية مقطوع في CLDR",
+};
 export const SUBDIVISION_NAME_WHY = {
     MA: "Morocco's 12 regions since 2015 (Decree 2.15.40); CLDR still has the 16 pre-2015 names, under codes ISO reassigned",
     "YE-SA": "Amanat Al Asimah (ISO 3166-2:YE); CLDR repeats Sanaa governorate's name",
@@ -339,6 +358,9 @@ export const SUBDIVISION_NAME_WHY = {
 /** Countries whose addresses name a level below the ISO top level; their region label stays Google's. */
 export const REGION_LABEL_KEEP_GOOGLE = {
     PH: "Philippine addresses name the province, which sits below the ISO top-level regions",
+};
+export const REGION_LABEL_KEEP_GOOGLE_AR = {
+    PH: "تذكر العناوين في الفلبين المقاطعة، وهي دون المناطق في المستوى الأعلى من ISO",
 };
 
 /** Address-form labels. English: Google libaddressinput's own labels (Apache-2.0). */
