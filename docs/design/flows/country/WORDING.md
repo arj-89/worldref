@@ -104,8 +104,9 @@ Values from the data (names, codes, numbers, IANA zones, regexes) are not copy a
 | country.v.population | {n} (عام {year}) | {n} ({year}) | |
 | country.v.volts | {v} فولت | {v} V | |
 | country.v.hertz | {v} هرتز | {v} Hz | |
-| country.v.tz-dst | (التوقيت الصيفي {o}) | (daylight saving {o}) | after a zone's standard offset, only where it switches |
-| country.v.tz-note | للمرجع فقط، فالفرق يتغير: احسبه بأدوات المنصة. | For reference only, offsets change: compute them with your platform's time-zone support. | under the time zones row |
+| country.v.tz-dst | (التوقيت الصيفي {o}) | (daylight saving {o}) | after a zone's standard offset, only where it switches forward |
+| country.v.tz-winter | (التوقيت الشتوي {o}) | (winter time {o}) | where the shift is lower than the standard offset (Ireland) |
+| country.v.tz-note | للمرجع فقط، ففرق التوقيت يتغيّر: احسبه بأدوات المناطق الزمنية في منصتك. | For reference only: offsets change, so compute them with your platform's time-zone support. | own line under the zones |
 | country.v.call-general | لا رقم خاصًا؛ اتصل بـ {general} | No separate number; call {general} | null service with a general number |
 | country.v.postal-legend | `#` رقم، و`@` حرف | `#` is a digit, `@` a letter | under the postal shape |
 | country.v.aliases | {ar} بالعربية و{en} بالإنجليزية | {ar} in Arabic, {en} in English | counts; the list sits in a disclosure under it |

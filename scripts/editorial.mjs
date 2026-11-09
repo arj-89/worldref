@@ -289,6 +289,8 @@ export const SUBDIVISION_TYPE_CODE = {
     "BQ-SE": { en: "special municipality", why: "Sint Eustatius, ISO 3166-2:BQ" },
     "PK-IS": { en: "capital territory", why: "Islamabad Capital Territory, ISO 3166-2:PK" },
     "PH-14": { en: "autonomous region", why: "Bangsamoro Autonomous Region, ISO 3166-2:PH" },
+    "GB-NNH": { en: "unitary authority", why: "North Northamptonshire, a unitary authority since 2021, ISO 3166-2:GB" },
+    "GB-WNH": { en: "unitary authority", why: "West Northamptonshire, a unitary authority since 2021, ISO 3166-2:GB" },
     "VE-W": { en: "federal dependency", why: "Federal Dependencies, ISO 3166-2:VE" },
     ...Object.fromEntries(["GB-ABC", "GB-AND", "GB-ANN", "GB-BFS", "GB-CCG", "GB-DRS", "GB-FMO", "GB-LBC", "GB-MEA", "GB-MUL", "GB-NMD"].map((c) => [c, { en: "district", why: "One of Northern Ireland's 11 districts, ISO 3166-2:GB" }])),
 };
@@ -317,6 +319,7 @@ export const SUBDIVISION_NAME = {
     "BH-14": { ar: "المحافظة الجنوبية" },
     "BH-17": { ar: "المحافظة الشمالية" },
     "PH-14": { ar: "منطقة بانجسامورو ذاتية الحكم", en: "Bangsamoro" },
+    "GB-PTE": { en: "Peterborough" },
 };
 export const SUBDIVISION_NAME_WHY = {
     MA: "Morocco's 12 regions since 2015 (Decree 2.15.40); CLDR still has the 16 pre-2015 names, under codes ISO reassigned",
@@ -329,6 +332,7 @@ export const SUBDIVISION_NAME_WHY = {
     "AE-DU": "Missing hamza in CLDR",
     "BH-14": "Southern Governorate, its official name; CLDR has a bare adjective",
     "BH-17": "Northern Governorate, its official name; CLDR has a bare adjective",
+    "GB-PTE": "CLDR's English name is truncated to Peter",
     "PH-14": "Bangsamoro Autonomous Region in Muslim Mindanao replaced the ARMM in 2019; CLDR has the old name",
 };
 

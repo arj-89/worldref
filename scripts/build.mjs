@@ -358,7 +358,7 @@ function typeSubdivisions(subs) {
         en ??= E.SUBDIVISION_TYPE_DEFAULT[s.iso2]?.en ?? null;
         const ar = fixed && "ar" in fixed ? fixed.ar : en ? E.SUBDIVISION_TYPE_AR_COUNTRY[s.iso2]?.[en] ?? E.SUBDIVISION_TYPE_AR[en] ?? null : null;
         const name = E.SUBDIVISION_NAME[s.code] ?? {};
-        return { ...s, name_ar: name.ar ?? cleanAr(s.name_ar), name_en: (name.en ?? s.name_en)?.replace(/²/g, "") ?? null, type_ar: ar, type_en: en };
+        return { ...s, name_ar: name.ar ?? cleanAr(s.name_ar), name_en: (name.en ?? s.name_en)?.replace(/²/g, "") ?? null, type_ar: ar, type_en: en?.replace(/^london /, "London ") ?? null };
     });
 }
 

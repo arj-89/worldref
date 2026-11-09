@@ -404,6 +404,18 @@
    "why": "Bangsamoro Autonomous Region, ISO 3166-2:PH"
   },
   {
+   "iso2": "GB",
+   "field": "subdivisions.type (GB-NNH)",
+   "value": "unitary authority",
+   "why": "North Northamptonshire, a unitary authority since 2021, ISO 3166-2:GB"
+  },
+  {
+   "iso2": "GB",
+   "field": "subdivisions.type (GB-WNH)",
+   "value": "unitary authority",
+   "why": "West Northamptonshire, a unitary authority since 2021, ISO 3166-2:GB"
+  },
+  {
    "iso2": "VE",
    "field": "subdivisions.type (VE-W)",
    "value": "federal dependency",
@@ -696,6 +708,12 @@
    "field": "subdivisions.name (PH-14)",
    "value": "منطقة بانجسامورو ذاتية الحكم / Bangsamoro",
    "why": "Bangsamoro Autonomous Region in Muslim Mindanao replaced the ARMM in 2019; CLDR has the old name"
+  },
+  {
+   "iso2": "GB",
+   "field": "subdivisions.name (GB-PTE)",
+   "value": "Peterborough",
+   "why": "CLDR's English name is truncated to Peter"
   },
   {
    "iso2": "*",
