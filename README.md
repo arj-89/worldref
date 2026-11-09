@@ -212,8 +212,15 @@ Single-language builds drop the `_ar` / `_en` suffix (`name_ar` becomes `name` i
 | `address.postal_code_regex` | address | `^(?:\d{5})$` | Regex for a valid postal code. |
 | `address.postal_code_example` | address | `11564` | Example postal code. |
 | `address.address_format` | address | `%N%n%O%n%A%n%C %Z` | Address template: %N name, %O organisation, %A street, %D district, %C city, %S region, %Z postal code, %X sorting code, %n new line. |
-| `address.region_label_ar` | address | `null` | What the top-level region is called, in Arabic. |
-| `address.region_label_en` | address | `null` | What the top-level region is called (state, province, emirate...). |
+| `address.region_label_ar` | address | `null` | What the top-level region is called, in Arabic. Where Google gives no type, the country's own subdivision type when all its top-level subdivisions share one. |
+| `address.region_label_en` | address | `null` | What the top-level region is called (state, province, emirate...). Where Google gives no type, the country's own subdivision type when all its top-level subdivisions share one. |
+| `address.locality_label_ar` | address | `المدينة` | Label of the city field in Arabic (المدينة...), or null when the address has no city line. |
+| `address.locality_label_en` | address | `City` | Label of the city field (City, Post town, District, Suburb), or null when the address has no city line. |
+| `address.sublocality_label_ar` | address | `null` | Label of the area-within-city field in Arabic (الحي...), or null when the address has none. |
+| `address.sublocality_label_en` | address | `null` | Label of the area-within-city field (Neighborhood, District, Suburb...), or null when the address has none. |
+| `address.postal_code_label_ar` | address | `الرمز البريدي` | Label of the postal code field in Arabic, or null when the address has no postal code. |
+| `address.postal_code_label_en` | address | `Postal code` | Label of the postal code field (Postal code, ZIP code, PIN code, Eircode), or null when the address has none. |
+| `address.required_fields` | address | `["street","city"]` | Address fields the postal service requires: name, organization, street, sublocality, city, region, postal_code, sorting_code. |
 | `travel` | travel |  | Travel facts. |
 | `travel.emergency` | travel |  | Emergency numbers confirmed from an official source. A null service means: call `general`. |
 | `travel.emergency.police` | travel | `999` | Police. |

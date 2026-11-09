@@ -3,7 +3,7 @@
 import { test } from "node:test";
 import assert from "node:assert/strict";
 import { readFileSync, readdirSync, statSync } from "node:fs";
-import { countries, byIso2, search, sortCountries, parsePhone, normalize, westernDigits } from "../dist/index.js";
+import { countries, byIso2, search, sortCountries, parsePhone, normalize, westernDigits, addressForm, editDistance } from "../dist/index.js";
 import * as reference from "../scripts/lib/text.mjs";
 
 const V = JSON.parse(readFileSync(new URL("vectors.json", import.meta.url)));
@@ -83,4 +83,15 @@ test("every module row joins the full file on iso2", () => {
         const rows = JSON.parse(readFileSync(`${ROOT}data/modules/${f}`, "utf8"));
         assert.equal(rows.map((r) => r.iso2).join(), iso, f);
     }
+});
+
+test("addressForm", () => {
+    for (const c of V.addressForm) {
+        const got = addressForm(byIso2(c.iso2), c.lang).map((line) => line.map((f) => [f.field, f.label, f.required]));
+        assert.deepEqual(got, c.lines, `${c.iso2} ${c.lang}`);
+    }
+});
+
+test("editDistance", () => {
+    for (const [a, b, limit, want] of V.editDistance) assert.equal(editDistance(a, b, limit), want, `${a} ${b}`);
 });

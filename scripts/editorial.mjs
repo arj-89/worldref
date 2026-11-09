@@ -242,3 +242,17 @@ export const SUBDIVISION_TYPE_PRIORITY = {
 export const SUBDIVISION_TYPE_CODE = {
     "IQ-KR": { en: "region", ar: "إقليم", why: "Kurdistan Region (إقليم كردستان), its official name" },
 };
+
+/** Address-form labels. English: Google libaddressinput's own labels (Apache-2.0). */
+export const ADDRESS_LABEL_EN = {
+    locality: { city: "City", district: "District", post_town: "Post town", suburb: "Suburb" },
+    sublocality: { suburb: "Suburb", district: "District", neighborhood: "Neighborhood", village_township: "Village / Township", townland: "Townland" },
+    postal_code: { postal: "Postal code", zip: "ZIP code", pin: "PIN code", eircode: "Eircode" },
+};
+
+/** Arabic address-form labels: no published Arabic translation exists, so this is worldref's glossary. */
+export const ADDRESS_LABEL_AR = {
+    locality: { city: "المدينة", district: "المنطقة", post_town: "مدينة البريد", suburb: "الضاحية" },
+    sublocality: { suburb: "الضاحية", district: "المنطقة", neighborhood: "الحي", village_township: "القرية أو البلدة", townland: "البلدة" },
+    postal_code: { postal: "الرمز البريدي", zip: "الرمز البريدي", pin: "الرمز البريدي", eircode: "الرمز البريدي" },
+};

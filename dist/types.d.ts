@@ -56,6 +56,11 @@ export interface Country {
         population: number | null;
         population_year: number | null;
         timezones: string[];
+        timezone_offsets: {
+            zone: string;
+            standard: string;
+            dst: string | null;
+        }[];
         driving_side: "left" | "right" | null;
     };
     locale: {
@@ -76,6 +81,13 @@ export interface Country {
         address_format: string | null;
         region_label_ar: string | null;
         region_label_en: string | null;
+        locality_label_ar: string | null;
+        locality_label_en: string | null;
+        sublocality_label_ar: string | null;
+        sublocality_label_en: string | null;
+        postal_code_label_ar: string | null;
+        postal_code_label_en: string | null;
+        required_fields: ("name" | "organization" | "street" | "sublocality" | "city" | "region" | "postal_code" | "sorting_code")[];
     };
     travel: {
         emergency: {
@@ -99,6 +111,8 @@ export interface Subdivision {
     name_ar: string | null;
     name_en: string | null;
     parent: string | null;
+    type_ar: string | null;
+    type_en: string | null;
 }
 /** The fields search and sorting need; the full record and the `core` module both have them. */
 export type Searchable = Pick<Country, "iso2" | "name_ar" | "name_en" | "aliases_ar" | "aliases_en" | "sort_ar" | "sort_en"> & Partial<Pick<Country, "iso3" | "phone">>;

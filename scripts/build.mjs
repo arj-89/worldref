@@ -7,6 +7,7 @@ import { ROWS, ABSENT, PINS } from "./config.mjs";
 import * as E from "./editorial.mjs";
 import { leadingPrefixes } from "./lib/prefixes.mjs";
 import { normalize, sortKey } from "./lib/text.mjs";
+import { buildSubdivisions } from "./lib/subdivisions.mjs";
 
 const require = createRequire(import.meta.url);
 const ROOT = new URL("../", import.meta.url).pathname;
@@ -318,6 +319,43 @@ for (const [iso, v] of Object.entries(E.WEEK_FILL)) override(iso, "locale.week_s
 override("PS", "travel.frequency_hz", [50], "Electric Current Worldwide lists this grid under the excluded row's name; mapped to Palestine");
 override("PS", "phone[+972]", null, "+972 numbering (Jerusalem, 1948 lines) mapped to Palestine by policy");
 
+// ---------- subdivision types ----------
+const subtypeClasses = snapJson("wikidata-subdivision-types.json");
+const TYPE_TERMS = Object.keys(E.SUBDIVISION_TYPE_AR).sort((a, b) => b.length - a.length);
+/** The type term a Wikidata class label names, or null ("governorate of Egypt" and "U.S. state" both work). */
+function typeTerm(label) {
+    if (E.SUBDIVISION_TYPE_IGNORE.test(label)) return null;
+    const head = label.toLowerCase().replace(/^u\.s\. /, "").replace(/ of .*$/, "").replace(/s$/, "");
+    if (head === "entity" && !/^entity of /.test(label)) return null;
+    // Exact, then the first words ("county council area" is a county), then the last ("metropolitan borough").
+    return TYPE_TERMS.find((t) => head === t) ?? TYPE_TERMS.find((t) => head.startsWith(`${t} `)) ?? TYPE_TERMS.find((t) => head.endsWith(` ${t}`)) ?? null;
+}
+function typeSubdivisions(subs) {
+    const candidates = Object.fromEntries(subs.map((s) => {
+        const terms = uniq((subtypeClasses[s.code] ?? []).map((c) => typeTerm(c.en)).filter(Boolean));
+        return [s.code, terms.length > 1 ? terms.filter((t) => t !== "area") : terms]; // "area" only when nothing better
+    }));
+    // A subdivision with several candidate terms takes the one most used in its country.
+    const freq = {};
+    for (const s of subs) for (const t of candidates[s.code]) (freq[s.iso2] ??= {})[t] = (freq[s.iso2][t] ?? 0) + 1;
+    for (const [iso, v] of Object.entries(E.SUBDIVISION_TYPE_COUNTRY)) override(iso, "subdivisions.type", v.en, v.why);
+    for (const [iso, v] of Object.entries(E.SUBDIVISION_TYPE_PRIORITY)) override(iso, "subdivisions.type (order)", v.order.join(" > "), v.why);
+    const rank = (iso, t) => {
+        const i = E.SUBDIVISION_TYPE_PRIORITY[iso]?.order.indexOf(t) ?? -1;
+        return i < 0 ? 99 : i;
+    };
+    for (const [code, v] of Object.entries(E.SUBDIVISION_TYPE_CODE)) override(code.slice(0, 2), `subdivisions.type (${code})`, v.en, v.why);
+    for (const [iso, v] of Object.entries(E.SUBDIVISION_TYPE_AR_COUNTRY)) override(iso, "subdivisions.type_ar", Object.entries(v).filter(([k]) => k !== "why").map(([k, a]) => `${k}: ${a}`).join(", "), v.why);
+    return subs.map((s) => {
+        const fixed = E.SUBDIVISION_TYPE_CODE[s.code] ?? E.SUBDIVISION_TYPE_COUNTRY[s.iso2];
+        const en = fixed?.en ?? [...candidates[s.code]].sort((a, b) => rank(s.iso2, a) - rank(s.iso2, b) || (freq[s.iso2][b] - freq[s.iso2][a]) || (a < b ? -1 : 1))[0] ?? null;
+        const ar = fixed?.ar ?? (en ? E.SUBDIVISION_TYPE_AR_COUNTRY[s.iso2]?.[en] ?? E.SUBDIVISION_TYPE_AR[en] : null);
+        return { ...s, type_ar: ar ?? null, type_en: en };
+    });
+}
+
+const subdivisions = typeSubdivisions(buildSubdivisions(snap, ROWS));
+
 // ---------- assemble ----------
 const unMembers = new Set([...ROWS.filter((i) => wd[i].un_member), ...E.UN_MEMBERS_FILL]);
 const records = ROWS.map((iso) => {
@@ -329,6 +367,16 @@ const records = ROWS.map((iso) => {
     const coords = first(wd[iso].coords);
     const addr = { fmt: address.ZZ.fmt, ...(address[iso] ?? {}) };
     const regionType = addr.state_name_type ?? (addr.fmt?.includes("%S") ? "province" : null);
+    // Where Google gives no region type (its generic "province"), and every top-level subdivision has the same
+    // type, the region is called by that type (Egypt: governorate, محافظة). Google's explicit types stay.
+    const tops = subdivisions.filter((s) => s.iso2 === iso && !s.parent);
+    const ownType = !addr.state_name_type && tops.length && tops.every((s) => s.type_en && s.type_en === tops[0].type_en) ? tops[0] : null;
+    const fmt = addr.fmt ?? "";
+    const label = (kind, type) => (type ? { ar: E.ADDRESS_LABEL_AR[kind][type] ?? null, en: E.ADDRESS_LABEL_EN[kind][type] ?? null } : { ar: null, en: null });
+    const locality = label("locality", fmt.includes("%C") ? addr.locality_name_type ?? "city" : null);
+    const sublocality = label("sublocality", fmt.includes("%D") ? addr.sublocality_name_type ?? "suburb" : null);
+    const postal = label("postal_code", fmt.includes("%Z") ? addr.zip_name_type ?? "postal" : null);
+    const REQUIRE = { N: "name", O: "organization", A: "street", D: "sublocality", C: "city", S: "region", Z: "postal_code", X: "sorting_code" };
     const zip = addr.zip ? `^(?:${addr.zip})$` : null;
     const zipex = addr.zipex?.split(",")[0] ?? null;
     const plugs = uniq((wd[iso].plugs ?? []).flatMap((p) => E.PLUG_TYPES[p] ?? [])).sort();
@@ -397,8 +445,15 @@ const records = ROWS.map((iso) => {
             postal_code_regex: zip,
             postal_code_example: zipex,
             address_format: addr.fmt ?? null,
-            region_label_ar: regionType ? E.REGION_LABEL_AR[regionType] ?? null : null,
-            region_label_en: regionType ? regionType.replace("do_si", "province") : null,
+            region_label_ar: regionType ? (ownType ? ownType.type_ar : E.REGION_LABEL_AR[regionType] ?? null) : null,
+            region_label_en: regionType ? (ownType ? ownType.type_en : regionType.replace("do_si", "province")) : null,
+            locality_label_ar: locality.ar,
+            locality_label_en: locality.en,
+            sublocality_label_ar: sublocality.ar,
+            sublocality_label_en: sublocality.en,
+            postal_code_label_ar: postal.ar,
+            postal_code_label_en: postal.en,
+            required_fields: [...(addr.require ?? address.ZZ.require)].map((c) => REQUIRE[c]).filter(Boolean),
         },
         travel: {
             emergency: emergencyOf(iso),
@@ -440,47 +495,10 @@ Object.assign(COLUMN_SOURCE, {
     "sports.fifa,sports.ioc": "wikidata",
 });
 
-// ---------- subdivision types ----------
-const subtypeClasses = snapJson("wikidata-subdivision-types.json");
-const TYPE_TERMS = Object.keys(E.SUBDIVISION_TYPE_AR).sort((a, b) => b.length - a.length);
-/** The type term a Wikidata class label names, or null ("governorate of Egypt" and "U.S. state" both work). */
-function typeTerm(label) {
-    if (E.SUBDIVISION_TYPE_IGNORE.test(label)) return null;
-    const head = label.toLowerCase().replace(/^u\.s\. /, "").replace(/ of .*$/, "").replace(/s$/, "");
-    if (head === "entity" && !/^entity of /.test(label)) return null;
-    // Exact, then the first words ("county council area" is a county), then the last ("metropolitan borough").
-    return TYPE_TERMS.find((t) => head === t) ?? TYPE_TERMS.find((t) => head.startsWith(`${t} `)) ?? TYPE_TERMS.find((t) => head.endsWith(` ${t}`)) ?? null;
-}
-function typeSubdivisions(subs) {
-    const candidates = Object.fromEntries(subs.map((s) => {
-        const terms = uniq((subtypeClasses[s.code] ?? []).map((c) => typeTerm(c.en)).filter(Boolean));
-        return [s.code, terms.length > 1 ? terms.filter((t) => t !== "area") : terms]; // "area" only when nothing better
-    }));
-    // A subdivision with several candidate terms takes the one most used in its country.
-    const freq = {};
-    for (const s of subs) for (const t of candidates[s.code]) (freq[s.iso2] ??= {})[t] = (freq[s.iso2][t] ?? 0) + 1;
-    for (const [iso, v] of Object.entries(E.SUBDIVISION_TYPE_COUNTRY)) override(iso, "subdivisions.type", v.en, v.why);
-    for (const [iso, v] of Object.entries(E.SUBDIVISION_TYPE_PRIORITY)) override(iso, "subdivisions.type (order)", v.order.join(" > "), v.why);
-    const rank = (iso, t) => {
-        const i = E.SUBDIVISION_TYPE_PRIORITY[iso]?.order.indexOf(t) ?? -1;
-        return i < 0 ? 99 : i;
-    };
-    for (const [code, v] of Object.entries(E.SUBDIVISION_TYPE_CODE)) override(code.slice(0, 2), `subdivisions.type (${code})`, v.en, v.why);
-    for (const [iso, v] of Object.entries(E.SUBDIVISION_TYPE_AR_COUNTRY)) override(iso, "subdivisions.type_ar", Object.entries(v).filter(([k]) => k !== "why").map(([k, a]) => `${k}: ${a}`).join(", "), v.why);
-    return subs.map((s) => {
-        const fixed = E.SUBDIVISION_TYPE_CODE[s.code] ?? E.SUBDIVISION_TYPE_COUNTRY[s.iso2];
-        const en = fixed?.en ?? [...candidates[s.code]].sort((a, b) => rank(s.iso2, a) - rank(s.iso2, b) || (freq[s.iso2][b] - freq[s.iso2][a]) || (a < b ? -1 : 1))[0] ?? null;
-        const ar = fixed?.ar ?? (en ? E.SUBDIVISION_TYPE_AR_COUNTRY[s.iso2]?.[en] ?? E.SUBDIVISION_TYPE_AR[en] : null);
-        return { ...s, type_ar: ar ?? null, type_en: en };
-    });
-}
-
-export { records, SOURCES, COLUMN_SOURCE, overrides };
+export { records, subdivisions, SOURCES, COLUMN_SOURCE, overrides };
 
 // ---------- write ----------
 import { writeOutputs } from "./lib/outputs.mjs";
-import { buildSubdivisions } from "./lib/subdivisions.mjs";
 if (process.argv[1] === new URL(import.meta.url).pathname) {
-    const subdivisions = typeSubdivisions(buildSubdivisions(snap, ROWS));
     writeOutputs({ ROOT, records, subdivisions, SOURCES, COLUMN_SOURCE, overrides, ABSENT });
 }

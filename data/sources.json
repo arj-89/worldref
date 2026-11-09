@@ -182,6 +182,78 @@
    "why": "+972 numbering (Jerusalem, 1948 lines) mapped to Palestine by policy"
   },
   {
+   "iso2": "SA",
+   "field": "subdivisions.type",
+   "value": "region",
+   "why": "Saudi Arabia's 13 regions (Law of Regions, نظام المناطق)"
+  },
+  {
+   "iso2": "QA",
+   "field": "subdivisions.type",
+   "value": "municipality",
+   "why": "Qatar's 8 municipalities (بلديات)"
+  },
+  {
+   "iso2": "GB",
+   "field": "subdivisions.type (order)",
+   "value": "constituent country > unitary authority > principal area > council area > county > borough > district",
+   "why": "UK local government: the statutory type (unitary authority, Welsh principal area, Scottish council area) before honorific ones (city status)"
+  },
+  {
+   "iso2": "IQ",
+   "field": "subdivisions.type (IQ-KR)",
+   "value": "region",
+   "why": "Kurdistan Region (إقليم كردستان), its official name"
+  },
+  {
+   "iso2": "DZ",
+   "field": "subdivisions.type_ar",
+   "value": "province: ولاية",
+   "why": "Algeria's official Arabic term for its provinces is ولاية"
+  },
+  {
+   "iso2": "TN",
+   "field": "subdivisions.type_ar",
+   "value": "governorate: ولاية",
+   "why": "Tunisia's official Arabic term for its governorates is ولاية"
+  },
+  {
+   "iso2": "MA",
+   "field": "subdivisions.type_ar",
+   "value": "region: جهة, prefecture: عمالة, province: إقليم",
+   "why": "Morocco's official Arabic terms: جهة (region), عمالة (prefecture), إقليم (province)"
+  },
+  {
+   "iso2": "MR",
+   "field": "subdivisions.type_ar",
+   "value": "region: ولاية",
+   "why": "Mauritania's official Arabic term for its regions is ولاية"
+  },
+  {
+   "iso2": "SD",
+   "field": "subdivisions.type_ar",
+   "value": "state: ولاية",
+   "why": "Sudan's official Arabic term for its states is ولاية"
+  },
+  {
+   "iso2": "SO",
+   "field": "subdivisions.type_ar",
+   "value": "region: إقليم",
+   "why": "Somalia's Arabic term for its regions is إقليم"
+  },
+  {
+   "iso2": "DJ",
+   "field": "subdivisions.type_ar",
+   "value": "region: إقليم",
+   "why": "Djibouti's Arabic term for its regions is إقليم"
+  },
+  {
+   "iso2": "LY",
+   "field": "subdivisions.type_ar",
+   "value": "district: شعبية",
+   "why": "Libya's official Arabic term for its districts is شعبية"
+  },
+  {
    "iso2": "AE",
    "field": "name_ar",
    "value": "الإمارات",
@@ -567,78 +639,6 @@
    "field": "nationality_ar_m",
    "value": "زيمبابوي",
    "why": "Standard Arabic form; Wikidata's \"زنبابي\" is wrong"
-  },
-  {
-   "iso2": "SA",
-   "field": "subdivisions.type",
-   "value": "region",
-   "why": "Saudi Arabia's 13 regions (Law of Regions, نظام المناطق)"
-  },
-  {
-   "iso2": "QA",
-   "field": "subdivisions.type",
-   "value": "municipality",
-   "why": "Qatar's 8 municipalities (بلديات)"
-  },
-  {
-   "iso2": "GB",
-   "field": "subdivisions.type (order)",
-   "value": "constituent country > unitary authority > principal area > council area > county > borough > district",
-   "why": "UK local government: the statutory type (unitary authority, Welsh principal area, Scottish council area) before honorific ones (city status)"
-  },
-  {
-   "iso2": "IQ",
-   "field": "subdivisions.type (IQ-KR)",
-   "value": "region",
-   "why": "Kurdistan Region (إقليم كردستان), its official name"
-  },
-  {
-   "iso2": "DZ",
-   "field": "subdivisions.type_ar",
-   "value": "province: ولاية",
-   "why": "Algeria's official Arabic term for its provinces is ولاية"
-  },
-  {
-   "iso2": "TN",
-   "field": "subdivisions.type_ar",
-   "value": "governorate: ولاية",
-   "why": "Tunisia's official Arabic term for its governorates is ولاية"
-  },
-  {
-   "iso2": "MA",
-   "field": "subdivisions.type_ar",
-   "value": "region: جهة, prefecture: عمالة, province: إقليم",
-   "why": "Morocco's official Arabic terms: جهة (region), عمالة (prefecture), إقليم (province)"
-  },
-  {
-   "iso2": "MR",
-   "field": "subdivisions.type_ar",
-   "value": "region: ولاية",
-   "why": "Mauritania's official Arabic term for its regions is ولاية"
-  },
-  {
-   "iso2": "SD",
-   "field": "subdivisions.type_ar",
-   "value": "state: ولاية",
-   "why": "Sudan's official Arabic term for its states is ولاية"
-  },
-  {
-   "iso2": "SO",
-   "field": "subdivisions.type_ar",
-   "value": "region: إقليم",
-   "why": "Somalia's Arabic term for its regions is إقليم"
-  },
-  {
-   "iso2": "DJ",
-   "field": "subdivisions.type_ar",
-   "value": "region: إقليم",
-   "why": "Djibouti's Arabic term for its regions is إقليم"
-  },
-  {
-   "iso2": "LY",
-   "field": "subdivisions.type_ar",
-   "value": "district: شعبية",
-   "why": "Libya's official Arabic term for its districts is شعبية"
   }
  ],
  "nulls": {
