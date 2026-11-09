@@ -51,15 +51,24 @@ type Language struct {
 
 // Geo holds capital, coordinates, size and time zones.
 type Geo struct {
-	CapitalAR      *string  `json:"capital_ar"`
-	CapitalEN      *string  `json:"capital_en"`
-	Lat            *float64 `json:"lat"`
-	Lng            *float64 `json:"lng"`
-	AreaKm2        *float64 `json:"area_km2"`
-	Population     *int64   `json:"population"`
-	PopulationYear *int     `json:"population_year"`
-	Timezones      []string `json:"timezones"`
-	DrivingSide    *string  `json:"driving_side"`
+	CapitalAR       *string          `json:"capital_ar"`
+	CapitalEN       *string          `json:"capital_en"`
+	Lat             *float64         `json:"lat"`
+	Lng             *float64         `json:"lng"`
+	AreaKm2         *float64         `json:"area_km2"`
+	Population      *int64           `json:"population"`
+	PopulationYear  *int             `json:"population_year"`
+	Timezones       []string         `json:"timezones"`
+	DrivingSide     *string          `json:"driving_side"`
+	TimezoneOffsets []TimezoneOffset `json:"timezone_offsets"`
+}
+
+// TimezoneOffset is the UTC offset of one time zone, e.g. "+03:00". DST is nil
+// when the zone keeps no daylight saving time.
+type TimezoneOffset struct {
+	Zone     string  `json:"zone"`
+	Standard string  `json:"standard"`
+	DST      *string `json:"dst"`
 }
 
 // Locale holds languages, week layout, calendars and measurement system.
@@ -73,12 +82,21 @@ type Locale struct {
 
 // Address holds the postal code and address conventions.
 type Address struct {
-	PostalCodeFormat  *string `json:"postal_code_format"`
-	PostalCodeRegex   *string `json:"postal_code_regex"`
-	PostalCodeExample *string `json:"postal_code_example"`
-	AddressFormat     *string `json:"address_format"`
-	RegionLabelAR     *string `json:"region_label_ar"`
-	RegionLabelEN     *string `json:"region_label_en"`
+	PostalCodeFormat   *string `json:"postal_code_format"`
+	PostalCodeRegex    *string `json:"postal_code_regex"`
+	PostalCodeExample  *string `json:"postal_code_example"`
+	AddressFormat      *string `json:"address_format"`
+	RegionLabelAR      *string `json:"region_label_ar"`
+	RegionLabelEN      *string `json:"region_label_en"`
+	LocalityLabelAR    *string `json:"locality_label_ar"`
+	LocalityLabelEN    *string `json:"locality_label_en"`
+	SublocalityLabelAR *string `json:"sublocality_label_ar"`
+	SublocalityLabelEN *string `json:"sublocality_label_en"`
+	PostalCodeLabelAR  *string `json:"postal_code_label_ar"`
+	PostalCodeLabelEN  *string `json:"postal_code_label_en"`
+	// RequiredFields lists the address fields the postal service requires,
+	// as AddressForm field keys ("street", "city", ...).
+	RequiredFields []string `json:"required_fields"`
 }
 
 // Emergency holds emergency numbers.
@@ -141,6 +159,8 @@ type Subdivision struct {
 	NameAR *string `json:"name_ar"`
 	NameEN *string `json:"name_en"`
 	Parent *string `json:"parent"`
+	TypeAR *string `json:"type_ar"`
+	TypeEN *string `json:"type_en"`
 }
 
 // ParsedPhone is the result of ParsePhone.

@@ -55,6 +55,33 @@ class VectorsTest {
     }
 
     @Test
+    fun addressFormVectors() {
+        for (r in rows("addressForm")) {
+            val c = r.jsonObject
+            val iso2 = c.getValue("iso2").jsonPrimitive.content
+            val l = c.getValue("lang").jsonPrimitive.content
+            val want = c.getValue("lines").jsonArray.map { line ->
+                line.jsonArray.map { f ->
+                    val x = f.jsonArray
+                    Triple(x[0].jsonPrimitive.content, x[1].jsonPrimitive.contentOrNull, x[2].jsonPrimitive.boolean)
+                }
+            }
+            val got = addressForm(assertNotNull(byIso2(iso2), iso2), lang(l)).map { line -> line.map { Triple(it.field.key, it.label, it.required) } }
+            assertEquals(want, got, "$iso2 $l")
+        }
+    }
+
+    @Test
+    fun editDistanceVectors() {
+        for (r in rows("editDistance")) {
+            val x = r.jsonArray
+            val a = x[0].jsonPrimitive.content
+            val b = x[1].jsonPrimitive.content
+            assertEquals(x[3].jsonPrimitive.int, editDistance(a, b, x[2].jsonPrimitive.int), "$a $b")
+        }
+    }
+
+    @Test
     fun absentEntityIsNotInTheData() {
         for (a in rows("absent").map { it.jsonPrimitive.content }) {
             assertNull(byIso2(a), a)

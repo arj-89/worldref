@@ -4,7 +4,8 @@ from pathlib import Path
 
 import worldref
 from worldref import (
-    by_iso2, countries, normalize, parse_phone, search, sort_countries, subdivisions, western_digits,
+    address_form, by_iso2, countries, edit_distance, normalize, parse_phone, search, sort_countries, subdivisions,
+    western_digits,
 )
 
 V = json.loads((Path(__file__).resolve().parent / ".." / ".." / "tests" / "vectors.json").read_text(encoding="utf-8"))
@@ -44,6 +45,17 @@ class Vectors(unittest.TestCase):
             got = (p.e164, p.iso2, p.valid, p.mobile)
             self.assertEqual(got, (c["e164"], c["iso2"], c["valid"], c["mobile"]), c["input"])
 
+    def test_address_form(self) -> None:
+        for c in V["addressForm"]:
+            country = by_iso2(c["iso2"])
+            assert country is not None
+            got = [[[f.field, f.label, f.required] for f in line] for line in address_form(country, c["lang"])]
+            self.assertEqual(got, c["lines"], f'{c["iso2"]} {c["lang"]}')
+
+    def test_edit_distance(self) -> None:
+        for a, b, limit, want in V["editDistance"]:
+            self.assertEqual(edit_distance(a, b, limit), want, f"{a} {b}")
+
     def test_absent(self) -> None:
         for token in V["absent"]:
             self.assertIsNone(by_iso2(token), token)
@@ -64,6 +76,15 @@ class Data(unittest.TestCase):
         self.assertEqual(len(subdivisions()), 5012)
         sa = subdivisions("sa")
         self.assertTrue(sa and all(s.iso2 == "SA" for s in sa))
+        self.assertTrue(any(s.type_en for s in subdivisions()))
+
+    def test_new_fields(self) -> None:
+        us = by_iso2("US")
+        assert us is not None
+        self.assertEqual(len(us.geo.timezone_offsets), len(us.geo.timezones))
+        self.assertEqual(us.geo.timezone_offsets[0].zone, us.geo.timezones[0])
+        self.assertIn("postal_code", us.address.required_fields)
+        self.assertEqual(us.address.postal_code_label_en, "ZIP code")
 
     def test_every_pattern_compiles(self) -> None:
         for c in countries():

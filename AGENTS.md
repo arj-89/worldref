@@ -6,7 +6,8 @@ Guide for AI coding agents using or changing worldref.
 
 - Pick the build that matches the app: bilingual (`*.json`), Arabic-only (`*.ar.json`) or English-only (`*.en.json`).
 - Load only the modules you need (`data/modules/{core,nationality,phone,currency,geo,locale,address,travel,sports}.json`); they join on `iso2`.
-- Every language package exposes the same helpers: `normalize`, `westernDigits`, `search`, `sortCountries`, `parsePhone`, `isValidMobile`, `formatNational` (named idiomatically per language). Use them instead of writing your own search or phone parsing.
+- Every language package exposes the same helpers: `normalize`, `westernDigits`, `search` (forgives small typos), `sortCountries`, `parsePhone`, `isValidMobile`, `formatNational`, `addressForm`, `editDistance` (named idiomatically per language).
+- Address form: `addressForm(country, uiLang)` gives the country's fields line by line with labels and required marks. Use them instead of writing your own search or phone parsing.
 - Country picker: `sortCountries(countries, uiLang, userIso2)`, show flag, name in the UI language, then the dial code isolated left-to-right in Arabic (`<bdi dir="ltr">`).
 - Phone field: `parsePhone(input, pickedCountry, allCountries)`; store `e164` and `iso2` together.
 - Nationality field: list only rows where `nationality.nationality_en` is not null.

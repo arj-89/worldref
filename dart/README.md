@@ -17,14 +17,19 @@ import 'package:worldref/worldref.dart';
 final sa = byIso2('sa')!;                              // case-insensitive lookup
 print(sa.nameAr);                                      // السعودية
 print(search(countries, 'مملكة', Lang.ar).first.iso2); // SA
+print(search(countries, 'Kuwiat').first.iso2);         // KW (forgives small typos)
+print(search(countries, 'saudiarabia').first.iso2);    // SA (spaces optional)
 print(sortCountries(countries, Lang.ar, 'SA').first.iso2);
 final p = parsePhone('0501234567', sa, countries);
 print('${p?.e164} ${p?.valid} ${p?.mobile}');          // +966501234567 true true
 print(isValidMobile('+966501234567', sa, countries));
 print(subdivisionsOf('SA').length);
+for (final line in addressForm(byIso2('US')!, Lang.en)) {
+  print(line.map((f) => '${f.label}${f.required ? ' *' : ''}').join(' | '));
+}                                                      // ... City * | State * | ZIP code *
 ```
 
-API: `countries`, `byIso2`, `subdivisions`, `subdivisionsOf`, `normalize`, `westernDigits`, `search`, `sortCountries`, `parsePhone`, `isValidMobile`, `formatNational`. Data is parsed lazily on first use.
+API: `countries`, `byIso2`, `subdivisions`, `subdivisionsOf`, `normalize`, `westernDigits`, `search`, `editDistance`, `sortCountries`, `parsePhone`, `isValidMobile`, `formatNational`, `addressForm`. Data is parsed lazily on first use.
 
 ## Test
 

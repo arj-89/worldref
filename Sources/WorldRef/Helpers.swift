@@ -33,22 +33,44 @@ private func stripPlus(_ s: String) -> String {
     return s
 }
 
-/// Countries matching a query, best first. Matches names and aliases in both languages, ISO codes,
-/// and dial codes with or without "+" or "00".
+// Text comparisons below run on UTF-16 code units, like the reference's string methods, not on grapheme clusters.
+
+private func same<A: StringProtocol, B: StringProtocol>(_ a: A, _ b: B) -> Bool { a.utf16.elementsEqual(b.utf16) }
+
+private func starts<A: StringProtocol, B: StringProtocol>(_ s: A, with p: B) -> Bool { s.utf16.starts(with: p.utf16) }
+
+private func includes(_ s: String, _ p: String) -> Bool {
+    let h = Array(s.utf16), n = Array(p.utf16)
+    if n.isEmpty { return true }
+    if n.count > h.count { return false }
+    for i in 0...(h.count - n.count) where h[i] == n[0] && h[i..<(i + n.count)].elementsEqual(n) { return true }
+    return false
+}
+
+private func compact(_ s: String) -> String { String(String.UnicodeScalarView(s.unicodeScalars.filter { $0 != " " })) }
+
+/// Countries matching a query, best first. Matches names and aliases in both languages (ignoring "al", tashkeel,
+/// hamza forms, case, accents, spaces and punctuation), ISO codes, and dial codes with or without "+" or "00".
+/// When nothing matches, a second pass forgives small typos ("Kuwiat"): 1 edit for 4 to 7 letters, 2 from 8.
 public func search(_ countries: [Country], _ query: String, lang: Lang = .en) -> [Country] {
     let q = normalize(query)
     if q.isEmpty { return [] }
+    let qc = compact(q)
+    let qLen = q.utf16.count, qcLen = qc.utf16.count
     let digits = westernDigits(query).filter { !" \t\n\r()-".contains($0) }
     let dialShape = matches("^(\\+|00)?\\d{1,4}$", digits)
     let dial: String? = dialShape ? stripPlus(digits) : nil
     let upper = query.trimmingCharacters(in: .whitespacesAndNewlines).uppercased()
     var scored: [(c: Country, score: Double, idx: Int)] = []
 
+    // Tiers: exact (50s), name starts with the query (40s), a word starts with it (30s), contains it (10s).
+    // Within a tier: the UI-language name, then the other language, then aliases.
     func rank(_ name: String, _ place: Double) -> Double {
-        if name == q { return 50 - place }
-        if name.hasPrefix(q) { return 40 - place }
-        if name.split(separator: " ", omittingEmptySubsequences: false).contains(where: { $0.hasPrefix(q) }) { return 30 - place }
-        if q.count >= 3 && name.contains(q) { return 10 - place }
+        let nc = compact(name)
+        if same(name, q) || same(nc, qc) { return 50 - place }
+        if starts(name, with: q) || (qcLen >= 3 && starts(nc, with: qc)) { return 40 - place }
+        if name.split(separator: " ", omittingEmptySubsequences: false).contains(where: { starts($0, with: q) }) { return 30 - place }
+        if qLen >= 3 && includes(name, q) { return 10 - place }
         return 0
     }
 
@@ -68,6 +90,19 @@ public func search(_ countries: [Country], _ query: String, lang: Lang = .en) ->
         }
         if score > 0 { scored.append((c, score, idx)) }
     }
+    if scored.isEmpty && qcLen >= 4 && !qc.utf16.allSatisfy({ (0x30...0x39).contains($0) }) {
+        // Typo pass: edit distance between the query and whole names, spaces ignored.
+        let limit = qcLen >= 8 ? 2 : 1
+        for (idx, c) in countries.enumerated() {
+            let names = [lang == .ar ? c.nameAr : c.nameEn, lang == .ar ? c.nameEn : c.nameAr]
+            var best = 0.0
+            for (i, n) in (names + c.aliasesAr + c.aliasesEn).enumerated() {
+                let d = editDistance(qc, compact(normalize(n)), limit: limit)
+                if d <= limit { best = max(best, 3 - Double(d) - Double(min(i, 2)) * 0.25) }
+            }
+            if best > 0 { scored.append((c, best, idx)) }
+        }
+    }
     let key: (Country) -> String = lang == .ar ? { $0.sortAr } : { $0.sortEn }
     return scored.sorted { a, b in
         if a.score != b.score { return a.score > b.score }
@@ -75,6 +110,34 @@ public func search(_ countries: [Country], _ query: String, lang: Lang = .en) ->
         if ka != kb { return less(ka, kb) }
         return a.idx < b.idx
     }.map(\.c)
+}
+
+/// Optimal string alignment distance (insertions, deletions, substitutions, adjacent swaps), compared by
+/// UTF-16 code unit. Returns limit + 1 as soon as the distance must exceed `limit`.
+public func editDistance(_ a: String, _ b: String, limit: Int) -> Int {
+    let a = Array(a.utf16), b = Array(b.utf16)
+    if abs(a.count - b.count) > limit { return limit + 1 }
+    var prev2: [Int] = []
+    var prev = Array(0...b.count)
+    if a.isEmpty { return prev[b.count] }
+    for i in 1...a.count {
+        var cur = [Int](repeating: 0, count: b.count + 1)
+        cur[0] = i
+        var low = i
+        if !b.isEmpty {
+            for j in 1...b.count {
+                let cost = a[i - 1] == b[j - 1] ? 0 : 1
+                var v = min(prev[j] + 1, cur[j - 1] + 1, prev[j - 1] + cost)
+                if i > 1 && j > 1 && a[i - 1] == b[j - 2] && a[i - 2] == b[j - 1] { v = min(v, prev2[j - 2] + 1) }
+                cur[j] = v
+                low = min(low, v)
+            }
+        }
+        if low > limit { return limit + 1 }
+        prev2 = prev
+        prev = cur
+    }
+    return prev[b.count]
 }
 
 /// Alphabetical in the UI language, with the user's country (if given) first. Returns a new array.
@@ -151,4 +214,50 @@ public func formatNational(_ national: String, plan: PhonePlan) -> String {
     guard let mask = plan.mobileFormat, mask.filter({ $0 == "#" }).count == national.count else { return national }
     var digits = national.makeIterator()
     return String(mask.map { $0 == "#" ? digits.next()! : $0 })
+}
+
+private let addressTokens: [Unicode.Scalar: AddressField] = [
+    "N": .name, "O": .organization, "A": .street, "D": .sublocality,
+    "C": .city, "S": .region, "Z": .postalCode, "X": .sortingCode,
+]
+
+private let fixedLabels: [AddressField: (ar: String, en: String)] = [
+    .name: ("الاسم", "Name"),
+    .organization: ("المنشأة", "Organization"),
+    .street: ("العنوان", "Street address"),
+    .sortingCode: ("رمز الفرز", "Sorting code"),
+]
+
+/// The address form of a country: its fields line by line, in the country's order, with labels in `lang` and
+/// whether the postal service requires each one. Tokens the format uses beyond Google's nine are skipped.
+public func addressForm(_ country: Country, lang: Lang = .en) -> [[AddressFormField]] {
+    let a = country.address
+    func pick(_ ar: String?, _ en: String?) -> String? { lang == .ar ? ar : en }
+    func cap(_ s: String?) -> String? {
+        guard let s, !s.isEmpty, lang == .en else { return s }
+        return s.prefix(1).uppercased() + s.dropFirst()
+    }
+    func labelOf(_ f: AddressField) -> String? {
+        if let fixed = fixedLabels[f] { return lang == .ar ? fixed.ar : fixed.en }
+        switch f {
+        case .city: return pick(a.localityLabelAr, a.localityLabelEn)
+        case .sublocality: return pick(a.sublocalityLabelAr, a.sublocalityLabelEn)
+        case .region: return cap(pick(a.regionLabelAr, a.regionLabelEn))
+        default: return pick(a.postalCodeLabelAr, a.postalCodeLabelEn)
+        }
+    }
+    var seen = Set<AddressField>()
+    return (a.addressFormat ?? "%N%n%O%n%A%n%C")
+        .components(separatedBy: "%n")
+        .map { line -> [AddressFormField] in
+            var fields: [AddressFormField] = []
+            let chars = Array(line.unicodeScalars)
+            for i in chars.indices.dropLast() where chars[i] == "%" {
+                guard let f = addressTokens[chars[i + 1]], !seen.contains(f) else { continue }
+                seen.insert(f)
+                fields.append(AddressFormField(field: f, label: labelOf(f), required: a.requiredFields.contains(f.rawValue)))
+            }
+            return fields
+        }
+        .filter { !$0.isEmpty }
 }

@@ -1,6 +1,7 @@
 # Publishes a release to the package registries. Each registry is off until its repository variable is set
 # to "true" (Settings > Secrets and variables > Actions > Variables), after its account is linked.
 # Tokenless where the registry supports it (OIDC trusted publishing): npm, PyPI, NuGet, MCP Registry.
+# Maven Central has no OIDC publishing: it uses a portal token and a signing key, kept as repository secrets.
 name: Publish
 on:
   release: { types: [published] }
@@ -63,3 +64,22 @@ jobs:
         id: login
         with: { user: arj89 }
       - run: dotnet nuget push "out/*.nupkg" --api-key "${{ steps.login.outputs.NUGET_API_KEY }}" --source https://api.nuget.org/v3/index.json --skip-duplicate
+
+  maven-central:
+    if: vars.PUBLISH_MAVEN == 'true'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+      - uses: actions/setup-java@v5
+        with: { distribution: temurin, java-version: "21" }
+      - name: Publish unless this version is already on Maven Central
+        working-directory: kotlin
+        run: |
+          v=$(sed -n 's/^version = "\(.*\)"/\1/p' build.gradle.kts)
+          if curl -fsSI "https://repo1.maven.org/maven2/io/github/arj-89/worldref/$v/worldref-$v.pom" >/dev/null; then echo "worldref $v already on Maven Central"; exit 0; fi
+          ./gradlew publishToMavenCentral --no-configuration-cache
+        env:
+          ORG_GRADLE_PROJECT_mavenCentralUsername: ${{ secrets.MAVEN_CENTRAL_USERNAME }}
+          ORG_GRADLE_PROJECT_mavenCentralPassword: ${{ secrets.MAVEN_CENTRAL_PASSWORD }}
+          ORG_GRADLE_PROJECT_signingInMemoryKey: ${{ secrets.MAVEN_SIGNING_KEY }}
+          ORG_GRADLE_PROJECT_signingInMemoryKeyPassword: ${{ secrets.MAVEN_SIGNING_KEY_PASSWORD }}

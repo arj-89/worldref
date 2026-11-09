@@ -39,6 +39,6 @@ public func normalize(_ text: String) -> String {
         }
     }
     return String(scalars).split(separator: " ").map { w -> String in
-        w.hasPrefix("ال") && w.count > 3 ? String(w.dropFirst(2)) : String(w)
+        w.unicodeScalars.starts(with: "ال".unicodeScalars) && w.utf16.count > 3 ? String(w.dropFirst(2)) : String(w)
     }.joined(separator: " ")
 }

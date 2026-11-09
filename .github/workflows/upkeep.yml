@@ -25,7 +25,7 @@ jobs:
         run: |
           if [ "${{ github.event.schedule }}" = "0 4 1 1,4,7,10 *" ]; then node scripts/fetch.mjs population;
           elif [ -n "${{ inputs.sources }}" ]; then node scripts/fetch.mjs ${{ inputs.sources }};
-          else node scripts/fetch.mjs wikidata phone timezones address subdivisions factbook; fi
+          else node scripts/fetch.mjs wikidata subtypes phone timezones address subdivisions factbook; fi
       - run: npm run build && node scripts/docs.mjs && npm test
       - id: diff
         run: git diff --quiet && echo "changed=false" >> "$GITHUB_OUTPUT" || echo "changed=true" >> "$GITHUB_OUTPUT"
@@ -51,7 +51,7 @@ jobs:
         run: |
           if [ "${{ github.event.schedule }}" = "0 4 1 1,4,7,10 *" ]; then node scripts/fetch.mjs population;
           elif [ -n "${{ inputs.sources }}" ]; then node scripts/fetch.mjs ${{ inputs.sources }};
-          else node scripts/fetch.mjs wikidata phone timezones address subdivisions factbook; fi
+          else node scripts/fetch.mjs wikidata subtypes phone timezones address subdivisions factbook; fi
           node scripts/release.mjs patch
           v=$(node -p 'require("./package.json").version')
           git config user.name "worldref-bot" && git config user.email "actions@users.noreply.github.com"

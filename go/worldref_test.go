@@ -30,7 +30,13 @@ type vectors struct {
 		Valid   bool   `json:"valid"`
 		Mobile  bool   `json:"mobile"`
 	} `json:"phone"`
-	Absent []string `json:"absent"`
+	Absent      []string `json:"absent"`
+	AddressForm []struct {
+		ISO2  string    `json:"iso2"`
+		Lang  Lang      `json:"lang"`
+		Lines [][][]any `json:"lines"`
+	} `json:"addressForm"`
+	EditDistance [][4]any `json:"editDistance"`
 }
 
 func loadVectors(t *testing.T) vectors {
@@ -104,7 +110,11 @@ func TestNormalize(t *testing.T) {
 
 func TestSearch(t *testing.T) {
 	all := Countries()
-	for _, c := range loadVectors(t).Search {
+	v := loadVectors(t)
+	if len(v.Search) == 0 {
+		t.Fatal("no search vectors")
+	}
+	for _, c := range v.Search {
 		hits := Search(all, c.Query, c.Lang)
 		if c.Count != nil && len(hits) != *c.Count {
 			t.Errorf("%q: %d hits, want %d", c.Query, len(hits), *c.Count)
@@ -169,5 +179,48 @@ func TestMobileAndFormat(t *testing.T) {
 	}
 	if got := FormatNational("5123", sa.Phone[0]); got != "5123" {
 		t.Errorf("mismatched mask must return digits, got %q", got)
+	}
+}
+
+func TestAddressForm(t *testing.T) {
+	v := loadVectors(t)
+	if len(v.AddressForm) == 0 {
+		t.Fatal("no addressForm vectors")
+	}
+	for _, c := range v.AddressForm {
+		country, ok := ByISO2(c.ISO2)
+		if !ok {
+			t.Errorf("%s: unknown country", c.ISO2)
+			continue
+		}
+		got := [][][]any{}
+		for _, line := range AddressForm(country, c.Lang) {
+			row := [][]any{}
+			for _, f := range line {
+				var label any
+				if f.Label != nil {
+					label = *f.Label
+				}
+				row = append(row, []any{f.Field, label, f.Required})
+			}
+			got = append(got, row)
+		}
+		if !reflect.DeepEqual(got, c.Lines) {
+			t.Errorf("AddressForm(%s, %s) = %v, want %v", c.ISO2, c.Lang, got, c.Lines)
+		}
+	}
+}
+
+func TestEditDistance(t *testing.T) {
+	v := loadVectors(t)
+	if len(v.EditDistance) == 0 {
+		t.Fatal("no editDistance vectors")
+	}
+	for _, c := range v.EditDistance {
+		a, b := c[0].(string), c[1].(string)
+		limit, want := int(c[2].(float64)), int(c[3].(float64))
+		if got := EditDistance(a, b, limit); got != want {
+			t.Errorf("EditDistance(%q, %q, %d) = %d, want %d", a, b, limit, got, want)
+		}
 	}
 }

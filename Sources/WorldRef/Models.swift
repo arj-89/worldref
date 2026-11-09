@@ -49,6 +49,14 @@ public struct Nationality: Codable, Sendable, Equatable {
     }
 }
 
+public struct TimezoneOffset: Codable, Sendable, Equatable {
+    public let zone: String
+    /// UTC offset outside daylight saving time, e.g. "+03:00".
+    public let standard: String
+    /// UTC offset during daylight saving time; nil where the zone does not observe it.
+    public let dst: String?
+}
+
 public struct Geo: Codable, Sendable, Equatable {
     public let capitalAr: String?
     public let capitalEn: String?
@@ -59,11 +67,13 @@ public struct Geo: Codable, Sendable, Equatable {
     public let populationYear: Int?
     public let timezones: [String]
     public let drivingSide: String?
+    /// Standard and daylight-saving UTC offsets per zone. Empty when decoding data older than 1.2.0.
+    public let timezoneOffsets: [TimezoneOffset]
 
     enum CodingKeys: String, CodingKey {
         case lat, lng, population, timezones
         case capitalAr = "capital_ar", capitalEn = "capital_en", areaKm2 = "area_km2"
-        case populationYear = "population_year", drivingSide = "driving_side"
+        case populationYear = "population_year", timezoneOffsets = "timezone_offsets", drivingSide = "driving_side"
     }
 }
 
@@ -98,11 +108,61 @@ public struct Address: Codable, Sendable, Equatable {
     public let addressFormat: String?
     public let regionLabelAr: String?
     public let regionLabelEn: String?
+    public let localityLabelAr: String?
+    public let localityLabelEn: String?
+    public let sublocalityLabelAr: String?
+    public let sublocalityLabelEn: String?
+    public let postalCodeLabelAr: String?
+    public let postalCodeLabelEn: String?
+    /// Address fields the postal service requires, as `AddressField` raw values ("street", "city", ...).
+    /// Empty when decoding data older than 1.2.0.
+    public let requiredFields: [String]
 
     enum CodingKeys: String, CodingKey {
         case postalCodeFormat = "postal_code_format", postalCodeRegex = "postal_code_regex"
         case postalCodeExample = "postal_code_example", addressFormat = "address_format"
         case regionLabelAr = "region_label_ar", regionLabelEn = "region_label_en"
+        case localityLabelAr = "locality_label_ar", localityLabelEn = "locality_label_en"
+        case sublocalityLabelAr = "sublocality_label_ar", sublocalityLabelEn = "sublocality_label_en"
+        case postalCodeLabelAr = "postal_code_label_ar", postalCodeLabelEn = "postal_code_label_en"
+        case requiredFields = "required_fields"
+    }
+}
+
+// Fields added in 1.2.0 decode to [] when absent, so data written before 1.2.0 still loads.
+// Declared in extensions so the structs keep their memberwise initialisers.
+extension Geo {
+    public init(from decoder: Decoder) throws {
+        let c = try decoder.container(keyedBy: CodingKeys.self)
+        capitalAr = try c.decodeIfPresent(String.self, forKey: .capitalAr)
+        capitalEn = try c.decodeIfPresent(String.self, forKey: .capitalEn)
+        lat = try c.decodeIfPresent(Double.self, forKey: .lat)
+        lng = try c.decodeIfPresent(Double.self, forKey: .lng)
+        areaKm2 = try c.decodeIfPresent(Double.self, forKey: .areaKm2)
+        population = try c.decodeIfPresent(Int.self, forKey: .population)
+        populationYear = try c.decodeIfPresent(Int.self, forKey: .populationYear)
+        timezones = try c.decode([String].self, forKey: .timezones)
+        drivingSide = try c.decodeIfPresent(String.self, forKey: .drivingSide)
+        timezoneOffsets = try c.decodeIfPresent([TimezoneOffset].self, forKey: .timezoneOffsets) ?? []
+    }
+}
+
+extension Address {
+    public init(from decoder: Decoder) throws {
+        let c = try decoder.container(keyedBy: CodingKeys.self)
+        postalCodeFormat = try c.decodeIfPresent(String.self, forKey: .postalCodeFormat)
+        postalCodeRegex = try c.decodeIfPresent(String.self, forKey: .postalCodeRegex)
+        postalCodeExample = try c.decodeIfPresent(String.self, forKey: .postalCodeExample)
+        addressFormat = try c.decodeIfPresent(String.self, forKey: .addressFormat)
+        regionLabelAr = try c.decodeIfPresent(String.self, forKey: .regionLabelAr)
+        regionLabelEn = try c.decodeIfPresent(String.self, forKey: .regionLabelEn)
+        localityLabelAr = try c.decodeIfPresent(String.self, forKey: .localityLabelAr)
+        localityLabelEn = try c.decodeIfPresent(String.self, forKey: .localityLabelEn)
+        sublocalityLabelAr = try c.decodeIfPresent(String.self, forKey: .sublocalityLabelAr)
+        sublocalityLabelEn = try c.decodeIfPresent(String.self, forKey: .sublocalityLabelEn)
+        postalCodeLabelAr = try c.decodeIfPresent(String.self, forKey: .postalCodeLabelAr)
+        postalCodeLabelEn = try c.decodeIfPresent(String.self, forKey: .postalCodeLabelEn)
+        requiredFields = try c.decodeIfPresent([String].self, forKey: .requiredFields) ?? []
     }
 }
 
@@ -175,10 +235,13 @@ public struct Subdivision: Codable, Sendable, Equatable {
     public let nameAr: String?
     public let nameEn: String?
     public let parent: String?
+    /// Subdivision type, e.g. "منطقة" / "region".
+    public let typeAr: String?
+    public let typeEn: String?
 
     enum CodingKeys: String, CodingKey {
         case iso2, code, parent
-        case nameAr = "name_ar", nameEn = "name_en"
+        case nameAr = "name_ar", nameEn = "name_en", typeAr = "type_ar", typeEn = "type_en"
     }
 }
 
@@ -194,4 +257,16 @@ public struct ParsedPhone: Sendable, Equatable {
     public let national: String
     public let valid: Bool
     public let mobile: Bool
+}
+
+public enum AddressField: String, Codable, Sendable, CaseIterable {
+    case name, organization, street, sublocality, city, region
+    case postalCode = "postal_code", sortingCode = "sorting_code"
+}
+
+public struct AddressFormField: Sendable, Equatable {
+    public let field: AddressField
+    /// In the requested language; nil when the data has no label in that language.
+    public let label: String?
+    public let required: Bool
 }

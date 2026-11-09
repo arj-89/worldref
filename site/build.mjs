@@ -363,7 +363,9 @@ ${sec("geo", t("country.sec.geo", lang), [
     row("country.f.area", geo.area_km2 != null ? t("country.v.area", lang, { n: num(geo.area_km2) }) : null),
     row("country.f.population", geo.population != null ? t("country.v.population", lang, { n: num(geo.population), year: ltr(String(geo.population_year ?? "")) }) : null),
     row("country.f.centre", geo.lat != null ? ltr(`${geo.lat}, ${geo.lng}`) : null),
-    row("country.f.timezones", geo.timezones.length ? geo.timezones.map(code).join(" ") : null),
+    row("country.f.timezones", geo.timezone_offsets.length
+        ? `${geo.timezone_offsets.map((z) => `${code(z.zone)} ${ltr(`UTC${z.standard}`)}${z.dst ? ` ${t("country.v.tz-dst", lang, { o: ltr(`UTC${z.dst}`) })}` : ""}`).join(sep(lang))} <span class="hint">${t("country.v.tz-note", lang)}</span>`
+        : null),
     row("country.f.driving", geo.driving_side ? t(`driving.${geo.driving_side}`, lang) : null),
 ])}
 ${sec("locale", t("country.sec.locale", lang), [
@@ -390,7 +392,7 @@ ${sec("travel", t("country.sec.travel", lang), [
     row("country.f.frequency", c.travel.frequency_hz?.length ? c.travel.frequency_hz.map((x) => t("country.v.hertz", lang, { v: num(x) })).join(sep(lang)) : null),
 ], emSources ? `<p class="fine">${t("country.src.links", lang, { name: esc(n) })} ${emSources.sources.map((u) => `<a href="${esc(u)}" rel="external">${ltr(new URL(u).hostname.replace(/^www\./, ""))}</a>`).join(sep(lang))}</p>` : "")}
 ${sec("sports", t("country.sec.sports", lang), [row("country.f.fifa", c.sports.fifa ? ltr(c.sports.fifa) : null), row("country.f.ioc", c.sports.ioc ? ltr(c.sports.ioc) : null)])}
-<section id="subdivisions" aria-labelledby="subs-h"><h2 id="subs-h">${t("country.sec.subdivisions", lang, { n: num(subs.length) })}</h2>${subs.length ? `<ul class="rows subs">${subs.map((s) => `<li><span class="name">${esc((lang === "ar" ? s.name_ar : s.name_en) ?? s.name_en ?? s.name_ar ?? "")}</span><span class="meta">${ltr(s.code)}</span></li>`).join("")}</ul>` : `<p>${t("country.subs.empty", lang, { name: esc(n) })}</p>`}</section>
+<section id="subdivisions" aria-labelledby="subs-h"><h2 id="subs-h">${t("country.sec.subdivisions", lang, { n: num(subs.length) })}</h2>${subs.length ? `<ul class="rows subs">${subs.map((s) => `<li><span class="name">${esc((lang === "ar" ? s.name_ar : s.name_en) ?? s.name_en ?? s.name_ar ?? "")}</span><span class="meta">${(lang === "ar" ? s.type_ar : s.type_en) ? `<span>${esc(lang === "ar" ? s.type_ar : s.type_en)}</span>` : ""}${ltr(s.code)}</span></li>`).join("")}</ul>` : `<p>${t("country.subs.empty", lang, { name: esc(n) })}</p>`}</section>
 ${overrides.length ? `<section id="overrides" aria-labelledby="ovr-h"><h2 id="ovr-h">${t("country.sec.overrides", lang)}</h2><ul>${overrides.map((o) => { const k = `ovr.${o.iso2.toLowerCase()}.${o.field}`; return `<li>${code(o.field)}: ${W[k] ? t(k, lang) : lang === "en" ? esc(o.why) : `<a href="https://github.com/arj-89/worldref/blob/main/data/sources.json">${t("country.sec.sources", lang)}</a>`}</li>`; }).join("")}</ul></section>` : ""}
 <section id="sources" aria-labelledby="src-h"><h2 id="src-h">${t("country.sec.sources", lang)}</h2><ul class="fine">${srcList}</ul><p class="fine"><a href="https://github.com/arj-89/worldref/blob/main/data/sources.json">sources.json</a></p></section>
 </article>`;

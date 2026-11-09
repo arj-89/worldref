@@ -32,7 +32,10 @@ def by_iso2(iso2: str) -> Optional[Country]:
 
 @lru_cache(maxsize=None)
 def _subdivisions() -> Tuple[Subdivision, ...]:
-    return tuple(Subdivision(d["iso2"], d["code"], d["name_ar"], d["name_en"], d["parent"]) for d in _load("subdivisions.json"))
+    return tuple(
+        Subdivision(d["iso2"], d["code"], d["name_ar"], d["name_en"], d["parent"], d["type_ar"], d["type_en"])
+        for d in _load("subdivisions.json")
+    )
 
 
 def subdivisions(iso2: Optional[str] = None) -> List[Subdivision]:

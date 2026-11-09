@@ -66,7 +66,7 @@ Each language folder has its own README with a usage example: [python](python/RE
 ```js
 import { countries, sortCountries, search } from "worldref";
 const list = sortCountries(countries, "ar", "SA");          // السعودية first, then Arabic order
-const hits = search(countries, userQuery, "ar");            // names, aliases, ISO codes, +966 / 00966 / 966
+const hits = search(countries, userQuery, "ar");            // names, aliases, ISO codes, +966 / 00966 / 966, small typos
 ```
 Show: flag, name in the UI language, then the dial code. In Arabic, isolate the dial code left-to-right (`<bdi dir="ltr">+966</bdi>`).
 
@@ -82,6 +82,13 @@ const options = countries.filter((c) => c.nationality.nationality_en);
 const label = (c, female) => (female ? c.nationality.nationality_ar_f : c.nationality.nationality_ar_m);
 ```
 
+**Address form** (the country's own fields, order, labels and required marks):
+```js
+import { byIso2, addressForm } from "worldref";
+for (const line of addressForm(byIso2("SA"), "ar"))         // one row of inputs per line
+  for (const f of line) renderInput(f.field, f.label, f.required);   // street: «العنوان», city: «المدينة»...
+```
+
 **Database seed:** run [`data/sql/postgres.sql`](data/sql/postgres.sql) (or `mysql.sql`, `sqlite.sql`). It creates `countries` and `subdivisions`.
 
 ## Best practices
@@ -91,7 +98,8 @@ Every rule below is built into the helpers of all eight packages and locked by t
 **Search** (`normalize()`, `search()`)
 - Normalise both sides, the query and the names, the same way.
 - Arabic: drop «ال» at the start of every word (not only the first); remove tashkeel (fatha, damma, kasra, sukun, shadda, tanween) and tatweel (ـ); treat أ إ آ ٱ as ا, ة as ه, ى as ي, ؤ as و, ئ as ي. So «الإمارات», «امارات» and «الأمارات» all find the UAE.
-- Latin: ignore case and accents, and treat punctuation as a space, so «cote d'ivoire» finds Côte d’Ivoire.
+- Latin: ignore case and accents, and treat punctuation as a space, so «cote d'ivoire» finds Côte d’Ivoire. Also compare with the spaces removed, so «cote divoire» finds it too.
+- Typos: only when nothing matches, accept a name within 1 edit for queries of 4 to 7 letters and 2 edits from 8 letters (a swap of two neighbours counts as one), so «Kuwiat» finds Kuwait. Never add typo matches to a result list that already has hits.
 - Digits: convert Arabic-Indic (٠١٢٣٤٥٦٧٨٩) and Persian (۰۱۲۳۴۵۶۷۸۹) digits to Western before anything else.
 - Match names and aliases in both languages, ISO codes (SA, SAU), and dial codes with or without «+» or «00» (+966, 00966, 966).
 
@@ -119,7 +127,8 @@ Every rule below is built into the helpers of all eight packages and locked by t
 **Time zones** (guidance; the packages have no time helper)
 - Store times in UTC, plus the IANA zone name (`geo.timezones`, e.g. `Asia/Riyadh`) wherever local time matters.
 - Convert to local time only for display, with the platform's time-zone support (`Intl.DateTimeFormat` with `timeZone`, Python `zoneinfo`, `java.time.ZoneId`, Swift `TimeZone`). It follows daylight saving time and rule changes.
-- Never store or hard-code a UTC offset (+03:00): daylight saving time shifts it twice a year in many countries, and governments change the rules.
+- Never store or hard-code a UTC offset (+03:00): daylight saving time shifts it twice a year in many countries, and governments change the rules (Morocco moved to permanent UTC+00:00 in 09/2026).
+- `geo.timezone_offsets` gives each zone's standard and daylight-saving offset under the rules in force on the date in [`data/meta.json`](data/meta.json). Use it to describe a zone ("UTC+03:00"), not to compute times.
 - A country can span several zones (`geo.timezones` lists them all; the US has many). Take the zone from the user or the device, not from the country alone.
 
 **Data**
@@ -268,14 +277,14 @@ Start at [`llms.txt`](llms.txt) and [`AGENTS.md`](AGENTS.md). Schemas are in [`s
 
 ## Roadmap
 
-Planned for 1.2.0 (new, non-breaking):
+Shipped in 1.2.0: time-zone offsets, subdivision types, forgiving search, the address-form helper, and a changelog that lists what each automatic data release changed.
+
+Planned for 1.3.0 (new, non-breaking):
 
 1. Official Arabic names: 222 rows are empty today, the largest gap in the data.
-2. Subdivision types in both languages (region, province, emirate, state).
-3. More forgiving search: names typed without punctuation or with small typos ("cote divoire", "Kuwiat").
-4. An address-form helper: the fields, order and labels of a country's address form in Arabic or English.
-5. Kotlin on Maven Central, alongside JitPack.
-6. Cities: a new `cities` module with Arabic and English names, linked to each country and subdivision.
+2. Cities: a new `cities` module with Arabic and English names, linked to each country and subdivision: capitals, subdivision capitals, and every city of 100,000 people or more.
+
+Planned for 1.4.0: a full human review of every Arabic name.
 
 ## Sources and licences
 

@@ -22,6 +22,8 @@ const edit = (file, pairs) => {
 const esc = old.replace(/\./g, "\\.");
 edit("package.json", [[`"version": "${old}"`, `"version": "${next}"`]]);
 edit("python/pyproject.toml", [[new RegExp(`version = "${esc}"`), `version = "${next}"`]]);
+// __version__ was left at 1.0.0 until 1.2.0; match any old value, not only the previous release.
+edit("python/worldref/__init__.py", [[/__version__ = "[^"]*"/, `__version__ = "${next}"`]]);
 edit("dart/pubspec.yaml", [[new RegExp(`version: ${esc}`), `version: ${next}`]]);
 edit("kotlin/build.gradle.kts", [[new RegExp(`version = "${esc}"`), `version = "${next}"`]]);
 edit("csharp/WorldRef/WorldRef.csproj", [[new RegExp(`<Version>${esc}</Version>`), `<Version>${next}</Version>`]]);

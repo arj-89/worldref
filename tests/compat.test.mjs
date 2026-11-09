@@ -12,3 +12,19 @@ test("every shipped field path is still present", () => {
         assert.deepEqual(missing, [], `${file} lost fields (breaking change)`);
     }
 });
+
+test("every package manifest carries the same version", () => {
+    const root = new URL("../", import.meta.url).pathname;
+    const read = (f) => readFileSync(`${root}${f}`, "utf8");
+    const want = JSON.parse(read("package.json")).version;
+    const found = {
+        "python/pyproject.toml": read("python/pyproject.toml").match(/^version = "([^"]+)"/m)?.[1],
+        "python/worldref/__init__.py": read("python/worldref/__init__.py").match(/__version__ = "([^"]+)"/)?.[1],
+        "dart/pubspec.yaml": read("dart/pubspec.yaml").match(/^version: (\S+)/m)?.[1],
+        "kotlin/build.gradle.kts": read("kotlin/build.gradle.kts").match(/^version = "([^"]+)"/m)?.[1],
+        "csharp/WorldRef/WorldRef.csproj": read("csharp/WorldRef/WorldRef.csproj").match(/<Version>([^<]+)<\/Version>/)?.[1],
+        "server.json": JSON.parse(read("server.json")).version,
+        "CITATION.cff": read("CITATION.cff").match(/^version: (\S+)/m)?.[1],
+    };
+    for (const [file, v] of Object.entries(found)) assert.equal(v, want, `${file} says ${v}, package.json says ${want}`);
+});

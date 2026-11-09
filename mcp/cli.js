@@ -20,7 +20,7 @@ const TOOLS = [
     },
     {
         name: "search_countries",
-        description: "Find countries by name or alias in Arabic or English (ignores «ال», tashkeel and hamza forms), by ISO code, or by dial code (+966, 00966, 966). Returns iso2, names and flag, best match first.",
+        description: "Find countries by name or alias in Arabic or English (ignores «ال», tashkeel and hamza forms), by ISO code, or by dial code (+966, 00966, 966). Forgives small typos when nothing matches exactly. Returns iso2, names and flag, best match first.",
         inputSchema: { type: "object", properties: { query: { type: "string" }, lang: { type: "string", enum: ["ar", "en"], description: "UI language for ranking. Default: en." }, limit: { type: "integer", minimum: 1, maximum: 50 } }, required: ["query"] },
     },
     {

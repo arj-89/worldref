@@ -85,6 +85,34 @@ void main() {
     }
   });
 
+  test('addressForm', () {
+    for (final c in v['addressForm'] as List) {
+      final got =
+          addressForm(byIso2(c['iso2'] as String)!, lang(c['lang'] as String))
+              .map((line) =>
+                  line.map((f) => [f.field, f.label, f.required]).toList())
+              .toList();
+      expect(got, c['lines'], reason: '${c['iso2']} ${c['lang']}');
+    }
+  });
+
+  test('editDistance', () {
+    for (final c in v['editDistance'] as List) {
+      expect(editDistance(c[0] as String, c[1] as String, c[2] as int), c[3],
+          reason: '${c[0]} ${c[1]}');
+    }
+  });
+
+  test('new data fields', () {
+    final ad = byIso2('AD')!;
+    expect(ad.geo.timezoneOffsets.first.zone, 'Europe/Andorra');
+    expect(ad.geo.timezoneOffsets.first.dst, isNotNull);
+    expect(byIso2('AE')!.geo.timezoneOffsets.first.dst, isNull);
+    expect(byIso2('SA')!.address.requiredFields, contains('street'));
+    expect(
+        subdivisions.any((s) => s.typeEn != null && s.typeAr != null), isTrue);
+  });
+
   test('helpers', () {
     final sa = byIso2('SA')!;
     expect(isValidMobile('0501234567', sa), isTrue);
