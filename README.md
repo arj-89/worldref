@@ -128,7 +128,7 @@ Every rule below is built into the helpers of all eight packages and locked by t
 - Store times in UTC, plus the IANA zone name (`geo.timezones`, e.g. `Asia/Riyadh`) wherever local time matters.
 - Convert to local time only for display, with the platform's time-zone support (`Intl.DateTimeFormat` with `timeZone`, Python `zoneinfo`, `java.time.ZoneId`, Swift `TimeZone`). It follows daylight saving time and rule changes.
 - Never store or hard-code a UTC offset (+03:00): daylight saving time shifts it twice a year in many countries, and governments change the rules (Morocco moved to permanent UTC+00:00 in 09/2026).
-- `geo.timezone_offsets` gives each zone's standard and daylight-saving offset under the rules in force on the date in [`data/meta.json`](data/meta.json). Use it to describe a zone ("UTC+03:00"), not to compute times.
+- `geo.timezone_offsets` gives each zone's standard and daylight-saving offset under the rules in force on the date in [`data/meta.json`](data/meta.json). Use it to describe a zone ("UTC+03:00"), not to compute times: `standard` is not always the offset in use today (Cuba keeps daylight saving time through 2027), and in Ireland `dst` is lower than `standard` because its law defines winter time as the shift.
 - A country can span several zones (`geo.timezones` lists them all; the US has many). Take the zone from the user or the device, not from the country alone.
 
 **Data**
@@ -204,7 +204,7 @@ Single-language builds drop the `_ar` / `_en` suffix (`name_ar` becomes `name` i
 | `geo.timezones` | geo | `["Asia/Riyadh"]` | IANA time zone names. |
 | `geo.timezone_offsets` | geo | `[{"zone":"Asia/Riyadh","standard":"+0...` | For each zone in `timezones`: the standard UTC offset and the daylight-saving offset (null when the zone does not switch), under the rules in force on the date in `data/meta.json`. Reference only: compute the current offset with the platform's time-zone support, never store it. |
 | `geo.timezone_offsets[].zone` | geo | `Asia/Riyadh` | IANA time zone name. |
-| `geo.timezone_offsets[].standard` | geo | `+03:00` | Standard UTC offset, e.g. +03:00. |
+| `geo.timezone_offsets[].standard` | geo | `+03:00` | Standard UTC offset, e.g. +03:00. Not always the offset in use today (Cuba keeps daylight saving time through 2027). |
 | `geo.timezone_offsets[].dst` | geo | `null` | Daylight-saving UTC offset, or null when the zone does not switch. Lower than `standard` where the law defines winter as the shift (Ireland). |
 | `geo.driving_side` | geo | `right` | left or right. |
 | `locale` | locale |  | Locale conventions. |

@@ -404,24 +404,24 @@ BH,BH-13,Capital,,governorate
 BH,BH-14,Southern,,governorate
 BH,BH-15,Muharraq,,governorate
 BH,BH-17,Northern,,governorate
-BI,BI-BB,Bubanza,,
-BI,BI-BL,Bujumbura Rural,,
-BI,BI-BM,Bujumbura,,
-BI,BI-BR,Bururi,,
-BI,BI-CA,Cankuzo,,
-BI,BI-CI,Cibitoke,,
+BI,BI-BB,Bubanza,,province
+BI,BI-BL,Bujumbura Rural,,province
+BI,BI-BM,Bujumbura,,province
+BI,BI-BR,Bururi,,province
+BI,BI-CA,Cankuzo,,province
+BI,BI-CI,Cibitoke,,province
 BI,BI-GI,Gitega,,province
-BI,BI-KI,Kirundo,,
-BI,BI-KR,Karuzi,,
-BI,BI-KY,Kayanza,,
-BI,BI-MA,Makamba,,
-BI,BI-MU,Muramvya,,
-BI,BI-MW,Mwaro,,
-BI,BI-MY,Muyinga,,
-BI,BI-NG,Ngozi,,
-BI,BI-RM,Rumonge,,
-BI,BI-RT,Rutana,,
-BI,BI-RY,Ruyigi,,
+BI,BI-KI,Kirundo,,province
+BI,BI-KR,Karuzi,,province
+BI,BI-KY,Kayanza,,province
+BI,BI-MA,Makamba,,province
+BI,BI-MU,Muramvya,,province
+BI,BI-MW,Mwaro,,province
+BI,BI-MY,Muyinga,,province
+BI,BI-NG,Ngozi,,province
+BI,BI-RM,Rumonge,,province
+BI,BI-RT,Rutana,,province
+BI,BI-RY,Ruyigi,,province
 BJ,BJ-AK,Atakora,,department
 BJ,BJ-AL,Alibori,,department
 BJ,BJ-AQ,Atlantique,,department
@@ -447,9 +447,9 @@ BO,BO-O,Oruro,,department
 BO,BO-P,Potosí,,department
 BO,BO-S,Santa Cruz,,department
 BO,BO-T,Tarija,,department
-BQ,BQ-BO,Bonaire,,
-BQ,BQ-SA,Saba,,
-BQ,BQ-SE,Sint Eustatius,,entity
+BQ,BQ-BO,Bonaire,,special municipality
+BQ,BQ-SA,Saba,,special municipality
+BQ,BQ-SE,Sint Eustatius,,special municipality
 BR,BR-AC,Acre,,state
 BR,BR-AL,Alagoas,,state
 BR,BR-AM,Amazonas,,state
@@ -653,19 +653,19 @@ CH,CH-VS,Valais,,canton
 CH,CH-ZG,Zug,,canton
 CH,CH-ZH,Zürich,,canton
 CI,CI-AB,Abidjan,,commune
-CI,CI-BS,Bas-Sassandra²,,district
+CI,CI-BS,Bas-Sassandra,,district
 CI,CI-CM,Comoé,,district
-CI,CI-DN,Denguélé²,,district
+CI,CI-DN,Denguélé,,district
 CI,CI-GD,Gôh-Djiboua,,district
-CI,CI-LC,Lacs²,,district
-CI,CI-LG,Lagunes²,,district
+CI,CI-LC,Lacs,,district
+CI,CI-LG,Lagunes,,district
 CI,CI-MG,Montagnes,,
 CI,CI-SM,Sassandra-Marahoué,,district
 CI,CI-SV,Savanes,,district
-CI,CI-VB,Vallée du Bandama²,,district
+CI,CI-VB,Vallée du Bandama,,district
 CI,CI-WR,Woroba,,district
 CI,CI-YM,Yamoussoukro,,commune
-CI,CI-ZZ,Zanzan²,,district
+CI,CI-ZZ,Zanzan,,district
 CL,CL-AI,Aysén,,region
 CL,CL-AN,Antofagasta,,region
 CL,CL-AP,Arica y Parinacota,,region
@@ -693,7 +693,7 @@ CM,CM-OU,West,,region
 CM,CM-SU,South,,region
 CM,CM-SW,Southwest,,region
 CN,CN-AH,Anhui,,province
-CN,CN-BJ,Beijing,,city
+CN,CN-BJ,Beijing,,municipality
 CN,CN-CQ,Chongqing,,municipality
 CN,CN-FJ,Fujian,,province
 CN,CN-GD,Guangdong,,province
@@ -704,23 +704,23 @@ CN,CN-HA,Henan,,province
 CN,CN-HB,Hubei,,province
 CN,CN-HE,Hebei,,province
 CN,CN-HI,Hainan,,province
-CN,CN-HK,Hong Kong,,city
+CN,CN-HK,Hong Kong,,special administrative region
 CN,CN-HL,Heilongjiang,,province
 CN,CN-HN,Hunan,,province
 CN,CN-JL,Jilin,,province
 CN,CN-JS,Jiangsu,,province
 CN,CN-JX,Jiangxi,,province
 CN,CN-LN,Liaoning,,province
-CN,CN-MO,Macau,,administrative region
+CN,CN-MO,Macau,,special administrative region
 CN,CN-NM,Inner Mongolia,,autonomous region
 CN,CN-NX,Ningxia,,autonomous region
 CN,CN-QH,Qinghai,,province
 CN,CN-SC,Sichuan,,province
 CN,CN-SD,Shandong,,province
-CN,CN-SH,Shanghai,,city
+CN,CN-SH,Shanghai,,municipality
 CN,CN-SN,Shaanxi,,province
 CN,CN-SX,Shanxi,,province
-CN,CN-TJ,Tianjin,,city
+CN,CN-TJ,Tianjin,,municipality
 CN,CN-TW,Taiwan,,province
 CN,CN-XJ,Xinjiang,,autonomous region
 CN,CN-XZ,Tibet,,autonomous region
@@ -783,29 +783,29 @@ CU,CU-15,Artemisa,,province
 CU,CU-16,Mayabeque,,province
 CU,CU-99,Isla de la Juventud,,island
 CV,CV-B,Barlavento Islands,,island
-CV,CV-BR,Brava,CV-S,
-CV,CV-BV,Boa Vista,CV-B,
-CV,CV-CA,Santa Catarina,CV-S,
-CV,CV-CF,Santa Catarina do Fogo,CV-S,
-CV,CV-CR,Santa Cruz,CV-S,
-CV,CV-MA,Maio,CV-S,
-CV,CV-MO,Mosteiros,CV-S,
-CV,CV-PA,Paul,CV-B,
-CV,CV-PN,Porto Novo,CV-B,
-CV,CV-PR,Praia,CV-S,
-CV,CV-RB,Ribeira Brava,CV-B,
-CV,CV-RG,Ribeira Grande,CV-B,
-CV,CV-RS,Ribeira Grande de Santiago,CV-S,
+CV,CV-BR,Brava,CV-S,municipality
+CV,CV-BV,Boa Vista,CV-B,municipality
+CV,CV-CA,Santa Catarina,CV-S,municipality
+CV,CV-CF,Santa Catarina do Fogo,CV-S,municipality
+CV,CV-CR,Santa Cruz,CV-S,municipality
+CV,CV-MA,Maio,CV-S,municipality
+CV,CV-MO,Mosteiros,CV-S,municipality
+CV,CV-PA,Paul,CV-B,municipality
+CV,CV-PN,Porto Novo,CV-B,municipality
+CV,CV-PR,Praia,CV-S,municipality
+CV,CV-RB,Ribeira Brava,CV-B,municipality
+CV,CV-RG,Ribeira Grande,CV-B,municipality
+CV,CV-RS,Ribeira Grande de Santiago,CV-S,municipality
 CV,CV-S,Sotavento Islands,,island
-CV,CV-SD,São Domingos,CV-S,
-CV,CV-SF,São Filipe,CV-S,
-CV,CV-SL,Sal,CV-B,
-CV,CV-SM,São Miguel,CV-S,
-CV,CV-SO,São Lourenço dos Órgãos,CV-S,
-CV,CV-SS,São Salvador do Mundo,CV-S,
-CV,CV-SV,São Vicente,CV-B,
-CV,CV-TA,Tarrafal,CV-S,
-CV,CV-TS,Tarrafal de São Nicolau,CV-B,
+CV,CV-SD,São Domingos,CV-S,municipality
+CV,CV-SF,São Filipe,CV-S,municipality
+CV,CV-SL,Sal,CV-B,municipality
+CV,CV-SM,São Miguel,CV-S,municipality
+CV,CV-SO,São Lourenço dos Órgãos,CV-S,municipality
+CV,CV-SS,São Salvador do Mundo,CV-S,municipality
+CV,CV-SV,São Vicente,CV-B,municipality
+CV,CV-TA,Tarrafal,CV-S,municipality
+CV,CV-TS,Tarrafal de São Nicolau,CV-B,municipality
 CY,CY-01,Nicosia,,district
 CY,CY-02,Limassol,,district
 CY,CY-03,Larnaca,,district
@@ -1067,95 +1067,95 @@ EE,EE-130,Alutaguse,EE-45,municipality
 EE,EE-141,Anija,EE-37,municipality
 EE,EE-142,Antsla,EE-87,municipality
 EE,EE-171,Elva,EE-79,municipality
-EE,EE-184,Haapsalu,EE-56,
-EE,EE-191,Haljala,EE-60,
-EE,EE-198,Harku,EE-37,
+EE,EE-184,Haapsalu,EE-56,municipality
+EE,EE-191,Haljala,EE-60,municipality
+EE,EE-198,Harku,EE-37,municipality
 EE,EE-205,Hiiumaa,EE-39,municipality
 EE,EE-214,Häädemeeste,EE-68,municipality
 EE,EE-245,Jõelähtme,EE-37,municipality
 EE,EE-247,Jõgeva,EE-50,municipality
 EE,EE-251,Jõhvi,EE-45,municipality
 EE,EE-255,Järva,EE-52,municipality
-EE,EE-272,Kadrina,EE-60,
-EE,EE-283,Kambja,EE-79,
-EE,EE-284,Kanepi,EE-64,
-EE,EE-291,Kastre,EE-79,
-EE,EE-293,Kehtna,EE-71,
-EE,EE-296,Keila,EE-37,
-EE,EE-303,Kihnu,EE-68,
-EE,EE-305,Kiili,EE-37,
-EE,EE-317,Kohila,EE-71,
+EE,EE-272,Kadrina,EE-60,municipality
+EE,EE-283,Kambja,EE-79,municipality
+EE,EE-284,Kanepi,EE-64,municipality
+EE,EE-291,Kastre,EE-79,municipality
+EE,EE-293,Kehtna,EE-71,municipality
+EE,EE-296,Keila,EE-37,municipality
+EE,EE-303,Kihnu,EE-68,municipality
+EE,EE-305,Kiili,EE-37,municipality
+EE,EE-317,Kohila,EE-71,municipality
 EE,EE-321,Kohtla-Järve,EE-45,city
-EE,EE-338,Kose,EE-37,
-EE,EE-353,Kuusalu,EE-37,
+EE,EE-338,Kose,EE-37,municipality
+EE,EE-353,Kuusalu,EE-37,municipality
 EE,EE-37,Harju,,county
 EE,EE-39,Hiiu,,county
-EE,EE-424,Loksa,EE-37,
+EE,EE-424,Loksa,EE-37,municipality
 EE,EE-430,Lääneranna,EE-68,municipality
 EE,EE-431,Lääne-Harju,EE-37,municipality
-EE,EE-432,Luunja,EE-79,
+EE,EE-432,Luunja,EE-79,municipality
 EE,EE-441,Lääne-Nigula,EE-56,municipality
 EE,EE-442,Lüganuse,EE-45,municipality
-EE,EE-446,Maardu,EE-37,
+EE,EE-446,Maardu,EE-37,municipality
 EE,EE-45,Ida-Virumaa,,county
-EE,EE-478,Muhu,EE-74,
-EE,EE-480,Mulgi,EE-84,
-EE,EE-486,Mustvee,EE-50,
+EE,EE-478,Muhu,EE-74,municipality
+EE,EE-480,Mulgi,EE-84,municipality
+EE,EE-486,Mustvee,EE-50,municipality
 EE,EE-50,Jõgevamaa,,county
-EE,EE-503,Märjamaa,EE-71,
-EE,EE-511,Narva,EE-45,
+EE,EE-503,Märjamaa,EE-71,municipality
+EE,EE-511,Narva,EE-45,municipality
 EE,EE-514,Narva-Jõesuu,EE-45,city
 EE,EE-52,Järvamaa,,county
-EE,EE-528,Nõo,EE-79,
+EE,EE-528,Nõo,EE-79,municipality
 EE,EE-557,Otepää,EE-81,municipality
 EE,EE-56,Läänemaa,,county
-EE,EE-567,Paide,EE-52,
+EE,EE-567,Paide,EE-52,municipality
 EE,EE-586,Peipsiääre,EE-79,municipality
 EE,EE-60,Lääne-Virumaa,,county
 EE,EE-615,Põhja-Sakala,EE-84,municipality
 EE,EE-618,Põltsamaa,EE-50,municipality
-EE,EE-622,Põlva,EE-64,
-EE,EE-624,Pärnu,EE-68,
+EE,EE-622,Põlva,EE-64,municipality
+EE,EE-624,Pärnu,EE-68,municipality
 EE,EE-638,Põhja-Pärnumaa,EE-68,municipality
 EE,EE-64,Põlvamaa,,county
-EE,EE-651,Raasiku,EE-37,
-EE,EE-653,Rae,EE-37,
-EE,EE-661,Rakvere,EE-60,
-EE,EE-663,Rakvere²,EE-60,
-EE,EE-668,Rapla,EE-71,
+EE,EE-651,Raasiku,EE-37,municipality
+EE,EE-653,Rae,EE-37,municipality
+EE,EE-661,Rakvere,EE-60,municipality
+EE,EE-663,Rakvere,EE-60,municipality
+EE,EE-668,Rapla,EE-71,municipality
 EE,EE-68,Pärnumaa,,county
-EE,EE-689,Ruhnu,EE-74,
+EE,EE-689,Ruhnu,EE-74,municipality
 EE,EE-698,Rõuge,EE-87,municipality
-EE,EE-708,Räpina,EE-64,
+EE,EE-708,Räpina,EE-64,municipality
 EE,EE-71,Raplamaa,,county
-EE,EE-712,Saarde,EE-68,
-EE,EE-714,Saaremaa,EE-74,
-EE,EE-719,Saku,EE-37,
-EE,EE-726,Saue,EE-37,
-EE,EE-732,Setomaa,EE-87,
+EE,EE-712,Saarde,EE-68,municipality
+EE,EE-714,Saaremaa,EE-74,municipality
+EE,EE-719,Saku,EE-37,municipality
+EE,EE-726,Saue,EE-37,municipality
+EE,EE-732,Setomaa,EE-87,municipality
 EE,EE-735,Sillamäe,EE-45,city
 EE,EE-74,Saare,,county
-EE,EE-784,Tallinn,EE-37,
+EE,EE-784,Tallinn,EE-37,municipality
 EE,EE-79,Tartumaa,,county
-EE,EE-792,Tapa,EE-60,
-EE,EE-793,Tartu,EE-79,
-EE,EE-796,Tartu²,EE-79,
-EE,EE-803,Toila,EE-45,
+EE,EE-792,Tapa,EE-60,municipality
+EE,EE-793,Tartu,EE-79,municipality
+EE,EE-796,Tartu,EE-79,municipality
+EE,EE-803,Toila,EE-45,municipality
 EE,EE-809,Tori,EE-68,municipality
 EE,EE-81,Valgamaa,,county
-EE,EE-824,Tõrva,EE-81,
+EE,EE-824,Tõrva,EE-81,municipality
 EE,EE-834,Türi,EE-52,municipality
 EE,EE-84,Viljandi,,county
-EE,EE-855,Valga,EE-81,
+EE,EE-855,Valga,EE-81,municipality
 EE,EE-87,Võrumaa,,county
-EE,EE-890,Viimsi,EE-37,
-EE,EE-897,Viljandi²,EE-84,
-EE,EE-899,Viljandi³,EE-84,
-EE,EE-901,Vinni,EE-60,
-EE,EE-903,Viru-Nigula,EE-60,
-EE,EE-907,Vormsi,EE-56,
-EE,EE-917,Võru²,EE-87,
-EE,EE-919,Võru,EE-87,
+EE,EE-890,Viimsi,EE-37,municipality
+EE,EE-897,Viljandi,EE-84,municipality
+EE,EE-899,Viljandi³,EE-84,municipality
+EE,EE-901,Vinni,EE-60,municipality
+EE,EE-903,Viru-Nigula,EE-60,municipality
+EE,EE-907,Vormsi,EE-56,municipality
+EE,EE-917,Võru,EE-87,municipality
+EE,EE-919,Võru,EE-87,municipality
 EE,EE-928,Väike-Maarja,EE-60,municipality
 EG,EG-ALX,Alexandria,,governorate
 EG,EG-ASN,Aswan,,governorate
@@ -1205,7 +1205,7 @@ ES,ES-C,A Coruña,ES-GA,province
 ES,ES-CA,Cádiz,ES-AN,province
 ES,ES-CB,Cantabria,,autonomous community
 ES,ES-CC,Cáceres,ES-EX,province
-ES,ES-CE,Ceuta,,territory
+ES,ES-CE,Ceuta,,autonomous city
 ES,ES-CL,Castile and León,,autonomous community
 ES,ES-CM,Castile-La Mancha,,autonomous community
 ES,ES-CN,Canary Islands,,autonomous community
@@ -1226,20 +1226,20 @@ ES,ES-IB,Balearic Islands,,autonomous community
 ES,ES-J,Jaén,ES-AN,province
 ES,ES-L,Lleida,ES-CT,province
 ES,ES-LE,León,ES-CL,province
-ES,ES-LO,La Rioja Province,ES-RI,
+ES,ES-LO,La Rioja Province,ES-RI,province
 ES,ES-LU,Lugo,ES-GA,province
 ES,ES-M,Madrid Province,ES-MD,province
 ES,ES-MA,Málaga,ES-AN,province
 ES,ES-MC,Murcia Region,,autonomous community
 ES,ES-MD,Madrid Autonomous Community,,autonomous community
-ES,ES-ML,Melilla,,territory
+ES,ES-ML,Melilla,,autonomous city
 ES,ES-MU,Murcia,ES-MC,province
 ES,ES-NA,Navarra,ES-NC,province
-ES,ES-NC,Navarra Chartered Community,,
+ES,ES-NC,Navarra Chartered Community,,autonomous community
 ES,ES-O,Asturias Province,ES-AS,province
 ES,ES-OR,Ourense,ES-GA,province
 ES,ES-P,Palencia,ES-CL,province
-ES,ES-PM,Balears Province,ES-IB,
+ES,ES-PM,Balears Province,ES-IB,province
 ES,ES-PO,Pontevedra,ES-GA,province
 ES,ES-PV,Basque Country,,autonomous community
 ES,ES-RI,La Rioja,,autonomous community
@@ -1423,7 +1423,7 @@ FR,FR-BRE,Brittany,,region
 FR,FR-CVL,Centre-Val de Loire,,region
 FR,FR-GES,Grand-Est,,region
 FR,FR-HDF,Hauts-de-France,,region
-FR,FR-IDF,Île-de-France²,,region
+FR,FR-IDF,Île-de-France,,region
 FR,FR-NAQ,Nouvelle-Aquitaine,,region
 FR,FR-NOR,Normandie,,region
 FR,FR-OCC,Occitanie,,region
@@ -1438,13 +1438,13 @@ GA,GA-6,Ogooué-Ivindo,,province
 GA,GA-7,Ogooué-Lolo,,province
 GA,GA-8,Ogooué-Maritime,,province
 GA,GA-9,Woleu-Ntem,,province
-GB,GB-ABC,"Armagh, Banbridge and Craigavon",GB-NIR,
+GB,GB-ABC,"Armagh, Banbridge and Craigavon",GB-NIR,district
 GB,GB-ABD,Aberdeenshire,GB-SCT,council area
 GB,GB-ABE,Aberdeen,GB-SCT,council area
 GB,GB-AGB,Argyll and Bute,GB-SCT,council area
 GB,GB-AGY,Anglesey,GB-WLS,principal area
-GB,GB-AND,Ards and North Down,GB-NIR,
-GB,GB-ANN,Antrim and Newtownabbey,GB-NIR,
+GB,GB-AND,Ards and North Down,GB-NIR,district
+GB,GB-ANN,Antrim and Newtownabbey,GB-NIR,district
 GB,GB-ANS,Angus,GB-SCT,council area
 GB,GB-BAS,Bath and North East Somerset,GB-ENG,unitary authority
 GB,GB-BBD,Blackburn with Darwen,GB-ENG,unitary authority
@@ -1453,7 +1453,7 @@ GB,GB-BDF,Bedford,GB-ENG,unitary authority
 GB,GB-BDG,Barking and Dagenham,GB-ENG,borough
 GB,GB-BEN,Brent,GB-ENG,borough
 GB,GB-BEX,Bexley,GB-ENG,borough
-GB,GB-BFS,Belfast,GB-NIR,county
+GB,GB-BFS,Belfast,GB-NIR,district
 GB,GB-BGE,Bridgend,GB-WLS,principal area
 GB,GB-BGW,Blaenau Gwent,GB-WLS,principal area
 GB,GB-BIR,Birmingham,GB-ENG,borough
@@ -1471,13 +1471,13 @@ GB,GB-BUR,Bury,GB-ENG,borough
 GB,GB-CAM,Cambridgeshire,GB-ENG,county
 GB,GB-CAY,Caerphilly,GB-WLS,principal area
 GB,GB-CBF,Central Bedfordshire,GB-ENG,unitary authority
-GB,GB-CCG,Causeway Coast and Glens,GB-NIR,
+GB,GB-CCG,Causeway Coast and Glens,GB-NIR,district
 GB,GB-CGN,Ceredigion,GB-WLS,principal area
 GB,GB-CHE,Cheshire East,GB-ENG,unitary authority
 GB,GB-CHW,Cheshire West and Chester,GB-ENG,unitary authority
 GB,GB-CLD,Calderdale,GB-ENG,borough
 GB,GB-CLK,Clackmannanshire,GB-SCT,council area
-GB,GB-CMA,Cumbria,GB-ENG,
+GB,GB-CMA,Cumbria,GB-ENG,county
 GB,GB-CMD,Camden,GB-ENG,borough
 GB,GB-CMN,Carmarthenshire,GB-WLS,principal area
 GB,GB-CON,Cornwall,GB-ENG,unitary authority
@@ -1494,7 +1494,7 @@ GB,GB-DGY,Dumfries and Galloway,GB-SCT,council area
 GB,GB-DNC,Doncaster,GB-ENG,borough
 GB,GB-DND,Dundee,GB-SCT,council area
 GB,GB-DOR,Dorset,GB-ENG,unitary authority
-GB,GB-DRS,Derry and Strabane,GB-NIR,
+GB,GB-DRS,Derry and Strabane,GB-NIR,district
 GB,GB-DUD,Dudley,GB-ENG,borough
 GB,GB-DUR,Durham,GB-ENG,unitary authority
 GB,GB-EAL,Ealing,GB-ENG,borough
@@ -1512,7 +1512,7 @@ GB,GB-ESX,East Sussex,GB-ENG,county
 GB,GB-FAL,Falkirk,GB-SCT,council area
 GB,GB-FIF,Fife,GB-SCT,council area
 GB,GB-FLN,Flintshire,GB-WLS,principal area
-GB,GB-FMO,Fermanagh and Omagh,GB-NIR,
+GB,GB-FMO,Fermanagh and Omagh,GB-NIR,district
 GB,GB-GAT,Gateshead,GB-ENG,borough
 GB,GB-GLG,Glasgow,GB-SCT,council area
 GB,GB-GLS,Gloucestershire,GB-ENG,county
@@ -1542,7 +1542,7 @@ GB,GB-KIR,Kirklees,GB-ENG,borough
 GB,GB-KTT,Kingston upon Thames,GB-ENG,borough
 GB,GB-KWL,Knowsley,GB-ENG,borough
 GB,GB-LAN,Lancashire,GB-ENG,county
-GB,GB-LBC,Lisburn and Castlereagh,GB-NIR,
+GB,GB-LBC,Lisburn and Castlereagh,GB-NIR,district
 GB,GB-LBH,Lambeth,GB-ENG,borough
 GB,GB-LCE,Leicester,GB-ENG,unitary authority
 GB,GB-LDS,Leeds,GB-ENG,borough
@@ -1550,19 +1550,19 @@ GB,GB-LEC,Leicestershire,GB-ENG,county
 GB,GB-LEW,Lewisham,GB-ENG,borough
 GB,GB-LIN,Lincolnshire,GB-ENG,county
 GB,GB-LIV,Liverpool,GB-ENG,borough
-GB,GB-LND,London,GB-ENG,district
+GB,GB-LND,City of London,GB-ENG,city corporation
 GB,GB-LUT,Luton,GB-ENG,unitary authority
 GB,GB-MAN,Manchester,GB-ENG,borough
 GB,GB-MDB,Middlesbrough,GB-ENG,unitary authority
 GB,GB-MDW,Medway,GB-ENG,unitary authority
-GB,GB-MEA,Mid and East Antrim,GB-NIR,
+GB,GB-MEA,Mid and East Antrim,GB-NIR,district
 GB,GB-MIK,Milton Keynes,GB-ENG,unitary authority
 GB,GB-MLN,Midlothian,GB-SCT,council area
 GB,GB-MON,Monmouthshire,GB-WLS,principal area
 GB,GB-MRT,Merton,GB-ENG,borough
 GB,GB-MRY,Moray,GB-SCT,council area
 GB,GB-MTY,Merthyr Tydfil,GB-WLS,principal area
-GB,GB-MUL,Mid Ulster,GB-NIR,
+GB,GB-MUL,Mid Ulster,GB-NIR,district
 GB,GB-NAY,North Ayrshire,GB-SCT,council area
 GB,GB-NBL,Northumberland,GB-ENG,unitary authority
 GB,GB-NEL,North East Lincolnshire,GB-ENG,unitary authority
@@ -1572,7 +1572,7 @@ GB,GB-NGM,Nottingham,GB-ENG,unitary authority
 GB,GB-NIR,Northern Ireland,,constituent country
 GB,GB-NLK,North Lanarkshire,GB-SCT,council area
 GB,GB-NLN,North Lincolnshire,GB-ENG,unitary authority
-GB,GB-NMD,"Newry, Mourne and Down",GB-NIR,
+GB,GB-NMD,"Newry, Mourne and Down",GB-NIR,district
 GB,GB-NNH,North Northamptonshire,GB-ENG,
 GB,GB-NSM,North Somerset,GB-ENG,unitary authority
 GB,GB-NTL,Neath Port Talbot,GB-WLS,principal area
@@ -2027,7 +2027,7 @@ IQ,IQ-DI,Diyala,,governorate
 IQ,IQ-DQ,Dhi Qar,,governorate
 IQ,IQ-KA,Karbala,,governorate
 IQ,IQ-KI,Kirkuk,,governorate
-IQ,IQ-KR,Kurdistan,,region
+IQ,IQ-KR,Kurdistan Region,,region
 IQ,IQ-MA,Maysan,,governorate
 IQ,IQ-MU,Al Muthanna,,governorate
 IQ,IQ-NA,Najaf,,governorate
@@ -2091,54 +2091,54 @@ IS,IS-FJL,Fjallabyggð,IS-6,municipality
 IS,IS-FLA,Flóahreppur,IS-8,municipality
 IS,IS-FLR,Fljótsdalshreppur,IS-7,municipality
 IS,IS-GAR,Garðabær,IS-1,municipality
-IS,IS-GOG,Grímsnes- og Grafningshreppur,IS-8,
+IS,IS-GOG,Grímsnes- og Grafningshreppur,IS-8,municipality
 IS,IS-GRN,Grindavíkurbær,IS-2,municipality
 IS,IS-GRU,Grundarfjarðarbær,IS-3,municipality
-IS,IS-GRY,Grýtubakkahreppur,IS-6,
+IS,IS-GRY,Grýtubakkahreppur,IS-6,municipality
 IS,IS-HAF,Hafnarfjarðarkaupstaður,IS-1,city
-IS,IS-HRG,Hörgársveit,IS-6,
-IS,IS-HRU,Hrunamannahreppur,IS-8,
+IS,IS-HRG,Hörgársveit,IS-6,municipality
+IS,IS-HRU,Hrunamannahreppur,IS-8,municipality
 IS,IS-HUG,Húnabyggð,IS-5,municipality
 IS,IS-HUV,Húnaþing vestra,IS-5,municipality
-IS,IS-HVA,Hvalfjarðarsveit,IS-3,
+IS,IS-HVA,Hvalfjarðarsveit,IS-3,municipality
 IS,IS-HVE,Hveragerðisbær,IS-8,municipality
-IS,IS-ISA,Ísafjarðarbær,IS-4,
-IS,IS-KAL,Kaldrananeshreppur,IS-4,
-IS,IS-KJO,Kjósarhreppur,IS-1,
+IS,IS-ISA,Ísafjarðarbær,IS-4,municipality
+IS,IS-KAL,Kaldrananeshreppur,IS-4,municipality
+IS,IS-KJO,Kjósarhreppur,IS-1,municipality
 IS,IS-KOP,Kópavogsbær,IS-1,city
-IS,IS-LAN,Langanesbyggð,IS-6,
-IS,IS-MOS,Mosfellsbær,IS-1,
+IS,IS-LAN,Langanesbyggð,IS-6,municipality
+IS,IS-MOS,Mosfellsbær,IS-1,municipality
 IS,IS-MUL,Múlaþing,IS-7,municipality
-IS,IS-MYR,Mýrdalshreppur,IS-8,
-IS,IS-NOR,Norðurþing,IS-6,
+IS,IS-MYR,Mýrdalshreppur,IS-8,municipality
+IS,IS-NOR,Norðurþing,IS-6,municipality
 IS,IS-RGE,Rangárþing eystra,IS-8,municipality
 IS,IS-RGY,Rangárþing ytra,IS-8,municipality
-IS,IS-RHH,Reykhólahreppur,IS-4,
-IS,IS-RKN,Reykjanesbær,IS-2,
+IS,IS-RHH,Reykhólahreppur,IS-4,municipality
+IS,IS-RKN,Reykjanesbær,IS-2,municipality
 IS,IS-RKV,Reykjavíkurborg,IS-1,city
-IS,IS-SBT,Svalbarðsstrandarhreppur,IS-6,
+IS,IS-SBT,Svalbarðsstrandarhreppur,IS-6,municipality
 IS,IS-SDN,Suðurnesjabær,IS-2,municipality
 IS,IS-SDV,Súðavíkurhreppur,IS-4,municipality
 IS,IS-SEL,Seltjarnarnesbær,IS-1,municipality
 IS,IS-SFA,Sveitarfélagið Árborg,IS-8,municipality
-IS,IS-SHF,Sveitarfélagið Hornafjörður,IS-7,
-IS,IS-SKF,Skaftárhreppur,IS-8,
-IS,IS-SKG,Skagabyggð,IS-5,
-IS,IS-SKO,Skorradalshreppur,IS-3,
+IS,IS-SHF,Sveitarfélagið Hornafjörður,IS-7,municipality
+IS,IS-SKF,Skaftárhreppur,IS-8,municipality
+IS,IS-SKG,Skagabyggð,IS-5,municipality
+IS,IS-SKO,Skorradalshreppur,IS-3,municipality
 IS,IS-SKR,Skagafjörður,IS-5,municipality
-IS,IS-SNF,Snæfellsbær,IS-3,
-IS,IS-SOG,Skeiða- og Gnúpverjahreppur,IS-8,
+IS,IS-SNF,Snæfellsbær,IS-3,municipality
+IS,IS-SOG,Skeiða- og Gnúpverjahreppur,IS-8,municipality
 IS,IS-SOL,Sveitarfélagið Ölfus,IS-8,municipality
 IS,IS-SSS,Sveitarfélagið Skagaströnd,IS-5,municipality
 IS,IS-STR,Strandabyggð,IS-4,municipality
-IS,IS-STY,Stykkishólmsbær,IS-3,
+IS,IS-STY,Stykkishólmsbær,IS-3,municipality
 IS,IS-SVG,Sveitarfélagið Vogar,IS-2,municipality
-IS,IS-TAL,Tálknafjarðarhreppur,IS-4,
-IS,IS-THG,Þingeyjarsveit,IS-6,
+IS,IS-TAL,Tálknafjarðarhreppur,IS-4,municipality
+IS,IS-THG,Þingeyjarsveit,IS-6,municipality
 IS,IS-TJO,Tjörneshreppur,IS-6,municipality
-IS,IS-VEM,Vestmannaeyjabær,IS-8,
-IS,IS-VER,Vesturbyggð,IS-4,
-IS,IS-VOP,Vopnafjarðarhreppur,IS-7,
+IS,IS-VEM,Vestmannaeyjabær,IS-8,municipality
+IS,IS-VER,Vesturbyggð,IS-4,municipality
+IS,IS-VOP,Vopnafjarðarhreppur,IS-7,municipality
 IT,IT-21,Piedmont,,region
 IT,IT-23,Aosta Valley,,autonomous region
 IT,IT-25,Lombardy,,region
@@ -2157,7 +2157,7 @@ IT,IT-72,Campania,,region
 IT,IT-75,Apulia,,region
 IT,IT-77,Basilicata,,region
 IT,IT-78,Calabria,,region
-IT,IT-82,Sicily,,region
+IT,IT-82,Sicily,,autonomous region
 IT,IT-88,Sardinia,,autonomous region
 IT,IT-AG,Agrigento,IT-82,
 IT,IT-AL,Alessandria,IT-21,province
@@ -2458,18 +2458,18 @@ KR,KR-11,Seoul,,city
 KR,KR-26,Busan,,metropolitan city
 KR,KR-27,Daegu,,metropolitan city
 KR,KR-28,Incheon,,metropolitan city
-KR,KR-29,Gwangju City,,
+KR,KR-29,Gwangju City,,metropolitan city
 KR,KR-30,Daejeon,,metropolitan city
 KR,KR-31,Ulsan,,metropolitan city
 KR,KR-41,Gyeonggi,,province
-KR,KR-42,Gangwon,,state
+KR,KR-42,Gangwon,,special self-governing province
 KR,KR-43,North Chungcheong,,province
 KR,KR-44,South Chungcheong,,province
-KR,KR-45,North Jeolla,,state
-KR,KR-46,South Jeolla,,
+KR,KR-45,North Jeolla,,special self-governing province
+KR,KR-46,South Jeolla,,province
 KR,KR-47,North Gyeongsang,,province
 KR,KR-48,South Gyeongsang,,province
-KR,KR-49,Jeju,,state
+KR,KR-49,Jeju,,special self-governing province
 KR,KR-50,Sejong,,city
 KW,KW-AH,Al Ahmadi,,governorate
 KW,KW-FA,Al Farwaniyah,,governorate
@@ -2669,7 +2669,7 @@ LT,LT-KU,Kaunas County,,county
 LT,LT-MR,Marijampolė County,,county
 LT,LT-PN,Panevėžys County,,county
 LT,LT-SA,Šiauliai County,,county
-LT,LT-TA,Tauragė County,,entity
+LT,LT-TA,Tauragė County,,county
 LT,LT-TE,Telšiai County,,county
 LT,LT-UT,Utena County,,county
 LT,LT-VL,Vilnius County,,county
@@ -2728,7 +2728,7 @@ LV,LV-LPX,Liepāja,,state
 LV,LV-REZ,Rēzekne,,state
 LV,LV-RIX,Riga,,state
 LV,LV-VEN,Ventspils,,state
-LY,LY-BA,Benghazi,,city
+LY,LY-BA,Benghazi,,district
 LY,LY-BU,Butnan,,district
 LY,LY-DR,Derna,,district
 LY,LY-GT,Ghat,,district
@@ -2750,18 +2750,18 @@ LY,LY-WA,Al Wahat,,district
 LY,LY-WD,Wadi al Hayaa,,district
 LY,LY-WS,Wadi al Shatii,,district
 LY,LY-ZA,Zawiya,,district
-MA,MA-01,Tangier-Tétouan,,region
-MA,MA-02,Gharb-Chrarda-Béni Hssen,,region
-MA,MA-03,Taza-Al Hoceima-Taounate,,region
-MA,MA-04,Oriental,,region
-MA,MA-05,Fès-Boulemane,,region
-MA,MA-06,Meknès-Tafilalet,,region
-MA,MA-07,Rabat-Salé-Zemmour-Zaer,,region
-MA,MA-08,Grand Casablanca,,region
-MA,MA-09,Chaouia-Ouardigha,,region
-MA,MA-10,Doukkala-Abda,,region
-MA,MA-11,Marrakesh-Tensift-El Haouz,,region
-MA,MA-12,Tadla-Azilal,,region
+MA,MA-01,Tanger-Tétouan-Al Hoceïma,,region
+MA,MA-02,L'Oriental,,region
+MA,MA-03,Fès-Meknès,,region
+MA,MA-04,Rabat-Salé-Kénitra,,region
+MA,MA-05,Béni Mellal-Khénifra,,region
+MA,MA-06,Casablanca-Settat,,region
+MA,MA-07,Marrakech-Safi,,region
+MA,MA-08,Drâa-Tafilalet,,region
+MA,MA-09,Souss-Massa,,region
+MA,MA-10,Guelmim-Oued Noun,,region
+MA,MA-11,Laâyoune-Sakia El Hamra,,region
+MA,MA-12,Dakhla-Oued Ed-Dahab,,region
 MA,MA-AGD,Agadir-Ida Ou Tanane,MA-09,prefecture
 MA,MA-AOU,Aousserd,MA-12,province
 MA,MA-ASZ,Assa-Zag,MA-10,province
@@ -3091,74 +3091,74 @@ MR,MR-12,Inchiri,,region
 MR,MR-13,Nouakchott Ouest,,region
 MR,MR-14,Nouakchott Nord,,region
 MR,MR-15,Nouakchott Sud,,region
-MT,MT-01,Attard,,
-MT,MT-02,Balzan,,
+MT,MT-01,Attard,,local council
+MT,MT-02,Balzan,,local council
 MT,MT-03,Birgu,,city
 MT,MT-04,Birkirkara,,city
 MT,MT-05,Birżebbuġa,,city
 MT,MT-06,Cospicua,,city
-MT,MT-07,Dingli,,
-MT,MT-08,Fgura,,
-MT,MT-09,Floriana,,
-MT,MT-10,Fontana,,
-MT,MT-11,Gudja,,
-MT,MT-12,Gżira,,
+MT,MT-07,Dingli,,local council
+MT,MT-08,Fgura,,local council
+MT,MT-09,Floriana,,local council
+MT,MT-10,Fontana,,local council
+MT,MT-11,Gudja,,local council
+MT,MT-12,Gżira,,local council
 MT,MT-13,Għajnsielem,,municipality
-MT,MT-14,Għarb,,
-MT,MT-15,Għargħur,,
-MT,MT-16,Għasri,,
-MT,MT-17,Għaxaq,,
-MT,MT-18,Ħamrun,,
-MT,MT-19,Iklin,,
+MT,MT-14,Għarb,,local council
+MT,MT-15,Għargħur,,local council
+MT,MT-16,Għasri,,local council
+MT,MT-17,Għaxaq,,local council
+MT,MT-18,Ħamrun,,local council
+MT,MT-19,Iklin,,local council
 MT,MT-20,Senglea,,city
-MT,MT-21,Kalkara,,
-MT,MT-22,Kerċem,,
-MT,MT-23,Kirkop,,
-MT,MT-24,Lija,,
-MT,MT-25,Luqa,,
-MT,MT-26,Marsa,,
-MT,MT-27,Marsaskala,,
-MT,MT-28,Marsaxlokk,,
-MT,MT-29,Mdina,,
-MT,MT-30,Mellieħa,,
-MT,MT-31,Mġarr,,
+MT,MT-21,Kalkara,,local council
+MT,MT-22,Kerċem,,local council
+MT,MT-23,Kirkop,,local council
+MT,MT-24,Lija,,local council
+MT,MT-25,Luqa,,local council
+MT,MT-26,Marsa,,local council
+MT,MT-27,Marsaskala,,local council
+MT,MT-28,Marsaxlokk,,local council
+MT,MT-29,Mdina,,local council
+MT,MT-30,Mellieħa,,local council
+MT,MT-31,Mġarr,,local council
 MT,MT-32,Mosta,,city
-MT,MT-33,Mqabba,,
-MT,MT-34,Msida,,
-MT,MT-35,Imtarfa,,
-MT,MT-36,Munxar,,
-MT,MT-37,Nadur,,
+MT,MT-33,Mqabba,,local council
+MT,MT-34,Msida,,local council
+MT,MT-35,Imtarfa,,local council
+MT,MT-36,Munxar,,local council
+MT,MT-37,Nadur,,local council
 MT,MT-38,Naxxar,,city
-MT,MT-39,Paola,,
-MT,MT-40,Pembroke,,
-MT,MT-41,Pietà,,
-MT,MT-42,Qala,,
+MT,MT-39,Paola,,local council
+MT,MT-40,Pembroke,,local council
+MT,MT-41,Pietà,,local council
+MT,MT-42,Qala,,local council
 MT,MT-43,Qormi,,city
-MT,MT-44,Qrendi,,
+MT,MT-44,Qrendi,,local council
 MT,MT-45,Victoria,,city
-MT,MT-46,Rabat,,
-MT,MT-47,Safi,,
-MT,MT-48,St. Julian’s,,
-MT,MT-49,San Ġwann,,
-MT,MT-50,Saint Lawrence,,
-MT,MT-51,St. Paul’s Bay,,
-MT,MT-52,Sannat,,
-MT,MT-53,Santa Luċija,,
-MT,MT-54,Santa Venera,,
+MT,MT-46,Rabat,,local council
+MT,MT-47,Safi,,local council
+MT,MT-48,St. Julian’s,,local council
+MT,MT-49,San Ġwann,,local council
+MT,MT-50,Saint Lawrence,,local council
+MT,MT-51,St. Paul’s Bay,,local council
+MT,MT-52,Sannat,,local council
+MT,MT-53,Santa Luċija,,local council
+MT,MT-54,Santa Venera,,local council
 MT,MT-55,Siġġiewi,,city
-MT,MT-56,Sliema,,
-MT,MT-57,Swieqi,,
-MT,MT-58,Ta’ Xbiex,,
-MT,MT-59,Tarxien,,
-MT,MT-60,Valletta,,city
-MT,MT-61,Xagħra,,
-MT,MT-62,Xewkija,,
-MT,MT-63,Xgħajra,,
+MT,MT-56,Sliema,,local council
+MT,MT-57,Swieqi,,local council
+MT,MT-58,Ta’ Xbiex,,local council
+MT,MT-59,Tarxien,,local council
+MT,MT-60,Valletta,,local council
+MT,MT-61,Xagħra,,local council
+MT,MT-62,Xewkija,,local council
+MT,MT-63,Xgħajra,,local council
 MT,MT-64,Żabbar,,city
-MT,MT-65,Żebbuġ Gozo,,
+MT,MT-65,Żebbuġ Gozo,,local council
 MT,MT-66,Żebbuġ,,city
 MT,MT-67,Żejtun,,city
-MT,MT-68,Żurrieq,,
+MT,MT-68,Żurrieq,,local council
 MU,MU-AG,Agaléga,,island
 MU,MU-BL,Rivière Noire,,district
 MU,MU-CC,Cargados Carajos,,island
@@ -3318,7 +3318,7 @@ NG,NG-EB,Ebonyi,,state
 NG,NG-ED,Edo,,state
 NG,NG-EK,Ekiti,,state
 NG,NG-EN,Enugu,,state
-NG,NG-FC,Federal Capital Territory,,state
+NG,NG-FC,Federal Capital Territory,,capital territory
 NG,NG-GO,Gombe,,state
 NG,NG-IM,Imo,,state
 NG,NG-JI,Jigawa,,state
@@ -3358,9 +3358,9 @@ NI,NI-MT,Matagalpa,,department
 NI,NI-NS,Nueva Segovia,,department
 NI,NI-RI,Rivas,,department
 NI,NI-SJ,Río San Juan,,department
-NL,NL-BQ1,Bonaire,,entity
-NL,NL-BQ2,Saba,,entity
-NL,NL-BQ3,Sint Eustatius,,
+NL,NL-BQ1,Bonaire,,special municipality
+NL,NL-BQ2,Saba,,special municipality
+NL,NL-BQ3,Sint Eustatius,,special municipality
 NL,NL-DR,Drenthe,,province
 NL,NL-FL,Flevoland,,province
 NL,NL-FR,Friesland,,province
@@ -3389,9 +3389,9 @@ NO,NO-54,Tromssan ja Finmarkun,,
 NP,NP-P1,Province 1,,province
 NP,NP-P2,Province 2,,province
 NP,NP-P3,Province 3,,province
-NP,NP-P4,Gandaki²,,
+NP,NP-P4,Gandaki,,
 NP,NP-P5,Province 5,,province
-NP,NP-P6,Karnali²,,province
+NP,NP-P6,Karnali,,province
 NP,NP-P7,Province 7,,province
 NR,NR-01,Aiwo,,district
 NR,NR-02,Anabar,,district
@@ -3510,7 +3510,7 @@ PH,PH-10,Northern Mindanao,,region
 PH,PH-11,Davao,,region
 PH,PH-12,Soccsksargen,,region
 PH,PH-13,Caraga,,region
-PH,PH-14,Muslim Mindanao,,
+PH,PH-14,Muslim Mindanao,,autonomous region
 PH,PH-15,Cordillera Administrative,,region
 PH,PH-40,Calabarzon,,region
 PH,PH-41,Mimaropa,,region
@@ -3598,7 +3598,7 @@ PH,PH-ZMB,Zambales,PH-03,province
 PH,PH-ZSI,Zamboanga Sibugay,PH-09,province
 PK,PK-BA,Balochistan,,province
 PK,PK-GB,Gilgit-Baltistan,,territory
-PK,PK-IS,Islamabad,,
+PK,PK-IS,Islamabad,,capital territory
 PK,PK-JK,Azad Kashmir,,territory
 PK,PK-KP,Khyber Pakhtunkhwa,,province
 PK,PK-PB,Punjab,,province
@@ -3915,7 +3915,7 @@ SD,SD-DN,North Darfur,,state
 SD,SD-DS,South Darfur,,state
 SD,SD-DW,West Darfur,,state
 SD,SD-GD,Al Qadarif,,state
-SD,SD-GK,West Kurdufan,,
+SD,SD-GK,West Kurdufan,,state
 SD,SD-GZ,Al Jazirah,,state
 SD,SD-KA,Kassala,,state
 SD,SD-KH,Khartoum,,state
@@ -4402,7 +4402,7 @@ TL,TL-LA,Lautém,,municipality
 TL,TL-LI,Liquiçá,,municipality
 TL,TL-MF,Manufahi,,municipality
 TL,TL-MT,Manatuto,,municipality
-TL,TL-OE,Oecusse,,
+TL,TL-OE,Oecusse,,special administrative region
 TL,TL-VI,Viqueque,,municipality
 TM,TM-A,Ahal,,region
 TM,TM-B,Balkan,,region
@@ -4609,7 +4609,7 @@ UA,UA-30,Kyiv,,city
 UA,UA-32,Kyivshchyna,,oblast
 UA,UA-35,Kirovohradschyna,,oblast
 UA,UA-40,Sevastopol,,city
-UA,UA-43,Crimea,,territory
+UA,UA-43,Crimea,,autonomous republic
 UA,UA-46,Lvivshchyna,,oblast
 UA,UA-48,Mykolayivschyna,,oblast
 UA,UA-51,Odeshchyna,,oblast
@@ -4715,7 +4715,7 @@ UG,UG-326,Lamwo,UG-N,district
 UG,UG-327,Napak,UG-N,district
 UG,UG-328,Nwoya,UG-N,district
 UG,UG-329,Otuke,UG-N,district
-UG,UG-330,Zombo²,UG-N,district
+UG,UG-330,Zombo,UG-N,district
 UG,UG-331,Zombo,UG-N,district
 UG,UG-332,Pakwach,UG-N,district
 UG,UG-333,Kwania,UG-N,
@@ -4976,7 +4976,7 @@ YE,YE-MA,Ma’rib,,governorate
 YE,YE-MR,Al Mahrah,,governorate
 YE,YE-MW,Al Mahwit,,governorate
 YE,YE-RA,Raymah,,governorate
-YE,YE-SA,Amanat Al Asimah,,governorate
+YE,YE-SA,Amanat Al Asimah,,municipality
 YE,YE-SD,Sa’dah,,governorate
 YE,YE-SH,Shabwah,,governorate
 YE,YE-SN,Sana’a,,governorate

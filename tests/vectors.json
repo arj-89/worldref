@@ -86,15 +86,15 @@
   ],
   "absent": ["IL", "ISR", "Israel", "إسرائيل", "اسرائيل"],
   "addressForm": [
-    {"iso2": "SA", "lang": "ar", "lines": [[["name", "الاسم", false]], [["organization", "المنشأة", false]], [["street", "العنوان", true]], [["city", "المدينة", true], ["postal_code", "الرمز البريدي", false]]]},
-    {"iso2": "US", "lang": "en", "lines": [[["name", "Name", false]], [["organization", "Organization", false]], [["street", "Street address", true]], [["city", "City", true], ["region", "State", true], ["postal_code", "ZIP code", true]]]},
-    {"iso2": "JP", "lang": "en", "lines": [[["postal_code", "Postal code", true]], [["region", "Prefecture", true]], [["street", "Street address", true]], [["organization", "Organization", false]], [["name", "Name", false]]]},
-    {"iso2": "KR", "lang": "ar", "lines": [[["region", "مقاطعة", true], ["city", "المدينة", true], ["sublocality", "المنطقة", false]], [["street", "العنوان", true]], [["organization", "المنشأة", false]], [["name", "الاسم", false]], [["postal_code", "الرمز البريدي", true]]]},
-    {"iso2": "EG", "lang": "ar", "lines": [[["name", "الاسم", false]], [["organization", "المنشأة", false]], [["street", "العنوان", true]], [["city", "المدينة", true]], [["region", "محافظة", false]], [["postal_code", "الرمز البريدي", false]]]},
-    {"iso2": "AE", "lang": "en", "lines": [[["name", "Name", false]], [["organization", "Organization", false]], [["street", "Street address", true]], [["region", "Emirate", true]]]},
-    {"iso2": "IN", "lang": "en", "lines": [[["name", "Name", false]], [["organization", "Organization", false]], [["street", "Street address", true]], [["city", "City", true], ["postal_code", "PIN code", true]], [["region", "State", true]]]},
-    {"iso2": "IE", "lang": "en", "lines": [[["name", "Name", false]], [["organization", "Organization", false]], [["street", "Street address", true]], [["sublocality", "Townland", false]], [["city", "City", true]], [["region", "County", false]], [["postal_code", "Eircode", false]]]},
-    {"iso2": "GB", "lang": "ar", "lines": [[["name", "الاسم", false]], [["organization", "المنشأة", false]], [["street", "العنوان", true]], [["city", "مدينة البريد", true]], [["postal_code", "الرمز البريدي", true]]]}
+    {"iso2":"SA","lang":"ar","lines":[[["name","الاسم",false]],[["organization","المنشأة",false]],[["street","العنوان",true]],[["city","المدينة",true],["postal_code","الرمز البريدي",false]]]},
+    {"iso2":"US","lang":"en","lines":[[["name","Name",false]],[["organization","Organization",false]],[["street","Street address",true]],[["city","City",true],["region","State",true],["postal_code","ZIP code",true]]]},
+    {"iso2":"JP","lang":"en","lines":[[["postal_code","Postal code",true]],[["region","Prefecture",true]],[["street","Street address",true]],[["organization","Organization",false]],[["name","Name",false]]]},
+    {"iso2":"KR","lang":"ar","lines":[[["region","مقاطعة",true],["city","المدينة",true],["sublocality","المنطقة",false]],[["street","العنوان",true]],[["organization","المنشأة",false]],[["name","الاسم",false]],[["postal_code","الرمز البريدي",true]]]},
+    {"iso2":"EG","lang":"ar","lines":[[["name","الاسم",false]],[["organization","المنشأة",false]],[["street","العنوان",true]],[["city","المدينة",true]],[["region","محافظة",false]],[["postal_code","الرمز البريدي",false]]]},
+    {"iso2":"AE","lang":"en","lines":[[["name","Name",false]],[["organization","Organization",false]],[["street","Street address",true]],[["region","Emirate",true]]]},
+    {"iso2":"IN","lang":"en","lines":[[["name","Name",false]],[["organization","Organization",false]],[["street","Street address",true]],[["city","City",true],["postal_code","PIN code",true]],[["region","State",true]]]},
+    {"iso2":"IE","lang":"en","lines":[[["name","Name",false]],[["organization","Organization",false]],[["street","Street address",true]],[["sublocality","Townland",false]],[["city","City",true]],[["region","County",false]],[["postal_code","Eircode",false]]]},
+    {"iso2":"GB","lang":"ar","lines":[[["name","الاسم",false]],[["organization","المنشأة",false]],[["street","العنوان",true]],[["city","المدينة البريدية",true]],[["postal_code","الرمز البريدي",true]]]}
   ],
   "editDistance": [
     ["kuwiat", "kuwait", 2, 1],

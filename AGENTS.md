@@ -19,7 +19,7 @@ Guide for AI coding agents using or changing worldref.
 - The data in `data/`, `schema/`, `flags/` and the language data copies are generated. Never edit them by hand.
 - Pipeline: `npm run fetch` (refreshes `upstream/snapshot/` from upstream) then `npm run build` (generates everything offline from the snapshot) then `npm test`.
 - Hand decisions live only in `scripts/editorial.mjs`, each with a reason that the build copies into `data/sources.json`.
-- Policy (must never change): Israel is absent from every output (`tests/js.test.mjs` scans all files); Palestine carries +970 and +972; disputed places follow Saudi official positions. See README "Data policy".
+- Policy (must never change): Israel is absent from every output (`tests/js.test.mjs` scans every data file, `tests/site-scan.mjs` the built website); Palestine carries +970 and +972; disputed places follow Saudi official positions. See README "Data policy".
 - Shared behaviour is defined by `src/text.ts` and `src/helpers.ts` and pinned by `tests/vectors.json`. Changing behaviour means changing the vectors and every language package together; CI runs all eight suites.
 
 ## Layout

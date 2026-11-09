@@ -8,7 +8,7 @@ AD,AD-07,أندورا لا فيلا,Andorra la Vella,,أبرشية,parish
 AD,AD-08,إسكالديس أنجوردني,Escaldes-Engordany,,أبرشية,parish
 AE,AE-AJ,عجمان,Ajman,,إمارة,emirate
 AE,AE-AZ,إمارة أبوظبي,Abu Dhabi,,إمارة,emirate
-AE,AE-DU,امارة دبي,Dubai,,إمارة,emirate
+AE,AE-DU,إمارة دبي,Dubai,,إمارة,emirate
 AE,AE-FU,الفجيرة,Fujairah,,إمارة,emirate
 AE,AE-RK,رأس الخيمة,Ras al-Khaimah,,إمارة,emirate
 AE,AE-SH,إمارة الشارقة,Sharjah,,إمارة,emirate
@@ -20,7 +20,7 @@ AF,AF-BDS,ولاية بدخشان,Badakhshan,,مقاطعة,province
 AF,AF-BGL,ولاية بغلان,Baghlan,,مقاطعة,province
 AF,AF-DAY,ولاية دايكندي,Daykundi,,مقاطعة,province
 AF,AF-FRA,ولاية فراه,Farah,,مقاطعة,province
-AF,AF-FYB,ولاية فاریاب,Faryab,,مقاطعة,province
+AF,AF-FYB,ولاية فارياب,Faryab,,مقاطعة,province
 AF,AF-GHA,ولاية غزني,Ghazni,,مقاطعة,province
 AF,AF-GHO,ولاية غور,Ghōr,,مقاطعة,province
 AF,AF-HEL,ولاية هلمند,Helmand,,مقاطعة,province
@@ -53,8 +53,8 @@ AG,AG-05,أبرشية سانت ماري,Saint Mary,,أبرشية,parish
 AG,AG-06,أبرشية القديس بول,Saint Paul,,أبرشية,parish
 AG,AG-07,أبرشية القديس بيتر,Saint Peter,,أبرشية,parish
 AG,AG-08,أبرشية سانت فيليب، أنتيغوا وبربودا,Saint Philip,,أبرشية,parish
-AG,AG-10,بربودا,Barbuda,,تابعية,dependency
-AG,AG-11,ريدوندا,Redonda,,تابعية,dependency
+AG,AG-10,بربودا,Barbuda,,إقليم تابع,dependency
+AG,AG-11,ريدوندا,Redonda,,إقليم تابع,dependency
 AL,AL-01,مقاطعة بيرات,Berat County,,مقاطعة,county
 AL,AL-02,مقاطعة دوريس,Durrës County,,مقاطعة,county
 AL,AL-03,مقاطعة إلباسان,Elbasan County,,مقاطعة,county
@@ -77,7 +77,7 @@ AM,AM-LO,محافظة لوري,Lori,,مقاطعة,province
 AM,AM-SH,محافظة شيراك,Shirak,,مقاطعة,province
 AM,AM-SU,محافظة سيونيك,Syunik,,مقاطعة,province
 AM,AM-TV,محافظة تاووش,Tavush,,مقاطعة,province
-AM,AM-VD,محافظة وايوتس‌جور,Vayots Dzor,,مقاطعة,province
+AM,AM-VD,محافظة وايوتس جور,Vayots Dzor,,مقاطعة,province
 AO,AO-BGO,مقاطعة بنغو,Bengo,,مقاطعة,province
 AO,AO-BGU,مقاطعة بنغيلا,Benguela,,مقاطعة,province
 AO,AO-BIE,مقاطعة بيي,Bié,,مقاطعة,province
@@ -98,7 +98,7 @@ AO,AO-UIG,مقاطعة أوجي,Uíge,,مقاطعة,province
 AO,AO-ZAI,مقاطعة زائير,Zaire,,مقاطعة,province
 AR,AR-A,سالتا,Salta,,مقاطعة,province
 AR,AR-B,بوينس آيرس,Buenos Aires Province,,مقاطعة,province
-AR,AR-C,بوينس آيرس²,Buenos Aires,,مدينة ذاتية الحكم,autonomous city
+AR,AR-C,بوينس آيرس,Buenos Aires,,مدينة ذاتية الحكم,autonomous city
 AR,AR-D,سان لويس,San Luis,,مقاطعة,province
 AR,AR-E,إنتري ريوس,Entre Ríos,,مقاطعة,province
 AR,AR-F,لا ريوخا,La Rioja,,مقاطعة,province
@@ -151,7 +151,7 @@ AZ,AZ-BAR,مقاطعة بردع,Barda,,منطقة,district
 AZ,AZ-BEY,مقاطعة بيلقان,Beylagan,,منطقة,district
 AZ,AZ-BIL,مقاطعة بيلاسوار,Bilasuvar,,منطقة,district
 AZ,AZ-CAB,مقاطعة جبرائيل,Jabrayil,,منطقة,district
-AZ,AZ-CAL,مقاطعة جليل‌ آباد,Jalilabad,,منطقة,district
+AZ,AZ-CAL,مقاطعة جليل آباد,Jalilabad,,منطقة,district
 AZ,AZ-CUL,حي جلفا,Julfa,AZ-NX,منطقة,district
 AZ,AZ-DAS,مقاطعة داشكاسان,Dashkasan,,منطقة,district
 AZ,AZ-FUZ,مقاطعة فضولي,Fizuli,,منطقة,district
@@ -232,7 +232,7 @@ BB,BB-11,سانت توماس، بربادوس,Saint Thomas,,أبرشية,parish
 BD,BD-01,,Bandarban,BD-B,منطقة,district
 BD,BD-02,,Barguna,BD-A,منطقة,district
 BD,BD-03,,Bogra,BD-E,منطقة,district
-BD,BD-04,مديرية برهمن‌ بريه,Brahmanbaria,BD-B,منطقة,district
+BD,BD-04,مديرية برهمن بريه,Brahmanbaria,BD-B,منطقة,district
 BD,BD-05,,Bagerhat,BD-D,منطقة,district
 BD,BD-06,مقاطعة باريسال,Barisal Division,BD-A,منطقة,district
 BD,BD-07,منطقغ شهبازفور الجنوبية,Bhola,BD-A,منطقة,district
@@ -372,56 +372,56 @@ BF,BF-YAT,محافظة ياتنغا,Yatenga,BF-10,مقاطعة,province
 BF,BF-ZIR,مقاطعة زيرو,Ziro,BF-06,مقاطعة,province
 BF,BF-ZON,محافظة زوندوما,Zondoma,BF-10,مقاطعة,province
 BF,BF-ZOU,محافظة زوندويوغو,Zoundwéogo,BF-07,مقاطعة,province
-BG,BG-01,محافظة بلاغووغراد,Blagoevgrad,,إقليم,oblast
-BG,BG-02,محافظة بورغاس,Burgas,,إقليم,oblast
-BG,BG-03,مقاطعة فارنا,Varna,,إقليم,oblast
-BG,BG-04,محافظة وليكو تارنوو,Veliko Tarnovo,,إقليم,oblast
-BG,BG-05,مقاطعة فيدين,Vidin,,إقليم,oblast
-BG,BG-06,مقاطعة فراتسا,Vratsa,,إقليم,oblast
-BG,BG-07,مقاطعة غابرووو,Gabrovo,,إقليم,oblast
-BG,BG-08,محافظة دوبريتش,Dobrich,,إقليم,oblast
-BG,BG-09,محافظة كرجالي,Kardzhali,,إقليم,oblast
-BG,BG-10,محافظة كيوستنديل,Kyustendil,,إقليم,oblast
-BG,BG-11,مقاطعة لووتش,Lovech,,إقليم,oblast
-BG,BG-12,محافظة مونتانا,Montana,,إقليم,oblast
-BG,BG-13,مقاطعة بازارجيك,Pazardzhik,,إقليم,oblast
-BG,BG-14,محافظة برنيك,Pernik,,إقليم,oblast
-BG,BG-15,مقاطعة بلفن,Pleven,,إقليم,oblast
-BG,BG-16,مقاطعة بلووديو,Plovdiv,,إقليم,oblast
-BG,BG-17,محافظة رازغراد,Razgrad,,إقليم,oblast
-BG,BG-18,محافظة روسه,Ruse,,إقليم,oblast
-BG,BG-19,مقاطعة سيليسترا,Silistra,,إقليم,oblast
-BG,BG-20,محافظة اسليون,Sliven,,إقليم,oblast
-BG,BG-21,مقاطعة سموليان,Smolyan,,إقليم,oblast
-BG,BG-22,مقاطعة مدينة صوفيا,Sofia,,إقليم,oblast
-BG,BG-23,مقاطعة صوفيا,Sofia District,,إقليم,oblast
-BG,BG-24,مقاطعة استارا زاغورا,Stara Zagora,,إقليم,oblast
-BG,BG-25,مقاطعة تارغوفيشته,Targovishte,,إقليم,oblast
-BG,BG-26,مقاطعة خاسكوو,Haskovo,,إقليم,oblast
-BG,BG-27,مقاطعة شومن,Shumen,,إقليم,oblast
-BG,BG-28,محافظة يامبول,Yambol,,إقليم,oblast
+BG,BG-01,محافظة بلاغووغراد,Blagoevgrad,,أوبلاست,oblast
+BG,BG-02,محافظة بورغاس,Burgas,,أوبلاست,oblast
+BG,BG-03,مقاطعة فارنا,Varna,,أوبلاست,oblast
+BG,BG-04,محافظة وليكو تارنوو,Veliko Tarnovo,,أوبلاست,oblast
+BG,BG-05,مقاطعة فيدين,Vidin,,أوبلاست,oblast
+BG,BG-06,مقاطعة فراتسا,Vratsa,,أوبلاست,oblast
+BG,BG-07,مقاطعة غابرووو,Gabrovo,,أوبلاست,oblast
+BG,BG-08,محافظة دوبريتش,Dobrich,,أوبلاست,oblast
+BG,BG-09,محافظة كرجالي,Kardzhali,,أوبلاست,oblast
+BG,BG-10,محافظة كيوستنديل,Kyustendil,,أوبلاست,oblast
+BG,BG-11,مقاطعة لووتش,Lovech,,أوبلاست,oblast
+BG,BG-12,محافظة مونتانا,Montana,,أوبلاست,oblast
+BG,BG-13,مقاطعة بازارجيك,Pazardzhik,,أوبلاست,oblast
+BG,BG-14,محافظة برنيك,Pernik,,أوبلاست,oblast
+BG,BG-15,مقاطعة بلفن,Pleven,,أوبلاست,oblast
+BG,BG-16,مقاطعة بلووديو,Plovdiv,,أوبلاست,oblast
+BG,BG-17,محافظة رازغراد,Razgrad,,أوبلاست,oblast
+BG,BG-18,محافظة روسه,Ruse,,أوبلاست,oblast
+BG,BG-19,مقاطعة سيليسترا,Silistra,,أوبلاست,oblast
+BG,BG-20,محافظة اسليون,Sliven,,أوبلاست,oblast
+BG,BG-21,مقاطعة سموليان,Smolyan,,أوبلاست,oblast
+BG,BG-22,مقاطعة مدينة صوفيا,Sofia,,أوبلاست,oblast
+BG,BG-23,مقاطعة صوفيا,Sofia District,,أوبلاست,oblast
+BG,BG-24,مقاطعة استارا زاغورا,Stara Zagora,,أوبلاست,oblast
+BG,BG-25,مقاطعة تارغوفيشته,Targovishte,,أوبلاست,oblast
+BG,BG-26,مقاطعة خاسكوو,Haskovo,,أوبلاست,oblast
+BG,BG-27,مقاطعة شومن,Shumen,,أوبلاست,oblast
+BG,BG-28,محافظة يامبول,Yambol,,أوبلاست,oblast
 BH,BH-13,محافظة العاصمة,Capital,,محافظة,governorate
-BH,BH-14,جنوبية,Southern,,محافظة,governorate
+BH,BH-14,المحافظة الجنوبية,Southern,,محافظة,governorate
 BH,BH-15,محافظة المحرق,Muharraq,,محافظة,governorate
-BH,BH-17,شمالية,Northern,,محافظة,governorate
-BI,BI-BB,مقاطعة بوبانزا,Bubanza,,,
-BI,BI-BL,مقاطعة بويمبورا الريفية,Bujumbura Rural,,,
-BI,BI-BM,مقاطعة بويومبورا مايري,Bujumbura,,,
-BI,BI-BR,محافظة بوروري,Bururi,,,
-BI,BI-CA,محافظة كانكوزو,Cankuzo,,,
-BI,BI-CI,محافظة سيبيتوك,Cibitoke,,,
+BH,BH-17,المحافظة الشمالية,Northern,,محافظة,governorate
+BI,BI-BB,مقاطعة بوبانزا,Bubanza,,مقاطعة,province
+BI,BI-BL,مقاطعة بويمبورا الريفية,Bujumbura Rural,,مقاطعة,province
+BI,BI-BM,مقاطعة بويومبورا مايري,Bujumbura,,مقاطعة,province
+BI,BI-BR,محافظة بوروري,Bururi,,مقاطعة,province
+BI,BI-CA,محافظة كانكوزو,Cankuzo,,مقاطعة,province
+BI,BI-CI,محافظة سيبيتوك,Cibitoke,,مقاطعة,province
 BI,BI-GI,مقاطعة جيتيغا,Gitega,,مقاطعة,province
-BI,BI-KI,مقاطعة كيروندو,Kirundo,,,
-BI,BI-KR,محافظة كاروزي,Karuzi,,,
-BI,BI-KY,مقاطعة كايانزا,Kayanza,,,
-BI,BI-MA,محافظة ماكامبا,Makamba,,,
-BI,BI-MU,محافظة مورامفيا,Muramvya,,,
-BI,BI-MW,محافظة موارو,Mwaro,,,
-BI,BI-MY,محافظة موينغا,Muyinga,,,
-BI,BI-NG,مقاطعة نغوزي,Ngozi,,,
-BI,BI-RM,إقليم رومنغي,Rumonge,,,
-BI,BI-RT,مقاطعة روتانا,Rutana,,,
-BI,BI-RY,محافظة روييغي,Ruyigi,,,
+BI,BI-KI,مقاطعة كيروندو,Kirundo,,مقاطعة,province
+BI,BI-KR,محافظة كاروزي,Karuzi,,مقاطعة,province
+BI,BI-KY,مقاطعة كايانزا,Kayanza,,مقاطعة,province
+BI,BI-MA,محافظة ماكامبا,Makamba,,مقاطعة,province
+BI,BI-MU,محافظة مورامفيا,Muramvya,,مقاطعة,province
+BI,BI-MW,محافظة موارو,Mwaro,,مقاطعة,province
+BI,BI-MY,محافظة موينغا,Muyinga,,مقاطعة,province
+BI,BI-NG,مقاطعة نغوزي,Ngozi,,مقاطعة,province
+BI,BI-RM,إقليم رومنغي,Rumonge,,مقاطعة,province
+BI,BI-RT,مقاطعة روتانا,Rutana,,مقاطعة,province
+BI,BI-RY,محافظة روييغي,Ruyigi,,مقاطعة,province
 BJ,BJ-AK,إدارة أتاكورا,Atakora,,إقليم,department
 BJ,BJ-AL,إدارة أليبوري,Alibori,,إقليم,department
 BJ,BJ-AQ,إدارة أتلانتيك,Atlantique,,إقليم,department
@@ -447,9 +447,9 @@ BO,BO-O,إدارة أورورو,Oruro,,إقليم,department
 BO,BO-P,إدارة بوتوسي,Potosí,,إقليم,department
 BO,BO-S,إدارة سانتا كروز,Santa Cruz,,إقليم,department
 BO,BO-T,إدارة تاريا,Tarija,,إقليم,department
-BQ,BQ-BO,بونير,Bonaire,,,
-BQ,BQ-SA,سابا,Saba,,,
-BQ,BQ-SE,سينت أوستاتيوس,Sint Eustatius,,كيان,entity
+BQ,BQ-BO,بونير,Bonaire,,بلدية خاصة,special municipality
+BQ,BQ-SA,سابا,Saba,,بلدية خاصة,special municipality
+BQ,BQ-SE,سينت أوستاتيوس,Sint Eustatius,,بلدية خاصة,special municipality
 BR,BR-AC,أكري,Acre,,ولاية,state
 BR,BR-AL,ألاغواس,Alagoas,,ولاية,state
 BR,BR-AM,الأمازون,Amazonas,,ولاية,state
@@ -653,19 +653,19 @@ CH,CH-VS,كانتون فاليز,Valais,,كانتون,canton
 CH,CH-ZG,كانتون تسوغ,Zug,,كانتون,canton
 CH,CH-ZH,كانتون زيورخ,Zürich,,كانتون,canton
 CI,CI-AB,أبيدجان,Abidjan,,بلدية,commune
-CI,CI-BS,مقاطعة باس-ساساندرا,Bas-Sassandra²,,منطقة,district
+CI,CI-BS,مقاطعة باس-ساساندرا,Bas-Sassandra,,منطقة,district
 CI,CI-CM,,Comoé,,منطقة,district
-CI,CI-DN,مقاطعة دينغويلي,Denguélé²,,منطقة,district
+CI,CI-DN,مقاطعة دينغويلي,Denguélé,,منطقة,district
 CI,CI-GD,مقاطعة غوه-جيبوا,Gôh-Djiboua,,منطقة,district
-CI,CI-LC,,Lacs²,,منطقة,district
-CI,CI-LG,,Lagunes²,,منطقة,district
+CI,CI-LC,,Lacs,,منطقة,district
+CI,CI-LG,,Lagunes,,منطقة,district
 CI,CI-MG,مقاطعة الجبال,Montagnes,,,
 CI,CI-SM,,Sassandra-Marahoué,,منطقة,district
 CI,CI-SV,مقاطعة سافانس,Savanes,,منطقة,district
-CI,CI-VB,مقاطعة فالي دو باندما,Vallée du Bandama²,,منطقة,district
+CI,CI-VB,مقاطعة فالي دو باندما,Vallée du Bandama,,منطقة,district
 CI,CI-WR,,Woroba,,منطقة,district
 CI,CI-YM,ياموسوكرو,Yamoussoukro,,بلدية,commune
-CI,CI-ZZ,إقليم زانزان,Zanzan²,,منطقة,district
+CI,CI-ZZ,إقليم زانزان,Zanzan,,منطقة,district
 CL,CL-AI,إقليم أيسن,Aysén,,منطقة,region
 CL,CL-AN,إقليم أنتوفاغاستا,Antofagasta,,منطقة,region
 CL,CL-AP,إقليم أريكا وبارينكوتا,Arica y Parinacota,,منطقة,region
@@ -693,7 +693,7 @@ CM,CM-OU,الغرب,West,,منطقة,region
 CM,CM-SU,جنوب,South,,منطقة,region
 CM,CM-SW,جنوب غرب,Southwest,,منطقة,region
 CN,CN-AH,آنهوي,Anhui,,مقاطعة,province
-CN,CN-BJ,بكين,Beijing,,مدينة,city
+CN,CN-BJ,بكين,Beijing,,بلدية,municipality
 CN,CN-CQ,تشونغتشينغ,Chongqing,,بلدية,municipality
 CN,CN-FJ,فوجيان,Fujian,,مقاطعة,province
 CN,CN-GD,غوانغدونغ,Guangdong,,مقاطعة,province
@@ -704,23 +704,23 @@ CN,CN-HA,خنان,Henan,,مقاطعة,province
 CN,CN-HB,خوبي,Hubei,,مقاطعة,province
 CN,CN-HE,خبي,Hebei,,مقاطعة,province
 CN,CN-HI,هاينان,Hainan,,مقاطعة,province
-CN,CN-HK,هونغ كونغ,Hong Kong,,مدينة,city
+CN,CN-HK,هونغ كونغ,Hong Kong,,منطقة إدارية خاصة,special administrative region
 CN,CN-HL,هيلونغجيانغ,Heilongjiang,,مقاطعة,province
 CN,CN-HN,خونان,Hunan,,مقاطعة,province
 CN,CN-JL,جيلين,Jilin,,مقاطعة,province
 CN,CN-JS,جيانغسو,Jiangsu,,مقاطعة,province
 CN,CN-JX,جيانغشي,Jiangxi,,مقاطعة,province
 CN,CN-LN,لياونينغ,Liaoning,,مقاطعة,province
-CN,CN-MO,ماكاو,Macau,,منطقة إدارية,administrative region
+CN,CN-MO,ماكاو,Macau,,منطقة إدارية خاصة,special administrative region
 CN,CN-NM,منغوليا الداخلية,Inner Mongolia,,منطقة ذاتية الحكم,autonomous region
 CN,CN-NX,نينغشيا,Ningxia,,منطقة ذاتية الحكم,autonomous region
 CN,CN-QH,تشينغهاي,Qinghai,,مقاطعة,province
 CN,CN-SC,سيتشوان,Sichuan,,مقاطعة,province
 CN,CN-SD,شاندونغ,Shandong,,مقاطعة,province
-CN,CN-SH,شانغهاي,Shanghai,,مدينة,city
+CN,CN-SH,شانغهاي,Shanghai,,بلدية,municipality
 CN,CN-SN,شنشي,Shaanxi,,مقاطعة,province
 CN,CN-SX,شانسي,Shanxi,,مقاطعة,province
-CN,CN-TJ,تيانجين,Tianjin,,مدينة,city
+CN,CN-TJ,تيانجين,Tianjin,,بلدية,municipality
 CN,CN-TW,مقاطعة تايوان، جمهورية الصين الشعبية,Taiwan,,مقاطعة,province
 CN,CN-XJ,سنجان,Xinjiang,,منطقة ذاتية الحكم,autonomous region
 CN,CN-XZ,منطقة التبت ذاتية الحكم,Tibet,,منطقة ذاتية الحكم,autonomous region
@@ -783,29 +783,29 @@ CU,CU-15,أرتيميسا,Artemisa,,مقاطعة,province
 CU,CU-16,محافظة مايابيك,Mayabeque,,مقاطعة,province
 CU,CU-99,جزيرة الشباب,Isla de la Juventud,,جزيرة,island
 CV,CV-B,الجزر لافينتو,Barlavento Islands,,جزيرة,island
-CV,CV-BR,برافا,Brava,CV-S,,
-CV,CV-BV,بوا فيستا,Boa Vista,CV-B,,
-CV,CV-CA,سانتا كاتارينا,Santa Catarina,CV-S,,
-CV,CV-CF,سانتا كاتارينا دو فوجو,Santa Catarina do Fogo,CV-S,,
-CV,CV-CR,سانتا كروز,Santa Cruz,CV-S,,
-CV,CV-MA,مايو,Maio,CV-S,,
-CV,CV-MO,موستيروس، الرأس الأخضر,Mosteiros,CV-S,,
-CV,CV-PA,بول,Paul,CV-B,,
-CV,CV-PN,بورتو نوفو,Porto Novo,CV-B,,
-CV,CV-PR,برايا,Praia,CV-S,,
-CV,CV-RB,ريبيرا برافا,Ribeira Brava,CV-B,,
-CV,CV-RG,ريبيرا غراندي,Ribeira Grande,CV-B,,
-CV,CV-RS,ريبيرا غراندي دي سانتياغو، الرأس الأخضر,Ribeira Grande de Santiago,CV-S,,
+CV,CV-BR,برافا,Brava,CV-S,بلدية,municipality
+CV,CV-BV,بوا فيستا,Boa Vista,CV-B,بلدية,municipality
+CV,CV-CA,سانتا كاتارينا,Santa Catarina,CV-S,بلدية,municipality
+CV,CV-CF,سانتا كاتارينا دو فوجو,Santa Catarina do Fogo,CV-S,بلدية,municipality
+CV,CV-CR,سانتا كروز,Santa Cruz,CV-S,بلدية,municipality
+CV,CV-MA,مايو,Maio,CV-S,بلدية,municipality
+CV,CV-MO,موستيروس، الرأس الأخضر,Mosteiros,CV-S,بلدية,municipality
+CV,CV-PA,بول,Paul,CV-B,بلدية,municipality
+CV,CV-PN,بورتو نوفو,Porto Novo,CV-B,بلدية,municipality
+CV,CV-PR,برايا,Praia,CV-S,بلدية,municipality
+CV,CV-RB,ريبيرا برافا,Ribeira Brava,CV-B,بلدية,municipality
+CV,CV-RG,ريبيرا غراندي,Ribeira Grande,CV-B,بلدية,municipality
+CV,CV-RS,ريبيرا غراندي دي سانتياغو، الرأس الأخضر,Ribeira Grande de Santiago,CV-S,بلدية,municipality
 CV,CV-S,جزر سوتافينتو,Sotavento Islands,,جزيرة,island
-CV,CV-SD,ساو دومينغوس,São Domingos,CV-S,,
-CV,CV-SF,ساو فيليب,São Filipe,CV-S,,
-CV,CV-SL,سال,Sal,CV-B,,
-CV,CV-SM,,São Miguel,CV-S,,
-CV,CV-SO,ساو لورينسو دوس أورغاوس,São Lourenço dos Órgãos,CV-S,,
-CV,CV-SS,ساو سلفادور دو موندو,São Salvador do Mundo,CV-S,,
-CV,CV-SV,ساو فيسنتي,São Vicente,CV-B,,
-CV,CV-TA,تارفال,Tarrafal,CV-S,,
-CV,CV-TS,تارفال دي ساو نيكولاو,Tarrafal de São Nicolau,CV-B,,
+CV,CV-SD,ساو دومينغوس,São Domingos,CV-S,بلدية,municipality
+CV,CV-SF,ساو فيليب,São Filipe,CV-S,بلدية,municipality
+CV,CV-SL,سال,Sal,CV-B,بلدية,municipality
+CV,CV-SM,,São Miguel,CV-S,بلدية,municipality
+CV,CV-SO,ساو لورينسو دوس أورغاوس,São Lourenço dos Órgãos,CV-S,بلدية,municipality
+CV,CV-SS,ساو سلفادور دو موندو,São Salvador do Mundo,CV-S,بلدية,municipality
+CV,CV-SV,ساو فيسنتي,São Vicente,CV-B,بلدية,municipality
+CV,CV-TA,تارفال,Tarrafal,CV-S,بلدية,municipality
+CV,CV-TS,تارفال دي ساو نيكولاو,Tarrafal de São Nicolau,CV-B,بلدية,municipality
 CY,CY-01,منطقة نيقوسيا,Nicosia,,منطقة,district
 CY,CY-02,منطقة ليماسول,Limassol,,منطقة,district
 CY,CY-03,منطقة لارنكا,Larnaca,,منطقة,district
@@ -1067,95 +1067,95 @@ EE,EE-130,,Alutaguse,EE-45,بلدية,municipality
 EE,EE-141,,Anija,EE-37,بلدية,municipality
 EE,EE-142,,Antsla,EE-87,بلدية,municipality
 EE,EE-171,,Elva,EE-79,بلدية,municipality
-EE,EE-184,,Haapsalu,EE-56,,
-EE,EE-191,,Haljala,EE-60,,
-EE,EE-198,,Harku,EE-37,,
+EE,EE-184,,Haapsalu,EE-56,بلدية,municipality
+EE,EE-191,,Haljala,EE-60,بلدية,municipality
+EE,EE-198,,Harku,EE-37,بلدية,municipality
 EE,EE-205,,Hiiumaa,EE-39,بلدية,municipality
 EE,EE-214,,Häädemeeste,EE-68,بلدية,municipality
 EE,EE-245,,Jõelähtme,EE-37,بلدية,municipality
 EE,EE-247,,Jõgeva,EE-50,بلدية,municipality
 EE,EE-251,,Jõhvi,EE-45,بلدية,municipality
 EE,EE-255,,Järva,EE-52,بلدية,municipality
-EE,EE-272,,Kadrina,EE-60,,
-EE,EE-283,,Kambja,EE-79,,
-EE,EE-284,,Kanepi,EE-64,,
-EE,EE-291,,Kastre,EE-79,,
-EE,EE-293,,Kehtna,EE-71,,
-EE,EE-296,,Keila,EE-37,,
-EE,EE-303,,Kihnu,EE-68,,
-EE,EE-305,,Kiili,EE-37,,
-EE,EE-317,,Kohila,EE-71,,
+EE,EE-272,,Kadrina,EE-60,بلدية,municipality
+EE,EE-283,,Kambja,EE-79,بلدية,municipality
+EE,EE-284,,Kanepi,EE-64,بلدية,municipality
+EE,EE-291,,Kastre,EE-79,بلدية,municipality
+EE,EE-293,,Kehtna,EE-71,بلدية,municipality
+EE,EE-296,,Keila,EE-37,بلدية,municipality
+EE,EE-303,,Kihnu,EE-68,بلدية,municipality
+EE,EE-305,,Kiili,EE-37,بلدية,municipality
+EE,EE-317,,Kohila,EE-71,بلدية,municipality
 EE,EE-321,كوتلا-يارفي,Kohtla-Järve,EE-45,مدينة,city
-EE,EE-338,,Kose,EE-37,,
-EE,EE-353,,Kuusalu,EE-37,,
+EE,EE-338,,Kose,EE-37,بلدية,municipality
+EE,EE-353,,Kuusalu,EE-37,بلدية,municipality
 EE,EE-37,مقاطعة هاريو,Harju,,مقاطعة,county
 EE,EE-39,مقاطعة هيو,Hiiu,,مقاطعة,county
-EE,EE-424,,Loksa,EE-37,,
+EE,EE-424,,Loksa,EE-37,بلدية,municipality
 EE,EE-430,,Lääneranna,EE-68,بلدية,municipality
 EE,EE-431,,Lääne-Harju,EE-37,بلدية,municipality
-EE,EE-432,,Luunja,EE-79,,
+EE,EE-432,,Luunja,EE-79,بلدية,municipality
 EE,EE-441,,Lääne-Nigula,EE-56,بلدية,municipality
 EE,EE-442,,Lüganuse,EE-45,بلدية,municipality
-EE,EE-446,,Maardu,EE-37,,
+EE,EE-446,,Maardu,EE-37,بلدية,municipality
 EE,EE-45,مقاطعة إيدا فيرو,Ida-Virumaa,,مقاطعة,county
-EE,EE-478,,Muhu,EE-74,,
-EE,EE-480,,Mulgi,EE-84,,
-EE,EE-486,,Mustvee,EE-50,,
+EE,EE-478,,Muhu,EE-74,بلدية,municipality
+EE,EE-480,,Mulgi,EE-84,بلدية,municipality
+EE,EE-486,,Mustvee,EE-50,بلدية,municipality
 EE,EE-50,مقاطعة يوجيفا,Jõgevamaa,,مقاطعة,county
-EE,EE-503,,Märjamaa,EE-71,,
-EE,EE-511,,Narva,EE-45,,
+EE,EE-503,,Märjamaa,EE-71,بلدية,municipality
+EE,EE-511,,Narva,EE-45,بلدية,municipality
 EE,EE-514,,Narva-Jõesuu,EE-45,مدينة,city
 EE,EE-52,مقاطعة يارفا,Järvamaa,,مقاطعة,county
-EE,EE-528,,Nõo,EE-79,,
+EE,EE-528,,Nõo,EE-79,بلدية,municipality
 EE,EE-557,,Otepää,EE-81,بلدية,municipality
 EE,EE-56,مقاطعة لانا,Läänemaa,,مقاطعة,county
-EE,EE-567,,Paide,EE-52,,
+EE,EE-567,,Paide,EE-52,بلدية,municipality
 EE,EE-586,,Peipsiääre,EE-79,بلدية,municipality
 EE,EE-60,مقاطعة لين-فيرو,Lääne-Virumaa,,مقاطعة,county
 EE,EE-615,,Põhja-Sakala,EE-84,بلدية,municipality
 EE,EE-618,,Põltsamaa,EE-50,بلدية,municipality
-EE,EE-622,,Põlva,EE-64,,
-EE,EE-624,,Pärnu,EE-68,,
+EE,EE-622,,Põlva,EE-64,بلدية,municipality
+EE,EE-624,,Pärnu,EE-68,بلدية,municipality
 EE,EE-638,,Põhja-Pärnumaa,EE-68,بلدية,municipality
 EE,EE-64,مقاطعة بولفا,Põlvamaa,,مقاطعة,county
-EE,EE-651,,Raasiku,EE-37,,
-EE,EE-653,,Rae,EE-37,,
-EE,EE-661,,Rakvere,EE-60,,
-EE,EE-663,,Rakvere²,EE-60,,
-EE,EE-668,,Rapla,EE-71,,
+EE,EE-651,,Raasiku,EE-37,بلدية,municipality
+EE,EE-653,,Rae,EE-37,بلدية,municipality
+EE,EE-661,,Rakvere,EE-60,بلدية,municipality
+EE,EE-663,,Rakvere,EE-60,بلدية,municipality
+EE,EE-668,,Rapla,EE-71,بلدية,municipality
 EE,EE-68,مقاطعة بارنو,Pärnumaa,,مقاطعة,county
-EE,EE-689,,Ruhnu,EE-74,,
+EE,EE-689,,Ruhnu,EE-74,بلدية,municipality
 EE,EE-698,,Rõuge,EE-87,بلدية,municipality
-EE,EE-708,,Räpina,EE-64,,
+EE,EE-708,,Räpina,EE-64,بلدية,municipality
 EE,EE-71,مقاطعة رابلا,Raplamaa,,مقاطعة,county
-EE,EE-712,,Saarde,EE-68,,
-EE,EE-714,,Saaremaa,EE-74,,
-EE,EE-719,,Saku,EE-37,,
-EE,EE-726,,Saue,EE-37,,
-EE,EE-732,,Setomaa,EE-87,,
+EE,EE-712,,Saarde,EE-68,بلدية,municipality
+EE,EE-714,,Saaremaa,EE-74,بلدية,municipality
+EE,EE-719,,Saku,EE-37,بلدية,municipality
+EE,EE-726,,Saue,EE-37,بلدية,municipality
+EE,EE-732,,Setomaa,EE-87,بلدية,municipality
 EE,EE-735,سيلاما,Sillamäe,EE-45,مدينة,city
 EE,EE-74,مقاطعة سار,Saare,,مقاطعة,county
-EE,EE-784,,Tallinn,EE-37,,
+EE,EE-784,,Tallinn,EE-37,بلدية,municipality
 EE,EE-79,مقاطعة تارتو,Tartumaa,,مقاطعة,county
-EE,EE-792,,Tapa,EE-60,,
-EE,EE-793,,Tartu,EE-79,,
-EE,EE-796,,Tartu²,EE-79,,
-EE,EE-803,,Toila,EE-45,,
+EE,EE-792,,Tapa,EE-60,بلدية,municipality
+EE,EE-793,,Tartu,EE-79,بلدية,municipality
+EE,EE-796,,Tartu,EE-79,بلدية,municipality
+EE,EE-803,,Toila,EE-45,بلدية,municipality
 EE,EE-809,,Tori,EE-68,بلدية,municipality
 EE,EE-81,مقاطعة فالغا,Valgamaa,,مقاطعة,county
-EE,EE-824,,Tõrva,EE-81,,
+EE,EE-824,,Tõrva,EE-81,بلدية,municipality
 EE,EE-834,,Türi,EE-52,بلدية,municipality
 EE,EE-84,مقاطعة فيلياندي,Viljandi,,مقاطعة,county
-EE,EE-855,,Valga,EE-81,,
+EE,EE-855,,Valga,EE-81,بلدية,municipality
 EE,EE-87,مقاطعة فورو,Võrumaa,,مقاطعة,county
-EE,EE-890,,Viimsi,EE-37,,
-EE,EE-897,,Viljandi²,EE-84,,
-EE,EE-899,,Viljandi³,EE-84,,
-EE,EE-901,,Vinni,EE-60,,
-EE,EE-903,,Viru-Nigula,EE-60,,
-EE,EE-907,,Vormsi,EE-56,,
-EE,EE-917,,Võru²,EE-87,,
-EE,EE-919,,Võru,EE-87,,
+EE,EE-890,,Viimsi,EE-37,بلدية,municipality
+EE,EE-897,,Viljandi,EE-84,بلدية,municipality
+EE,EE-899,,Viljandi³,EE-84,بلدية,municipality
+EE,EE-901,,Vinni,EE-60,بلدية,municipality
+EE,EE-903,,Viru-Nigula,EE-60,بلدية,municipality
+EE,EE-907,,Vormsi,EE-56,بلدية,municipality
+EE,EE-917,,Võru,EE-87,بلدية,municipality
+EE,EE-919,,Võru,EE-87,بلدية,municipality
 EE,EE-928,,Väike-Maarja,EE-60,بلدية,municipality
 EG,EG-ALX,الإسكندرية,Alexandria,,محافظة,governorate
 EG,EG-ASN,محافظة أسوان,Aswan,,محافظة,governorate
@@ -1205,7 +1205,7 @@ ES,ES-C,لا كورونيا,A Coruña,ES-GA,مقاطعة,province
 ES,ES-CA,قادس,Cádiz,ES-AN,مقاطعة,province
 ES,ES-CB,منطقة كانتابريا,Cantabria,,منطقة حكم ذاتي,autonomous community
 ES,ES-CC,قصرش,Cáceres,ES-EX,مقاطعة,province
-ES,ES-CE,سبتة,Ceuta,,إقليم,territory
+ES,ES-CE,سبتة,Ceuta,,مدينة ذاتية الحكم,autonomous city
 ES,ES-CL,منطقة قـشتالة وليون,Castile and León,,منطقة حكم ذاتي,autonomous community
 ES,ES-CM,منطقة كاستيا لا مانتشا,Castile-La Mancha,,منطقة حكم ذاتي,autonomous community
 ES,ES-CN,جزر الكناري,Canary Islands,,منطقة حكم ذاتي,autonomous community
@@ -1226,24 +1226,24 @@ ES,ES-IB,منطقة جزر البليار,Balearic Islands,,منطقة حكم ذ
 ES,ES-J,خاين,Jaén,ES-AN,مقاطعة,province
 ES,ES-L,لاردة,Lleida,ES-CT,مقاطعة,province
 ES,ES-LE,ليون,León,ES-CL,مقاطعة,province
-ES,ES-LO,منطقة لا ريوخا,La Rioja Province,ES-RI,,
+ES,ES-LO,منطقة لا ريوخا,La Rioja Province,ES-RI,مقاطعة,province
 ES,ES-LU,لوغو,Lugo,ES-GA,مقاطعة,province
 ES,ES-M,,Madrid Province,ES-MD,مقاطعة,province
 ES,ES-MA,مالقة,Málaga,ES-AN,مقاطعة,province
 ES,ES-MC,منطقة مرسية,Murcia Region,,منطقة حكم ذاتي,autonomous community
 ES,ES-MD,منطقة مدريد,Madrid Autonomous Community,,منطقة حكم ذاتي,autonomous community
-ES,ES-ML,مليلية,Melilla,,إقليم,territory
-ES,ES-MU,منطقة مرسية²,Murcia,ES-MC,مقاطعة,province
-ES,ES-NA,منطقة نافارا²,Navarra,ES-NC,مقاطعة,province
-ES,ES-NC,منطقة نافارا,Navarra Chartered Community,,,
+ES,ES-ML,مليلية,Melilla,,مدينة ذاتية الحكم,autonomous city
+ES,ES-MU,منطقة مرسية,Murcia,ES-MC,مقاطعة,province
+ES,ES-NA,منطقة نافارا,Navarra,ES-NC,مقاطعة,province
+ES,ES-NC,منطقة نافارا,Navarra Chartered Community,,منطقة حكم ذاتي,autonomous community
 ES,ES-O,,Asturias Province,ES-AS,مقاطعة,province
 ES,ES-OR,أورينسي,Ourense,ES-GA,مقاطعة,province
 ES,ES-P,بالنثيا,Palencia,ES-CL,مقاطعة,province
-ES,ES-PM,منطقة جزر البليار²,Balears Province,ES-IB,,
+ES,ES-PM,منطقة جزر البليار,Balears Province,ES-IB,مقاطعة,province
 ES,ES-PO,بونتيفيدرا,Pontevedra,ES-GA,مقاطعة,province
 ES,ES-PV,منطقة إقليم الباسك,Basque Country,,منطقة حكم ذاتي,autonomous community
-ES,ES-RI,منطقة لا ريوخا²,La Rioja,,منطقة حكم ذاتي,autonomous community
-ES,ES-S,منطقة كانتابريا²,Cantabria Province,ES-CB,مقاطعة,province
+ES,ES-RI,منطقة لا ريوخا,La Rioja,,منطقة حكم ذاتي,autonomous community
+ES,ES-S,منطقة كانتابريا,Cantabria Province,ES-CB,مقاطعة,province
 ES,ES-SA,شلمنقة,Salamanca,ES-CL,مقاطعة,province
 ES,ES-SE,إشبيلية,Seville,ES-AN,مقاطعة,province
 ES,ES-SG,شقوبية,Segovia,ES-CL,مقاطعة,province
@@ -1307,7 +1307,7 @@ FJ,FJ-14,,Tailevu,FJ-C,مقاطعة,province
 FJ,FJ-C,القسم المركزي,Central,,قسم,division
 FJ,FJ-E,القسم الشرقي، فيجي,Eastern,,قسم,division
 FJ,FJ-N,الشعبة الشمالية,Northern,,قسم,division
-FJ,FJ-R,روتوما,Rotuma,,تابعية,dependency
+FJ,FJ-R,روتوما,Rotuma,,إقليم تابع,dependency
 FJ,FJ-W,القسم الغربي,Western,,قسم,division
 FM,FM-KSA,كوسراي,Kosrae,,ولاية,state
 FM,FM-PNI,ولاية بوهنبي,Pohnpei,,ولاية,state
@@ -1391,7 +1391,7 @@ FR,FR-71,سون ولوار,Saône-et-Loire,FR-BFC,إقليم,department
 FR,FR-72,سارت,Sarthe,FR-PDL,إقليم,department
 FR,FR-73,سافوا,Savoie,FR-ARA,إقليم,department
 FR,FR-74,سافوا العليا,Haute-Savoie,FR-ARA,إقليم,department
-FR,FR-75C,باريس,Paris,FR-IDF,عاصمة,capital city
+FR,FR-75C,باريس,Paris,FR-IDF,مدينة عاصمة,capital city
 FR,FR-76,السان البحرية,Seine-Maritime,FR-NOR,إقليم,department
 FR,FR-77,السان ومارن,Seine-et-Marne,FR-IDF,إقليم,department
 FR,FR-78,الإيفلين,Yvelines,FR-IDF,إقليم,department
@@ -1423,7 +1423,7 @@ FR,FR-BRE,بريتاني,Brittany,,منطقة,region
 FR,FR-CVL,سانتر-فال دو لوار,Centre-Val de Loire,,منطقة,region
 FR,FR-GES,غراند إيست,Grand-Est,,منطقة,region
 FR,FR-HDF,أوت دو فرانس,Hauts-de-France,,منطقة,region
-FR,FR-IDF,إيل دو فرانس,Île-de-France²,,منطقة,region
+FR,FR-IDF,إيل دو فرانس,Île-de-France,,منطقة,region
 FR,FR-NAQ,آكيتن جديد,Nouvelle-Aquitaine,,منطقة,region
 FR,FR-NOR,نورماندي,Normandie,,منطقة,region
 FR,FR-OCC,الأوكيتانية,Occitanie,,منطقة,region
@@ -1438,52 +1438,52 @@ GA,GA-6,محافظة أوغووي - إيفيندو,Ogooué-Ivindo,,مقاطعة,
 GA,GA-7,مقاطعة أوغووي-لولو,Ogooué-Lolo,,مقاطعة,province
 GA,GA-8,مقاطعة أوغووي - البحرية,Ogooué-Maritime,,مقاطعة,province
 GA,GA-9,مقاطعة وليو-نتم,Woleu-Ntem,,مقاطعة,province
-GB,GB-ABC,,"Armagh, Banbridge and Craigavon",GB-NIR,,
+GB,GB-ABC,,"Armagh, Banbridge and Craigavon",GB-NIR,منطقة,district
 GB,GB-ABD,أبردينشاير,Aberdeenshire,GB-SCT,منطقة مجلس,council area
 GB,GB-ABE,أبردين,Aberdeen,GB-SCT,منطقة مجلس,council area
 GB,GB-AGB,أرغيل وبوت,Argyll and Bute,GB-SCT,منطقة مجلس,council area
 GB,GB-AGY,أنغلسي,Anglesey,GB-WLS,منطقة رئيسية,principal area
-GB,GB-AND,,Ards and North Down,GB-NIR,,
-GB,GB-ANN,,Antrim and Newtownabbey,GB-NIR,,
+GB,GB-AND,,Ards and North Down,GB-NIR,منطقة,district
+GB,GB-ANN,,Antrim and Newtownabbey,GB-NIR,منطقة,district
 GB,GB-ANS,أنغوس,Angus,GB-SCT,منطقة مجلس,council area
 GB,GB-BAS,,Bath and North East Somerset,GB-ENG,سلطة محلية موحدة,unitary authority
 GB,GB-BBD,,Blackburn with Darwen,GB-ENG,سلطة محلية موحدة,unitary authority
 GB,GB-BCP,,"Bournemouth, Christchurch and Poole",GB-ENG,سلطة محلية موحدة,unitary authority
 GB,GB-BDF,,Bedford,GB-ENG,سلطة محلية موحدة,unitary authority
-GB,GB-BDG,منطقة باركينغ وداغنهام في لندن,Barking and Dagenham,GB-ENG,بلدة,borough
-GB,GB-BEN,,Brent,GB-ENG,بلدة,borough
-GB,GB-BEX,,Bexley,GB-ENG,بلدة,borough
-GB,GB-BFS,,Belfast,GB-NIR,مقاطعة,county
+GB,GB-BDG,منطقة باركينغ وداغنهام في لندن,Barking and Dagenham,GB-ENG,حي,borough
+GB,GB-BEN,,Brent,GB-ENG,حي,borough
+GB,GB-BEX,,Bexley,GB-ENG,حي,borough
+GB,GB-BFS,بلفاست,Belfast,GB-NIR,منطقة,district
 GB,GB-BGE,,Bridgend,GB-WLS,منطقة رئيسية,principal area
 GB,GB-BGW,بليناو غونت,Blaenau Gwent,GB-WLS,منطقة رئيسية,principal area
-GB,GB-BIR,برمينغهام,Birmingham,GB-ENG,بلدة,borough
+GB,GB-BIR,برمينغهام,Birmingham,GB-ENG,حي,borough
 GB,GB-BKM,باكينغهامشير,Buckinghamshire,GB-ENG,سلطة محلية موحدة,unitary authority
-GB,GB-BNE,منطقة بارنت في لندن,Barnet,GB-ENG,بلدة,borough
+GB,GB-BNE,منطقة بارنت في لندن,Barnet,GB-ENG,حي,borough
 GB,GB-BNH,برايتون أند هوف,Brighton and Hove,GB-ENG,سلطة محلية موحدة,unitary authority
-GB,GB-BNS,,Barnsley,GB-ENG,بلدة,borough
-GB,GB-BOL,,Bolton,GB-ENG,بلدة,borough
+GB,GB-BNS,,Barnsley,GB-ENG,حي,borough
+GB,GB-BOL,,Bolton,GB-ENG,حي,borough
 GB,GB-BPL,بلاكبول,Blackpool,GB-ENG,سلطة محلية موحدة,unitary authority
 GB,GB-BRC,,Bracknell Forest,GB-ENG,سلطة محلية موحدة,unitary authority
-GB,GB-BRD,,Bradford,GB-ENG,بلدة,borough
-GB,GB-BRY,منطقة بروملي,Bromley,GB-ENG,بلدة,borough
+GB,GB-BRD,,Bradford,GB-ENG,حي,borough
+GB,GB-BRY,منطقة بروملي,Bromley,GB-ENG,حي,borough
 GB,GB-BST,برستل,Bristol,GB-ENG,سلطة محلية موحدة,unitary authority
-GB,GB-BUR,,Bury,GB-ENG,بلدة,borough
+GB,GB-BUR,,Bury,GB-ENG,حي,borough
 GB,GB-CAM,كامبريدجشير,Cambridgeshire,GB-ENG,مقاطعة,county
 GB,GB-CAY,كايرفلي,Caerphilly,GB-WLS,منطقة رئيسية,principal area
 GB,GB-CBF,,Central Bedfordshire,GB-ENG,سلطة محلية موحدة,unitary authority
-GB,GB-CCG,,Causeway Coast and Glens,GB-NIR,,
+GB,GB-CCG,,Causeway Coast and Glens,GB-NIR,منطقة,district
 GB,GB-CGN,,Ceredigion,GB-WLS,منطقة رئيسية,principal area
 GB,GB-CHE,تشيشير إيست,Cheshire East,GB-ENG,سلطة محلية موحدة,unitary authority
 GB,GB-CHW,,Cheshire West and Chester,GB-ENG,سلطة محلية موحدة,unitary authority
-GB,GB-CLD,,Calderdale,GB-ENG,بلدة,borough
+GB,GB-CLD,,Calderdale,GB-ENG,حي,borough
 GB,GB-CLK,كلاكمانشاير,Clackmannanshire,GB-SCT,منطقة مجلس,council area
-GB,GB-CMA,كامبريا,Cumbria,GB-ENG,,
-GB,GB-CMD,لندن بورو كامدن,Camden,GB-ENG,بلدة,borough
+GB,GB-CMA,كامبريا,Cumbria,GB-ENG,مقاطعة,county
+GB,GB-CMD,لندن بورو كامدن,Camden,GB-ENG,حي,borough
 GB,GB-CMN,,Carmarthenshire,GB-WLS,منطقة رئيسية,principal area
 GB,GB-CON,كورنوال,Cornwall,GB-ENG,سلطة محلية موحدة,unitary authority
-GB,GB-COV,كوفنتري,Coventry,GB-ENG,بلدة,borough
+GB,GB-COV,كوفنتري,Coventry,GB-ENG,حي,borough
 GB,GB-CRF,كارديف,Cardiff,GB-WLS,منطقة رئيسية,principal area
-GB,GB-CRY,,Croydon,GB-ENG,بلدة,borough
+GB,GB-CRY,,Croydon,GB-ENG,حي,borough
 GB,GB-CWY,,Conwy,GB-WLS,منطقة رئيسية,principal area
 GB,GB-DAL,,Darlington,GB-ENG,سلطة محلية موحدة,unitary authority
 GB,GB-DBY,داربيشير,Derbyshire,GB-ENG,مقاطعة,county
@@ -1491,19 +1491,19 @@ GB,GB-DEN,دنبيشير,Denbighshire,GB-WLS,منطقة رئيسية,principal a
 GB,GB-DER,ديربي,Derby,GB-ENG,سلطة محلية موحدة,unitary authority
 GB,GB-DEV,ديفون,Devon,GB-ENG,مقاطعة,county
 GB,GB-DGY,دومفريز وغالاوي,Dumfries and Galloway,GB-SCT,منطقة مجلس,council area
-GB,GB-DNC,,Doncaster,GB-ENG,بلدة,borough
+GB,GB-DNC,,Doncaster,GB-ENG,حي,borough
 GB,GB-DND,دندي,Dundee,GB-SCT,منطقة مجلس,council area
 GB,GB-DOR,دورست,Dorset,GB-ENG,سلطة محلية موحدة,unitary authority
-GB,GB-DRS,,Derry and Strabane,GB-NIR,,
-GB,GB-DUD,حي دودلي الحضري,Dudley,GB-ENG,بلدة,borough
+GB,GB-DRS,,Derry and Strabane,GB-NIR,منطقة,district
+GB,GB-DUD,حي دودلي الحضري,Dudley,GB-ENG,حي,borough
 GB,GB-DUR,دورهام,Durham,GB-ENG,سلطة محلية موحدة,unitary authority
-GB,GB-EAL,إيلنغ,Ealing,GB-ENG,بلدة,borough
+GB,GB-EAL,إيلنغ,Ealing,GB-ENG,حي,borough
 GB,GB-EAY,,East Ayrshire,GB-SCT,منطقة مجلس,council area
 GB,GB-EDH,إدنبرة,Edinburgh,GB-SCT,منطقة مجلس,council area
 GB,GB-EDU,شرق دونبارتونشاير,East Dunbartonshire,GB-SCT,منطقة مجلس,council area
 GB,GB-ELN,لوثيان الشرقية,East Lothian,GB-SCT,منطقة مجلس,council area
 GB,GB-ELS,هبرديس الخارجي,Outer Hebrides,GB-SCT,منطقة مجلس,council area
-GB,GB-ENF,منطقة أنفيلد,Enfield,GB-ENG,بلدة,borough
+GB,GB-ENF,منطقة أنفيلد,Enfield,GB-ENG,حي,borough
 GB,GB-ENG,إنجلترا,England,,بلد,constituent country
 GB,GB-ERW,,East Renfrewshire,GB-SCT,منطقة مجلس,council area
 GB,GB-ERY,إيست رايدينج أوف يوركشير,East Riding of Yorkshire,GB-ENG,سلطة محلية موحدة,unitary authority
@@ -1512,76 +1512,76 @@ GB,GB-ESX,شرق ساسكس,East Sussex,GB-ENG,مقاطعة,county
 GB,GB-FAL,فالكيرك,Falkirk,GB-SCT,منطقة مجلس,council area
 GB,GB-FIF,فايف,Fife,GB-SCT,منطقة مجلس,council area
 GB,GB-FLN,,Flintshire,GB-WLS,منطقة رئيسية,principal area
-GB,GB-FMO,,Fermanagh and Omagh,GB-NIR,,
-GB,GB-GAT,,Gateshead,GB-ENG,بلدة,borough
+GB,GB-FMO,,Fermanagh and Omagh,GB-NIR,منطقة,district
+GB,GB-GAT,,Gateshead,GB-ENG,حي,borough
 GB,GB-GLG,غلاسكو,Glasgow,GB-SCT,منطقة مجلس,council area
 GB,GB-GLS,غلوسترشير,Gloucestershire,GB-ENG,مقاطعة,county
-GB,GB-GRE,حي غرينتش الملكي,Greenwich,GB-ENG,بلدة,borough
+GB,GB-GRE,حي غرينتش الملكي,Greenwich,GB-ENG,حي,borough
 GB,GB-GWN,جوينيد,Gwynedd,GB-WLS,منطقة رئيسية,principal area
 GB,GB-HAL,,Halton,GB-ENG,سلطة محلية موحدة,unitary authority
 GB,GB-HAM,هامبشاير,Hampshire,GB-ENG,مقاطعة,county
-GB,GB-HAV,,Havering,GB-ENG,بلدة,borough
-GB,GB-HCK,حي هكني في لندن,Hackney,GB-ENG,بلدة,borough
+GB,GB-HAV,,Havering,GB-ENG,حي,borough
+GB,GB-HCK,حي هكني في لندن,Hackney,GB-ENG,حي,borough
 GB,GB-HEF,هيرفوردشير,Herefordshire,GB-ENG,سلطة محلية موحدة,unitary authority
-GB,GB-HIL,ناحية هيلينغدون في لندن,Hillingdon,GB-ENG,بلدة,borough
-GB,GB-HLD,هایلند,Highland,GB-SCT,منطقة مجلس,council area
-GB,GB-HMF,,Hammersmith and Fulham,GB-ENG,بلدة,borough
-GB,GB-HNS,هونسلو,Hounslow,GB-ENG,بلدة,borough
+GB,GB-HIL,ناحية هيلينغدون في لندن,Hillingdon,GB-ENG,حي,borough
+GB,GB-HLD,هايلند,Highland,GB-SCT,منطقة مجلس,council area
+GB,GB-HMF,,Hammersmith and Fulham,GB-ENG,حي,borough
+GB,GB-HNS,هونسلو,Hounslow,GB-ENG,حي,borough
 GB,GB-HPL,,Hartlepool,GB-ENG,سلطة محلية موحدة,unitary authority
 GB,GB-HRT,هارتفوردشير,Hertfordshire,GB-ENG,مقاطعة,county
-GB,GB-HRW,حي هرو لندن,Harrow,GB-ENG,بلدة,borough
-GB,GB-HRY,هارينجي,Haringey,GB-ENG,بلدة,borough
+GB,GB-HRW,حي هرو لندن,Harrow,GB-ENG,حي,borough
+GB,GB-HRY,هارينجي,Haringey,GB-ENG,حي,borough
 GB,GB-IOS,جزر سيلي,Isles of Scilly,GB-ENG,سلطة محلية موحدة,unitary authority
 GB,GB-IOW,وايت,Isle of Wight,GB-ENG,سلطة محلية موحدة,unitary authority
-GB,GB-ISL,إزلنغتون,Islington,GB-ENG,بلدة,borough
+GB,GB-ISL,إزلنغتون,Islington,GB-ENG,حي,borough
 GB,GB-IVC,,Inverclyde,GB-SCT,منطقة مجلس,council area
-GB,GB-KEC,كينسينغتون وتشيلسي,Kensington and Chelsea,GB-ENG,بلدة,borough
+GB,GB-KEC,كينسينغتون وتشيلسي,Kensington and Chelsea,GB-ENG,حي,borough
 GB,GB-KEN,كنت,Kent,GB-ENG,مقاطعة,county
 GB,GB-KHL,كينغستون أبون هال,Kingston upon Hull,GB-ENG,سلطة محلية موحدة,unitary authority
-GB,GB-KIR,,Kirklees,GB-ENG,بلدة,borough
-GB,GB-KTT,,Kingston upon Thames,GB-ENG,بلدة,borough
-GB,GB-KWL,,Knowsley,GB-ENG,بلدة,borough
+GB,GB-KIR,,Kirklees,GB-ENG,حي,borough
+GB,GB-KTT,,Kingston upon Thames,GB-ENG,حي,borough
+GB,GB-KWL,,Knowsley,GB-ENG,حي,borough
 GB,GB-LAN,لانكشر,Lancashire,GB-ENG,مقاطعة,county
-GB,GB-LBC,,Lisburn and Castlereagh,GB-NIR,,
-GB,GB-LBH,لامبيث,Lambeth,GB-ENG,بلدة,borough
+GB,GB-LBC,,Lisburn and Castlereagh,GB-NIR,منطقة,district
+GB,GB-LBH,لامبيث,Lambeth,GB-ENG,حي,borough
 GB,GB-LCE,لستر,Leicester,GB-ENG,سلطة محلية موحدة,unitary authority
-GB,GB-LDS,ليدز,Leeds,GB-ENG,بلدة,borough
+GB,GB-LDS,ليدز,Leeds,GB-ENG,حي,borough
 GB,GB-LEC,ليسترشير,Leicestershire,GB-ENG,مقاطعة,county
-GB,GB-LEW,لويشام,Lewisham,GB-ENG,بلدة,borough
+GB,GB-LEW,لويشام,Lewisham,GB-ENG,حي,borough
 GB,GB-LIN,لينكونشير,Lincolnshire,GB-ENG,مقاطعة,county
-GB,GB-LIV,ليفربول,Liverpool,GB-ENG,بلدة,borough
-GB,GB-LND,مدينة لندن,London,GB-ENG,منطقة,district
+GB,GB-LIV,ليفربول,Liverpool,GB-ENG,حي,borough
+GB,GB-LND,مدينة لندن,City of London,GB-ENG,,city corporation
 GB,GB-LUT,لوتن,Luton,GB-ENG,سلطة محلية موحدة,unitary authority
-GB,GB-MAN,مانشستر,Manchester,GB-ENG,بلدة,borough
+GB,GB-MAN,مانشستر,Manchester,GB-ENG,حي,borough
 GB,GB-MDB,ميدلزبرة,Middlesbrough,GB-ENG,سلطة محلية موحدة,unitary authority
 GB,GB-MDW,ميدواي,Medway,GB-ENG,سلطة محلية موحدة,unitary authority
-GB,GB-MEA,,Mid and East Antrim,GB-NIR,,
+GB,GB-MEA,,Mid and East Antrim,GB-NIR,منطقة,district
 GB,GB-MIK,,Milton Keynes,GB-ENG,سلطة محلية موحدة,unitary authority
 GB,GB-MLN,ميدلوثيان,Midlothian,GB-SCT,منطقة مجلس,council area
 GB,GB-MON,,Monmouthshire,GB-WLS,منطقة رئيسية,principal area
-GB,GB-MRT,,Merton,GB-ENG,بلدة,borough
+GB,GB-MRT,,Merton,GB-ENG,حي,borough
 GB,GB-MRY,,Moray,GB-SCT,منطقة مجلس,council area
 GB,GB-MTY,,Merthyr Tydfil,GB-WLS,منطقة رئيسية,principal area
-GB,GB-MUL,,Mid Ulster,GB-NIR,,
+GB,GB-MUL,,Mid Ulster,GB-NIR,منطقة,district
 GB,GB-NAY,,North Ayrshire,GB-SCT,منطقة مجلس,council area
 GB,GB-NBL,نورثمبرلاند,Northumberland,GB-ENG,سلطة محلية موحدة,unitary authority
 GB,GB-NEL,,North East Lincolnshire,GB-ENG,سلطة محلية موحدة,unitary authority
-GB,GB-NET,نيوكاسل أبون تاين,Newcastle upon Tyne,GB-ENG,بلدة,borough
+GB,GB-NET,نيوكاسل أبون تاين,Newcastle upon Tyne,GB-ENG,حي,borough
 GB,GB-NFK,نورفولك,Norfolk,GB-ENG,مقاطعة,county
 GB,GB-NGM,نوتنغهام,Nottingham,GB-ENG,سلطة محلية موحدة,unitary authority
 GB,GB-NIR,أيرلندا الشمالية,Northern Ireland,,بلد,constituent country
 GB,GB-NLK,,North Lanarkshire,GB-SCT,منطقة مجلس,council area
 GB,GB-NLN,,North Lincolnshire,GB-ENG,سلطة محلية موحدة,unitary authority
-GB,GB-NMD,,"Newry, Mourne and Down",GB-NIR,,
+GB,GB-NMD,,"Newry, Mourne and Down",GB-NIR,منطقة,district
 GB,GB-NNH,,North Northamptonshire,GB-ENG,,
 GB,GB-NSM,,North Somerset,GB-ENG,سلطة محلية موحدة,unitary authority
 GB,GB-NTL,مقاطعة ناحية نيث بورت طالبوت,Neath Port Talbot,GB-WLS,منطقة رئيسية,principal area
 GB,GB-NTT,نوتنغهامشير,Nottinghamshire,GB-ENG,مقاطعة,county
-GB,GB-NTY,,North Tyneside,GB-ENG,بلدة,borough
-GB,GB-NWM,نيوهام,Newham,GB-ENG,بلدة,borough
+GB,GB-NTY,,North Tyneside,GB-ENG,حي,borough
+GB,GB-NWM,نيوهام,Newham,GB-ENG,حي,borough
 GB,GB-NWP,,Newport,GB-WLS,منطقة رئيسية,principal area
 GB,GB-NYK,شمال يوركشير,North Yorkshire,GB-ENG,سلطة محلية موحدة,unitary authority
-GB,GB-OLD,,Oldham,GB-ENG,بلدة,borough
+GB,GB-OLD,,Oldham,GB-ENG,حي,borough
 GB,GB-ORK,جزر أوركني,Orkney Islands,GB-SCT,منطقة مجلس,council area
 GB,GB-OXF,أكسفوردشير,Oxfordshire,GB-ENG,مقاطعة,county
 GB,GB-PEM,بيمبروكشاير,Pembrokeshire,GB-WLS,منطقة رئيسية,principal area
@@ -1591,71 +1591,71 @@ GB,GB-POR,بورتسموث,Portsmouth,GB-ENG,سلطة محلية موحدة,unit
 GB,GB-POW,باويس,Powys,GB-WLS,منطقة رئيسية,principal area
 GB,GB-PTE,بيتربرة,Peter,GB-ENG,سلطة محلية موحدة,unitary authority
 GB,GB-RCC,,Redcar and Cleveland,GB-ENG,سلطة محلية موحدة,unitary authority
-GB,GB-RCH,,Rochdale,GB-ENG,بلدة,borough
+GB,GB-RCH,,Rochdale,GB-ENG,حي,borough
 GB,GB-RCT,روندا كينون تاف,Rhondda Cynon Taf,GB-WLS,منطقة رئيسية,principal area
-GB,GB-RDB,,Redbridge,GB-ENG,بلدة,borough
+GB,GB-RDB,,Redbridge,GB-ENG,حي,borough
 GB,GB-RDG,ريدنج,Reading,GB-ENG,سلطة محلية موحدة,unitary authority
 GB,GB-RFW,,Renfrewshire,GB-SCT,منطقة مجلس,council area
-GB,GB-RIC,ريتشموند، لندن,Richmond upon Thames,GB-ENG,بلدة,borough
-GB,GB-ROT,,Rotherham,GB-ENG,بلدة,borough
+GB,GB-RIC,ريتشموند، لندن,Richmond upon Thames,GB-ENG,حي,borough
+GB,GB-ROT,,Rotherham,GB-ENG,حي,borough
 GB,GB-RUT,روتلاند,Rutland,GB-ENG,سلطة محلية موحدة,unitary authority
-GB,GB-SAW,ساندويل,Sandwell,GB-ENG,بلدة,borough
+GB,GB-SAW,ساندويل,Sandwell,GB-ENG,حي,borough
 GB,GB-SAY,,South Ayrshire,GB-SCT,منطقة مجلس,council area
 GB,GB-SCB,الحدود الاسكتلندية,Scottish Borders,GB-SCT,منطقة مجلس,council area
 GB,GB-SCT,اسكتلندا,Scotland,,بلد,constituent country
 GB,GB-SFK,سوفولك,Suffolk,GB-ENG,مقاطعة,county
-GB,GB-SFT,,Sefton,GB-ENG,بلدة,borough
+GB,GB-SFT,,Sefton,GB-ENG,حي,borough
 GB,GB-SGC,,South Gloucestershire,GB-ENG,سلطة محلية موحدة,unitary authority
-GB,GB-SHF,شفيلد,Sheffield,GB-ENG,بلدة,borough
-GB,GB-SHN,,Saint Helens,GB-ENG,بلدة,borough
+GB,GB-SHF,شفيلد,Sheffield,GB-ENG,حي,borough
+GB,GB-SHN,,Saint Helens,GB-ENG,حي,borough
 GB,GB-SHR,شروبشاير,Shropshire,GB-ENG,سلطة محلية موحدة,unitary authority
-GB,GB-SKP,,Stockport,GB-ENG,بلدة,borough
-GB,GB-SLF,سالفورد,Salford,GB-ENG,بلدة,borough
+GB,GB-SKP,,Stockport,GB-ENG,حي,borough
+GB,GB-SLF,سالفورد,Salford,GB-ENG,حي,borough
 GB,GB-SLG,سلاو,Slough,GB-ENG,سلطة محلية موحدة,unitary authority
 GB,GB-SLK,ساوث لانركشاير,South Lanarkshire,GB-SCT,منطقة مجلس,council area
-GB,GB-SND,,Sunderland,GB-ENG,بلدة,borough
-GB,GB-SOL,,Solihull,GB-ENG,بلدة,borough
+GB,GB-SND,,Sunderland,GB-ENG,حي,borough
+GB,GB-SOL,,Solihull,GB-ENG,حي,borough
 GB,GB-SOM,مقاطعة سومرست,Somerset,GB-ENG,سلطة محلية موحدة,unitary authority
 GB,GB-SOS,,Southend-on-Sea,GB-ENG,سلطة محلية موحدة,unitary authority
 GB,GB-SRY,سري,Surrey,GB-ENG,مقاطعة,county
 GB,GB-STE,ستوك أون ترينت,Stoke-on-Trent,GB-ENG,سلطة محلية موحدة,unitary authority
 GB,GB-STG,,Stirling,GB-SCT,منطقة مجلس,council area
 GB,GB-STH,ساوثهامبتون,Southampton,GB-ENG,سلطة محلية موحدة,unitary authority
-GB,GB-STN,منطقة ساتون,Sutton,GB-ENG,بلدة,borough
+GB,GB-STN,منطقة ساتون,Sutton,GB-ENG,حي,borough
 GB,GB-STS,ستافوردشاير,Staffordshire,GB-ENG,مقاطعة,county
 GB,GB-STT,,Stockton-on-Tees,GB-ENG,سلطة محلية موحدة,unitary authority
-GB,GB-STY,,South Tyneside,GB-ENG,بلدة,borough
+GB,GB-STY,,South Tyneside,GB-ENG,حي,borough
 GB,GB-SWA,سوانزي,Swansea,GB-WLS,منطقة رئيسية,principal area
 GB,GB-SWD,,Swindon,GB-ENG,سلطة محلية موحدة,unitary authority
-GB,GB-SWK,,Southwark,GB-ENG,بلدة,borough
-GB,GB-TAM,,Tameside,GB-ENG,بلدة,borough
+GB,GB-SWK,,Southwark,GB-ENG,حي,borough
+GB,GB-TAM,,Tameside,GB-ENG,حي,borough
 GB,GB-TFW,تلفورد وريكين,Telford and Wrekin,GB-ENG,سلطة محلية موحدة,unitary authority
 GB,GB-THR,ثوروك,Thurrock,GB-ENG,سلطة محلية موحدة,unitary authority
 GB,GB-TOB,,Torbay,GB-ENG,سلطة محلية موحدة,unitary authority
 GB,GB-TOF,تورفين,Torfaen,GB-WLS,منطقة رئيسية,principal area
-GB,GB-TRF,ترافورد,Trafford,GB-ENG,بلدة,borough
-GB,GB-TWH,حي تاور هامليتس، لندن,Tower Hamlets,GB-ENG,بلدة,borough
+GB,GB-TRF,ترافورد,Trafford,GB-ENG,حي,borough
+GB,GB-TWH,حي تاور هامليتس، لندن,Tower Hamlets,GB-ENG,حي,borough
 GB,GB-VGL,,Vale of Glamorgan,GB-WLS,منطقة رئيسية,principal area
 GB,GB-WAR,ووريكشير,Warwickshire,GB-ENG,مقاطعة,county
 GB,GB-WBK,,West Berkshire,GB-ENG,سلطة محلية موحدة,unitary authority
 GB,GB-WDU,دونبارتونشير الغربية,West Dunbartonshire,GB-SCT,منطقة مجلس,council area
-GB,GB-WFT,ناحية غابة والثام في لندن,Waltham Forest,GB-ENG,بلدة,borough
-GB,GB-WGN,,Wigan,GB-ENG,بلدة,borough
+GB,GB-WFT,ناحية غابة والثام في لندن,Waltham Forest,GB-ENG,حي,borough
+GB,GB-WGN,,Wigan,GB-ENG,حي,borough
 GB,GB-WIL,ويلتشير,Wiltshire,GB-ENG,سلطة محلية موحدة,unitary authority
-GB,GB-WKF,ويكفيلد,Wakefield,GB-ENG,بلدة,borough
-GB,GB-WLL,,Walsall,GB-ENG,بلدة,borough
+GB,GB-WKF,ويكفيلد,Wakefield,GB-ENG,حي,borough
+GB,GB-WLL,,Walsall,GB-ENG,حي,borough
 GB,GB-WLN,غرب لوثيان,West Lothian,GB-SCT,منطقة مجلس,council area
 GB,GB-WLS,ويلز,Wales,,بلد,constituent country
-GB,GB-WLV,ولفرهامبتن,Wolverhampton,GB-ENG,بلدة,borough
-GB,GB-WND,واندزورث,Wandsworth,GB-ENG,بلدة,borough
+GB,GB-WLV,ولفرهامبتن,Wolverhampton,GB-ENG,حي,borough
+GB,GB-WND,واندزورث,Wandsworth,GB-ENG,حي,borough
 GB,GB-WNH,,West Northamptonshire,GB-ENG,,
 GB,GB-WNM,وندسور و ميدينهيد,Windsor and Maidenhead,GB-ENG,سلطة محلية موحدة,unitary authority
 GB,GB-WOK,,Wokingham,GB-ENG,سلطة محلية موحدة,unitary authority
 GB,GB-WOR,وسترشير,Worcestershire,GB-ENG,مقاطعة,county
-GB,GB-WRL,ويرال,Wirral,GB-ENG,بلدة,borough
+GB,GB-WRL,ويرال,Wirral,GB-ENG,حي,borough
 GB,GB-WRT,,Warrington,GB-ENG,سلطة محلية موحدة,unitary authority
 GB,GB-WRX,,Wrexham,GB-WLS,منطقة رئيسية,principal area
-GB,GB-WSM,مدينة وستمنستر,Westminster,GB-ENG,بلدة,borough
+GB,GB-WSM,مدينة وستمنستر,Westminster,GB-ENG,حي,borough
 GB,GB-WSX,غرب ساسكس,West Sussex,GB-ENG,مقاطعة,county
 GB,GB-YOR,يورك,York,GB-ENG,سلطة محلية موحدة,unitary authority
 GB,GB-ZET,جزر شتلاند,Shetland,GB-SCT,منطقة مجلس,council area
@@ -1708,7 +1708,7 @@ GM,GM-W,قسم الساحل الغربي,West Coast Division,,منطقة,region
 GN,GN-B,إقليم بوكيه,Boké Region,,منطقة,region
 GN,GN-BE,محافظة بيلا,Beyla,GN-N,محافظة,prefecture
 GN,GN-BF,محافظة بوفا,Boffa,GN-B,محافظة,prefecture
-GN,GN-BK,بریفيكجور بوكه,Boké,GN-B,محافظة,prefecture
+GN,GN-BK,بريفيكجور بوكه,Boké,GN-B,محافظة,prefecture
 GN,GN-C,كوناكري,Conakry,,مدينة,city
 GN,GN-CO,محافظة كويا,Coyah,GN-D,محافظة,prefecture
 GN,GN-D,إقليم كينديا,Kindia Region,,منطقة,region
@@ -2027,7 +2027,7 @@ IQ,IQ-DI,محافظة ديالى,Diyala,,محافظة,governorate
 IQ,IQ-DQ,ذي قار,Dhi Qar,,محافظة,governorate
 IQ,IQ-KA,كربلاء,Karbala,,محافظة,governorate
 IQ,IQ-KI,كركوك,Kirkuk,,محافظة,governorate
-IQ,IQ-KR,,Kurdistan,,إقليم,region
+IQ,IQ-KR,إقليم كردستان,Kurdistan Region,,إقليم,region
 IQ,IQ-MA,ميسان,Maysan,,محافظة,governorate
 IQ,IQ-MU,محافظة المثنى,Al Muthanna,,محافظة,governorate
 IQ,IQ-NA,النجف,Najaf,,محافظة,governorate
@@ -2036,37 +2036,37 @@ IQ,IQ-QA,محافظة القادسية,Al-Qādisiyyah,,محافظة,governorate
 IQ,IQ-SD,صلاح الدين,Saladin,,محافظة,governorate
 IQ,IQ-SU,السليمانية,Sulaymaniyah,IQ-KR,محافظة,governorate
 IQ,IQ-WA,واسط,Wasit,,محافظة,governorate
-IR,IR-00,مركزي²,Markazī,,مقاطعة,province
-IR,IR-01,محافظة أذربيجان الشرقية,East Azerbaijan,,مقاطعة,province
-IR,IR-02,محافظة أذربيجان الغربية,West Azarbaijan,,مقاطعة,province
-IR,IR-03,محافظة أردبيل,Ardabil,,مقاطعة,province
-IR,IR-04,أصفهان,Isfahan,,مقاطعة,province
-IR,IR-05,عيلام,Ilam,,مقاطعة,province
-IR,IR-06,بوشهر,Bushehr,,مقاطعة,province
-IR,IR-07,طهران,Tehran,,مقاطعة,province
-IR,IR-08,تشهارمحال وبختياري,Chaharmahal and Bakhtiari,,مقاطعة,province
-IR,IR-09,خراسان رضوي²,Khorāsān-e Raẕavī,,مقاطعة,province
-IR,IR-10,خوزستان,Khuzestan,,مقاطعة,province
-IR,IR-11,زنجان,Zanjan,,مقاطعة,province
-IR,IR-12,سمنان,Semnan,,مقاطعة,province
-IR,IR-13,سيستان وبلوشستان,Sistan and Baluchestan,,مقاطعة,province
-IR,IR-14,فارس,Fars,,مقاطعة,province
-IR,IR-15,كرمان,Kerman,,مقاطعة,province
-IR,IR-16,كردستان,Kurdistan,,مقاطعة,province
-IR,IR-17,كرمانشاه,Kermanshah,,مقاطعة,province
-IR,IR-18,كهكيلويه وبوير أحمد,Kohgiluyeh and Boyer-Ahmad,,مقاطعة,province
-IR,IR-19,غیلان,Gilan,,مقاطعة,province
-IR,IR-20,لرستان,Lorestan,,مقاطعة,province
-IR,IR-21,مازندران,Mazandaran,,مقاطعة,province
-IR,IR-22,مركزي,Markazi,,مقاطعة,province
-IR,IR-23,هرمزغان,Hormozgan,,مقاطعة,province
-IR,IR-24,همدان,Hamadan,,مقاطعة,province
-IR,IR-25,يزد,Yazd,,مقاطعة,province
-IR,IR-26,قم,Qom,,مقاطعة,province
-IR,IR-27,غلستان,Golestan,,مقاطعة,province
-IR,IR-28,قزوين,Qazvin,,مقاطعة,province
-IR,IR-29,خراسان جنوبي,South Khorasan,,مقاطعة,province
-IR,IR-30,خراسان رضوي,Razavi Khorasan,,مقاطعة,province
+IR,IR-00,مركزي,Markazī,,محافظة,province
+IR,IR-01,محافظة أذربيجان الشرقية,East Azerbaijan,,محافظة,province
+IR,IR-02,محافظة أذربيجان الغربية,West Azarbaijan,,محافظة,province
+IR,IR-03,محافظة أردبيل,Ardabil,,محافظة,province
+IR,IR-04,أصفهان,Isfahan,,محافظة,province
+IR,IR-05,عيلام,Ilam,,محافظة,province
+IR,IR-06,بوشهر,Bushehr,,محافظة,province
+IR,IR-07,طهران,Tehran,,محافظة,province
+IR,IR-08,تشهارمحال وبختياري,Chaharmahal and Bakhtiari,,محافظة,province
+IR,IR-09,خراسان رضوي,Khorāsān-e Raẕavī,,محافظة,province
+IR,IR-10,خوزستان,Khuzestan,,محافظة,province
+IR,IR-11,زنجان,Zanjan,,محافظة,province
+IR,IR-12,سمنان,Semnan,,محافظة,province
+IR,IR-13,سيستان وبلوشستان,Sistan and Baluchestan,,محافظة,province
+IR,IR-14,فارس,Fars,,محافظة,province
+IR,IR-15,كرمان,Kerman,,محافظة,province
+IR,IR-16,كردستان,Kurdistan,,محافظة,province
+IR,IR-17,كرمانشاه,Kermanshah,,محافظة,province
+IR,IR-18,كهكيلويه وبوير أحمد,Kohgiluyeh and Boyer-Ahmad,,محافظة,province
+IR,IR-19,جيلان,Gilan,,محافظة,province
+IR,IR-20,لرستان,Lorestan,,محافظة,province
+IR,IR-21,مازندران,Mazandaran,,محافظة,province
+IR,IR-22,مركزي,Markazi,,محافظة,province
+IR,IR-23,هرمزغان,Hormozgan,,محافظة,province
+IR,IR-24,همدان,Hamadan,,محافظة,province
+IR,IR-25,يزد,Yazd,,محافظة,province
+IR,IR-26,قم,Qom,,محافظة,province
+IR,IR-27,غلستان,Golestan,,محافظة,province
+IR,IR-28,قزوين,Qazvin,,محافظة,province
+IR,IR-29,خراسان جنوبي,South Khorasan,,محافظة,province
+IR,IR-30,خراسان رضوي,Razavi Khorasan,,محافظة,province
 IS,IS-1,إقليم العاصمة,Capital,,منطقة,region
 IS,IS-2,شبه الجزيرة الجنوبية,Southern Peninsula,,منطقة,region
 IS,IS-3,الإقليم الغربي,Western,,منطقة,region
@@ -2091,54 +2091,54 @@ IS,IS-FJL,,Fjallabyggð,IS-6,بلدية,municipality
 IS,IS-FLA,,Flóahreppur,IS-8,بلدية,municipality
 IS,IS-FLR,,Fljótsdalshreppur,IS-7,بلدية,municipality
 IS,IS-GAR,غارذاباير,Garðabær,IS-1,بلدية,municipality
-IS,IS-GOG,,Grímsnes- og Grafningshreppur,IS-8,,
+IS,IS-GOG,,Grímsnes- og Grafningshreppur,IS-8,بلدية,municipality
 IS,IS-GRN,,Grindavíkurbær,IS-2,بلدية,municipality
 IS,IS-GRU,,Grundarfjarðarbær,IS-3,بلدية,municipality
-IS,IS-GRY,,Grýtubakkahreppur,IS-6,,
+IS,IS-GRY,,Grýtubakkahreppur,IS-6,بلدية,municipality
 IS,IS-HAF,هافنارفيوردور,Hafnarfjarðarkaupstaður,IS-1,مدينة,city
-IS,IS-HRG,,Hörgársveit,IS-6,,
-IS,IS-HRU,,Hrunamannahreppur,IS-8,,
+IS,IS-HRG,,Hörgársveit,IS-6,بلدية,municipality
+IS,IS-HRU,,Hrunamannahreppur,IS-8,بلدية,municipality
 IS,IS-HUG,,Húnabyggð,IS-5,بلدية,municipality
 IS,IS-HUV,,Húnaþing vestra,IS-5,بلدية,municipality
-IS,IS-HVA,,Hvalfjarðarsveit,IS-3,,
+IS,IS-HVA,,Hvalfjarðarsveit,IS-3,بلدية,municipality
 IS,IS-HVE,,Hveragerðisbær,IS-8,بلدية,municipality
-IS,IS-ISA,,Ísafjarðarbær,IS-4,,
-IS,IS-KAL,,Kaldrananeshreppur,IS-4,,
-IS,IS-KJO,,Kjósarhreppur,IS-1,,
+IS,IS-ISA,,Ísafjarðarbær,IS-4,بلدية,municipality
+IS,IS-KAL,,Kaldrananeshreppur,IS-4,بلدية,municipality
+IS,IS-KJO,,Kjósarhreppur,IS-1,بلدية,municipality
 IS,IS-KOP,كوبافوغور,Kópavogsbær,IS-1,مدينة,city
-IS,IS-LAN,,Langanesbyggð,IS-6,,
-IS,IS-MOS,,Mosfellsbær,IS-1,,
+IS,IS-LAN,,Langanesbyggð,IS-6,بلدية,municipality
+IS,IS-MOS,,Mosfellsbær,IS-1,بلدية,municipality
 IS,IS-MUL,,Múlaþing,IS-7,بلدية,municipality
-IS,IS-MYR,,Mýrdalshreppur,IS-8,,
-IS,IS-NOR,,Norðurþing,IS-6,,
+IS,IS-MYR,,Mýrdalshreppur,IS-8,بلدية,municipality
+IS,IS-NOR,,Norðurþing,IS-6,بلدية,municipality
 IS,IS-RGE,,Rangárþing eystra,IS-8,بلدية,municipality
 IS,IS-RGY,,Rangárþing ytra,IS-8,بلدية,municipality
-IS,IS-RHH,,Reykhólahreppur,IS-4,,
-IS,IS-RKN,,Reykjanesbær,IS-2,,
+IS,IS-RHH,,Reykhólahreppur,IS-4,بلدية,municipality
+IS,IS-RKN,,Reykjanesbær,IS-2,بلدية,municipality
 IS,IS-RKV,ريكيافيك,Reykjavíkurborg,IS-1,مدينة,city
-IS,IS-SBT,,Svalbarðsstrandarhreppur,IS-6,,
+IS,IS-SBT,,Svalbarðsstrandarhreppur,IS-6,بلدية,municipality
 IS,IS-SDN,,Suðurnesjabær,IS-2,بلدية,municipality
 IS,IS-SDV,,Súðavíkurhreppur,IS-4,بلدية,municipality
 IS,IS-SEL,,Seltjarnarnesbær,IS-1,بلدية,municipality
 IS,IS-SFA,أربورغ,Sveitarfélagið Árborg,IS-8,بلدية,municipality
-IS,IS-SHF,,Sveitarfélagið Hornafjörður,IS-7,,
-IS,IS-SKF,,Skaftárhreppur,IS-8,,
-IS,IS-SKG,,Skagabyggð,IS-5,,
-IS,IS-SKO,,Skorradalshreppur,IS-3,,
+IS,IS-SHF,,Sveitarfélagið Hornafjörður,IS-7,بلدية,municipality
+IS,IS-SKF,,Skaftárhreppur,IS-8,بلدية,municipality
+IS,IS-SKG,,Skagabyggð,IS-5,بلدية,municipality
+IS,IS-SKO,,Skorradalshreppur,IS-3,بلدية,municipality
 IS,IS-SKR,,Skagafjörður,IS-5,بلدية,municipality
-IS,IS-SNF,,Snæfellsbær,IS-3,,
-IS,IS-SOG,,Skeiða- og Gnúpverjahreppur,IS-8,,
+IS,IS-SNF,,Snæfellsbær,IS-3,بلدية,municipality
+IS,IS-SOG,,Skeiða- og Gnúpverjahreppur,IS-8,بلدية,municipality
 IS,IS-SOL,,Sveitarfélagið Ölfus,IS-8,بلدية,municipality
 IS,IS-SSS,,Sveitarfélagið Skagaströnd,IS-5,بلدية,municipality
 IS,IS-STR,,Strandabyggð,IS-4,بلدية,municipality
-IS,IS-STY,,Stykkishólmsbær,IS-3,,
+IS,IS-STY,,Stykkishólmsbær,IS-3,بلدية,municipality
 IS,IS-SVG,,Sveitarfélagið Vogar,IS-2,بلدية,municipality
-IS,IS-TAL,,Tálknafjarðarhreppur,IS-4,,
-IS,IS-THG,,Þingeyjarsveit,IS-6,,
+IS,IS-TAL,,Tálknafjarðarhreppur,IS-4,بلدية,municipality
+IS,IS-THG,,Þingeyjarsveit,IS-6,بلدية,municipality
 IS,IS-TJO,,Tjörneshreppur,IS-6,بلدية,municipality
-IS,IS-VEM,يستمان,Vestmannaeyjabær,IS-8,,
-IS,IS-VER,,Vesturbyggð,IS-4,,
-IS,IS-VOP,,Vopnafjarðarhreppur,IS-7,,
+IS,IS-VEM,يستمان,Vestmannaeyjabær,IS-8,بلدية,municipality
+IS,IS-VER,,Vesturbyggð,IS-4,بلدية,municipality
+IS,IS-VOP,,Vopnafjarðarhreppur,IS-7,بلدية,municipality
 IT,IT-21,بييمونتي,Piedmont,,منطقة,region
 IT,IT-23,وادي أوستا,Aosta Valley,,منطقة ذاتية الحكم,autonomous region
 IT,IT-25,لومبارديا,Lombardy,,منطقة,region
@@ -2157,7 +2157,7 @@ IT,IT-72,كامبانيا,Campania,,منطقة,region
 IT,IT-75,بوليا,Apulia,,منطقة,region
 IT,IT-77,بازيليكاتا,Basilicata,,منطقة,region
 IT,IT-78,قلورية,Calabria,,منطقة,region
-IT,IT-82,صقلية,Sicily,,منطقة,region
+IT,IT-82,صقلية,Sicily,,منطقة ذاتية الحكم,autonomous region
 IT,IT-88,سردينيا,Sardinia,,منطقة ذاتية الحكم,autonomous region
 IT,IT-AG,مقاطعة أغريجنتو,Agrigento,IT-82,,
 IT,IT-AL,مقاطعة ألساندريا,Alessandria,IT-21,مقاطعة,province
@@ -2458,18 +2458,18 @@ KR,KR-11,سول,Seoul,,مدينة,city
 KR,KR-26,بوسان,Busan,,مدينة حضرية,metropolitan city
 KR,KR-27,دايغو,Daegu,,مدينة حضرية,metropolitan city
 KR,KR-28,إنتشون,Incheon,,مدينة حضرية,metropolitan city
-KR,KR-29,غوانغجو,Gwangju City,,,
+KR,KR-29,غوانغجو,Gwangju City,,مدينة حضرية,metropolitan city
 KR,KR-30,دايجيون,Daejeon,,مدينة حضرية,metropolitan city
 KR,KR-31,أولسان,Ulsan,,مدينة حضرية,metropolitan city
 KR,KR-41,مقاطعة غيونغي,Gyeonggi,,مقاطعة,province
-KR,KR-42,مقاطعة غانغوون,Gangwon,,ولاية,state
+KR,KR-42,مقاطعة غانغوون,Gangwon,,مقاطعة ذاتية الحكم خاصة,special self-governing province
 KR,KR-43,تشنغتشونغ الشمالية,North Chungcheong,,مقاطعة,province
 KR,KR-44,مقاطعة تشنغتشونغ الجنوبية,South Chungcheong,,مقاطعة,province
-KR,KR-45,مقاطعة جولا الشمالية,North Jeolla,,ولاية,state
-KR,KR-46,مقاطعة جولا الجنوبية,South Jeolla,,,
+KR,KR-45,مقاطعة جولا الشمالية,North Jeolla,,مقاطعة ذاتية الحكم خاصة,special self-governing province
+KR,KR-46,مقاطعة جولا الجنوبية,South Jeolla,,مقاطعة,province
 KR,KR-47,مقاطعة غيونغسانغ الشمالية,North Gyeongsang,,مقاطعة,province
 KR,KR-48,مقاطعة غيونغسانغ الجنوبية,South Gyeongsang,,مقاطعة,province
-KR,KR-49,مقاطعة جيجو,Jeju,,ولاية,state
+KR,KR-49,مقاطعة جيجو,Jeju,,مقاطعة ذاتية الحكم خاصة,special self-governing province
 KR,KR-50,مدينة سيجونغ,Sejong,,مدينة,city
 KW,KW-AH,محافظة الأحمدي,Al Ahmadi,,محافظة,governorate
 KW,KW-FA,محافظة الفروانية,Al Farwaniyah,,محافظة,governorate
@@ -2669,7 +2669,7 @@ LT,LT-KU,مقاطعة كاوناس,Kaunas County,,مقاطعة,county
 LT,LT-MR,مقاطعة ميرايامبوله,Marijampolė County,,مقاطعة,county
 LT,LT-PN,مقاطعة بانيفيزيس,Panevėžys County,,مقاطعة,county
 LT,LT-SA,مقاطعة شياولياي,Šiauliai County,,مقاطعة,county
-LT,LT-TA,مقاطعة تاوراغه,Tauragė County,,كيان,entity
+LT,LT-TA,مقاطعة تاوراغه,Tauragė County,,مقاطعة,county
 LT,LT-TE,مقاطعة تيلسياي,Telšiai County,,مقاطعة,county
 LT,LT-UT,مقاطعة أوتينا,Utena County,,مقاطعة,county
 LT,LT-VL,مقاطعة فيلنيوس,Vilnius County,,مقاطعة,county
@@ -2728,7 +2728,7 @@ LV,LV-LPX,ليباجا,Liepāja,,ولاية,state
 LV,LV-REZ,ريزكني,Rēzekne,,ولاية,state
 LV,LV-RIX,ريغا,Riga,,ولاية,state
 LV,LV-VEN,فينتسبيلس,Ventspils,,ولاية,state
-LY,LY-BA,بنغازي,Benghazi,,مدينة,city
+LY,LY-BA,بنغازي,Benghazi,,شعبية,district
 LY,LY-BU,شعبية البطنان,Butnan,,شعبية,district
 LY,LY-DR,شعبية درنة,Derna,,شعبية,district
 LY,LY-GT,شعبية غات,Ghat,,شعبية,district
@@ -2750,18 +2750,18 @@ LY,LY-WA,شعبية الواحات,Al Wahat,,شعبية,district
 LY,LY-WD,شعبية وادي الحياة,Wadi al Hayaa,,شعبية,district
 LY,LY-WS,شعبية وادي الشاطئ,Wadi al Shatii,,شعبية,district
 LY,LY-ZA,شعبية الزاوية,Zawiya,,شعبية,district
-MA,MA-01,طنجة تطوان,Tangier-Tétouan,,جهة,region
-MA,MA-02,الغرب شراردة بني حسين,Gharb-Chrarda-Béni Hssen,,جهة,region
-MA,MA-03,جهة تازة الحسيمة تاونات,Taza-Al Hoceima-Taounate,,جهة,region
-MA,MA-04,الجهة الشرقية,Oriental,,جهة,region
-MA,MA-05,جهة فاس بولمان,Fès-Boulemane,,جهة,region
-MA,MA-06,مكناس تافيلالت,Meknès-Tafilalet,,جهة,region
-MA,MA-07,الرباط سلا زمور زعير,Rabat-Salé-Zemmour-Zaer,,جهة,region
-MA,MA-08,جهة الدار البيضاء الكبرى,Grand Casablanca,,جهة,region
-MA,MA-09,الشاوية ورديغة,Chaouia-Ouardigha,,جهة,region
-MA,MA-10,دكالة عبدة,Doukkala-Abda,,جهة,region
-MA,MA-11,جهة مراكش تانسيفت الحوز,Marrakesh-Tensift-El Haouz,,جهة,region
-MA,MA-12,جهة تادلة أزيلال,Tadla-Azilal,,جهة,region
+MA,MA-01,طنجة تطوان الحسيمة,Tanger-Tétouan-Al Hoceïma,,جهة,region
+MA,MA-02,الشرق,L'Oriental,,جهة,region
+MA,MA-03,فاس مكناس,Fès-Meknès,,جهة,region
+MA,MA-04,الرباط سلا القنيطرة,Rabat-Salé-Kénitra,,جهة,region
+MA,MA-05,بني ملال خنيفرة,Béni Mellal-Khénifra,,جهة,region
+MA,MA-06,الدار البيضاء سطات,Casablanca-Settat,,جهة,region
+MA,MA-07,مراكش آسفي,Marrakech-Safi,,جهة,region
+MA,MA-08,درعة تافيلالت,Drâa-Tafilalet,,جهة,region
+MA,MA-09,سوس ماسة,Souss-Massa,,جهة,region
+MA,MA-10,كلميم واد نون,Guelmim-Oued Noun,,جهة,region
+MA,MA-11,العيون الساقية الحمراء,Laâyoune-Sakia El Hamra,,جهة,region
+MA,MA-12,الداخلة وادي الذهب,Dakhla-Oued Ed-Dahab,,جهة,region
 MA,MA-AGD,أكادير,Agadir-Ida Ou Tanane,MA-09,عمالة,prefecture
 MA,MA-AOU,إقليم أوسرد,Aousserd,MA-12,إقليم,province
 MA,MA-ASZ,إقليم آسا الزاك,Assa-Zag,MA-10,إقليم,province
@@ -2920,7 +2920,7 @@ MG,MG-A,مقاطعة تواماسينا,Toamasina,,,
 MG,MG-D,مقاطعة أنتسيرانانا,Antsiranana,,,
 MG,MG-F,مقاطعة فيانارانتسوا,Fianarantsoa,,,
 MG,MG-M,مقاطعة ماهاجانجا,Mahajanga,,,
-MG,MG-T,مقاطعة فيانارانتسوا²,Antananarivo,,,
+MG,MG-T,مقاطعة فيانارانتسوا,Antananarivo,,,
 MG,MG-U,مقاطعة توليارا,Toliara,,,
 MH,MH-ALK,,Ailuk Atoll,MH-T,جزيرة,island
 MH,MH-ALL,,Ailinglaplap Atoll,MH-L,جزيرة,island
@@ -3075,7 +3075,7 @@ MN,MN-067,محافظة بولغان,Bulgan,,مقاطعة,province
 MN,MN-069,محافظة بايانخونغور,Bayankhongor,,مقاطعة,province
 MN,MN-071,محافظة بايان-أولجي,Bayan-Ölgii,,مقاطعة,province
 MN,MN-073,محافظة أرخانغاي,Arkhangai,,مقاطعة,province
-MN,MN-1,أولان باتور,Ulaanbaatar,,عاصمة,capital city
+MN,MN-1,أولان باتور,Ulaanbaatar,,مدينة عاصمة,capital city
 MR,MR-01,ولاية الحوض الشرقي,Hodh Ech Chargui,,ولاية,region
 MR,MR-02,ولاية الحوض الغربي,Hodh El Gharbi,,ولاية,region
 MR,MR-03,ولاية العصابة,Assaba,,ولاية,region
@@ -3091,74 +3091,74 @@ MR,MR-12,ولاية إينشيري,Inchiri,,ولاية,region
 MR,MR-13,ولاية نواكشوط الغربية,Nouakchott Ouest,,ولاية,region
 MR,MR-14,نواكشوط الشمالية,Nouakchott Nord,,ولاية,region
 MR,MR-15,نواكشوط الجنوبية,Nouakchott Sud,,ولاية,region
-MT,MT-01,عطار,Attard,,,
-MT,MT-02,بالزان,Balzan,,,
+MT,MT-01,عطار,Attard,,مجلس محلي,local council
+MT,MT-02,بالزان,Balzan,,مجلس محلي,local council
 MT,MT-03,بيرجو,Birgu,,مدينة,city
 MT,MT-04,بيركيركارا,Birkirkara,,مدينة,city
 MT,MT-05,بئر زيوجة,Birżebbuġa,,مدينة,city
 MT,MT-06,كوسبيكو,Cospicua,,مدينة,city
-MT,MT-07,دينغلي,Dingli,,,
-MT,MT-08,فغورا,Fgura,,,
-MT,MT-09,فلوريانا,Floriana,,,
-MT,MT-10,فونتانا,Fontana,,,
-MT,MT-11,غوديا,Gudja,,,
-MT,MT-12,غزيرا,Gżira,,,
+MT,MT-07,دينغلي,Dingli,,مجلس محلي,local council
+MT,MT-08,فغورا,Fgura,,مجلس محلي,local council
+MT,MT-09,فلوريانا,Floriana,,مجلس محلي,local council
+MT,MT-10,فونتانا,Fontana,,مجلس محلي,local council
+MT,MT-11,غوديا,Gudja,,مجلس محلي,local council
+MT,MT-12,غزيرا,Gżira,,مجلس محلي,local council
 MT,MT-13,غوينزيلم,Għajnsielem,,بلدية,municipality
-MT,MT-14,غارب,Għarb,,,
-MT,MT-15,عرعور,Għargħur,,,
-MT,MT-16,غاسري,Għasri,,,
-MT,MT-17,غاكساق,Għaxaq,,,
-MT,MT-18,حمرون,Ħamrun,,,
-MT,MT-19,إكلين,Iklin,,,
+MT,MT-14,غارب,Għarb,,مجلس محلي,local council
+MT,MT-15,عرعور,Għargħur,,مجلس محلي,local council
+MT,MT-16,غاسري,Għasri,,مجلس محلي,local council
+MT,MT-17,غاكساق,Għaxaq,,مجلس محلي,local council
+MT,MT-18,حمرون,Ħamrun,,مجلس محلي,local council
+MT,MT-19,إكلين,Iklin,,مجلس محلي,local council
 MT,MT-20,سنجليا,Senglea,,مدينة,city
-MT,MT-21,كالكارا,Kalkara,,,
-MT,MT-22,كيرتشم,Kerċem,,,
-MT,MT-23,كيركوب,Kirkop,,,
-MT,MT-24,ليا,Lija,,,
-MT,MT-25,لوقا,Luqa,,,
-MT,MT-26,المرسى,Marsa,,,
-MT,MT-27,مارساسكالا,Marsaskala,,,
-MT,MT-28,مارساكسلوخك,Marsaxlokk,,,
-MT,MT-29,مدينة,Mdina,,,
-MT,MT-30,مليحة,Mellieħa,,,
-MT,MT-31,مغار,Mġarr,,,
+MT,MT-21,كالكارا,Kalkara,,مجلس محلي,local council
+MT,MT-22,كيرتشم,Kerċem,,مجلس محلي,local council
+MT,MT-23,كيركوب,Kirkop,,مجلس محلي,local council
+MT,MT-24,ليا,Lija,,مجلس محلي,local council
+MT,MT-25,لوقا,Luqa,,مجلس محلي,local council
+MT,MT-26,المرسى,Marsa,,مجلس محلي,local council
+MT,MT-27,مارساسكالا,Marsaskala,,مجلس محلي,local council
+MT,MT-28,مارساكسلوخك,Marsaxlokk,,مجلس محلي,local council
+MT,MT-29,مدينة,Mdina,,مجلس محلي,local council
+MT,MT-30,مليحة,Mellieħa,,مجلس محلي,local council
+MT,MT-31,مغار,Mġarr,,مجلس محلي,local council
 MT,MT-32,موستا,Mosta,,مدينة,city
-MT,MT-33,مقابا,Mqabba,,,
-MT,MT-34,مسيدا,Msida,,,
-MT,MT-35,المطرفة,Imtarfa,,,
-MT,MT-36,مونكسار,Munxar,,,
-MT,MT-37,بلدة نادور,Nadur,,,
+MT,MT-33,مقابا,Mqabba,,مجلس محلي,local council
+MT,MT-34,مسيدا,Msida,,مجلس محلي,local council
+MT,MT-35,المطرفة,Imtarfa,,مجلس محلي,local council
+MT,MT-36,مونكسار,Munxar,,مجلس محلي,local council
+MT,MT-37,بلدة نادور,Nadur,,مجلس محلي,local council
 MT,MT-38,ناكسار,Naxxar,,مدينة,city
-MT,MT-39,باولا,Paola,,,
-MT,MT-40,بيمبروك,Pembroke,,,
-MT,MT-41,,Pietà,,,
-MT,MT-42,قالا، مالطا,Qala,,,
+MT,MT-39,باولا,Paola,,مجلس محلي,local council
+MT,MT-40,بيمبروك,Pembroke,,مجلس محلي,local council
+MT,MT-41,,Pietà,,مجلس محلي,local council
+MT,MT-42,قالا، مالطا,Qala,,مجلس محلي,local council
 MT,MT-43,كورمي,Qormi,,مدينة,city
-MT,MT-44,كريندي,Qrendi,,,
+MT,MT-44,كريندي,Qrendi,,مجلس محلي,local council
 MT,MT-45,الرباط,Victoria,,مدينة,city
-MT,MT-46,الرابات,Rabat,,,
-MT,MT-47,سافي,Safi,,,
-MT,MT-48,سانت جوليان,St. Julian’s,,,
-MT,MT-49,سان غوان,San Ġwann,,,
-MT,MT-50,سانت لورانس,Saint Lawrence,,,
-MT,MT-51,شارع خليج بول,St. Paul’s Bay,,,
-MT,MT-52,سانات,Sannat,,,
-MT,MT-53,سانتا لوزيجا,Santa Luċija,,,
-MT,MT-54,سانتا فينيرا,Santa Venera,,,
+MT,MT-46,الرابات,Rabat,,مجلس محلي,local council
+MT,MT-47,سافي,Safi,,مجلس محلي,local council
+MT,MT-48,سانت جوليان,St. Julian’s,,مجلس محلي,local council
+MT,MT-49,سان غوان,San Ġwann,,مجلس محلي,local council
+MT,MT-50,سانت لورانس,Saint Lawrence,,مجلس محلي,local council
+MT,MT-51,شارع خليج بول,St. Paul’s Bay,,مجلس محلي,local council
+MT,MT-52,سانات,Sannat,,مجلس محلي,local council
+MT,MT-53,سانتا لوزيجا,Santa Luċija,,مجلس محلي,local council
+MT,MT-54,سانتا فينيرا,Santa Venera,,مجلس محلي,local council
 MT,MT-55,بلدية سيقيوي,Siġġiewi,,مدينة,city
-MT,MT-56,سليمة,Sliema,,,
-MT,MT-57,سويقي,Swieqi,,,
-MT,MT-58,تا إزبيكس,Ta’ Xbiex,,,
-MT,MT-59,تشرزين,Tarxien,,,
-MT,MT-60,فاليتا,Valletta,,مدينة,city
-MT,MT-61,بلدة زاجورا,Xagħra,,,
-MT,MT-62,شوكية,Xewkija,,,
-MT,MT-63,زغواجرا,Xgħajra,,,
+MT,MT-56,سليمة,Sliema,,مجلس محلي,local council
+MT,MT-57,سويقي,Swieqi,,مجلس محلي,local council
+MT,MT-58,تا إزبيكس,Ta’ Xbiex,,مجلس محلي,local council
+MT,MT-59,تشرزين,Tarxien,,مجلس محلي,local council
+MT,MT-60,فاليتا,Valletta,,مجلس محلي,local council
+MT,MT-61,بلدة زاجورا,Xagħra,,مجلس محلي,local council
+MT,MT-62,شوكية,Xewkija,,مجلس محلي,local council
+MT,MT-63,زغواجرا,Xgħajra,,مجلس محلي,local council
 MT,MT-64,جبار,Żabbar,,مدينة,city
-MT,MT-65,الزبوج,Żebbuġ Gozo,,,
+MT,MT-65,الزبوج,Żebbuġ Gozo,,مجلس محلي,local council
 MT,MT-66,زيباغ,Żebbuġ,,مدينة,city
 MT,MT-67,الزيتون,Żejtun,,مدينة,city
-MT,MT-68,زرياق,Żurrieq,,,
+MT,MT-68,زرياق,Żurrieq,,مجلس محلي,local council
 MU,MU-AG,أغاليغا,Agaléga,,جزيرة,island
 MU,MU-BL,النهر الأسود,Rivière Noire,,منطقة,district
 MU,MU-CC,كارغادوس كارايوس,Cargados Carajos,,جزيرة,island
@@ -3181,7 +3181,7 @@ MV,MV-07,آتول ها ألف,Haa Alif,,جزيرة مرجانية,atoll
 MV,MV-08,آتول ذا,Thaa,,جزيرة مرجانية,atoll
 MV,MV-12,ميمو أتول,Meemu,,جزيرة مرجانية,atoll
 MV,MV-13,را أتول,Raa,,جزيرة مرجانية,atoll
-MV,MV-14,فافو أتول²,Faafu,,جزيرة مرجانية,atoll
+MV,MV-14,فافو أتول,Faafu,,جزيرة مرجانية,atoll
 MV,MV-17,دالو أتول,Dhaalu,,جزيرة مرجانية,atoll
 MV,MV-20,با اتول,Baa,,جزيرة مرجانية,atoll
 MV,MV-23,ها دالو أتول,Haa Dhaalu,,جزيرة مرجانية,atoll
@@ -3318,7 +3318,7 @@ NG,NG-EB,ولاية إبونيه,Ebonyi,,ولاية,state
 NG,NG-ED,ولاية إدو,Edo,,ولاية,state
 NG,NG-EK,ولاية إكيتي,Ekiti,,ولاية,state
 NG,NG-EN,ولاية إينوغو,Enugu,,ولاية,state
-NG,NG-FC,منطقة العاصمة الإتحادية لنيجيريا,Federal Capital Territory,,ولاية,state
+NG,NG-FC,منطقة العاصمة الإتحادية لنيجيريا,Federal Capital Territory,,إقليم العاصمة,capital territory
 NG,NG-GO,ولاية غومبي,Gombe,,ولاية,state
 NG,NG-IM,ولاية إيمو,Imo,,ولاية,state
 NG,NG-JI,ولاية جيغاوة,Jigawa,,ولاية,state
@@ -3358,9 +3358,9 @@ NI,NI-MT,إدارة ماتاغالبا,Matagalpa,,إقليم,department
 NI,NI-NS,إدارة نويفا سيغوفيا,Nueva Segovia,,إقليم,department
 NI,NI-RI,إدارة ريفاز,Rivas,,إقليم,department
 NI,NI-SJ,إدارة ريو سان خوان,Río San Juan,,إقليم,department
-NL,NL-BQ1,بونير,Bonaire,,كيان,entity
-NL,NL-BQ2,سابا,Saba,,كيان,entity
-NL,NL-BQ3,سينت أوستاتيوس,Sint Eustatius,,,
+NL,NL-BQ1,بونير,Bonaire,,بلدية خاصة,special municipality
+NL,NL-BQ2,سابا,Saba,,بلدية خاصة,special municipality
+NL,NL-BQ3,سينت أوستاتيوس,Sint Eustatius,,بلدية خاصة,special municipality
 NL,NL-DR,درينته,Drenthe,,مقاطعة,province
 NL,NL-FL,فليفولاند,Flevoland,,مقاطعة,province
 NL,NL-FR,فرايزلاند,Friesland,,مقاطعة,province
@@ -3389,9 +3389,9 @@ NO,NO-54,ترومس أوغ فينمارك,Tromssan ja Finmarkun,,,
 NP,NP-P1,,Province 1,,مقاطعة,province
 NP,NP-P2,,Province 2,,مقاطعة,province
 NP,NP-P3,,Province 3,,مقاطعة,province
-NP,NP-P4,,Gandaki²,,,
+NP,NP-P4,,Gandaki,,,
 NP,NP-P5,,Province 5,,مقاطعة,province
-NP,NP-P6,,Karnali²,,مقاطعة,province
+NP,NP-P6,,Karnali,,مقاطعة,province
 NP,NP-P7,,Province 7,,مقاطعة,province
 NR,NR-01,ضاحية إيو,Aiwo,,منطقة,district
 NR,NR-02,ضاحية أنابار,Anabar,,منطقة,district
@@ -3510,7 +3510,7 @@ PH,PH-10,مينداناو الشمالية,Northern Mindanao,,منطقة,region
 PH,PH-11,,Davao,,منطقة,region
 PH,PH-12,,Soccsksargen,,منطقة,region
 PH,PH-13,كاراجا,Caraga,,منطقة,region
-PH,PH-14,الحكم الذاتي الاقليمي لمسلمي مندناو,Muslim Mindanao,,,
+PH,PH-14,الحكم الذاتي الاقليمي لمسلمي مندناو,Muslim Mindanao,,منطقة ذاتية الحكم,autonomous region
 PH,PH-15,,Cordillera Administrative,,منطقة,region
 PH,PH-40,كالابارزون,Calabarzon,,منطقة,region
 PH,PH-41,ميماروبا,Mimaropa,,منطقة,region
@@ -3598,9 +3598,9 @@ PH,PH-ZMB,زامباله,Zambales,PH-03,مقاطعة,province
 PH,PH-ZSI,زامبوانجا سيبوجاي,Zamboanga Sibugay,PH-09,مقاطعة,province
 PK,PK-BA,بلوشستان,Balochistan,,مقاطعة,province
 PK,PK-GB,غلغت-بلتستان,Gilgit-Baltistan,,إقليم,territory
-PK,PK-IS,ناحية بايتختي اسلام‌آباد,Islamabad,,,
+PK,PK-IS,إسلام آباد,Islamabad,,إقليم العاصمة,capital territory
 PK,PK-JK,آزاد كشمير,Azad Kashmir,,إقليم,territory
-PK,PK-KP,خیبر بختونخوا,Khyber Pakhtunkhwa,,مقاطعة,province
+PK,PK-KP,خيبر بختونخوا,Khyber Pakhtunkhwa,,مقاطعة,province
 PK,PK-PB,البنجاب,Punjab,,مقاطعة,province
 PK,PK-SD,السند,Sindh,,مقاطعة,province
 PL,PL-02,محافظة سيليزيا السفلى,Lower Silesia,,محافظة,voivodeship
@@ -3773,87 +3773,87 @@ RS,RS-KM,مقاطعة كوسوفو وميتوهيا المتمتعة بالحك�
 RS,RS-VO,فويفودينا,Vojvodina,,مقاطعة ذاتية الحكم,autonomous province
 RU,RU-AD,أديغيا,Adygea,,جمهورية,republic
 RU,RU-AL,جمهورية ألطاي,Altai,,جمهورية,republic
-RU,RU-ALT,ألطاي كراي,Altai Krai,,إقليم,krai
-RU,RU-AMU,أمور أوبلاست,Amur,,إقليم,oblast
-RU,RU-ARK,أرخانجيلسك أوبلاست,Arkhangelsk,,إقليم,oblast
-RU,RU-AST,أوبلاست أستراخان,Astrakhan,,إقليم,oblast
+RU,RU-ALT,ألطاي كراي,Altai Krai,,كراي,krai
+RU,RU-AMU,أمور أوبلاست,Amur,,أوبلاست,oblast
+RU,RU-ARK,أرخانجيلسك أوبلاست,Arkhangelsk,,أوبلاست,oblast
+RU,RU-AST,أوبلاست أستراخان,Astrakhan,,أوبلاست,oblast
 RU,RU-BA,باشكورستان,Bashkortostan,,جمهورية,republic
-RU,RU-BEL,أوبلاست بيلغورود,Belgorod,,إقليم,oblast
-RU,RU-BRY,بريانسك أوبلاست,Bryansk,,إقليم,oblast
+RU,RU-BEL,أوبلاست بيلغورود,Belgorod,,أوبلاست,oblast
+RU,RU-BRY,بريانسك أوبلاست,Bryansk,,أوبلاست,oblast
 RU,RU-BU,بورياتيا,Buryat,,جمهورية,republic
 RU,RU-CE,الشيشان,Chechen,,جمهورية,republic
-RU,RU-CHE,أوبلاست تشيليابنسك,Chelyabinsk,,إقليم,oblast
+RU,RU-CHE,أوبلاست تشيليابنسك,Chelyabinsk,,أوبلاست,oblast
 RU,RU-CHU,أوكروغ تشوكوتكا الذاتية,Chukotka Okrug,,مقاطعة ذاتية الحكم,autonomous district
 RU,RU-CU,تشوفاشيا,Chuvash,,جمهورية,republic
 RU,RU-DA,داغستان,Dagestan,,جمهورية,republic
 RU,RU-IN,إنغوشيتيا,Ingushetia,,جمهورية,republic
-RU,RU-IRK,إركوتسك أوبلاست,Irkutsk,,إقليم,oblast
-RU,RU-IVA,إيفانوفو أوبلاست,Ivanovo,,إقليم,oblast
-RU,RU-KAM,كراي كامشاتكا,Kamchatka Krai,,إقليم,krai
+RU,RU-IRK,إركوتسك أوبلاست,Irkutsk,,أوبلاست,oblast
+RU,RU-IVA,إيفانوفو أوبلاست,Ivanovo,,أوبلاست,oblast
+RU,RU-KAM,كراي كامشاتكا,Kamchatka Krai,,كراي,krai
 RU,RU-KB,قبردينو - بلقاريا,Kabardino-Balkar,,جمهورية,republic
 RU,RU-KC,قراتشاي - تشيركيسيا,Karachay-Cherkess,,جمهورية,republic
-RU,RU-KDA,كراسنودار كراي,Krasnodar Krai,,إقليم,krai
-RU,RU-KEM,كيميروفو أوبلاست,Kemerovo,,إقليم,oblast
-RU,RU-KGD,أوبلاست كالينينغرادسكايا,Kaliningrad,,إقليم,oblast
-RU,RU-KGN,أوبلاست كورغان,Kurgan,,إقليم,oblast
-RU,RU-KHA,خاباروفسك كراي,Khabarovsk Krai,,إقليم,krai
+RU,RU-KDA,كراسنودار كراي,Krasnodar Krai,,كراي,krai
+RU,RU-KEM,كيميروفو أوبلاست,Kemerovo,,أوبلاست,oblast
+RU,RU-KGD,أوبلاست كالينينغرادسكايا,Kaliningrad,,أوبلاست,oblast
+RU,RU-KGN,أوبلاست كورغان,Kurgan,,أوبلاست,oblast
+RU,RU-KHA,خاباروفسك كراي,Khabarovsk Krai,,كراي,krai
 RU,RU-KHM,أوكروغ خانتي-مانسي ذاتية الحكم,Khanty-Mansi,,مقاطعة ذاتية الحكم,autonomous district
-RU,RU-KIR,أوبلاست كيروف,Kirov,,إقليم,oblast
+RU,RU-KIR,أوبلاست كيروف,Kirov,,أوبلاست,oblast
 RU,RU-KK,خقاسيا,Khakassia,,جمهورية,republic
 RU,RU-KL,كالميكيا,Kalmykia,,جمهورية,republic
-RU,RU-KLU,كالوغا أوبلاست,Kaluga,,إقليم,oblast
+RU,RU-KLU,كالوغا أوبلاست,Kaluga,,أوبلاست,oblast
 RU,RU-KO,جمهورية كومي,Komi,,جمهورية,republic
-RU,RU-KOS,كوستروما أوبلاست,Kostroma,,إقليم,oblast
+RU,RU-KOS,كوستروما أوبلاست,Kostroma,,أوبلاست,oblast
 RU,RU-KR,جمهورية كاريليا,Karelia,,جمهورية,republic
-RU,RU-KRS,كورسك أوبلاست,Kursk,,إقليم,oblast
-RU,RU-KYA,كراسنويارسك كراي,Krasnoyarsk Krai,,إقليم,krai
-RU,RU-LEN,لينينغراد أوبلاست,Leningrad,,إقليم,oblast
-RU,RU-LIP,ليبيتسك أوبلاست,Lipetsk,,إقليم,oblast
-RU,RU-MAG,ماغادان أوبلاست,Magadan,,إقليم,oblast
+RU,RU-KRS,كورسك أوبلاست,Kursk,,أوبلاست,oblast
+RU,RU-KYA,كراسنويارسك كراي,Krasnoyarsk Krai,,كراي,krai
+RU,RU-LEN,لينينغراد أوبلاست,Leningrad,,أوبلاست,oblast
+RU,RU-LIP,ليبيتسك أوبلاست,Lipetsk,,أوبلاست,oblast
+RU,RU-MAG,ماغادان أوبلاست,Magadan,,أوبلاست,oblast
 RU,RU-ME,ماري إل,Mari El,,جمهورية,republic
 RU,RU-MO,موردوفيا,Mordovia,,جمهورية,republic
-RU,RU-MOS,محافظة موسكو,Moscow Province,,إقليم,oblast
+RU,RU-MOS,محافظة موسكو,Moscow Province,,أوبلاست,oblast
 RU,RU-MOW,موسكو,Moscow,,مدينة,city
-RU,RU-MUR,مورمانسك أوبلاست,Murmansk,,إقليم,oblast
+RU,RU-MUR,مورمانسك أوبلاست,Murmansk,,أوبلاست,oblast
 RU,RU-NEN,أوكروغ نينيتس الذاتية,Nenets,,مقاطعة ذاتية الحكم,autonomous district
-RU,RU-NGR,نوفغورود أوبلاست,Novgorod,,إقليم,oblast
-RU,RU-NIZ,نيجني نوفغورود أوبلاست,Nizhny Novgorod,,إقليم,oblast
-RU,RU-NVS,نوفوسيبيرسك أوبلاست,Novosibirsk,,إقليم,oblast
-RU,RU-OMS,أوبلاست أومسك,Omsk,,إقليم,oblast
-RU,RU-ORE,أورنبرغ أوبلاست,Orenburg,,إقليم,oblast
-RU,RU-ORL,أوريول أوبلاست,Oryol,,إقليم,oblast
-RU,RU-PER,بيرم كراي,Perm Krai,,إقليم,krai
-RU,RU-PNZ,بانزا أوبلاست,Penza,,إقليم,oblast
-RU,RU-PRI,بريمورسكي كراي,Primorsky Krai,,إقليم,krai
-RU,RU-PSK,بسكوف أوبلاست,Pskov,,إقليم,oblast
-RU,RU-ROS,روستوف أوبلاست,Rostov,,إقليم,oblast
-RU,RU-RYA,ريازان أوبلاست,Ryazan,,إقليم,oblast
+RU,RU-NGR,نوفغورود أوبلاست,Novgorod,,أوبلاست,oblast
+RU,RU-NIZ,نيجني نوفغورود أوبلاست,Nizhny Novgorod,,أوبلاست,oblast
+RU,RU-NVS,نوفوسيبيرسك أوبلاست,Novosibirsk,,أوبلاست,oblast
+RU,RU-OMS,أوبلاست أومسك,Omsk,,أوبلاست,oblast
+RU,RU-ORE,أورنبرغ أوبلاست,Orenburg,,أوبلاست,oblast
+RU,RU-ORL,أوريول أوبلاست,Oryol,,أوبلاست,oblast
+RU,RU-PER,بيرم كراي,Perm Krai,,كراي,krai
+RU,RU-PNZ,بانزا أوبلاست,Penza,,أوبلاست,oblast
+RU,RU-PRI,بريمورسكي كراي,Primorsky Krai,,كراي,krai
+RU,RU-PSK,بسكوف أوبلاست,Pskov,,أوبلاست,oblast
+RU,RU-ROS,روستوف أوبلاست,Rostov,,أوبلاست,oblast
+RU,RU-RYA,ريازان أوبلاست,Ryazan,,أوبلاست,oblast
 RU,RU-SA,ياقوتيا,Sakha,,جمهورية,republic
-RU,RU-SAK,ساخالين أوبلاست,Sakhalin,,إقليم,oblast
-RU,RU-SAM,سمارا أوبلاست,Samara,,إقليم,oblast
-RU,RU-SAR,ساراتوف أوبلاست,Saratov,,إقليم,oblast
+RU,RU-SAK,ساخالين أوبلاست,Sakhalin,,أوبلاست,oblast
+RU,RU-SAM,سمارا أوبلاست,Samara,,أوبلاست,oblast
+RU,RU-SAR,ساراتوف أوبلاست,Saratov,,أوبلاست,oblast
 RU,RU-SE,أوسيتيا الشمالية-ألانيا,North Ossetia-Alania,,جمهورية,republic
-RU,RU-SMO,أوبلاست سمولينسك,Smolensk,,إقليم,oblast
+RU,RU-SMO,أوبلاست سمولينسك,Smolensk,,أوبلاست,oblast
 RU,RU-SPE,سانت بطرسبرغ,Saint Petersburg,,مدينة,city
-RU,RU-STA,ستافروبول كراي,Stavropol Krai,,إقليم,krai
-RU,RU-SVE,أوبلاست سفردلوفسك,Sverdlovsk,,إقليم,oblast
+RU,RU-STA,ستافروبول كراي,Stavropol Krai,,كراي,krai
+RU,RU-SVE,أوبلاست سفردلوفسك,Sverdlovsk,,أوبلاست,oblast
 RU,RU-TA,تتارستان,Tatarstan,,جمهورية,republic
-RU,RU-TAM,تامبوف أوبلاست,Tambov,,إقليم,oblast
-RU,RU-TOM,تومسك أوبلاست,Tomsk,,إقليم,oblast
-RU,RU-TUL,تولا أوبلاست,Tula,,إقليم,oblast
-RU,RU-TVE,تفير أوبلاست,Tver,,إقليم,oblast
+RU,RU-TAM,تامبوف أوبلاست,Tambov,,أوبلاست,oblast
+RU,RU-TOM,تومسك أوبلاست,Tomsk,,أوبلاست,oblast
+RU,RU-TUL,تولا أوبلاست,Tula,,أوبلاست,oblast
+RU,RU-TVE,تفير أوبلاست,Tver,,أوبلاست,oblast
 RU,RU-TY,توفا,Tuva,,جمهورية,republic
-RU,RU-TYU,تيومين أوبلاست,Tyumen,,إقليم,oblast
+RU,RU-TYU,تيومين أوبلاست,Tyumen,,أوبلاست,oblast
 RU,RU-UD,أودمورتيا,Udmurt,,جمهورية,republic
-RU,RU-ULY,أوليانوفسك أوبلاست,Ulyanovsk,,إقليم,oblast
-RU,RU-VGG,فولغوغراد أوبلاست,Volgograd,,إقليم,oblast
-RU,RU-VLA,فلاديمير أوبلاست,Vladimir,,إقليم,oblast
-RU,RU-VLG,فولوغدا أوبلاست,Vologda,,إقليم,oblast
-RU,RU-VOR,فورونيج أوبلاست,Voronezh,,إقليم,oblast
+RU,RU-ULY,أوليانوفسك أوبلاست,Ulyanovsk,,أوبلاست,oblast
+RU,RU-VGG,فولغوغراد أوبلاست,Volgograd,,أوبلاست,oblast
+RU,RU-VLA,فلاديمير أوبلاست,Vladimir,,أوبلاست,oblast
+RU,RU-VLG,فولوغدا أوبلاست,Vologda,,أوبلاست,oblast
+RU,RU-VOR,فورونيج أوبلاست,Voronezh,,أوبلاست,oblast
 RU,RU-YAN,أوكروغ يامالو-نينيتس الذاتية,Yamalo-Nenets Okrug,,مقاطعة ذاتية الحكم,autonomous district
-RU,RU-YAR,ياروسلافل أوبلاست,Yaroslavl,,إقليم,oblast
-RU,RU-YEV,الأوبلاست اليهودية الذاتية,Jewish,,إقليم,oblast
-RU,RU-ZAB,زابايكالسكي كراي,Zabaykalsky Krai,,إقليم,krai
+RU,RU-YAR,ياروسلافل أوبلاست,Yaroslavl,,أوبلاست,oblast
+RU,RU-YEV,الأوبلاست اليهودية الذاتية,Jewish,,أوبلاست,oblast
+RU,RU-ZAB,زابايكالسكي كراي,Zabaykalsky Krai,,كراي,krai
 RW,RW-01,كيغالي,Kigali,,مقاطعة,province
 RW,RW-02,المحافظة الشرقية، رواندا,Eastern,,مقاطعة,province
 RW,RW-03,المقاطعة الشمالية,Northern,,مقاطعة,province
@@ -3915,7 +3915,7 @@ SD,SD-DN,ولاية شمال دارفور,North Darfur,,ولاية,state
 SD,SD-DS,جنوب دارفور,South Darfur,,ولاية,state
 SD,SD-DW,غرب دارفور,West Darfur,,ولاية,state
 SD,SD-GD,القضارف,Al Qadarif,,ولاية,state
-SD,SD-GK,ولاية غرب كردفان,West Kurdufan,,,
+SD,SD-GK,ولاية غرب كردفان,West Kurdufan,,ولاية,state
 SD,SD-GZ,الجزيرة,Al Jazirah,,ولاية,state
 SD,SD-KA,كسلا,Kassala,,ولاية,state
 SD,SD-KH,الخرطوم,Khartoum,,ولاية,state
@@ -4288,7 +4288,7 @@ TD,TD-EE,إنيدي الشرقية,Ennedi-Est,,مقاطعة,province
 TD,TD-EO,إنيدي الغربية,Ennedi-Ouest,,مقاطعة,province
 TD,TD-GR,منطقة قيرا,Guéra,,مقاطعة,province
 TD,TD-HL,منطقة حجر لميس,Hadjer-Lamis,,مقاطعة,province
-TD,TD-KA,منطقة كانم²,Kanem,,مقاطعة,province
+TD,TD-KA,منطقة كانم,Kanem,,مقاطعة,province
 TD,TD-LC,منطقة البحيرة,Lac,,مقاطعة,province
 TD,TD-LO,منطقة لوقون الغربي,Logone Occidental,,مقاطعة,province
 TD,TD-LR,منطقة لوقون الشرقي,Logone Oriental,,مقاطعة,province
@@ -4386,7 +4386,7 @@ TH,TH-94,باتاني,Pattani,,مقاطعة,province
 TH,TH-95,محافظة يالا,Yala,,مقاطعة,province
 TH,TH-96,محافظة ناراتيوات,Narathiwat,,مقاطعة,province
 TH,TH-S,باتايا,Pattaya,,مدينة,city
-TJ,TJ-DU,دوشانبي,Dushanbe,,عاصمة,capital city
+TJ,TJ-DU,دوشانبي,Dushanbe,,مدينة عاصمة,capital city
 TJ,TJ-GB,جورنو,Gorno-Badakhshan,,منطقة,region
 TJ,TJ-KT,محافظة خاتلون,Khatlon,,منطقة,region
 TJ,TJ-RA,مقاطعات التبعية الجمهوري,Nohiyahoi Tobei Jumhurí,,منطقة,region
@@ -4402,7 +4402,7 @@ TL,TL-LA,بلدية لوتيم,Lautém,,بلدية,municipality
 TL,TL-LI,مقاطعة ليكويتشيا,Liquiçá,,بلدية,municipality
 TL,TL-MF,بلدية مانوفاهي,Manufahi,,بلدية,municipality
 TL,TL-MT,مقاطعة ماناتوتو,Manatuto,,بلدية,municipality
-TL,TL-OE,بلدية أويكيوس,Oecusse,,,
+TL,TL-OE,بلدية أويكيوس,Oecusse,,منطقة إدارية خاصة,special administrative region
 TL,TL-VI,بلدية فيكيك,Viqueque,,بلدية,municipality
 TM,TM-A,اقليم أهال,Ahal,,منطقة,region
 TM,TM-B,ولاية بلقان,Balkan,,منطقة,region
@@ -4439,87 +4439,87 @@ TO,TO-02,هاباي,Haʻapai,,قسم,division
 TO,TO-03,نيواس,Niuas,,قسم,division
 TO,TO-04,تونغاتابو,Tongatapu,,قسم,division
 TO,TO-05,فافاو,Vavaʻu,,قسم,division
-TR,TR-01,أضنة,Adana,,مقاطعة,province
-TR,TR-02,أديامان,Adıyaman,,مقاطعة,province
-TR,TR-03,أفيون,Afyonkarahisar,,مقاطعة,province
-TR,TR-04,أغري,Ağrı,,مقاطعة,province
-TR,TR-05,أماصيا,Amasya,,مقاطعة,province
-TR,TR-06,أنقرة,Ankara,,مقاطعة,province
-TR,TR-07,أنطاليا,Antalya,,مقاطعة,province
-TR,TR-08,أرتفين,Artvin,,مقاطعة,province
-TR,TR-09,أيدين,Aydın,,مقاطعة,province
-TR,TR-10,باليكسير,Balıkesir,,مقاطعة,province
-TR,TR-11,بيلجيك,Bilecik,,مقاطعة,province
-TR,TR-12,بينغول,Bingöl,,مقاطعة,province
-TR,TR-13,بدليس,Bitlis,,مقاطعة,province
-TR,TR-14,بولو,Bolu,,مقاطعة,province
-TR,TR-15,بوردور,Burdur,,مقاطعة,province
-TR,TR-16,بورصة,Bursa,,مقاطعة,province
-TR,TR-17,محافظة جاناكالي,Çanakkale,,مقاطعة,province
-TR,TR-18,جانقري,Çankırı,,مقاطعة,province
-TR,TR-19,شوروم,Çorum,,مقاطعة,province
-TR,TR-20,دينيزلي,Denizli,,مقاطعة,province
-TR,TR-21,دياربكر,Diyarbakır,,مقاطعة,province
-TR,TR-22,ادرنة,Edirne,,مقاطعة,province
-TR,TR-23,إيلازيغ,Elazığ,,مقاطعة,province
-TR,TR-24,أرزنجان,Erzincan,,مقاطعة,province
-TR,TR-25,أرضروم,Erzurum,,مقاطعة,province
-TR,TR-26,إسكيشهر,Eskişehir,,مقاطعة,province
-TR,TR-27,عنتاب,Gaziantep,,مقاطعة,province
-TR,TR-28,غيرسون,Giresun,,مقاطعة,province
-TR,TR-29,غوموشخان,Gümüşhane,,مقاطعة,province
-TR,TR-30,حكاري,Hakkâri,,مقاطعة,province
-TR,TR-31,هتاي,Hatay,,مقاطعة,province
-TR,TR-32,إسبرطة,Isparta,,مقاطعة,province
-TR,TR-33,مرسين,Mersin,,مقاطعة,province
-TR,TR-34,إسطنبول,Istanbul,,مقاطعة,province
-TR,TR-35,ازمير,Izmir,,مقاطعة,province
-TR,TR-36,قارص,Kars,,مقاطعة,province
-TR,TR-37,قسطموني,Kastamonu,,مقاطعة,province
-TR,TR-38,قيصرية,Kayseri,,مقاطعة,province
-TR,TR-39,كيركلاريلي,Kırklareli,,مقاطعة,province
-TR,TR-40,قيرشهر,Kırşehir,,مقاطعة,province
-TR,TR-41,كوكالي,Kocaeli,,مقاطعة,province
-TR,TR-42,قونية,Konya,,مقاطعة,province
-TR,TR-43,كوتاهيا,Kütahya,,مقاطعة,province
-TR,TR-44,ملطية,Malatya,,مقاطعة,province
-TR,TR-45,مانيسا,Manisa,,مقاطعة,province
-TR,TR-46,مرعش,Kahramanmaraş,,مقاطعة,province
-TR,TR-47,ماردين,Mardin,,مقاطعة,province
-TR,TR-48,موغلا,Muğla,,مقاطعة,province
-TR,TR-49,موش,Muş,,مقاطعة,province
-TR,TR-50,نوشهر,Nevşehir,,مقاطعة,province
-TR,TR-51,نيغدة,Niğde,,مقاطعة,province
-TR,TR-52,أردو,Ordu,,مقاطعة,province
-TR,TR-53,ريزه,Rize,,مقاطعة,province
-TR,TR-54,ساكاريا,Sakarya,,مقاطعة,province
-TR,TR-55,سامسون,Samsun,,مقاطعة,province
-TR,TR-56,سعرد,Siirt,,مقاطعة,province
-TR,TR-57,محافظة سينوب,Sinop,,مقاطعة,province
-TR,TR-58,سيواس,Sivas,,مقاطعة,province
-TR,TR-59,تيكيرداغ,Tekirdağ,,مقاطعة,province
-TR,TR-60,توقات,Tokat,,مقاطعة,province
-TR,TR-61,طرابزون,Trabzon,,مقاطعة,province
-TR,TR-62,تونجيلي,Tunceli,,مقاطعة,province
-TR,TR-63,محافظة أورفة,Şanlıurfa,,مقاطعة,province
-TR,TR-64,أوشاك,Uşak,,مقاطعة,province
-TR,TR-65,محافظة وان,Van,,مقاطعة,province
-TR,TR-66,يوزغات,Yozgat,,مقاطعة,province
-TR,TR-67,زانغولداك,Zonguldak,,مقاطعة,province
-TR,TR-68,آق سراي,Aksaray,,مقاطعة,province
-TR,TR-69,بايبورت,Bayburt,,مقاطعة,province
-TR,TR-70,كارامان,Karaman,,مقاطعة,province
-TR,TR-71,محافظة قيريقكالي,Kırıkkale,,مقاطعة,province
-TR,TR-72,بطمان,Batman,,مقاطعة,province
-TR,TR-73,شرناق,Şırnak,,مقاطعة,province
-TR,TR-74,بارتين,Bartın,,مقاطعة,province
-TR,TR-75,أرداهان,Ardahan,,مقاطعة,province
-TR,TR-76,اغدير,Iğdır,,مقاطعة,province
-TR,TR-77,يالوفا,Yalova,,مقاطعة,province
-TR,TR-78,كارابوك,Karabük,,مقاطعة,province
-TR,TR-79,كلس,Kilis,,مقاطعة,province
-TR,TR-80,عثمانية,Osmaniye,,مقاطعة,province
-TR,TR-81,دوزجي,Düzce,,مقاطعة,province
+TR,TR-01,أضنة,Adana,,ولاية,province
+TR,TR-02,أديامان,Adıyaman,,ولاية,province
+TR,TR-03,أفيون,Afyonkarahisar,,ولاية,province
+TR,TR-04,أغري,Ağrı,,ولاية,province
+TR,TR-05,أماصيا,Amasya,,ولاية,province
+TR,TR-06,أنقرة,Ankara,,ولاية,province
+TR,TR-07,أنطاليا,Antalya,,ولاية,province
+TR,TR-08,أرتفين,Artvin,,ولاية,province
+TR,TR-09,أيدين,Aydın,,ولاية,province
+TR,TR-10,باليكسير,Balıkesir,,ولاية,province
+TR,TR-11,بيلجيك,Bilecik,,ولاية,province
+TR,TR-12,بينغول,Bingöl,,ولاية,province
+TR,TR-13,بدليس,Bitlis,,ولاية,province
+TR,TR-14,بولو,Bolu,,ولاية,province
+TR,TR-15,بوردور,Burdur,,ولاية,province
+TR,TR-16,بورصة,Bursa,,ولاية,province
+TR,TR-17,محافظة جاناكالي,Çanakkale,,ولاية,province
+TR,TR-18,جانقري,Çankırı,,ولاية,province
+TR,TR-19,شوروم,Çorum,,ولاية,province
+TR,TR-20,دينيزلي,Denizli,,ولاية,province
+TR,TR-21,دياربكر,Diyarbakır,,ولاية,province
+TR,TR-22,ادرنة,Edirne,,ولاية,province
+TR,TR-23,إيلازيغ,Elazığ,,ولاية,province
+TR,TR-24,أرزنجان,Erzincan,,ولاية,province
+TR,TR-25,أرضروم,Erzurum,,ولاية,province
+TR,TR-26,إسكيشهر,Eskişehir,,ولاية,province
+TR,TR-27,عنتاب,Gaziantep,,ولاية,province
+TR,TR-28,غيرسون,Giresun,,ولاية,province
+TR,TR-29,غوموشخان,Gümüşhane,,ولاية,province
+TR,TR-30,حكاري,Hakkâri,,ولاية,province
+TR,TR-31,هتاي,Hatay,,ولاية,province
+TR,TR-32,إسبرطة,Isparta,,ولاية,province
+TR,TR-33,مرسين,Mersin,,ولاية,province
+TR,TR-34,إسطنبول,Istanbul,,ولاية,province
+TR,TR-35,ازمير,Izmir,,ولاية,province
+TR,TR-36,قارص,Kars,,ولاية,province
+TR,TR-37,قسطموني,Kastamonu,,ولاية,province
+TR,TR-38,قيصرية,Kayseri,,ولاية,province
+TR,TR-39,كيركلاريلي,Kırklareli,,ولاية,province
+TR,TR-40,قيرشهر,Kırşehir,,ولاية,province
+TR,TR-41,كوكالي,Kocaeli,,ولاية,province
+TR,TR-42,قونية,Konya,,ولاية,province
+TR,TR-43,كوتاهيا,Kütahya,,ولاية,province
+TR,TR-44,ملطية,Malatya,,ولاية,province
+TR,TR-45,مانيسا,Manisa,,ولاية,province
+TR,TR-46,مرعش,Kahramanmaraş,,ولاية,province
+TR,TR-47,ماردين,Mardin,,ولاية,province
+TR,TR-48,موغلا,Muğla,,ولاية,province
+TR,TR-49,موش,Muş,,ولاية,province
+TR,TR-50,نوشهر,Nevşehir,,ولاية,province
+TR,TR-51,نيغدة,Niğde,,ولاية,province
+TR,TR-52,أردو,Ordu,,ولاية,province
+TR,TR-53,ريزه,Rize,,ولاية,province
+TR,TR-54,ساكاريا,Sakarya,,ولاية,province
+TR,TR-55,سامسون,Samsun,,ولاية,province
+TR,TR-56,سعرد,Siirt,,ولاية,province
+TR,TR-57,محافظة سينوب,Sinop,,ولاية,province
+TR,TR-58,سيواس,Sivas,,ولاية,province
+TR,TR-59,تيكيرداغ,Tekirdağ,,ولاية,province
+TR,TR-60,توقات,Tokat,,ولاية,province
+TR,TR-61,طرابزون,Trabzon,,ولاية,province
+TR,TR-62,تونجيلي,Tunceli,,ولاية,province
+TR,TR-63,محافظة أورفة,Şanlıurfa,,ولاية,province
+TR,TR-64,أوشاك,Uşak,,ولاية,province
+TR,TR-65,محافظة وان,Van,,ولاية,province
+TR,TR-66,يوزغات,Yozgat,,ولاية,province
+TR,TR-67,زانغولداك,Zonguldak,,ولاية,province
+TR,TR-68,آق سراي,Aksaray,,ولاية,province
+TR,TR-69,بايبورت,Bayburt,,ولاية,province
+TR,TR-70,كارامان,Karaman,,ولاية,province
+TR,TR-71,محافظة قيريقكالي,Kırıkkale,,ولاية,province
+TR,TR-72,بطمان,Batman,,ولاية,province
+TR,TR-73,شرناق,Şırnak,,ولاية,province
+TR,TR-74,بارتين,Bartın,,ولاية,province
+TR,TR-75,أرداهان,Ardahan,,ولاية,province
+TR,TR-76,اغدير,Iğdır,,ولاية,province
+TR,TR-77,يالوفا,Yalova,,ولاية,province
+TR,TR-78,كارابوك,Karabük,,ولاية,province
+TR,TR-79,كلس,Kilis,,ولاية,province
+TR,TR-80,عثمانية,Osmaniye,,ولاية,province
+TR,TR-81,دوزجي,Düzce,,ولاية,province
 TT,TT-ARI,آريما,Arima,,بلدية,municipality
 TT,TT-CHA,تشاغواناس,Chaguanas,,بلدية,municipality
 TT,TT-CTT,شركة كوفا تاباكويت تالبارو الإقليمية,Couva-Tabaquite-Talparo,,,
@@ -4528,7 +4528,7 @@ TT,TT-MRC,ريو كلارو مايارو الإقليمية,Mayaro-Rio Claro,,,
 TT,TT-PED,شركة بينال ديب الإقليمية,Penal-Debe,,,
 TT,TT-POS,بورت أوف سبين,Port of Spain,,بلدية,municipality
 TT,TT-PRT,شركة برنس تاون الإقليمية,Princes Town,,,
-TT,TT-PTF,بوينت فورتين,Point Fortin,,بلدة,borough
+TT,TT-PTF,بوينت فورتين,Point Fortin,,حي,borough
 TT,TT-SFO,سان فرناندو، ترينيداد وتوباغو,San Fernando,,بلدية,municipality
 TT,TT-SGE,شركة سانجر غراند الإقليمية,Sangre Grande,,,
 TT,TT-SIP,شركة سيباريا الإقليمية,Siparia,,,
@@ -4596,33 +4596,33 @@ TZ,TZ-28,إقليم كاتافي,Katavi,,منطقة,region
 TZ,TZ-29,إقليم نجومبي,Njombe,,منطقة,region
 TZ,TZ-30,اقليم سيميو,Simiyu,,منطقة,region
 TZ,TZ-31,إقليم سونجوي,Songwe,,منطقة,region
-UA,UA-05,فينيتسا أوبلاست,Vinnychchyna,,إقليم,oblast
-UA,UA-07,فولين أوبلاست,Volyn,,إقليم,oblast
-UA,UA-09,لوهانسك أوبلاست,Luhanshchyna,,إقليم,oblast
-UA,UA-12,دنيبروبتروفسك أوبلاست,Dnipropetrovshchyna,,إقليم,oblast
-UA,UA-14,دونيتسك أوبلاست,Donechchyna,,إقليم,oblast
-UA,UA-18,زيتومير أوبلاست,Zhytomyrshchyna,,إقليم,oblast
-UA,UA-21,زاكارباتيا أوبلاست,Zakarpattia,,إقليم,oblast
-UA,UA-23,زابوروجييه أوبلاست,Zaporizhzhya,,إقليم,oblast
-UA,UA-26,إيفانو فرانكيفسك أوبلاست,Prykarpattia,,إقليم,oblast
+UA,UA-05,فينيتسا أوبلاست,Vinnychchyna,,أوبلاست,oblast
+UA,UA-07,فولين أوبلاست,Volyn,,أوبلاست,oblast
+UA,UA-09,لوهانسك أوبلاست,Luhanshchyna,,أوبلاست,oblast
+UA,UA-12,دنيبروبتروفسك أوبلاست,Dnipropetrovshchyna,,أوبلاست,oblast
+UA,UA-14,دونيتسك أوبلاست,Donechchyna,,أوبلاست,oblast
+UA,UA-18,زيتومير أوبلاست,Zhytomyrshchyna,,أوبلاست,oblast
+UA,UA-21,زاكارباتيا أوبلاست,Zakarpattia,,أوبلاست,oblast
+UA,UA-23,زابوروجييه أوبلاست,Zaporizhzhya,,أوبلاست,oblast
+UA,UA-26,إيفانو فرانكيفسك أوبلاست,Prykarpattia,,أوبلاست,oblast
 UA,UA-30,كييف,Kyiv,,مدينة,city
-UA,UA-32,كييف أوبلاست,Kyivshchyna,,إقليم,oblast
-UA,UA-35,كيروفوهراد أوبلاست,Kirovohradschyna,,إقليم,oblast
+UA,UA-32,كييف أوبلاست,Kyivshchyna,,أوبلاست,oblast
+UA,UA-35,كيروفوهراد أوبلاست,Kirovohradschyna,,أوبلاست,oblast
 UA,UA-40,سيفاستوبول,Sevastopol,,مدينة,city
-UA,UA-43,جمهورية القرم المستقلة ذاتياً,Crimea,,إقليم,territory
-UA,UA-46,لفيف أوبلاست,Lvivshchyna,,إقليم,oblast
-UA,UA-48,ميكولايف أوبلاست,Mykolayivschyna,,إقليم,oblast
-UA,UA-51,أوديسا أوبلاست,Odeshchyna,,إقليم,oblast
-UA,UA-53,بولتافا أوبلاست,Poltavshchyna,,إقليم,oblast
-UA,UA-56,ريفنا أوبلاست,Rivnenshchyna,,إقليم,oblast
-UA,UA-59,سومي أوبلاست,Sumshchyna,,إقليم,oblast
-UA,UA-61,تيرنوبل أوبلاست,Ternopilshchyna,,إقليم,oblast
-UA,UA-63,خاركيف أوبلاست,Kharkivshchyna,,إقليم,oblast
-UA,UA-65,خيرسون أوبلاست,Khersonshchyna,,إقليم,oblast
-UA,UA-68,خملنيتسكي أوبلاست,Khmelnychchyna,,إقليم,oblast
-UA,UA-71,محافظة تشيركاسي,Cherkashchyna,,إقليم,oblast
-UA,UA-74,تشرنيهيف أوبلاست,Chernihivshchyna,,إقليم,oblast
-UA,UA-77,تشيرنيفتسي أوبلاست,Chernivtsi Oblast,,إقليم,oblast
+UA,UA-43,جمهورية القرم المستقلة ذاتياً,Crimea,,جمهورية ذاتية الحكم,autonomous republic
+UA,UA-46,لفيف أوبلاست,Lvivshchyna,,أوبلاست,oblast
+UA,UA-48,ميكولايف أوبلاست,Mykolayivschyna,,أوبلاست,oblast
+UA,UA-51,أوديسا أوبلاست,Odeshchyna,,أوبلاست,oblast
+UA,UA-53,بولتافا أوبلاست,Poltavshchyna,,أوبلاست,oblast
+UA,UA-56,ريفنا أوبلاست,Rivnenshchyna,,أوبلاست,oblast
+UA,UA-59,سومي أوبلاست,Sumshchyna,,أوبلاست,oblast
+UA,UA-61,تيرنوبل أوبلاست,Ternopilshchyna,,أوبلاست,oblast
+UA,UA-63,خاركيف أوبلاست,Kharkivshchyna,,أوبلاست,oblast
+UA,UA-65,خيرسون أوبلاست,Khersonshchyna,,أوبلاست,oblast
+UA,UA-68,خملنيتسكي أوبلاست,Khmelnychchyna,,أوبلاست,oblast
+UA,UA-71,محافظة تشيركاسي,Cherkashchyna,,أوبلاست,oblast
+UA,UA-74,تشرنيهيف أوبلاست,Chernihivshchyna,,أوبلاست,oblast
+UA,UA-77,تشيرنيفتسي أوبلاست,Chernivtsi Oblast,,أوبلاست,oblast
 UG,UG-101,مقاطعة كالانغالا,Kalangala,UG-C,منطقة,district
 UG,UG-102,مقاطعة كمبالا,Kampala,UG-C,منطقة,district
 UG,UG-103,مقاطعة كيبوغا,Kiboga,UG-C,منطقة,district
@@ -4638,7 +4638,7 @@ UG,UG-112,مقاطعة كايونغا,Kayunga,UG-C,منطقة,district
 UG,UG-113,مقاطعة واكيسو,Wakiso,UG-C,منطقة,district
 UG,UG-114,مقاطعة ليانتوند,Lyantonde,UG-C,منطقة,district
 UG,UG-115,ميتيانا,Mityana,UG-C,منطقة,district
-UG,UG-116,مقاطعة ليانتوند²,Nakaseke,UG-C,منطقة,district
+UG,UG-116,مقاطعة ليانتوند,Nakaseke,UG-C,منطقة,district
 UG,UG-117,مقاطعة بويكوي,Buikwe,UG-C,منطقة,district
 UG,UG-118,مقاطعة بوكومانسيمبي,Bukomansibi,UG-C,منطقة,district
 UG,UG-119,مقاطعة بوتمبالا,Butambala,UG-C,منطقة,district
@@ -4670,8 +4670,8 @@ UG,UG-218,مقاطعة بودودا,Bududa,UG-E,منطقة,district
 UG,UG-219,ضاحية بوتليجا,Bukedea,UG-E,منطقة,district
 UG,UG-220,مقاطعة كاليرو,Bukwa,UG-E,منطقة,district
 UG,UG-221,ضاحية منفوا,Butaleja,UG-E,منطقة,district
-UG,UG-222,مقاطعة كاليرو²,Kaliro,UG-E,منطقة,district
-UG,UG-223,ضاحية منفوا²,Manafwa,UG-E,منطقة,district
+UG,UG-222,مقاطعة كاليرو,Kaliro,UG-E,منطقة,district
+UG,UG-223,ضاحية منفوا,Manafwa,UG-E,منطقة,district
 UG,UG-224,مقاطعة بوكيدا,Namutumba,UG-E,منطقة,district
 UG,UG-225,مقاطعة بولامبولي,Bulambuli,UG-E,منطقة,district
 UG,UG-226,مقاطعة بويندي,Buyende,UG-E,منطقة,district
@@ -4702,9 +4702,9 @@ UG,UG-313,مقاطعة يومبي,Yumbe,UG-N,منطقة,district
 UG,UG-314,مقاطعة أبيم,Abim,UG-N,منطقة,district
 UG,UG-315,مقاطعة أمولاتار,Amolatar,UG-N,منطقة,district
 UG,UG-316,مقاطعة أمورو,Amuru,UG-N,منطقة,district
-UG,UG-317,مقاطعة أبيم²,Dokolo,UG-N,منطقة,district
+UG,UG-317,مقاطعة أبيم,Dokolo,UG-N,منطقة,district
 UG,UG-318,مقاطعة دوكولو,Kaabong,UG-N,منطقة,district
-UG,UG-319,مقاطعة أمورو²,Koboko,UG-N,منطقة,district
+UG,UG-319,مقاطعة أمورو,Koboko,UG-N,منطقة,district
 UG,UG-320,مقاطعة مارشا,Maracha,UG-N,منطقة,district
 UG,UG-321,مقاطعة أويام,Oyam,UG-N,منطقة,district
 UG,UG-322,مقاطعة أغاجو,Agago,UG-N,منطقة,district
@@ -4715,7 +4715,7 @@ UG,UG-326,مقاطعة لامو,Lamwo,UG-N,منطقة,district
 UG,UG-327,مقاطعة ناباك,Napak,UG-N,منطقة,district
 UG,UG-328,مقاطعة نويا,Nwoya,UG-N,منطقة,district
 UG,UG-329,مقاطعة أوتوك,Otuke,UG-N,منطقة,district
-UG,UG-330,مقاطعة زومبو,Zombo²,UG-N,منطقة,district
+UG,UG-330,مقاطعة زومبو,Zombo,UG-N,منطقة,district
 UG,UG-331,,Zombo,UG-N,منطقة,district
 UG,UG-332,,Pakwach,UG-N,منطقة,district
 UG,UG-333,,Kwania,UG-N,,
@@ -4740,8 +4740,8 @@ UG,UG-414,مقاطعة كانونغو,Kanungu,UG-W,منطقة,district
 UG,UG-415,ضاحية كينجوجو,Kyenjojo,UG-W,منطقة,district
 UG,UG-416,مقاطعة بوليسا,Buliisa,UG-W,منطقة,district
 UG,UG-417,مقاطعة إيسينجيرو,Ibanda,UG-W,منطقة,district
-UG,UG-418,مقاطعة إيسينجيرو²,Isingiro,UG-W,منطقة,district
-UG,UG-419,مقاطعة بوليسا²,Kiruhura,UG-W,منطقة,district
+UG,UG-418,مقاطعة إيسينجيرو,Isingiro,UG-W,منطقة,district
+UG,UG-419,مقاطعة بوليسا,Kiruhura,UG-W,منطقة,district
 UG,UG-420,مقاطعة بوهيويو,Buhweju,UG-W,منطقة,district
 UG,UG-421,مقاطعة كيرياندونغو,Kiryandongo,UG-W,منطقة,district
 UG,UG-422,مقاطعة كيجيغوا,Kyegegwa,UG-W,منطقة,district
@@ -4843,7 +4843,7 @@ UZ,UZ-QR,قرقل باغستان,Karakalpakstan,,جمهورية ذاتية ال�
 UZ,UZ-SA,ولاية سمرقند,Samarqand,,منطقة,region
 UZ,UZ-SI,ولاية سرداريا,Sirdaryo,,منطقة,region
 UZ,UZ-SU,ولاية صرخنداريا,Surxondaryo,,منطقة,region
-UZ,UZ-TK,طشقند,Tashkent,,عاصمة,capital city
+UZ,UZ-TK,طشقند,Tashkent,,مدينة عاصمة,capital city
 UZ,UZ-TO,ولاية طشقند,Tashkent Province,,منطقة,region
 UZ,UZ-XO,ولاية خوارزم,Xorazm,,منطقة,region
 VC,VC-01,أبرشية شارلوت,Charlotte,,أبرشية,parish
@@ -4976,7 +4976,7 @@ YE,YE-MA,محافظة مأرب,Ma’rib,,محافظة,governorate
 YE,YE-MR,محافظة المهرة,Al Mahrah,,محافظة,governorate
 YE,YE-MW,محافظة المحويت,Al Mahwit,,محافظة,governorate
 YE,YE-RA,محافظة ريمة,Raymah,,محافظة,governorate
-YE,YE-SA,صنعاء,Amanat Al Asimah,,محافظة,governorate
+YE,YE-SA,أمانة العاصمة,Amanat Al Asimah,,أمانة,municipality
 YE,YE-SD,محافظة صعدة,Sa’dah,,محافظة,governorate
 YE,YE-SH,محافظة شبوة,Shabwah,,محافظة,governorate
 YE,YE-SN,محافظة صنعاء,Sana’a,,محافظة,governorate

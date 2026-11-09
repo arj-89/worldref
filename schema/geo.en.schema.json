@@ -82,7 +82,7 @@
                   "type": "string"
                 },
                 "standard": {
-                  "description": "Standard UTC offset, e.g. +03:00.",
+                  "description": "Standard UTC offset, e.g. +03:00. Not always the offset in use today (Cuba keeps daylight saving time through 2027).",
                   "type": "string"
                 },
                 "dst": {

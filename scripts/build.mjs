@@ -83,6 +83,7 @@ const continentOf = (() => {
     return find;
 })();
 
+for (const [iso, why] of Object.entries(E.REGION_LABEL_KEEP_GOOGLE)) override(iso, "address.region_label", "Google's", why);
 for (const [iso, pol] of Object.entries(E.POLICY)) if (pol.why_timezones) override(iso, "geo.timezones", pol.extra_timezones.join(", "), pol.why_timezones);
 
 // ---------- core ----------
@@ -346,11 +347,18 @@ function typeSubdivisions(subs) {
     };
     for (const [code, v] of Object.entries(E.SUBDIVISION_TYPE_CODE)) override(code.slice(0, 2), `subdivisions.type (${code})`, v.en, v.why);
     for (const [iso, v] of Object.entries(E.SUBDIVISION_TYPE_AR_COUNTRY)) override(iso, "subdivisions.type_ar", Object.entries(v).filter(([k]) => k !== "why").map(([k, a]) => `${k}: ${a}`).join(", "), v.why);
+    for (const [iso, v] of Object.entries(E.SUBDIVISION_TYPE_DEFAULT)) override(iso, "subdivisions.type (untyped rows)", v.en, v.why);
+    for (const [code, v] of Object.entries(E.SUBDIVISION_NAME))
+        override(code.slice(0, 2), `subdivisions.name (${code})`, [v.ar, v.en].filter(Boolean).join(" / "), E.SUBDIVISION_NAME_WHY[code] ?? E.SUBDIVISION_NAME_WHY[code.slice(0, 2)]);
+    override("*", "subdivisions.name_ar", "CLDR text cleaned", "CLDR's draft marker ² removed; Persian letters ی ک and the zero-width non-joiner written as Arabic ي ك and a space");
+    const cleanAr = (n) => n && n.replace(/²/g, "").replace(/ی/g, "ي").replace(/ک/g, "ك").replace(/\u200c/g, " ").replace(/\s+/g, " ").trim();
     return subs.map((s) => {
         const fixed = E.SUBDIVISION_TYPE_CODE[s.code] ?? E.SUBDIVISION_TYPE_COUNTRY[s.iso2];
-        const en = fixed?.en ?? [...candidates[s.code]].sort((a, b) => rank(s.iso2, a) - rank(s.iso2, b) || (freq[s.iso2][b] - freq[s.iso2][a]) || (a < b ? -1 : 1))[0] ?? null;
-        const ar = fixed?.ar ?? (en ? E.SUBDIVISION_TYPE_AR_COUNTRY[s.iso2]?.[en] ?? E.SUBDIVISION_TYPE_AR[en] : null);
-        return { ...s, type_ar: ar ?? null, type_en: en };
+        let en = fixed?.en ?? [...candidates[s.code]].sort((a, b) => rank(s.iso2, a) - rank(s.iso2, b) || (freq[s.iso2][b] - freq[s.iso2][a]) || (a < b ? -1 : 1))[0] ?? null;
+        en ??= E.SUBDIVISION_TYPE_DEFAULT[s.iso2]?.en ?? null;
+        const ar = fixed && "ar" in fixed ? fixed.ar : en ? E.SUBDIVISION_TYPE_AR_COUNTRY[s.iso2]?.[en] ?? E.SUBDIVISION_TYPE_AR[en] ?? null : null;
+        const name = E.SUBDIVISION_NAME[s.code] ?? {};
+        return { ...s, name_ar: name.ar ?? cleanAr(s.name_ar), name_en: (name.en ?? s.name_en)?.replace(/²/g, "") ?? null, type_ar: ar, type_en: en };
     });
 }
 
@@ -369,8 +377,12 @@ const records = ROWS.map((iso) => {
     const regionType = addr.state_name_type ?? (addr.fmt?.includes("%S") ? "province" : null);
     // Where Google gives no region type (its generic "province"), and every top-level subdivision has the same
     // type, the region is called by that type (Egypt: governorate, محافظة). Google's explicit types stay.
+    // "Every" allows one exception in ten (Iraq: 18 governorates and the Kurdistan Region).
     const tops = subdivisions.filter((s) => s.iso2 === iso && !s.parent);
-    const ownType = !addr.state_name_type && tops.length && tops.every((s) => s.type_en && s.type_en === tops[0].type_en) ? tops[0] : null;
+    const topCounts = {};
+    for (const s of tops) if (s.type_en) topCounts[s.type_en] = (topCounts[s.type_en] ?? 0) + 1;
+    const [mainType, mainCount] = Object.entries(topCounts).sort((a, b) => b[1] - a[1])[0] ?? [];
+    const ownType = !addr.state_name_type && !E.REGION_LABEL_KEEP_GOOGLE[iso] && tops.length >= 3 && mainCount / tops.length >= 0.9 ? tops.find((s) => s.type_en === mainType) : null;
     const fmt = addr.fmt ?? "";
     const label = (kind, type) => (type ? { ar: E.ADDRESS_LABEL_AR[kind][type] ?? null, en: E.ADDRESS_LABEL_EN[kind][type] ?? null } : { ar: null, en: null });
     const locality = label("locality", fmt.includes("%C") ? addr.locality_name_type ?? "city" : null);
@@ -445,7 +457,7 @@ const records = ROWS.map((iso) => {
             postal_code_regex: zip,
             postal_code_example: zipex,
             address_format: addr.fmt ?? null,
-            region_label_ar: regionType ? (ownType ? ownType.type_ar : E.REGION_LABEL_AR[regionType] ?? null) : null,
+            region_label_ar: regionType ? (ownType ? ownType.type_ar : E.SUBDIVISION_TYPE_AR_COUNTRY[iso]?.[regionType] ?? E.REGION_LABEL_AR[regionType] ?? null) : null,
             region_label_en: regionType ? (ownType ? ownType.type_en : regionType.replace("do_si", "province")) : null,
             locality_label_ar: locality.ar,
             locality_label_en: locality.en,

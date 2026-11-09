@@ -3,6 +3,25 @@
 All notable changes. Versions follow semantic versioning: a removed row or field is major, a new field
 or a name change is minor, a data fix or upstream refresh is a patch.
 
+## 1.2.0 (2026-11-10)
+
+New, non-breaking. Every field that 1.1.x had is unchanged; a test now fails the build if a shipped field ever disappears.
+
+- New: `geo.timezone_offsets`, each zone's standard UTC offset and its daylight-saving offset (null when it does not switch), from IANA tzdata 2026f compiled with zic, under the rules in force on the date in `data/meta.json`. For describing zones; compute times with the platform's time-zone support. Morocco's permanent move to UTC+00:00 (20/09/2026) and Alberta's to UTC-06:00 are included.
+- New: subdivision types, `type_en` and `type_ar`, for 4,867 of 5,012 subdivisions (the rest are null). English from Wikidata classes; Arabic from each Arab country's own official term (Saudi منطقة, Egypt محافظة, UAE إمارة, Morocco جهة, عمالة, إقليم, Algeria and Tunisia ولاية, Libya شعبية...) and otherwise a fixed glossary.
+- New: address-form data, `locality_label_*`, `sublocality_label_*`, `postal_code_label_*` (English from Google's libaddressinput, Arabic from the worldref glossary) and `required_fields`, plus an `addressForm(country, lang)` helper in all eight packages that gives the fields line by line in the country's order, with labels and required marks.
+- New: search forgives typing. Names match with spaces and punctuation removed ("cote divoire"), and, only when nothing else matches, within 1 edit for 4 to 7 letters or 2 from 8 ("Kuwiat", «الكويب»). Exact results are unchanged. A public `editDistance` helper comes with it.
+- Fixed: Morocco's row now lists Western Sahara's zone (`Africa/El_Aaiun`), following the data policy.
+- Fixed: Morocco's 12 regions carried the pre-2015 names (from CLDR) under the codes ISO reassigned, so Casablanca sat under «مكناس تافيلالت». They now carry the 2015 names in both languages («الدار البيضاء سطات», Casablanca-Settat...).
+- Fixed: subdivision names: Amanat Al Asimah («أمانة العاصمة», not a second «صنعاء»), Kurdistan Region («إقليم كردستان»), Belfast, Islamabad, Gilan («جيلان»), Dubai's hamza («إمارة دبي»), Bahrain's Southern and Northern governorates, City of London; CLDR's draft marker «²» removed from 18 names; Persian letters in 9 Arabic names written as Arabic letters.
+- Fixed: postal-code patterns for Kazakhstan and Nigeria follow Google's current data (valid new codes were rejected).
+- Changed: Arabic region labels use the country's own term where it differs from the glossary (Turkey ولاية, Iran محافظة, Iraq محافظة).
+- Changed: where Google gives no region type, the address region label uses the country's own subdivision type (Egypt: governorate, محافظة, instead of province; also Chile, Estonia, Iraq, Lithuania, Peru, Romania, Somalia, Suriname, El Salvador, Uruguay). The Philippines keeps "province", the level its addresses use.
+- Fixed: the Python package's `__version__` reported 1.0.0 since the first release. Releases now set it, and a test checks that every package manifest carries the same version.
+- Releases: automatic data releases list what changed (sources, fields, the rows affected) in this changelog and in their release notes.
+- Compatibility: typed packages add new fields last, with defaults. C# keeps the 1.1.x constructors and deconstructors, so compiled code keeps working; Kotlin adds `@JvmOverloads`, but the compiled `copy()` of `Geo`, `Address` and `Subdivision` changes, so already-compiled Java or Kotlin code that calls `copy()` on them needs a rebuild (source code is unaffected).
+- Website: country pages show each zone's UTC offsets and each subdivision's type.
+
 ## 1.1.3 (2026-11-09)
 
 - Docs: a "Time zones" section in Best practices, in both READMEs and `llms.txt`: store UTC plus the IANA zone, convert only for display with the platform's time-zone support, never store a fixed UTC offset, and take the zone from the user or device when a country spans several.

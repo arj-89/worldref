@@ -150,6 +150,12 @@
  },
  "overrides": [
   {
+   "iso2": "PH",
+   "field": "address.region_label",
+   "value": "Google's",
+   "why": "Philippine addresses name the province, which sits below the ISO top-level regions"
+  },
+  {
    "iso2": "MA",
    "field": "geo.timezones",
    "value": "Africa/El_Aaiun",
@@ -194,6 +200,12 @@
    "why": "Qatar's 8 municipalities (بلديات)"
   },
   {
+   "iso2": "LY",
+   "field": "subdivisions.type",
+   "value": "district",
+   "why": "Libya's 22 districts (شعبيات), one category in ISO 3166-2:LY"
+  },
+  {
    "iso2": "GB",
    "field": "subdivisions.type (order)",
    "value": "constituent country > unitary authority > principal area > council area > county > borough > district",
@@ -204,6 +216,258 @@
    "field": "subdivisions.type (IQ-KR)",
    "value": "region",
    "why": "Kurdistan Region (إقليم كردستان), its official name"
+  },
+  {
+   "iso2": "YE",
+   "field": "subdivisions.type (YE-SA)",
+   "value": "municipality",
+   "why": "Amanat Al Asimah (أمانة العاصمة), Sanaa's capital municipality, ISO 3166-2:YE"
+  },
+  {
+   "iso2": "SD",
+   "field": "subdivisions.type (SD-GK)",
+   "value": "state",
+   "why": "West Kordofan is one of Sudan's 18 states, ISO 3166-2:SD"
+  },
+  {
+   "iso2": "NG",
+   "field": "subdivisions.type (NG-FC)",
+   "value": "capital territory",
+   "why": "Federal Capital Territory, ISO 3166-2:NG"
+  },
+  {
+   "iso2": "CN",
+   "field": "subdivisions.type (CN-HK)",
+   "value": "special administrative region",
+   "why": "ISO 3166-2:CN"
+  },
+  {
+   "iso2": "CN",
+   "field": "subdivisions.type (CN-MO)",
+   "value": "special administrative region",
+   "why": "ISO 3166-2:CN"
+  },
+  {
+   "iso2": "CN",
+   "field": "subdivisions.type (CN-BJ)",
+   "value": "municipality",
+   "why": "One of China's four municipalities, ISO 3166-2:CN"
+  },
+  {
+   "iso2": "CN",
+   "field": "subdivisions.type (CN-SH)",
+   "value": "municipality",
+   "why": "One of China's four municipalities, ISO 3166-2:CN"
+  },
+  {
+   "iso2": "CN",
+   "field": "subdivisions.type (CN-TJ)",
+   "value": "municipality",
+   "why": "One of China's four municipalities, ISO 3166-2:CN"
+  },
+  {
+   "iso2": "CN",
+   "field": "subdivisions.type (CN-CQ)",
+   "value": "municipality",
+   "why": "One of China's four municipalities, ISO 3166-2:CN"
+  },
+  {
+   "iso2": "GB",
+   "field": "subdivisions.type (GB-LND)",
+   "value": "city corporation",
+   "why": "City of London Corporation, ISO 3166-2:GB; no established Arabic term"
+  },
+  {
+   "iso2": "GB",
+   "field": "subdivisions.type (GB-CMA)",
+   "value": "county",
+   "why": "Cumbria, a two-tier county in ISO 3166-2:GB"
+  },
+  {
+   "iso2": "UA",
+   "field": "subdivisions.type (UA-43)",
+   "value": "autonomous republic",
+   "why": "Autonomous Republic of Crimea, ISO 3166-2:UA"
+  },
+  {
+   "iso2": "LT",
+   "field": "subdivisions.type (LT-TA)",
+   "value": "county",
+   "why": "Tauragė County, ISO 3166-2:LT"
+  },
+  {
+   "iso2": "IT",
+   "field": "subdivisions.type (IT-82)",
+   "value": "autonomous region",
+   "why": "Sicily, a region with special statute, ISO 3166-2:IT"
+  },
+  {
+   "iso2": "ES",
+   "field": "subdivisions.type (ES-CE)",
+   "value": "autonomous city",
+   "why": "ISO 3166-2:ES"
+  },
+  {
+   "iso2": "ES",
+   "field": "subdivisions.type (ES-ML)",
+   "value": "autonomous city",
+   "why": "ISO 3166-2:ES"
+  },
+  {
+   "iso2": "ES",
+   "field": "subdivisions.type (ES-NC)",
+   "value": "autonomous community",
+   "why": "Navarra, ISO 3166-2:ES"
+  },
+  {
+   "iso2": "ES",
+   "field": "subdivisions.type (ES-PM)",
+   "value": "province",
+   "why": "Balearic Islands province, ISO 3166-2:ES"
+  },
+  {
+   "iso2": "ES",
+   "field": "subdivisions.type (ES-LO)",
+   "value": "province",
+   "why": "La Rioja province, ISO 3166-2:ES"
+  },
+  {
+   "iso2": "KR",
+   "field": "subdivisions.type (KR-29)",
+   "value": "metropolitan city",
+   "why": "Gwangju, ISO 3166-2:KR"
+  },
+  {
+   "iso2": "KR",
+   "field": "subdivisions.type (KR-46)",
+   "value": "province",
+   "why": "South Jeolla, ISO 3166-2:KR"
+  },
+  {
+   "iso2": "KR",
+   "field": "subdivisions.type (KR-42)",
+   "value": "special self-governing province",
+   "why": "Gangwon, ISO 3166-2:KR"
+  },
+  {
+   "iso2": "KR",
+   "field": "subdivisions.type (KR-49)",
+   "value": "special self-governing province",
+   "why": "Jeju, ISO 3166-2:KR"
+  },
+  {
+   "iso2": "NL",
+   "field": "subdivisions.type (NL-BQ1)",
+   "value": "special municipality",
+   "why": "Bonaire, ISO 3166-2:NL"
+  },
+  {
+   "iso2": "NL",
+   "field": "subdivisions.type (NL-BQ2)",
+   "value": "special municipality",
+   "why": "Saba, ISO 3166-2:NL"
+  },
+  {
+   "iso2": "NL",
+   "field": "subdivisions.type (NL-BQ3)",
+   "value": "special municipality",
+   "why": "Sint Eustatius, ISO 3166-2:NL"
+  },
+  {
+   "iso2": "BQ",
+   "field": "subdivisions.type (BQ-BO)",
+   "value": "special municipality",
+   "why": "Bonaire, ISO 3166-2:BQ"
+  },
+  {
+   "iso2": "BQ",
+   "field": "subdivisions.type (BQ-SA)",
+   "value": "special municipality",
+   "why": "Saba, ISO 3166-2:BQ"
+  },
+  {
+   "iso2": "BQ",
+   "field": "subdivisions.type (BQ-SE)",
+   "value": "special municipality",
+   "why": "Sint Eustatius, ISO 3166-2:BQ"
+  },
+  {
+   "iso2": "PK",
+   "field": "subdivisions.type (PK-IS)",
+   "value": "capital territory",
+   "why": "Islamabad Capital Territory, ISO 3166-2:PK"
+  },
+  {
+   "iso2": "PH",
+   "field": "subdivisions.type (PH-14)",
+   "value": "autonomous region",
+   "why": "Bangsamoro Autonomous Region, ISO 3166-2:PH"
+  },
+  {
+   "iso2": "GB",
+   "field": "subdivisions.type (GB-ABC)",
+   "value": "district",
+   "why": "One of Northern Ireland's 11 districts, ISO 3166-2:GB"
+  },
+  {
+   "iso2": "GB",
+   "field": "subdivisions.type (GB-AND)",
+   "value": "district",
+   "why": "One of Northern Ireland's 11 districts, ISO 3166-2:GB"
+  },
+  {
+   "iso2": "GB",
+   "field": "subdivisions.type (GB-ANN)",
+   "value": "district",
+   "why": "One of Northern Ireland's 11 districts, ISO 3166-2:GB"
+  },
+  {
+   "iso2": "GB",
+   "field": "subdivisions.type (GB-BFS)",
+   "value": "district",
+   "why": "One of Northern Ireland's 11 districts, ISO 3166-2:GB"
+  },
+  {
+   "iso2": "GB",
+   "field": "subdivisions.type (GB-CCG)",
+   "value": "district",
+   "why": "One of Northern Ireland's 11 districts, ISO 3166-2:GB"
+  },
+  {
+   "iso2": "GB",
+   "field": "subdivisions.type (GB-DRS)",
+   "value": "district",
+   "why": "One of Northern Ireland's 11 districts, ISO 3166-2:GB"
+  },
+  {
+   "iso2": "GB",
+   "field": "subdivisions.type (GB-FMO)",
+   "value": "district",
+   "why": "One of Northern Ireland's 11 districts, ISO 3166-2:GB"
+  },
+  {
+   "iso2": "GB",
+   "field": "subdivisions.type (GB-LBC)",
+   "value": "district",
+   "why": "One of Northern Ireland's 11 districts, ISO 3166-2:GB"
+  },
+  {
+   "iso2": "GB",
+   "field": "subdivisions.type (GB-MEA)",
+   "value": "district",
+   "why": "One of Northern Ireland's 11 districts, ISO 3166-2:GB"
+  },
+  {
+   "iso2": "GB",
+   "field": "subdivisions.type (GB-MUL)",
+   "value": "district",
+   "why": "One of Northern Ireland's 11 districts, ISO 3166-2:GB"
+  },
+  {
+   "iso2": "GB",
+   "field": "subdivisions.type (GB-NMD)",
+   "value": "district",
+   "why": "One of Northern Ireland's 11 districts, ISO 3166-2:GB"
   },
   {
    "iso2": "DZ",
@@ -252,6 +516,180 @@
    "field": "subdivisions.type_ar",
    "value": "district: شعبية",
    "why": "Libya's official Arabic term for its districts is شعبية"
+  },
+  {
+   "iso2": "TR",
+   "field": "subdivisions.type_ar",
+   "value": "province: ولاية",
+   "why": "Turkey's provinces are ولايات in Arabic usage (ولايات تركيا)"
+  },
+  {
+   "iso2": "IR",
+   "field": "subdivisions.type_ar",
+   "value": "province: محافظة",
+   "why": "Iran's provinces are محافظات in Arabic usage (محافظات إيران)"
+  },
+  {
+   "iso2": "EE",
+   "field": "subdivisions.type (untyped rows)",
+   "value": "municipality",
+   "why": "ISO 3166-2:EE: the subdivisions under the counties are rural or urban municipalities"
+  },
+  {
+   "iso2": "MT",
+   "field": "subdivisions.type (untyped rows)",
+   "value": "local council",
+   "why": "ISO 3166-2:MT: local councils"
+  },
+  {
+   "iso2": "IS",
+   "field": "subdivisions.type (untyped rows)",
+   "value": "municipality",
+   "why": "ISO 3166-2:IS: the subdivisions under the regions are municipalities"
+  },
+  {
+   "iso2": "CV",
+   "field": "subdivisions.type (untyped rows)",
+   "value": "municipality",
+   "why": "ISO 3166-2:CV: the subdivisions under the island groups are municipalities"
+  },
+  {
+   "iso2": "BI",
+   "field": "subdivisions.type (untyped rows)",
+   "value": "province",
+   "why": "ISO 3166-2:BI: provinces"
+  },
+  {
+   "iso2": "MA",
+   "field": "subdivisions.name (MA-01)",
+   "value": "طنجة تطوان الحسيمة / Tanger-Tétouan-Al Hoceïma",
+   "why": "Morocco's 12 regions since 2015 (Decree 2.15.40); CLDR still has the 16 pre-2015 names, under codes ISO reassigned"
+  },
+  {
+   "iso2": "MA",
+   "field": "subdivisions.name (MA-02)",
+   "value": "الشرق / L'Oriental",
+   "why": "Morocco's 12 regions since 2015 (Decree 2.15.40); CLDR still has the 16 pre-2015 names, under codes ISO reassigned"
+  },
+  {
+   "iso2": "MA",
+   "field": "subdivisions.name (MA-03)",
+   "value": "فاس مكناس / Fès-Meknès",
+   "why": "Morocco's 12 regions since 2015 (Decree 2.15.40); CLDR still has the 16 pre-2015 names, under codes ISO reassigned"
+  },
+  {
+   "iso2": "MA",
+   "field": "subdivisions.name (MA-04)",
+   "value": "الرباط سلا القنيطرة / Rabat-Salé-Kénitra",
+   "why": "Morocco's 12 regions since 2015 (Decree 2.15.40); CLDR still has the 16 pre-2015 names, under codes ISO reassigned"
+  },
+  {
+   "iso2": "MA",
+   "field": "subdivisions.name (MA-05)",
+   "value": "بني ملال خنيفرة / Béni Mellal-Khénifra",
+   "why": "Morocco's 12 regions since 2015 (Decree 2.15.40); CLDR still has the 16 pre-2015 names, under codes ISO reassigned"
+  },
+  {
+   "iso2": "MA",
+   "field": "subdivisions.name (MA-06)",
+   "value": "الدار البيضاء سطات / Casablanca-Settat",
+   "why": "Morocco's 12 regions since 2015 (Decree 2.15.40); CLDR still has the 16 pre-2015 names, under codes ISO reassigned"
+  },
+  {
+   "iso2": "MA",
+   "field": "subdivisions.name (MA-07)",
+   "value": "مراكش آسفي / Marrakech-Safi",
+   "why": "Morocco's 12 regions since 2015 (Decree 2.15.40); CLDR still has the 16 pre-2015 names, under codes ISO reassigned"
+  },
+  {
+   "iso2": "MA",
+   "field": "subdivisions.name (MA-08)",
+   "value": "درعة تافيلالت / Drâa-Tafilalet",
+   "why": "Morocco's 12 regions since 2015 (Decree 2.15.40); CLDR still has the 16 pre-2015 names, under codes ISO reassigned"
+  },
+  {
+   "iso2": "MA",
+   "field": "subdivisions.name (MA-09)",
+   "value": "سوس ماسة / Souss-Massa",
+   "why": "Morocco's 12 regions since 2015 (Decree 2.15.40); CLDR still has the 16 pre-2015 names, under codes ISO reassigned"
+  },
+  {
+   "iso2": "MA",
+   "field": "subdivisions.name (MA-10)",
+   "value": "كلميم واد نون / Guelmim-Oued Noun",
+   "why": "Morocco's 12 regions since 2015 (Decree 2.15.40); CLDR still has the 16 pre-2015 names, under codes ISO reassigned"
+  },
+  {
+   "iso2": "MA",
+   "field": "subdivisions.name (MA-11)",
+   "value": "العيون الساقية الحمراء / Laâyoune-Sakia El Hamra",
+   "why": "Morocco's 12 regions since 2015 (Decree 2.15.40); CLDR still has the 16 pre-2015 names, under codes ISO reassigned"
+  },
+  {
+   "iso2": "MA",
+   "field": "subdivisions.name (MA-12)",
+   "value": "الداخلة وادي الذهب / Dakhla-Oued Ed-Dahab",
+   "why": "Morocco's 12 regions since 2015 (Decree 2.15.40); CLDR still has the 16 pre-2015 names, under codes ISO reassigned"
+  },
+  {
+   "iso2": "YE",
+   "field": "subdivisions.name (YE-SA)",
+   "value": "أمانة العاصمة",
+   "why": "Amanat Al Asimah (ISO 3166-2:YE); CLDR repeats Sanaa governorate's name"
+  },
+  {
+   "iso2": "IQ",
+   "field": "subdivisions.name (IQ-KR)",
+   "value": "إقليم كردستان / Kurdistan Region",
+   "why": "Kurdistan Region; CLDR has no Arabic name"
+  },
+  {
+   "iso2": "PK",
+   "field": "subdivisions.name (PK-IS)",
+   "value": "إسلام آباد",
+   "why": "Islamabad; CLDR's Arabic entry is Persian text"
+  },
+  {
+   "iso2": "IR",
+   "field": "subdivisions.name (IR-19)",
+   "value": "جيلان",
+   "why": "Gilan province, جيلان in Arabic usage; CLDR's entry is Persian text"
+  },
+  {
+   "iso2": "GB",
+   "field": "subdivisions.name (GB-BFS)",
+   "value": "بلفاست",
+   "why": "Belfast; CLDR has no Arabic name"
+  },
+  {
+   "iso2": "GB",
+   "field": "subdivisions.name (GB-LND)",
+   "value": "مدينة لندن / City of London",
+   "why": "ISO 3166-2:GB names this code the City of London, not Greater London"
+  },
+  {
+   "iso2": "AE",
+   "field": "subdivisions.name (AE-DU)",
+   "value": "إمارة دبي",
+   "why": "Missing hamza in CLDR"
+  },
+  {
+   "iso2": "BH",
+   "field": "subdivisions.name (BH-14)",
+   "value": "المحافظة الجنوبية",
+   "why": "Southern Governorate, its official name; CLDR has a bare adjective"
+  },
+  {
+   "iso2": "BH",
+   "field": "subdivisions.name (BH-17)",
+   "value": "المحافظة الشمالية",
+   "why": "Northern Governorate, its official name; CLDR has a bare adjective"
+  },
+  {
+   "iso2": "*",
+   "field": "subdivisions.name_ar",
+   "value": "CLDR text cleaned",
+   "why": "CLDR's draft marker ² removed; Persian letters ی ک and the zero-width non-joiner written as Arabic ي ك and a space"
   },
   {
    "iso2": "AE",

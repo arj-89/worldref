@@ -55,7 +55,7 @@ export const FIELDS = {
     "geo.timezones": "IANA time zone names.",
     "geo.timezone_offsets": "For each zone in `timezones`: the standard UTC offset and the daylight-saving offset (null when the zone does not switch), under the rules in force on the date in `data/meta.json`. Reference only: compute the current offset with the platform's time-zone support, never store it.",
     "geo.timezone_offsets[].zone": "IANA time zone name.",
-    "geo.timezone_offsets[].standard": "Standard UTC offset, e.g. +03:00.",
+    "geo.timezone_offsets[].standard": "Standard UTC offset, e.g. +03:00. Not always the offset in use today (Cuba keeps daylight saving time through 2027).",
     "geo.timezone_offsets[].dst": "Daylight-saving UTC offset, or null when the zone does not switch. Lower than `standard` where the law defines winter as the shift (Ireland).",
     "geo.driving_side": "left or right.",
     locale: "Locale conventions.",
