@@ -32,13 +32,13 @@ Published on npm, PyPI, pub.dev, Packagist, NuGet and the MCP Registry. Swift, K
 | Stack | Install |
 |---|---|
 | JavaScript, TypeScript (web, Node 20.10+, React Native, Bun, Deno) | `npm i worldref` |
-| CDN (no build step) | `https://cdn.jsdelivr.net/npm/worldref@1.1.2/data/worldref.json` |
-| Swift (iOS, macOS) | Swift Package Manager: `https://github.com/arj-89/worldref`, from `1.1.2`, product `WorldRef` |
-| Kotlin, Android | JitPack: `maven("https://jitpack.io")`, then `implementation("com.github.arj-89:worldref:v1.1.2")` |
+| CDN (no build step) | `https://cdn.jsdelivr.net/npm/worldref@1.1.3/data/worldref.json` |
+| Swift (iOS, macOS) | Swift Package Manager: `https://github.com/arj-89/worldref`, from `1.1.3`, product `WorldRef` |
+| Kotlin, Android | JitPack: `maven("https://jitpack.io")`, then `implementation("com.github.arj-89:worldref:v1.1.3")` |
 | Python | `pip install worldref` |
 | Dart, Flutter | `dart pub add worldref` (Flutter: `flutter pub add worldref`) |
 | PHP, Laravel | `composer require arj-89/worldref` |
-| Go | `go get github.com/arj-89/worldref/go@v1.1.2` |
+| Go | `go get github.com/arj-89/worldref/go@v1.1.3` |
 | C#, .NET | `dotnet add package WorldRef` |
 | Any language | JSON, CSV and SQL (Postgres, MySQL, SQLite) in [`data/`](data) and on the [releases page](https://github.com/arj-89/worldref/releases) |
 | AI agents | MCP server: `npx -y worldref mcp` (listed in the MCP Registry as `io.github.arj-89/worldref`) |
@@ -116,10 +116,16 @@ Every rule below is built into the helpers of all eight packages and locked by t
 - List only rows where `nationality.nationality_en` is not null (countries, plus Taiwan, Hong Kong and Macau).
 - In Arabic, use the form that matches the person: `nationality_ar_m` (سعودي) or `nationality_ar_f` (سعودية).
 
+**Time zones** (guidance; the packages have no time helper)
+- Store times in UTC, plus the IANA zone name (`geo.timezones`, e.g. `Asia/Riyadh`) wherever local time matters.
+- Convert to local time only for display, with the platform's time-zone support (`Intl.DateTimeFormat` with `timeZone`, Python `zoneinfo`, `java.time.ZoneId`, Swift `TimeZone`). It follows daylight saving time and rule changes.
+- Never store or hard-code a UTC offset (+03:00): daylight saving time shifts it twice a year in many countries, and governments change the rules.
+- A country can span several zones (`geo.timezones` lists them all; the US has many). Take the zone from the user or the device, not from the country alone.
+
 **Data**
 - `null` (or an empty list) means unknown. Show it as unknown; never fill it from elsewhere.
 - Load only the modules you need; they join on `iso2`.
-- Pin a version (`#v1.1.2`, `@1.1.2`) so names and rules do not change under you.
+- Pin a version (`#v1.1.3`, `@1.1.3`) so names and rules do not change under you.
 
 ## Data policy
 

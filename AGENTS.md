@@ -11,7 +11,7 @@ Guide for AI coding agents using or changing worldref.
 - Phone field: `parsePhone(input, pickedCountry, allCountries)`; store `e164` and `iso2` together.
 - Nationality field: list only rows where `nationality.nationality_en` is not null.
 - `null` means unknown. Never fill it from your own knowledge.
-- The full rule list (search folding, sorting, display, phone storage, nationality forms) is the README section [Best practices](README.md#best-practices).
+- The full rule list (search folding, sorting, display, phone storage, nationality forms, time zones) is the README section [Best practices](README.md#best-practices).
 
 ## Changing worldref
 

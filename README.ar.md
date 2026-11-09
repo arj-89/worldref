@@ -41,12 +41,12 @@ parsePhone("٠٥٠١٢٣٤٥٦٧", byIso2("SA"));      // { e164: "+966501234567
 |---|---|
 | JavaScript وTypeScript | `npm i worldref` |
 | Swift | Swift Package Manager من `https://github.com/arj-89/worldref` |
-| Kotlin وAndroid | JitPack: `com.github.arj-89:worldref:v1.1.2` |
+| Kotlin وAndroid | JitPack: `com.github.arj-89:worldref:v1.1.3` |
 | Python | `pip install worldref` |
 | Dart وFlutter | `dart pub add worldref` |
 | PHP وLaravel | `composer require arj-89/worldref` |
 | C# و.NET | `dotnet add package WorldRef` |
-| Go | `go get github.com/arj-89/worldref/go@v1.1.2` |
+| Go | `go get github.com/arj-89/worldref/go@v1.1.3` |
 | بلا تثبيت | `https://arj-89.github.io/worldref/api/v1/sa.json` |
 
 ## استخدم ما تحتاجه فقط
@@ -87,10 +87,16 @@ parsePhone("٠٥٠١٢٣٤٥٦٧", byIso2("SA"));      // { e164: "+966501234567
 - اعرض الدول التي لها جنسية فقط، أي حيث `nationality.nationality_en` ليست `null` (الدول، إضافة إلى تايوان وهونغ كونغ ومكاو).
 - استخدم الصيغة المطابقة للشخص: `nationality_ar_m` (سعودي) أو `nationality_ar_f` (سعودية).
 
+**المناطق الزمنية** (إرشادات، فالحزم لا تتضمن دوال للوقت)
+- احفظ الأوقات بالتوقيت العالمي (UTC)، ومعها اسم المنطقة الزمنية وفق IANA (`geo.timezones`، مثل `Asia/Riyadh`) حيثما يهمّ الوقت المحلي.
+- حوّل إلى الوقت المحلي عند العرض فقط، بأدوات المنصة للمناطق الزمنية (`Intl.DateTimeFormat` مع `timeZone`، و`zoneinfo` في Python، و`java.time.ZoneId`، و`TimeZone` في Swift)، فهي تراعي التوقيت الصيفي وتغيّر قواعده.
+- لا تحفظ فرق التوقيت عن UTC (مثل +03:00) ولا تثبّته في الشيفرة، لأن التوقيت الصيفي يغيّره مرتين في السنة في دول كثيرة، والحكومات تغيّر قواعده.
+- قد تمتد الدولة على أكثر من منطقة زمنية (`geo.timezones` يسردها كلها، وللولايات المتحدة مناطق عدة)، فخذ المنطقة من المستخدم أو من جهازه، لا من الدولة وحدها.
+
 **البيانات**
 - `null` أو القائمة الفارغة تعني أن القيمة غير معروفة؛ اعرضها كذلك ولا تملأها من مصدر آخر.
 - حمّل الوحدات التي تحتاجها فقط، ويجمعها المفتاح `iso2`.
-- ثبّت رقم الإصدار (`#v1.1.2` أو `@1.1.2`) حتى لا تتغير الأسماء والقواعد دون علمك.
+- ثبّت رقم الإصدار (`#v1.1.3` أو `@1.1.3`) حتى لا تتغير الأسماء والقواعد دون علمك.
 
 ## سياسة البيانات
 

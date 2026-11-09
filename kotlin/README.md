@@ -6,10 +6,10 @@
 
 ```kotlin
 repositories { maven("https://jitpack.io") }
-dependencies { implementation("com.github.arj-89:worldref:v1.1.2") }
+dependencies { implementation("com.github.arj-89:worldref:v1.1.3") }
 ```
 
-Repo: github.com/arj-89/worldref, tag v1.1.2.
+Repo: github.com/arj-89/worldref, tag v1.1.3.
 
 ## Usage
 

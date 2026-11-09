@@ -3,6 +3,10 @@
 All notable changes. Versions follow semantic versioning: a removed row or field is major, a new field
 or a name change is minor, a data fix or upstream refresh is a patch.
 
+## 1.1.3 (2026-11-09)
+
+- Docs: a "Time zones" section in Best practices, in both READMEs and `llms.txt`: store UTC plus the IANA zone, convert only for display with the platform's time-zone support, never store a fixed UTC offset, and take the zone from the user or device when a country spans several.
+
 ## 1.1.2 (2026-11-04)
 
 - Fixed: the JavaScript package needs Node 20.10 or newer (its JSON import syntax does not run on earlier Node 18 releases). `engines` now says so, and CI tests that version.
