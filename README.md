@@ -193,6 +193,10 @@ Single-language builds drop the `_ar` / `_en` suffix (`name_ar` becomes `name` i
 | `geo.population` | geo | `36973555` | Population. |
 | `geo.population_year` | geo | `2025` | Year of the population figure. |
 | `geo.timezones` | geo | `["Asia/Riyadh"]` | IANA time zone names. |
+| `geo.timezone_offsets` | geo | `[{"zone":"Asia/Riyadh","standard":"+0...` | For each zone in `timezones`: the standard UTC offset and the daylight-saving offset (null when the zone does not switch), under the rules in force on the date in `data/meta.json`. Reference only: compute the current offset with the platform's time-zone support, never store it. |
+| `geo.timezone_offsets[].zone` | geo | `Asia/Riyadh` | IANA time zone name. |
+| `geo.timezone_offsets[].standard` | geo | `+03:00` | Standard UTC offset, e.g. +03:00. |
+| `geo.timezone_offsets[].dst` | geo | `null` | Daylight-saving UTC offset, or null when the zone does not switch. Lower than `standard` where the law defines winter as the shift (Ireland). |
 | `geo.driving_side` | geo | `right` | left or right. |
 | `locale` | locale |  | Locale conventions. |
 | `locale.languages` | locale | `[{"code":"ar","name_ar":"العربية","na...` | Official languages, most spoken first. |
@@ -227,6 +231,8 @@ Single-language builds drop the `_ar` / `_en` suffix (`name_ar` becomes `name` i
 | `subdivisions.name_ar` | subdivisions | `منطقة الرياض` | Name in Arabic. |
 | `subdivisions.name_en` | subdivisions | `Riyadh` | Name in English. |
 | `subdivisions.parent` | subdivisions | `null` | ISO 3166-2 code of the parent subdivision, for nested ones. |
+| `subdivisions.type_ar` | subdivisions | `منطقة` | What the subdivision is, in Arabic (منطقة، محافظة، إمارة، ولاية...). Arab countries use their own official term. |
+| `subdivisions.type_en` | subdivisions | `region` | What the subdivision is (region, province, emirate, state...), from Wikidata. Null when no source names it. |
 <!-- fields:end -->
 
 ## FAQ

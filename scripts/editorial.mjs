@@ -17,6 +17,8 @@ export const POLICY = {
         // +972 numbers (Jerusalem and the 1948 lines) are Palestinian numbers in this dataset.
         extra_calling_territories: ["IL"],
     },
+    // Western Sahara is part of Morocco (Saudi official position); its IANA zone belongs to Morocco's row.
+    MA: { extra_timezones: ["Africa/El_Aaiun"], why_timezones: "Western Sahara is part of Morocco (Saudi official position); IANA lists its zone under EH" },
 };
 
 /** Short common names where CLDR's standard form is the long official one (the official form stays in official_name). */
@@ -148,4 +150,95 @@ export const ECW_NAMES = {
     "Cook Island": "CK", "Gambia, The": "GM", Kazakstan: "KZ", "Korea, North": "KP", "Korea, South": "KR", Miquelon: "PM",
     "North Mariana Island": "MP", "Pitcairn Island": "PN", "Saint Kitts-Nevis": "KN", "Sao Tome and Principe": "ST",
     "St. Vincent and  the Grenadines": "VC", Svalbard: "SJ", Israel: "PS",
+};
+
+/**
+ * Subdivision types. English: the head term of the subdivision's Wikidata class ("governorate of Egypt" gives
+ * governorate), from this list only. Arabic: this glossary, which an Arab country's own official term overrides
+ * (SUBDIVISION_TYPE_AR_COUNTRY). A term outside the list, or a class that names no type, leaves the type null.
+ */
+export const SUBDIVISION_TYPE_AR = {
+    "administrative region": "منطقة إدارية",
+    area: "منطقة",
+    atoll: "جزيرة مرجانية",
+    "autonomous city": "مدينة ذاتية الحكم",
+    "autonomous community": "منطقة حكم ذاتي",
+    "autonomous district": "مقاطعة ذاتية الحكم",
+    "autonomous okrug": "مقاطعة ذاتية الحكم",
+    "autonomous province": "مقاطعة ذاتية الحكم",
+    "autonomous region": "منطقة ذاتية الحكم",
+    "autonomous republic": "جمهورية ذاتية الحكم",
+    borough: "بلدة",
+    canton: "كانتون",
+    "capital city": "عاصمة",
+    "capital district": "منطقة العاصمة",
+    "capital territory": "إقليم العاصمة",
+    city: "مدينة",
+    commune: "بلدية",
+    "constituent country": "بلد",
+    "council area": "منطقة مجلس",
+    county: "مقاطعة",
+    department: "إقليم",
+    dependency: "تابعية",
+    district: "منطقة",
+    division: "قسم",
+    emirate: "إمارة",
+    entity: "كيان",
+    "federal district": "مقاطعة اتحادية",
+    "federal territory": "إقليم اتحادي",
+    governorate: "محافظة",
+    island: "جزيرة",
+    krai: "إقليم",
+    "metropolitan city": "مدينة حضرية",
+    municipality: "بلدية",
+    oblast: "إقليم",
+    parish: "أبرشية",
+    prefecture: "محافظة",
+    "principal area": "منطقة رئيسية",
+    province: "مقاطعة",
+    quarter: "حي",
+    region: "منطقة",
+    republic: "جمهورية",
+    sector: "قطاع",
+    "special municipality": "بلدية خاصة",
+    state: "ولاية",
+    "statistical region": "منطقة إحصائية",
+    territory: "إقليم",
+    "union territory": "إقليم اتحادي",
+    "unitary authority": "سلطة محلية موحدة",
+    voivodeship: "محافظة",
+};
+
+/** Class labels that name no administrative type; never used as a type. */
+export const SUBDIVISION_TYPE_IGNORE = /administrative territorial entity|administrative division|big city|port city|largest city|city or town|human settlement|capital of |unparished area|lieutenancy area|registration county|ceremonial county/i;
+
+/** Arab countries' own Arabic terms, where they differ from the glossary. */
+export const SUBDIVISION_TYPE_AR_COUNTRY = {
+    DZ: { province: "ولاية", why: "Algeria's official Arabic term for its provinces is ولاية" },
+    TN: { governorate: "ولاية", why: "Tunisia's official Arabic term for its governorates is ولاية" },
+    MA: { region: "جهة", prefecture: "عمالة", province: "إقليم", why: "Morocco's official Arabic terms: جهة (region), عمالة (prefecture), إقليم (province)" },
+    MR: { region: "ولاية", why: "Mauritania's official Arabic term for its regions is ولاية" },
+    SD: { state: "ولاية", why: "Sudan's official Arabic term for its states is ولاية" },
+    SO: { region: "إقليم", why: "Somalia's Arabic term for its regions is إقليم" },
+    DJ: { region: "إقليم", why: "Djibouti's Arabic term for its regions is إقليم" },
+    LY: { district: "شعبية", why: "Libya's official Arabic term for its districts is شعبية" },
+};
+
+/** Countries where Wikidata gives no usable class: one type for every subdivision, from the official term. */
+export const SUBDIVISION_TYPE_COUNTRY = {
+    SA: { en: "region", ar: "منطقة", why: "Saudi Arabia's 13 regions (Law of Regions, نظام المناطق)" },
+    QA: { en: "municipality", ar: "بلدية", why: "Qatar's 8 municipalities (بلديات)" },
+};
+
+/** Where Wikidata gives a subdivision several types: the order to pick from (statutory type first). */
+export const SUBDIVISION_TYPE_PRIORITY = {
+    GB: {
+        order: ["constituent country", "unitary authority", "principal area", "council area", "county", "borough", "district"],
+        why: "UK local government: the statutory type (unitary authority, Welsh principal area, Scottish council area) before honorific ones (city status)",
+    },
+};
+
+/** Single subdivisions without a usable class. */
+export const SUBDIVISION_TYPE_CODE = {
+    "IQ-KR": { en: "region", ar: "إقليم", why: "Kurdistan Region (إقليم كردستان), its official name" },
 };

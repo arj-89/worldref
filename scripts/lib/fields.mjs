@@ -53,6 +53,10 @@ export const FIELDS = {
     "geo.population": "Population.",
     "geo.population_year": "Year of the population figure.",
     "geo.timezones": "IANA time zone names.",
+    "geo.timezone_offsets": "For each zone in `timezones`: the standard UTC offset and the daylight-saving offset (null when the zone does not switch), under the rules in force on the date in `data/meta.json`. Reference only: compute the current offset with the platform's time-zone support, never store it.",
+    "geo.timezone_offsets[].zone": "IANA time zone name.",
+    "geo.timezone_offsets[].standard": "Standard UTC offset, e.g. +03:00.",
+    "geo.timezone_offsets[].dst": "Daylight-saving UTC offset, or null when the zone does not switch. Lower than `standard` where the law defines winter as the shift (Ireland).",
     "geo.driving_side": "left or right.",
     locale: "Locale conventions.",
     "locale.languages": "Official languages, most spoken first.",
@@ -87,6 +91,8 @@ export const FIELDS = {
     "subdivisions.name_ar": "Name in Arabic.",
     "subdivisions.name_en": "Name in English.",
     "subdivisions.parent": "ISO 3166-2 code of the parent subdivision, for nested ones.",
+    "subdivisions.type_ar": "What the subdivision is, in Arabic (منطقة، محافظة، إمارة، ولاية...). Arab countries use their own official term.",
+    "subdivisions.type_en": "What the subdivision is (region, province, emirate, state...), from Wikidata. Null when no source names it.",
 };
 
 /** Looks up a description by schema path, ignoring the `_ar`/`_en` suffix in single-language builds. */

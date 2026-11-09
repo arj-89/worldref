@@ -1,8 +1,10 @@
 // Bumps the version in every package manifest and doc, rebuilds, and prints the tags to create.
 //   node scripts/release.mjs patch|minor|major|<x.y.z>
 // The upkeep workflow runs this, commits, and pushes the tags vX.Y.Z and go/vX.Y.Z.
-import { readFileSync, writeFileSync } from "node:fs";
+import { copyFileSync, readFileSync, writeFileSync } from "node:fs";
 import { execFileSync } from "node:child_process";
+import { dataDiff } from "./datadiff.mjs";
+import { baseline } from "../tests/compat.mjs";
 
 const ROOT = new URL("../", import.meta.url).pathname;
 const pkg = JSON.parse(readFileSync(`${ROOT}package.json`, "utf8"));
@@ -29,11 +31,18 @@ edit("CITATION.cff", [[new RegExp(`version: ${esc}`), `version: ${next}`], [/dat
 for (const f of ["README.md", "README.ar.md", "python/README.md", "Sources/WorldRef/README.md", "kotlin/README.md", "dart/README.md", "php/README.md", "go/README.md", "csharp/README.md"])
     edit(f, [[new RegExp(esc, "g"), next]]);
 
-// Automated data releases have no hand-written entry; give them one (pub.dev rejects a version without it).
-edit("CHANGELOG.md", [[/\n## /, (m) => (readFileSync(`${ROOT}CHANGELOG.md`, "utf8").includes(`## ${next} `) ? m
-    : `\n## ${next} (${new Date().toISOString().slice(0, 10)})\n\n- Data refresh from the upstream sources; versions in \`data/meta.json\`.\n\n## `)]]);
-
 execFileSync("npm", ["install", "--package-lock-only", "--no-audit", "--no-fund"], { cwd: ROOT, stdio: "inherit" });
 execFileSync("npm", ["run", "build"], { cwd: ROOT, stdio: "inherit" });
+
+// Releases without a hand-written entry (the upkeep job) get one listing what changed in the data, measured
+// against the last commit. pub.dev also rejects a version its changelog does not mention.
+if (!readFileSync(`${ROOT}CHANGELOG.md`, "utf8").includes(`## ${next} `)) {
+    const lines = dataDiff("HEAD");
+    const body = (lines.length ? lines : ["Upstream sources checked; no data changes."]).map((l) => `- ${l}`).join("\n");
+    edit("CHANGELOG.md", [[/\n## /, () => `\n## ${next} (${new Date().toISOString().slice(0, 10)}, data refresh)\n\n${body}\n\n## `]]);
+    copyFileSync(`${ROOT}CHANGELOG.md`, `${ROOT}dart/CHANGELOG.md`);
+}
+// Every field that has shipped stays in the compatibility baseline; removing one needs a major release.
+writeFileSync(`${ROOT}tests/compat-baseline.json`, JSON.stringify(baseline(), null, 1) + "\n");
 execFileSync("node", ["scripts/docs.mjs"], { cwd: ROOT, stdio: "inherit" });
 console.log(`\n${old} -> ${next}\ntags: v${next} go/v${next}`);

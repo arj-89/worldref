@@ -31,6 +31,7 @@ const wb = snapJson("worldbank.json");
 const fb = snapJson("factbook.json");
 const address = snapJson("address.json");
 const emergency = Object.fromEntries(snapJson("emergency.json").map((r) => [r.iso2, r]));
+const tzOffsets = snapJson("tz-offsets.json");
 const tlds = new Set(snap("tlds-alpha-by-domain.txt").split("\n").filter((l) => l && !l.startsWith("#")).map((l) => l.toLowerCase()));
 
 // ---------- provenance ----------
@@ -39,10 +40,12 @@ const SOURCES = {
     cldr: { name: "Unicode CLDR", version: PINS.cldr, licence: "Unicode-3.0", url: "https://github.com/unicode-org/cldr-json" },
     cldrSub: { name: "Unicode CLDR subdivisions", version: PINS.cldrTag, licence: "Unicode-3.0", url: "https://github.com/unicode-org/cldr" },
     wikidata: { name: "Wikidata", version: "snapshot", licence: "CC0-1.0", url: "https://www.wikidata.org" },
+    subdivision_types: { name: "Wikidata instance-of classes (English type), worldref glossary and Arab countries' official terms (Arabic type)", version: "snapshot", licence: "CC0-1.0 / MIT", url: "scripts/editorial.mjs" },
     factbook: { name: "CIA World Factbook (final edition, via factbook.json)", version: "2026", licence: "Public domain / CC0-1.0", url: "https://github.com/factbook/factbook.json" },
     worldbank: { name: "World Bank World Development Indicators", version: "snapshot", licence: "CC-BY-4.0", url: "https://data.worldbank.org" },
     libphonenumber: { name: "Google libphonenumber metadata", version: PINS.libphonenumber, licence: "Apache-2.0 (modified: reduced and reshaped)", url: "https://github.com/google/libphonenumber" },
     iana_tz: { name: "IANA Time Zone Database", version: PINS.tzdata, licence: "Public domain", url: "https://www.iana.org/time-zones" },
+    iana_tz_offsets: { name: "IANA Time Zone Database, offsets in force (compiled with zic)", version: `${tzOffsets.tzdata}, as of ${tzOffsets.as_of}`, licence: "Public domain", url: "https://www.iana.org/time-zones" },
     iana_root: { name: "IANA root zone TLD list", version: "snapshot", licence: "Public domain", url: "https://data.iana.org/TLD/" },
     google_address: { name: "Google address metadata (libaddressinput)", version: "snapshot", licence: "Apache-2.0 (modified: reduced and reshaped)", url: "https://github.com/google/libaddressinput" },
     ecw: { name: "U.S. Department of Commerce, Electric Current Worldwide", version: "archived 2026-04-16", licence: "Public domain", url: "https://legacy.trade.gov/mas/ian/ECW/" },
@@ -78,6 +81,8 @@ const continentOf = (() => {
     };
     return find;
 })();
+
+for (const [iso, pol] of Object.entries(E.POLICY)) if (pol.why_timezones) override(iso, "geo.timezones", pol.extra_timezones.join(", "), pol.why_timezones);
 
 // ---------- core ----------
 function names(iso) {
@@ -360,6 +365,11 @@ const records = ROWS.map((iso) => {
             population: pop.value,
             population_year: pop.year,
             timezones: uniq([...(zones[iso] ?? E.TIMEZONE_FILL[iso] ?? []), ...(E.POLICY[iso]?.extra_timezones ?? [])]),
+            timezone_offsets: uniq([...(zones[iso] ?? E.TIMEZONE_FILL[iso] ?? []), ...(E.POLICY[iso]?.extra_timezones ?? [])]).map((zone) => {
+                const o = tzOffsets.zones[zone];
+                if (!o) throw new Error(`no offsets for ${zone}`);
+                return { zone, standard: o.standard, dst: o.dst };
+            }),
             driving_side: first(wd[iso].driving_side),
         },
         locale: {
@@ -421,6 +431,7 @@ Object.assign(COLUMN_SOURCE, {
     "geo.capital_ar,geo.capital_en,geo.lat,geo.lng,geo.driving_side": "wikidata",
     "geo.area_km2,geo.population,geo.population_year": "worldbank",
     "geo.timezones": "iana_tz",
+    "geo.timezone_offsets": "iana_tz_offsets",
     locale: "cldr",
     address: "google_address",
     "travel.emergency": "emergency",
@@ -429,12 +440,47 @@ Object.assign(COLUMN_SOURCE, {
     "sports.fifa,sports.ioc": "wikidata",
 });
 
+// ---------- subdivision types ----------
+const subtypeClasses = snapJson("wikidata-subdivision-types.json");
+const TYPE_TERMS = Object.keys(E.SUBDIVISION_TYPE_AR).sort((a, b) => b.length - a.length);
+/** The type term a Wikidata class label names, or null ("governorate of Egypt" and "U.S. state" both work). */
+function typeTerm(label) {
+    if (E.SUBDIVISION_TYPE_IGNORE.test(label)) return null;
+    const head = label.toLowerCase().replace(/^u\.s\. /, "").replace(/ of .*$/, "").replace(/s$/, "");
+    if (head === "entity" && !/^entity of /.test(label)) return null;
+    // Exact, then the first words ("county council area" is a county), then the last ("metropolitan borough").
+    return TYPE_TERMS.find((t) => head === t) ?? TYPE_TERMS.find((t) => head.startsWith(`${t} `)) ?? TYPE_TERMS.find((t) => head.endsWith(` ${t}`)) ?? null;
+}
+function typeSubdivisions(subs) {
+    const candidates = Object.fromEntries(subs.map((s) => {
+        const terms = uniq((subtypeClasses[s.code] ?? []).map((c) => typeTerm(c.en)).filter(Boolean));
+        return [s.code, terms.length > 1 ? terms.filter((t) => t !== "area") : terms]; // "area" only when nothing better
+    }));
+    // A subdivision with several candidate terms takes the one most used in its country.
+    const freq = {};
+    for (const s of subs) for (const t of candidates[s.code]) (freq[s.iso2] ??= {})[t] = (freq[s.iso2][t] ?? 0) + 1;
+    for (const [iso, v] of Object.entries(E.SUBDIVISION_TYPE_COUNTRY)) override(iso, "subdivisions.type", v.en, v.why);
+    for (const [iso, v] of Object.entries(E.SUBDIVISION_TYPE_PRIORITY)) override(iso, "subdivisions.type (order)", v.order.join(" > "), v.why);
+    const rank = (iso, t) => {
+        const i = E.SUBDIVISION_TYPE_PRIORITY[iso]?.order.indexOf(t) ?? -1;
+        return i < 0 ? 99 : i;
+    };
+    for (const [code, v] of Object.entries(E.SUBDIVISION_TYPE_CODE)) override(code.slice(0, 2), `subdivisions.type (${code})`, v.en, v.why);
+    for (const [iso, v] of Object.entries(E.SUBDIVISION_TYPE_AR_COUNTRY)) override(iso, "subdivisions.type_ar", Object.entries(v).filter(([k]) => k !== "why").map(([k, a]) => `${k}: ${a}`).join(", "), v.why);
+    return subs.map((s) => {
+        const fixed = E.SUBDIVISION_TYPE_CODE[s.code] ?? E.SUBDIVISION_TYPE_COUNTRY[s.iso2];
+        const en = fixed?.en ?? [...candidates[s.code]].sort((a, b) => rank(s.iso2, a) - rank(s.iso2, b) || (freq[s.iso2][b] - freq[s.iso2][a]) || (a < b ? -1 : 1))[0] ?? null;
+        const ar = fixed?.ar ?? (en ? E.SUBDIVISION_TYPE_AR_COUNTRY[s.iso2]?.[en] ?? E.SUBDIVISION_TYPE_AR[en] : null);
+        return { ...s, type_ar: ar ?? null, type_en: en };
+    });
+}
+
 export { records, SOURCES, COLUMN_SOURCE, overrides };
 
 // ---------- write ----------
 import { writeOutputs } from "./lib/outputs.mjs";
 import { buildSubdivisions } from "./lib/subdivisions.mjs";
 if (process.argv[1] === new URL(import.meta.url).pathname) {
-    const subdivisions = buildSubdivisions(snap, ROWS);
+    const subdivisions = typeSubdivisions(buildSubdivisions(snap, ROWS));
     writeOutputs({ ROOT, records, subdivisions, SOURCES, COLUMN_SOURCE, overrides, ABSENT });
 }

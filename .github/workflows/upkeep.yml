@@ -58,7 +58,8 @@ jobs:
           git add -A && git commit -m "Data refresh v$v"
           git tag "v$v" && git tag "go/v$v"
           git push origin HEAD --tags
-          gh release create "v$v" --generate-notes --title "v$v (data refresh)"
+          awk -v h="## $v " 'index($0,h)==1{f=1;next} /^## /{f=0} f' CHANGELOG.md > notes.md
+          gh release create "v$v" --notes-file notes.md --title "v$v (data refresh)"
           gh workflow run publish-dart.yml --ref "v$v"
         env: { GH_TOKEN: "${{ github.token }}" }
 

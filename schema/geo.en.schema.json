@@ -27,6 +27,7 @@
           "population",
           "population_year",
           "timezones",
+          "timezone_offsets",
           "driving_side"
         ],
         "properties": {
@@ -62,6 +63,36 @@
             "type": "array",
             "items": {
               "type": "string"
+            }
+          },
+          "timezone_offsets": {
+            "description": "For each zone in `timezones`: the standard UTC offset and the daylight-saving offset (null when the zone does not switch), under the rules in force on the date in `data/meta.json`. Reference only: compute the current offset with the platform's time-zone support, never store it.",
+            "type": "array",
+            "items": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "zone",
+                "standard",
+                "dst"
+              ],
+              "properties": {
+                "zone": {
+                  "description": "IANA time zone name.",
+                  "type": "string"
+                },
+                "standard": {
+                  "description": "Standard UTC offset, e.g. +03:00.",
+                  "type": "string"
+                },
+                "dst": {
+                  "description": "Daylight-saving UTC offset, or null when the zone does not switch. Lower than `standard` where the law defines winter as the shift (Ireland).",
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                }
+              }
             }
           },
           "driving_side": {

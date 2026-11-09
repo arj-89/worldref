@@ -24,6 +24,12 @@
    "licence": "CC0-1.0",
    "url": "https://www.wikidata.org"
   },
+  "subdivision_types": {
+   "name": "Wikidata instance-of classes (English type), worldref glossary and Arab countries' official terms (Arabic type)",
+   "version": "snapshot",
+   "licence": "CC0-1.0 / MIT",
+   "url": "scripts/editorial.mjs"
+  },
   "factbook": {
    "name": "CIA World Factbook (final edition, via factbook.json)",
    "version": "2026",
@@ -45,6 +51,12 @@
   "iana_tz": {
    "name": "IANA Time Zone Database",
    "version": "2026f",
+   "licence": "Public domain",
+   "url": "https://www.iana.org/time-zones"
+  },
+  "iana_tz_offsets": {
+   "name": "IANA Time Zone Database, offsets in force (compiled with zic)",
+   "version": "2026f, as of 2026-11-09",
    "licence": "Public domain",
    "url": "https://www.iana.org/time-zones"
   },
@@ -128,6 +140,7 @@
   "geo.capital_ar,geo.capital_en,geo.lat,geo.lng,geo.driving_side": "wikidata",
   "geo.area_km2,geo.population,geo.population_year": "worldbank",
   "geo.timezones": "iana_tz",
+  "geo.timezone_offsets": "iana_tz_offsets",
   "locale": "cldr",
   "address": "google_address",
   "travel.emergency": "emergency",
@@ -136,6 +149,12 @@
   "sports.fifa,sports.ioc": "wikidata"
  },
  "overrides": [
+  {
+   "iso2": "MA",
+   "field": "geo.timezones",
+   "value": "Africa/El_Aaiun",
+   "why": "Western Sahara is part of Morocco (Saudi official position); IANA lists its zone under EH"
+  },
   {
    "iso2": "PS",
    "field": "locale.week_start,locale.weekend",
@@ -548,6 +567,78 @@
    "field": "nationality_ar_m",
    "value": "زيمبابوي",
    "why": "Standard Arabic form; Wikidata's \"زنبابي\" is wrong"
+  },
+  {
+   "iso2": "SA",
+   "field": "subdivisions.type",
+   "value": "region",
+   "why": "Saudi Arabia's 13 regions (Law of Regions, نظام المناطق)"
+  },
+  {
+   "iso2": "QA",
+   "field": "subdivisions.type",
+   "value": "municipality",
+   "why": "Qatar's 8 municipalities (بلديات)"
+  },
+  {
+   "iso2": "GB",
+   "field": "subdivisions.type (order)",
+   "value": "constituent country > unitary authority > principal area > council area > county > borough > district",
+   "why": "UK local government: the statutory type (unitary authority, Welsh principal area, Scottish council area) before honorific ones (city status)"
+  },
+  {
+   "iso2": "IQ",
+   "field": "subdivisions.type (IQ-KR)",
+   "value": "region",
+   "why": "Kurdistan Region (إقليم كردستان), its official name"
+  },
+  {
+   "iso2": "DZ",
+   "field": "subdivisions.type_ar",
+   "value": "province: ولاية",
+   "why": "Algeria's official Arabic term for its provinces is ولاية"
+  },
+  {
+   "iso2": "TN",
+   "field": "subdivisions.type_ar",
+   "value": "governorate: ولاية",
+   "why": "Tunisia's official Arabic term for its governorates is ولاية"
+  },
+  {
+   "iso2": "MA",
+   "field": "subdivisions.type_ar",
+   "value": "region: جهة, prefecture: عمالة, province: إقليم",
+   "why": "Morocco's official Arabic terms: جهة (region), عمالة (prefecture), إقليم (province)"
+  },
+  {
+   "iso2": "MR",
+   "field": "subdivisions.type_ar",
+   "value": "region: ولاية",
+   "why": "Mauritania's official Arabic term for its regions is ولاية"
+  },
+  {
+   "iso2": "SD",
+   "field": "subdivisions.type_ar",
+   "value": "state: ولاية",
+   "why": "Sudan's official Arabic term for its states is ولاية"
+  },
+  {
+   "iso2": "SO",
+   "field": "subdivisions.type_ar",
+   "value": "region: إقليم",
+   "why": "Somalia's Arabic term for its regions is إقليم"
+  },
+  {
+   "iso2": "DJ",
+   "field": "subdivisions.type_ar",
+   "value": "region: إقليم",
+   "why": "Djibouti's Arabic term for its regions is إقليم"
+  },
+  {
+   "iso2": "LY",
+   "field": "subdivisions.type_ar",
+   "value": "district: شعبية",
+   "why": "Libya's official Arabic term for its districts is شعبية"
   }
  ],
  "nulls": {
