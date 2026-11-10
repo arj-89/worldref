@@ -179,6 +179,7 @@ details:not(.faq details) > summary { cursor: pointer; color: var(--accent); min
 .mods { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 4px 24px; margin-block-end: 8px; }
 .mod { padding-block: 4px 10px; }
 .builder .mod label { margin: 0; }
+.builder .mod input { margin: 0; }
 .builder .mod .hint { margin: 0; margin-inline-start: 28px; font-size: 0.875rem; }
 .bar { display: flex; flex-wrap: wrap; align-items: center; gap: 12px 24px; padding-block: 22px; border-block-start: 1px solid var(--hair); }
 .bar [data-size] { font-weight: 600; }

@@ -275,3 +275,26 @@ Also seen at 390 and fine: `ar/sa` heading «التقسيمات الإدارية
 
 - Decision 32 calls for "a one-line subtitle under each module". At 1280, 7 of the 9 English subtitles and 6 of the 9 Arabic ones run to 2 or 3 lines in the 3-column grid (for example "ISO codes, common, official and alternative names, flag, continent, groups, internet domain, sort keys"). I read "one-line" as one phrase rather than one rendered line, so I did not fail it. If the owner meant one rendered line, each subtitle has to drop to about 40 characters.
 - `/build` checkboxes: the label wraps both the module name and its subtitle, and the input also points `aria-describedby` at the subtitle. The accessible name may therefore include the subtitle, and the subtitle would then be read twice. The browser tools did not show me the computed name, so this is unconfirmed. Check it with VoiceOver. If it is the case, give the name span an id and point `aria-labelledby` at it.
+
+### Pass 2
+
+**Reviewer:** Opus 5.5 (claude-opus-5-5). **Date:** 10/11/2026.
+**Method:** viewed in the browser after the rebuild. At 1280 px: `en/` home dark (demo result), `ar/` home light, `ar/countries/` dark (intro, map, Asia list; the 1280 cell missing from pass 1), `en/agents/` dark (files list), `ar/countries/sa/` dark (header), `ar/install/#kotlin` dark, `en/countries/sa/` dark (sources), `en/build/` light. At 390 px: `http://127.0.0.1:8765/m390.html` in light (the theme missing from pass 1). Frames: `ar` and `en` home (search for "K"), `ar/countries`, `en` and `ar` build, `en/install` Swift and Kotlin. I read the new `.mod` rules in `site/assets/site.css` (lines 179 to 182) and the built `/build` markup.
+
+**Result: FAIL (1 check: 19).** All six FAILs from the first pass of this section are fixed. Moving the subtitle out of the label (done for the screen-reader note) left it out of line with the module name.
+
+| # | Item | Pass 2 | Evidence |
+| --- | --- | --- | --- |
+| 4 | Result and list rows | PASS | `en/` home 1280 dark: "🇪🇬 Egypt مصر", with "+20" at the row's end. `ar/countries/` 1280 dark: flag, name and «(Azerbaijan)» at the right, «+994» at the row's end on the left, for all 50 rows of Asia. `en/agents/` 1280 dark: each file name sits at the start of its row and its description at the end. At 390 in light, the `ar` and `en` home and `ar/countries` frames all show the same layout. |
+| 11 | `.btn` chevrons | PASS | `ar/install/#kotlin` 1280 dark: «صفحة الحزمة على Maven Central ‹» and «الدليل الكامل على GitHub ‹», with the same chevrons on PyPI. `ar/countries/sa/` 1280: «افتح ملف JSON ‹». At 390 in light (`en/install`): "The package on Maven Central ›" and "Full guide on GitHub ›". |
+| 10 | Sports subtitle | PASS | `en/build` 1280 light: "The FIFA code and the International Olympic Committee code". |
+| 14 | Widows | PASS | `en/` home 1280: "Every country in Arabic, English, / or both". `ar/` home 1280: «… من مصادر رسمية / وبلا حساب.». `en/build`: the subdivisions hint now fits on one line. At 390: "Every country in / Arabic, English, / or both", and the Arabic lead ends «مصادر رسمية وبلا حساب.» with no lone word. |
+| 18 | Arabic header URL | PASS | `ar/countries/sa/` 1280 dark: the URL now sits at the right, under «افتح ملف JSON» and above the copy button. |
+| 19 | Sources list rhythm | PASS | `en/countries/sa` 1280 dark: the item without a link is now as tall as its neighbours, about 33 px of space above and below it, against 44 px between the one-line link items. The leftover difference comes from the item's two lines, and it no longer touches the next item. |
+| 9 | `/build` checkbox name | PASS | The subtitle is now a `p.hint` outside the `label`. The browser tool reports the Currency checkbox's name as the module name only, with the subtitle as its description. |
+| 19 | Subtitle alignment on `/build` | FAIL | `en/build` 1280 light: the module name starts 36 px from the column edge, but the subtitle starts at 28 px, 8 px further in towards the checkbox. It lines up with neither the checkbox nor the name, and this repeats on all 9 modules. The same offset shows at 390 in the `en` and `ar` build frames (in Arabic it mirrors: the subtitle ends 8 px to the right of the name). Cause: `.builder .mod .hint { margin-inline-start: 28px }` assumes checkbox 20 px plus gap 8 px. The checkbox also keeps the browser's default margin (about 4 px before and 3 px after), so the name sits at about 35 px. |
+| 8 | Light at 390, `ar/countries` at 1280 | PASS | All 390 frames in light: the contrast of the rows, chips, subtitles and code fields matches the dark cells. `ar/countries` 1280: the title, lead, filter and map span the full column, and the list rows are correct. |
+
+### Notes to the builder (full width and modules, pass 2)
+
+1. **Check 19, `/en/build/` and `/ar/build/`, 1280 and 390:** in `site/assets/site.css`, add `.builder .mod input { margin: 0; }`. The name then starts at 28 px (20 px checkbox plus 8 px gap), the same as the subtitle's `margin-inline-start: 28px`, in both directions. The checkbox also sits flush with the column edge, like the status line above it. The other radios and checkboxes on the page keep their current margins.
