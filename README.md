@@ -32,13 +32,13 @@ Published on npm, PyPI, pub.dev, Packagist, NuGet and the MCP Registry. Swift, K
 | Stack | Install |
 |---|---|
 | JavaScript, TypeScript (web, Node 20.10+, React Native, Bun, Deno) | `npm i worldref` |
-| CDN (no build step) | `https://cdn.jsdelivr.net/npm/worldref@1.1.3/data/worldref.json` |
-| Swift (iOS, macOS) | Swift Package Manager: `https://github.com/arj-89/worldref`, from `1.1.3`, product `WorldRef` |
-| Kotlin, Android | JitPack: `maven("https://jitpack.io")`, then `implementation("com.github.arj-89:worldref:v1.1.3")` |
+| CDN (no build step) | `https://cdn.jsdelivr.net/npm/worldref@1.2.0/data/worldref.json` |
+| Swift (iOS, macOS) | Swift Package Manager: `https://github.com/arj-89/worldref`, from `1.2.0`, product `WorldRef` |
+| Kotlin, Android | JitPack: `maven("https://jitpack.io")`, then `implementation("com.github.arj-89:worldref:v1.2.0")` |
 | Python | `pip install worldref` |
 | Dart, Flutter | `dart pub add worldref` (Flutter: `flutter pub add worldref`) |
 | PHP, Laravel | `composer require arj-89/worldref` |
-| Go | `go get github.com/arj-89/worldref/go@v1.1.3` |
+| Go | `go get github.com/arj-89/worldref/go@v1.2.0` |
 | C#, .NET | `dotnet add package WorldRef` |
 | Any language | JSON, CSV and SQL (Postgres, MySQL, SQLite) in [`data/`](data) and on the [releases page](https://github.com/arj-89/worldref/releases) |
 | AI agents | MCP server: `npx -y worldref mcp` (listed in the MCP Registry as `io.github.arj-89/worldref`) |
@@ -134,7 +134,7 @@ Every rule below is built into the helpers of all eight packages and locked by t
 **Data**
 - `null` (or an empty list) means unknown. Show it as unknown; never fill it from elsewhere.
 - Load only the modules you need; they join on `iso2`.
-- Pin a version (`#v1.1.3`, `@1.1.3`) so names and rules do not change under you.
+- Pin a version (`#v1.2.0`, `@1.2.0`) so names and rules do not change under you.
 
 ## Data policy
 

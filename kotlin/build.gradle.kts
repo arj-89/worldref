@@ -11,7 +11,7 @@ plugins {
 // Maven Central: io.github.arj-89:worldref. JitPack builds the same sources under com.github.arj-89.
 val onJitPack = System.getenv("JITPACK") == "true"
 group = if (onJitPack) "com.github.arj-89" else "io.github.arj-89"
-version = "1.1.3"
+version = "1.2.0"
 
 repositories { mavenCentral() }
 

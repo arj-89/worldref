@@ -1,11 +1,18 @@
 {
  "data/worldref.json": [
   "[].address.address_format",
+  "[].address.locality_label_ar",
+  "[].address.locality_label_en",
   "[].address.postal_code_example",
   "[].address.postal_code_format",
+  "[].address.postal_code_label_ar",
+  "[].address.postal_code_label_en",
   "[].address.postal_code_regex",
   "[].address.region_label_ar",
   "[].address.region_label_en",
+  "[].address.required_fields[]",
+  "[].address.sublocality_label_ar",
+  "[].address.sublocality_label_en",
   "[].aliases_ar[]",
   "[].aliases_en[]",
   "[].continent",
@@ -25,6 +32,9 @@
   "[].geo.lng",
   "[].geo.population",
   "[].geo.population_year",
+  "[].geo.timezone_offsets[].dst",
+  "[].geo.timezone_offsets[].standard",
+  "[].geo.timezone_offsets[].zone",
   "[].geo.timezones[]",
   "[].groups[]",
   "[].iso2",
@@ -76,10 +86,14 @@
  ],
  "data/worldref.ar.json": [
   "[].address.address_format",
+  "[].address.locality_label",
   "[].address.postal_code_example",
   "[].address.postal_code_format",
+  "[].address.postal_code_label",
   "[].address.postal_code_regex",
   "[].address.region_label",
+  "[].address.required_fields[]",
+  "[].address.sublocality_label",
   "[].aliases[]",
   "[].continent",
   "[].currencies[].code",
@@ -95,6 +109,9 @@
   "[].geo.lng",
   "[].geo.population",
   "[].geo.population_year",
+  "[].geo.timezone_offsets[].dst",
+  "[].geo.timezone_offsets[].standard",
+  "[].geo.timezone_offsets[].zone",
   "[].geo.timezones[]",
   "[].groups[]",
   "[].iso2",
@@ -141,10 +158,14 @@
  ],
  "data/worldref.en.json": [
   "[].address.address_format",
+  "[].address.locality_label",
   "[].address.postal_code_example",
   "[].address.postal_code_format",
+  "[].address.postal_code_label",
   "[].address.postal_code_regex",
   "[].address.region_label",
+  "[].address.required_fields[]",
+  "[].address.sublocality_label",
   "[].aliases[]",
   "[].continent",
   "[].currencies[].code",
@@ -160,6 +181,9 @@
   "[].geo.lng",
   "[].geo.population",
   "[].geo.population_year",
+  "[].geo.timezone_offsets[].dst",
+  "[].geo.timezone_offsets[].standard",
+  "[].geo.timezone_offsets[].zone",
   "[].geo.timezones[]",
   "[].groups[]",
   "[].iso2",
@@ -208,18 +232,22 @@
   "[].iso2",
   "[].name_ar",
   "[].name_en",
-  "[].parent"
+  "[].parent",
+  "[].type_ar",
+  "[].type_en"
  ],
  "data/subdivisions.ar.json": [
   "[].code",
   "[].iso2",
   "[].name",
-  "[].parent"
+  "[].parent",
+  "[].type"
  ],
  "data/subdivisions.en.json": [
   "[].code",
   "[].iso2",
   "[].name",
-  "[].parent"
+  "[].parent",
+  "[].type"
  ]
 }
