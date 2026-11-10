@@ -37,7 +37,7 @@ const t = (key, lang, vars) => {
 const tl = (key, lang, vars) => (lang === "ar" ? isoLatin(t(key, lang, vars)) : t(key, lang, vars));
 const sep = (lang) => (lang === "ar" ? "، " : ", ");
 // In Arabic text, isolate Latin runs (C#, .NET, iOS) so they keep their order, and keep «لـ» with the next word.
-const isoLatin = (html) => html.replace(/(^|[\s(«،\u0600-\u06FF])((?:[A-Za-z.#+][A-Za-z0-9.#+/-]*)(?: [A-Z][A-Za-z0-9.#+/-]*)*)(?![^<]*>)/g, (m, pre, run) => `${pre}<bdi dir="ltr">${run}</bdi>`);
+const isoLatin = (html) => html.replace(/(^|[\s(«،\u0600-\u06FF])((?:(?:[A-Za-z.#+]|-(?=\d))[A-Za-z0-9.#+/-]*)(?: [A-Z][A-Za-z0-9.#+/-]*)*)(?![^<]*>)/g, (m, pre, run) => `${pre}<bdi dir="ltr">${run}</bdi>`);
 const plain = (key, lang) => (W[key]?.[lang] ?? key).replace(/`/g, "");
 const tp = (base, n, lang, vars = {}) => t(pluralKey(base, n, lang), lang, { n: num(n), ...vars });
 const ltr = (s) => `<bdi dir="ltr">${esc(s)}</bdi>`;
@@ -250,7 +250,7 @@ function usageBlock(readmePath) {
 // Brand marks for each stack (Simple Icons, CC0; one colour, decorative: the stack's name is the label).
 const ICONS = JSON.parse(read("site/icons.json"));
 const marks = (id, max = 3) =>
-    `<span class="marks" aria-hidden="true">${(ICONS.stacks[id] ?? []).slice(0, max).map((s) => `<svg viewBox="0 0 24 24" focusable="false"><path d="${ICONS.icons[s].path}"/></svg>`).join("")}</span>`;
+    `<span class="marks" aria-hidden="true">${(ICONS.stacks[id] ?? []).slice(0, max).map((s) => `<svg viewBox="${ICONS.icons[s].viewBox}" focusable="false"><path d="${ICONS.icons[s].path}"/></svg>`).join("")}</span>`;
 function installRows() {
     const fetchLine = (url) => `const sa = await fetch("${url}").then((r) => r.json());\nconsole.log(sa.name_ar, sa.phone[0].calling_code); // السعودية +966`;
     return [
@@ -280,7 +280,7 @@ function install(lang) {
               ? `<p><a href="${href(lang, "agents/")}">${t("install.mcp.more", lang)}</a></p>`
               : "";
         const first = r.first ? `<details class="first"><summary><span class="if-closed">${t("install.first.show", lang)}</span><span class="if-open">${t("install.first.hide", lang)}</span></summary><p class="where">${t("install.first.title", lang)}</p><pre dir="ltr"><code>${esc(r.first).replace(/-&gt;/g, "<wbr>-&gt;")}</code></pre></details>` : "";
-        return `<section class="stack" id="${r.id}" aria-labelledby="${r.id}-h"><h2 id="${r.id}-h">${marks(r.id)}${tl(`install.stack.${r.id}`, lang)} <span>${tl(`install.stack.${r.id}.on`, lang)}</span></h2>${r.id === "files" ? `<p>${t("install.files.body", lang)}</p>` : ""}${blocks}${extra}${first}<p class="guide actions">${r.registry ? `<a class="btn" href="${r.registry[0]}" rel="external">${t("install.registry", lang, { name: esc(r.registry[1]) })}</a>` : ""}<a class="btn" href="https://github.com/arj-89/worldref/blob/main/${r.guide}">${t("install.guide", lang)}</a></p></section>`;
+        return `<section class="stack" id="${r.id}" aria-labelledby="${r.id}-h"><h2 id="${r.id}-h">${marks(r.id)}${tl(`install.stack.${r.id}`, lang)} <span>${tl(`install.stack.${r.id}.on`, lang)}</span></h2>${r.id === "files" ? `<p>${t("install.files.body", lang)}</p>` : ""}${blocks}${extra}${first}${r.id === "kotlin" ? `<p class="fine">${t("install.marks.android", lang)}</p>` : ""}<p class="guide actions">${r.registry ? `<a class="btn" href="${r.registry[0]}" rel="external">${t("install.registry", lang, { name: esc(r.registry[1]) })}</a>` : ""}<a class="btn" href="https://github.com/arj-89/worldref/blob/main/${r.guide}">${t("install.guide", lang)}</a></p></section>`;
     }).join("");
     const jump = `<nav class="jump" aria-label="${plain("install.jump", lang)}">${INSTALL_ROWS.map((r) => `<a href="#${r.id}">${marks(r.id, 1)}<span>${tl(`install.stack.${r.id}`, lang)}</span></a>`).join("")}</nav>`;
     const body = `<section class="intro"><h1>${t("install.title", lang)}</h1><p class="lede">${t("install.body", lang)}</p>${jump}</section>${rows}
@@ -452,7 +452,9 @@ ${overrides.length ? `<section id="overrides" aria-labelledby="ovr-h"><h2 id="ov
 // ---------- release notes ----------
 /** CHANGELOG markdown to sections: "## 1.2.0 (2026-11-10)", paragraphs and "- " lists; inline code and links. */
 function changelog(file) {
-    const inline = (s) => esc(s).replace(/`([^`]+)`/g, '<code dir="ltr">$1</code>').replace(/\[([^\]]+)\]\(([^)]+)\)/g, (m, txt, url) => `<a href="${/^https?:/.test(url) ? url : `https://github.com/arj-89/worldref/blob/main/${url}`}">${txt}</a>`);
+    const arabicRuns = (h) => h.replace(/[«\u0600-\u06FF][\u0600-\u06FF\s«»،]*[\u0600-\u06FF»]|[\u0600-\u06FF]/g, (m) => `<bdi lang="ar" dir="rtl">${m}</bdi>`);
+    const iso = file.endsWith(".ar.md") ? isoLatin : arabicRuns;
+    const inline = (s) => iso(esc(s)).replace(/`([^`]+)`/g, '<code dir="ltr">$1</code>').replace(/\[([^\]]+)\]\(([^)]+)\)/g, (m, txt, url) => `<a href="${/^https?:/.test(url) ? url : `https://github.com/arj-89/worldref/blob/main/${url}`}">${txt}</a>`);
     const out = [];
     for (const block of read(file).split(/\n(?=## )/).slice(1)) {
         const [head, ...rest] = block.split("\n");

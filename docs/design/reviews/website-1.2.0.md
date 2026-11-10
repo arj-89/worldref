@@ -335,3 +335,76 @@ Also seen at 390 and fine: `ar/sa` heading «التقسيمات الإدارية
 | — | Unchanged | PASS | The 22 px gap between radio options and the 44 px label height are as before. "Clear selection" / «امسح الاختيار» and the hints are unchanged. |
 
 **Final state of this section:** every FAIL from the first pass of this section and from passes 2 and 3 is fixed and verified. Ready to merge from Stop 2's side.
+
+## Install icons and release notes (10/11/2026)
+
+**Reviewer:** design-reviewer, Opus 5.5 (claude-opus-5-5), fresh context. **Scope:** Stop 2, Delegated mode, lean per `DELEGATED-DECISIONS.md` entry 25. Branch `site/icons-releases`, PR #3: (1) brand marks on the /install stack headings and jump chips (Simple Icons 16.37.0, `site/icons.json`); (2) the new release notes page `/{lang}/releases/` and its footer link.
+**Method:** viewed in the browser. At 1280 px: `en/install` light (chips, then every stack heading down to the footer), `ar/install` dark (chips, JavaScript and CDN headings), `en/releases` light and dark, `ar/releases` light (1.2.0 and 1.1.0) and dark (1.0.0 and the footer). At 390 px: `http://127.0.0.1:8765/m390.html`. I viewed all four frames in light and the three upper frames in dark, and scrolled `ar/releases` from 1.2.0 to 1.1.2 and `en/releases` from 1.2.0 to 1.1.1. I read `site/build.mjs` (`marks`, `changelog`, `releases`, `isoLatin`), `site/assets/site.css` lines 123 to 129, `site/icons.json`, `CHANGELOG.ar.md`, the flow spec, WORDING and `site/_out/api/v1/{ie,ir,iq,tr}.json`. I grepped `site/_out` for the footer link and for the excluded state's name. I applied the vendored Web Interface Guidelines (upstream commit 434b7f9) and read Apple's trademark guidelines for third parties on apple.com. The theme was set back to Light afterwards. Not checked: the largest text size, and `en/releases` at 390 in dark.
+
+**Result: FAIL (6 checks: 1, 7, 10, 11, 14, 18).**
+
+Contrast: the marks are `--muted` on `--bg`, which measures 5.69:1 in light and 7.58:1 in dark. The floor for non-text graphics is 3:1.
+
+| # | Check | PASS/FAIL | Evidence |
+| --- | --- | --- | --- |
+| 1 | Matches the approved flow | FAIL | `ar/releases` 1.2.0, the «تغيير» item says «(تركيا: ولاية، وإيران وأيرلندا والعراق: محافظة)». The data gives Ireland `region_label_ar: "مقاطعة"` (`api/v1/ie.json`), and the English item lists only Turkey, Iran and Iraq, so the Arabic page states something false. The rest matches the flow spec: title, one-line lede, GitHub releases link, one section per version with the newest first, version heading, date and list. The footer link is on all 496 pages (2 × 248). |
+| 2 | One job, one primary action | PASS | The release page only reads, and its one action is the GitHub link. The marks add no action. |
+| 3 | All states | PASS | Static page. `releases()` falls back to `releases.auto` and the date for a version that `CHANGELOG.ar.md` does not cover. It is not triggered now because every version is covered, so the Arabic page has no English prose. |
+| 4 | Density | PASS | Releases at 1280: the version is in the label column, and the date sits muted at the top of the facts column on the heading's baseline. Below it come the summary and the list, with 8 px between items and one hairline between versions. At 390 the date sits under the version. The 14 items in 1.2.0 are long, but each is one change. Install: the marks add one 24 px row above each heading and leave no new empty area. |
+| 5 | Native first, one pattern | PASS | One `marks()` helper and one `.marks` rule serve both the headings (up to 3 marks, 24 px) and the chips (the first mark, 16 px). The GitHub link under the release lede uses the plain standalone link style that home already uses ("Full policy on GitHub"). |
+| 6 | Motion | PASS | Nothing added. |
+| 7 | Both languages native, RTL | FAIL | (a) `ar/releases` lede (WORDING `releases.body`): «…والأول تغيير يكسر.» A verb with no object reads unfinished and copies "breaking change" word for word. (b) `ar/releases` 1.2.0, search item: in «وإذا لم يطابق شيء فقط يُقبل الاسم…», «فقط» follows «شيء», so the clause reads as "if only nothing matches". The English means "only when nothing else matches". RTL on /install passes: in `ar/install` (1280 dark and 390) the first mark sits at the right edge and the order mirrors, and no logo is flipped (the Swift bird and the Kotlin K face the same way as in `en`). |
+| 8 | Light and Dark | PASS | Both pages, both languages, 1280 light and dark. 390 in light (four frames) and dark (three frames). Marks, dates, hints and lists are legible in both themes. |
+| 9 | Accessibility floor | PASS | Marks have `aria-hidden="true"` and `focusable="false"`, and the heading and chip text names each stack. The footer link and the GitHub link keep their 44 px boxes. Contrast is measured above. |
+| 10 | Copy rules | FAIL | (a) `en/releases` 1.0.0 says "5012 ISO 3166-2 subdivisions", while 1.2.0 on the same page says "5,012". The Arabic page uses 5,012 in both. (b) Web Interface Guidelines, Typography: the changelogs use "..." instead of "…" ("Libya شعبية...", "Casablanca-Settat...", «الدار البيضاء سطات»...). |
+| 11 | Icons | FAIL | (a) Simple Icons fits every mark into a 24 × 24 box by its widest side. The three wordmark-only logos (`php`, `go`, `dotnet`) therefore render about 7 to 12 px tall, next to 24 px square marks. In the 16 px chips, ".NET" and "GO" are about 4 to 6 px tall and cannot be read. On `en/install` 1280, the C# mark reads as a tiny ".NET" caption above "C#, .NET". (b) `stacks.swift` includes the Apple logo. Apple's guidelines for third parties (section 2) say: "You may not use the Apple Logo or any other Apple-owned graphic symbol". The Swift section already names its platforms ("iOS, macOS"). (c) The standard takes logos from fa-brands. Simple Icons replaces that source here, and `DESIGN.md` does not record the exception. |
+| 12 | Imagery | PASS | Out of scope (entry 25). |
+| 13 | Tokens only | PASS | `.marks` uses `var(--muted)` through `currentColor`. Sizes and gaps are in px, like the rest of `site.css`. `DESIGN.md` defines no spacing tokens. |
+| 14 | Feels like the product | FAIL | "Exact" is missed on /install. Three of the twelve chips, in the first row a visitor sees, carry a mark that cannot be read, at a third of the height of its neighbours (cause 11a). Otherwise the muted marks read calm, and the release page reads like the rest of the fact sheet. |
+| 15 | Bars never hide content | PASS | The to-top pill behaves as in earlier passes, and the footer end padding clears it. |
+| 16 | One scroll axis | PASS | 390, all four frames in light and the three upper frames in dark: no horizontal scroll. Long inline code wraps inside the column (`dotnet add package WorldRef`, `io.github.arj-89/worldref`). |
+| 17 | No clipped icons | PASS | Marks are whole at 24 px and 16 px, in both languages and both themes. The chips wrap without clipping at 390. |
+| 18 | Mixed-direction lines | FAIL | (a) `en/releases` 1.2.0, 1280 light and dark: "Morocco جهة, عمالة, إقليم" shows as "Morocco إقليم ,عمالة ,جهة,". The three Arabic terms and the commas between them form one RTL run, so the order reverses and the commas attach to the wrong words. (b) `ar/releases` 1.1.2 at 390, light: «JSON-RPC رقم -32600» shows the code as "32600-", with the minus on the right of the digits. The same bidi rule turns «"+971"» in 1.1.0 into "971+", and "C#" in 1.2.0 and 1.0.0 into "#C": a leading sign or a trailing # takes the Arabic direction. Cause: `inline()` in `changelog()` does not apply `isoLatin`, which /install uses for exactly C# and .NET. `isoLatin` also cannot start a run at "-". These read correctly: versions, dates, URLs, `<code dir="ltr">` spans, `UTC±hh:mm` and "ISO 3166-2". |
+| 19 | Dates, spacing | PASS | Dates are Gregorian DD/MM/YYYY, and Hijri is not relevant here. Section spacing matches the other pages. |
+| 20 | Footer | PASS | «سجل الإصدارات» / "Release notes" ends the site-pages row, after «سياسة البيانات» / "Data policy", on every page (496 files). The 404 page is unchanged. |
+
+**Excluded state's name:** a case-insensitive grep of `site/_out` for the English and Arabic names finds 3 files: `AGENTS.md`, `llms.txt` and `llms-full.txt`, the three the scan exempts. It is not on any HTML page. PASS.
+
+**Web Interface Guidelines:** the decorative icons have `aria-hidden` (pass). The "…" rule fails (check 10b). Nothing else applies to this change.
+
+### Mechanical gate
+
+| Item | Result |
+| --- | --- |
+| Lint pack green | Not on the board (descoped under entry 25). |
+| Screenshot matrix | No board. Viewed live: both pages, both languages, 1280 light and dark, and 390 light (four frames) and dark (three frames). Largest text size not checked, as in earlier sections. |
+| Recordings | Not needed: no interaction added. |
+
+### Notes to the builder (install icons and release notes)
+
+1. **Check 1, `ar/releases` 1.2.0 (`CHANGELOG.ar.md` line 17):** «(تركيا: ولاية، وإيران والعراق: محافظة)». This removes «أيرلندا».
+2. **Check 7a, `docs/design/flows/releases/WORDING.md` `releases.body` (Arabic):** end the lede with «…والأول تغيير يكسر التوافق.»
+3. **Check 7b, `CHANGELOG.ar.md` line 12:** «…وعلامات الترقيم («cote divoire»)، وإن لم يطابق شيءٌ آخر، فعندها فقط يُقبل الاسم الذي يختلف بحرف واحد عن نص من 4 إلى 7 أحرف…»
+4. **Check 10:** in `CHANGELOG.md` 1.0.0, change "5012" to "5,012". In `CHANGELOG.md` and `CHANGELOG.ar.md`, replace every "..." with "…".
+5. **Checks 11a and 14, `site/icons.json`, `site/build.mjs` `marks()` and `site/assets/site.css` lines 123 to 126:**
+   - When vendoring, store a `viewBox` per icon, cropped to the path's bounding box. Have `marks()` use it instead of `0 0 24 24`.
+   - Size every mark by height: `.marks svg { block-size: 20px; inline-size: auto; }` and `.jump a .marks svg { block-size: 14px; inline-size: auto; }`.
+   - Result: the square marks shrink slightly, and the PHP, Go and .NET wordmarks get the same height as the rest, so they can be read in the headings and the chips.
+   - Re-check the chip rows at 1280 and 390 in both languages.
+6. **Check 11b, `site/icons.json`:** remove `apple` from `stacks.swift` and from `icons`.
+7. **Check 11c, `DESIGN.md` "Exceptions and rules":** add a line along these lines: "Brand marks on /install: Simple Icons 16.37.0 (CC0), vendored in `site/icons.json`, one colour (`--muted`), decorative (`aria-hidden`), used instead of fa-brands because …". Give the actual reason (the stacks that fa-brands does not cover).
+8. **Check 18, `site/build.mjs` and `CHANGELOG.ar.md`:**
+   - On the Arabic page, pass every item and paragraph through `isoLatin` after `inline()`.
+   - Widen the start of `isoLatin`'s run from `[A-Za-z.#+]` to `(?:[A-Za-z.#+]|-(?=\d))`, so "-32600" is isolated.
+   - In `CHANGELOG.ar.md`, quote the Latin examples with «» instead of straight quotes ("971", "+971", "US", "UK", "Bosnia", "Hong Kong SAR China", "Hong Kong", "cote divoire", "Kuwiat"). `isoLatin` already accepts «» before a run, and this also ends the mix of «» and straight quotes inside one bracket («"Kuwiat"، «الكويب»»).
+   - On the English page, isolate the Arabic runs: `.replace(/[؀-ۿ]+(?:[  ][؀-ۿ]+)*(?![^<]*>)/g, (m) => '<bdi lang="ar" dir="rtl">' + m + '</bdi>')`. "Morocco جهة, عمالة, إقليم" then shows in source order, with each comma after its own word.
+   - After the rebuild, re-check `ar/install` and one Arabic country page for `isoLatin` side effects.
+
+### Outside this change (not counted; owner decisions)
+
+- The Swift logo is also an Apple-owned graphic symbol, so the same Apple clause appears to cover it. I did not confirm whether swift.org grants a separate permission. The owner should decide whether to keep it.
+- Google's Android brand guidelines are generally understood to license the Android robot under CC BY 3.0, which requires attribution. I did not re-check them in this pass, and the site has no attribution. Either add an attribution line to the licences page or drop the `android` mark.
+- "Any language" shows JSON, PostgreSQL and SQLite. The text also names MySQL, so with the three-mark cap the marks suggest only two of the three SQL engines are supported.
+- The /install "Any language" section has a "Releases page" link (GitHub files), while the footer now has "Release notes" (this site's page). Two near-identical names point to different places.
+- At 390, inline code and version numbers wrap at spaces and hyphens ("Node" / "20.10", "JSON-" / "RPC", `addressForm(country,` / `lang)`). It stays readable, so it is not failed.
+- The footer's "v1.2.0" could link to the release page.

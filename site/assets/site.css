@@ -121,9 +121,10 @@ input[type="search"]:focus-visible, input[type="tel"]:focus-visible { outline: 2
 .tz, .tz-note { display: block; }
 .nw { white-space: nowrap; }
 .marks { display: flex; gap: 10px; color: var(--muted); }
-.marks svg { inline-size: 24px; block-size: 24px; fill: currentColor; flex: none; }
+.marks { align-items: center; }
+.marks svg { block-size: 20px; inline-size: auto; fill: currentColor; flex: none; }
 .stack h2 .marks { margin-block-end: 10px; }
-.jump a .marks svg { inline-size: 16px; block-size: 16px; }
+.jump a .marks svg { block-size: 14px; inline-size: auto; }
 .jump a { gap: 8px; }
 .notes-list { padding-inline-start: 1.25em; }
 .notes-list li { margin-block-end: 8px; }
