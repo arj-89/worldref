@@ -1,4 +1,4 @@
-cff-version: 1.2.1
+cff-version: 1.2.0
 title: "worldref: every country in Arabic, English, or both"
 message: "If you use this dataset, please cite it as below."
 type: dataset
@@ -7,7 +7,7 @@ authors:
 repository-code: "https://github.com/arj-89/worldref"
 url: "https://arj-89.github.io/worldref"
 license: MIT
-version: 1.2.0
+version: 1.2.1
 date-released: 2026-11-10
 keywords:
   - countries

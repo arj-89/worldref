@@ -277,7 +277,7 @@ Start at [`llms.txt`](llms.txt) and [`AGENTS.md`](AGENTS.md). Schemas are in [`s
 
 ## Roadmap
 
-Shipped in 1.2.1: time-zone offsets, subdivision types, forgiving search, the address-form helper, a changelog that lists what each automatic data release changed, and Kotlin on Maven Central.
+Shipped in 1.2.0: time-zone offsets, subdivision types, forgiving search, the address-form helper, a changelog that lists what each automatic data release changed, and Kotlin on Maven Central.
 
 Planned for 1.3.0 (new, non-breaking):
 
