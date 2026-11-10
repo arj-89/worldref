@@ -298,3 +298,24 @@ Also seen at 390 and fine: `ar/sa` heading «التقسيمات الإدارية
 ### Notes to the builder (full width and modules, pass 2)
 
 1. **Check 19, `/en/build/` and `/ar/build/`, 1280 and 390:** in `site/assets/site.css`, add `.builder .mod input { margin: 0; }`. The name then starts at 28 px (20 px checkbox plus 8 px gap), the same as the subtitle's `margin-inline-start: 28px`, in both directions. The checkbox also sits flush with the column edge, like the status line above it. The other radios and checkboxes on the page keep their current margins.
+
+### Pass 3
+
+**Reviewer:** Opus 5.5 (claude-opus-5-5). **Date:** 10/11/2026.
+**Method:** viewed in the browser, served build `.builder .mod input { margin: 0; }`. At 1280: `en/build/` light and `ar/build/` light. I zoomed on the "Language of names" radios and the first module in each language and measured the edges against the column edge (176 px in English, 1112 px in Arabic). At 390: the `en` and `ar` build frames in `http://127.0.0.1:8765/m390.html`, light.
+
+**Result: FAIL (1 check: 19).** The subtitle now lines up with the module name. My pass 2 prescription was too narrow, though. It zeroed the margin on the module checkboxes only, so in the same form they are now out of line with the radio buttons above them.
+
+| # | Item | Pass 3 | Evidence |
+| --- | --- | --- | --- |
+| 19 | Subtitle against name | PASS | `en/build` 1280: the name and subtitle both start at 28 px from the column edge ("Names and codes" over "ISO codes, common, …"), on all 9 modules. `ar/build` 1280: both end 28 px from the right edge. At 390, `en` frame: both start at 28 px; `ar` frame: both end at the same point. |
+| — | Other radios and checkboxes | Unchanged, as specified | The "Language of names", "Subdivisions" and "Format" radios keep the browser's default margin. They are the only other controls on /build. |
+| 19 | One edge for the whole form | FAIL | `en/build` 1280: the radio circles start about 4 px in from the column edge, and the module checkboxes start at the edge itself. The radio labels ("Arabic and English") start at about 36 px, and the module names ("Names and codes") at 28 px. So going down the form, the label column jumps 8 px between "Language of names" and "Modules", and back again at "Subdivisions" and "Format". The same holds mirrored on `ar/build` 1280 («عربي وإنجليزي» ends about 8 px further from the right edge than «الأسماء والرموز») and at 390 in both frames ("Arabic and English" at about 36 px, "Names and codes" at 28 px). |
+
+### Notes to the builder (full width and modules, pass 3)
+
+1. **Check 19, `/en/build/` and `/ar/build/`, 1280 and 390:**
+   - In `site/assets/site.css`, add `margin: 0;` to the existing rule on line 175. It then reads `.builder input[type="radio"], .builder input[type="checkbox"] { inline-size: 20px; block-size: 20px; accent-color: var(--accent); margin: 0; }`.
+   - The `.builder .mod input { margin: 0; }` rule from pass 2 then says nothing new and can be removed.
+   - Result: every control on /build starts at the column edge, and every label starts 28 px in (20 px control plus 8 px gap). That matches the subtitles, in both directions.
+   - The gap between radio options (`margin-inline-end: 22px`) and the 44 px label height are unchanged.
