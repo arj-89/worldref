@@ -447,3 +447,30 @@ Contrast: the marks are `--muted` on `--bg`, which measures 5.69:1 in light and 
 
 - The .NET mark is a plain wordmark, so the C# chip reads ".NET C#, .NET" (in Arabic «C# و.NET» next to ".NET"), and the heading shows a grey ".NET" above "C#, .NET". It is legible and it is the brand's own mark, so it is not failed. If the owner finds the doubled word odd, the C# stack could show no chip mark.
 - `ar/install` Kotlin attribution: the line breaks between «رخصة المشاع الإبداعي» and «3.0». A no-break space before «3.0» in WORDING `install.marks.android` keeps the licence name whole.
+
+### Pass 3
+
+**Reviewer:** Opus 5.5 (claude-opus-5-5). **Date:** 10/11/2026.
+**Method:** I grepped the built `site/_out/ar/releases/index.html` for every `<bdi dir="ltr">` run. Then I viewed the page in the browser, in light (the stored theme). At 1280 px: `ar/releases` 1.2.0, 1.1.2, 1.1.0 and 1.0.0. I zoomed on «رقم -32600» to see which side of the digits the minus sits on. At 390 px: `http://127.0.0.1:8765/m390.html`. In the `ar/releases` frame I scrolled from 1.2.0 to 1.0.0; in the `ar/install` and `en/install` frames I checked the Kotlin section. Dark was not re-viewed, because this rebuild changed only markup and no colour.
+
+**Result: FAIL (1 check: 18).** Check 4 passes, and all 14 runs on my list are single isolates that read correctly at 1280. At 390, one defect remains: `arj-89` still splits on the Arabic release page. Pass 2 should have caught it too: the inline code in 1.1.1 already broke there, and the project has failed this exact break since the Kotlin review.
+
+| # | Item | Pass 3 | Evidence |
+| --- | --- | --- | --- |
+| 18 | The 14 runs, markup | PASS | Each is one `<bdi dir="ltr">`: `UTC+00:00`, `UTC-06:00` (full stop outside), `https://arj-89.github.io/worldref`, `Node 20.10`, `Node 18`, `ISO 3166-2`, `Unicode CLDR 49`, `libphonenumber 9.0.42`, `cote divoire`, `Hong Kong SAR China`, `-32600`, `+971`, `C#` (both places) and `Kuwiat`. In `MCP:` the colon sits outside. No Arabic full stop is wrapped. |
+| 18 | The 14 runs, rendered at 1280 | PASS | 1.2.0: «إلى UTC+00:00 دائمًا» and «وألبرتا إلى UTC-06:00.» read whole. 1.1.2: "Node 20.10" and "Node 18" keep the name before the number, and «رقم -32600» shows the minus on the left of the digits (zoomed). 1.1.0: the URL `https://arj-89.github.io/worldref` reads whole and in order, and «Hong Kong SAR China» wraps inside its own isolate in order. 1.0.0: «وفق ISO 3166-2»، «Unicode CLDR 49» and «libphonenumber 9.0.42» read name then number. |
+| 18 | 1.2.0 and 1.0.0 at 390 | PASS | `UTC+00:00` and `UTC-06:00` are whole. «cote divoire» wraps across two lines but stays one isolate, so its words keep their order. "ISO" / "3166-2" wraps at the space inside its isolate, in order. |
+| 18 | `arj-89` at 390 | FAIL | `ar/releases` 390, light. 1.1.0: the site URL breaks as `https://arj-` / `89.github.io/worldref`. 1.1.1: the inline code breaks the same way twice, `composer require arj-` / `89/worldref` and `io.github.arj-` / `89/worldref`. This is the break after a hyphen before a digit that the Kotlin review failed and fixed on /install with `<span class="nw">arj-89</span>`. The changelog does not apply that rule. |
+| 4 | Android attribution | PASS | `en/install` and `ar/install` at 390: the attribution is now the last element of the Kotlin section, under "Full guide on GitHub" / «الدليل الكامل على GitHub». The section runs copy, first call, links, the same order as Swift and Python. In Arabic «الإبداعي 3.0» stays on one line (no-break space). |
+
+### Notes to the builder (install icons and release notes, pass 3)
+
+1. **Check 18, `site/build.mjs` `changelog()` (both languages):** after `inline()` (and after `isoRun` on the Arabic page), add `.replace(/arj-89(?![^<]*>)/g, '<span class="nw">arj-89</span>')`.
+   - The lookahead skips `href` values, so the GitHub links keep working.
+   - It is the same rule `breakable()` applies on /install.
+   - At 390 the URL then moves to its own line, `https://arj-89.github.io/worldref` (about 250 px of the 326 px list column). The two `1.1.1` code spans break only at their spaces (`composer require` / `arj-89/worldref`).
+   - Re-check `ar/releases` and `en/releases` 1.1.0 and 1.1.1 at 390.
+
+### Not counted (pass 3)
+
+- At 390, "ISO" and "3166-2" sit on different lines in 1.0.0. They are in order, but a no-break space in `CHANGELOG.ar.md` («ISO 3166-2», with U+00A0) would keep the standard's name whole.

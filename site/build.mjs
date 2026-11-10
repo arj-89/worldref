@@ -454,9 +454,10 @@ ${overrides.length ? `<section id="overrides" aria-labelledby="ovr-h"><h2 id="ov
 const isoRun = (html) => html.replace(/(^|[\s(«،؀-ۿ])((?:[A-Za-z#+]|-(?=\d))[^\s<«»(),،؀-ۿ]*(?:[  ][A-Za-z0-9#+][^\s<«»(),،؀-ۿ]*)*)(?![^<]*>)/g, (m, pre, run) => { const tail = run.match(/[.:;]+$/)?.[0] ?? ""; return `${pre}<bdi dir="ltr">${run.slice(0, run.length - tail.length)}</bdi>${tail}`; });
 /** CHANGELOG markdown to sections: "## 1.2.0 (2026-11-10)", paragraphs and "- " lists; inline code and links. */
 function changelog(file) {
+    const keepWhole = (h) => h.replace(/arj-89(?![^<]*>)/g, '<span class="nw">arj-89</span>');
     const arabicRuns = (h) => h.replace(/[«\u0600-\u06FF][\u0600-\u06FF\s«»،]*[\u0600-\u06FF»]|[\u0600-\u06FF]/g, (m) => `<bdi lang="ar" dir="rtl">${m}</bdi>`);
     const iso = file.endsWith(".ar.md") ? isoRun : arabicRuns;
-    const inline = (s) => iso(esc(s)).replace(/`([^`]+)`/g, '<code dir="ltr">$1</code>').replace(/\[([^\]]+)\]\(([^)]+)\)/g, (m, txt, url) => `<a href="${/^https?:/.test(url) ? url : `https://github.com/arj-89/worldref/blob/main/${url}`}">${txt}</a>`);
+    const inline = (s) => keepWhole(iso(esc(s))).replace(/`([^`]+)`/g, '<code dir="ltr">$1</code>').replace(/\[([^\]]+)\]\(([^)]+)\)/g, (m, txt, url) => `<a href="${/^https?:/.test(url) ? url : `https://github.com/arj-89/worldref/blob/main/${url}`}">${txt}</a>`);
     const out = [];
     for (const block of read(file).split(/\n(?=## )/).slice(1)) {
         const [head, ...rest] = block.split("\n");

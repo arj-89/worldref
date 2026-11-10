@@ -3,6 +3,14 @@
 All notable changes. Versions follow semantic versioning: a removed row or field is major, a new field
 or a name change is minor, a data fix or upstream refresh is a patch.
 
+## 1.2.1 (2026-11-10)
+
+- Fixed: Côte d'Ivoire's English official name was cut off ("Republic of C&ocirc"); the Factbook's HTML entities are now decoded before parsing.
+- Fixed: Türkiye's English official name is "Republic of Türkiye" (registered at the UN in 2022).
+- Fixed: stray superscript markers removed from subdivision names (Estonia's "Viljandi³").
+- Docs: Kotlin installs from Maven Central (`io.github.arj-89:worldref`); JitPack still works. The install check verifies Maven Central on every release.
+- Website: brand marks on the install page; this release notes page, in Arabic and English, linked from every footer; full-width titles, leads and fields; a one-line description of each module on the file builder; layout and wrapping fixes at phone width.
+
 ## 1.2.0 (2026-11-10)
 
 New, non-breaking. Every field that 1.1.x had is unchanged; a test now fails the build if a shipped field ever disappears.
