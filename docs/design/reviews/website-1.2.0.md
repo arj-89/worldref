@@ -503,3 +503,19 @@ Contrast: the marks are `--muted` on `--bg`, which measures 5.69:1 in light and 
 - 1.2.1 at 1280, both languages: the Türkiye item leaves «2022).» / "2022)." alone on its second line. It is readable. Moving the parenthesis earlier would avoid it, for example "Türkiye's English official name, registered at the UN in 2022, is "Republic of Türkiye"".
 - 1.2.1 Arabic, Website item: «ووصف من سطر لكل وحدة» is terse. «ووصف في سطر واحد لكل وحدة» reads more naturally.
 - 1.1.1 at 390, both languages: inline commands wrap at their spaces («npm i» / «worldref»). They are in order and whole at every hyphen. A `white-space: nowrap` on short inline `code` in `.notes-list` would keep each command on one line.
+
+### Pass 5
+
+**Reviewer:** Opus 5.5 (claude-opus-5-5). **Date:** 10/11/2026.
+**Method:** I grepped the built `site/_out` and read `package.json` and `site/build.mjs` `releases()`. Grepped: `{ar,en}/install` and `{ar,en}/releases` for every version string, all HTML for any leftover `1.2.0` install or footer string, and `ar/releases` for the 1.1.1 and 1.2.1 lines. Then I viewed the pages in the browser, in light. At 1280 px: `ar/releases` 1.1.1 and the footer. At 390 px: the `ar/releases` frame of `http://127.0.0.1:8765/m390.html`, 1.1.1 and 1.1.0.
+
+**Result: PASS.** Checks 1 and 18 pass. Every FAIL in this section, from the first pass through pass 4, is fixed and verified.
+
+| # | Item | Pass 5 | Evidence |
+| --- | --- | --- | --- |
+| 1 | One version across the site | PASS | `package.json` is `1.2.1`. The top entry on both release pages is 1.2.1. The footers read «v1.2.1» / "v1.2.1" (seen at 1280 on `ar/releases`). On `ar/install` and `en/install`, every line reads 1.2.1: `worldref@1.2.1` (npm CDN and modules URL), `from: "1.2.1"` (Swift), `worldref:1.2.1` (Kotlin), `go@v1.2.1`. A grep of all built HTML for `v1.2.0`, `@1.2.0`, `:1.2.0"` and `"1.2.0"` finds 0 matches. `releases()` now throws when the first `CHANGELOG.md` version differs from `pkg.version` (`site/build.mjs` line 480). |
+| 18 | 1.1.1 Arabic line | PASS | Built markup: «الحزم: صار مسار `<code dir="ltr">bin</code>` بلا البادئة `<code dir="ltr">./</code>` في أوله.» At 1280 and 390, the code `./` sits between «البادئة» and «في», and the full stop ends the sentence after «أوله». No dot is adjacent to the code, so it can no longer read as "../". |
+| 7 | 1.2.1 Arabic Website item | PASS | «ووصف في سطر واحد لكل وحدة». |
+| — | README roadmap | Outside scope | The roadmap lives in `README.md`, which the site does not render: a grep of all built HTML for "Shipped in" and "Roadmap" finds 0 matches. The `CITATION.cff` and roadmap repairs are release-tooling fixes and are not judged here. |
+
+**Final state of this section:** every FAIL from the first pass of this section and from passes 2, 3 and 4 is fixed and verified. Ready to merge from Stop 2's side. The not-counted lists stay open as notes for the owner: the Swift logo under Apple's clause, the doubled ".NET" on the C# chip, "Any language" omitting MySQL, "Releases page" against "Release notes", the lone «2022).», and the inline commands wrapping at 390.
