@@ -319,3 +319,19 @@ Also seen at 390 and fine: `ar/sa` heading «التقسيمات الإدارية
    - The `.builder .mod input { margin: 0; }` rule from pass 2 then says nothing new and can be removed.
    - Result: every control on /build starts at the column edge, and every label starts 28 px in (20 px control plus 8 px gap). That matches the subtitles, in both directions.
    - The gap between radio options (`margin-inline-end: 22px`) and the 44 px label height are unchanged.
+
+### Pass 4
+
+**Reviewer:** Opus 5.5 (claude-opus-5-5). **Date:** 10/11/2026.
+**Method:** viewed in the browser, served build from branch `site/build-align`: `margin: 0` on `.builder input[type="radio"], .builder input[type="checkbox"]`, with the `.builder .mod input` rule removed. At 1280, light: `en/build/` and `ar/build/`, the whole form from "Language of names" down to "Format". At 390, light: the `en` and `ar` build frames in `http://127.0.0.1:8765/m390.html`, scrolled from the top of the form to "Subdivisions" (`en`) and "Format" (`ar`).
+
+**Result: PASS.** Check 19 passes, and every control and label on /build now shares one edge.
+
+| # | Item | Pass 4 | Evidence |
+| --- | --- | --- | --- |
+| 19 | Controls on one edge | PASS | `en/build` 1280: the "Arabic and English" radio, the "Names and codes" checkbox, the "Without" radio and the "JSON" radio all start at the column edge, the same edge as the legends and the status line. `ar/build` 1280: «عربي وإنجليزي», «الأسماء والرموز», «بدونها» and «JSON» all end at the right column edge. |
+| 19 | Labels and subtitles on one line | PASS | `en/build` 1280: the radio labels, module names and subtitles all start 28 px in ("Arabic and English", "Names and codes", "ISO codes, common, …", "Without", "JSON"). `ar/build` 1280: all of them end 28 px from the right edge. |
+| 19 | At 390 | PASS | `en` frame: controls at the column edge and labels 28 px in, through "Language of names" (including "English only", which wraps to its own row), all 9 modules and "Subdivisions" ("Only subdivisions" on its wrapped row). `ar` frame: the same, mirrored, through «إنجليزي فقط», the modules, «وحدها» and «CSV». |
+| — | Unchanged | PASS | The 22 px gap between radio options and the 44 px label height are as before. "Clear selection" / «امسح الاختيار» and the hints are unchanged. |
+
+**Final state of this section:** every FAIL from the first pass of this section and from passes 2 and 3 is fixed and verified. Ready to merge from Stop 2's side.
