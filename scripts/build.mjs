@@ -29,7 +29,10 @@ const measurement = SUP("measurementData").measurementData.measurementSystem;
 const containment = SUP("territoryContainment").territoryContainment;
 const wd = snapJson("wikidata.json");
 const wb = snapJson("worldbank.json");
-const fb = snapJson("factbook.json");
+// The Factbook text carries HTML entities ("C&ocirc;te d'Ivoire"); decode them before any parsing.
+const ENTITIES = { amp: "&", apos: "'", quot: '"', ocirc: "ô", eacute: "é", egrave: "è", aacute: "á", iacute: "í", oacute: "ó", uacute: "ú", atilde: "ã", ccedil: "ç", ntilde: "ñ", uuml: "ü", ouml: "ö", auml: "ä" };
+const decode = (v) => (typeof v === "string" ? v.replace(/&(#\d+|[a-z]+);/gi, (m, e) => (e[0] === "#" ? String.fromCodePoint(Number(e.slice(1))) : ENTITIES[e.toLowerCase()] ?? m)) : v && typeof v === "object" ? Object.fromEntries(Object.entries(v).map(([k, x]) => [k, decode(x)])) : v);
+const fb = decode(snapJson("factbook.json"));
 const address = snapJson("address.json");
 const emergency = Object.fromEntries(snapJson("emergency.json").map((r) => [r.iso2, r]));
 const tzOffsets = snapJson("tz-offsets.json");
@@ -108,6 +111,11 @@ function names(iso) {
 function officialName(iso, lang, short) {
     const pol = E.POLICY[iso]?.[`official_name_${lang}`];
     if (pol) return pol;
+    const fix = E.OFFICIAL_NAME_FIX[iso]?.[lang];
+    if (fix) {
+        override(iso, `official_name_${lang}`, fix, E.OFFICIAL_NAME_FIX[iso].why, E.OFFICIAL_NAME_FIX[iso].why_ar);
+        return fix;
+    }
     if (lang === "en") {
         const g = (wd[iso].fips ?? []).find((f) => fb[f]);
         const long = g ? fb[g].long_name : null;
@@ -352,14 +360,14 @@ function typeSubdivisions(subs) {
     for (const [code, v] of Object.entries(E.SUBDIVISION_NAME))
         override(code.slice(0, 2), `subdivisions.name (${code})`, [v.ar, v.en].filter(Boolean).join(" / "), E.SUBDIVISION_NAME_WHY[code] ?? E.SUBDIVISION_NAME_WHY[code.slice(0, 2)], E.SUBDIVISION_NAME_WHY_AR[code] ?? E.SUBDIVISION_NAME_WHY_AR[code.slice(0, 2)]);
     override("*", "subdivisions.name_ar", "CLDR text cleaned", "CLDR's draft marker ² removed; Persian letters ی ک and the zero-width non-joiner written as Arabic ي ك and a space", "حُذفت علامة المسودة ² من نصوص CLDR، وكُتب الحرفان الفارسيان ی ک والفاصل غير المرئي بالحرفين العربيين ي ك ومسافة");
-    const cleanAr = (n) => n && n.replace(/²/g, "").replace(/ی/g, "ي").replace(/ک/g, "ك").replace(/\u200c/g, " ").replace(/\s+/g, " ").trim();
+    const cleanAr = (n) => n && n.replace(/[¹²³]/g, "").replace(/ی/g, "ي").replace(/ک/g, "ك").replace(/\u200c/g, " ").replace(/\s+/g, " ").trim();
     return subs.map((s) => {
         const fixed = E.SUBDIVISION_TYPE_CODE[s.code] ?? E.SUBDIVISION_TYPE_COUNTRY[s.iso2];
         let en = fixed?.en ?? [...candidates[s.code]].sort((a, b) => rank(s.iso2, a) - rank(s.iso2, b) || (freq[s.iso2][b] - freq[s.iso2][a]) || (a < b ? -1 : 1))[0] ?? null;
         en ??= E.SUBDIVISION_TYPE_DEFAULT[s.iso2]?.en ?? null;
         const ar = fixed && "ar" in fixed ? fixed.ar : en ? E.SUBDIVISION_TYPE_AR_COUNTRY[s.iso2]?.[en] ?? E.SUBDIVISION_TYPE_AR[en] ?? null : null;
         const name = E.SUBDIVISION_NAME[s.code] ?? {};
-        return { ...s, name_ar: name.ar ?? cleanAr(s.name_ar), name_en: (name.en ?? s.name_en)?.replace(/²/g, "") ?? null, type_ar: ar, type_en: en?.replace(/^london /, "London ") ?? null };
+        return { ...s, name_ar: name.ar ?? cleanAr(s.name_ar), name_en: (name.en ?? s.name_en)?.replace(/[¹²³]/g, "") ?? null, type_ar: ar, type_en: en?.replace(/^london /, "London ") ?? null };
     });
 }
 

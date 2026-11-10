@@ -335,3 +335,187 @@ Also seen at 390 and fine: `ar/sa` heading «التقسيمات الإدارية
 | — | Unchanged | PASS | The 22 px gap between radio options and the 44 px label height are as before. "Clear selection" / «امسح الاختيار» and the hints are unchanged. |
 
 **Final state of this section:** every FAIL from the first pass of this section and from passes 2 and 3 is fixed and verified. Ready to merge from Stop 2's side.
+
+## Install icons and release notes (10/11/2026)
+
+**Reviewer:** design-reviewer, Opus 5.5 (claude-opus-5-5), fresh context. **Scope:** Stop 2, Delegated mode, lean per `DELEGATED-DECISIONS.md` entry 25. Branch `site/icons-releases`, PR #3: (1) brand marks on the /install stack headings and jump chips (Simple Icons 16.37.0, `site/icons.json`); (2) the new release notes page `/{lang}/releases/` and its footer link.
+**Method:** viewed in the browser. At 1280 px: `en/install` light (chips, then every stack heading down to the footer), `ar/install` dark (chips, JavaScript and CDN headings), `en/releases` light and dark, `ar/releases` light (1.2.0 and 1.1.0) and dark (1.0.0 and the footer). At 390 px: `http://127.0.0.1:8765/m390.html`. I viewed all four frames in light and the three upper frames in dark, and scrolled `ar/releases` from 1.2.0 to 1.1.2 and `en/releases` from 1.2.0 to 1.1.1. I read `site/build.mjs` (`marks`, `changelog`, `releases`, `isoLatin`), `site/assets/site.css` lines 123 to 129, `site/icons.json`, `CHANGELOG.ar.md`, the flow spec, WORDING and `site/_out/api/v1/{ie,ir,iq,tr}.json`. I grepped `site/_out` for the footer link and for the excluded state's name. I applied the vendored Web Interface Guidelines (upstream commit 434b7f9) and read Apple's trademark guidelines for third parties on apple.com. The theme was set back to Light afterwards. Not checked: the largest text size, and `en/releases` at 390 in dark.
+
+**Result: FAIL (6 checks: 1, 7, 10, 11, 14, 18).**
+
+Contrast: the marks are `--muted` on `--bg`, which measures 5.69:1 in light and 7.58:1 in dark. The floor for non-text graphics is 3:1.
+
+| # | Check | PASS/FAIL | Evidence |
+| --- | --- | --- | --- |
+| 1 | Matches the approved flow | FAIL | `ar/releases` 1.2.0, the «تغيير» item says «(تركيا: ولاية، وإيران وأيرلندا والعراق: محافظة)». The data gives Ireland `region_label_ar: "مقاطعة"` (`api/v1/ie.json`), and the English item lists only Turkey, Iran and Iraq, so the Arabic page states something false. The rest matches the flow spec: title, one-line lede, GitHub releases link, one section per version with the newest first, version heading, date and list. The footer link is on all 496 pages (2 × 248). |
+| 2 | One job, one primary action | PASS | The release page only reads, and its one action is the GitHub link. The marks add no action. |
+| 3 | All states | PASS | Static page. `releases()` falls back to `releases.auto` and the date for a version that `CHANGELOG.ar.md` does not cover. It is not triggered now because every version is covered, so the Arabic page has no English prose. |
+| 4 | Density | PASS | Releases at 1280: the version is in the label column, and the date sits muted at the top of the facts column on the heading's baseline. Below it come the summary and the list, with 8 px between items and one hairline between versions. At 390 the date sits under the version. The 14 items in 1.2.0 are long, but each is one change. Install: the marks add one 24 px row above each heading and leave no new empty area. |
+| 5 | Native first, one pattern | PASS | One `marks()` helper and one `.marks` rule serve both the headings (up to 3 marks, 24 px) and the chips (the first mark, 16 px). The GitHub link under the release lede uses the plain standalone link style that home already uses ("Full policy on GitHub"). |
+| 6 | Motion | PASS | Nothing added. |
+| 7 | Both languages native, RTL | FAIL | (a) `ar/releases` lede (WORDING `releases.body`): «…والأول تغيير يكسر.» A verb with no object reads unfinished and copies "breaking change" word for word. (b) `ar/releases` 1.2.0, search item: in «وإذا لم يطابق شيء فقط يُقبل الاسم…», «فقط» follows «شيء», so the clause reads as "if only nothing matches". The English means "only when nothing else matches". RTL on /install passes: in `ar/install` (1280 dark and 390) the first mark sits at the right edge and the order mirrors, and no logo is flipped (the Swift bird and the Kotlin K face the same way as in `en`). |
+| 8 | Light and Dark | PASS | Both pages, both languages, 1280 light and dark. 390 in light (four frames) and dark (three frames). Marks, dates, hints and lists are legible in both themes. |
+| 9 | Accessibility floor | PASS | Marks have `aria-hidden="true"` and `focusable="false"`, and the heading and chip text names each stack. The footer link and the GitHub link keep their 44 px boxes. Contrast is measured above. |
+| 10 | Copy rules | FAIL | (a) `en/releases` 1.0.0 says "5012 ISO 3166-2 subdivisions", while 1.2.0 on the same page says "5,012". The Arabic page uses 5,012 in both. (b) Web Interface Guidelines, Typography: the changelogs use "..." instead of "…" ("Libya شعبية...", "Casablanca-Settat...", «الدار البيضاء سطات»...). |
+| 11 | Icons | FAIL | (a) Simple Icons fits every mark into a 24 × 24 box by its widest side. The three wordmark-only logos (`php`, `go`, `dotnet`) therefore render about 7 to 12 px tall, next to 24 px square marks. In the 16 px chips, ".NET" and "GO" are about 4 to 6 px tall and cannot be read. On `en/install` 1280, the C# mark reads as a tiny ".NET" caption above "C#, .NET". (b) `stacks.swift` includes the Apple logo. Apple's guidelines for third parties (section 2) say: "You may not use the Apple Logo or any other Apple-owned graphic symbol". The Swift section already names its platforms ("iOS, macOS"). (c) The standard takes logos from fa-brands. Simple Icons replaces that source here, and `DESIGN.md` does not record the exception. |
+| 12 | Imagery | PASS | Out of scope (entry 25). |
+| 13 | Tokens only | PASS | `.marks` uses `var(--muted)` through `currentColor`. Sizes and gaps are in px, like the rest of `site.css`. `DESIGN.md` defines no spacing tokens. |
+| 14 | Feels like the product | FAIL | "Exact" is missed on /install. Three of the twelve chips, in the first row a visitor sees, carry a mark that cannot be read, at a third of the height of its neighbours (cause 11a). Otherwise the muted marks read calm, and the release page reads like the rest of the fact sheet. |
+| 15 | Bars never hide content | PASS | The to-top pill behaves as in earlier passes, and the footer end padding clears it. |
+| 16 | One scroll axis | PASS | 390, all four frames in light and the three upper frames in dark: no horizontal scroll. Long inline code wraps inside the column (`dotnet add package WorldRef`, `io.github.arj-89/worldref`). |
+| 17 | No clipped icons | PASS | Marks are whole at 24 px and 16 px, in both languages and both themes. The chips wrap without clipping at 390. |
+| 18 | Mixed-direction lines | FAIL | (a) `en/releases` 1.2.0, 1280 light and dark: "Morocco جهة, عمالة, إقليم" shows as "Morocco إقليم ,عمالة ,جهة,". The three Arabic terms and the commas between them form one RTL run, so the order reverses and the commas attach to the wrong words. (b) `ar/releases` 1.1.2 at 390, light: «JSON-RPC رقم -32600» shows the code as "32600-", with the minus on the right of the digits. The same bidi rule turns «"+971"» in 1.1.0 into "971+", and "C#" in 1.2.0 and 1.0.0 into "#C": a leading sign or a trailing # takes the Arabic direction. Cause: `inline()` in `changelog()` does not apply `isoLatin`, which /install uses for exactly C# and .NET. `isoLatin` also cannot start a run at "-". These read correctly: versions, dates, URLs, `<code dir="ltr">` spans, `UTC±hh:mm` and "ISO 3166-2". |
+| 19 | Dates, spacing | PASS | Dates are Gregorian DD/MM/YYYY, and Hijri is not relevant here. Section spacing matches the other pages. |
+| 20 | Footer | PASS | «سجل الإصدارات» / "Release notes" ends the site-pages row, after «سياسة البيانات» / "Data policy", on every page (496 files). The 404 page is unchanged. |
+
+**Excluded state's name:** a case-insensitive grep of `site/_out` for the English and Arabic names finds 3 files: `AGENTS.md`, `llms.txt` and `llms-full.txt`, the three the scan exempts. It is not on any HTML page. PASS.
+
+**Web Interface Guidelines:** the decorative icons have `aria-hidden` (pass). The "…" rule fails (check 10b). Nothing else applies to this change.
+
+### Mechanical gate
+
+| Item | Result |
+| --- | --- |
+| Lint pack green | Not on the board (descoped under entry 25). |
+| Screenshot matrix | No board. Viewed live: both pages, both languages, 1280 light and dark, and 390 light (four frames) and dark (three frames). Largest text size not checked, as in earlier sections. |
+| Recordings | Not needed: no interaction added. |
+
+### Notes to the builder (install icons and release notes)
+
+1. **Check 1, `ar/releases` 1.2.0 (`CHANGELOG.ar.md` line 17):** «(تركيا: ولاية، وإيران والعراق: محافظة)». This removes «أيرلندا».
+2. **Check 7a, `docs/design/flows/releases/WORDING.md` `releases.body` (Arabic):** end the lede with «…والأول تغيير يكسر التوافق.»
+3. **Check 7b, `CHANGELOG.ar.md` line 12:** «…وعلامات الترقيم («cote divoire»)، وإن لم يطابق شيءٌ آخر، فعندها فقط يُقبل الاسم الذي يختلف بحرف واحد عن نص من 4 إلى 7 أحرف…»
+4. **Check 10:** in `CHANGELOG.md` 1.0.0, change "5012" to "5,012". In `CHANGELOG.md` and `CHANGELOG.ar.md`, replace every "..." with "…".
+5. **Checks 11a and 14, `site/icons.json`, `site/build.mjs` `marks()` and `site/assets/site.css` lines 123 to 126:**
+   - When vendoring, store a `viewBox` per icon, cropped to the path's bounding box. Have `marks()` use it instead of `0 0 24 24`.
+   - Size every mark by height: `.marks svg { block-size: 20px; inline-size: auto; }` and `.jump a .marks svg { block-size: 14px; inline-size: auto; }`.
+   - Result: the square marks shrink slightly, and the PHP, Go and .NET wordmarks get the same height as the rest, so they can be read in the headings and the chips.
+   - Re-check the chip rows at 1280 and 390 in both languages.
+6. **Check 11b, `site/icons.json`:** remove `apple` from `stacks.swift` and from `icons`.
+7. **Check 11c, `DESIGN.md` "Exceptions and rules":** add a line along these lines: "Brand marks on /install: Simple Icons 16.37.0 (CC0), vendored in `site/icons.json`, one colour (`--muted`), decorative (`aria-hidden`), used instead of fa-brands because …". Give the actual reason (the stacks that fa-brands does not cover).
+8. **Check 18, `site/build.mjs` and `CHANGELOG.ar.md`:**
+   - On the Arabic page, pass every item and paragraph through `isoLatin` after `inline()`.
+   - Widen the start of `isoLatin`'s run from `[A-Za-z.#+]` to `(?:[A-Za-z.#+]|-(?=\d))`, so "-32600" is isolated.
+   - In `CHANGELOG.ar.md`, quote the Latin examples with «» instead of straight quotes ("971", "+971", "US", "UK", "Bosnia", "Hong Kong SAR China", "Hong Kong", "cote divoire", "Kuwiat"). `isoLatin` already accepts «» before a run, and this also ends the mix of «» and straight quotes inside one bracket («"Kuwiat"، «الكويب»»).
+   - On the English page, isolate the Arabic runs: `.replace(/[؀-ۿ]+(?:[  ][؀-ۿ]+)*(?![^<]*>)/g, (m) => '<bdi lang="ar" dir="rtl">' + m + '</bdi>')`. "Morocco جهة, عمالة, إقليم" then shows in source order, with each comma after its own word.
+   - After the rebuild, re-check `ar/install` and one Arabic country page for `isoLatin` side effects.
+
+### Outside this change (not counted; owner decisions)
+
+- The Swift logo is also an Apple-owned graphic symbol, so the same Apple clause appears to cover it. I did not confirm whether swift.org grants a separate permission. The owner should decide whether to keep it.
+- Google's Android brand guidelines are generally understood to license the Android robot under CC BY 3.0, which requires attribution. I did not re-check them in this pass, and the site has no attribution. Either add an attribution line to the licences page or drop the `android` mark.
+- "Any language" shows JSON, PostgreSQL and SQLite. The text also names MySQL, so with the three-mark cap the marks suggest only two of the three SQL engines are supported.
+- The /install "Any language" section has a "Releases page" link (GitHub files), while the footer now has "Release notes" (this site's page). Two near-identical names point to different places.
+- At 390, inline code and version numbers wrap at spaces and hyphens ("Node" / "20.10", "JSON-" / "RPC", `addressForm(country,` / `lang)`). It stays readable, so it is not failed.
+- The footer's "v1.2.0" could link to the release page.
+
+### Pass 2
+
+**Reviewer:** Opus 5.5 (claude-opus-5-5). **Date:** 10/11/2026.
+**Method:** viewed in the browser after the rebuild. At 1280 px: `en/install` light (chips, Swift, Kotlin, Go, C# and "Any language" headings), `ar/install` dark (chips, Kotlin section), `ar/releases` dark (1.2.0, 1.1.2, 1.1.1, 1.1.0, 1.0.0), `en/releases` dark (1.2.0). At 390 px: `http://127.0.0.1:8765/m390.html`, in dark and then light, scrolled through Swift and Kotlin in `ar/install` and `en/install`, and the top of `ar/releases`. I grepped the built `site/_out/{ar,en}/releases/index.html` for the new `<bdi>` markup and the corrected strings, and read the new line in `DESIGN.md` and `site/icons.json`. The theme was set back to Light afterwards.
+
+**Result: FAIL (2 checks: 4, 18).** Checks 1, 7, 10, 11 and 14 now pass. The new check 18 FAIL is a regression caused by my pass 1 prescription. `isoLatin` was written for short labels such as "C#" and ".NET", and in running changelog prose it isolates only part of a Latin-and-number run.
+
+| # | Item | Pass 2 | Evidence |
+| --- | --- | --- | --- |
+| 1 | Ireland | PASS | `ar/releases` 1.2.0: «(تركيا: ولاية، وإيران والعراق: محافظة)». |
+| 7 | Arabic lede and search line | PASS | Lede: «…والأول تغيير يكسر التوافق.» Search item: «…وإن لم يطابق شيءٌ آخر، فعندها فقط يُقبل الاسم…», which matches the English meaning. |
+| 10 | Numerals and ellipsis | PASS | `en/releases` 1.0.0 now reads "5,012". Neither built page contains "...". |
+| 11a, 14 | Mark legibility | PASS | `en/install` 1280 light: in the chips, `php`, `GO` and `.NET` stand as tall as the label text and can be read, and the square marks are a little smaller and line up with them. In the headings every mark is 20 px tall, and the Go speed-lines wordmark reads as the Go logo. JSON (the braces in a circle), PostgreSQL and SQLite are recognisable at 20 px. The same holds at 390 in both languages and both themes, and the chip rows wrap without overflow. |
+| 11b | Apple logo | PASS | `stacks.swift` holds `swift` only. The Swift heading and chip show the Swift mark alone. |
+| 11c | `DESIGN.md` | PASS | Line 37 records Simple Icons, the reason (no Font Awesome on the site; fa-brands lacks jsDelivr, MCP and OpenAPI), the colour, height sizing, `aria-hidden`, no Apple logo and the Android attribution. |
+| 18a | Morocco on the English page | PASS | `en/releases` 1.2.0 dark: "Morocco جهة, عمالة, إقليم, Algeria", in source order, with each comma after its own word. |
+| 18b | Sign, "#" and quotes on the Arabic page | PASS | Built HTML: `<bdi dir="ltr">-32600</bdi>`, «<bdi dir="ltr">+971</bdi>», `<bdi dir="ltr">C#</bdi>` (both places), «<bdi dir="ltr">Kuwiat</bdi>». The Latin examples now use «». |
+| 18 | Runs `isoLatin` now splits (new) | FAIL | `ar/releases`, 1280 dark and 390 dark and light. Seen: (1) 1.2.0, «انتقال المغرب إلى UTC+00:00» and «وألبرتا إلى UTC-06:00» show as "00:UTC+00" and "00:UTC-06". `isoLatin` has no ":" in its run, so it isolates `UTC+00` and leaves ":00" outside. (2) 1.1.0, the site URL shows as "arj-89.github.io/worldref//:https". The markup is `<bdi dir="ltr">https</bdi>://arj-89.github.io/worldref`. (3) 1.0.0, «وفق ISO 3166-2» shows "2-3166" detached from "ISO", and «Unicode CLDR 49» and «libphonenumber 9.0.42» show the number before the name ("49 Unicode CLDR", "9.0.42 libphonenumber"). In the markup `<bdi dir="ltr">Node</bdi> 20.10` and `<bdi dir="ltr">Node</bdi> 18` (1.1.2) have the same shape, so they display as "20.10 Node" and "18 Node". (4) 1.2.0, «cote divoire» becomes two isolates (`<bdi>cote</bdi> <bdi>divoire</bdi>`), because the second word is lowercase, so the words display in reverse order. Pass 1 showed (1) to (3) correctly, because those runs were not isolated then. |
+| 4 | Android attribution placement (new) | FAIL | `en/install` and `ar/install`, Kotlin section, 1280 light and dark and 390: the two-line `.fine` attribution («رسم روبوت Android منقول أو معدّل…» / "The Android robot is reproduced or modified…") sits between "Show the first call" and the registry and guide links. It is the only section whose steps are interrupted by fine print. Every other section runs copy, then first call, then links. |
+| 8, 16, 17 | Themes, scroll, clipping | PASS | All the cells above, in both themes: no horizontal scroll at 390, and no clipped mark. |
+
+### Notes to the builder (install icons and release notes, pass 2)
+
+1. **Check 18, `site/build.mjs`:**
+   - Stop using `isoLatin` for the changelog. Keep it as it is for /install and the country pages, including the "-" before a digit.
+   - Add a changelog-only helper that isolates a whole Latin-led run, with its following number or Latin words, and leaves any trailing punctuation outside:
+     ```js
+     const isoRun = (html) => html.replace(/(^|[\s(«،؀-ۿ])((?:[A-Za-z#+]|-(?=\d))[^\s<«»(),،؀-ۿ]*(?:[  ][A-Za-z0-9#+][^\s<«»(),،؀-ۿ]*)*)(?![^<]*>)/g, (m, pre, run) => { const tail = run.match(/[.:;]+$/)?.[0] ?? ""; return `${pre}<bdi dir="ltr">${run.slice(0, run.length - tail.length)}</bdi>${tail}`; });
+     ```
+   - Apply it to the Arabic changelog text in place of `isoLatin`.
+   - The run start no longer accepts ".", so Arabic full stops stop being wrapped (now: `الأخطاء<bdi dir="ltr">.</bdi>`).
+   - After the rebuild, every one of these should be a single isolate: `UTC+00:00`, `UTC-06:00`, `https://arj-89.github.io/worldref`, `Node 20.10`, `Node 18`, `ISO 3166-2`, `Unicode CLDR 49`, `libphonenumber 9.0.42`, `cote divoire`, `Hong Kong SAR China`, `-32600`, `+971`, `C#`, `Kuwiat`. In "MCP:" and "CI." the colon and the full stop must stay outside.
+2. **Check 4, `site/build.mjs` `install()`:** render the Android attribution as the last element of the Kotlin section, after `<p class="guide actions">`, not before it. The section's steps then run copy, first call, links, the same order as every other section, and the attribution closes the section in `.fine`.
+
+### Not counted (pass 2)
+
+- The .NET mark is a plain wordmark, so the C# chip reads ".NET C#, .NET" (in Arabic «C# و.NET» next to ".NET"), and the heading shows a grey ".NET" above "C#, .NET". It is legible and it is the brand's own mark, so it is not failed. If the owner finds the doubled word odd, the C# stack could show no chip mark.
+- `ar/install` Kotlin attribution: the line breaks between «رخصة المشاع الإبداعي» and «3.0». A no-break space before «3.0» in WORDING `install.marks.android` keeps the licence name whole.
+
+### Pass 3
+
+**Reviewer:** Opus 5.5 (claude-opus-5-5). **Date:** 10/11/2026.
+**Method:** I grepped the built `site/_out/ar/releases/index.html` for every `<bdi dir="ltr">` run. Then I viewed the page in the browser, in light (the stored theme). At 1280 px: `ar/releases` 1.2.0, 1.1.2, 1.1.0 and 1.0.0. I zoomed on «رقم -32600» to see which side of the digits the minus sits on. At 390 px: `http://127.0.0.1:8765/m390.html`. In the `ar/releases` frame I scrolled from 1.2.0 to 1.0.0; in the `ar/install` and `en/install` frames I checked the Kotlin section. Dark was not re-viewed, because this rebuild changed only markup and no colour.
+
+**Result: FAIL (1 check: 18).** Check 4 passes, and all 14 runs on my list are single isolates that read correctly at 1280. At 390, one defect remains: `arj-89` still splits on the Arabic release page. Pass 2 should have caught it too: the inline code in 1.1.1 already broke there, and the project has failed this exact break since the Kotlin review.
+
+| # | Item | Pass 3 | Evidence |
+| --- | --- | --- | --- |
+| 18 | The 14 runs, markup | PASS | Each is one `<bdi dir="ltr">`: `UTC+00:00`, `UTC-06:00` (full stop outside), `https://arj-89.github.io/worldref`, `Node 20.10`, `Node 18`, `ISO 3166-2`, `Unicode CLDR 49`, `libphonenumber 9.0.42`, `cote divoire`, `Hong Kong SAR China`, `-32600`, `+971`, `C#` (both places) and `Kuwiat`. In `MCP:` the colon sits outside. No Arabic full stop is wrapped. |
+| 18 | The 14 runs, rendered at 1280 | PASS | 1.2.0: «إلى UTC+00:00 دائمًا» and «وألبرتا إلى UTC-06:00.» read whole. 1.1.2: "Node 20.10" and "Node 18" keep the name before the number, and «رقم -32600» shows the minus on the left of the digits (zoomed). 1.1.0: the URL `https://arj-89.github.io/worldref` reads whole and in order, and «Hong Kong SAR China» wraps inside its own isolate in order. 1.0.0: «وفق ISO 3166-2»، «Unicode CLDR 49» and «libphonenumber 9.0.42» read name then number. |
+| 18 | 1.2.0 and 1.0.0 at 390 | PASS | `UTC+00:00` and `UTC-06:00` are whole. «cote divoire» wraps across two lines but stays one isolate, so its words keep their order. "ISO" / "3166-2" wraps at the space inside its isolate, in order. |
+| 18 | `arj-89` at 390 | FAIL | `ar/releases` 390, light. 1.1.0: the site URL breaks as `https://arj-` / `89.github.io/worldref`. 1.1.1: the inline code breaks the same way twice, `composer require arj-` / `89/worldref` and `io.github.arj-` / `89/worldref`. This is the break after a hyphen before a digit that the Kotlin review failed and fixed on /install with `<span class="nw">arj-89</span>`. The changelog does not apply that rule. |
+| 4 | Android attribution | PASS | `en/install` and `ar/install` at 390: the attribution is now the last element of the Kotlin section, under "Full guide on GitHub" / «الدليل الكامل على GitHub». The section runs copy, first call, links, the same order as Swift and Python. In Arabic «الإبداعي 3.0» stays on one line (no-break space). |
+
+### Notes to the builder (install icons and release notes, pass 3)
+
+1. **Check 18, `site/build.mjs` `changelog()` (both languages):** after `inline()` (and after `isoRun` on the Arabic page), add `.replace(/arj-89(?![^<]*>)/g, '<span class="nw">arj-89</span>')`.
+   - The lookahead skips `href` values, so the GitHub links keep working.
+   - It is the same rule `breakable()` applies on /install.
+   - At 390 the URL then moves to its own line, `https://arj-89.github.io/worldref` (about 250 px of the 326 px list column). The two `1.1.1` code spans break only at their spaces (`composer require` / `arj-89/worldref`).
+   - Re-check `ar/releases` and `en/releases` 1.1.0 and 1.1.1 at 390.
+
+### Not counted (pass 3)
+
+- At 390, "ISO" and "3166-2" sit on different lines in 1.0.0. They are in order, but a no-break space in `CHANGELOG.ar.md` («ISO 3166-2», with U+00A0) would keep the standard's name whole.
+
+### Pass 4
+
+**Reviewer:** Opus 5.5 (claude-opus-5-5). **Date:** 10/11/2026.
+**Method:** I read the new 1.2.1 entry in `CHANGELOG.md` and `CHANGELOG.ar.md`, and grepped the built `site/_out/ar/releases/index.html` for the `arj-89` spans. I also compared `package.json` and the built footer and install lines against the release list. Then I viewed the pages in the browser, in light. At 1280 px: `ar/releases` and `en/releases`, 1.2.1. At 390 px: `http://127.0.0.1:8765/m390.html`, scrolling `ar/releases` from 1.2.1 through 1.1.1 to 1.1.0, and `en/releases` the same way. Nothing looked off in colour, so I did not re-view dark.
+
+**Result: FAIL (2 checks: 1, 18).** The pass 3 FAIL is fixed. The two FAILs here are one inconsistency that the new 1.2.1 entry introduces and one old defect in 1.1.1 that I missed in earlier passes.
+
+| # | Item | Pass 4 | Evidence |
+| --- | --- | --- | --- |
+| 18 | `arj-89` at 390 | PASS | `ar/releases` 390: 1.1.0 shows `https://arj-89.github.io/worldref` whole, on its own line. 1.1.1 shows `arj-89/worldref` and `io.github.arj-89/worldref` whole. The code spans now break only at spaces. `en/releases` 390, 1.1.0 and 1.1.1: the same, with every `arj-89` whole. 1.2.1 in both languages: `io.github.arj-89:worldref` whole. The GitHub links still work, because their `href` values are untouched. |
+| 7, 10, 18 | 1.2.1 entry | PASS | The Arabic reads natively, and each English item has an Arabic counterpart with the same facts. The Latin runs are whole isolates in order: «Republic of C&ocirc» (shown literally, as intended), «Republic of Türkiye», «Viljandi³», «Maven Central» (at 390 it wraps inside its isolate) and `io.github.arj-89:worldref`. 1280 and 390, both languages. There is no English prose on the Arabic page. |
+| 1 | Version shown against the version released | FAIL | Both release pages put 1.2.1 at the top as the newest release, dated 10/11/2026. `package.json` is still `1.2.0`, so on the same build every footer reads «v1.2.0» / "v1.2.0", and every install line on /install says 1.2.0 (`worldref@1.2.0`, `from: "1.2.0"`, `worldref:1.2.0`). A visitor sees a release the packages and the site do not have. The flow spec defines the page as what changed "between the version they use and the newest one", and the newest one shown does not exist yet. |
+| 18 | `./` before a full stop (1.1.1) | FAIL | `ar/releases` 1280 and 390, item «الحزم: مسار bin بلا ./.». The code span `./` is an LTR isolate followed by the Arabic full stop. In RTL the stop lands on the left of the code, so the two dots and the slash read as "../" (or "/.."), a different path from `./`. The English line ("bin path without ./.") reads correctly. This predates pass 1, and I missed it until now. |
+
+### Notes to the builder (install icons and release notes, pass 4)
+
+1. **Check 1, both release pages:** decide with the owner which of these two applies, because it is a release decision. Then either:
+   - bump every manifest to `1.2.1` on this branch before the site is built (the release test already checks that every manifest carries the same version), so the footer, the install lines and the top of the release list all read 1.2.1; or
+   - keep the 1.2.1 entry out of both changelogs until the release job cuts it.
+
+   Either way, the newest version on `/releases/` must equal `pkg.version`. To keep this from recurring, add a check in `site/build.mjs` `releases()` that fails the build when the first `CHANGELOG.md` version is not `pkg.version`.
+2. **Check 18, `CHANGELOG.ar.md`, 1.1.1:** «- الحزم: صار مسار `bin` بلا البادئة `./` في أوله.» The code is then followed by Arabic words, not by the full stop. The English line can stay as it is.
+
+### Not counted (pass 4)
+
+- 1.2.1 at 1280, both languages: the Türkiye item leaves «2022).» / "2022)." alone on its second line. It is readable. Moving the parenthesis earlier would avoid it, for example "Türkiye's English official name, registered at the UN in 2022, is "Republic of Türkiye"".
+- 1.2.1 Arabic, Website item: «ووصف من سطر لكل وحدة» is terse. «ووصف في سطر واحد لكل وحدة» reads more naturally.
+- 1.1.1 at 390, both languages: inline commands wrap at their spaces («npm i» / «worldref»). They are in order and whole at every hyphen. A `white-space: nowrap` on short inline `code` in `.notes-list` would keep each command on one line.
+
+### Pass 5
+
+**Reviewer:** Opus 5.5 (claude-opus-5-5). **Date:** 10/11/2026.
+**Method:** I grepped the built `site/_out` and read `package.json` and `site/build.mjs` `releases()`. Grepped: `{ar,en}/install` and `{ar,en}/releases` for every version string, all HTML for any leftover `1.2.0` install or footer string, and `ar/releases` for the 1.1.1 and 1.2.1 lines. Then I viewed the pages in the browser, in light. At 1280 px: `ar/releases` 1.1.1 and the footer. At 390 px: the `ar/releases` frame of `http://127.0.0.1:8765/m390.html`, 1.1.1 and 1.1.0.
+
+**Result: PASS.** Checks 1 and 18 pass. Every FAIL in this section, from the first pass through pass 4, is fixed and verified.
+
+| # | Item | Pass 5 | Evidence |
+| --- | --- | --- | --- |
+| 1 | One version across the site | PASS | `package.json` is `1.2.1`. The top entry on both release pages is 1.2.1. The footers read «v1.2.1» / "v1.2.1" (seen at 1280 on `ar/releases`). On `ar/install` and `en/install`, every line reads 1.2.1: `worldref@1.2.1` (npm CDN and modules URL), `from: "1.2.1"` (Swift), `worldref:1.2.1` (Kotlin), `go@v1.2.1`. A grep of all built HTML for `v1.2.0`, `@1.2.0`, `:1.2.0"` and `"1.2.0"` finds 0 matches. `releases()` now throws when the first `CHANGELOG.md` version differs from `pkg.version` (`site/build.mjs` line 480). |
+| 18 | 1.1.1 Arabic line | PASS | Built markup: «الحزم: صار مسار `<code dir="ltr">bin</code>` بلا البادئة `<code dir="ltr">./</code>` في أوله.» At 1280 and 390, the code `./` sits between «البادئة» and «في», and the full stop ends the sentence after «أوله». No dot is adjacent to the code, so it can no longer read as "../". |
+| 7 | 1.2.1 Arabic Website item | PASS | «ووصف في سطر واحد لكل وحدة». |
+| — | README roadmap | Outside scope | The roadmap lives in `README.md`, which the site does not render: a grep of all built HTML for "Shipped in" and "Roadmap" finds 0 matches. The `CITATION.cff` and roadmap repairs are release-tooling fixes and are not judged here. |
+
+**Final state of this section:** every FAIL from the first pass of this section and from passes 2, 3 and 4 is fixed and verified. Ready to merge from Stop 2's side. The not-counted lists stay open as notes for the owner: the Swift logo under Apple's clause, the doubled ".NET" on the C# chip, "Any language" omitting MySQL, "Releases page" against "Release notes", the lone «2022).», and the inline commands wrapping at 390.

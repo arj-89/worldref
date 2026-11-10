@@ -6,7 +6,7 @@ Countries and territories in Arabic and English: names, ISO codes, phone plans, 
 
 ```yaml
 dependencies:
-  worldref: ^1.2.0
+  worldref: ^1.2.1
 ```
 
 ## Usage

@@ -120,6 +120,14 @@ input[type="search"]:focus-visible, input[type="tel"]:focus-visible { outline: 2
 .rows .meta { margin-inline-start: auto; font-size: 0.9375rem; display: inline-flex; gap: 10px; }
 .tz, .tz-note { display: block; }
 .nw { white-space: nowrap; }
+.marks { display: flex; gap: 10px; color: var(--muted); }
+.marks { align-items: center; }
+.marks svg { block-size: 20px; inline-size: auto; fill: currentColor; flex: none; }
+.stack h2 .marks { margin-block-end: 10px; }
+.jump a .marks svg { block-size: 14px; inline-size: auto; }
+.jump a { gap: 8px; }
+.notes-list { padding-inline-start: 1.25em; }
+.notes-list li { margin-block-end: 8px; }
 pre, code { font-variant-ligatures: none; }
 details:not([open]) > summary .if-open, details[open] > summary .if-closed { display: none; }
 .tz-note { margin-block-start: 4px; }

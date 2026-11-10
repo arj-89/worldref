@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "worldref"
-version = "1.2.0"
+version = "1.2.1"
 description = "Every country in Arabic, English, or both: names, nationalities, dial codes, phone validation, currencies, subdivisions."
 readme = "README.md"
 requires-python = ">=3.9"

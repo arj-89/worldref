@@ -7,14 +7,14 @@
 From Maven Central (`mavenCentral()` is in every new Gradle and Android project):
 
 ```kotlin
-dependencies { implementation("io.github.arj-89:worldref:1.2.0") }
+dependencies { implementation("io.github.arj-89:worldref:1.2.1") }
 ```
 
 JitPack still works, with the same code under its own coordinates:
 
 ```kotlin
 repositories { maven("https://jitpack.io") }
-dependencies { implementation("com.github.arj-89:worldref:v1.2.0") }
+dependencies { implementation("com.github.arj-89:worldref:v1.2.1") }
 ```
 
 ## Usage

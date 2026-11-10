@@ -9,7 +9,7 @@ from .models import (
 )
 from .text import normalize, western_digits
 
-__version__ = "1.2.0"
+__version__ = "1.2.1"
 
 __all__ = [
     "Address", "AddressFormField", "Country", "Currency", "Emergency", "Geo", "Language", "Locale", "Nationality",

@@ -376,3 +376,8 @@ export const ADDRESS_LABEL_AR = {
     sublocality: { suburb: "الضاحية", district: "المنطقة", neighborhood: "الحي", village_township: "القرية أو البلدة", townland: "المنطقة الريفية" },
     postal_code: { postal: "الرمز البريدي", zip: "الرمز البريدي", pin: "الرمز البريدي", eircode: "الرمز البريدي" },
 };
+
+/** Official names the sources have out of date. */
+export const OFFICIAL_NAME_FIX = {
+    TR: { en: "Republic of Türkiye", why: "The UN registered Türkiye as the country's name in 2022; the Factbook's final edition keeps the old form", why_ar: "سجّلت الأمم المتحدة اسم تركيا الرسمي بالإنجليزية Türkiye عام 2022، وما زالت الطبعة الأخيرة من كتاب حقائق العالم بالصيغة القديمة" },
+};

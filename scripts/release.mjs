@@ -28,10 +28,12 @@ edit("dart/pubspec.yaml", [[new RegExp(`version: ${esc}`), `version: ${next}`]])
 edit("kotlin/build.gradle.kts", [[new RegExp(`version = "${esc}"`), `version = "${next}"`]]);
 edit("csharp/WorldRef/WorldRef.csproj", [[new RegExp(`<Version>${esc}</Version>`), `<Version>${next}</Version>`]]);
 edit("server.json", [[new RegExp(`"version": "${esc}"`, "g"), `"version": "${next}"`]]);
-edit("CITATION.cff", [[new RegExp(`version: ${esc}`), `version: ${next}`], [/date-released: .*/, `date-released: ${new Date().toISOString().slice(0, 10)}`]]);
+// Anchored: "cff-version: 1.2.0" is the citation format's own version and must never change.
+edit("CITATION.cff", [[new RegExp(`^version: ${esc}$`, "m"), `version: ${next}`], [/date-released: .*/, `date-released: ${new Date().toISOString().slice(0, 10)}`]]);
 // Install lines in every README: v1.0.0, @1.0.0, from: "1.0.0", ^1.0 stays valid within a major.
 for (const f of ["README.md", "README.ar.md", "python/README.md", "Sources/WorldRef/README.md", "kotlin/README.md", "dart/README.md", "php/README.md", "go/README.md", "csharp/README.md"])
-    edit(f, [[new RegExp(esc, "g"), next]]);
+    // Only install-style mentions (@1.2.0, v1.2.0, :1.2.0, "1.2.0", #v1.2.0, ^1.2.0, `1.2.0`); prose such as "Shipped in 1.2.0" is history.
+    edit(f, [[new RegExp(`(?<=[@v:"#^`])${esc}(?![0-9])`, "g"), next]]);
 
 execFileSync("npm", ["install", "--package-lock-only", "--no-audit", "--no-fund"], { cwd: ROOT, stdio: "inherit" });
 execFileSync("npm", ["run", "build"], { cwd: ROOT, stdio: "inherit" });
@@ -43,6 +45,8 @@ if (!readFileSync(`${ROOT}CHANGELOG.md`, "utf8").includes(`## ${next} `)) {
     const body = (lines.length ? lines : ["Upstream sources checked; no data changes."]).map((l) => `- ${l}`).join("\n");
     edit("CHANGELOG.md", [[/\n## /, () => `\n## ${next} (${new Date().toISOString().slice(0, 10)}, data refresh)\n\n${body}\n\n## `]]);
     copyFileSync(`${ROOT}CHANGELOG.md`, `${ROOT}dart/CHANGELOG.md`);
+    // The Arabic changelog gets the same version, in Arabic (the website's Arabic release notes read it).
+    edit("CHANGELOG.ar.md", [[/\n## /, () => `\n## ${next} (${new Date().toISOString().slice(0, 10)})\n\n- تحديث تلقائي للبيانات من مصادرها. التفاصيل في [سجل التغييرات الإنجليزي](CHANGELOG.md).\n\n## `]]);
 }
 // Every field that has shipped stays in the compatibility baseline; removing one needs a major release.
 writeFileSync(`${ROOT}tests/compat-baseline.json`, JSON.stringify(baseline(), null, 1) + "\n");

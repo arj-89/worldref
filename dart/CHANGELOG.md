@@ -3,16 +3,24 @@
 All notable changes. Versions follow semantic versioning: a removed row or field is major, a new field
 or a name change is minor, a data fix or upstream refresh is a patch.
 
+## 1.2.1 (2026-11-10)
+
+- Fixed: Côte d'Ivoire's English official name was cut off ("Republic of C&ocirc"); the Factbook's HTML entities are now decoded before parsing.
+- Fixed: Türkiye's English official name is "Republic of Türkiye" (registered at the UN in 2022).
+- Fixed: stray superscript markers removed from subdivision names (Estonia's "Viljandi³").
+- Docs: Kotlin installs from Maven Central (`io.github.arj-89:worldref`); JitPack still works. The install check verifies Maven Central on every release.
+- Website: brand marks on the install page; this release notes page, in Arabic and English, linked from every footer; full-width titles, leads and fields; a one-line description of each module on the file builder; layout and wrapping fixes at phone width.
+
 ## 1.2.0 (2026-11-10)
 
 New, non-breaking. Every field that 1.1.x had is unchanged; a test now fails the build if a shipped field ever disappears.
 
 - New: `geo.timezone_offsets`, each zone's standard UTC offset and its daylight-saving offset (null when it does not switch), from IANA tzdata 2026f compiled with zic, under the rules in force on the date in `data/meta.json`. For describing zones; compute times with the platform's time-zone support. Morocco's permanent move to UTC+00:00 (20/09/2026) and Alberta's to UTC-06:00 are included.
-- New: subdivision types, `type_en` and `type_ar`, for 4,869 of 5,012 subdivisions (the rest are null). English from Wikidata classes; Arabic from each Arab country's own official term (Saudi منطقة, Egypt محافظة, UAE إمارة, Morocco جهة, عمالة, إقليم, Algeria and Tunisia ولاية, Libya شعبية...) and otherwise a fixed glossary.
+- New: subdivision types, `type_en` and `type_ar`, for 4,869 of 5,012 subdivisions (the rest are null). English from Wikidata classes; Arabic from each Arab country's own official term (Saudi منطقة, Egypt محافظة, UAE إمارة, Morocco جهة, عمالة, إقليم, Algeria and Tunisia ولاية, Libya شعبية…) and otherwise a fixed glossary.
 - New: address-form data, `locality_label_*`, `sublocality_label_*`, `postal_code_label_*` (English from Google's libaddressinput, Arabic from the worldref glossary) and `required_fields`, plus an `addressForm(country, lang)` helper in all eight packages that gives the fields line by line in the country's order, with labels and required marks.
 - New: search forgives typing. Names match with spaces and punctuation removed ("cote divoire"), and, only when nothing else matches, within 1 edit for 4 to 7 letters or 2 from 8 ("Kuwiat", «الكويب»). Exact results are unchanged. A public `editDistance` helper comes with it.
 - Fixed: Morocco's row now lists Western Sahara's zone (`Africa/El_Aaiun`), following the data policy.
-- Fixed: Morocco's 12 regions carried the pre-2015 names (from CLDR) under the codes ISO reassigned, so Casablanca sat under «مكناس تافيلالت». They now carry the 2015 names in both languages («الدار البيضاء سطات», Casablanca-Settat...).
+- Fixed: Morocco's 12 regions carried the pre-2015 names (from CLDR) under the codes ISO reassigned, so Casablanca sat under «مكناس تافيلالت». They now carry the 2015 names in both languages («الدار البيضاء سطات», Casablanca-Settat…).
 - Fixed: subdivision names: Amanat Al Asimah («أمانة العاصمة», not a second «صنعاء»), Kurdistan Region («إقليم كردستان»), Belfast, Islamabad, Gilan («جيلان»), Dubai's hamza («إمارة دبي»), Bahrain's Southern and Northern governorates, City of London; CLDR's draft marker «²» removed from 18 names; Persian letters in 9 Arabic names written as Arabic letters.
 - Fixed: postal-code patterns for Kazakhstan and Nigeria follow Google's current data (valid new codes were rejected).
 - Changed: Arabic region labels use the country's own term where it differs from the glossary (Turkey ولاية, Iran محافظة, Iraq محافظة).
@@ -21,7 +29,7 @@ New, non-breaking. Every field that 1.1.x had is unchanged; a test now fails the
 - Releases: automatic data releases list what changed (sources, fields, the rows affected) in this changelog and in their release notes.
 - Compatibility: typed packages add new fields last, with defaults. C# keeps the 1.1.x constructors and deconstructors, so compiled code keeps working; Kotlin adds `@JvmOverloads`, but the compiled `copy()` of `Geo`, `Address` and `Subdivision` changes, so already-compiled Java or Kotlin code that calls `copy()` on them needs a rebuild (source code is unaffected).
 - Website: country pages show each zone's UTC offsets and each subdivision's type, and every editorial decision gives its reason in Arabic as well as English (`why_ar` in `data/sources.json`).
-- Prepared: Kotlin on Maven Central (`io.github.arj-89:worldref`), signed in the release job; it stays off until signing is set up. JitPack is unchanged.
+- New: Kotlin on Maven Central (`io.github.arj-89:worldref`), signed in the release job and published from this version on. JitPack still works.
 
 ## 1.1.3 (2026-11-09)
 
@@ -54,7 +62,7 @@ New, non-breaking. Every field that 1.1.x had is unchanged; a test now fails the
 
 First release.
 
-- 242 countries and territories, 5012 ISO 3166-2 subdivisions, in Arabic and English.
+- 242 countries and territories, 5,012 ISO 3166-2 subdivisions, in Arabic and English.
 - Modules: core, nationality, phone, currency, geo, locale, address, travel, sports, subdivisions.
 - Three builds of every file: bilingual, Arabic-only, English-only. JSON, CSV, SQL (Postgres, MySQL, SQLite), static per-country API.
 - Packages for TypeScript, Python, Swift, Kotlin, Dart, PHP, Go and C#, with shared search, sorting and phone helpers held identical by one set of test cases.

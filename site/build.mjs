@@ -37,7 +37,7 @@ const t = (key, lang, vars) => {
 const tl = (key, lang, vars) => (lang === "ar" ? isoLatin(t(key, lang, vars)) : t(key, lang, vars));
 const sep = (lang) => (lang === "ar" ? "، " : ", ");
 // In Arabic text, isolate Latin runs (C#, .NET, iOS) so they keep their order, and keep «لـ» with the next word.
-const isoLatin = (html) => html.replace(/(^|[\s(«،\u0600-\u06FF])((?:[A-Za-z.#+][A-Za-z0-9.#+/-]*)(?: [A-Z][A-Za-z0-9.#+/-]*)*)(?![^<]*>)/g, (m, pre, run) => `${pre}<bdi dir="ltr">${run}</bdi>`);
+const isoLatin = (html) => html.replace(/(^|[\s(«،\u0600-\u06FF])((?:(?:[A-Za-z.#+]|-(?=\d))[A-Za-z0-9.#+/-]*)(?: [A-Z][A-Za-z0-9.#+/-]*)*)(?![^<]*>)/g, (m, pre, run) => `${pre}<bdi dir="ltr">${run}</bdi>`);
 const plain = (key, lang) => (W[key]?.[lang] ?? key).replace(/`/g, "");
 const tp = (base, n, lang, vars = {}) => t(pluralKey(base, n, lang), lang, { n: num(n), ...vars });
 const ltr = (s) => `<bdi dir="ltr">${esc(s)}</bdi>`;
@@ -147,7 +147,7 @@ function header(lang, path, other) {
 function footer(lang, path, other) {
     const gh = "https://github.com/arj-89/worldref";
     return `<footer class="site-footer">
-<nav aria-label="${plain("footer.site", lang)}"><a href="${href(lang)}">${t("chrome.nav.home", lang)}</a>${NAV.map(([k, p]) => `<a href="${href(lang, p)}">${t(k, lang)}</a>`).join("")}<a href="${href(lang)}#faq">${t("chrome.nav.faq", lang)}</a><a href="${href(lang)}#policy">${t("chrome.nav.policy", lang)}</a></nav>
+<nav aria-label="${plain("footer.site", lang)}"><a href="${href(lang)}">${t("chrome.nav.home", lang)}</a>${NAV.map(([k, p]) => `<a href="${href(lang, p)}">${t(k, lang)}</a>`).join("")}<a href="${href(lang)}#faq">${t("chrome.nav.faq", lang)}</a><a href="${href(lang)}#policy">${t("chrome.nav.policy", lang)}</a><a href="${href(lang, "releases/")}">${t("releases.title", lang)}</a></nav>
 <nav aria-label="GitHub"><a href="${gh}">${t("footer.repo", lang)}</a><a href="${gh}/issues/new/choose">${t("footer.issues", lang)}</a><a href="${gh}/tree/main/LICENSES">${t("footer.licences", lang)}</a><a href="${gh}/blob/main/CITATION.cff">${t("footer.cite", lang)}</a></nav>
 <p class="fine">${t("footer.privacy", lang)} ${t("footer.licence-line", lang)} ${ltr(`v${pkg.version}`)}</p>
 </footer>`;
@@ -247,6 +247,10 @@ function usageBlock(readmePath) {
     const m = md.match(/## Usage[\s\S]*?```\w*\n([\s\S]*?)```/);
     return m ? m[1].trim() : null;
 }
+// Brand marks for each stack (Simple Icons, CC0; one colour, decorative: the stack's name is the label).
+const ICONS = JSON.parse(read("site/icons.json"));
+const marks = (id, max = 3) =>
+    `<span class="marks" aria-hidden="true">${(ICONS.stacks[id] ?? []).slice(0, max).map((s) => `<svg viewBox="${ICONS.icons[s].viewBox}" focusable="false"><path d="${ICONS.icons[s].path}"/></svg>`).join("")}</span>`;
 function installRows() {
     const fetchLine = (url) => `const sa = await fetch("${url}").then((r) => r.json());\nconsole.log(sa.name_ar, sa.phone[0].calling_code); // السعودية +966`;
     return [
@@ -276,9 +280,9 @@ function install(lang) {
               ? `<p><a href="${href(lang, "agents/")}">${t("install.mcp.more", lang)}</a></p>`
               : "";
         const first = r.first ? `<details class="first"><summary><span class="if-closed">${t("install.first.show", lang)}</span><span class="if-open">${t("install.first.hide", lang)}</span></summary><p class="where">${t("install.first.title", lang)}</p><pre dir="ltr"><code>${esc(r.first).replace(/-&gt;/g, "<wbr>-&gt;")}</code></pre></details>` : "";
-        return `<section class="stack" id="${r.id}" aria-labelledby="${r.id}-h"><h2 id="${r.id}-h">${tl(`install.stack.${r.id}`, lang)} <span>${tl(`install.stack.${r.id}.on`, lang)}</span></h2>${r.id === "files" ? `<p>${t("install.files.body", lang)}</p>` : ""}${blocks}${extra}${first}<p class="guide actions">${r.registry ? `<a class="btn" href="${r.registry[0]}" rel="external">${t("install.registry", lang, { name: esc(r.registry[1]) })}</a>` : ""}<a class="btn" href="https://github.com/arj-89/worldref/blob/main/${r.guide}">${t("install.guide", lang)}</a></p></section>`;
+        return `<section class="stack" id="${r.id}" aria-labelledby="${r.id}-h"><h2 id="${r.id}-h">${marks(r.id)}${tl(`install.stack.${r.id}`, lang)} <span>${tl(`install.stack.${r.id}.on`, lang)}</span></h2>${r.id === "files" ? `<p>${t("install.files.body", lang)}</p>` : ""}${blocks}${extra}${first}<p class="guide actions">${r.registry ? `<a class="btn" href="${r.registry[0]}" rel="external">${t("install.registry", lang, { name: esc(r.registry[1]) })}</a>` : ""}<a class="btn" href="https://github.com/arj-89/worldref/blob/main/${r.guide}">${t("install.guide", lang)}</a></p>${r.id === "kotlin" ? `<p class="fine">${t("install.marks.android", lang)}</p>` : ""}</section>`;
     }).join("");
-    const jump = `<nav class="jump" aria-label="${plain("install.jump", lang)}">${INSTALL_ROWS.map((r) => `<a href="#${r.id}"><span>${tl(`install.stack.${r.id}`, lang)}</span></a>`).join("")}</nav>`;
+    const jump = `<nav class="jump" aria-label="${plain("install.jump", lang)}">${INSTALL_ROWS.map((r) => `<a href="#${r.id}">${marks(r.id, 1)}<span>${tl(`install.stack.${r.id}`, lang)}</span></a>`).join("")}</nav>`;
     const body = `<section class="intro"><h1>${t("install.title", lang)}</h1><p class="lede">${t("install.body", lang)}</p>${jump}</section>${rows}
 <section class="modules" aria-labelledby="mods-h"><h2 id="mods-h">${t("install.modules.title", lang)}</h2><p>${t("install.modules.body", lang)}</p><pre dir="ltr"><code>${esc('import phone from "worldref/data/modules/phone.json" with { type: "json" };\nimport { parsePhone } from "worldref/helpers";')}</code></pre><p>${t("install.modules.other", lang)}</p><div class="cmd"><pre dir="ltr"><code>${esc(`https://cdn.jsdelivr.net/gh/arj-89/worldref@${pkg.version}/data/modules/phone${lang === "ar" ? ".ar" : ".en"}.json`)}</code></pre>${copyBtn(`https://cdn.jsdelivr.net/gh/arj-89/worldref@${pkg.version}/data/modules/phone${lang === "ar" ? ".ar" : ".en"}.json`, lang, "url")}</div><p>${t("install.null", lang)}</p><p><a class="btn" href="${href(lang, "build/")}">${t("install.modules.build", lang)}</a></p></section>`;
     return page({ lang, path: "install/", title: `${plain("install.title", lang)} | worldref`, description: plain("install.body", lang), body, jsonld: [datasetLd(lang)] });
@@ -445,6 +449,41 @@ ${overrides.length ? `<section id="overrides" aria-labelledby="ovr-h"><h2 id="ov
     return page({ lang, path: `countries/${c.iso2.toLowerCase()}/`, title: plain("country.title", lang).replace("{name}", n), description: desc, body, jsonld: [ld] });
 }
 
+// ---------- release notes ----------
+/** Bidi isolation for changelog prose: a whole Latin-led run (URLs, UTC±hh:mm, "Node 20.10"), trailing . : ; outside. */
+const isoRun = (html) => html.replace(/(^|[\s(«،؀-ۿ])((?:[A-Za-z#+]|-(?=\d))[^\s<«»(),،؀-ۿ]*(?:[  ][A-Za-z0-9#+][^\s<«»(),،؀-ۿ]*)*)(?![^<]*>)/g, (m, pre, run) => { const tail = run.match(/[.:;]+$/)?.[0] ?? ""; return `${pre}<bdi dir="ltr">${run.slice(0, run.length - tail.length)}</bdi>${tail}`; });
+/** CHANGELOG markdown to sections: "## 1.2.0 (2026-11-10)", paragraphs and "- " lists; inline code and links. */
+function changelog(file) {
+    const keepWhole = (h) => h.replace(/arj-89(?![^<]*>)/g, '<span class="nw">arj-89</span>');
+    const arabicRuns = (h) => h.replace(/[«\u0600-\u06FF][\u0600-\u06FF\s«»،]*[\u0600-\u06FF»]|[\u0600-\u06FF]/g, (m) => `<bdi lang="ar" dir="rtl">${m}</bdi>`);
+    const iso = file.endsWith(".ar.md") ? isoRun : arabicRuns;
+    const inline = (s) => keepWhole(iso(esc(s))).replace(/`([^`]+)`/g, '<code dir="ltr">$1</code>').replace(/\[([^\]]+)\]\(([^)]+)\)/g, (m, txt, url) => `<a href="${/^https?:/.test(url) ? url : `https://github.com/arj-89/worldref/blob/main/${url}`}">${txt}</a>`);
+    const out = [];
+    for (const block of read(file).split(/\n(?=## )/).slice(1)) {
+        const [head, ...rest] = block.split("\n");
+        const m = head.match(/^## (\S+) \(([^)]+)\)/);
+        if (!m) continue;
+        const items = [], paras = [];
+        for (const line of rest.join("\n").split(/\n(?=- |\n)/)) {
+            const l = line.trim();
+            if (!l) continue;
+            if (l.startsWith("- ")) items.push(inline(l.slice(2).replace(/\s*\n\s*/g, " ")));
+            else paras.push(inline(l.replace(/\s*\n\s*/g, " ")));
+        }
+        out.push({ version: m[1], date: m[2], paras, items });
+    }
+    return out;
+}
+function releases(lang) {
+    const en = changelog("CHANGELOG.md"), ar = Object.fromEntries(changelog("CHANGELOG.ar.md").map((r) => [r.version, r]));
+    // The newest entry must be the version this build ships; otherwise the page lists an unpublished release.
+    if (en[0].version !== pkg.version) throw new Error(`CHANGELOG.md starts at ${en[0].version} but package.json is ${pkg.version}: run scripts/release.mjs first`);
+    const list = lang === "en" ? en : en.map((r) => ar[r.version] ?? { version: r.version, date: r.date, paras: [t("releases.auto", "ar")], items: [] });
+    const sections = list.map((r) => `<section id="v${r.version.replace(/\./g, "-")}" aria-labelledby="v${r.version.replace(/\./g, "-")}-h"><h2 id="v${r.version.replace(/\./g, "-")}-h">${ltr(r.version)}</h2><p class="hint">${ltr(r.date.replace(/^(\d{4})-(\d{2})-(\d{2}).*/, "$3/$2/$1"))}</p>${r.paras.map((p) => `<p>${p}</p>`).join("")}${r.items.length ? `<ul class="notes-list">${r.items.map((i) => `<li>${i}</li>`).join("")}</ul>` : ""}</section>`).join("");
+    const body = `<section class="intro"><h1>${t("releases.title", lang)}</h1><p class="lede">${t("releases.body", lang)}</p><p><a href="https://github.com/arj-89/worldref/releases" rel="external">${t("releases.github", lang)}</a></p></section>${sections}`;
+    return page({ lang, path: "releases/", title: `${plain("releases.title", lang)} | worldref`, description: plain("releases.body", lang), body, jsonld: [datasetLd(lang)] });
+}
+
 // ---------- agents ----------
 function agents(lang) {
     const files = [
@@ -507,8 +546,9 @@ for (const lang of LANGS) {
     write(`${lang}/build/index.html`, builder(lang));
     write(`${lang}/countries/index.html`, index(lang));
     write(`${lang}/agents/index.html`, agents(lang));
+    write(`${lang}/releases/index.html`, releases(lang));
     for (const c of countries) write(`${lang}/countries/${c.iso2.toLowerCase()}/index.html`, countryPage(c, lang));
-    urls.push("", "install/", "build/", "countries/", "agents/", ...countries.map((c) => `countries/${c.iso2.toLowerCase()}/`));
+    urls.push("", "install/", "build/", "countries/", "agents/", "releases/", ...countries.map((c) => `countries/${c.iso2.toLowerCase()}/`));
 }
 write("index.html", root());
 write("404.html", notFound());
