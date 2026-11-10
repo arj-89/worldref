@@ -61,6 +61,14 @@ Format: date, feature, what happened (as a role, no blame), root cause, what cha
 - **Affects siblings:** any BIXET site that deploys from main.
 - **Candidate for the skill:** yes (`references/process.md`: Stop 2 runs before the change reaches the deploying branch).
 
+### 10/11/2026 · Release 1.2.1 (release tooling)
+
+- **What happened:** cutting 1.2.1 bumped `cff-version` in CITATION.cff (the citation format's own version, which happened to read 1.2.0) and rewrote the roadmap's history line "Shipped in 1.2.0" to 1.2.1. The version-agreement test caught the first; a manual check caught the second.
+- **Root cause:** unanchored find-and-replace of a version string across files.
+- **What changed here:** the CITATION bump is anchored to `^version:`; README bumps touch only install-style mentions (a version right after @ v : " # ^ or a backtick). Pipelines that run tests must stop on their exit code, not on the output of a grep.
+- **Affects siblings:** any project with a release script that rewrites version strings.
+- **Candidate for the skill:** no (release tooling, not design).
+
 
 ## Rejected, do not reopen
 
