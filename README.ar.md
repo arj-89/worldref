@@ -41,12 +41,12 @@ parsePhone("٠٥٠١٢٣٤٥٦٧", byIso2("SA"));      // { e164: "+966501234567
 |---|---|
 | JavaScript وTypeScript | `npm i worldref` |
 | Swift | Swift Package Manager من `https://github.com/arj-89/worldref` |
-| Kotlin وAndroid | `implementation("io.github.arj-89:worldref:1.2.0")` من Maven Central (وما زال JitPack يعمل: `com.github.arj-89:worldref:v1.2.0`) |
+| Kotlin وAndroid | `implementation("io.github.arj-89:worldref:1.2.1")` من Maven Central (وما زال JitPack يعمل: `com.github.arj-89:worldref:v1.2.1`) |
 | Python | `pip install worldref` |
 | Dart وFlutter | `dart pub add worldref` |
 | PHP وLaravel | `composer require arj-89/worldref` |
 | C# و.NET | `dotnet add package WorldRef` |
-| Go | `go get github.com/arj-89/worldref/go@v1.2.0` |
+| Go | `go get github.com/arj-89/worldref/go@v1.2.1` |
 | بلا تثبيت | `https://arj-89.github.io/worldref/api/v1/sa.json` |
 
 ## استخدم ما تحتاجه فقط
@@ -98,7 +98,7 @@ parsePhone("٠٥٠١٢٣٤٥٦٧", byIso2("SA"));      // { e164: "+966501234567
 **البيانات**
 - `null` أو القائمة الفارغة تعني أن القيمة غير معروفة؛ اعرضها كذلك ولا تملأها من مصدر آخر.
 - حمّل الوحدات التي تحتاجها فقط، ويجمعها المفتاح `iso2`.
-- ثبّت رقم الإصدار (`#v1.2.0` أو `@1.2.0`) حتى لا تتغير الأسماء والقواعد دون علمك.
+- ثبّت رقم الإصدار (`#v1.2.1` أو `@1.2.1`) حتى لا تتغير الأسماء والقواعد دون علمك.
 
 ## سياسة البيانات
 
@@ -117,7 +117,7 @@ parsePhone("٠٥٠١٢٣٤٥٦٧", byIso2("SA"));      // { e164: "+966501234567
 
 ## خارطة الطريق
 
-صدر في 1.2.0: فروق التوقيت للمناطق الزمنية، وأنواع التقسيمات الإدارية، وبحث يتسامح مع الأخطاء البسيطة، وأداة نموذج العنوان، وسجل تغييرات يسرد ما تغيّر في كل تحديث تلقائي للبيانات، وحزمة Kotlin على Maven Central.
+صدر في 1.2.1: فروق التوقيت للمناطق الزمنية، وأنواع التقسيمات الإدارية، وبحث يتسامح مع الأخطاء البسيطة، وأداة نموذج العنوان، وسجل تغييرات يسرد ما تغيّر في كل تحديث تلقائي للبيانات، وحزمة Kotlin على Maven Central.
 
 المخطط للإصدار 1.3.0 (إضافات لا تكسر ما قبلها):
 

@@ -476,6 +476,8 @@ function changelog(file) {
 }
 function releases(lang) {
     const en = changelog("CHANGELOG.md"), ar = Object.fromEntries(changelog("CHANGELOG.ar.md").map((r) => [r.version, r]));
+    // The newest entry must be the version this build ships; otherwise the page lists an unpublished release.
+    if (en[0].version !== pkg.version) throw new Error(`CHANGELOG.md starts at ${en[0].version} but package.json is ${pkg.version}: run scripts/release.mjs first`);
     const list = lang === "en" ? en : en.map((r) => ar[r.version] ?? { version: r.version, date: r.date, paras: [t("releases.auto", "ar")], items: [] });
     const sections = list.map((r) => `<section id="v${r.version.replace(/\./g, "-")}" aria-labelledby="v${r.version.replace(/\./g, "-")}-h"><h2 id="v${r.version.replace(/\./g, "-")}-h">${ltr(r.version)}</h2><p class="hint">${ltr(r.date.replace(/^(\d{4})-(\d{2})-(\d{2}).*/, "$3/$2/$1"))}</p>${r.paras.map((p) => `<p>${p}</p>`).join("")}${r.items.length ? `<ul class="notes-list">${r.items.map((i) => `<li>${i}</li>`).join("")}</ul>` : ""}</section>`).join("");
     const body = `<section class="intro"><h1>${t("releases.title", lang)}</h1><p class="lede">${t("releases.body", lang)}</p><p><a href="https://github.com/arj-89/worldref/releases" rel="external">${t("releases.github", lang)}</a></p></section>${sections}`;

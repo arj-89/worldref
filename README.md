@@ -32,13 +32,13 @@ Published on npm, PyPI, pub.dev, Packagist, NuGet, Maven Central and the MCP Reg
 | Stack | Install |
 |---|---|
 | JavaScript, TypeScript (web, Node 20.10+, React Native, Bun, Deno) | `npm i worldref` |
-| CDN (no build step) | `https://cdn.jsdelivr.net/npm/worldref@1.2.0/data/worldref.json` |
-| Swift (iOS, macOS) | Swift Package Manager: `https://github.com/arj-89/worldref`, from `1.2.0`, product `WorldRef` |
-| Kotlin, Android | `implementation("io.github.arj-89:worldref:1.2.0")` (Maven Central; JitPack still works: `com.github.arj-89:worldref:v1.2.0`) |
+| CDN (no build step) | `https://cdn.jsdelivr.net/npm/worldref@1.2.1/data/worldref.json` |
+| Swift (iOS, macOS) | Swift Package Manager: `https://github.com/arj-89/worldref`, from `1.2.1`, product `WorldRef` |
+| Kotlin, Android | `implementation("io.github.arj-89:worldref:1.2.1")` (Maven Central; JitPack still works: `com.github.arj-89:worldref:v1.2.1`) |
 | Python | `pip install worldref` |
 | Dart, Flutter | `dart pub add worldref` (Flutter: `flutter pub add worldref`) |
 | PHP, Laravel | `composer require arj-89/worldref` |
-| Go | `go get github.com/arj-89/worldref/go@v1.2.0` |
+| Go | `go get github.com/arj-89/worldref/go@v1.2.1` |
 | C#, .NET | `dotnet add package WorldRef` |
 | Any language | JSON, CSV and SQL (Postgres, MySQL, SQLite) in [`data/`](data) and on the [releases page](https://github.com/arj-89/worldref/releases) |
 | AI agents | MCP server: `npx -y worldref mcp` (listed in the MCP Registry as `io.github.arj-89/worldref`) |
@@ -134,7 +134,7 @@ Every rule below is built into the helpers of all eight packages and locked by t
 **Data**
 - `null` (or an empty list) means unknown. Show it as unknown; never fill it from elsewhere.
 - Load only the modules you need; they join on `iso2`.
-- Pin a version (`#v1.2.0`, `@1.2.0`) so names and rules do not change under you.
+- Pin a version (`#v1.2.1`, `@1.2.1`) so names and rules do not change under you.
 
 ## Data policy
 
@@ -277,7 +277,7 @@ Start at [`llms.txt`](llms.txt) and [`AGENTS.md`](AGENTS.md). Schemas are in [`s
 
 ## Roadmap
 
-Shipped in 1.2.0: time-zone offsets, subdivision types, forgiving search, the address-form helper, a changelog that lists what each automatic data release changed, and Kotlin on Maven Central.
+Shipped in 1.2.1: time-zone offsets, subdivision types, forgiving search, the address-form helper, a changelog that lists what each automatic data release changed, and Kotlin on Maven Central.
 
 Planned for 1.3.0 (new, non-breaking):
 

@@ -474,3 +474,32 @@ Contrast: the marks are `--muted` on `--bg`, which measures 5.69:1 in light and 
 ### Not counted (pass 3)
 
 - At 390, "ISO" and "3166-2" sit on different lines in 1.0.0. They are in order, but a no-break space in `CHANGELOG.ar.md` («ISO 3166-2», with U+00A0) would keep the standard's name whole.
+
+### Pass 4
+
+**Reviewer:** Opus 5.5 (claude-opus-5-5). **Date:** 10/11/2026.
+**Method:** I read the new 1.2.1 entry in `CHANGELOG.md` and `CHANGELOG.ar.md`, and grepped the built `site/_out/ar/releases/index.html` for the `arj-89` spans. I also compared `package.json` and the built footer and install lines against the release list. Then I viewed the pages in the browser, in light. At 1280 px: `ar/releases` and `en/releases`, 1.2.1. At 390 px: `http://127.0.0.1:8765/m390.html`, scrolling `ar/releases` from 1.2.1 through 1.1.1 to 1.1.0, and `en/releases` the same way. Nothing looked off in colour, so I did not re-view dark.
+
+**Result: FAIL (2 checks: 1, 18).** The pass 3 FAIL is fixed. The two FAILs here are one inconsistency that the new 1.2.1 entry introduces and one old defect in 1.1.1 that I missed in earlier passes.
+
+| # | Item | Pass 4 | Evidence |
+| --- | --- | --- | --- |
+| 18 | `arj-89` at 390 | PASS | `ar/releases` 390: 1.1.0 shows `https://arj-89.github.io/worldref` whole, on its own line. 1.1.1 shows `arj-89/worldref` and `io.github.arj-89/worldref` whole. The code spans now break only at spaces. `en/releases` 390, 1.1.0 and 1.1.1: the same, with every `arj-89` whole. 1.2.1 in both languages: `io.github.arj-89:worldref` whole. The GitHub links still work, because their `href` values are untouched. |
+| 7, 10, 18 | 1.2.1 entry | PASS | The Arabic reads natively, and each English item has an Arabic counterpart with the same facts. The Latin runs are whole isolates in order: «Republic of C&ocirc» (shown literally, as intended), «Republic of Türkiye», «Viljandi³», «Maven Central» (at 390 it wraps inside its isolate) and `io.github.arj-89:worldref`. 1280 and 390, both languages. There is no English prose on the Arabic page. |
+| 1 | Version shown against the version released | FAIL | Both release pages put 1.2.1 at the top as the newest release, dated 10/11/2026. `package.json` is still `1.2.0`, so on the same build every footer reads «v1.2.0» / "v1.2.0", and every install line on /install says 1.2.0 (`worldref@1.2.0`, `from: "1.2.0"`, `worldref:1.2.0`). A visitor sees a release the packages and the site do not have. The flow spec defines the page as what changed "between the version they use and the newest one", and the newest one shown does not exist yet. |
+| 18 | `./` before a full stop (1.1.1) | FAIL | `ar/releases` 1280 and 390, item «الحزم: مسار bin بلا ./.». The code span `./` is an LTR isolate followed by the Arabic full stop. In RTL the stop lands on the left of the code, so the two dots and the slash read as "../" (or "/.."), a different path from `./`. The English line ("bin path without ./.") reads correctly. This predates pass 1, and I missed it until now. |
+
+### Notes to the builder (install icons and release notes, pass 4)
+
+1. **Check 1, both release pages:** decide with the owner which of these two applies, because it is a release decision. Then either:
+   - bump every manifest to `1.2.1` on this branch before the site is built (the release test already checks that every manifest carries the same version), so the footer, the install lines and the top of the release list all read 1.2.1; or
+   - keep the 1.2.1 entry out of both changelogs until the release job cuts it.
+
+   Either way, the newest version on `/releases/` must equal `pkg.version`. To keep this from recurring, add a check in `site/build.mjs` `releases()` that fails the build when the first `CHANGELOG.md` version is not `pkg.version`.
+2. **Check 18, `CHANGELOG.ar.md`, 1.1.1:** «- الحزم: صار مسار `bin` بلا البادئة `./` في أوله.» The code is then followed by Arabic words, not by the full stop. The English line can stay as it is.
+
+### Not counted (pass 4)
+
+- 1.2.1 at 1280, both languages: the Türkiye item leaves «2022).» / "2022)." alone on its second line. It is readable. Moving the parenthesis earlier would avoid it, for example "Türkiye's English official name, registered at the UN in 2022, is "Republic of Türkiye"".
+- 1.2.1 Arabic, Website item: «ووصف من سطر لكل وحدة» is terse. «ووصف في سطر واحد لكل وحدة» reads more naturally.
+- 1.1.1 at 390, both languages: inline commands wrap at their spaces («npm i» / «worldref»). They are in order and whole at every hyphen. A `white-space: nowrap` on short inline `code` in `.notes-list` would keep each command on one line.
