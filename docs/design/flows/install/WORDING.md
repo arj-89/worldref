@@ -69,4 +69,4 @@ Platform lists sit in brackets after the name, small. Product names stay Latin i
 | install.stack.mcp.on | خادم MCP | MCP server | |
 | install.stack.api | بلا تثبيت | No install | id `api` |
 | install.stack.api.on | دولة واحدة برابط | one country by URL | |
-| install.marks.android | رسم روبوت Android منقول أو معدّل من عمل أنشأته Google ونشرته، ويُستخدم وفق رخصة المشاع الإبداعي 3.0 مع نسبة العمل لصاحبه. | The Android robot is reproduced or modified from work created and shared by Google and used according to terms described in the Creative Commons 3.0 Attribution License. | required attribution, in the Kotlin and Android section |
+| install.marks.android | رسم روبوت Android منقول أو معدّل من عمل أنشأته Google ونشرته، ويُستخدم وفق رخصة المشاع الإبداعي 3.0 مع نسبة العمل لصاحبه. | The Android robot is reproduced or modified from work created and shared by Google and used according to terms described in the Creative Commons 3.0 Attribution License. | required attribution, in the Kotlin and Android section |

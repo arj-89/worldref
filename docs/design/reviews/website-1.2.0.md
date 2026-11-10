@@ -408,3 +408,42 @@ Contrast: the marks are `--muted` on `--bg`, which measures 5.69:1 in light and 
 - The /install "Any language" section has a "Releases page" link (GitHub files), while the footer now has "Release notes" (this site's page). Two near-identical names point to different places.
 - At 390, inline code and version numbers wrap at spaces and hyphens ("Node" / "20.10", "JSON-" / "RPC", `addressForm(country,` / `lang)`). It stays readable, so it is not failed.
 - The footer's "v1.2.0" could link to the release page.
+
+### Pass 2
+
+**Reviewer:** Opus 5.5 (claude-opus-5-5). **Date:** 10/11/2026.
+**Method:** viewed in the browser after the rebuild. At 1280 px: `en/install` light (chips, Swift, Kotlin, Go, C# and "Any language" headings), `ar/install` dark (chips, Kotlin section), `ar/releases` dark (1.2.0, 1.1.2, 1.1.1, 1.1.0, 1.0.0), `en/releases` dark (1.2.0). At 390 px: `http://127.0.0.1:8765/m390.html`, in dark and then light, scrolled through Swift and Kotlin in `ar/install` and `en/install`, and the top of `ar/releases`. I grepped the built `site/_out/{ar,en}/releases/index.html` for the new `<bdi>` markup and the corrected strings, and read the new line in `DESIGN.md` and `site/icons.json`. The theme was set back to Light afterwards.
+
+**Result: FAIL (2 checks: 4, 18).** Checks 1, 7, 10, 11 and 14 now pass. The new check 18 FAIL is a regression caused by my pass 1 prescription. `isoLatin` was written for short labels such as "C#" and ".NET", and in running changelog prose it isolates only part of a Latin-and-number run.
+
+| # | Item | Pass 2 | Evidence |
+| --- | --- | --- | --- |
+| 1 | Ireland | PASS | `ar/releases` 1.2.0: «(تركيا: ولاية، وإيران والعراق: محافظة)». |
+| 7 | Arabic lede and search line | PASS | Lede: «…والأول تغيير يكسر التوافق.» Search item: «…وإن لم يطابق شيءٌ آخر، فعندها فقط يُقبل الاسم…», which matches the English meaning. |
+| 10 | Numerals and ellipsis | PASS | `en/releases` 1.0.0 now reads "5,012". Neither built page contains "...". |
+| 11a, 14 | Mark legibility | PASS | `en/install` 1280 light: in the chips, `php`, `GO` and `.NET` stand as tall as the label text and can be read, and the square marks are a little smaller and line up with them. In the headings every mark is 20 px tall, and the Go speed-lines wordmark reads as the Go logo. JSON (the braces in a circle), PostgreSQL and SQLite are recognisable at 20 px. The same holds at 390 in both languages and both themes, and the chip rows wrap without overflow. |
+| 11b | Apple logo | PASS | `stacks.swift` holds `swift` only. The Swift heading and chip show the Swift mark alone. |
+| 11c | `DESIGN.md` | PASS | Line 37 records Simple Icons, the reason (no Font Awesome on the site; fa-brands lacks jsDelivr, MCP and OpenAPI), the colour, height sizing, `aria-hidden`, no Apple logo and the Android attribution. |
+| 18a | Morocco on the English page | PASS | `en/releases` 1.2.0 dark: "Morocco جهة, عمالة, إقليم, Algeria", in source order, with each comma after its own word. |
+| 18b | Sign, "#" and quotes on the Arabic page | PASS | Built HTML: `<bdi dir="ltr">-32600</bdi>`, «<bdi dir="ltr">+971</bdi>», `<bdi dir="ltr">C#</bdi>` (both places), «<bdi dir="ltr">Kuwiat</bdi>». The Latin examples now use «». |
+| 18 | Runs `isoLatin` now splits (new) | FAIL | `ar/releases`, 1280 dark and 390 dark and light. Seen: (1) 1.2.0, «انتقال المغرب إلى UTC+00:00» and «وألبرتا إلى UTC-06:00» show as "00:UTC+00" and "00:UTC-06". `isoLatin` has no ":" in its run, so it isolates `UTC+00` and leaves ":00" outside. (2) 1.1.0, the site URL shows as "arj-89.github.io/worldref//:https". The markup is `<bdi dir="ltr">https</bdi>://arj-89.github.io/worldref`. (3) 1.0.0, «وفق ISO 3166-2» shows "2-3166" detached from "ISO", and «Unicode CLDR 49» and «libphonenumber 9.0.42» show the number before the name ("49 Unicode CLDR", "9.0.42 libphonenumber"). In the markup `<bdi dir="ltr">Node</bdi> 20.10` and `<bdi dir="ltr">Node</bdi> 18` (1.1.2) have the same shape, so they display as "20.10 Node" and "18 Node". (4) 1.2.0, «cote divoire» becomes two isolates (`<bdi>cote</bdi> <bdi>divoire</bdi>`), because the second word is lowercase, so the words display in reverse order. Pass 1 showed (1) to (3) correctly, because those runs were not isolated then. |
+| 4 | Android attribution placement (new) | FAIL | `en/install` and `ar/install`, Kotlin section, 1280 light and dark and 390: the two-line `.fine` attribution («رسم روبوت Android منقول أو معدّل…» / "The Android robot is reproduced or modified…") sits between "Show the first call" and the registry and guide links. It is the only section whose steps are interrupted by fine print. Every other section runs copy, then first call, then links. |
+| 8, 16, 17 | Themes, scroll, clipping | PASS | All the cells above, in both themes: no horizontal scroll at 390, and no clipped mark. |
+
+### Notes to the builder (install icons and release notes, pass 2)
+
+1. **Check 18, `site/build.mjs`:**
+   - Stop using `isoLatin` for the changelog. Keep it as it is for /install and the country pages, including the "-" before a digit.
+   - Add a changelog-only helper that isolates a whole Latin-led run, with its following number or Latin words, and leaves any trailing punctuation outside:
+     ```js
+     const isoRun = (html) => html.replace(/(^|[\s(«،؀-ۿ])((?:[A-Za-z#+]|-(?=\d))[^\s<«»(),،؀-ۿ]*(?:[  ][A-Za-z0-9#+][^\s<«»(),،؀-ۿ]*)*)(?![^<]*>)/g, (m, pre, run) => { const tail = run.match(/[.:;]+$/)?.[0] ?? ""; return `${pre}<bdi dir="ltr">${run.slice(0, run.length - tail.length)}</bdi>${tail}`; });
+     ```
+   - Apply it to the Arabic changelog text in place of `isoLatin`.
+   - The run start no longer accepts ".", so Arabic full stops stop being wrapped (now: `الأخطاء<bdi dir="ltr">.</bdi>`).
+   - After the rebuild, every one of these should be a single isolate: `UTC+00:00`, `UTC-06:00`, `https://arj-89.github.io/worldref`, `Node 20.10`, `Node 18`, `ISO 3166-2`, `Unicode CLDR 49`, `libphonenumber 9.0.42`, `cote divoire`, `Hong Kong SAR China`, `-32600`, `+971`, `C#`, `Kuwiat`. In "MCP:" and "CI." the colon and the full stop must stay outside.
+2. **Check 4, `site/build.mjs` `install()`:** render the Android attribution as the last element of the Kotlin section, after `<p class="guide actions">`, not before it. The section's steps then run copy, first call, links, the same order as every other section, and the attribution closes the section in `.fine`.
+
+### Not counted (pass 2)
+
+- The .NET mark is a plain wordmark, so the C# chip reads ".NET C#, .NET" (in Arabic «C# و.NET» next to ".NET"), and the heading shows a grey ".NET" above "C#, .NET". It is legible and it is the brand's own mark, so it is not failed. If the owner finds the doubled word odd, the C# stack could show no chip mark.
+- `ar/install` Kotlin attribution: the line breaks between «رخصة المشاع الإبداعي» and «3.0». A no-break space before «3.0» in WORDING `install.marks.android` keeps the licence name whole.

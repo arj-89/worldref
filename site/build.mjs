@@ -280,7 +280,7 @@ function install(lang) {
               ? `<p><a href="${href(lang, "agents/")}">${t("install.mcp.more", lang)}</a></p>`
               : "";
         const first = r.first ? `<details class="first"><summary><span class="if-closed">${t("install.first.show", lang)}</span><span class="if-open">${t("install.first.hide", lang)}</span></summary><p class="where">${t("install.first.title", lang)}</p><pre dir="ltr"><code>${esc(r.first).replace(/-&gt;/g, "<wbr>-&gt;")}</code></pre></details>` : "";
-        return `<section class="stack" id="${r.id}" aria-labelledby="${r.id}-h"><h2 id="${r.id}-h">${marks(r.id)}${tl(`install.stack.${r.id}`, lang)} <span>${tl(`install.stack.${r.id}.on`, lang)}</span></h2>${r.id === "files" ? `<p>${t("install.files.body", lang)}</p>` : ""}${blocks}${extra}${first}${r.id === "kotlin" ? `<p class="fine">${t("install.marks.android", lang)}</p>` : ""}<p class="guide actions">${r.registry ? `<a class="btn" href="${r.registry[0]}" rel="external">${t("install.registry", lang, { name: esc(r.registry[1]) })}</a>` : ""}<a class="btn" href="https://github.com/arj-89/worldref/blob/main/${r.guide}">${t("install.guide", lang)}</a></p></section>`;
+        return `<section class="stack" id="${r.id}" aria-labelledby="${r.id}-h"><h2 id="${r.id}-h">${marks(r.id)}${tl(`install.stack.${r.id}`, lang)} <span>${tl(`install.stack.${r.id}.on`, lang)}</span></h2>${r.id === "files" ? `<p>${t("install.files.body", lang)}</p>` : ""}${blocks}${extra}${first}<p class="guide actions">${r.registry ? `<a class="btn" href="${r.registry[0]}" rel="external">${t("install.registry", lang, { name: esc(r.registry[1]) })}</a>` : ""}<a class="btn" href="https://github.com/arj-89/worldref/blob/main/${r.guide}">${t("install.guide", lang)}</a></p>${r.id === "kotlin" ? `<p class="fine">${t("install.marks.android", lang)}</p>` : ""}</section>`;
     }).join("");
     const jump = `<nav class="jump" aria-label="${plain("install.jump", lang)}">${INSTALL_ROWS.map((r) => `<a href="#${r.id}">${marks(r.id, 1)}<span>${tl(`install.stack.${r.id}`, lang)}</span></a>`).join("")}</nav>`;
     const body = `<section class="intro"><h1>${t("install.title", lang)}</h1><p class="lede">${t("install.body", lang)}</p>${jump}</section>${rows}
@@ -450,10 +450,12 @@ ${overrides.length ? `<section id="overrides" aria-labelledby="ovr-h"><h2 id="ov
 }
 
 // ---------- release notes ----------
+/** Bidi isolation for changelog prose: a whole Latin-led run (URLs, UTC±hh:mm, "Node 20.10"), trailing . : ; outside. */
+const isoRun = (html) => html.replace(/(^|[\s(«،؀-ۿ])((?:[A-Za-z#+]|-(?=\d))[^\s<«»(),،؀-ۿ]*(?:[  ][A-Za-z0-9#+][^\s<«»(),،؀-ۿ]*)*)(?![^<]*>)/g, (m, pre, run) => { const tail = run.match(/[.:;]+$/)?.[0] ?? ""; return `${pre}<bdi dir="ltr">${run.slice(0, run.length - tail.length)}</bdi>${tail}`; });
 /** CHANGELOG markdown to sections: "## 1.2.0 (2026-11-10)", paragraphs and "- " lists; inline code and links. */
 function changelog(file) {
     const arabicRuns = (h) => h.replace(/[«\u0600-\u06FF][\u0600-\u06FF\s«»،]*[\u0600-\u06FF»]|[\u0600-\u06FF]/g, (m) => `<bdi lang="ar" dir="rtl">${m}</bdi>`);
-    const iso = file.endsWith(".ar.md") ? isoLatin : arabicRuns;
+    const iso = file.endsWith(".ar.md") ? isoRun : arabicRuns;
     const inline = (s) => iso(esc(s)).replace(/`([^`]+)`/g, '<code dir="ltr">$1</code>').replace(/\[([^\]]+)\]\(([^)]+)\)/g, (m, txt, url) => `<a href="${/^https?:/.test(url) ? url : `https://github.com/arj-89/worldref/blob/main/${url}`}">${txt}</a>`);
     const out = [];
     for (const block of read(file).split(/\n(?=## )/).slice(1)) {
