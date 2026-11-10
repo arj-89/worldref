@@ -44,6 +44,19 @@
     { "query": "jordan", "lang": "en", "first": "JO" },
     { "query": "germany", "lang": "en", "first": "DE" },
     { "query": "ألمانيا", "lang": "ar", "first": "DE" },
+    { "query": "cote divoire", "lang": "en", "first": "CI" },
+    { "query": "cotedivoire", "lang": "en", "first": "CI" },
+    { "query": "Kuwiat", "lang": "en", "first": "KW" },
+    { "query": "Untied States", "lang": "en", "first": "US" },
+    { "query": "saudi arbia", "lang": "en", "first": "SA" },
+    { "query": "Grmany", "lang": "en", "first": "DE" },
+    { "query": "philipines", "lang": "en", "first": "PH" },
+    { "query": "الكويب", "lang": "ar", "first": "KW" },
+    { "query": "السعودبة", "lang": "ar", "first": "SA" },
+    { "query": "فلسطبن", "lang": "ar", "first": "PS" },
+    { "query": "isreal", "lang": "en", "count": 0 },
+    { "query": "اسرائيل", "lang": "ar", "count": 0 },
+    { "query": "xyzq", "lang": "en", "count": 0 },
     { "query": "israel", "lang": "en", "count": 0 },
     { "query": "إسرائيل", "lang": "ar", "count": 0 }
   ],
@@ -71,5 +84,26 @@
     { "input": "+77011234567", "country": "SA", "e164": "+77011234567", "iso2": "KZ", "valid": true, "mobile": true },
     { "input": "12", "country": "SA", "e164": "+96612", "iso2": "SA", "valid": false, "mobile": false }
   ],
-  "absent": ["IL", "ISR", "Israel", "إسرائيل", "اسرائيل"]
+  "absent": ["IL", "ISR", "Israel", "إسرائيل", "اسرائيل"],
+  "addressForm": [
+    {"iso2":"SA","lang":"ar","lines":[[["name","الاسم",false]],[["organization","المنشأة",false]],[["street","العنوان",true]],[["city","المدينة",true],["postal_code","الرمز البريدي",false]]]},
+    {"iso2":"US","lang":"en","lines":[[["name","Name",false]],[["organization","Organization",false]],[["street","Street address",true]],[["city","City",true],["region","State",true],["postal_code","ZIP code",true]]]},
+    {"iso2":"JP","lang":"en","lines":[[["postal_code","Postal code",true]],[["region","Prefecture",true]],[["street","Street address",true]],[["organization","Organization",false]],[["name","Name",false]]]},
+    {"iso2":"KR","lang":"ar","lines":[[["region","مقاطعة",true],["city","المدينة",true],["sublocality","المنطقة",false]],[["street","العنوان",true]],[["organization","المنشأة",false]],[["name","الاسم",false]],[["postal_code","الرمز البريدي",true]]]},
+    {"iso2":"EG","lang":"ar","lines":[[["name","الاسم",false]],[["organization","المنشأة",false]],[["street","العنوان",true]],[["city","المدينة",true]],[["region","محافظة",false]],[["postal_code","الرمز البريدي",false]]]},
+    {"iso2":"AE","lang":"en","lines":[[["name","Name",false]],[["organization","Organization",false]],[["street","Street address",true]],[["region","Emirate",true]]]},
+    {"iso2":"IN","lang":"en","lines":[[["name","Name",false]],[["organization","Organization",false]],[["street","Street address",true]],[["city","City",true],["postal_code","PIN code",true]],[["region","State",true]]]},
+    {"iso2":"IE","lang":"en","lines":[[["name","Name",false]],[["organization","Organization",false]],[["street","Street address",true]],[["sublocality","Townland",false]],[["city","City",true]],[["region","County",false]],[["postal_code","Eircode",false]]]},
+    {"iso2":"GB","lang":"ar","lines":[[["name","الاسم",false]],[["organization","المنشأة",false]],[["street","العنوان",true]],[["city","المدينة البريدية",true]],[["postal_code","الرمز البريدي",true]]]}
+  ],
+  "editDistance": [
+    ["kuwiat", "kuwait", 2, 1],
+    ["kuwait", "kuwait", 2, 0],
+    ["grmany", "germany", 2, 1],
+    ["untiedstates", "unitedstates", 2, 1],
+    ["abc", "xyz", 1, 2],
+    ["كويب", "كويت", 1, 1],
+    ["سعودبه", "سعوديه", 1, 1],
+    ["a", "abcd", 2, 3]
+  ]
 }

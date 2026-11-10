@@ -100,6 +100,24 @@ class Nationality {
       );
 }
 
+class TimezoneOffset {
+  final String zone;
+
+  /// UTC offset outside daylight saving time, e.g. "+03:00".
+  final String standard;
+
+  /// UTC offset during daylight saving time; null when the zone does not observe it.
+  final String? dst;
+
+  const TimezoneOffset({required this.zone, required this.standard, this.dst});
+
+  factory TimezoneOffset.fromJson(Map<String, dynamic> j) => TimezoneOffset(
+        zone: j['zone'] as String,
+        standard: j['standard'] as String,
+        dst: j['dst'] as String?,
+      );
+}
+
 class Geo {
   final String? capitalAr;
   final String? capitalEn;
@@ -109,6 +127,7 @@ class Geo {
   final int? population;
   final int? populationYear;
   final List<String> timezones;
+  final List<TimezoneOffset> timezoneOffsets;
 
   /// "left" or "right".
   final String? drivingSide;
@@ -123,6 +142,7 @@ class Geo {
     this.populationYear,
     required this.timezones,
     this.drivingSide,
+    this.timezoneOffsets = const [],
   });
 
   factory Geo.fromJson(Map<String, dynamic> j) => Geo(
@@ -134,6 +154,9 @@ class Geo {
         population: _int(j['population']),
         populationYear: _int(j['population_year']),
         timezones: _strings(j['timezones']),
+        timezoneOffsets: List.unmodifiable((j['timezone_offsets'] as List? ??
+                const [])
+            .map((e) => TimezoneOffset.fromJson(e as Map<String, dynamic>))),
         drivingSide: j['driving_side'] as String?,
       );
 }
@@ -185,6 +208,16 @@ class Address {
   final String? addressFormat;
   final String? regionLabelAr;
   final String? regionLabelEn;
+  final String? localityLabelAr;
+  final String? localityLabelEn;
+  final String? sublocalityLabelAr;
+  final String? sublocalityLabelEn;
+  final String? postalCodeLabelAr;
+  final String? postalCodeLabelEn;
+
+  /// Fields the postal service requires: "name", "organization", "street", "sublocality", "city", "region",
+  /// "postal_code" or "sorting_code".
+  final List<String> requiredFields;
 
   const Address({
     this.postalCodeFormat,
@@ -193,6 +226,13 @@ class Address {
     this.addressFormat,
     this.regionLabelAr,
     this.regionLabelEn,
+    this.localityLabelAr,
+    this.localityLabelEn,
+    this.sublocalityLabelAr,
+    this.sublocalityLabelEn,
+    this.postalCodeLabelAr,
+    this.postalCodeLabelEn,
+    this.requiredFields = const [],
   });
 
   factory Address.fromJson(Map<String, dynamic> j) => Address(
@@ -202,6 +242,13 @@ class Address {
         addressFormat: j['address_format'] as String?,
         regionLabelAr: j['region_label_ar'] as String?,
         regionLabelEn: j['region_label_en'] as String?,
+        localityLabelAr: j['locality_label_ar'] as String?,
+        localityLabelEn: j['locality_label_en'] as String?,
+        sublocalityLabelAr: j['sublocality_label_ar'] as String?,
+        sublocalityLabelEn: j['sublocality_label_en'] as String?,
+        postalCodeLabelAr: j['postal_code_label_ar'] as String?,
+        postalCodeLabelEn: j['postal_code_label_en'] as String?,
+        requiredFields: _strings(j['required_fields']),
       );
 }
 
@@ -354,13 +401,17 @@ class Subdivision {
   final String? nameAr;
   final String? nameEn;
   final String? parent;
+  final String? typeAr;
+  final String? typeEn;
 
   const Subdivision(
       {required this.iso2,
       required this.code,
       this.nameAr,
       this.nameEn,
-      this.parent});
+      this.parent,
+      this.typeAr,
+      this.typeEn});
 
   factory Subdivision.fromJson(Map<String, dynamic> j) => Subdivision(
         iso2: j['iso2'] as String,
@@ -368,7 +419,22 @@ class Subdivision {
         nameAr: j['name_ar'] as String?,
         nameEn: j['name_en'] as String?,
         parent: j['parent'] as String?,
+        typeAr: j['type_ar'] as String?,
+        typeEn: j['type_en'] as String?,
       );
+}
+
+/// One field of [addressForm].
+class AddressFormField {
+  /// "name", "organization", "street", "sublocality", "city", "region", "postal_code" or "sorting_code".
+  final String field;
+
+  /// In the requested language; null when the data has no label in that language.
+  final String? label;
+  final bool required;
+
+  const AddressFormField(
+      {required this.field, this.label, required this.required});
 }
 
 /// Result of [parsePhone].

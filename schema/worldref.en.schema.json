@@ -267,6 +267,7 @@
           "population",
           "population_year",
           "timezones",
+          "timezone_offsets",
           "driving_side"
         ],
         "properties": {
@@ -302,6 +303,36 @@
             "type": "array",
             "items": {
               "type": "string"
+            }
+          },
+          "timezone_offsets": {
+            "description": "For each zone in `timezones`: the standard UTC offset and the daylight-saving offset (null when the zone does not switch), under the rules in force on the date in `data/meta.json`. Reference only: compute the current offset with the platform's time-zone support, never store it.",
+            "type": "array",
+            "items": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "zone",
+                "standard",
+                "dst"
+              ],
+              "properties": {
+                "zone": {
+                  "description": "IANA time zone name.",
+                  "type": "string"
+                },
+                "standard": {
+                  "description": "Standard UTC offset, e.g. +03:00. Not always the offset in use today (Cuba keeps daylight saving time through 2027).",
+                  "type": "string"
+                },
+                "dst": {
+                  "description": "Daylight-saving UTC offset, or null when the zone does not switch. Lower than `standard` where the law defines winter as the shift (Ireland).",
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                }
+              }
             }
           },
           "driving_side": {
@@ -380,7 +411,11 @@
           "postal_code_regex",
           "postal_code_example",
           "address_format",
-          "region_label"
+          "region_label",
+          "locality_label",
+          "sublocality_label",
+          "postal_code_label",
+          "required_fields"
         ],
         "properties": {
           "postal_code_format": {
@@ -409,11 +444,39 @@
             "type": "string"
           },
           "region_label": {
-            "description": "What the top-level region is called, in Arabic.",
+            "description": "What the top-level region is called, in Arabic. Where Google gives no type, the country's own subdivision type when all its top-level subdivisions share one.",
             "type": [
               "string",
               "null"
             ]
+          },
+          "locality_label": {
+            "description": "Label of the city field in Arabic (المدينة...), or null when the address has no city line.",
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "sublocality_label": {
+            "description": "Label of the area-within-city field in Arabic (الحي...), or null when the address has none.",
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "postal_code_label": {
+            "description": "Label of the postal code field in Arabic, or null when the address has no postal code.",
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "required_fields": {
+            "description": "Address fields the postal service requires: name, organization, street, sublocality, city, region, postal_code, sorting_code.",
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
           }
         }
       },

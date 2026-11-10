@@ -4,7 +4,7 @@
 //
 //   node scripts/fetch.mjs            # everything
 //   node scripts/fetch.mjs population # one source
-import { mkdirSync, writeFileSync } from "node:fs";
+import { mkdirSync, readFileSync, writeFileSync } from "node:fs";
 import { execFileSync } from "node:child_process";
 import { sparql, ENTITY } from "./wd.mjs";
 import { ROWS, PINS } from "./config.mjs";
@@ -78,6 +78,22 @@ const jobs = {
         save("wikidata.json", out);
     },
 
+    async subtypes() {
+        // What each ISO 3166-2 subdivision is an instance of (English class labels; the Arabic labels are not used).
+        const rows = await sparql(`SELECT ?code ?cls ?en WHERE { ?s wdt:P300 ?code . ?s p:P31 ?st . ?st ps:P31 ?cls .
+            FILTER NOT EXISTS { ?st pq:P582 ?end } FILTER NOT EXISTS { ?s wdt:P576 ?gone }
+            ?cls rdfs:label ?en FILTER(LANG(?en)="en") }`);
+        const out = {};
+        for (const r of rows) {
+            const code = r.code.value;
+            if (!/^[A-Z]{2}-[A-Z0-9]{1,3}$/.test(code)) continue;
+            const c = { qid: qid(r.cls.value), en: r.en.value };
+            if (!(out[code] ??= []).some((x) => x.qid === c.qid)) out[code].push(c);
+        }
+        for (const list of Object.values(out)) list.sort((a, b) => (a.qid < b.qid ? -1 : 1));
+        save("wikidata-subdivision-types.json", Object.fromEntries(Object.entries(out).sort(([a], [b]) => (a < b ? -1 : 1))));
+    },
+
     async population() {
         const fetchIndicator = async (code) => {
             const [, rows] = await get(`https://api.worldbank.org/v2/country/all/indicator/${code}?format=json&mrnev=1&per_page=500`, "json");
@@ -95,9 +111,18 @@ const jobs = {
         mkdirSync(tmp, { recursive: true });
         const tgz = `${tmp}tzdata.tar.gz`;
         writeFileSync(tgz, Buffer.from(await (await fetch(`https://data.iana.org/time-zones/releases/tzdata${PINS.tzdata}.tar.gz`)).arrayBuffer()));
-        execFileSync("tar", ["-xzf", tgz, "-C", tmp, "zone.tab", "backward"]);
+        execFileSync("tar", ["-xzf", tgz, "-C", tmp]);
         save("zone.tab", execFileSync("cat", [`${tmp}zone.tab`]).toString());
         save("tz-backward", execFileSync("cat", [`${tmp}backward`]).toString());
+        // Offsets under the rules in force on the fetch date: compile with zic (fat files carry explicit
+        // transitions to 2037), then read each zone's transitions for the next 12 months.
+        const bin = `${tmp}bin/`;
+        execFileSync("zic", ["-b", "fat", "-d", bin, ...["africa", "antarctica", "asia", "australasia", "europe", "northamerica", "southamerica", "etcetera", "backward"].map((f) => `${tmp}${f}`)]);
+        const asOf = new Date(new Date().toISOString().slice(0, 10) + "T00:00:00Z");
+        const zoneNames = readFileSync(`${tmp}zone.tab`, "utf8").split("\n").filter((l) => l && !l.startsWith("#")).map((l) => l.split("\t")[2]);
+        const out = { tzdata: PINS.tzdata, as_of: asOf.toISOString().slice(0, 10), zones: {} };
+        for (const z of [...new Set(zoneNames)].sort()) out.zones[z] = offsetsInForce(readFileSync(`${bin}${z}`), asOf);
+        save("tz-offsets.json", out);
     },
 
     async address() {
@@ -148,6 +173,33 @@ const jobs = {
         save("electric-current-worldwide.html", await get(PINS.ecwArchive));
     },
 };
+
+/**
+ * Standard and daylight-saving offsets in force during the 12 months from `asOf`, read from a TZif file
+ * (RFC 8536, version 2+ data block). `dst` is null when the zone does not switch. Where tzdb marks winter as
+ * daylight time (Ireland), `dst` is lower than `standard`; that is the legal definition there, kept as is.
+ */
+function offsetsInForce(buf, asOf) {
+    const counts = (at) => [0, 1, 2, 3, 4, 5].map((i) => buf.readUInt32BE(at + 20 + i * 4));
+    const [isut, isstd, leap, time, type, chars] = counts(0);
+    let p = 44 + time * 5 + type * 6 + chars + leap * 8 + isstd + isut; // skip the 32-bit block
+    const [, , leap2, time2, type2] = counts(p);
+    p += 44;
+    const times = [...Array(time2)].map((_, i) => Number(buf.readBigInt64BE(p + i * 8)));
+    const idx = [...Array(time2)].map((_, i) => buf[p + time2 * 8 + i]);
+    const types = [...Array(type2)].map((_, i) => {
+        const at = p + time2 * 9 + i * 6;
+        return { off: buf.readInt32BE(at), dst: buf[at + 4] === 1 };
+    });
+    const from = asOf.getTime() / 1000, to = from + 365 * 86400;
+    let current = types[0];
+    for (let i = 0; i < times.length && times[i] <= from; i++) current = types[idx[i]];
+    const seen = [current];
+    for (let i = 0; i < times.length; i++) if (times[i] > from && times[i] <= to) seen.push(types[idx[i]]);
+    const fmt = (s) => `${s < 0 ? "-" : "+"}${String(Math.floor(Math.abs(s) / 3600)).padStart(2, "0")}:${String(Math.floor((Math.abs(s) % 3600) / 60)).padStart(2, "0")}`;
+    const last = (dst) => seen.filter((t) => t.dst === dst).at(-1);
+    return { standard: fmt((last(false) ?? last(true)).off), dst: last(false) && last(true) ? fmt(last(true).off) : null };
+}
 
 const only = process.argv.slice(2);
 for (const [name, job] of Object.entries(jobs)) if (!only.length || only.includes(name)) await job();

@@ -8,6 +8,7 @@ final class Geo
 {
     /**
      * @param list<string> $timezones
+     * @param list<TimezoneOffset> $timezone_offsets
      */
     public function __construct(
         public readonly ?string $capital_ar,
@@ -19,6 +20,7 @@ final class Geo
         public readonly ?int $population_year,
         public readonly array $timezones,
         public readonly ?string $driving_side,
+        public readonly array $timezone_offsets = [],
     ) {
     }
 
@@ -35,6 +37,7 @@ final class Geo
             $r['population_year'] ?? null,
             $r['timezones'] ?? [],
             $r['driving_side'] ?? null,
+            array_map(TimezoneOffset::fromArray(...), $r['timezone_offsets'] ?? []),
         );
     }
 }

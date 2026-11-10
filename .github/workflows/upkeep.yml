@@ -25,7 +25,7 @@ jobs:
         run: |
           if [ "${{ github.event.schedule }}" = "0 4 1 1,4,7,10 *" ]; then node scripts/fetch.mjs population;
           elif [ -n "${{ inputs.sources }}" ]; then node scripts/fetch.mjs ${{ inputs.sources }};
-          else node scripts/fetch.mjs wikidata phone timezones address subdivisions factbook; fi
+          else node scripts/fetch.mjs wikidata subtypes phone timezones address subdivisions factbook; fi
       - run: npm run build && node scripts/docs.mjs && npm test
       - id: diff
         run: git diff --quiet && echo "changed=false" >> "$GITHUB_OUTPUT" || echo "changed=true" >> "$GITHUB_OUTPUT"
@@ -51,14 +51,15 @@ jobs:
         run: |
           if [ "${{ github.event.schedule }}" = "0 4 1 1,4,7,10 *" ]; then node scripts/fetch.mjs population;
           elif [ -n "${{ inputs.sources }}" ]; then node scripts/fetch.mjs ${{ inputs.sources }};
-          else node scripts/fetch.mjs wikidata phone timezones address subdivisions factbook; fi
+          else node scripts/fetch.mjs wikidata subtypes phone timezones address subdivisions factbook; fi
           node scripts/release.mjs patch
           v=$(node -p 'require("./package.json").version')
           git config user.name "worldref-bot" && git config user.email "actions@users.noreply.github.com"
           git add -A && git commit -m "Data refresh v$v"
           git tag "v$v" && git tag "go/v$v"
           git push origin HEAD --tags
-          gh release create "v$v" --generate-notes --title "v$v (data refresh)"
+          awk -v h="## $v " 'index($0,h)==1{f=1;next} /^## /{f=0} f' CHANGELOG.md > notes.md
+          gh release create "v$v" --notes-file notes.md --title "v$v (data refresh)"
           gh workflow run publish-dart.yml --ref "v$v"
         env: { GH_TOKEN: "${{ github.token }}" }
 

@@ -57,6 +57,17 @@ foreach ($V['absent'] as $w) {
         $check(!in_array($hit->iso2, ['IL'], true), "absent search: $w");
     }
 }
+foreach ($V['addressForm'] as $c) {
+    $got = array_map(
+        static fn (array $line): array => array_map(static fn (array $f): array => [$f['field'], $f['label'], $f['required']], $line),
+        WorldRef::addressForm(WorldRef::byIso2($c['iso2']), $c['lang']),
+    );
+    $check($got === $c['lines'], "addressForm {$c['iso2']} {$c['lang']}: " . json_encode($got, JSON_UNESCAPED_UNICODE));
+}
+foreach ($V['editDistance'] as [$a, $b, $limit, $want]) {
+    $got = WorldRef::editDistance($a, $b, $limit);
+    $check($got === $want, "editDistance: $a $b $limit => $got, want $want");
+}
 
 // API sanity
 $check(count($countries) === 242, 'country count');
@@ -66,6 +77,9 @@ $check(count(WorldRef::subdivisions()) === 5012, 'subdivisions all');
 $sa = WorldRef::byIso2('SA');
 $check(WorldRef::isValidMobile('0501234567', $sa) === true, 'isValidMobile SA');
 $check(WorldRef::formatNational('501234567', $sa->phone[0]) !== '', 'formatNational');
+$check($sa->geo->timezone_offsets[0]->standard === '+03:00', 'geo timezone_offsets');
+$check(WorldRef::subdivisions('SA')[0]->type_en !== null, 'subdivision type_en');
+$check(WorldRef::editDistance('كويت', 'كوبت', 1) === 1, 'editDistance counts Arabic by character');
 
 foreach ($fails as $f) {
     fwrite(STDERR, "FAIL $f\n");

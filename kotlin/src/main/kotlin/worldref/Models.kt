@@ -38,7 +38,16 @@ data class Nationality(
 )
 
 @Serializable
-data class Geo(
+data class TimezoneOffset(
+    val zone: String,
+    /** UTC offset outside daylight saving time, e.g. "+03:00". */
+    val standard: String,
+    /** UTC offset during daylight saving time; null when the zone has none. */
+    val dst: String? = null,
+)
+
+@Serializable
+data class Geo @JvmOverloads constructor(
     @SerialName("capital_ar") val capitalAr: String? = null,
     @SerialName("capital_en") val capitalEn: String? = null,
     val lat: Double? = null,
@@ -48,6 +57,7 @@ data class Geo(
     @SerialName("population_year") val populationYear: Int? = null,
     val timezones: List<String> = emptyList(),
     @SerialName("driving_side") val drivingSide: String? = null,
+    @SerialName("timezone_offsets") val timezoneOffsets: List<TimezoneOffset> = emptyList(),
 )
 
 @Serializable
@@ -68,13 +78,21 @@ data class Locale(
 )
 
 @Serializable
-data class Address(
+data class Address @JvmOverloads constructor(
     @SerialName("postal_code_format") val postalCodeFormat: String? = null,
     @SerialName("postal_code_regex") val postalCodeRegex: String? = null,
     @SerialName("postal_code_example") val postalCodeExample: String? = null,
     @SerialName("address_format") val addressFormat: String? = null,
     @SerialName("region_label_ar") val regionLabelAr: String? = null,
     @SerialName("region_label_en") val regionLabelEn: String? = null,
+    @SerialName("locality_label_ar") val localityLabelAr: String? = null,
+    @SerialName("locality_label_en") val localityLabelEn: String? = null,
+    @SerialName("sublocality_label_ar") val sublocalityLabelAr: String? = null,
+    @SerialName("sublocality_label_en") val sublocalityLabelEn: String? = null,
+    @SerialName("postal_code_label_ar") val postalCodeLabelAr: String? = null,
+    @SerialName("postal_code_label_en") val postalCodeLabelEn: String? = null,
+    /** Fields the postal service requires: "name", "organization", "street", "sublocality", "city", "region", "postal_code", "sorting_code". */
+    @SerialName("required_fields") val requiredFields: List<String> = emptyList(),
 )
 
 @Serializable
@@ -129,10 +147,12 @@ data class Country(
 )
 
 @Serializable
-data class Subdivision(
+data class Subdivision @JvmOverloads constructor(
     val iso2: String,
     val code: String,
     @SerialName("name_ar") val nameAr: String? = null,
     @SerialName("name_en") val nameEn: String? = null,
     val parent: String? = null,
+    @SerialName("type_ar") val typeAr: String? = null,
+    @SerialName("type_en") val typeEn: String? = null,
 )

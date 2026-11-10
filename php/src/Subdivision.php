@@ -12,6 +12,8 @@ final class Subdivision
         public readonly ?string $name_ar,
         public readonly ?string $name_en,
         public readonly ?string $parent,
+        public readonly ?string $type_ar = null,
+        public readonly ?string $type_en = null,
     ) {
     }
 
@@ -24,6 +26,8 @@ final class Subdivision
             $r['name_ar'] ?? null,
             $r['name_en'] ?? null,
             $r['parent'] ?? null,
+            $r['type_ar'] ?? null,
+            $r['type_en'] ?? null,
         );
     }
 }

@@ -7,6 +7,7 @@ import { ROWS, ABSENT, PINS } from "./config.mjs";
 import * as E from "./editorial.mjs";
 import { leadingPrefixes } from "./lib/prefixes.mjs";
 import { normalize, sortKey } from "./lib/text.mjs";
+import { buildSubdivisions } from "./lib/subdivisions.mjs";
 
 const require = createRequire(import.meta.url);
 const ROOT = new URL("../", import.meta.url).pathname;
@@ -31,6 +32,7 @@ const wb = snapJson("worldbank.json");
 const fb = snapJson("factbook.json");
 const address = snapJson("address.json");
 const emergency = Object.fromEntries(snapJson("emergency.json").map((r) => [r.iso2, r]));
+const tzOffsets = snapJson("tz-offsets.json");
 const tlds = new Set(snap("tlds-alpha-by-domain.txt").split("\n").filter((l) => l && !l.startsWith("#")).map((l) => l.toLowerCase()));
 
 // ---------- provenance ----------
@@ -39,10 +41,12 @@ const SOURCES = {
     cldr: { name: "Unicode CLDR", version: PINS.cldr, licence: "Unicode-3.0", url: "https://github.com/unicode-org/cldr-json" },
     cldrSub: { name: "Unicode CLDR subdivisions", version: PINS.cldrTag, licence: "Unicode-3.0", url: "https://github.com/unicode-org/cldr" },
     wikidata: { name: "Wikidata", version: "snapshot", licence: "CC0-1.0", url: "https://www.wikidata.org" },
+    subdivision_types: { name: "Wikidata instance-of classes (English type), worldref glossary and Arab countries' official terms (Arabic type)", version: "snapshot", licence: "CC0-1.0 / MIT", url: "scripts/editorial.mjs" },
     factbook: { name: "CIA World Factbook (final edition, via factbook.json)", version: "2026", licence: "Public domain / CC0-1.0", url: "https://github.com/factbook/factbook.json" },
     worldbank: { name: "World Bank World Development Indicators", version: "snapshot", licence: "CC-BY-4.0", url: "https://data.worldbank.org" },
     libphonenumber: { name: "Google libphonenumber metadata", version: PINS.libphonenumber, licence: "Apache-2.0 (modified: reduced and reshaped)", url: "https://github.com/google/libphonenumber" },
     iana_tz: { name: "IANA Time Zone Database", version: PINS.tzdata, licence: "Public domain", url: "https://www.iana.org/time-zones" },
+    iana_tz_offsets: { name: "IANA Time Zone Database, offsets in force (compiled with zic)", version: `${tzOffsets.tzdata}, as of ${tzOffsets.as_of}`, licence: "Public domain", url: "https://www.iana.org/time-zones" },
     iana_root: { name: "IANA root zone TLD list", version: "snapshot", licence: "Public domain", url: "https://data.iana.org/TLD/" },
     google_address: { name: "Google address metadata (libaddressinput)", version: "snapshot", licence: "Apache-2.0 (modified: reduced and reshaped)", url: "https://github.com/google/libaddressinput" },
     ecw: { name: "U.S. Department of Commerce, Electric Current Worldwide", version: "archived 2026-04-16", licence: "Public domain", url: "https://legacy.trade.gov/mas/ian/ECW/" },
@@ -56,7 +60,8 @@ const SOURCES = {
 };
 const COLUMN_SOURCE = {};
 const overrides = [];
-const override = (iso2, field, value, why) => overrides.push({ iso2, field, value, why });
+// Arabic reasons end with a full stop, like the site's other Arabic sentences; English ones are kept as written.
+const override = (iso2, field, value, why, why_ar) => overrides.push({ iso2, field, value, why, ...(why_ar ? { why_ar: /[.!؟]$/.test(why_ar) ? why_ar : `${why_ar}.` } : {}) });
 
 // ---------- helpers ----------
 const first = (a) => (Array.isArray(a) && a.length ? a[0] : null);
@@ -78,6 +83,9 @@ const continentOf = (() => {
     };
     return find;
 })();
+
+for (const [iso, why] of Object.entries(E.REGION_LABEL_KEEP_GOOGLE)) override(iso, "address.region_label", "Google's", why, E.REGION_LABEL_KEEP_GOOGLE_AR[iso]);
+for (const [iso, pol] of Object.entries(E.POLICY)) if (pol.why_timezones) override(iso, "geo.timezones", pol.extra_timezones.join(", "), pol.why_timezones, pol.why_timezones_ar);
 
 // ---------- core ----------
 function names(iso) {
@@ -313,6 +321,50 @@ for (const [iso, v] of Object.entries(E.WEEK_FILL)) override(iso, "locale.week_s
 override("PS", "travel.frequency_hz", [50], "Electric Current Worldwide lists this grid under the excluded row's name; mapped to Palestine");
 override("PS", "phone[+972]", null, "+972 numbering (Jerusalem, 1948 lines) mapped to Palestine by policy");
 
+// ---------- subdivision types ----------
+const subtypeClasses = snapJson("wikidata-subdivision-types.json");
+const TYPE_TERMS = Object.keys(E.SUBDIVISION_TYPE_AR).sort((a, b) => b.length - a.length);
+/** The type term a Wikidata class label names, or null ("governorate of Egypt" and "U.S. state" both work). */
+function typeTerm(label) {
+    if (E.SUBDIVISION_TYPE_IGNORE.test(label)) return null;
+    const head = label.toLowerCase().replace(/^u\.s\. /, "").replace(/ of .*$/, "").replace(/s$/, "");
+    if (head === "entity" && !/^entity of /.test(label)) return null;
+    // Exact, then the first words ("county council area" is a county), then the last ("metropolitan borough").
+    return TYPE_TERMS.find((t) => head === t) ?? TYPE_TERMS.find((t) => head.startsWith(`${t} `)) ?? TYPE_TERMS.find((t) => head.endsWith(` ${t}`)) ?? null;
+}
+function typeSubdivisions(subs) {
+    const candidates = Object.fromEntries(subs.map((s) => {
+        const terms = uniq((subtypeClasses[s.code] ?? []).map((c) => typeTerm(c.en)).filter(Boolean));
+        return [s.code, terms.length > 1 ? terms.filter((t) => t !== "area") : terms]; // "area" only when nothing better
+    }));
+    // A subdivision with several candidate terms takes the one most used in its country.
+    const freq = {};
+    for (const s of subs) for (const t of candidates[s.code]) (freq[s.iso2] ??= {})[t] = (freq[s.iso2][t] ?? 0) + 1;
+    for (const [iso, v] of Object.entries(E.SUBDIVISION_TYPE_COUNTRY)) override(iso, "subdivisions.type", v.en, v.why, v.why_ar);
+    for (const [iso, v] of Object.entries(E.SUBDIVISION_TYPE_PRIORITY)) override(iso, "subdivisions.type (order)", v.order.join(" > "), v.why, v.why_ar);
+    const rank = (iso, t) => {
+        const i = E.SUBDIVISION_TYPE_PRIORITY[iso]?.order.indexOf(t) ?? -1;
+        return i < 0 ? 99 : i;
+    };
+    for (const [code, v] of Object.entries(E.SUBDIVISION_TYPE_CODE)) override(code.slice(0, 2), `subdivisions.type (${code})`, v.en, v.why, v.why_ar);
+    for (const [iso, v] of Object.entries(E.SUBDIVISION_TYPE_AR_COUNTRY)) override(iso, "subdivisions.type_ar", Object.entries(v).filter(([k]) => !k.startsWith("why")).map(([k, a]) => `${k}: ${a}`).join(", "), v.why, v.why_ar);
+    for (const [iso, v] of Object.entries(E.SUBDIVISION_TYPE_DEFAULT)) override(iso, "subdivisions.type (untyped rows)", v.en, v.why, v.why_ar);
+    for (const [code, v] of Object.entries(E.SUBDIVISION_NAME))
+        override(code.slice(0, 2), `subdivisions.name (${code})`, [v.ar, v.en].filter(Boolean).join(" / "), E.SUBDIVISION_NAME_WHY[code] ?? E.SUBDIVISION_NAME_WHY[code.slice(0, 2)], E.SUBDIVISION_NAME_WHY_AR[code] ?? E.SUBDIVISION_NAME_WHY_AR[code.slice(0, 2)]);
+    override("*", "subdivisions.name_ar", "CLDR text cleaned", "CLDR's draft marker ² removed; Persian letters ی ک and the zero-width non-joiner written as Arabic ي ك and a space", "حُذفت علامة المسودة ² من نصوص CLDR، وكُتب الحرفان الفارسيان ی ک والفاصل غير المرئي بالحرفين العربيين ي ك ومسافة");
+    const cleanAr = (n) => n && n.replace(/²/g, "").replace(/ی/g, "ي").replace(/ک/g, "ك").replace(/\u200c/g, " ").replace(/\s+/g, " ").trim();
+    return subs.map((s) => {
+        const fixed = E.SUBDIVISION_TYPE_CODE[s.code] ?? E.SUBDIVISION_TYPE_COUNTRY[s.iso2];
+        let en = fixed?.en ?? [...candidates[s.code]].sort((a, b) => rank(s.iso2, a) - rank(s.iso2, b) || (freq[s.iso2][b] - freq[s.iso2][a]) || (a < b ? -1 : 1))[0] ?? null;
+        en ??= E.SUBDIVISION_TYPE_DEFAULT[s.iso2]?.en ?? null;
+        const ar = fixed && "ar" in fixed ? fixed.ar : en ? E.SUBDIVISION_TYPE_AR_COUNTRY[s.iso2]?.[en] ?? E.SUBDIVISION_TYPE_AR[en] ?? null : null;
+        const name = E.SUBDIVISION_NAME[s.code] ?? {};
+        return { ...s, name_ar: name.ar ?? cleanAr(s.name_ar), name_en: (name.en ?? s.name_en)?.replace(/²/g, "") ?? null, type_ar: ar, type_en: en?.replace(/^london /, "London ") ?? null };
+    });
+}
+
+const subdivisions = typeSubdivisions(buildSubdivisions(snap, ROWS));
+
 // ---------- assemble ----------
 const unMembers = new Set([...ROWS.filter((i) => wd[i].un_member), ...E.UN_MEMBERS_FILL]);
 const records = ROWS.map((iso) => {
@@ -324,6 +376,20 @@ const records = ROWS.map((iso) => {
     const coords = first(wd[iso].coords);
     const addr = { fmt: address.ZZ.fmt, ...(address[iso] ?? {}) };
     const regionType = addr.state_name_type ?? (addr.fmt?.includes("%S") ? "province" : null);
+    // Where Google gives no region type (its generic "province"), and every top-level subdivision has the same
+    // type, the region is called by that type (Egypt: governorate, محافظة). Google's explicit types stay.
+    // "Every" allows one exception in ten (Iraq: 18 governorates and the Kurdistan Region).
+    const tops = subdivisions.filter((s) => s.iso2 === iso && !s.parent);
+    const topCounts = {};
+    for (const s of tops) if (s.type_en) topCounts[s.type_en] = (topCounts[s.type_en] ?? 0) + 1;
+    const [mainType, mainCount] = Object.entries(topCounts).sort((a, b) => b[1] - a[1])[0] ?? [];
+    const ownType = !addr.state_name_type && !E.REGION_LABEL_KEEP_GOOGLE[iso] && tops.length >= 3 && mainCount / tops.length >= 0.9 ? tops.find((s) => s.type_en === mainType) : null;
+    const fmt = addr.fmt ?? "";
+    const label = (kind, type) => (type ? { ar: E.ADDRESS_LABEL_AR[kind][type] ?? null, en: E.ADDRESS_LABEL_EN[kind][type] ?? null } : { ar: null, en: null });
+    const locality = label("locality", fmt.includes("%C") ? addr.locality_name_type ?? "city" : null);
+    const sublocality = label("sublocality", fmt.includes("%D") ? addr.sublocality_name_type ?? "suburb" : null);
+    const postal = label("postal_code", fmt.includes("%Z") ? addr.zip_name_type ?? "postal" : null);
+    const REQUIRE = { N: "name", O: "organization", A: "street", D: "sublocality", C: "city", S: "region", Z: "postal_code", X: "sorting_code" };
     const zip = addr.zip ? `^(?:${addr.zip})$` : null;
     const zipex = addr.zipex?.split(",")[0] ?? null;
     const plugs = uniq((wd[iso].plugs ?? []).flatMap((p) => E.PLUG_TYPES[p] ?? [])).sort();
@@ -360,6 +426,11 @@ const records = ROWS.map((iso) => {
             population: pop.value,
             population_year: pop.year,
             timezones: uniq([...(zones[iso] ?? E.TIMEZONE_FILL[iso] ?? []), ...(E.POLICY[iso]?.extra_timezones ?? [])]),
+            timezone_offsets: uniq([...(zones[iso] ?? E.TIMEZONE_FILL[iso] ?? []), ...(E.POLICY[iso]?.extra_timezones ?? [])]).map((zone) => {
+                const o = tzOffsets.zones[zone];
+                if (!o) throw new Error(`no offsets for ${zone}`);
+                return { zone, standard: o.standard, dst: o.dst };
+            }),
             driving_side: first(wd[iso].driving_side),
         },
         locale: {
@@ -387,8 +458,15 @@ const records = ROWS.map((iso) => {
             postal_code_regex: zip,
             postal_code_example: zipex,
             address_format: addr.fmt ?? null,
-            region_label_ar: regionType ? E.REGION_LABEL_AR[regionType] ?? null : null,
-            region_label_en: regionType ? regionType.replace("do_si", "province") : null,
+            region_label_ar: regionType ? (ownType ? ownType.type_ar : E.SUBDIVISION_TYPE_AR_COUNTRY[iso]?.[regionType] ?? E.REGION_LABEL_AR[regionType] ?? null) : null,
+            region_label_en: regionType ? (ownType ? ownType.type_en : regionType.replace("do_si", "province")) : null,
+            locality_label_ar: locality.ar,
+            locality_label_en: locality.en,
+            sublocality_label_ar: sublocality.ar,
+            sublocality_label_en: sublocality.en,
+            postal_code_label_ar: postal.ar,
+            postal_code_label_en: postal.en,
+            required_fields: [...(addr.require ?? address.ZZ.require)].map((c) => REQUIRE[c]).filter(Boolean),
         },
         travel: {
             emergency: emergencyOf(iso),
@@ -421,6 +499,7 @@ Object.assign(COLUMN_SOURCE, {
     "geo.capital_ar,geo.capital_en,geo.lat,geo.lng,geo.driving_side": "wikidata",
     "geo.area_km2,geo.population,geo.population_year": "worldbank",
     "geo.timezones": "iana_tz",
+    "geo.timezone_offsets": "iana_tz_offsets",
     locale: "cldr",
     address: "google_address",
     "travel.emergency": "emergency",
@@ -429,12 +508,10 @@ Object.assign(COLUMN_SOURCE, {
     "sports.fifa,sports.ioc": "wikidata",
 });
 
-export { records, SOURCES, COLUMN_SOURCE, overrides };
+export { records, subdivisions, SOURCES, COLUMN_SOURCE, overrides };
 
 // ---------- write ----------
 import { writeOutputs } from "./lib/outputs.mjs";
-import { buildSubdivisions } from "./lib/subdivisions.mjs";
 if (process.argv[1] === new URL(import.meta.url).pathname) {
-    const subdivisions = buildSubdivisions(snap, ROWS);
     writeOutputs({ ROOT, records, subdivisions, SOURCES, COLUMN_SOURCE, overrides, ABSENT });
 }

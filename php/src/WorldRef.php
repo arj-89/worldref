@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace WorldRef;
 
-/** Entry point: the dataset, search, sorting and phone helpers. */
+/** Entry point: the dataset, search, sorting, phone and address helpers. */
 final class WorldRef
 {
     /** @var list<Country>|null */
@@ -65,8 +65,9 @@ final class WorldRef
     }
 
     /**
-     * Countries matching a query, best first. Matches names and aliases in both languages, ISO codes, and dial
-     * codes with or without "+" or "00".
+     * Countries matching a query, best first. Matches names and aliases in both languages (ignoring "ال", tashkeel,
+     * hamza forms, case, accents, spaces and punctuation), ISO codes, and dial codes with or without "+" or "00".
+     * When nothing matches, a second pass forgives small typos ("Kuwiat"): 1 edit for 4 to 7 letters, 2 from 8.
      * @param iterable<Country> $countries
      * @return list<Country>
      */
@@ -76,15 +77,19 @@ final class WorldRef
         if ($q === '') {
             return [];
         }
+        $qc = str_replace(' ', '', $q);
         $digits = preg_replace('/[\s()-]/u', '', Text::westernDigits($query));
         $dial = preg_match('/^(\+|00)?\d{1,4}$/', $digits) ? preg_replace('/^(\+|00)/', '', $digits) : null;
         $upper = mb_strtoupper(trim($query), 'UTF-8');
         $ar = $lang === 'ar';
-        $rank = static function (string $name, int $place) use ($q): int {
-            if ($name === $q) {
+        // Tiers: exact (50s), name starts with the query (40s), a word starts with it (30s), contains it (10s).
+        // Within a tier: the UI-language name, then the other language, then aliases.
+        $rank = static function (string $name, int $place) use ($q, $qc): int {
+            $nc = str_replace(' ', '', $name);
+            if ($name === $q || $nc === $qc) {
                 return 50 - $place;
             }
-            if (str_starts_with($name, $q)) {
+            if (str_starts_with($name, $q) || (mb_strlen($qc, 'UTF-8') >= 3 && str_starts_with($nc, $qc))) {
                 return 40 - $place;
             }
             foreach (explode(' ', $name) as $w) {
@@ -131,9 +136,62 @@ final class WorldRef
                 $scored[] = [$c, $score];
             }
         }
+        if (!$scored && mb_strlen($qc, 'UTF-8') >= 4 && preg_match('/^\d+$/', $qc) !== 1) {
+            // Typo pass: edit distance between the query and whole names, spaces ignored.
+            $limit = mb_strlen($qc, 'UTF-8') >= 8 ? 2 : 1;
+            foreach ($countries as $c) {
+                $names = [$ar ? $c->name_ar : $c->name_en, $ar ? $c->name_en : $c->name_ar, ...$c->aliases_ar, ...$c->aliases_en];
+                $best = 0;
+                foreach ($names as $i => $n) {
+                    $d = self::editDistance($qc, str_replace(' ', '', Text::normalize($n)), $limit);
+                    if ($d <= $limit) {
+                        $best = max($best, 3 - $d - min($i, 2) * 0.25);
+                    }
+                }
+                if ($best > 0) {
+                    $scored[] = [$c, $best];
+                }
+            }
+        }
         $key = $ar ? 'sort_ar' : 'sort_en';
         usort($scored, static fn (array $a, array $b): int => $b[1] <=> $a[1] ?: strcmp($a[0]->$key, $b[0]->$key));
         return array_map(static fn (array $s): Country => $s[0], $scored);
+    }
+
+    /**
+     * Optimal string alignment distance (insertions, deletions, substitutions, adjacent swaps), compared by
+     * Unicode character. Returns $limit + 1 as soon as the distance must exceed $limit.
+     */
+    public static function editDistance(string $a, string $b, int $limit): int
+    {
+        $a = mb_str_split($a, 1, 'UTF-8');
+        $b = mb_str_split($b, 1, 'UTF-8');
+        $la = count($a);
+        $lb = count($b);
+        if (abs($la - $lb) > $limit) {
+            return $limit + 1;
+        }
+        $prev2 = [];
+        $prev = range(0, $lb);
+        for ($i = 1; $i <= $la; $i++) {
+            $cur = [$i];
+            $low = $i;
+            for ($j = 1; $j <= $lb; $j++) {
+                $cost = $a[$i - 1] === $b[$j - 1] ? 0 : 1;
+                $v = min($prev[$j] + 1, $cur[$j - 1] + 1, $prev[$j - 1] + $cost);
+                if ($i > 1 && $j > 1 && $a[$i - 1] === $b[$j - 2] && $a[$i - 2] === $b[$j - 1]) {
+                    $v = min($v, $prev2[$j - 2] + 1);
+                }
+                $cur[$j] = $v;
+                $low = min($low, $v);
+            }
+            if ($low > $limit) {
+                return $limit + 1;
+            }
+            $prev2 = $prev;
+            $prev = $cur;
+        }
+        return $prev[$lb];
     }
 
     /**
@@ -239,5 +297,59 @@ final class WorldRef
         return preg_replace_callback('/#/', static function () use ($national, &$i): string {
             return $national[$i++];
         }, $mask);
+    }
+
+    private const ADDRESS_TOKENS = ['N' => 'name', 'O' => 'organization', 'A' => 'street', 'D' => 'sublocality', 'C' => 'city', 'S' => 'region', 'Z' => 'postal_code', 'X' => 'sorting_code'];
+    private const FIXED_LABELS = [
+        'name' => ['ar' => 'الاسم', 'en' => 'Name'],
+        'organization' => ['ar' => 'المنشأة', 'en' => 'Organization'],
+        'street' => ['ar' => 'العنوان', 'en' => 'Street address'],
+        'sorting_code' => ['ar' => 'رمز الفرز', 'en' => 'Sorting code'],
+    ];
+
+    /**
+     * The address form of a country: its fields line by line, in the country's order, with labels in `$lang` and
+     * whether the postal service requires each one. Tokens the format uses beyond Google's nine are skipped.
+     * Labels are null when the data has no label in that language.
+     * @return list<list<array{field: string, label: ?string, required: bool}>>
+     */
+    public static function addressForm(Country $country, string $lang = 'en'): array
+    {
+        $a = $country->address;
+        $ar = $lang === 'ar';
+        $labelOf = static function (string $f) use ($a, $ar): ?string {
+            if (isset(self::FIXED_LABELS[$f])) {
+                return self::FIXED_LABELS[$f][$ar ? 'ar' : 'en'];
+            }
+            if ($f === 'city') {
+                return $ar ? $a->locality_label_ar : $a->locality_label_en;
+            }
+            if ($f === 'sublocality') {
+                return $ar ? $a->sublocality_label_ar : $a->sublocality_label_en;
+            }
+            if ($f === 'region') {
+                $s = $ar ? $a->region_label_ar : $a->region_label_en;
+                return ($s === null || $s === '' || $ar) ? $s : mb_strtoupper(mb_substr($s, 0, 1, 'UTF-8'), 'UTF-8') . mb_substr($s, 1, null, 'UTF-8');
+            }
+            return $ar ? $a->postal_code_label_ar : $a->postal_code_label_en;
+        };
+        $seen = [];
+        $form = [];
+        foreach (explode('%n', $a->address_format ?? '%N%n%O%n%A%n%C') as $line) {
+            preg_match_all('/%([A-Z])/', $line, $m);
+            $fields = [];
+            foreach ($m[1] as $token) {
+                $field = self::ADDRESS_TOKENS[$token] ?? null;
+                if ($field === null || isset($seen[$field])) {
+                    continue;
+                }
+                $seen[$field] = true;
+                $fields[] = ['field' => $field, 'label' => $labelOf($field), 'required' => in_array($field, $a->required_fields, true)];
+            }
+            if ($fields) {
+                $form[] = $fields;
+            }
+        }
+        return $form;
     }
 }

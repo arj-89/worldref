@@ -20,15 +20,21 @@ final RegExp _dialShape = RegExp(r'^(\+|00)?\d{1,4}$');
 final RegExp _dialPrefix = RegExp(r'^(\+|00)');
 final RegExp _dialJunk = RegExp(r'[\s()-]');
 final RegExp _notPhone = RegExp(r'[^\d+]');
+final RegExp _allDigits = RegExp(r'^\d+$');
+final RegExp _addressToken = RegExp('%([A-Z])');
+
+String _compact(String s) => s.replaceAll(' ', '');
 
 int _cmp(String a, String b) => a.compareTo(b);
 
 /// Countries matching a query, best first. Matches names and aliases in both languages (ignoring "ال", tashkeel,
-/// hamza forms, case and accents), ISO codes, and dial codes with or without "+" or "00".
+/// hamza forms, case, accents, spaces and punctuation), ISO codes, and dial codes with or without "+" or "00".
+/// When nothing matches, a second pass forgives small typos ("Kuwiat"): 1 edit for 4 to 7 letters, 2 from 8.
 List<Country> search(Iterable<Country> countries, String query,
     [Lang lang = Lang.en]) {
   final q = normalize(query);
   if (q.isEmpty) return [];
+  final qc = _compact(q);
   final digits = westernDigits(query).replaceAll(_dialJunk, '');
   final dial =
       _dialShape.hasMatch(digits) ? digits.replaceFirst(_dialPrefix, '') : null;
@@ -42,8 +48,11 @@ List<Country> search(Iterable<Country> countries, String query,
     // Tiers: exact (50s), name starts with the query (40s), a word starts with it (30s), contains it (10s).
     // Within a tier: the UI-language name, then the other language, then aliases.
     double rank(String name, int place) {
-      if (name == q) return 50.0 - place;
-      if (name.startsWith(q)) return 40.0 - place;
+      final nc = _compact(name);
+      if (name == q || nc == qc) return 50.0 - place;
+      if (name.startsWith(q) || (qc.length >= 3 && nc.startsWith(qc))) {
+        return 40.0 - place;
+      }
       if (name.split(' ').any((w) => w.startsWith(q))) return 30.0 - place;
       if (q.length >= 3 && name.contains(q)) return 10.0 - place;
       return 0;
@@ -68,6 +77,29 @@ List<Country> search(Iterable<Country> countries, String query,
     }
     if (score != 0) scored.add((c: c, score: score, i: index));
   }
+  if (scored.isEmpty && qc.length >= 4 && !_allDigits.hasMatch(qc)) {
+    // Typo pass: edit distance between the query and whole names, spaces ignored.
+    final limit = qc.length >= 8 ? 2 : 1;
+    var i = 0;
+    for (final c in countries) {
+      final index = i++;
+      final all = [
+        lang == Lang.ar ? c.nameAr : c.nameEn,
+        lang == Lang.ar ? c.nameEn : c.nameAr,
+        ...c.aliasesAr,
+        ...c.aliasesEn,
+      ].map((n) => _compact(normalize(n))).toList();
+      var best = 0.0;
+      for (var k = 0; k < all.length; k++) {
+        final d = editDistance(qc, all[k], limit);
+        if (d <= limit) {
+          final s = 3 - d - (k < 2 ? k : 2) * 0.25;
+          if (s > best) best = s;
+        }
+      }
+      if (best != 0) scored.add((c: c, score: best, i: index));
+    }
+  }
   String key(Country c) => lang == Lang.ar ? c.sortAr : c.sortEn;
   scored.sort((a, b) {
     final d = b.score.compareTo(a.score);
@@ -76,6 +108,37 @@ List<Country> search(Iterable<Country> countries, String query,
     return k != 0 ? k : a.i.compareTo(b.i);
   });
   return [for (final s in scored) s.c];
+}
+
+/// Optimal string alignment distance (insertions, deletions, substitutions, adjacent swaps), compared by
+/// UTF-16 code unit. Returns limit + 1 as soon as the distance must exceed [limit].
+int editDistance(String a, String b, int limit) {
+  if ((a.length - b.length).abs() > limit) return limit + 1;
+  var prev2 = <int>[];
+  var prev = List<int>.generate(b.length + 1, (j) => j);
+  for (var i = 1; i <= a.length; i++) {
+    final cur = List<int>.filled(b.length + 1, 0)..[0] = i;
+    var low = i;
+    for (var j = 1; j <= b.length; j++) {
+      final cost = a.codeUnitAt(i - 1) == b.codeUnitAt(j - 1) ? 0 : 1;
+      var v = prev[j] + 1;
+      if (cur[j - 1] + 1 < v) v = cur[j - 1] + 1;
+      if (prev[j - 1] + cost < v) v = prev[j - 1] + cost;
+      if (i > 1 &&
+          j > 1 &&
+          a.codeUnitAt(i - 1) == b.codeUnitAt(j - 2) &&
+          a.codeUnitAt(i - 2) == b.codeUnitAt(j - 1) &&
+          prev2[j - 2] + 1 < v) {
+        v = prev2[j - 2] + 1;
+      }
+      cur[j] = v;
+      if (v < low) low = v;
+    }
+    if (low > limit) return limit + 1;
+    prev2 = prev;
+    prev = cur;
+  }
+  return prev[b.length];
 }
 
 /// Alphabetical in the UI language (code point order), with the user's country (if given) first. Returns a new list.
@@ -163,4 +226,59 @@ String formatNational(String national, PhonePlan plan) {
     return national;
   var i = 0;
   return mask.replaceAllMapped('#', (_) => national[i++]);
+}
+
+const Map<String, String> _addressTokens = {
+  'N': 'name',
+  'O': 'organization',
+  'A': 'street',
+  'D': 'sublocality',
+  'C': 'city',
+  'S': 'region',
+  'Z': 'postal_code',
+  'X': 'sorting_code',
+};
+
+const Map<String, ({String ar, String en})> _fixedLabels = {
+  'name': (ar: 'الاسم', en: 'Name'),
+  'organization': (ar: 'المنشأة', en: 'Organization'),
+  'street': (ar: 'العنوان', en: 'Street address'),
+  'sorting_code': (ar: 'رمز الفرز', en: 'Sorting code'),
+};
+
+/// The address form of a country: its fields line by line, in the country's order, with labels in [lang] and
+/// whether the postal service requires each one. Tokens the format uses beyond Google's nine are skipped.
+List<List<AddressFormField>> addressForm(Country country,
+    [Lang lang = Lang.en]) {
+  final a = country.address;
+  String? pick(String? ar, String? en) => lang == Lang.ar ? ar : en;
+  String? cap(String? s) => s != null && s.isNotEmpty && lang == Lang.en
+      ? s[0].toUpperCase() + s.substring(1)
+      : s;
+  String? labelOf(String f) {
+    final fixed = _fixedLabels[f];
+    if (fixed != null) return lang == Lang.ar ? fixed.ar : fixed.en;
+    if (f == 'city') return pick(a.localityLabelAr, a.localityLabelEn);
+    if (f == 'sublocality') {
+      return pick(a.sublocalityLabelAr, a.sublocalityLabelEn);
+    }
+    if (f == 'region') return cap(pick(a.regionLabelAr, a.regionLabelEn));
+    return pick(a.postalCodeLabelAr, a.postalCodeLabelEn);
+  }
+
+  final seen = <String>{};
+  final lines = <List<AddressFormField>>[];
+  for (final line in (a.addressFormat ?? '%N%n%O%n%A%n%C').split('%n')) {
+    final fields = <AddressFormField>[];
+    for (final m in _addressToken.allMatches(line)) {
+      final field = _addressTokens[m[1]];
+      if (field == null || !seen.add(field)) continue;
+      fields.add(AddressFormField(
+          field: field,
+          label: labelOf(field),
+          required: a.requiredFields.contains(field)));
+    }
+    if (fields.isNotEmpty) lines.add(List.unmodifiable(fields));
+  }
+  return List.unmodifiable(lines);
 }

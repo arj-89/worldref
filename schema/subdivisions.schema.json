@@ -11,7 +11,9 @@
       "code",
       "name_ar",
       "name_en",
-      "parent"
+      "parent",
+      "type_ar",
+      "type_en"
     ],
     "properties": {
       "iso2": {
@@ -35,6 +37,20 @@
       },
       "parent": {
         "description": "ISO 3166-2 code of the parent subdivision, for nested ones.",
+        "type": [
+          "string",
+          "null"
+        ]
+      },
+      "type_ar": {
+        "description": "What the subdivision is, in Arabic (منطقة، محافظة، إمارة، ولاية...). Arab countries use their own official term.",
+        "type": [
+          "string",
+          "null"
+        ]
+      },
+      "type_en": {
+        "description": "What the subdivision is (region, province, emirate, state...), from Wikidata. Null when no source names it.",
         "type": [
           "string",
           "null"

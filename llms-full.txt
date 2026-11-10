@@ -24,7 +24,7 @@
 - Sources for every column and every editorial decision: https://cdn.jsdelivr.net/npm/worldref@1/data/sources.json
 - Arabic sorting: compare `sort_ar` with plain string comparison, never locale collation; put the user's country first.
 - Time: store UTC plus the IANA zone from geo.timezones; convert for display with the platform's time-zone support; never store a fixed UTC offset (daylight saving time changes it).
-- Search: normalise both sides: drop «ال» from every word, remove tashkeel and tatweel, treat أ إ آ ٱ as ا, ة as ه, ى as ي, ؤ as و, ئ as ي; ignore Latin case and accents; Arabic-Indic and Persian digits to Western. Full list: https://github.com/arj-89/worldref#best-practices
+- Search: normalise both sides: drop «ال» from every word, remove tashkeel and tatweel, treat أ إ آ ٱ as ا, ة as ه, ى as ي, ؤ as و, ئ as ي; ignore Latin case and accents; Arabic-Indic and Persian digits to Western; also compare with spaces removed; when nothing matches, forgive 1 edit (4 to 7 letters) or 2 (8 or more). Full list: https://github.com/arj-89/worldref#best-practices
 - Display: flag, name in the UI language, then the dial code isolated left-to-right in Arabic; Western numerals; `flag_svg` on the web.
 - Phone numbers: store international form (E.164) plus the iso2 the user picked. Validate a national number with `^(?:mobile_pattern)$`.
 - Emergency numbers are published only when an official source confirms them. A null service means: call `general`.
@@ -99,6 +99,10 @@
 | `geo.population` | geo | `36973555` | Population. |
 | `geo.population_year` | geo | `2025` | Year of the population figure. |
 | `geo.timezones` | geo | `["Asia/Riyadh"]` | IANA time zone names. |
+| `geo.timezone_offsets` | geo | `[{"zone":"Asia/Riyadh","standard":"+0...` | For each zone in `timezones`: the standard UTC offset and the daylight-saving offset (null when the zone does not switch), under the rules in force on the date in `data/meta.json`. Reference only: compute the current offset with the platform's time-zone support, never store it. |
+| `geo.timezone_offsets[].zone` | geo | `Asia/Riyadh` | IANA time zone name. |
+| `geo.timezone_offsets[].standard` | geo | `+03:00` | Standard UTC offset, e.g. +03:00. Not always the offset in use today (Cuba keeps daylight saving time through 2027). |
+| `geo.timezone_offsets[].dst` | geo | `null` | Daylight-saving UTC offset, or null when the zone does not switch. Lower than `standard` where the law defines winter as the shift (Ireland). |
 | `geo.driving_side` | geo | `right` | left or right. |
 | `locale` | locale |  | Locale conventions. |
 | `locale.languages` | locale | `[{"code":"ar","name_ar":"العربية","na...` | Official languages, most spoken first. |
@@ -114,8 +118,15 @@
 | `address.postal_code_regex` | address | `^(?:\d{5})$` | Regex for a valid postal code. |
 | `address.postal_code_example` | address | `11564` | Example postal code. |
 | `address.address_format` | address | `%N%n%O%n%A%n%C %Z` | Address template: %N name, %O organisation, %A street, %D district, %C city, %S region, %Z postal code, %X sorting code, %n new line. |
-| `address.region_label_ar` | address | `null` | What the top-level region is called, in Arabic. |
-| `address.region_label_en` | address | `null` | What the top-level region is called (state, province, emirate...). |
+| `address.region_label_ar` | address | `null` | What the top-level region is called, in Arabic. Where Google gives no type, the country's own subdivision type when all its top-level subdivisions share one. |
+| `address.region_label_en` | address | `null` | What the top-level region is called (state, province, emirate...). Where Google gives no type, the country's own subdivision type when all its top-level subdivisions share one. |
+| `address.locality_label_ar` | address | `المدينة` | Label of the city field in Arabic (المدينة...), or null when the address has no city line. |
+| `address.locality_label_en` | address | `City` | Label of the city field (City, Post town, District, Suburb), or null when the address has no city line. |
+| `address.sublocality_label_ar` | address | `null` | Label of the area-within-city field in Arabic (الحي...), or null when the address has none. |
+| `address.sublocality_label_en` | address | `null` | Label of the area-within-city field (Neighborhood, District, Suburb...), or null when the address has none. |
+| `address.postal_code_label_ar` | address | `الرمز البريدي` | Label of the postal code field in Arabic, or null when the address has no postal code. |
+| `address.postal_code_label_en` | address | `Postal code` | Label of the postal code field (Postal code, ZIP code, PIN code, Eircode), or null when the address has none. |
+| `address.required_fields` | address | `["street","city"]` | Address fields the postal service requires: name, organization, street, sublocality, city, region, postal_code, sorting_code. |
 | `travel` | travel |  | Travel facts. |
 | `travel.emergency` | travel |  | Emergency numbers confirmed from an official source. A null service means: call `general`. |
 | `travel.emergency.police` | travel | `999` | Police. |
@@ -133,6 +144,8 @@
 | `subdivisions.name_ar` | subdivisions | `منطقة الرياض` | Name in Arabic. |
 | `subdivisions.name_en` | subdivisions | `Riyadh` | Name in English. |
 | `subdivisions.parent` | subdivisions | `null` | ISO 3166-2 code of the parent subdivision, for nested ones. |
+| `subdivisions.type_ar` | subdivisions | `منطقة` | What the subdivision is, in Arabic (منطقة، محافظة، إمارة، ولاية...). Arab countries use their own official term. |
+| `subdivisions.type_en` | subdivisions | `region` | What the subdivision is (region, province, emirate, state...), from Wikidata. Null when no source names it. |
 
 ## Example record (Saudi Arabia, bilingual build)
 
@@ -230,6 +243,13 @@
   "timezones": [
    "Asia/Riyadh"
   ],
+  "timezone_offsets": [
+   {
+    "zone": "Asia/Riyadh",
+    "standard": "+03:00",
+    "dst": null
+   }
+  ],
   "driving_side": "right"
  },
  "locale": {
@@ -259,7 +279,17 @@
   "postal_code_example": "11564",
   "address_format": "%N%n%O%n%A%n%C %Z",
   "region_label_ar": null,
-  "region_label_en": null
+  "region_label_en": null,
+  "locality_label_ar": "المدينة",
+  "locality_label_en": "City",
+  "sublocality_label_ar": null,
+  "sublocality_label_en": null,
+  "postal_code_label_ar": "الرمز البريدي",
+  "postal_code_label_en": "Postal code",
+  "required_fields": [
+   "street",
+   "city"
+  ]
  },
  "travel": {
   "emergency": {
@@ -289,14 +319,18 @@
    "code": "SA-01",
    "name_ar": "منطقة الرياض",
    "name_en": "Riyadh",
-   "parent": null
+   "parent": null,
+   "type_ar": "منطقة",
+   "type_en": "region"
   },
   {
    "iso2": "SA",
    "code": "SA-02",
    "name_ar": "منطقة مكة المكرمة",
    "name_en": "Makkah",
-   "parent": null
+   "parent": null,
+   "type_ar": "منطقة",
+   "type_en": "region"
   }
  ]
 }

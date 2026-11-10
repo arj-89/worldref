@@ -58,6 +58,13 @@ class Nationality:
 
 
 @dataclass(frozen=True)
+class TimezoneOffset:
+    zone: str
+    standard: str  # UTC offset, e.g. "+03:00"
+    dst: Optional[str]  # None when the zone keeps no daylight saving time
+
+
+@dataclass(frozen=True)
 class Geo:
     capital_ar: Optional[str]
     capital_en: Optional[str]
@@ -68,12 +75,14 @@ class Geo:
     population_year: Optional[int]
     timezones: Tuple[str, ...]
     driving_side: Optional[str]  # "left" | "right"
+    timezone_offsets: Tuple[TimezoneOffset, ...] = ()
 
     @classmethod
     def from_dict(cls, d: Json) -> "Geo":
         return cls(
             d["capital_ar"], d["capital_en"], d["lat"], d["lng"], d["area_km2"], d["population"],
             d["population_year"], tuple(d["timezones"]), d["driving_side"],
+            tuple(TimezoneOffset(t["zone"], t["standard"], t["dst"]) for t in d["timezone_offsets"]),
         )
 
 
@@ -106,12 +115,22 @@ class Address:
     address_format: Optional[str]
     region_label_ar: Optional[str]
     region_label_en: Optional[str]
+    locality_label_ar: Optional[str] = None
+    locality_label_en: Optional[str] = None
+    sublocality_label_ar: Optional[str] = None
+    sublocality_label_en: Optional[str] = None
+    postal_code_label_ar: Optional[str] = None
+    postal_code_label_en: Optional[str] = None
+    # name | organization | street | sublocality | city | region | postal_code | sorting_code
+    required_fields: Tuple[str, ...] = ()
 
     @classmethod
     def from_dict(cls, d: Json) -> "Address":
         return cls(
             d["postal_code_format"], d["postal_code_regex"], d["postal_code_example"],
             d["address_format"], d["region_label_ar"], d["region_label_en"],
+            d["locality_label_ar"], d["locality_label_en"], d["sublocality_label_ar"], d["sublocality_label_en"],
+            d["postal_code_label_ar"], d["postal_code_label_en"], tuple(d["required_fields"]),
         )
 
 
@@ -196,3 +215,5 @@ class Subdivision:
     name_ar: Optional[str]
     name_en: Optional[str]
     parent: Optional[str]
+    type_ar: Optional[str] = None
+    type_en: Optional[str] = None

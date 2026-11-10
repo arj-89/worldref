@@ -1,5 +1,7 @@
 package worldref
 
+import kotlin.math.abs
+
 enum class Lang { AR, EN }
 
 private val DIAL = Regex("^(\\+|00)?\\d{1,4}$")
@@ -7,11 +9,14 @@ private val DIAL_PREFIX = Regex("^(\\+|00)")
 
 /**
  * Countries matching a query, best first. Matches names and aliases in both languages (ignoring the Arabic
- * article, tashkeel, hamza forms, case and accents), ISO codes, and dial codes with or without + or 00.
+ * article, tashkeel, hamza forms, case, accents, spaces and punctuation), ISO codes, and dial codes with or
+ * without + or 00. When nothing matches, a second pass forgives small typos ("Kuwiat"): 1 edit for 4 to 7
+ * letters, 2 from 8.
  */
 fun search(countries: List<Country>, query: String, lang: Lang = Lang.EN): List<Country> {
     val q = normalize(query)
     if (q.isEmpty()) return emptyList()
+    val qc = q.replace(" ", "")
     val digits = westernDigits(query).replace(Regex("[\\s()-]"), "")
     val dial = if (DIAL.matches(digits)) digits.replace(DIAL_PREFIX, "") else null
     val upper = query.trim().uppercase(java.util.Locale.ROOT)
@@ -21,12 +26,16 @@ fun search(countries: List<Country>, query: String, lang: Lang = Lang.EN): List<
         val own = normalize(if (ar) c.nameAr else c.nameEn)
         val other = normalize(if (ar) c.nameEn else c.nameAr)
         // Tiers: exact (50s), name starts with the query (40s), a word starts with it (30s), contains it (10s).
-        fun rank(name: String, place: Int): Double = when {
-            name == q -> 50.0 - place
-            name.startsWith(q) -> 40.0 - place
-            name.split(" ").any { it.startsWith(q) } -> 30.0 - place
-            q.length >= 3 && name.contains(q) -> 10.0 - place
-            else -> 0.0
+        // Within a tier: the UI-language name, then the other language, then aliases.
+        fun rank(name: String, place: Int): Double {
+            val nc = name.replace(" ", "")
+            return when {
+                name == q || nc == qc -> 50.0 - place
+                name.startsWith(q) || (qc.length >= 3 && nc.startsWith(qc)) -> 40.0 - place
+                name.split(" ").any { it.startsWith(q) } -> 30.0 - place
+                q.length >= 3 && name.contains(q) -> 10.0 - place
+                else -> 0.0
+            }
         }
         var score = maxOf(rank(own, 0), rank(other, 1), (c.aliasesAr + c.aliasesEn).maxOfOrNull { rank(normalize(it), 2) } ?: 0.0)
         if (upper == c.iso2 || upper == c.iso3) score = maxOf(score, 49.5)
@@ -37,9 +46,48 @@ fun search(countries: List<Country>, query: String, lang: Lang = Lang.EN): List<
         }
         if (score != 0.0) scored.add(c to score)
     }
+    if (scored.isEmpty() && qc.length >= 4 && !qc.all { it in '0'..'9' }) {
+        // Typo pass: edit distance between the query and whole names, spaces ignored.
+        val limit = if (qc.length >= 8) 2 else 1
+        for (c in countries) {
+            val names = listOf(if (ar) c.nameAr else c.nameEn, if (ar) c.nameEn else c.nameAr) + c.aliasesAr + c.aliasesEn
+            var best = 0.0
+            names.map { normalize(it).replace(" ", "") }.forEachIndexed { i, n ->
+                val d = editDistance(qc, n, limit)
+                if (d <= limit) best = maxOf(best, 3.0 - d - minOf(i, 2) * 0.25)
+            }
+            if (best != 0.0) scored.add(c to best)
+        }
+    }
     return scored.sortedWith(
         compareByDescending<Pair<Country, Double>> { it.second }.thenBy { if (ar) it.first.sortAr else it.first.sortEn },
     ).map { it.first }
+}
+
+/**
+ * Optimal string alignment distance (insertions, deletions, substitutions, adjacent swaps), compared by
+ * UTF-16 code unit. Returns limit + 1 as soon as the distance must exceed [limit].
+ */
+fun editDistance(a: String, b: String, limit: Int): Int {
+    if (abs(a.length - b.length) > limit) return limit + 1
+    var prev2 = IntArray(0)
+    var prev = IntArray(b.length + 1) { it }
+    for (i in 1..a.length) {
+        val cur = IntArray(b.length + 1)
+        cur[0] = i
+        var low = i
+        for (j in 1..b.length) {
+            val cost = if (a[i - 1] == b[j - 1]) 0 else 1
+            var v = minOf(prev[j] + 1, cur[j - 1] + 1, prev[j - 1] + cost)
+            if (i > 1 && j > 1 && a[i - 1] == b[j - 2] && a[i - 2] == b[j - 1]) v = minOf(v, prev2[j - 2] + 1)
+            cur[j] = v
+            low = minOf(low, v)
+        }
+        if (low > limit) return limit + 1
+        prev2 = prev
+        prev = cur
+    }
+    return prev[b.length]
 }
 
 /** Alphabetical (code point order) in the UI language, with the user's country (if given) first. Returns a new list. */
@@ -126,4 +174,62 @@ fun formatNational(national: String, plan: PhonePlan): String {
     if (mask == null || mask.count { it == '#' } != national.length) return national
     var i = 0
     return mask.map { if (it == '#') national[i++] else it }.joinToString("")
+}
+
+/** A field of a postal address form; [key] is the name used in the data (required_fields) and in other packages. */
+enum class AddressField(val key: String) {
+    NAME("name"),
+    ORGANIZATION("organization"),
+    STREET("street"),
+    SUBLOCALITY("sublocality"),
+    CITY("city"),
+    REGION("region"),
+    POSTAL_CODE("postal_code"),
+    SORTING_CODE("sorting_code"),
+}
+
+data class AddressFormField(
+    val field: AddressField,
+    /** In the requested language; null when the data has no label in that language. */
+    val label: String?,
+    val required: Boolean,
+)
+
+private val ADDRESS_TOKEN = Regex("%([A-Z])")
+private val ADDRESS_TOKENS = mapOf(
+    'N' to AddressField.NAME, 'O' to AddressField.ORGANIZATION, 'A' to AddressField.STREET,
+    'D' to AddressField.SUBLOCALITY, 'C' to AddressField.CITY, 'S' to AddressField.REGION,
+    'Z' to AddressField.POSTAL_CODE, 'X' to AddressField.SORTING_CODE,
+)
+
+/**
+ * The address form of a country: its fields line by line, in the country's order, with labels in [lang] and
+ * whether the postal service requires each one. Tokens the format uses beyond Google's nine are skipped.
+ */
+fun addressForm(country: Country, lang: Lang = Lang.EN): List<List<AddressFormField>> {
+    val a = country.address
+    val ar = lang == Lang.AR
+    fun pick(arLabel: String?, enLabel: String?) = if (ar) arLabel else enLabel
+    fun cap(s: String?) =
+        if (s == null || s.isEmpty() || ar) s else s.substring(0, 1).uppercase(java.util.Locale.ROOT) + s.substring(1)
+    fun labelOf(f: AddressField): String? = when (f) {
+        AddressField.NAME -> if (ar) "الاسم" else "Name"
+        AddressField.ORGANIZATION -> if (ar) "المنشأة" else "Organization"
+        AddressField.STREET -> if (ar) "العنوان" else "Street address"
+        AddressField.SORTING_CODE -> if (ar) "رمز الفرز" else "Sorting code"
+        AddressField.CITY -> pick(a.localityLabelAr, a.localityLabelEn)
+        AddressField.SUBLOCALITY -> pick(a.sublocalityLabelAr, a.sublocalityLabelEn)
+        AddressField.REGION -> cap(pick(a.regionLabelAr, a.regionLabelEn))
+        AddressField.POSTAL_CODE -> pick(a.postalCodeLabelAr, a.postalCodeLabelEn)
+    }
+    val seen = HashSet<AddressField>()
+    return (a.addressFormat ?: "%N%n%O%n%A%n%C").split("%n")
+        .map { line ->
+            ADDRESS_TOKEN.findAll(line)
+                .mapNotNull { ADDRESS_TOKENS[it.groupValues[1][0]] }
+                .filter { seen.add(it) }
+                .map { AddressFormField(it, labelOf(it), it.key in a.requiredFields) }
+                .toList()
+        }
+        .filter { it.isNotEmpty() }
 }
