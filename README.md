@@ -288,7 +288,7 @@ Planned for 1.4.0: retail fuel, the fuel types sold in each country and their of
 
 Planned for 1.5.0: a full human review of every Arabic name.
 
-Planned for 1.6.0: VAT and sales tax rates (standard and reduced), public holidays (including the Hijri-based ones), residential electricity tariffs, minimum wage, speed limits (urban, rural, motorway), vehicle number plate formats, IBAN format and length, number, date and currency formats with paper size (A4 or Letter), retirement age, mobile network codes (MCC and MNC per operator), national card and payment schemes, the school year's start month, and economy and population indicators (GDP, GDP per head, life expectancy, urban population, birth rate and more).
+Planned for 1.6.0: VAT and sales tax rates (standard and reduced), public holidays (including the Hijri-based ones), residential electricity tariffs, minimum wage, speed limits (urban, rural, motorway), vehicle number plate formats, IBAN format and length, number, date and currency formats with paper size (A4 or Letter), retirement age, mobile network codes (MCC and MNC per operator), national card and payment schemes, the school year's start month, and economy and population indicators (GDP, GDP per head, life expectancy, urban population, birth rate and more), climate (average monthly temperature and rainfall) and the official prayer-time calculation method.
 
 ## Sources and licences
 
