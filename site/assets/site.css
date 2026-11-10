@@ -84,7 +84,9 @@ sup.fn a:hover { color: var(--accent); }
 .copy:hover { background: var(--accent-hover); }
 a:active, button:active, summary:active, .chip:active { opacity: 0.85; }
 a, button, summary, input, label { touch-action: manipulation; }
-p > a:only-child, .fine a, .guide a, li > a:only-child { display: inline-block; padding-block: 10px; min-block-size: 44px; box-sizing: border-box; }
+p > a:only-child:not(.btn), .fine a, .guide a:not(.btn), :not(.rows) > li > a:only-child:not(.btn) { display: inline-block; padding-block: 10px; min-block-size: 44px; box-sizing: border-box; }
+.fine li { min-block-size: 44px; }
+h1, .lede { text-wrap: pretty; }
 @media (prefers-reduced-motion: no-preference) { @view-transition { navigation: auto; } }
 .link { background: none; border: 0; padding: 0; min-block-size: 44px; color: var(--accent); font: inherit; cursor: pointer; justify-self: start; }
 .link:hover { text-decoration: underline; }
@@ -159,7 +161,7 @@ details:not(.faq details) > summary { cursor: pointer; color: var(--accent); min
 .jump a:hover { border-color: var(--muted); }
 .cmd { display: grid; gap: 8px; justify-items: stretch; }
 .cmd .copy { justify-self: start; }
-.c-head .cmd code.url { font-size: 0.8125rem; color: var(--muted); }
+.c-head .cmd code.url { font-size: 0.8125rem; color: var(--muted); justify-self: start; }
 .where, .step { font-size: 0.875rem; color: var(--muted); }
 .first summary { font-size: 0.9375rem; }
 .first pre { margin-block-start: 8px; }
@@ -173,12 +175,11 @@ details:not(.faq details) > summary { cursor: pointer; color: var(--accent); min
 .builder legend { font-family: var(--display); font-weight: 600; font-size: 1.125rem; padding: 0; margin-block-end: 10px; }
 .builder label { display: inline-flex; align-items: center; gap: 8px; font-weight: 400; margin-inline-end: 22px; min-block-size: 44px; margin-block-end: 0; }
 .builder input[type="radio"], .builder input[type="checkbox"] { inline-size: 20px; block-size: 20px; accent-color: var(--accent); }
-.builder .hint { margin-block-end: 8px; }
+.builder .hint { margin-block-end: 8px; max-inline-size: none; }
 .mods { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 4px 24px; margin-block-end: 8px; }
-.builder label.mod { display: flex; align-items: flex-start; gap: 10px; margin: 0; padding-block: 10px; }
-.builder label.mod input { margin-block-start: 3px; flex: none; }
-.mod-text { display: grid; gap: 2px; }
-.mod-text .hint { margin: 0; font-size: 0.875rem; }
+.mod { padding-block: 4px 10px; }
+.builder .mod label { margin: 0; }
+.builder .mod .hint { margin: 0; margin-inline-start: 28px; font-size: 0.875rem; }
 .bar { display: flex; flex-wrap: wrap; align-items: center; gap: 12px 24px; padding-block: 22px; border-block-start: 1px solid var(--hair); }
 .bar [data-size] { font-weight: 600; }
 .preview { border-block-start: 1px solid var(--hair); padding-block: 22px; display: grid; gap: 10px; }

@@ -182,7 +182,7 @@ Module names stay in the code face (`phone`); these labels sit beside them.
 | module.locale.desc | اللغات الرسمية، وبداية الأسبوع، والعطلة الأسبوعية، والتقاويم، ونظام القياس | Official languages, first day of the week, weekend, calendars, measurement system | |
 | module.address.desc | صيغة العنوان وتسميات حقوله، والحقول المطلوبة، وشكل الرمز البريدي ونمطه | Address format and field labels, required fields, postal code shape and pattern | |
 | module.travel.desc | أرقام الطوارئ، وأنواع المقابس، والجهد الكهربائي، والتردد | Emergency numbers, plug types, voltage, frequency | |
-| module.sports.desc | رمز فيفا ورمز اللجنة الأولمبية الدولية | FIFA and IOC codes | |
+| module.sports.desc | رمز فيفا ورمز اللجنة الأولمبية الدولية | The FIFA code and the International Olympic Committee code | |
 | module.subdivisions.desc | مناطق ISO 3166-2 ومحافظاتها وولاياتها، بالاسم باللغتين ونوع كل منها | ISO 3166-2 regions, provinces and states, with names in both languages and each one's type | hint under the subdivisions choice on /build |
 | build.bilingual | عربي وإنجليزي | Arabic and English | `.json` |
 | build.ar | عربي فقط | Arabic only | `.ar.json` |
