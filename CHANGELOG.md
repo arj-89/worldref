@@ -21,7 +21,7 @@ New, non-breaking. Every field that 1.1.x had is unchanged; a test now fails the
 - Releases: automatic data releases list what changed (sources, fields, the rows affected) in this changelog and in their release notes.
 - Compatibility: typed packages add new fields last, with defaults. C# keeps the 1.1.x constructors and deconstructors, so compiled code keeps working; Kotlin adds `@JvmOverloads`, but the compiled `copy()` of `Geo`, `Address` and `Subdivision` changes, so already-compiled Java or Kotlin code that calls `copy()` on them needs a rebuild (source code is unaffected).
 - Website: country pages show each zone's UTC offsets and each subdivision's type, and every editorial decision gives its reason in Arabic as well as English (`why_ar` in `data/sources.json`).
-- Prepared: Kotlin on Maven Central (`io.github.arj-89:worldref`), signed in the release job; it stays off until signing is set up. JitPack is unchanged.
+- New: Kotlin on Maven Central (`io.github.arj-89:worldref`), signed in the release job and published from this version on. JitPack still works.
 
 ## 1.1.3 (2026-11-09)
 

@@ -43,6 +43,8 @@ if (!readFileSync(`${ROOT}CHANGELOG.md`, "utf8").includes(`## ${next} `)) {
     const body = (lines.length ? lines : ["Upstream sources checked; no data changes."]).map((l) => `- ${l}`).join("\n");
     edit("CHANGELOG.md", [[/\n## /, () => `\n## ${next} (${new Date().toISOString().slice(0, 10)}, data refresh)\n\n${body}\n\n## `]]);
     copyFileSync(`${ROOT}CHANGELOG.md`, `${ROOT}dart/CHANGELOG.md`);
+    // The Arabic changelog gets the same version, in Arabic (the website's Arabic release notes read it).
+    edit("CHANGELOG.ar.md", [[/\n## /, () => `\n## ${next} (${new Date().toISOString().slice(0, 10)})\n\n- تحديث تلقائي للبيانات من مصادرها. التفاصيل في [سجل التغييرات الإنجليزي](CHANGELOG.md).\n\n## `]]);
 }
 // Every field that has shipped stays in the compatibility baseline; removing one needs a major release.
 writeFileSync(`${ROOT}tests/compat-baseline.json`, JSON.stringify(baseline(), null, 1) + "\n");

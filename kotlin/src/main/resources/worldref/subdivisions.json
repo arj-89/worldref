@@ -1150,7 +1150,7 @@
 {"iso2":"EE","code":"EE-87","name_ar":"مقاطعة فورو","name_en":"Võrumaa","parent":null,"type_ar":"مقاطعة","type_en":"county"},
 {"iso2":"EE","code":"EE-890","name_ar":null,"name_en":"Viimsi","parent":"EE-37","type_ar":"بلدية","type_en":"municipality"},
 {"iso2":"EE","code":"EE-897","name_ar":null,"name_en":"Viljandi","parent":"EE-84","type_ar":"بلدية","type_en":"municipality"},
-{"iso2":"EE","code":"EE-899","name_ar":null,"name_en":"Viljandi³","parent":"EE-84","type_ar":"بلدية","type_en":"municipality"},
+{"iso2":"EE","code":"EE-899","name_ar":null,"name_en":"Viljandi","parent":"EE-84","type_ar":"بلدية","type_en":"municipality"},
 {"iso2":"EE","code":"EE-901","name_ar":null,"name_en":"Vinni","parent":"EE-60","type_ar":"بلدية","type_en":"municipality"},
 {"iso2":"EE","code":"EE-903","name_ar":null,"name_en":"Viru-Nigula","parent":"EE-60","type_ar":"بلدية","type_en":"municipality"},
 {"iso2":"EE","code":"EE-907","name_ar":null,"name_en":"Vormsi","parent":"EE-56","type_ar":"بلدية","type_en":"municipality"},

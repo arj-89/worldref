@@ -1116,6 +1116,13 @@
    "why": "Administrative capital (Lobamba is the royal and legislative capital)"
   },
   {
+   "iso2": "TR",
+   "field": "official_name_en",
+   "value": "Republic of Türkiye",
+   "why": "The UN registered Türkiye as the country's name in 2022; the Factbook's final edition keeps the old form",
+   "why_ar": "سجّلت الأمم المتحدة اسم تركيا الرسمي بالإنجليزية Türkiye عام 2022، وما زالت الطبعة الأخيرة من كتاب حقائق العالم بالصيغة القديمة."
+  },
+  {
    "iso2": "TT",
    "field": "nationality_ar_m",
    "value": "ترينيدادي",

@@ -28,3 +28,10 @@ test("every package manifest carries the same version", () => {
     };
     for (const [file, v] of Object.entries(found)) assert.equal(v, want, `${file} says ${v}, package.json says ${want}`);
 });
+
+test("the Arabic changelog covers every version of the English one", () => {
+    const root = new URL("../", import.meta.url).pathname;
+    const versions = (f) => [...readFileSync(`${root}${f}`, "utf8").matchAll(/^## (\S+) /gm)].map((m) => m[1]);
+    const ar = new Set(versions("CHANGELOG.ar.md"));
+    assert.deepEqual(versions("CHANGELOG.md").filter((v) => !ar.has(v)), [], "write these versions in CHANGELOG.ar.md");
+});

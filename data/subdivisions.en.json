@@ -1150,7 +1150,7 @@
 {"iso2":"EE","code":"EE-87","name":"Võrumaa","parent":null,"type":"county"},
 {"iso2":"EE","code":"EE-890","name":"Viimsi","parent":"EE-37","type":"municipality"},
 {"iso2":"EE","code":"EE-897","name":"Viljandi","parent":"EE-84","type":"municipality"},
-{"iso2":"EE","code":"EE-899","name":"Viljandi³","parent":"EE-84","type":"municipality"},
+{"iso2":"EE","code":"EE-899","name":"Viljandi","parent":"EE-84","type":"municipality"},
 {"iso2":"EE","code":"EE-901","name":"Vinni","parent":"EE-60","type":"municipality"},
 {"iso2":"EE","code":"EE-903","name":"Viru-Nigula","parent":"EE-60","type":"municipality"},
 {"iso2":"EE","code":"EE-907","name":"Vormsi","parent":"EE-56","type":"municipality"},
