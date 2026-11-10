@@ -53,6 +53,14 @@ Format: date, feature, what happened (as a role, no blame), root cause, what cha
 - **Affects siblings:** any BIXET site reviewed by an agent in this browser.
 - **Candidate for the skill:** yes (`references/process.md`, evidence board: serve under the real base path; capture phone width through iframes when the browser cannot narrow).
 
+### 10/11/2026 · Full width and module subtitles
+
+- **What happened:** a CSS fix for one link ("Show all242countries") was pushed to main before Stop 2; its selector `li > a:only-child` also matched every country-list row and every `.btn` link, so the live site showed rows run together and flat chevrons until the reviewer caught it.
+- **Root cause:** a broad, global selector changed to fix one element, and main deploys the site on push, so "review after push" meant "review after release".
+- **What changed here:** site changes go on a branch with a pull request; the review runs on the branch build; main only gets reviewed work. Global rules exclude the components that own their own display (`.rows`, `.btn`).
+- **Affects siblings:** any BIXET site that deploys from main.
+- **Candidate for the skill:** yes (`references/process.md`: Stop 2 runs before the change reaches the deploying branch).
+
 
 ## Rejected, do not reopen
 
