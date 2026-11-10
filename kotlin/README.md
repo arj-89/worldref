@@ -2,14 +2,20 @@
 
 242 countries and territories in Arabic and English: names, flags, phone plans, currencies, geo, subdivisions. Runs on the JVM and Android (JVM target 11). Only runtime dependency: kotlinx-serialization-json.
 
-## Install from GitHub (JitPack)
+## Install
+
+From Maven Central (`mavenCentral()` is in every new Gradle and Android project):
+
+```kotlin
+dependencies { implementation("io.github.arj-89:worldref:1.2.0") }
+```
+
+JitPack still works, with the same code under its own coordinates:
 
 ```kotlin
 repositories { maven("https://jitpack.io") }
 dependencies { implementation("com.github.arj-89:worldref:v1.2.0") }
 ```
-
-Repo: github.com/arj-89/worldref, tag v1.2.0.
 
 ## Usage
 

@@ -5,7 +5,7 @@
 [العربية](README.ar.md) · [Website and search demo](https://arj-89.github.io/worldref) · [Best practices](#best-practices) · [Field reference](#fields) · [Data sources](#sources-and-licences)
 
 [![CI](https://github.com/arj-89/worldref/actions/workflows/ci.yml/badge.svg)](https://github.com/arj-89/worldref/actions/workflows/ci.yml)
-[![npm](https://img.shields.io/npm/v/worldref?label=npm)](https://www.npmjs.com/package/worldref) [![PyPI](https://img.shields.io/pypi/v/worldref?label=PyPI)](https://pypi.org/project/worldref/) [![pub.dev](https://img.shields.io/pub/v/worldref?label=pub.dev)](https://pub.dev/packages/worldref) [![NuGet](https://img.shields.io/nuget/v/WorldRef?label=NuGet)](https://www.nuget.org/packages/WorldRef/) [![Packagist](https://img.shields.io/packagist/v/arj-89/worldref?label=Packagist)](https://packagist.org/packages/arj-89/worldref) [![MCP Registry](https://img.shields.io/badge/MCP%20Registry-io.github.arj--89%2Fworldref-blue)](https://registry.modelcontextprotocol.io/?q=worldref)
+[![npm](https://img.shields.io/npm/v/worldref?label=npm)](https://www.npmjs.com/package/worldref) [![PyPI](https://img.shields.io/pypi/v/worldref?label=PyPI)](https://pypi.org/project/worldref/) [![pub.dev](https://img.shields.io/pub/v/worldref?label=pub.dev)](https://pub.dev/packages/worldref) [![NuGet](https://img.shields.io/nuget/v/WorldRef?label=NuGet)](https://www.nuget.org/packages/WorldRef/) [![Packagist](https://img.shields.io/packagist/v/arj-89/worldref?label=Packagist)](https://packagist.org/packages/arj-89/worldref) [![Maven Central](https://img.shields.io/maven-central/v/io.github.arj-89/worldref?label=Maven%20Central)](https://central.sonatype.com/artifact/io.github.arj-89/worldref) [![MCP Registry](https://img.shields.io/badge/MCP%20Registry-io.github.arj--89%2Fworldref-blue)](https://registry.modelcontextprotocol.io/?q=worldref)
 ![countries](https://img.shields.io/badge/countries-242-blue) ![subdivisions](https://img.shields.io/badge/subdivisions-5012-blue) ![languages](https://img.shields.io/badge/names-Arabic%20%7C%20English-green)
 
 ```js
@@ -27,14 +27,14 @@ parsePhone("٠٥٠١٢٣٤٥٦٧", byIso2("SA"));     // { e164: "+966501234567"
 
 ## Install
 
-Published on npm, PyPI, pub.dev, Packagist, NuGet and the MCP Registry. Swift, Kotlin and Go install straight from this repository.
+Published on npm, PyPI, pub.dev, Packagist, NuGet, Maven Central and the MCP Registry. Swift and Go install straight from this repository.
 
 | Stack | Install |
 |---|---|
 | JavaScript, TypeScript (web, Node 20.10+, React Native, Bun, Deno) | `npm i worldref` |
 | CDN (no build step) | `https://cdn.jsdelivr.net/npm/worldref@1.2.0/data/worldref.json` |
 | Swift (iOS, macOS) | Swift Package Manager: `https://github.com/arj-89/worldref`, from `1.2.0`, product `WorldRef` |
-| Kotlin, Android | JitPack: `maven("https://jitpack.io")`, then `implementation("com.github.arj-89:worldref:v1.2.0")` |
+| Kotlin, Android | `implementation("io.github.arj-89:worldref:1.2.0")` (Maven Central; JitPack still works: `com.github.arj-89:worldref:v1.2.0`) |
 | Python | `pip install worldref` |
 | Dart, Flutter | `dart pub add worldref` (Flutter: `flutter pub add worldref`) |
 | PHP, Laravel | `composer require arj-89/worldref` |
@@ -277,13 +277,12 @@ Start at [`llms.txt`](llms.txt) and [`AGENTS.md`](AGENTS.md). Schemas are in [`s
 
 ## Roadmap
 
-Shipped in 1.2.0: time-zone offsets, subdivision types, forgiving search, the address-form helper, and a changelog that lists what each automatic data release changed.
+Shipped in 1.2.0: time-zone offsets, subdivision types, forgiving search, the address-form helper, a changelog that lists what each automatic data release changed, and Kotlin on Maven Central.
 
 Planned for 1.3.0 (new, non-breaking):
 
 1. Official Arabic names: 222 rows are empty today, the largest gap in the data.
 2. Cities: a new `cities` module with Arabic and English names, linked to each country and subdivision: capitals, subdivision capitals, and every city of 100,000 people or more.
-3. Kotlin on Maven Central as `io.github.arj-89:worldref` (the build and the release job are ready; publishing starts once signing is set up). Until then, Kotlin installs through JitPack.
 
 Planned for 1.4.0: retail fuel, the fuel types sold in each country and their official retail prices, each with its source and date. A price stays until its source publishes a new one; sources are checked at least every two weeks.
 

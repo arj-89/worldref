@@ -53,6 +53,11 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - run: for i in 1 2 3 4 5 6; do curl -fsS "https://jitpack.io/com/github/arj-89/worldref/$TAG/worldref-$TAG.pom" && exit 0; sleep 60; done; exit 1
+  maven-central:
+    runs-on: ubuntu-latest
+    steps:
+      # Central can take half an hour to serve a new version.
+      - run: for i in $(seq 40); do curl -fsS "https://repo1.maven.org/maven2/io/github/arj-89/worldref/${TAG#v}/worldref-${TAG#v}.pom" >/dev/null && exit 0; sleep 60; done; exit 1
   dart:
     runs-on: ubuntu-latest
     steps:

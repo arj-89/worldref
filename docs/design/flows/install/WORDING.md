@@ -15,7 +15,7 @@ Commands and first calls are not copy: they are taken verbatim from `README.md` 
 | install.jump | انتقل إلى بيئتك | Jump to your stack | label above the jump row of 12 links |
 | install.where.terminal | الطرفية | Terminal | label above a command that runs in a shell |
 | install.where.url | رابط | URL | label above a URL |
-| install.step | الخطوة {n} من {total} | Step {n} of {total} | for the two stacks whose lines go to two destinations (Kotlin, PHP); C# is one Terminal block (entry 20) |
+| install.step | الخطوة {n} من {total} | Step {n} of {total} | for a stack whose lines go to two destinations (PHP); C# is one Terminal block (entry 20) |
 | install.step.next | بقيت الخطوة {n} من {total} | Next: step {n} of {total} | partial state, on the block not yet copied |
 | install.first.show | اعرض أول استدعاء | Show the first call | toggle under each stack; opens by itself after a copy |
 | install.first.hide | أخفِ أول استدعاء | Hide the first call | |
@@ -52,7 +52,7 @@ Platform lists sit in brackets after the name, small. Product names stay Latin i
 | install.stack.swift | Swift | Swift | id `swift` |
 | install.stack.swift.on | iOS وmacOS | iOS, macOS | |
 | install.stack.kotlin | Kotlin وAndroid | Kotlin, Android | id `kotlin` |
-| install.stack.kotlin.on | عبر JitPack | via JitPack | |
+| install.stack.kotlin.on | من Maven Central | from Maven Central | |
 | install.stack.python | Python | Python | id `python` |
 | install.stack.python.on | الإصدار 3.9 أو أحدث | 3.9 or newer | from the Python README |
 | install.stack.dart | Dart وFlutter | Dart, Flutter | id `dart` |

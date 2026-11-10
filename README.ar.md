@@ -8,7 +8,7 @@
 
 </div>
 
-[![npm](https://img.shields.io/npm/v/worldref?label=npm)](https://www.npmjs.com/package/worldref) [![PyPI](https://img.shields.io/pypi/v/worldref?label=PyPI)](https://pypi.org/project/worldref/) [![pub.dev](https://img.shields.io/pub/v/worldref?label=pub.dev)](https://pub.dev/packages/worldref) [![NuGet](https://img.shields.io/nuget/v/WorldRef?label=NuGet)](https://www.nuget.org/packages/WorldRef/) [![Packagist](https://img.shields.io/packagist/v/arj-89/worldref?label=Packagist)](https://packagist.org/packages/arj-89/worldref) [![MCP Registry](https://img.shields.io/badge/MCP%20Registry-io.github.arj--89%2Fworldref-blue)](https://registry.modelcontextprotocol.io/?q=worldref)
+[![npm](https://img.shields.io/npm/v/worldref?label=npm)](https://www.npmjs.com/package/worldref) [![PyPI](https://img.shields.io/pypi/v/worldref?label=PyPI)](https://pypi.org/project/worldref/) [![pub.dev](https://img.shields.io/pub/v/worldref?label=pub.dev)](https://pub.dev/packages/worldref) [![NuGet](https://img.shields.io/nuget/v/WorldRef?label=NuGet)](https://www.nuget.org/packages/WorldRef/) [![Packagist](https://img.shields.io/packagist/v/arj-89/worldref?label=Packagist)](https://packagist.org/packages/arj-89/worldref) [![Maven Central](https://img.shields.io/maven-central/v/io.github.arj-89/worldref?label=Maven%20Central)](https://central.sonatype.com/artifact/io.github.arj-89/worldref) [![MCP Registry](https://img.shields.io/badge/MCP%20Registry-io.github.arj--89%2Fworldref-blue)](https://registry.modelcontextprotocol.io/?q=worldref)
 
 <div dir="rtl">
 
@@ -35,13 +35,13 @@ parsePhone("٠٥٠١٢٣٤٥٦٧", byIso2("SA"));      // { e164: "+966501234567
 
 ## التثبيت
 
-منشورة على npm وPyPI وpub.dev وPackagist وNuGet وسجل MCP، وتُثبَّت Swift وKotlin وGo من هذا المستودع مباشرة. التفاصيل الكاملة في [README الإنجليزي](README.md#install).
+منشورة على npm وPyPI وpub.dev وPackagist وNuGet وMaven Central وسجل MCP، وتُثبَّت Swift وGo من هذا المستودع مباشرة. التفاصيل الكاملة في [README الإنجليزي](README.md#install).
 
 | البيئة | التثبيت |
 |---|---|
 | JavaScript وTypeScript | `npm i worldref` |
 | Swift | Swift Package Manager من `https://github.com/arj-89/worldref` |
-| Kotlin وAndroid | JitPack: `com.github.arj-89:worldref:v1.2.0` |
+| Kotlin وAndroid | `implementation("io.github.arj-89:worldref:1.2.0")` من Maven Central (وما زال JitPack يعمل: `com.github.arj-89:worldref:v1.2.0`) |
 | Python | `pip install worldref` |
 | Dart وFlutter | `dart pub add worldref` |
 | PHP وLaravel | `composer require arj-89/worldref` |
@@ -117,13 +117,12 @@ parsePhone("٠٥٠١٢٣٤٥٦٧", byIso2("SA"));      // { e164: "+966501234567
 
 ## خارطة الطريق
 
-صدر في 1.2.0: فروق التوقيت للمناطق الزمنية، وأنواع التقسيمات الإدارية، وبحث يتسامح مع الأخطاء البسيطة، وأداة نموذج العنوان، وسجل تغييرات يسرد ما تغيّر في كل تحديث تلقائي للبيانات.
+صدر في 1.2.0: فروق التوقيت للمناطق الزمنية، وأنواع التقسيمات الإدارية، وبحث يتسامح مع الأخطاء البسيطة، وأداة نموذج العنوان، وسجل تغييرات يسرد ما تغيّر في كل تحديث تلقائي للبيانات، وحزمة Kotlin على Maven Central.
 
 المخطط للإصدار 1.3.0 (إضافات لا تكسر ما قبلها):
 
 1. الأسماء الرسمية بالعربية: 222 صفًّا فارغة اليوم، وهي أكبر نقص في البيانات.
 2. المدن: وحدة جديدة باسم `cities` بأسماء عربية وإنجليزية، مرتبطة بالدولة والتقسيم الإداري: العواصم، وعواصم التقسيمات الإدارية، وكل مدينة يبلغ سكانها 100,000 نسمة فأكثر.
-3. حزمة Kotlin على Maven Central باسم `io.github.arj-89:worldref` (البناء ومهمة النشر جاهزان، ويبدأ النشر بعد إعداد التوقيع). وحتى ذلك الحين تُثبَّت عبر JitPack.
 
 المخطط للإصدار 1.4.0: الوقود، أي أنواع الوقود المبيعة في كل دولة وأسعارها الرسمية للبيع بالتجزئة، ولكل سعر مصدره وتاريخه. يبقى السعر حتى ينشر مصدره سعرًا جديدًا، وتُراجَع المصادر مرة كل أسبوعين على الأقل.
 

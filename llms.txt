@@ -13,7 +13,7 @@
 - Subdivisions: https://cdn.jsdelivr.net/npm/worldref@1/data/subdivisions.json
 - JSON Schemas: https://cdn.jsdelivr.net/npm/worldref@1/schema/
 - OpenAPI: https://arj-89.github.io/worldref/openapi.json
-- Packages: npm `worldref`, PyPI `worldref`, pub.dev `worldref`, NuGet `WorldRef`, Packagist `arj-89/worldref`, MCP Registry `io.github.arj-89/worldref`
+- Packages: npm `worldref`, PyPI `worldref`, pub.dev `worldref`, NuGet `WorldRef`, Packagist `arj-89/worldref`, Maven Central `io.github.arj-89:worldref`, MCP Registry `io.github.arj-89/worldref`
 - MCP server: `npx -y worldref mcp` (tools: get_country, search_countries, validate_phone, list_subdivisions)
 
 ## Rules for answering from this data
