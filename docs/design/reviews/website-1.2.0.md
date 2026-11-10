@@ -179,3 +179,57 @@ Also seen at 390 and fine: `ar/sa` heading «التقسيمات الإدارية
 | 15, 16, 17 | Unchanged at 390 | PASS | No horizontal scroll in any frame. The to-top pill still clears section ends. Icons are whole. |
 
 **Final state of this review:** every FAIL from passes 1 to 5 is fixed and verified. The 390 px gap from pass 2 is closed by pass 5 and this pass. Lint output and recordings stay descoped (entry 25). The not-counted items in the "Outside this change" lists are unchanged unless a later pass says they were fixed.
+
+## Kotlin on Maven Central (10/11/2026)
+
+**Reviewer:** design-reviewer, Opus 5.5 (claude-opus-5-5), fresh context. **Scope:** narrow Stop 2 of a trivial copy and data change (Delegated mode, lean per `DELEGATED-DECISIONS.md` entry 25): the Kotlin/Android stack on the install page moves from JitPack (two blocks, "Step 1 of 2") to Maven Central (one block).
+**Method:** viewed in the browser. At 1280 px: `http://127.0.0.1:8765/worldref/ar/install/#kotlin` and `/worldref/en/install/#kotlin`, dark and then light (switched with the header theme button), compared with the Swift, Python and Dart sections on the same page. At 390 px: `http://127.0.0.1:8765/m390.html` (`ar/install` and `en/install` frames, light), scrolled through Swift, Kotlin and Python. I clicked the Kotlin copy button on `ar` at 1280 dark. I grepped the built `site/_out` for JitPack and step labels, and checked the registry link's `href` and accessible name. Dark at 390 was not viewed separately. It uses the same tokens as dark at 1280.
+
+**Result: FAIL (1 check: 18).**
+
+| # | Item | PASS/FAIL | Evidence |
+| --- | --- | --- | --- |
+| 1 | The block and its line | PASS | `ar` and `en`, 1280 and 390: one block, labelled `build.gradle.kts`, containing `implementation("io.github.arj-89:worldref:1.2.0")`. The version matches the page's other stacks (Swift `from: "1.2.0"`). |
+| 1 | No step label, no JitPack | PASS | `site/_out`, case-insensitive grep for `jitpack`, `class="step"`, `Step \d` and «الخطوة»: 0 matches. No step label appears on the Kotlin section in either language or at either width. |
+| 7, 10 | Subtitle (`install.stack.kotlin.on`) | PASS | `en`: "from Maven Central". `ar`: «من Maven Central». Both match WORDING exactly, and they read as naturally as the other subtitles («عبر Composer» / "via Composer"). |
+| — | One-pattern rule | PASS | The Kotlin section has the same shape as Swift (file-name label in mono, one code field, copy button, "first call" toggle, guide link) and puts the registry link first, as Python, Dart and PHP do. The spacing, button size and divider position match Python's at 1280 and 390. The copy label «انسخ الأمر» / "Copy command" is the same one Swift uses for `Package.swift`. |
+| 5 | Copy button | PASS | `ar` 1280 dark: the click opens the "first call" block, as WORDING `install.first.show` specifies. `data-copy` holds the exact line (`site/build.mjs` `copyBtn(line, …)`). |
+| 1 | Registry button | PASS | `href="https://central.sonatype.com/artifact/io.github.arj-89/worldref"`, `rel="external"`. Label: "The package on Maven Central" / «صفحة الحزمة على Maven Central». The accessible name includes "Maven Central". It sits before "Full guide on GitHub", as PyPI does. At 390 both links stack one per line in both languages, and neither is cut. |
+| 18 | Mixed direction (Arabic, 1280) | PASS | The subtitle runs right to left: «من» at the right, then "Maven Central" as one Latin run. The button reads «صفحة الحزمة على» then "Maven Central", with the chevron at the left end, matching PyPI. The code field is `dir="ltr"` and left-aligned. The `build.gradle.kts` label is right-aligned over the field, like `Package.swift`. |
+| 8 | Themes | PASS | 1280 light and dark, both languages: the label, code field, copy pill and links are as legible as the Python section next to them. No new colour. |
+| 16 | One scroll axis at 390 | PASS | No horizontal scroll in either frame. The code field wraps inside its 346 px box. |
+| 18 | Wrapping at 390 | FAIL | `ar/install` and `en/install` at 390, light: the line breaks inside the Maven group id, `implementation("io.github.arj-` / `89:worldref:1.2.0")`. The hyphen at the end of line 1 reads as a soft hyphen, and the coordinate a reader has to match is split in two. This is the break-after-hyphen-before-digit defect failed in pass 5 and fixed for offsets and codes in pass 6. |
+
+### Notes to the builder (Kotlin on Maven Central)
+
+1. **Check 18, `/ar/install/#kotlin` and `/en/install/#kotlin` at 390:** in `site/build.mjs` `install()`, change the code-field markup in the `blocks` template from `<code>${esc(line)}</code>` to `<code>${esc(line).replace(/arj-89/g, '<span class="nw">arj-89</span>').replace(/^implementation\(/, "implementation(<wbr>")}</code>`. `.nw` already exists (`site/assets/site.css` line 120). At 390 the block then reads `implementation(` / `"io.github.arj-89:worldref:1.2.0")`. That is 34 characters, about 285 px of mono text, in the 314 px text width of the field. The copied text does not change: `data-copy` keeps the raw line, and the span and `<wbr>` add no characters to a manual selection. The `arj-89` rule also reaches the Swift, PHP and Go lines (one pattern), so check those three at 390 after the rebuild.
+
+### Outside this change (not counted)
+
+- Swift (`/ar/install/#swift`, `/en/install/#swift`, 390) has had the same break since before this change: `"https://github.com/arj-` / `89/worldref.git", from: "1.2.0")`. The fix above covers it. Confirm it on the rebuild.
+- The open "first call" toggle keeps the label «اعرض أول استدعاء» / "Show the first call", but WORDING defines `install.first.hide` («أخفِ أول استدعاء» / "Hide the first call"), and `site/` never uses that key. This affects every stack.
+- WORDING `install.step` still says it is used "for a stack whose lines go to two destinations (PHP)". No stack now has two blocks, so `install.step` and `install.step.next` are unused. Update the note or retire the keys.
+
+### Pass 2
+
+**Reviewer:** Opus 5.5 (claude-opus-5-5). **Date:** 10/11/2026.
+**Method:** viewed in the browser at `http://127.0.0.1:8765/m390.html` after the rebuild (`ar/install` and `en/install` frames, 390 px, light). I scrolled inside each frame through Swift, Kotlin, PHP, Go and "No install". I opened and closed the "first call" toggle on PHP in both frames, and clicked the Kotlin copy button in the `en` frame. I read the built `<code>` markup and the `data-copy` values in `site/_out/{ar,en}/install/index.html`.
+
+**Result: FAIL (1 check: 18).** The Kotlin FAIL is fixed. My pass 1 prescription caused a regression on Swift. The `nw` span took away the hyphen break, and nothing replaced it.
+
+| # | Item | Pass 2 | Evidence at 390 |
+| --- | --- | --- | --- |
+| 18 | Kotlin wrapping | PASS | `ar` and `en`: `implementation(` / `"io.github.arj-89:worldref:1.2.0")`. The coordinate is whole on line 2. |
+| 18 | Swift wrapping | FAIL | `ar` and `en`: `.package(url:` / `"https://github.com/arj-89/worldref.g` / `it", from: "1.2.0")`. Line 2 does not fit the 314 px field (41 characters, about 343 px). With the hyphen protected, the line has no break opportunity left, so `overflow-wrap: anywhere` cuts the word `git`. This is worse than the old `arj-` / `89` break. |
+| 18 | PHP, Go, "No install" | PASS | PHP: `composer require arj-89/worldref` on one line. Go: `go get` / `github.com/arj-89/worldref/go@v1.2.0`, a break at the space. "No install" (`en`): `https://arj-89.github.io/worldref/api` / `/v1/sa.json`, a break at a path separator. |
+| 5 | Copy | PASS | `en` Kotlin click: the label changes to "Command copied" and the first call opens. `data-copy` holds the raw line for all six `arj-89` lines (Kotlin `implementation(&quot;io.github.arj-89:worldref:1.2.0&quot;)`, no `<wbr>`, no span). The span and `<wbr>` live only inside `<code>`, so a manual selection is unchanged too. |
+| 7 | First-call toggle | PASS | PHP, both frames. Closed: "▶ Show the first call" / «اعرض أول استدعاء ◀». Open: "▼ Hide the first call" / «أخفِ أول استدعاء ▼». Closing it again restores "Show". The Kotlin toggle also reads "Hide the first call" after a copy opens it. |
+| — | WORDING `install.step` | PASS | The coordinator reports that the note now says the key is unused. Not re-read here; this is outside the counted checks. |
+
+### Notes to the builder (Kotlin pass 2)
+
+1. **Check 18, `/ar/install/#swift` and `/en/install/#swift` at 390:** in the install-line helper, after the `arj-89` replace, add `.replace("/worldref.git", "/<wbr>worldref.git")`. The block then reads `.package(url:` / `"https://github.com/arj-89/` / `worldref.git", from: "1.2.0")`. Those are 27 and 29 characters, about 226 px and 243 px of the 314 px field. Line 2 cannot take `worldref.git",` as well (41 characters), so the browser uses the `<wbr>`. The rule matches only the Swift line, so Kotlin, PHP, Go and the URLs keep the layout seen in this pass. `data-copy` is unaffected.
+
+### Outside this change (not counted)
+
+- PHP first call, at 390, both languages: the mono font turns `->` into a ligature arrow (`$sa→name_ar`), and `geo->capital_en` breaks as `geo-` / `>capital_en`. A reader who types the code by hand could copy the arrow glyph. `font-variant-ligatures: none` on `pre` (or the font's `calt` off) and a break rule for `->` would fix both. This predates the change.

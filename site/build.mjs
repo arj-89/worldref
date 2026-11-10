@@ -44,6 +44,8 @@ const ltr = (s) => `<bdi dir="ltr">${esc(s)}</bdi>`;
 /** Left-to-right and never broken inside (UTC offsets: a line break after "UTC-" splits the number). */
 const ltrNw = (s) => `<bdi dir="ltr" class="nw">${esc(s)}</bdi>`;
 const code = (s) => `<code dir="ltr">${esc(s)}</code>`;
+/** An install line that may wrap only where it reads well: "arj-89" never splits, and a long call breaks after its "(". */
+const breakable = (line) => esc(line).replace(/arj-89/g, '<span class="nw">arj-89</span>').replace(/^(implementation|require|import)\(/, "$1(<wbr>").replace("/worldref.git", "/<wbr>worldref.git");
 /** "+05:30" to minutes, for telling a daylight shift from a winter one. */
 const minutes = (o) => (o[0] === "-" ? -1 : 1) * (Number(o.slice(1, 3)) * 60 + Number(o.slice(4, 6)));
 /** Every editorial decision on a country page needs an Arabic reason: a WORDING key, or why_ar in the data. */
@@ -266,14 +268,14 @@ function install(lang) {
     const where = (w) => (w === "terminal" ? t("install.where.terminal", lang) : w === "url" ? t("install.where.url", lang) : code(w));
     const rows = INSTALL_ROWS.map((r) => {
         const blocks = r.blocks
-            .map(([w, line], i) => `<div class="cmd">${r.blocks.length > 1 ? `<p class="step">${t("install.step", lang, { n: num(i + 1), total: num(r.blocks.length) })}</p>` : ""}<p class="where">${where(w)}</p><pre dir="ltr"><code>${esc(line)}</code></pre>${copyBtn(line, lang, w === "url" ? "url" : "command")}</div>`)
+            .map(([w, line], i) => `<div class="cmd">${r.blocks.length > 1 ? `<p class="step">${t("install.step", lang, { n: num(i + 1), total: num(r.blocks.length) })}</p>` : ""}<p class="where">${where(w)}</p><pre dir="ltr"><code>${breakable(line)}</code></pre>${copyBtn(line, lang, w === "url" ? "url" : "command")}</div>`)
             .join("");
         const extra = r.id === "files"
             ? `<p class="actions"><a class="btn primary" href="${href(lang, "build/")}">${t("chrome.nav.build", lang)}</a><a class="btn" href="https://github.com/arj-89/worldref/releases">${t("install.files.releases", lang)}</a></p>`
             : r.id === "mcp"
               ? `<p><a href="${href(lang, "agents/")}">${t("install.mcp.more", lang)}</a></p>`
               : "";
-        const first = r.first ? `<details class="first"><summary>${t("install.first.show", lang)}</summary><p class="where">${t("install.first.title", lang)}</p><pre dir="ltr"><code>${esc(r.first)}</code></pre></details>` : "";
+        const first = r.first ? `<details class="first"><summary><span class="if-closed">${t("install.first.show", lang)}</span><span class="if-open">${t("install.first.hide", lang)}</span></summary><p class="where">${t("install.first.title", lang)}</p><pre dir="ltr"><code>${esc(r.first).replace(/-&gt;/g, "<wbr>-&gt;")}</code></pre></details>` : "";
         return `<section class="stack" id="${r.id}" aria-labelledby="${r.id}-h"><h2 id="${r.id}-h">${tl(`install.stack.${r.id}`, lang)} <span>${tl(`install.stack.${r.id}.on`, lang)}</span></h2>${r.id === "files" ? `<p>${t("install.files.body", lang)}</p>` : ""}${blocks}${extra}${first}<p class="guide actions">${r.registry ? `<a class="btn" href="${r.registry[0]}" rel="external">${t("install.registry", lang, { name: esc(r.registry[1]) })}</a>` : ""}<a class="btn" href="https://github.com/arj-89/worldref/blob/main/${r.guide}">${t("install.guide", lang)}</a></p></section>`;
     }).join("");
     const jump = `<nav class="jump" aria-label="${plain("install.jump", lang)}">${INSTALL_ROWS.map((r) => `<a href="#${r.id}"><span>${tl(`install.stack.${r.id}`, lang)}</span></a>`).join("")}</nav>`;
@@ -294,8 +296,8 @@ function builder(lang) {
     const body = `<section class="intro"><h1>${t("build.title", lang)}</h1><p class="lede">${t("build.body", lang)}</p></section>
 <form class="builder" data-builder>
 <fieldset class="seg-field"><legend>${t("build.lang.label", lang)}</legend>${radio("b", "", t("build.bilingual", lang), true)}${radio("b", ".ar", t("build.ar", lang))}${radio("b", ".en", t("build.en", lang))}</fieldset>
-<fieldset><legend>${t("build.modules.label", lang)}</legend><p class="hint" data-mod-status>${t("build.modules.all", lang)}. ${t("build.modules.hint", lang)}</p>${MODULES.map((m) => `<label class="check"><input type="checkbox" name="m" value="${m}">${lang === "en" ? t(`module.${m}`, lang).replace(/^./, (c) => c.toUpperCase()) : t(`module.${m}`, lang)}</label>`).join("")}<button type="button" class="link" data-mod-clear>${t("build.modules.clear", lang)}</button></fieldset>
-<fieldset class="seg-field"><legend>${t("build.subs.label", lang, { n: num(meta.subdivisions) })}</legend>${radio("s", "none", t("build.subs.none", lang), true)}${radio("s", "inside", t("build.subs.inside", lang))}${radio("s", "only", t("build.subs.only", lang))}</fieldset>
+<fieldset><legend>${t("build.modules.label", lang)}</legend><p class="hint" data-mod-status>${t("build.modules.all", lang)}. ${t("build.modules.hint", lang)}</p><div class="mods">${MODULES.map((m) => `<label class="check mod"><input type="checkbox" name="m" value="${m}" aria-describedby="mod-${m}"><span class="mod-text"><span>${lang === "en" ? t(`module.${m}`, lang).replace(/^./, (c) => c.toUpperCase()) : t(`module.${m}`, lang)}</span><span class="hint" id="mod-${m}">${t(`module.${m}.desc`, lang)}</span></span></label>`).join("")}</div><button type="button" class="link" data-mod-clear>${t("build.modules.clear", lang)}</button></fieldset>
+<fieldset class="seg-field"><legend>${t("build.subs.label", lang, { n: num(meta.subdivisions) })}</legend><p class="hint">${t("module.subdivisions.desc", lang)}</p>${radio("s", "none", t("build.subs.none", lang), true)}${radio("s", "inside", t("build.subs.inside", lang))}${radio("s", "only", t("build.subs.only", lang))}</fieldset>
 <fieldset class="seg-field"><legend>${t("build.format.label", lang)}</legend>${radio("f", "json", "JSON", true)}${radio("f", "csv", "CSV")}</fieldset>
 <div class="bar"><p data-size aria-live="polite"></p><button type="submit" class="btn primary">${t("build.download", lang)}</button><p data-status class="hint" aria-live="polite"></p></div>
 <section class="preview" aria-labelledby="pv-h"><h2 id="pv-h">${t("build.preview.title", lang)}</h2><pre dir="ltr" data-preview></pre><p class="hint" data-preview-end></p></section>

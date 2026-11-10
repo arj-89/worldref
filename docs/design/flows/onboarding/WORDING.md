@@ -168,12 +168,22 @@ Module names stay in the code face (`phone`); these labels sit beside them.
 | module.nationality | الجنسية | nationality | `nationality` |
 | module.phone | الهاتف والتحقق من الجوال | phone and mobile validation | `phone` |
 | module.currency | العملة | currency | `currency` |
-| module.geo | العاصمة والمساحة والسكان | capital, area, population | `geo` |
+| module.geo | الجغرافيا والمناطق الزمنية | geography and time zones | `geo` |
 | module.locale | اللغة والأسبوع والتقويم | language, week, calendar | `locale` |
 | module.address | العنوان البريدي | postal address | `address` |
 | module.travel | الطوارئ والكهرباء | emergency numbers and power | `travel` |
 | module.sports | رموز فيفا والأولمبية | FIFA and IOC codes | `sports` |
 | module.subdivisions | التقسيمات الإدارية | subdivisions | `subdivisions`, ISO 3166-2 |
+| module.core.desc | رموز ISO، والأسماء الشائعة والرسمية والبديلة، والعلم، والقارة، والمجموعات، ونطاق الإنترنت، ومفاتيح الترتيب | ISO codes, common, official and alternative names, flag, continent, groups, internet domain, sort keys | subtitle under the module on /build |
+| module.nationality.desc | الجنسية بالإنجليزية وبالعربية مذكرًا ومؤنثًا، ورمز الجنسية في جواز السفر | Nationality in English, and in Arabic masculine and feminine, plus the passport nationality code | |
+| module.phone.desc | مفاتيح الاتصال، وأطوال الأرقام، وبادئات الجوال وأنماطه، وصيغة عرض رقم الجوال | Dial codes, number lengths, mobile prefixes and patterns, mobile display format | |
+| module.currency.desc | العملات المتداولة وأسماؤها باللغتين ورموزها، ومنها رمز الريال الجديد | Currencies in use, their names in both languages and their symbols, including the new riyal sign | |
+| module.geo.desc | العاصمة، ونقطة المنتصف، والمساحة، والسكان، والمناطق الزمنية وفروق توقيتها، وجهة القيادة | Capital, centre point, area, population, time zones with their UTC offsets, driving side | |
+| module.locale.desc | اللغات الرسمية، وبداية الأسبوع، والعطلة الأسبوعية، والتقاويم، ونظام القياس | Official languages, first day of the week, weekend, calendars, measurement system | |
+| module.address.desc | صيغة العنوان وتسميات حقوله، والحقول المطلوبة، وشكل الرمز البريدي ونمطه | Address format and field labels, required fields, postal code shape and pattern | |
+| module.travel.desc | أرقام الطوارئ، وأنواع المقابس، والجهد الكهربائي، والتردد | Emergency numbers, plug types, voltage, frequency | |
+| module.sports.desc | رمز فيفا ورمز اللجنة الأولمبية الدولية | FIFA and IOC codes | |
+| module.subdivisions.desc | مناطق ISO 3166-2 ومحافظاتها وولاياتها، بالاسم باللغتين ونوع كل منها | ISO 3166-2 regions, provinces and states, with names in both languages and each one's type | hint under the subdivisions choice on /build |
 | build.bilingual | عربي وإنجليزي | Arabic and English | `.json` |
 | build.ar | عربي فقط | Arabic only | `.ar.json` |
 | build.en | إنجليزي فقط | English only | `.en.json` |

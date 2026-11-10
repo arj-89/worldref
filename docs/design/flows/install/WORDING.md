@@ -15,7 +15,7 @@ Commands and first calls are not copy: they are taken verbatim from `README.md` 
 | install.jump | انتقل إلى بيئتك | Jump to your stack | label above the jump row of 12 links |
 | install.where.terminal | الطرفية | Terminal | label above a command that runs in a shell |
 | install.where.url | رابط | URL | label above a URL |
-| install.step | الخطوة {n} من {total} | Step {n} of {total} | for a stack whose lines go to two destinations (PHP); C# is one Terminal block (entry 20) |
+| install.step | الخطوة {n} من {total} | Step {n} of {total} | unused since 10/11/2026 (every stack has one block); kept for a stack whose lines go to two destinations; C# is one Terminal block (entry 20) |
 | install.step.next | بقيت الخطوة {n} من {total} | Next: step {n} of {total} | partial state, on the block not yet copied |
 | install.first.show | اعرض أول استدعاء | Show the first call | toggle under each stack; opens by itself after a copy |
 | install.first.hide | أخفِ أول استدعاء | Hide the first call | |

@@ -34,6 +34,7 @@
 - **Featured example:** Jordan («الاردن», 00962), not the UAE (entry 30).
 - **Digits:** no Arabic-Indic digit in authored content (entry 15); visitors may type them.
 - **Riyal:** U+20C1 through the system font, with «ر.س» shown as the text fallback (entry 27).
+- Width (owner ruling, 10/11/2026): page titles, lead paragraphs, search fields and form fields use the full content column (980 px less the gutters) in both languages. This overrides the standard's 65 to 75 character measure for those elements; long-form body paragraphs keep `p { max-inline-size: 68ch }`.
 
 ## Blocked references
 

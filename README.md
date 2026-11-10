@@ -288,7 +288,7 @@ Planned for 1.4.0: retail fuel, the fuel types sold in each country and their of
 
 Planned for 1.5.0: a full human review of every Arabic name.
 
-Planned for 1.6.0: VAT and sales tax rates (standard and reduced), public holidays (including the Hijri-based ones), residential electricity tariffs, minimum wage, speed limits (urban, rural, motorway) and vehicle number plate formats.
+Planned for 1.6.0: VAT and sales tax rates (standard and reduced), public holidays (including the Hijri-based ones), residential electricity tariffs, minimum wage, speed limits (urban, rural, motorway), vehicle number plate formats, IBAN format and length, number, date and currency formats with paper size (A4 or Letter), and retirement age.
 
 ## Sources and licences
 
